@@ -4,39 +4,57 @@ Id: se-ehds-flag
 Title: "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)"
 Description: """
   Primär profil för ALL uppmärksamhetsinformation från GetAlertInformation
-  (clinicalprocess:healthcond:description v2.0, 3.0).
+  (clinicalprocess:healthcond:description v2.0).
 
   Varje alertInformationBody ger alltid en Flag.
   Om typeOfAlertInformation anger allergi/överkänslighet skapas dessutom en
   SEEHDSAllergyIntolerance-resurs som pekas ut via extension[allergyReference].
 
-  Täcker NPÖ 2.0, 3.0 och 1177 Journal 2.0, 3.0.
+  Profilen är alignad med HL7 Sweden UMI-IG (SEAlertInformationFlag) vad gäller
+  category-hierarkin och flag-detail-extension för länk till kompletterande Observation.
+
+  OBS: alertInformationBody innehåller ENBART typeOfAlertInformation 1..1.
+  Fält som alertCode, alertStatus, alertTimePeriod, causeCode, reaction och alertComment
+  existerar INTE i det riktiga tjänstekontraktet v2.0.
+
+  Täcker NPÖ 2.0 och 1177 Journal 2.0.
 """
 
+// Länk till AllergyIntolerance vid allergi/överkänslighet
 * extension contains AllergyReference named allergyReference 0..1 MS
+
+// Länk till Observation med klinisk detaljinformation (UMI-mönster, alignat med HL7 Sweden)
+* extension contains
+    http://hl7.org/fhir/StructureDefinition/flag-detail named flagDetail 0..* MS
+
+* identifier MS
+* identifier ^short = "Dokumentidentifierare (alertInformationHeader.documentId)"
 
 * subject only Reference(SEEHDSPatient)
 * subject 1..1 MS
-* subject ^short = "Patient (patientId)"
+* subject ^short = "Patient (alertInformationHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (alertInformationHeader.sourceSystemHSAId)"
 
 * status 1..1 MS
-* status ^short = "Uppmärksamhetsstatus (alertStatus: active/inactive)"
+* status ^short = "Alltid 'active' – inget statusfält i TKBn; returnerade poster är per definition aktiva"
 
 * category 1..* MS
-* category ^short = "Uppmärksamhetstyp (typeOfAlertInformation – kv_uppmärksamhetstyp)"
+* category ^short = "Uppmärksamhetstyp (alertInformationBody.typeOfAlertInformation)"
 
 * code 1..1 MS
-* code ^short = "Uppmärksamhetskod (alertCode)"
+* code ^short = "Uppmärksamhetskod (alertInformationBody.typeOfAlertInformation – samma värde som category)"
 
-* period MS
-* period ^short = "Giltighetstid (alertTimePeriod)"
+* period.start MS
+* period.start ^short = "Registreringstidpunkt (alertInformationHeader.accountableHealthcareProfessional.authorTime)"
 
 * author only Reference(PractitionerRole)
 * author MS
-* author ^short = "Ansvarig hälso- och sjukvårdspersonal (accountableHealthcareProfessional)"
+* author ^short = "Ansvarig hälso- och sjukvårdspersonal (alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId)"
+
+* encounter MS
+* encounter ^short = "Kopplad vårdkontakt (alertInformationHeader.careContactId)"
 
 Extension: AllergyReference
 Id: allergy-reference

@@ -2,31 +2,38 @@ Profile: SEEHDSDocumentReference
 Parent: DocumentReference
 Id: se-ehds-document-reference
 Title: "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)"
-Description: "Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation (clinicalprocess:healthcond:description v2.1, 3.0). Täcker NPÖ 2.1, 3.0 och 1177 Journal 2.1, 3.0."
+Description: """
+  Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation
+  (clinicalprocess:healthcond:description v3.0). Täcker NPÖ 3.0 och 1177 Journal 3.0.
+
+  Använder JoL-header v2.2 (ej PatientSummaryHeader): accessControlHeader för PDL,
+  record för journaluppgift-metadata, author för dokumentationsansvarig,
+  signature för signeringsinformation.
+"""
 
 * subject only Reference(SEEHDSPatient)
 * subject MS
-* subject ^short = "Patient (patientId från careDocumentationHeader)"
+* subject ^short = "Patient (careDocumentation.header.accessControlHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (careDocumentation.header.sourceSystemId)"
 
 * author only Reference(PractitionerRole)
 * author MS
-* author ^short = "Anteckningsförfattare (accountableHealthcareProfessional)"
+* author ^short = "Dokumentationsansvarig (careDocumentation.header.author.authorId – JoL-header)"
 
 * authenticator only Reference(PractitionerRole)
 * authenticator MS
-* authenticator ^short = "Rättslig äkthetsintygsgivare (legalAuthenticator)"
+* authenticator ^short = "Signerande person (careDocumentation.header.signature.signatureId – JoL-header)"
 
 * date MS
-* date ^short = "Dokumentdatum (documentTime från careDocumentationHeader)"
+* date ^short = "Journaluppgiftens skapandetidpunkt (careDocumentation.header.record.timestamp)"
 
 * status 1..1 MS
-* status ^short = "Dokumentstatus"
+* status ^short = "Dokumentstatus – 'current' normalt; härledd"
 
 * type MS
-* type ^short = "Dokumenttyp (careDocumentationType)"
+* type ^short = "Anteckningstyp (careDocumentation.body.clinicalDocumentNoteCode – KV Anteckningstyp)"
 
 * category MS
 * category ^short = "Dokumentkategori"
@@ -34,15 +41,15 @@ Description: "Profil för vårdanteckningar mappat från RIVTA-tjänstekontrakte
 * content 1..* MS
 * content.attachment 1..1 MS
 * content.attachment.contentType MS
-* content.attachment.contentType ^short = "Mimetyp"
+* content.attachment.contentType ^short = "Mimetyp (careDocumentation.body.multimediaEntry.mediaType)"
 * content.attachment.data MS
-* content.attachment.data ^short = "Anteckningstext (careDocumentationBody)"
+* content.attachment.data ^short = "Anteckningstext/binärinnehåll (careDocumentation.body.clinicalDocumentNoteText / multimediaEntry.value)"
+* content.attachment.url MS
+* content.attachment.url ^short = "Referens till extern fil (careDocumentation.body.multimediaEntry.reference)"
 * content.attachment.title MS
-* content.attachment.title ^short = "Dokumenttitel (careDocumentationTitle)"
+* content.attachment.title ^short = "Anteckningsrubrik (careDocumentation.body.clinicalDocumentNoteTitle)"
 
 * context MS
 * context.encounter only Reference(SEEHDSEncounter)
 * context.encounter MS
-* context.encounter ^short = "Tillhörande vårdkontakt (careContactId)"
-* context.period MS
-* context.period ^short = "Giltighetstid (careDocumentationTimePeriod)"
+* context.encounter ^short = "Tillhörande vårdkontakt (careDocumentation.header.accessControlHeader – koppling via vårdkontakt-id)"

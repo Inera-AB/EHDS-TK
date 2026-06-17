@@ -6,36 +6,33 @@ Description: "Profil för bilddiagnostiska undersökningar mappat från RIVTA-tj
 
 * subject only Reference(SEEHDSPatient)
 * subject MS
-* subject ^short = "Patient (patientId från imagingHeader)"
+* subject ^short = "Patient (imagingOutcomeHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId)"
 
 * status 1..1 MS
-* status ^short = "Undersökningsstatus"
+* status ^short = "Undersökningsstatus – härledd (inget direkt statusfält i TKBn)"
 
 * started MS
-* started ^short = "Undersökningstidpunkt (imagingTime)"
+* started ^short = "Undersökningstidpunkt (imagingOutcomeBody.imageRecording.examinationTimePeriod.start)"
 
 * modality MS
-* modality ^short = "Modalitet (imagingModality – DICOM)"
+* modality ^short = "Modalitet (imagingOutcomeBody.imageRecording.modalityData.typeOfModality)"
 
 * referrer only Reference(PractitionerRole)
 * referrer MS
-* referrer ^short = "Remitterande läkare (referralSource)"
+* referrer ^short = "Remitterande läkare (imagingOutcomeBody.referral.accountableHealthcareProfessional)"
 
 * interpreter only Reference(PractitionerRole)
 * interpreter MS
-* interpreter ^short = "Tolkande radiolog (accountableHealthcareProfessional)"
-
-* description MS
-* description ^short = "Undersökningsbeskrivning (imagingDescription)"
+* interpreter ^short = "Tolkande radiolog (imagingOutcomeHeader.accountableHealthcareProfessional)"
 
 * series MS
 * series.uid MS
-* series.uid ^short = "Serie-UID (seriesUID)"
+* series.uid ^short = "Serie-UID (imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP)"
 * series.modality MS
-* series.modality ^short = "Serieens modalitet"
+* series.modality ^short = "Serieens modalitet (imagingOutcomeBody.imageRecording.modalityData.typeOfModality)"
 * series.instance MS
 * series.instance.uid MS
-* series.instance.uid ^short = "Instans-UID"
+* series.instance.uid ^short = "Instans-UID (imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP)"

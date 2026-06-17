@@ -6,24 +6,27 @@ Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. 
 
 * subject only Reference(SEEHDSPatient)
 * subject MS
-* subject ^short = "Patient (patientId)"
+* subject ^short = "Patient (referralOutcomeHeader.patientId)"
+
+* meta.source MS
+* meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId)"
 
 * performer only Reference(PractitionerRole or Organization)
 * performer MS
-* performer ^short = "Svarande specialist/enhet (referralOutcomeAuthor)"
+* performer ^short = "Svarande specialist/enhet (referralOutcomeHeader.accountableHealthcareProfessional)"
 
 * issued MS
-* issued ^short = "Svarstidpunkt (outcomeTime)"
+* issued ^short = "Svarstidpunkt (referralOutcomeHeader.documentTime)"
 
 * status 1..1 MS
-* status ^short = "Svarstatus (referralOutcomeStatus)"
+* status ^short = "Härledd från referralOutcomeBody.referralOutcomeTypeCode"
 
 * basedOn MS
 * basedOn only Reference(SEEHDSServiceRequestReferral)
 * basedOn ^short = "Koppling till ursprungsremiss"
 
 * code 1..1 MS
-* code ^short = "Svarstyp"
+* code ^short = "Svarstyp (referralOutcomeBody.referralOutcomeTypeCode)"
 
 * conclusion MS
-* conclusion ^short = "Konsultationssvar/bedömning (referralOutcomeBody och referralOutcomeComment)"
+* conclusion ^short = "Konsultationssvar/bedömning (referralOutcomeBody.referralOutcomeText)"

@@ -6,25 +6,25 @@ Description: "Profil för enskilda laboratorieresultat/analyser mappat från Get
 
 * subject only Reference(SEEHDSPatient)
 * subject MS
-* subject ^short = "Patient (patientId)"
+* subject ^short = "Patient (header.accessControlHeader.patientId)"
 
 * status 1..1 MS
-* status ^short = "Resultatstatus (analysisStatus)"
+* status ^short = "Analysstatus (groupOfAnalyses.analysis.status)"
 
 * code 1..1 MS
-* code ^short = "Analyskod (analysisCode – NPU/LOINC)"
+* code ^short = "Analyskod (groupOfAnalyses.analysis.code – NPU/LOINC)"
 
 * effective[x] MS
-* effective[x] ^short = "Analystidpunkt"
+* effective[x] ^short = "Analystidpunkt (groupOfAnalyses.analysis.timestamp)"
 
 * value[x] MS
-* value[x] ^short = "Analysresultat (analysisValue)"
+* value[x] ^short = "Analysresultat (groupOfAnalyses.analysis.result.value – AnyValueType, se LAB-001)"
 
 * interpretation MS
-* interpretation ^short = "Referensintervallbedömning (referenceIntervalOutOfRange)"
+* interpretation ^short = "Tolkning av resultat (groupOfAnalyses.analysis.result.interpretation)"
 
 * referenceRange MS
-* referenceRange ^short = "Referensintervall (referenceInterval)"
+* referenceRange ^short = "Referensintervall (groupOfAnalyses.analysis.result.reference)"
 
 * note MS
-* note ^short = "Analyskommentar (analysisComment)"
+* note ^short = "Analyskommentar (groupOfAnalyses.analysis.comment)"
