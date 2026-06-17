@@ -17,6 +17,6 @@ Description: "Logisk modell för funktionstillstånd och ADL-bedömningar hämta
 * functionalStatusStatus 1..1 CodeableConcept "Status (Aktuell/Historisk)"
 * functionalStatusSeverity 0..1 CodeableConcept "Svårighetsgrad"
 * functionalStatusTimePeriod 0..1 Period "Giltighetstid"
-  * start 0..1 date "Startdatum"
-  * end 0..1 date "Slutdatum"
+  * start 0..1 dateTime "Startdatum"
+  * end 0..1 dateTime "Slutdatum"
 * functionalStatusComment 0..1 string "Bedömning och kommentar i fritext"

@@ -19,6 +19,6 @@ Description: "Logisk modell för diagnosinformation hämtad via tjänstekontrakt
 * diagnosisType 0..1 CodeableConcept "Diagnostyp (kv_diagnostyp: Huvud/Bi/Kompletterande)"
 * diagnosisStatus 1..1 CodeableConcept "Diagnosstatus (Aktuell/Historisk)"
 * diagnosisTimePeriod 0..1 Period "Diagnosperiod"
-  * start 0..1 date "Debutdatum"
-  * end 0..1 date "Slutdatum"
+  * start 0..1 dateTime "Debutdatum"
+  * end 0..1 dateTime "Slutdatum"
 * diagnosisComment 0..1 string "Kommentar"
