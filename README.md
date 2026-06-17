@@ -1,102 +1,169 @@
-**Instruktion: Mappning av RIVTA-tjänstekontrakt till FHIR
-1. Förberedelse
-Innan du börjar behöver du:
+# Mappningsprinciper: RIVTA-tjänstekontrakt → FHIR
 
-Tjänstekontraktets WSDL/XSD och beskrivning från Ineras tjänstekatalog
-Motsvarande FHIR R4-resurstyp (t.ex. Condition, MedicationStatement, AllergyIntolerance)
-EU EPS obligations-profilen för resursen (t.ex. condition-obl-eu-eps från hl7.fhir.eu.eps)
-Svenska basprofilerna (HL7 Sweden basprofiler-r4) för Patient, Practitioner, Organization
-2. EU EPS-profilen som grund
-Identifiera EU EPS obligations-profilen för resursen. Den finns i paketet hl7.fhir.eu.eps och heter typiskt {resource}-obl-eu-eps.
-Profilen ska bära båda profilerna i meta.profile: vår EHDS-brygga-profil OCH EU EPS-profilen.
-Obligatoriska element i EU EPS-profilen (SHALL/MUST-krav) ska alltid sättas.
-Frivilliga element i EU EPS-profilen (t.ex. rekommenderade kodverk, extensions, slicings) ska nyttjas om tjänstekontraktet innehåller semantiskt motsvarande data.
-3. Terminologi och kodverk
-3a. Officiella URL:ar
-Alla kodverk från tjänstekontrakt ska använda sina officiella URL:ar — inte OID:ar som urn:oid:.... Hämta rätt URL från:
+## 1. Förberedelse
 
-https://terminologitjansten.inera.se — Ineras egna kodverk (t.ex. kv_diagnostyp)
-https://www.icd10.se/ — ICD-10-SE
-http://snomed.info/sct|http://snomed.info/sct/45991000052106 — SNOMED CT SE
-http://loinc.org — LOINC
-3b. Slicings vid överlappning med FHIR-standardvärden
-Om FHIR-resursen har ett obligatoriskt eller rekommenderat valueset (t.ex. encounter-diagnosis i Condition.category): skapa en slicing där det svenska kodverket utgör ett eget snitt (category[{kodverksnamn}]). Standardbindningen och det svenska snittet kan samexistera.
-Om FHIR-resursen saknar fast binding på elementet: det svenska kodverket ersätter exemplet direkt, ingen slicing behövs.
-3c. Namngivning av ValueSet och CodeSystem
-ValueSet och CodeSystem ska namnges efter kodverket, t.ex. SEDiagnosisTypeVS för kv_diagnostyp.
-CodeSystem med extern officiell URL definieras som Instance: … InstanceOf: CodeSystem (SUSHI v3.20 hanterar annars ^url felaktigt på CodeSystem:-syntax).
-4. Profildefinition (FSH)
-4a. Identifiering
-Profile: SE{Resurstyp}
-Parent: {Resurstyp}
+Innan mappning påbörjas behöver du:
+- Tjänstekontraktets WSDL/XSD och beskrivning från Ineras tjänstekatalog
+- Motsvarande FHIR R4-resurstyp
+- EU EPS obligations-profilen för resursen (paket `hl7.fhir.eu.eps`)
+- IPS-profilen för resursen (paket `hl7.fhir.uv.ips`)
+- HL7 Sweden basprofiler (paket `hl7se.fhir.base`, canonical `http://hl7.se/fhir/ig/base`)
+
+---
+
+## 2. EU EPS och IPS som grund
+
+- **Ärv från IPS-profilen** för resursen om en sådan finns (`Parent: Condition-uv-ips` etc.)
+- **EU EPS obligations-profilen** (`{resurs}-obl-eu-eps`) sätts i `meta.profile` vid runtime — den behöver inte vara `Parent` i FSH, men alla obligatoriska krav i den ska uppfyllas
+- **Frivilliga element** i EU EPS/IPS (rekommenderade kodverk, extensions, slicings) ska nyttjas om tjänstekontraktet har semantiskt motsvarande data
+- Varje producerad resurs bär **två profiler** i `meta.profile`: vår EHDS-brygga-profil + EU EPS obligations-profilen
+
+---
+
+## 3. Patient, Practitioner, Organization
+
+### Patient
+- Skapa en **SEEHDSPatient-profil** med `Parent: Patient-uv-ips` (IPS Patient)
+- Lägg till svenska identifier-slicar manuellt i enlighet med SEBasePatient (HL7 Sweden basprofiler):
+  - `personnummer` — system `http://electronichealth.se/identifier/personnummer`
+  - `samordningsnummer` — system `http://electronichealth.se/identifier/samordningsnummer`
+  - `nationelltReservnummer` — system `http://electronichealth.se/identifier/nationelltReservnummer`
+- **Viktigt:** Använd **inte** `Reference(SEBasePatient)` direkt om resursen ärver från IPS — IPS låser subject till `Reference(Patient-uv-ips)` och SEBasePatient ärver från bas-Patient, inte IPS Patient
+
+### PractitionerRole
+- Referera alltid `Reference(SEBasePractitionerRole)` från `hl7se.fhir.base`
+- SEBasePractitionerRole har en `hsaid`-slice med system `urn:oid:1.2.752.29.4.19`
+- Definiera **inga egna identifier-underregler** på PractitionerRole-referensen — slicingen ärvs från SEBasePractitionerRole
+
+### Organization
+- Referera `Reference(SEBaseOrganization)` från `hl7se.fhir.base`
+
+---
+
+## 4. Terminologi och kodverk
+
+### Officiella URL:ar
+Använd alltid officiella URL:ar för kodverk — **aldrig** OID-form som `urn:oid:...` för kodsystem:
+
+| Kodverk | URL |
+|---|---|
+| ICD-10-SE | `https://www.icd10.se/` |
+| SNOMED CT SE | `http://snomed.info/sct\|http://snomed.info/sct/45991000052106` |
+| Ineras kodverk (t.ex. kv_diagnostyp) | `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/{kodverksnamn}` |
+| LOINC | `http://loinc.org` |
+| HSA-id (HL7 Sweden basprofiler) | `urn:oid:1.2.752.29.4.19` |
+| HSA-id (Inera NTjP/RIVTA) | `urn:oid:1.2.752.129.2.1.4.1` |
+| Personnummer | `http://electronichealth.se/identifier/personnummer` |
+| Samordningsnummer | `http://electronichealth.se/identifier/samordningsnummer` |
+
+### Slicings vid överlappning
+- Om FHIR-resursen har ett **obligatoriskt/rekommenderat** valueset på ett element: skapa en **slicing** där det svenska kodverket utgör ett eget namngivet snitt
+- Om FHIR-resursen **saknar** fast binding: det svenska kodverket sätts direkt utan slicing
+
+### Namngivning
+- ValueSet och CodeSystem namnges efter kodverket, t.ex. `SEDiagnosisTypeVS` för kv_diagnostyp
+- **CodeSystem med extern officiell URL** definieras alltid som `Instance: … InstanceOf: CodeSystem` — använd **inte** `CodeSystem:`-syntax med `* ^url = "..."` (SUSHI v3.20 tolkar `^url` på CodeSystem som en canonisk referens-lookup och kastar ett fatalt fel)
+
+---
+
+## 5. Profildefinition (FSH)
+
+### Identifiering
+```
+Profile: SEEHDS{Resurstyp}
+Parent: {IPS-profil eller FHIR-basresurs}
 Id: se-ehds-{resurstyp-kebab}
-canonical: https://fhir.inera.se (auto-genererat från sushi-config.yaml)
-4b. Must Support och beskrivning
+```
+Canonical URL auto-genereras som `https://fhir.inera.se/StructureDefinition/se-ehds-{id}`.
+
+### Must Support och beskrivning
 Varje element som mappas från tjänstekontraktet ska:
+- Märkas `MS`
+- Ha `^short` med klartext och RIVTA-fältnamnet, t.ex.:
+  ```fsh
+  * recordedDate MS
+  * recordedDate ^short = "Registreringsdatum (diagnosisHeader.documentTime från RIVTA)"
+  ```
 
-Märkas MS (Must Support)
-Ha ^short med beskrivning och ursprungsfältets namn från tjänstekontraktet, t.ex.:
-* code MS
-* code ^short = "Diagnoskod (diagnosisCode från RIVTA), ICD-10-SE eller SNOMED CT"
-4c. Kardinalitet
-Om tjänstekontraktet kräver ett fält (t.ex. 1..1 eller 1..*) ska profilen skärpa FHIR:s kardinalitet i enlighet med detta.
+### Kardinalitet
+Om tjänstekontraktet kräver ett fält (1..1 eller 1..*) ska profilen skärpa FHIR:s kardinalitet i enlighet med detta.
 
-4d. Inera-specifika extensions
-Använd befintliga HL7/IPS/EU EPS-extensions före Inera-egna.
-Skapa Inera-extensions enbart när det saknas semantisk ekvivalent i etablerade profiler.
-Om en extension behöver skapas: definiera den med ^url = "https://fhir.inera.se/StructureDefinition/{id}" (auto-genererat via SUSHI för Extension:-syntax).
-5. PatientSummaryHeader-mappning
-Alla tjänstekontrakt som bär PatientSummaryHeader mappas enligt detta fasta mönster:
+### Extensions
+- Använd **befintliga** IPS/EU EPS-extensions före Inera-egna
+- Om en Inera-extension ändå behövs: definiera den med `Extension:`-syntax (caret-url auto-genereras korrekt för Extension, till skillnad från CodeSystem)
 
-Header-fält	FHIR-destination	Syfte
-careProviderHSAId	Provenance.agent[custodian].who.identifier	Juridiskt ansvarig vårdgivare — yttre Sparr
-careUnitHSAId	Provenance.agent[author].who.identifier	Informationsägare vårdenhet — inre Sparr. Kan även ingå i resursens performer/participant-organisation om resursen har ett sådant fält.
-sourceSystemHSAId	{Resurs}.meta.source	Källsystemets HSA-id, format urn:oid:1.2.752.129.2.1.4.1#{hsaId}
-documentTime	{Resurs}.recordedDate (eller resursens primära tidsstämpel)	Konverteras från YYYYMMDDHHMMSS → ISO 8601, tolkas som Europe/Stockholm
-accountableHealthcareProfessional	{Resurs}.author som Reference(PractitionerRole) — logisk referens via HSA-id	Ansvarig hälso- och sjukvårdspersonal
-legalAuthenticator	{Resurs}.asserter (om resursen har asserter) som Reference(PractitionerRole)	Rättslig äkthetsintygsgivare; datum läggs i extension assertedDate
-patientId	{Resurs}.subject.identifier	Personnummer/samordningsnummer via OID→URI-konvertering
-PractitionerRole för accountableHealthcareProfessional och legalAuthenticator uttrycks som logisk referens:
+---
 
-"author": [{ "identifier": { "system": "urn:oid:1.2.752.129.2.1.4.1", "value": "{hsaId}" } }]
-Provenance skapas alltid per resurs med tre agenter:
+## 6. PatientSummaryHeader-mappning
 
-Agent	Roll	Källa
-agent[0]	custodian	careProviderHSAId
-agent[1]	author	careUnitHSAId
-agent[2]	assembler	EHDS_BRIDGE_HSA_ID (env-variabel)
-Provenance.target refererar resursen via urn:uuid:{resurs.id}. Provenance inkluderas i sökbundeln med searchMode = include.
+Alla tjänstekontrakt med `PatientSummaryHeader` (eller motsvarande header) mappas enligt detta fasta mönster:
 
-6. Patient, Practitioner, Organization
-Följ HL7 Sweden basprofiler-r4 för:
+| Header-fält | FHIR-destination | Syfte |
+|---|---|---|
+| `patientId` | `{Resurs}.subject.identifier` | Personnummer/samordningsnummer via OID→URI |
+| `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `documentTime` | `{Resurs}.recordedDate` (eller resursens primära tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601, tolkas som Europe/Stockholm |
+| `accountableHealthcareProfessional` | `{Resurs}.recorder` eller `author` (Reference(SEBasePractitionerRole)) | Ansvarig hälso- och sjukvårdspersonal |
+| `legalAuthenticator` | `{Resurs}.asserter` eller `authenticator` (Reference(SEBasePractitionerRole)) | Rättslig äkthetsintygsgivare |
+| `legalAuthenticator` (datum) | `{Resurs}.extension[assertedDate]` | YYYYMMDD → YYYY-MM-DD |
+| `careProviderHSAId` | `Provenance.agent[custodian].who.identifier` | Juridiskt ansvarig vårdgivare — yttre Sparr |
+| `careUnitHSAId` | `Provenance.agent[author].who.identifier` | Informationsägare vårdenhet — inre Sparr |
 
-Patient: identifier-slicing för personnummer (http://electronichealth.se/identifier/personnummer) och samordningsnummer
-Practitioner/PractitionerRole: identifier för HSA-id (urn:oid:1.2.752.129.2.1.4.1 Inera NTjP eller urn:oid:1.2.752.29.4.19 HL7 Sweden)
-Organization: identifier för HSA-id på samma sätt
-OID→URI-konverteringen sköts av NamingSystemRegistry. Okända OID:ar bevaras som urn:oid:{oid}.
+> `recorder`/`asserter` används för Condition. `author`/`authenticator` används för DocumentReference. Välj det fält i FHIR-resursen som semantiskt bäst motsvarar rollen.
 
-7. Leverabler per tjänstekontrakt
-Artefakt	Syfte
-input/fsh/profiles/SEEHDS{Resurs}.fsh	Profil med Must Support, kardinalitet, slicings, shorttext
-input/fsh/codesystems/{KodverksNamn}CS.fsh	Instance-syntax CodeSystem om extern URL krävs
-input/fsh/valuesets/{KodverksNamn}VS.fsh	ValueSet som inkluderar koderna
-input/fsh/conceptmaps/{Mappning}Map.fsh	ConceptMap om kodvärden måste transformeras
-input/pagecontent/mapping-{kontraktnamn}.md	Mappningstabell, OID-tabell, Provenance-tabell, Sparr-noter, PoC-begränsningar
-input/pagecontent/naming-systems.md	Uppdatera om nya OID:ar tillkommer
-input/includes/menu.xml	Lägg till sida under "Mappningar"-dropdown
-sushi-config.yaml	Lägg till ny sida under pages:
-8. Checklista innan commit
-not done
-SUSHI ger 0 errors (warning om ig.ini är ok om du vet varför)
-not done
-meta.profile innehåller både vår profil och EU EPS-profilen
-not done
-Alla mappade fält har MS och ^short med RIVTA-fältnamn
-not done
-Inga ^url-overrides på CodeSystem:-syntax (använd Instance-syntax)
-not done
-Alla kodverk-URL:ar är officiella (inte urn:oid:)
-not done
-Provenance-mönstret är implementerat
-not done
-Mappningssida finns och innehåller: mappningstabell, OID-tabell, Provenance-tabell, Sparr-noter
+PractitionerRole uttrycks alltid som **logisk referens** via HSA-id:
+```json
+{ "identifier": { "system": "urn:oid:1.2.752.29.4.19", "value": "{hsaId}" } }
+```
+
+---
+
+## 7. Provenance
+
+En `Provenance`-resurs skapas per FHIR-resurs och inkluderas i sökbundeln med `searchMode = include`.
+
+| Agent | Roll | Källa |
+|---|---|---|
+| `agent[0]` | `custodian` | `careProviderHSAId` |
+| `agent[1]` | `author` | `careUnitHSAId` |
+| `agent[2]` | `assembler` | `EHDS_BRIDGE_HSA_ID` (env-variabel) |
+
+- `Provenance.target` refererar resursen via `urn:uuid:{resurs.id}`
+- `Provenance.recorded` sätts till `documentTime` (ISO 8601 + UTC)
+
+---
+
+## 8. Leverabler per tjänstekontrakt
+
+| Artefakt | Placering |
+|---|---|
+| Profil | `input/fsh/profiles/SEEHDS{Resurs}.fsh` |
+| CodeSystem (extern URL) | `input/fsh/codesystems/{Namn}CS.fsh` — Instance-syntax |
+| ValueSet | `input/fsh/valuesets/{Namn}VS.fsh` |
+| ConceptMap (vid kodtransformation) | `input/fsh/conceptmaps/{Mappning}Map.fsh` |
+| Mappningssida | `input/pagecontent/mapping-{kontraktnamn}.md` |
+| Uppdatera OID-tabell vid nya OID:er | `input/pagecontent/naming-systems.md` |
+| Menypost | `input/includes/menu.xml` + `sushi-config.yaml` pages-sektion |
+
+### Mappningssidan ska innehålla
+- Mappningstabell (RIVTA-element → FHIR-element → Kommentar)
+- Avsnitt om healthcareProfessionalType → PractitionerRole (om tillämpligt)
+- OID-till-URI-tabell
+- Provenance-tabell med agentroller
+- Sparr-avsnitt (yttre/inre)
+- PoC-begränsningar
+
+---
+
+## 9. Checklista
+
+- [ ] SUSHI: 0 errors
+- [ ] `meta.profile` innehåller vår profil + EU EPS obligations-profil
+- [ ] Alla mappade fält har `MS` och `^short` med RIVTA-fältnamn
+- [ ] Inga `* ^url`-regler på `CodeSystem:`-syntax (använd Instance-syntax)
+- [ ] Alla kodverk-URL:ar är officiella (ej `urn:oid:` för kodsystem)
+- [ ] `subject only Reference(SEEHDSPatient)` — inte SEBasePatient eller bas-Patient
+- [ ] `recorder`/`asserter`/`author`/`authenticator only Reference(SEBasePractitionerRole)`
+- [ ] Provenance-mönstret med tre agenter är implementerat
+- [ ] Kardinalitet från RIVTA (1..1, 1..*) är överfört till profilen
+- [ ] ig.ini pekar på `ImplementationGuide-{id}.json` (filnamn genereras från `id`-fältet i sushi-config, inte `name`)
