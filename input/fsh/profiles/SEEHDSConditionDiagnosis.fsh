@@ -23,10 +23,10 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * asserter ^short = "Rättslig äkthetsintygsgivare (diagnosisHeader.legalAuthenticator) – logisk referens via HSA-id"
 
 * recordedDate MS
-* recordedDate ^short = "Registreringstidpunkt (diagnosisHeader.documentTime) – YYYYMMDDHHMMSS → ISO 8601"
+* recordedDate ^short = "Registreringstidpunkt (diagnosisHeader.accountableHealthcareProfessional.authorTime) – YYYYMMDDHHMMSS → ISO 8601"
 
 * clinicalStatus 1..1 MS
-* clinicalStatus ^short = "Härledd: active om diagnosisTimePeriod.end saknas, resolved om end finns"
+* clinicalStatus ^short = "Alltid 'active' – härledd (inget statusfält i TKBn)"
 
 * verificationStatus MS
 * verificationStatus ^short = "Alltid confirmed (RIVTA-svar representerar bekräftade journaluppgifter)"
@@ -39,7 +39,7 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * category[diagnostyp].coding.system 1..1 MS
 * category[diagnostyp].coding.system = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
 * category[diagnostyp].coding.code 1..1 MS
-* category[diagnostyp] ^short = "Diagnostyp (diagnosisBody.diagnosisType) – HD (Huvuddiagnos) eller BY (Bidiagnos)"
+* category[diagnostyp] ^short = "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos)"
 
 * code 1..1 MS
 * code ^short = "Diagnoskod (diagnosisBody.diagnosisCode)"
@@ -56,10 +56,5 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * code.text MS
 * code.text ^short = "Fritext (diagnosisBody.diagnosisCode.originalText) – fallback: displayName"
 
-* subject ^short = "Patient (diagnosisHeader.patientId.extension) med system från OID (diagnosisHeader.patientId.root)"
-
 * onsetDateTime MS
-* onsetDateTime ^short = "Diagnosdebut (diagnosisBody.diagnosisTimePeriod.start) – YYYYMMDD → YYYY-MM-DD"
-
-* abatementDateTime MS
-* abatementDateTime ^short = "Diagnosslut (diagnosisBody.diagnosisTimePeriod.end) – sätter clinicalStatus = resolved"
+* onsetDateTime ^short = "Bedömningstidpunkt (diagnosisBody.diagnosisTime) – YYYYMMDDHHMMSS → ISO 8601"

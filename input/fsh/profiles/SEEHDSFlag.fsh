@@ -27,6 +27,9 @@ Description: """
 * extension contains
     http://hl7.org/fhir/StructureDefinition/flag-detail named flagDetail 0..* MS
 
+* identifier MS
+* identifier ^short = "Dokumentidentifierare (alertInformationHeader.documentId)"
+
 * subject only Reference(SEEHDSPatient)
 * subject 1..1 MS
 * subject ^short = "Patient (alertInformationHeader.patientId)"

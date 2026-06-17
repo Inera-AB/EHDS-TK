@@ -6,17 +6,17 @@ Description: "Profil för remisstatus och processaktiviteter mappat från RIVTA-
 
 * for only Reference(SEEHDSPatient)
 * for MS
-* for ^short = "Patient (patientId från requestHeader)"
+* for ^short = "Patient (requestHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (requestHeader.sourceSystemHSAId)"
 
 * owner only Reference(PractitionerRole or Organization)
 * owner MS
-* owner ^short = "Ansvarig enhet (requestReceiver)"
+* owner ^short = "Mottagande enhet (requestReceiver)"
 
 * authoredOn MS
-* authoredOn ^short = "Registreringsdatum (documentTime från requestHeader)"
+* authoredOn ^short = "Registreringsdatum (requestHeader.documentTime)"
 
 * lastModified MS
 * lastModified ^short = "Senaste statusändring (activityTime)"
@@ -35,9 +35,3 @@ Description: "Profil för remisstatus och processaktiviteter mappat från RIVTA-
 
 * description MS
 * description ^short = "Aktivitetsbeskrivning (activityComment)"
-
-* input MS
-* input ^short = "Indata (requestInput)"
-
-* output MS
-* output ^short = "Utdata/resultat (requestOutput)"

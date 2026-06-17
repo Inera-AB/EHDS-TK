@@ -6,42 +6,44 @@ Description: "Profil för vaccinationer mappat från RIVTA-tjänstekontraktet Ge
 
 * patient only Reference(SEEHDSPatient)
 * patient MS
-* patient ^short = "Patient (patientId från vaccinationHeader)"
+* patient ^short = "Patient (vaccinationMedicalRecordHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId från vaccinationHeader)"
+* meta.source ^short = "Källsystem HSA-id (vaccinationMedicalRecordHeader.sourceSystemHSAId)"
 
 * performer MS
 * performer.actor only Reference(PractitionerRole or Organization)
 * performer.actor MS
-* performer.actor ^short = "Administrerande personal/enhet (accountableHealthcareProfessional / careUnit)"
+* performer.actor ^short = "Administrerande personal/enhet (vaccinationMedicalRecordHeader.accountableHealthCareProfessional)"
 
 * recorded MS
-* recorded ^short = "Registreringsdatum (documentTime från vaccinationHeader)"
+* recorded ^short = "Dokumentationstidpunkt (vaccinationMedicalRecordHeader.accountableHealthCareProfessional.authorTime)"
 
 * status 1..1 MS
-* status ^short = "Vaccinationsstatus"
+* status ^short = "Vaccinationsstatus – 'completed' normalt; 'entered-in-error' om vaccinationMedicalRecordHeader.nullified=true"
 
 * vaccineCode 1..1 MS
-* vaccineCode ^short = "Vaccin (vaccineCode)"
+* vaccineCode ^short = "Vaccin (administrationRecord.typeOfVaccine / administrationRecord.vaccineName)"
 
 * occurrenceDateTime MS
-* occurrenceDateTime ^short = "Vaccinations datum/tid (vaccinationTime)"
+* occurrenceDateTime ^short = "Vaccinationsdatum (vaccinationMedicalRecordBody.registrationRecord.date)"
 
 * lotNumber MS
-* lotNumber ^short = "Batchnummer (batchNumber)"
+* lotNumber ^short = "Batchnummer (administrationRecord.vaccineBatchId)"
 
 * site MS
-* site ^short = "Injektionsställe (administrationSite)"
+* site ^short = "Injektionsställe (administrationRecord.anatomicalSite)"
 
 * route MS
-* route ^short = "Administreringssätt (administrationRoute)"
+* route ^short = "Administreringssätt (administrationRecord.route)"
 
 * doseQuantity MS
-* doseQuantity ^short = "Dos (dose)"
+* doseQuantity ^short = "Dos (administrationRecord.dose.quantity)"
 
 * protocolApplied MS
-* protocolApplied ^short = "Dosnummer i vaccinationsschema (doseNumber)"
+* protocolApplied ^short = "Vaccinationsprotokoll (administrationRecord.doseOrdinalNumber / vaccineTargetDisease)"
+* protocolApplied.doseNumberPositiveInt MS
+* protocolApplied.doseNumberPositiveInt ^short = "Dosnummer (administrationRecord.doseOrdinalNumber)"
 
 * note MS
-* note ^short = "Kommentar (vaccinationComment)"
+* note ^short = "Kommentar (administrationRecord.commentAdministration / administrationRecord.commentPrescription)"

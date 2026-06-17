@@ -2,42 +2,37 @@ Profile: SEEHDSServiceRequestReferral
 Parent: ServiceRequest
 Id: se-ehds-service-request-referral
 Title: "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)"
-Description: "Profil för konsultationsremisser mappat från RIVTA-tjänstekontraktet GetReferralOutcome (clinicalprocess:healthcond:actoutcome v3.1). Täcker NPÖ 3.1 och 1177 Journal 3.1."
+Description: """
+  Profil för konsultationsremisser mappat från RIVTA-tjänstekontraktet GetReferralOutcome
+  (clinicalprocess:healthcond:actoutcome v3.1). Täcker NPÖ 3.1 och 1177 Journal 3.1.
+
+  Notera: GetReferralOutcome returnerar remissvaret, inte remissen i sig. Remissens
+  metadata finns under referralOutcomeBody.referral och är begränsad till id, orsak,
+  tid och avsändare. Inget mottagarfält, prioritet, typ eller diagnos finns i TKBn
+  för remissens del.
+"""
 
 * subject only Reference(SEEHDSPatient)
 * subject MS
-* subject ^short = "Patient (patientId från referralHeader)"
+* subject ^short = "Patient (referralOutcomeHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId)"
+
+* identifier MS
+* identifier ^short = "Remissidentifierare (referralOutcomeBody.referral.referralId)"
 
 * requester only Reference(PractitionerRole)
 * requester MS
-* requester ^short = "Remitterande läkare (referralAuthor)"
-
-* performer only Reference(PractitionerRole or Organization)
-* performer MS
-* performer ^short = "Mottagande enhet/specialist (referralReceiver)"
+* requester ^short = "Remitterande personal (referralOutcomeBody.referral.referralAuthor)"
 
 * authoredOn MS
-* authoredOn ^short = "Remissdatum (documentTime från referralHeader)"
+* authoredOn ^short = "Remisstidpunkt (referralOutcomeBody.referral.referralTime)"
 
 * status 1..1 MS
-* status ^short = "Remissstatus (referralStatus)"
+* status ^short = "Alltid 'active' – härledd (remissdata i GetReferralOutcome representerar aktiva remisser)"
 
 * intent 1..1 MS
 
-* priority MS
-* priority ^short = "Prioritet (referralPriority)"
-
-* category MS
-* category ^short = "Remisstyp (referralType)"
-
 * code 1..1 MS
-* code ^short = "Remissfrågeställning (referralReason)"
-
-* reasonCode MS
-* reasonCode ^short = "Diagnos/orsak (referralDiagnosis)"
-
-* note MS
-* note ^short = "Remisstext (referralBody)"
+* code ^short = "Remissorsak (referralOutcomeBody.referral.referralReason)"

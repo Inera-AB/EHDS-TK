@@ -6,38 +6,42 @@ Description: "Profil för läkemedelsordinationer, förskrivningar och administr
 
 * subject only Reference(SEEHDSPatient)
 * subject MS
-* subject ^short = "Patient (patientId från medicationHeader)"
+* subject ^short = "Patient (medicationMedicalRecordHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId från medicationHeader)"
+* meta.source ^short = "Källsystem HSA-id (medicationMedicalRecordHeader.sourceSystemHSAId)"
 
 * informationSource only Reference(PractitionerRole)
 * informationSource MS
-* informationSource ^short = "Ansvarig hälso- och sjukvårdspersonal (accountableHealthcareProfessional)"
+* informationSource ^short = "Ansvarig hälso- och sjukvårdspersonal (medicationMedicalRecordHeader.accountableHealthcareProfessional)"
 
 * dateAsserted MS
-* dateAsserted ^short = "Registreringsdatum (documentTime från medicationHeader)"
+* dateAsserted ^short = "Dokumentationstidpunkt (medicationMedicalRecordHeader.accountableHealthcareProfessional.authorTime)"
 
 * status 1..1 MS
-* status ^short = "Läkemedelsstatus (treatmentStatus)"
+* status ^short = "Ordinationsstatus (medicationMedicalRecordBody.medicationPrescription.prescriptionStatus – Active/Inactive)"
 
 * medication[x] 1..1 MS
-* medication[x] ^short = "Läkemedel (drug)"
-
-* dosage MS
-* dosage ^short = "Dosering (dosage)"
-* dosage.text MS
-* dosage.text ^short = "Doseringsinstruktion i fritext (dosageInstruction)"
-* dosage.timing MS
-* dosage.timing ^short = "Doseringsschemat (administrationSchedule)"
-* dosage.route MS
-* dosage.route ^short = "Administreringssätt (administrationRoute)"
+* medication[x] ^short = "Läkemedel (medicationMedicalRecordBody.medicationPrescription.drug – XOR: unstructured/merchandise/drugArticle/drug/generics, se MED-003)"
 
 * effectivePeriod MS
-* effectivePeriod ^short = "Behandlingsperiod (treatmentPeriod)"
+* effectivePeriod ^short = "Behandlingsperiod (startOfTreatment / endOfTreatment)"
+* effectivePeriod.start MS
+* effectivePeriod.start ^short = "Insättningstidpunkt (medicationMedicalRecordBody.medicationPrescription.startOfTreatment)"
+* effectivePeriod.end MS
+* effectivePeriod.end ^short = "Utsättningstidpunkt (medicationMedicalRecordBody.medicationPrescription.endOfTreatment)"
 
 * reasonCode MS
-* reasonCode ^short = "Indikation (indication)"
+* reasonCode ^short = "Ordinationsorsak (medicationMedicalRecordBody.medicationPrescription.principalPrescriptionReason.reason)"
 
 * note MS
-* note ^short = "Kommentar (treatmentComment)"
+* note ^short = "Notat om ordination (medicationMedicalRecordBody.medicationPrescription.prescriptionNote)"
+
+* dosage MS
+* dosage ^short = "Dosering (medicationMedicalRecordBody.medicationPrescription.dosage)"
+* dosage.text MS
+* dosage.text ^short = "Doseringsinstruktion i fritext (medicationMedicalRecordBody.medicationPrescription.dosage.dosageInstruction)"
+* dosage.timing MS
+* dosage.timing ^short = "Doseringsschemat (medicationMedicalRecordBody.medicationPrescription.dosage – fastdosering/villkorsdosering)"
+* dosage.route MS
+* dosage.route ^short = "Administreringssätt (medicationMedicalRecordBody.medicationPrescription.drug.drug.routeOfAdministration)"
