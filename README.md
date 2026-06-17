@@ -87,6 +87,8 @@ Varje element som mappas från tjänstekontraktet ska:
 
 ### Kardinalitet
 Om tjänstekontraktet kräver ett fält (1..1 eller 1..*) ska profilen skärpa FHIR:s kardinalitet i enlighet med detta.
+Tjänstekontrakt har ofta fältregler i fritext som ofta fångar fler obligatorier än vad logiska modellen uttrycker. 
+
 
 ### Extensions
 - Använd **befintliga** IPS/EU EPS-extensions före Inera-egna
