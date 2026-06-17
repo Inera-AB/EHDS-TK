@@ -11,11 +11,11 @@ Description: "Profil för vårdanteckningar mappat från RIVTA-tjänstekontrakte
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
 
-* author only Reference($SEBasePractitionerRole)
+* author only Reference(PractitionerRole)
 * author MS
 * author ^short = "Anteckningsförfattare (accountableHealthcareProfessional)"
 
-* authenticator only Reference($SEBasePractitionerRole)
+* authenticator only Reference(PractitionerRole)
 * authenticator MS
 * authenticator ^short = "Rättslig äkthetsintygsgivare (legalAuthenticator)"
 

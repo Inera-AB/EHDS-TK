@@ -20,11 +20,11 @@ Description: "Profil för bilddiagnostiska undersökningar mappat från RIVTA-tj
 * modality MS
 * modality ^short = "Modalitet (imagingModality – DICOM)"
 
-* referrer only Reference($SEBasePractitionerRole)
+* referrer only Reference(PractitionerRole)
 * referrer MS
 * referrer ^short = "Remitterande läkare (referralSource)"
 
-* interpreter only Reference($SEBasePractitionerRole)
+* interpreter only Reference(PractitionerRole)
 * interpreter MS
 * interpreter ^short = "Tolkande radiolog (accountableHealthcareProfessional)"
 

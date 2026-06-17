@@ -8,7 +8,7 @@ Description: "Profil för åtkomstloggar mappat från RIVTA-tjänstekontraktet G
 * agent ^short = "Aktörer i loggposten"
 * agent.who MS
 * agent.who ^short = "Användare/system (userId)"
-* agent.who only Reference($SEBasePractitionerRole or Device)
+* agent.who only Reference(PractitionerRole or Device)
 * agent.requestor MS
 * agent.requestor ^short = "Är aktören den som initierade händelsen"
 * agent.purposeOfUse MS

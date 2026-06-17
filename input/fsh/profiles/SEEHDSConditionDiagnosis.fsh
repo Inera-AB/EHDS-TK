@@ -2,47 +2,64 @@ Profile: SEEHDSConditionDiagnosis
 Parent: $Condition-uv-ips
 Id: se-ehds-condition-diagnosis
 Title: "SE EHDS Condition – Diagnos (GetDiagnosis)"
-Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description). Täcker NPÖ 2.0 och 1177 Journal 2.0."
+Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0."
+
+* extension contains
+    http://hl7.org/fhir/StructureDefinition/condition-assertedDate named assertedDate 0..1 MS
 
 * subject only Reference(SEEHDSPatient)
 * subject MS
-* subject ^short = "Patient (patientId från diagnosHeader)"
+* subject ^short = "Patient (diagnosisHeader.patientId) – OID→URI för personnummer/samordningsnummer"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId från diagnosHeader)"
+* meta.source ^short = "Källsystem HSA-id (diagnosisHeader.sourceSystemHSAId) – urn:oid:1.2.752.129.2.1.4.1#{hsaId}"
 
-* recorder only Reference($SEBasePractitionerRole)
+* recorder only Reference(PractitionerRole)
 * recorder MS
-* recorder ^short = "Ansvarig hälso- och sjukvårdspersonal (accountableHealthcareProfessional)"
+* recorder ^short = "Ansvarig personal (diagnosisHeader.accountableHealthcareProfessional) – logisk referens via HSA-id"
 
-* asserter only Reference($SEBasePractitionerRole)
+* asserter only Reference(PractitionerRole)
 * asserter MS
-* asserter ^short = "Rättslig äkthetsintygsgivare (legalAuthenticator)"
+* asserter ^short = "Rättslig äkthetsintygsgivare (diagnosisHeader.legalAuthenticator) – logisk referens via HSA-id"
 
 * recordedDate MS
-* recordedDate ^short = "Registreringsdatum (documentTime från diagnosHeader)"
+* recordedDate ^short = "Registreringstidpunkt (diagnosisHeader.documentTime) – YYYYMMDDHHMMSS → ISO 8601"
+
+* clinicalStatus 1..1 MS
+* clinicalStatus ^short = "Härledd: active om diagnosisTimePeriod.end saknas, resolved om end finns"
+
+* verificationStatus MS
+* verificationStatus ^short = "Alltid confirmed (RIVTA-svar representerar bekräftade journaluppgifter)"
+
+* category ^slicing.discriminator.type = #value
+* category ^slicing.discriminator.path = "coding.system"
+* category ^slicing.rules = #open
+* category contains diagnostyp 1..1 MS
+* category[diagnostyp].coding 1..1 MS
+* category[diagnostyp].coding.system 1..1 MS
+* category[diagnostyp].coding.system = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
+* category[diagnostyp].coding.code 1..1 MS
+* category[diagnostyp] ^short = "Diagnostyp (diagnosisBody.diagnosisType) – HD (Huvuddiagnos) eller BY (Bidiagnos)"
 
 * code 1..1 MS
-* code ^short = "Diagnoskod (diagnosCode)"
+* code ^short = "Diagnoskod (diagnosisBody.diagnosisCode)"
 * code.coding MS
 * code.coding ^slicing.discriminator.type = #value
 * code.coding ^slicing.discriminator.path = "system"
 * code.coding ^slicing.rules = #open
-* code.coding contains icd10se 0..1 MS
-* code.coding[icd10se].system = $ICD10SE
-* code.coding[icd10se] ^short = "ICD-10-SE diagnoskod"
+* code.coding contains ICD10SE 0..1 MS
+* code.coding[ICD10SE].system = $ICD10SE
+* code.coding[ICD10SE].code MS
+* code.coding[ICD10SE].code ^short = "ICD-10-SE kod (diagnosisBody.diagnosisCode.code)"
+* code.coding[ICD10SE].display MS
+* code.coding[ICD10SE].display ^short = "Kodbenämning (diagnosisBody.diagnosisCode.displayName)"
+* code.text MS
+* code.text ^short = "Fritext (diagnosisBody.diagnosisCode.originalText) – fallback: displayName"
 
-* clinicalStatus 1..1 MS
-* clinicalStatus ^short = "Diagnosstatus (diagnosisStatus)"
-
-* category MS
-* category ^short = "Diagnostyp (diagnosisType – kv_diagnostyp)"
+* subject ^short = "Patient (diagnosisHeader.patientId.extension) med system från OID (diagnosisHeader.patientId.root)"
 
 * onsetDateTime MS
-* onsetDateTime ^short = "Debutdatum (diagnosisTimePeriod.start)"
+* onsetDateTime ^short = "Diagnosdebut (diagnosisBody.diagnosisTimePeriod.start) – YYYYMMDD → YYYY-MM-DD"
 
 * abatementDateTime MS
-* abatementDateTime ^short = "Slutdatum (diagnosisTimePeriod.end)"
-
-* note MS
-* note ^short = "Diagnoskommentar (diagnosisComment)"
+* abatementDateTime ^short = "Diagnosslut (diagnosisBody.diagnosisTimePeriod.end) – sätter clinicalStatus = resolved"

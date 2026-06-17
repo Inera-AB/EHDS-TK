@@ -11,7 +11,7 @@ Description: "Profil för remisstatus och processaktiviteter mappat från RIVTA-
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
 
-* owner only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* owner only Reference(PractitionerRole or Organization)
 * owner MS
 * owner ^short = "Ansvarig enhet (requestReceiver)"
 

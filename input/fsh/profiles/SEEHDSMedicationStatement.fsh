@@ -11,7 +11,7 @@ Description: "Profil för läkemedelsordinationer, förskrivningar och administr
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId från medicationHeader)"
 
-* informationSource only Reference($SEBasePractitionerRole)
+* informationSource only Reference(PractitionerRole)
 * informationSource MS
 * informationSource ^short = "Ansvarig hälso- och sjukvårdspersonal (accountableHealthcareProfessional)"
 

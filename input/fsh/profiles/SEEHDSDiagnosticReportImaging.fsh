@@ -8,7 +8,7 @@ Description: "Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutc
 * subject MS
 * subject ^short = "Patient (patientId)"
 
-* performer only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* performer only Reference(PractitionerRole or Organization)
 * performer MS
 * performer ^short = "Tolkande radiolog/enhet (accountableHealthcareProfessional)"
 

@@ -11,7 +11,7 @@ Description: "Profil för medicinsk historik inom mödravård mappat från RIVTA
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
 
-* performer only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* performer only Reference(PractitionerRole or Organization)
 * performer MS
 * performer ^short = "Ansvarig personal/enhet (accountableHealthcareProfessional)"
 

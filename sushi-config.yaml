@@ -19,7 +19,6 @@ jurisdiction: urn:iso:std:iso:3166#SE "Sweden"
 dependencies:
   hl7.fhir.uv.ips: 1.1.0
   hl7.fhir.eu.eps: current
-  hl7se.fhir.base: current
 
 parameters:
   show-inherited-invariants: false

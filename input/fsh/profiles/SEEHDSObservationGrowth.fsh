@@ -11,7 +11,7 @@ Description: "Profil för tillväxtobservationer för barn och ungdom mappat fr�
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
 
-* performer only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* performer only Reference(PractitionerRole or Organization)
 * performer MS
 * performer ^short = "Ansvarig personal (accountableHealthcareProfessional)"
 

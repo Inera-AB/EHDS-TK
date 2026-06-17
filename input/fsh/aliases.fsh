@@ -22,13 +22,8 @@ Alias: $AllergyIntolerance-uv-ips             = http://hl7.org/fhir/uv/ips/Struc
 Alias: $MedicationStatement-uv-ips            = http://hl7.org/fhir/uv/ips/StructureDefinition/MedicationStatement-uv-ips
 Alias: $Immunization-uv-ips                   = http://hl7.org/fhir/uv/ips/StructureDefinition/Immunization-uv-ips
 Alias: $Observation-results-uv-ips            = http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-results-uv-ips
-Alias: $DiagnosticReport-lab-uv-ips           = http://hl7.org/fhir/uv/ips/StructureDefinition/DiagnosticReport-lab-uv-ips
 Alias: $Observation-results-laboratory-uv-ips = http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-results-laboratory-uv-ips
 Alias: $ImagingStudy-uv-ips                   = http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips
-
-// HL7 Sweden base profiles
-Alias: $SEBasePractitionerRole = http://hl7.se/fhir/ig/base/StructureDefinition/SEBasePractitionerRole
-Alias: $SEBaseOrganization     = http://hl7.se/fhir/ig/base/StructureDefinition/SEBaseOrganization
 
 // FHIR extensions
 Alias: $patient-birthPlace = http://hl7.org/fhir/StructureDefinition/patient-birthPlace

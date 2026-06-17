@@ -23,13 +23,13 @@ Description: "Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av 
 * agent[custodian].type 1..1 MS
 * agent[custodian].type = http://terminology.hl7.org/CodeSystem/provenance-participant-type#custodian
 * agent[custodian].who 1..1 MS
-* agent[custodian].who only Reference($SEBaseOrganization)
+* agent[custodian].who only Reference(Organization)
 * agent[custodian].who ^short = "Vårdgivare (careProviderHSAId från RIVTA) – yttre Sparr"
 
 * agent[author].type 1..1 MS
 * agent[author].type = http://terminology.hl7.org/CodeSystem/provenance-participant-type#author
 * agent[author].who 1..1 MS
-* agent[author].who only Reference($SEBaseOrganization)
+* agent[author].who only Reference(Organization)
 * agent[author].who ^short = "Vårdenhet (careUnitHSAId från RIVTA) – inre Sparr"
 
 * agent[assembler].type 1..1 MS

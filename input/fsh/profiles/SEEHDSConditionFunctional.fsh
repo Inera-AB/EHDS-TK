@@ -11,11 +11,11 @@ Description: "Profil för funktionstillstånd och ADL-bedömningar mappat från 
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
 
-* recorder only Reference($SEBasePractitionerRole)
+* recorder only Reference(PractitionerRole)
 * recorder MS
 * recorder ^short = "Ansvarig hälso- och sjukvårdspersonal (accountableHealthcareProfessional)"
 
-* asserter only Reference($SEBasePractitionerRole)
+* asserter only Reference(PractitionerRole)
 * asserter MS
 * asserter ^short = "Rättslig äkthetsintygsgivare (legalAuthenticator)"
 

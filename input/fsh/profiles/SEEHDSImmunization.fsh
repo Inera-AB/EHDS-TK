@@ -12,7 +12,7 @@ Description: "Profil för vaccinationer mappat från RIVTA-tjänstekontraktet Ge
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId från vaccinationHeader)"
 
 * performer MS
-* performer.actor only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* performer.actor only Reference(PractitionerRole or Organization)
 * performer.actor MS
 * performer.actor ^short = "Administrerande personal/enhet (accountableHealthcareProfessional / careUnit)"
 

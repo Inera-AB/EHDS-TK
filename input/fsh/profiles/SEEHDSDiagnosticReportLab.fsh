@@ -1,5 +1,5 @@
 Profile: SEEHDSDiagnosticReportLab
-Parent: $DiagnosticReport-lab-uv-ips
+Parent: DiagnosticReport
 Id: se-ehds-diagnostic-report-lab
 Title: "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)"
 Description: "Profil för laboratorieresultat mappat från RIVTA-tjänstekontraktet GetLaboratoryOrderOutcome (clinicalprocess:healthcond:actoutcome v3.1, 4.1). Täcker NPÖ 3.1, 4.1 och 1177 Journal 3.1, 4.2."
@@ -11,7 +11,7 @@ Description: "Profil för laboratorieresultat mappat från RIVTA-tjänstekontrak
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
 
-* performer only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* performer only Reference(PractitionerRole or Organization)
 * performer MS
 * performer ^short = "Ansvarig laboratorium/personal (responsibleLaboratory)"
 

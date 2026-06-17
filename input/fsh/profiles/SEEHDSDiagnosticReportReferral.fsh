@@ -8,7 +8,7 @@ Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. 
 * subject MS
 * subject ^short = "Patient (patientId)"
 
-* performer only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* performer only Reference(PractitionerRole or Organization)
 * performer MS
 * performer ^short = "Svarande specialist/enhet (referralOutcomeAuthor)"
 
@@ -26,7 +26,4 @@ Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. 
 * code ^short = "Svarstyp"
 
 * conclusion MS
-* conclusion ^short = "Konsultationssvar/bedömning (referralOutcomeBody)"
-
-* note MS
-* note ^short = "Kommentar (referralOutcomeComment)"
+* conclusion ^short = "Konsultationssvar/bedömning (referralOutcomeBody och referralOutcomeComment)"

@@ -11,11 +11,11 @@ Description: "Profil för konsultationsremisser mappat från RIVTA-tjänstekontr
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
 
-* requester only Reference($SEBasePractitionerRole)
+* requester only Reference(PractitionerRole)
 * requester MS
 * requester ^short = "Remitterande läkare (referralAuthor)"
 
-* performer only Reference($SEBasePractitionerRole or $SEBaseOrganization)
+* performer only Reference(PractitionerRole or Organization)
 * performer MS
 * performer ^short = "Mottagande enhet/specialist (referralReceiver)"
 
