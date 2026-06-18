@@ -4,7 +4,7 @@
 
 RIVTA-tjänstekontrakt definierar en **begärantyp** (`GetXxxType`) med obligatoriska och valfria inparametrar som filtrerar vilka poster som returneras. När kontrakten exponeras via ett FHIR-API ersätts dessa inparametrar av FHIR:s standardiserade sökparametrar (`_search`).
 
-Denna sida kartlägger varje RIVTA-inparameter mot lämplig FHIR-sökparameter, redovisar saknade mappningar, och pekar på anpassade sökparametrar som behöver definieras.
+Denna sida kartlägger varje RIVTA-inparameter mot lämplig FHIR-sökparameter och redovisar parametrar som saknar direkt FHIR-motpart.
 
 > **Avgränsning:** Sidan behandlar *frågesidan* (request). Svarsstrukturen täcks av de logiska modellerna och mappningssidorna.
 
@@ -12,12 +12,10 @@ Denna sida kartlägger varje RIVTA-inparameter mot lämplig FHIR-sökparameter, 
 
 ## Gemensamma parametrar
 
-Två inparametrar förekommer i alla (eller nästan alla) tjänstekontrakt:
-
 | RIVTA-inparameter | Kard. | FHIR-sökparameter | Typ | Kommentar |
 |---|---|---|---|---|
 | `subjectOfCareId` | 1..1 | `patient` | reference/token | Personnummer eller samordningsnummer. I FHIR anges identifierarsystem och värde: `patient.identifier=http://electronichealth.se/identifier/personnummer\|191212121212` |
-| `sourceSystemHSAId` | 0..1 | `_source` | uri | Filtrerar på källsystem. Värdet är `meta.source`-URI:n, dvs. `urn:oid:1.2.752.129.2.1.4.1#{hsaId}`. FHIR R4 definierar `_source` som standardparameter men implementationsstödet varierar. |
+| `sourceSystemHSAId` | 0..1 | Ej tillämplig | – | Se resonemang nedan. |
 
 ### Resonemang – subjectOfCareId
 
@@ -29,31 +27,35 @@ GET /Condition?patient.identifier=http://electronichealth.se/identifier/personnu
 
 Alternativt, om en intern Patient-resurs skapas med identifieraren länkad, räcker `patient={id}`.
 
-### Resonemang – sourceSystemHSAId
+### Resonemang – sourceSystemHSAId (ej tillämplig i FHIR-kontext)
 
-`sourceSystemHSAId` filtrerar svar till data från ett specifikt källsystem. I FHIR lagras detta i `meta.source` (format `urn:oid:1.2.752.129.2.1.4.1#{hsaId}`), och FHIR R4 definierar `_source` som sökparameter för just `meta.source`. Fragmentdelen (`#hsaId`) i URI:n kräver URL-kodning i praktiken. Servern måste stödja `_source` för att filtreringen ska fungera — detta bör verifieras per implementation.
+`sourceSystemHSAId` existerar i RIVTA-kontrakten för att hantera tjänsteplattformens standardbeteende: en fråga förgrenas automatiskt till alla regioners bakändessystem och svaren aggregeras ihop. Parametern gör det möjligt att begränsa denna fan-out till ett specifikt källsystem.
+
+I ett FHIR-API anropas en specifik endpoint direkt — det sker ingen fan-out. Källsystemet är därmed implicit givet av den endpoint man anropar, och `sourceSystemHSAId` behöver ingen FHIR-sökparametermotpart. Parametern lämnas utan mappning.
 
 ---
 
 ## Sammanfattning per tjänstekontrakt
 
-| Tjänstekontrakt | Obligatorisk | Valfria inparametrar | Anmärkning |
+`sourceSystemHSAId` förekommer som valfri inparameter i alla TKBs men har ingen FHIR-sökparametermotpart (se resonemang ovan) och är utesluten ur tabellen nedan.
+
+| Tjänstekontrakt | Obligatorisk | Relevanta valfria FHIR-sökparametrar | Anmärkning |
 |---|---|---|---|
-| GetDiagnosis | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetAlertInformation | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetMedicationHistory | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetVaccinationHistory | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetFunctionalStatus | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetMaternityMedicalHistory | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetCarePlans | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetCareContacts | `subjectOfCareId` | `sourceSystemHSAId`, `careUnitHSAId`, `fromDateTime`, `toDateTime` | Datumfilter + vårdenhet |
-| GetCareDocumentation | `subjectOfCareId` | `sourceSystemHSAId`, `careUnitHSAId`, `fromDateTime`, `toDateTime` | Datumfilter + vårdenhet; paginering via `hasMore` i svar |
-| GetLaboratoryOrderOutcome | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetImagingOutcome | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetReferralOutcome | `subjectOfCareId` | `sourceSystemHSAId` | Inga extra parametrar |
-| GetRequestActivities | `subjectOfCareId` | `sourceSystemHSAId`, `fromDate`, `toDate` | Datumfilter |
-| GetObservations | `subjectOfCareId` | `sourceSystemHSAId`, `careUnitHSAId`, `observationCode` | Kodfilter på observationstyp |
-| GetAccessLogForPatient | `subjectOfCareId` | `sourceSystemHSAId`, `careGiverId`, `fromDate`, `toDate` | Datumfilter + vårdgivare |
+| GetDiagnosis | `subjectOfCareId` | – | Inga extra parametrar |
+| GetAlertInformation | `subjectOfCareId` | – | Inga extra parametrar |
+| GetMedicationHistory | `subjectOfCareId` | – | Inga extra parametrar |
+| GetVaccinationHistory | `subjectOfCareId` | – | Inga extra parametrar |
+| GetFunctionalStatus | `subjectOfCareId` | – | Inga extra parametrar |
+| GetMaternityMedicalHistory | `subjectOfCareId` | – | Inga extra parametrar |
+| GetCarePlans | `subjectOfCareId` | – | Inga extra parametrar |
+| GetCareContacts | `subjectOfCareId` | `careUnitHSAId`, `fromDateTime`, `toDateTime` | Datumfilter + vårdenhet |
+| GetCareDocumentation | `subjectOfCareId` | `careUnitHSAId`, `fromDateTime`, `toDateTime` | Datumfilter + vårdenhet; paginering via `hasMore` i svar |
+| GetLaboratoryOrderOutcome | `subjectOfCareId` | – | Inga extra parametrar |
+| GetImagingOutcome | `subjectOfCareId` | – | Inga extra parametrar |
+| GetReferralOutcome | `subjectOfCareId` | – | Inga extra parametrar |
+| GetRequestActivities | `subjectOfCareId` | `fromDate`, `toDate` | Datumfilter |
+| GetObservations | `subjectOfCareId` | `careUnitHSAId`, `observationCode` | Kodfilter på observationstyp |
+| GetAccessLogForPatient | `subjectOfCareId` | `careGiverId`, `fromDate`, `toDate` | Datumfilter + vårdgivare |
 
 ---
 
@@ -150,7 +152,7 @@ Kräver att servern stöder `_has` (reverse chaining) och att Provenance-resurse
 
 **Strategi 2 – HSA-trädklättring**
 
-HSA-katalogen är hierarkisk: en vårdgivare (`careGiverId`) kan ha ett eller flera hundra HSA-id:n på underordnade enheter. Idén är att bryggan, innan sökningen, slår upp alla HSA-id:n under given vårdgivare i HSA och sedan filtrerar på enhetsnivå via `_source` (sourceSystemHSAId). Fördelen är att inga anpassade FHIR-parametrar behövs; nackdelen är ett externt beroende på HSA-tjänsten och potentiellt ett stort antal enhets-HSA-id:n att söka på.
+HSA-katalogen är hierarkisk: en vårdgivare (`careGiverId`) kan ha ett eller flera hundra HSA-id:n på underordnade enheter. Idén är att bryggan, innan sökningen, slår upp alla HSA-id:n under given vårdgivare i HSA och sedan filtrerar på enhetsnivå via `_source` — det vill säga `meta.source`-URI:erna för de ingående systemen (format `urn:oid:1.2.752.129.2.1.4.1#{hsaId}`). Fördelen är att inga anpassade FHIR-parametrar behövs utöver standard `_source`; nackdelen är ett externt beroende på HSA-tjänsten och potentiellt ett stort antal enhets-HSA-id:n att söka på.
 
 ```
 # Pseudokod
@@ -158,7 +160,7 @@ enhetslista = hsa.getUnitsUnder(careGiverId)
 GET /AuditEvent?patient.identifier=...&_source:in={enhetslista}
 ```
 
-Kräver att `_source:in` (multi-value) eller upprepade `_source`-parametrar stöds av servern. Prestanda- och träffbarhetsöverväganden tillkommer beroende på HSA-strukturens storlek.
+Kräver att `_source:in` (multi-value) eller upprepade `_source`-parametrar stöds av servern. Prestanda- och träffbarhetsöverväganden tillkommer beroende på HSA-strukturens storlek. Notera att `_source` här används som intern filtermekanism i bryggan — inte som exponering av RIVTA:s `sourceSystemHSAId`-parameter, vilken inte har någon FHIR-motsvarighet (se resonemang ovan).
 
 **Strategi 3 – Multitenant FHIR-server**
 
@@ -174,14 +176,13 @@ Här är `careGiverId` implicit i URL-kontexten och behöver inte vara en sökpa
 
 ---
 
-## Saknade standardmappningar
+## Parametrar utan FHIR-sökparametermotpart
 
-Nedanstående RIVTA-parametrar saknar direkt FHIR-standardmotpart och kräver antingen anpassade sökparametrar eller workarounds:
-
-| RIVTA-inparameter | Förekommer i | Problem | Potentiell lösning |
+| RIVTA-inparameter | Förekommer i | Skäl | Hantering |
 |---|---|---|---|
-| `careUnitHSAId` | GetCareContacts, GetCareDocumentation, GetObservations | Lagras i Provenance, inte på resursen | Anpassad SP med `_has:Provenance:target:agent.who.identifier` (se SP-001) |
-| `sourceSystemHSAId` | Alla | `_source` stöds ej universellt och URI-fragmentet kan ge problem | Verifiera `_source`-stöd per server; alternativt anpassad sökparameter på `meta.source` |
+| `sourceSystemHSAId` | Alla | Konceptet finns inte i FHIR – källsystem är implicit i endpoint-URL:en | Ingen FHIR-sökparameter behövs |
+| `careUnitHSAId` | GetCareContacts, GetCareDocumentation, GetObservations | Lagras i Provenance, inte direkt på resursen | Kräver implementationsbeslut (se SP-001) |
+| `careGiverId` | GetAccessLogForPatient | Lagras i Provenance, inte direkt på AuditEvent | Kräver implementationsbeslut (se SP-005) |
 
 ---
 
@@ -201,7 +202,7 @@ GetCareDocumentation stöder implicit paginering via `hasMore`-flaggan i svaret.
 | ID | Fråga | Status |
 |---|---|---|
 | SP-001 | **`careUnitHSAId`-filtrering saknar standardlösning.** Vårdenhet lagras i Provenance, inte på huvud-resursen. Tre strategier diskuteras ovan (anpassad SP med `_has`, ignorera filter, duplicera till resurs). Kräver implementationsbeslut. | Öppen |
-| SP-002 | **`_source`-sökparameter – implementationsstöd.** `_source` är standard i R4 men saknas i många FHIR-serverimplementationer. Ska en anpassad sökparameter definieras på `meta.source` som fallback? | Öppen |
+| SP-002 | **`sourceSystemHSAId` – ingen FHIR-sökparameter behövs.** Parametern existerar i RIVTA för tjänsteplattformens fan-out/aggregering, ett mönster som inte förekommer i FHIR. Källsystemet är implicit i endpoint-URL:en. | Stängd |
 | SP-003 | **Datumparametrars semantik.** RIVTA:s `fromDateTime`/`toDateTime` avser i de flesta fall händelsetidpunkten (t.ex. `careContactTimePeriod.start`). Verifiering behövs att rätt FHIR `date`-fält söks per resurstyp (t.ex. `Encounter.period` vs. `Encounter.meta.lastUpdated`). | Öppen |
 | SP-004 | **Paginering GetCareDocumentation.** RIVTA `hasMore`-flaggans exakta semantik (hur många poster per sida, max-gräns) är ej specificerad i TKB:n. Behöver klarläggas för korrekt FHIR Bundle-paginering. | Öppen |
 | SP-005 | **`careGiverId`-filtrering i GetAccessLogForPatient saknar standardlösning.** Vårdgivare lagras i `Provenance.agent[custodian].who.identifier`, inte på AuditEvent direkt. Tre strategier diskuteras ovan (Provenance `_has` reverse chain, HSA-trädklättring, multitenant FHIR-server). Beslutet är arkitekturellt och beroende av val av FHIR-serverprodukt. | Öppen |
