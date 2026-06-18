@@ -41,7 +41,11 @@ Description: "Profil för vårdkontakter mappat från RIVTA-tjänstekontraktet G
 
 * serviceProvider only Reference(Organization)
 * serviceProvider MS
-* serviceProvider ^short = "Enhet för vårdkontakten (careContactOrgUnit)"
+* serviceProvider ^short = "Enhet för vårdkontakten (careContactOrgUnit – Regel 5: krävs för NPÖ)"
+* serviceProvider.identifier 1..1 MS
+* serviceProvider.identifier ^short = "HSA-id för kontaktenhet (careContactOrgUnit.orgUnitHSAId) – obligatorisk per Regel 4"
+* serviceProvider.display 1..1 MS
+* serviceProvider.display ^short = "Namn på kontaktenhet (careContactOrgUnit.orgUnitName) – obligatorisk per Regel 4"
 
 * reasonCode MS
 * reasonCode ^short = "Orsak till vårdkontakt (careContactReason)"

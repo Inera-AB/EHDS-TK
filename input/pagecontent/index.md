@@ -1,4 +1,4 @@
-# Introduction
+# Introduktion
 
 ### Domän
 
@@ -6,7 +6,7 @@ Denna Implementation Guide (IG) beskriver den FHIR-funktionalitet som krävs fö
 
 ---
 
-### Scope
+### Omfång
 
 IG:t täcker följande FHIR-grupper och tjänstekontrakt:
 
@@ -38,7 +38,7 @@ Syftet med IG:t är att:
 
 1. Definiera FHIR-profiler (R4) som möjliggör EHDS-kompatibel representation av data från Ineras RIVTA-tjänstekontrakt
 2. Dokumentera mappningen från RIVTA-element till FHIR-element, inklusive OID→URI-översättning, Provenance-mönster och Sparr-hantering
-3. Stödja implementörer av EHDS-bryggan som transformerar RIVTA-svar till FHIR-resurser för NPÖ och 1177 Journal
+3. Stödja implementörer som transformerar RIVTA-svar till FHIR-resurser för NPÖ och 1177 Journal
 
 IG:t riktar sig till systemleverantörer, arkitekter och integrationsspecialister inom svensk e-hälsa.
 
@@ -57,29 +57,29 @@ Varje producerad FHIR-resurs bär **två profiler** i `meta.profile`:
 
 ---
 
-### Terminology
+### Terminologi
 
-On [Inera Terminologitjänst](https://www.inera.se/tjanster/alla-tjanster-a-o/terminologitjanst-for-nationell-e-halsa/) all referenced CodeSystems and ValueSets developed by Inera can be found.
+Alla kodverk och värdemängder som Inera förvaltar finns på [Inera Terminologitjänst](https://www.inera.se/tjanster/alla-tjanster-a-o/terminologitjanst-for-nationell-e-halsa/).
 
 ---
 
-### Dependencies
+### Beroenden
 
-This IG has dependencies to:
+Denna IG har beroenden till:
 - **HL7 IPS:** `hl7.fhir.uv.ips`
 - **EU EPS:** `hl7.fhir.eu.eps`
 - **SE-core (HL7 Sweden):** `hl7se.fhir.base`
 
 ---
 
-### Documentation
+### Dokumentation
 
-More information about Inera Core and RIVTA can be found at [Inera Core](https://www.inera.se/tjanster/alla-tjanster-a-o/inera-core/).
+Mer information om Inera Core och RIVTA finns på [Inera Core](https://www.inera.se/tjanster/alla-tjanster-a-o/inera-core/).
 
 ---
 
-### Governance and guidance
+### Förvaltning och vägledning
 
-FHIR profiles are managed by Inera: [Source code](https://github.com/oskthu2/ehds-tk).
+FHIR-profilerna förvaltas av Inera: [Källkod](https://github.com/oskthu2/ehds-tk).
 
-A description of conformance requirements and guidance for Inera's FHIR IGs can be found on the [Inera FHIR Landing Page](https://www.inera.se/fhir).
+Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns på [Inera FHIR-landningssida](https://www.inera.se/fhir).

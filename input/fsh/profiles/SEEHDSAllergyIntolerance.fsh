@@ -5,15 +5,17 @@ Title: "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInforma
 Description: """
   Sekundär profil för allergier och överkänslighet från GetAlertInformation.
 
-  Skapas ENBART när typeOfAlertInformation anger allergi/överkänslighet.
+  Skapas ENBART när alertInformationBody = hypersensitivity.
   Den tillhörande SEEHDSFlag-resursen är alltid primär och pekar på denna
   resurs via Flag.extension[allergyReference].
 
-  BEGRÄNSNING: alertInformationBody innehåller ENBART typeOfAlertInformation 1..1.
-  Fält som alertCode, causeCode, reaction och alertComment existerar INTE i TKBn v2.0.
-  AllergyIntolerance kan därför endast populeras med typkod och patientmetadata
-  – inga kliniska detaljer (substans, reaktion, svårighetsgrad) finns tillgängliga
-  från detta tjänstekontrakt. Se ALERT-001 och ALERT-002 i mapping-issues.
+  Populeras med klinisk information från hypersensitivity-blocket:
+  - atcSubstance/hypersensitivityAgentCode → AllergyIntolerance.code
+  - degreeOfSeverity → AllergyIntolerance.reaction.severity
+  - degreeOfCertainty → AllergyIntolerance.verificationStatus (se ALERT-004)
+  - ascertainedDate → AllergyIntolerance.onsetDateTime
+  - alertInformationComment → AllergyIntolerance.note
+  - pharmaceuticalProductId → AllergyIntolerance.reaction.substance.coding (NPL-id)
 
   Täcker NPÖ 2.0 och 1177 Journal 2.0.
 """
@@ -40,7 +42,31 @@ Description: """
 * clinicalStatus ^short = "Alltid 'active' – härledd; inget statusfält i TKBn"
 
 * verificationStatus MS
-* verificationStatus ^short = "Alltid 'confirmed' – härledd; journaluppgifter anses bekräftade"
+* verificationStatus ^short = "Visshet (alertInformationBody.hypersensitivity.degreeOfCertainty → ConceptMap till verificationStatus); se ALERT-004"
+
+* type MS
+* type ^short = "Alltid 'allergy' – härledd av att body = hypersensitivity"
 
 * code 1..1 MS
-* code ^short = "Typ av allergi/överkänslighet (alertInformationBody.typeOfAlertInformation)"
+* code ^short = """
+    Agens/substans:
+    - pharmaceuticalHypersensitivity.atcSubstance → code.coding (ATC, primär)
+    - pharmaceuticalHypersensitivity.nonATCSubstance → code.text
+    - otherHypersensitivity.hypersensitivityAgentCode → code.coding
+    - otherHypersensitivity.hypersensitivityAgent → code.text
+  """
+
+* onsetDateTime MS
+* onsetDateTime ^short = "Datum för konstaterande (alertInformationBody.ascertainedDate)"
+
+* note MS
+* note ^short = "Kommentar (alertInformationBody.alertInformationComment)"
+
+* reaction MS
+* reaction ^short = "Reaktionsinformation (delar av hypersensitivity)"
+
+* reaction.severity MS
+* reaction.severity ^short = "Allvarlighetsgrad (hypersensitivity.degreeOfSeverity → ConceptMap till reaction.severity)"
+
+* reaction.substance MS
+* reaction.substance ^short = "Läkemedelsprodukt (pharmaceuticalHypersensitivity.pharmaceuticalProductId → reaction.substance.coding med NPL-id)"
