@@ -61,7 +61,7 @@ av alla Immunization-resurser från samma post. Se [VAC-001](#öppna-frågor).
 | `vaccinationMedicalRecordHeader.approvedForPatient` | 1..1 | `Immunization.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `vaccinationMedicalRecordHeader.careContactId` | 0..1 | `Immunization.encounter.identifier` | Logisk referens till Encounter |
 | `vaccinationMedicalRecordHeader.nullified` | 1..1 | `Immunization.status` | true→`entered-in-error`, false→`completed`; se DES-007 |
-| `vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 | `Immunization.statusReason.text` | Makuleringsorsak (fritext) |
+| `vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 | `Immunization.statusReason.text` | Makuleringsorsak (fritext). Villkor: Får ENBART anges om nullified = true. |
 
 ---
 
@@ -134,7 +134,7 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `vaccinationMedicalRecordBody.additionalPatientInformation.dateOfBirth` | 1..1 | `Immunization.patient.birthDate` | Kräver inline Patient-resurs eller extension på patient |
-| `vaccinationMedicalRecordBody.additionalPatientInformation.gender` | 0..1 | `Immunization.patient.gender` | Administrativt kön (KV Kön OID 1.2.752.129.2.2.1.1 → AdministrativeGender) |
+| `vaccinationMedicalRecordBody.additionalPatientInformation.gender` | 0..1 | `Immunization.patient.gender` | Administrativt kön (KV Kön OID 1.2.752.129.2.2.1.1 → AdministrativeGender). CVType-begränsning: originalText är förbjudet (0..0) per TKB. |
 
 ---
 

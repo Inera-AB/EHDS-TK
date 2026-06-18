@@ -85,7 +85,8 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `carePlan.content` | 0..* | Extension (MultimediaType) | FHIR R4 CarePlan har inget inbyggt multimedia-fält; kräver extension vid implementering |
-| `carePlan.content.mediaType` | 1..1 | Extension.mediaType | MIME-typ: text/plain, text/html, image/jpeg, image/png, application/pdf |
+| `carePlan.content.mediaType` | 1..1 | Extension.mediaType | MIME-typ: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf |
+| `carePlan.content.id` | 0..0 | N/A | Ej tillämpligt för detta TK per TKB (markerat 0..0 i logisk modell) |
 | `carePlan.content.value` | 0..1 | Extension.value (base64Binary) | Binärdata (base64) – XOR med reference; max 100 KB per post |
 | `carePlan.content.reference` | 0..1 | Extension.reference (url) | Referens till extern fil (URL) – XOR med value |
 

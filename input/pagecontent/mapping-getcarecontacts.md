@@ -51,6 +51,12 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet (Regel 1) |
 | `careContact.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare (Regel 1) |
 | `careContact.approvedForPatient` | 1..1 | `Encounter.meta.security` | PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues |
+| `careContact.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK |
+| `careContact.documentTime` | 0..0 | N/A | Ej tillämpligt för detta TK |
+| `careContact.legalAuthenticator` | 0..0 | N/A | Ej tillämpligt för detta TK |
+| `careContact.nullified` | 0..0 | N/A | Ej tillämpligt för detta TK |
+| `careContact.nullifiedReason` | 0..0 | N/A | Ej tillämpligt för detta TK |
+| `careContact.careContactId` | 0..0 | N/A | Ej tillämpligt för detta TK (careContactId är en korsreferens som inte gäller för kontakter i sin egen lista) |
 
 ### Body – kontakttyp, orsak och status
 
@@ -75,8 +81,8 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `careContact.careContactOrgUnit` | 0..1 | — | Enhet för kontakten (Regel 5) |
-| `careContact.careContactOrgUnit.orgUnitHSAId` | 0..1 | `Encounter.serviceProvider.identifier` | Logisk referens till Organization via HSA-id |
-| `careContact.careContactOrgUnit.orgUnitName` | 0..1 | `Encounter.serviceProvider.display` | Visningsnamn för kontaktenhet |
+| `careContact.careContactOrgUnit.orgUnitHSAId` | 1..1 | `Encounter.serviceProvider.identifier` | Logisk referens till Organization via HSA-id – obligatorisk per Regel 4 |
+| `careContact.careContactOrgUnit.orgUnitName` | 1..1 | `Encounter.serviceProvider.display` | Visningsnamn för kontaktenhet – obligatorisk per Regel 4 |
 | `careContact.careContactOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till kontaktenhet – ingår ej i Encounter.serviceProvider; kan lagras i Organization.telecom om Organization-resurs skapas |
 | `careContact.careContactOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till kontaktenhet – se `orgUnitTelecom` ovan |
 | `careContact.careContactOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress till kontaktenhet – ingår ej i Encounter; kan lagras i Organization.address om Organization-resurs skapas |

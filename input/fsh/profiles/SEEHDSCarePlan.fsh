@@ -33,7 +33,7 @@ Description: "Profil för vård- och omsorgsplaner mappat från RIVTA-tjänsteko
 * title ^short = "Rubrik för planen (documentTitle) – obligatorisk"
 
 * note MS
-* note ^short = "Innehåll i planen (content – text). Binärt innehåll (base64/URL) kräver extension."
+* note ^short = "Innehåll i planen (content – text/plain, text/html). Stödda MIME-typer: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf. Binärt innehåll (base64/URL) kräver extension. content.id är 0..0 (N/A) per TKB. Binärdata max 100 KB per post."
 
 * extension contains
     ApprovedForPatient named approvedForPatient 0..1 MS

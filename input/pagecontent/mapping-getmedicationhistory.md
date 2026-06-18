@@ -38,7 +38,7 @@ representeras via extensions – se [MED-001](#öppna-frågor).
 |---|---|---|---|
 | `medicationMedicalRecordHeader.documentId` | 1..1 | `MedicationStatement.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `medicationMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `MedicationStatement.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
-| `medicationMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Fritexttitel för dokument – ingen motsvarighet i MedicationStatement; informationen finns i anteckning eller profiltitel |
+| `medicationMedicalRecordHeader.documentTitle` | 0..0 | Ej mappad | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
 | `medicationMedicalRecordHeader.patientId.extension` | 1..1 | `MedicationStatement.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `medicationMedicalRecordHeader.patientId.root` | 1..1 | `MedicationStatement.subject.identifier.system` | OID→URI, se tabell nedan |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `MedicationStatement.dateAsserted` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
@@ -56,6 +56,9 @@ representeras via extensions – se [MED-001](#öppna-frågor).
 | `medicationMedicalRecordHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `MedicationStatement.extension[legalAuthenticator].signatureTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `medicationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `MedicationStatement.extension[legalAuthenticator].hsaId` | HSA-id för signerare |
 | `medicationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
+| `medicationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..0 | N/A | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
+| `medicationMedicalRecordHeader.nullified` | 0..0 | N/A | Ej tillämpligt för detta TK |
+| `medicationMedicalRecordHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt för detta TK |
 | `medicationMedicalRecordHeader.approvedForPatient` | 1..1 | `MedicationStatement.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `medicationMedicalRecordHeader.careContactId` | 0..1 | `MedicationStatement.context.identifier.value` | Logisk referens till vårdkontakt |
 
@@ -102,6 +105,8 @@ representeras via extensions – se [MED-001](#öppna-frågor).
 | `medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization` | 0..1 | Ej mappad | Förskrivningsinformation – strukturen är ej fullt specificerad i TKB (se [MED-001](#öppna-frågor)); kan inte mappas förrän XSD-strukturen är verifierad |
 | `medicationMedicalRecordBody.medicationPrescription.administration` | 0..* | Ej mappad | Administreringstillfällen – strukturen är ej fullt specificerad i TKB (se [MED-001](#öppna-frågor)); kan mappas till MedicationAdministration-resurs när XSD är verifierad |
 | `medicationMedicalRecordBody.medicationPrescription.relation` | 0..* | Ej mappad | Sambandsklass – strukturen är ej fullt specificerad i TKB (se [MED-001](#öppna-frågor)); relationstyper avgör mappning när XSD är verifierad |
+
+> **Villkor (Regel 1.8):** `prescriber`-blocket är obligatoriskt om `selfMedication = false`. `startOfTreatment` är obligatorisk om `typeOfPrescription = 'I'` (insättning).
 
 ---
 
@@ -152,7 +157,7 @@ begränsning i FSH-uttrycket.
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `medicationMedicalRecordBody.additionalPatientInformation.dateOfBirth` | 1..1 | `MedicationStatement.subject.birthDate` | Kräver inline Patient-resurs eller extension på subject |
-| `medicationMedicalRecordBody.additionalPatientInformation.gender` | 0..1 | `MedicationStatement.subject.gender` | Administrativt kön (KV Kön OID 1.2.752.129.2.2.1.1 → AdministrativeGender) |
+| `medicationMedicalRecordBody.additionalPatientInformation.gender` | 0..1 | `MedicationStatement.subject.gender` | Administrativt kön (KV Kön OID 1.2.752.129.2.2.1.1 → AdministrativeGender). CVType-begränsning: originalText är förbjudet (0..0) per TKB. |
 
 ---
 

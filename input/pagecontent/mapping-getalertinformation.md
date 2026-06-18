@@ -67,7 +67,7 @@ Följande fält är gemensamma för alla body-typer (förekommer oberoende av XO
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `alertInformationBody.typeOfAlertInformation` | 1..1 | `Flag.category` | Kodsystem se [ALERT-002](#öppna-frågor) |
+| `alertInformationBody.typeOfAlertInformation` | 1..1 | `Flag.category` | Kodsystem se [ALERT-002](#öppna-frågor). NPÖ-urval (Regel 2): hypersensitivity, seriousDisease, treatment, communicableDisease, restrictionOfCare, unstructuredAlertInformation |
 | `alertInformationBody.typeOfAlertInformation` | 1..1 | `Flag.code` | Samma värde används för både category och code |
 | `alertInformationBody.validityTimePeriod.start` | 1..1 | `Flag.period.start` | YYYYMMDDHHMMSS → ISO 8601 |
 | `alertInformationBody.validityTimePeriod.end` | 0..1 | `Flag.period.end` | YYYYMMDDHHMMSS → ISO 8601 |
@@ -92,9 +92,9 @@ Gäller när `alertInformationBody.hypersensitivity` är angivet. Skapar Flag **
 | `alertInformationBody.hypersensitivity.typeOfHypersensitivity` | 0..1 | `Flag.extension[typeOfHypersensitivity]` | Precisering av överkänslighetstyp (ICD10/SNOMED) |
 | `alertInformationBody.hypersensitivity.degreeOfSeverity` | 0..1 | `Flag.extension[degreeOfSeverity]` | KV Allvarlighetsgrad (1.2.752.129.2.2.3.3) |
 | `alertInformationBody.hypersensitivity.degreeOfCertainty` | 0..1 | `Flag.extension[degreeOfCertainty]` | KV Visshetsgrad (1.2.752.129.2.2.3.11) |
-| `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.atcSubstance` | 0..1 | `Flag.extension[pharmaceuticalHypersensitivity].atcSubstance` | ATC-kod (1.2.752.129.2.2.3.1.1) |
-| `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.nonATCSubstance` | 0..1 | `Flag.extension[pharmaceuticalHypersensitivity].nonATCSubstance` | Substansnamn utan ATC-kod |
-| `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.nonATCSubstanceComment` | 0..1 | `Flag.extension[pharmaceuticalHypersensitivity].nonATCSubstanceComment` | Förklaring till avsaknad ATC-kod |
+| `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.atcSubstance` | 0..1 | `Flag.extension[pharmaceuticalHypersensitivity].atcSubstance` | ATC-kod (1.2.752.129.2.2.3.1.1). CVType-restriktion: codeSystemName, codeSystemVersion och originalText är förbjudna (0..0). code och displayName är obligatoriska om fältet anges. |
+| `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.nonATCSubstance` | 0..1 | `Flag.extension[pharmaceuticalHypersensitivity].nonATCSubstance` | Substansnamn utan ATC-kod. Villkor: Ska alltid paras med nonATCSubstanceComment. |
+| `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.nonATCSubstanceComment` | 0..1 | `Flag.extension[pharmaceuticalHypersensitivity].nonATCSubstanceComment` | Förklaring till avsaknad ATC-kod. Villkor: Ska alltid paras med nonATCSubstance. |
 | `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.pharmaceuticalProductId` | 0..* | `Flag.extension[pharmaceuticalHypersensitivity].pharmaceuticalProductId` | NPL-id (1.2.752.129.2.1.5.1) |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgent` | 0..1 | `Flag.extension[otherHypersensitivity].hypersensitivityAgent` | Agens i klartext |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgentCode` | 0..1 | `Flag.extension[otherHypersensitivity].hypersensitivityAgentCode` | Agenskod (LMK-kod, CAS-kod m.fl.) |

@@ -123,11 +123,11 @@ baserat på vilken gren som är populerad i källdata.
 |---|---|---|---|
 | `observationBody.observationValue.cv` | 0..1 | `Observation.valueCodeableConcept` | Kodad observation |
 | `observationBody.observationValue.pq` | 0..1 | `Observation.valueQuantity` | Numeriskt värde med enhet (UCUM) |
-| `observationBody.observationValue.ivlpq` | 0..1 | `Observation.valueRange` | Intervall av Quantity-värden |
+| `observationBody.observationValue.ivlpq` | 0..1 | `Observation.valueRange` | Intervall av Quantity-värden. Villkor: Minst ett av `low` och `high` måste anges. |
 | `observationBody.observationValue.ts` | 0..1 | `Observation.valueDateTime` / `Observation.valueString` | Precision ≥ dag → `valueDateTime`; precision `YYYY`/`YYYYMM` → `valueString` (se OBS-001) |
-| `observationBody.observationValue.ivlts` | 0..1 | `Observation.valuePeriod` | Tidsintervall |
+| `observationBody.observationValue.ivlts` | 0..1 | `Observation.valuePeriod` | Tidsintervall. Villkor: Minst ett av `start` och `end` måste anges. |
 | `observationBody.observationValue.st` | 0..1 | `Observation.valueString` | Fritextsvar |
-| `observationBody.observationValue.intValue` | 0..1 | `Observation.valueInteger` | Heltalsvärde |
+| `observationBody.observationValue.intValue` | 0..1 | `Observation.valueInteger` | Heltalsvärde. Ska ENBART användas för skalvärden (t.ex. AUDIT-poäng). Får INTE användas för fysiskt uppmätta värden (längd, vikt etc.) – använd `pq` för dessa. |
 
 ### Negation och frånvaro av värde
 
@@ -161,7 +161,7 @@ baserat på vilken gren som är populerad i källdata.
 |---|---|---|---|
 | `observationBody.time` | 0..1 | — | XOR: antingen `ts` eller `ivlts` populeras |
 | `observationBody.time.ts` | 0..1 | `Observation.effectiveDateTime` | Variabelprecisions-sträng; konverteras om precision ≥ dag (se OBS-001 och GENERAL-001) |
-| `observationBody.time.ivlts` | 0..1 | `Observation.effectivePeriod` | Tidsintervall för observationen; XOR med `time.ts` |
+| `observationBody.time.ivlts` | 0..1 | `Observation.effectivePeriod` | Tidsintervall för observationen; XOR med `time.ts`. Villkor: Minst ett av start och end måste anges. |
 
 ### Patient (observationBody.patient)
 
@@ -327,7 +327,9 @@ Koden `not-detected` hämtas från
 | `YYYY` (år) | `Observation.valueString` | Behålls som sträng — dateTime stödjer ej år-precision utan dag |
 | `YYYYMM` (år+månad) | `Observation.valueString` | Behålls som sträng — dateTime stödjer ej månadsprecision utan dag |
 | `YYYYMMDD` (datum) | `Observation.valueDateTime` | Konverteras till `YYYY-MM-DD` |
-| `YYYYMMDDHHMMSS` (full) | `Observation.valueDateTime` | Konverteras till ISO 8601 med zon Europe/Stockholm |
+| `YYYYMMDDhh` (timme) | `Observation.valueDateTime` | Konverteras till ISO 8601 med zon Europe/Stockholm |
+| `YYYYMMDDhhmm` (minut) | `Observation.valueDateTime` | Konverteras till ISO 8601 med zon Europe/Stockholm |
+| `YYYYMMDDhhmmss` (sekund) | `Observation.valueDateTime` | Konverteras till ISO 8601 med zon Europe/Stockholm |
 
 För `time.ts`: om precision ≥ dag mappas till `Observation.effectiveDateTime`.
 Vid lägre precision används `Observation.effectiveDateTime` med FHIR-primitiv

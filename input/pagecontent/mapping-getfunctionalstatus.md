@@ -69,6 +69,9 @@ PADL-typ krävs.
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Signerande persons befattning – ingen direkt FHIR-mappning utanför PractitionerRole; Condition.asserter är en Reference utan rollkod |
 | `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | `false` → kod `NOPATIENT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
 | `functionalStatusAssessmentHeader.careContactId` | 0..1 | `Condition.encounter.identifier.value` | Logisk referens till vårdkontakt |
+| `functionalStatusAssessmentHeader.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
+| `functionalStatusAssessmentHeader.nullified` | 0..0 | N/A | Ej tillämpligt för detta TK |
+| `functionalStatusAssessmentHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt för detta TK |
 
 ---
 
@@ -77,14 +80,14 @@ PADL-typ krävs.
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `functionalStatusAssessmentBody.assessmentCategory` | 1..1 | `Condition.category` | Kodverk `AssessmentCategoryCS`; `pad-pad` eller `fun-fun` |
-| `functionalStatusAssessmentBody.comment` | 0..1 | `Condition.note[0].text` | Fritext-kommentar för hela bedömningen |
+| `functionalStatusAssessmentBody.comment` | 0..1 | `Condition.note[0].text` | Fritext-kommentar för hela bedömningen. Villkor: Gäller enbart vid assessmentCategory = 'pad-pad'. |
 
 ### Underelement – padl (vid assessmentCategory = pad-pad)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `functionalStatusAssessmentBody.padl` | 0..* | `Condition.note[n]` | Varje PADL-post enkodas som en note; se [FUNC-001](#öppna-frågor) |
-| `functionalStatusAssessmentBody.padl.typeOfAssessment` | 1..1 | `Condition.note[n].text` (prefix) | Typ av PADL-bedömning; läggs som prefix i note-texten, t.ex. `[typeOfAssessment]: assessment` |
+| `functionalStatusAssessmentBody.padl.typeOfAssessment` | 1..1 | `Condition.note[n].text` (prefix) | Typ av PADL-bedömning; läggs som prefix i note-texten, t.ex. `[typeOfAssessment]: assessment`. Tillåtna värden (Regel 2): 'personlig hygien', 'på/avklädning', 'förflyttning', 'toalettbesök', 'födointag' |
 | `functionalStatusAssessmentBody.padl.assessment` | 1..1 | `Condition.note[n].text` (suffix) | Textuell PADL-bedömning |
 
 ### Underelement – disability (vid assessmentCategory = fun-fun)
@@ -96,6 +99,8 @@ PADL-typ krävs.
 | `functionalStatusAssessmentBody.disability.disabilityAssessment.codeSystem` | — | `Condition.code.coding.system` | OID `1.2.752.116.1.1.3` → `urn:oid:1.2.752.116.1.1.3` (ICF, se tabell nedan) |
 | `functionalStatusAssessmentBody.disability.disabilityAssessment.displayName` | 0..1 | `Condition.code.coding.display` | Kodverkets officiella benämning |
 | `functionalStatusAssessmentBody.disability.comment` | 0..1 | `Condition.note[n].text` | Kommentar specifik för funktionsnedsättningsbedömningen |
+
+> **CVType-restriktion för `disabilityAssessment`:** `codeSystemName` och `codeSystemVersion` är förbjudna (0..0) i detta fält per TKB. Använd enbart `code`, `codeSystem`, `displayName` och `originalText`.
 
 ---
 
