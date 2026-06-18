@@ -1,15 +1,29 @@
 # GetObservations – Kliniska observationer och mätvärden
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:basic` GetObservations v2.0  
-**FHIR-profil:** [SEEHDSObservationGrowth](StructureDefinition-se-ehds-observation-growth.html) (parent: IPS Observation-results)  
+**FHIR-profiler:** [SEEHDSObservationBase](StructureDefinition-se-ehds-observation-base.html) (generell) | [SEEHDSObservationGrowth](StructureDefinition-se-ehds-observation-growth.html) (tillväxtkurva)  
 **Logisk modell:** [SEEHDSLMObservations](StructureDefinition-se-ehds-lm-observations.html)  
-**Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v2.0)  
-**EHDS-koppling:** Kliniska mätresultat och tillväxtdata
+**Krävs för NPÖ:** Ja (v1.2) | **Krävs för 1177 Journal:** Ja (v1.2)  
+**EHDS-koppling:** Kliniska mätresultat och tillväxtdata  
+**IoÖ:** Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)
 
 > **OBS – Avvikande headerstruktur:** GetObservations använder en specifik headertyp som
 > **inte** är `PatientSummaryHeader`. Det finns inget `careProviderHSAId`/`careUnitHSAId`
 > på toppnivå i headern. PDL- och Sparr-fält hanteras separat – se avsnitt
 > [PDL och Sparr](#pdl-och-sparr) nedan.
+
+---
+
+## Profilhierarki
+
+GetObservations-mappningen är uppdelad i två profiler:
+
+| Profil | Parent | Användning |
+|---|---|---|
+| `SEEHDSObservationBase` | IPS `Observation-results-uv-ips` | Basprofil för ALL mappning från GetObservations TK; täcker alla fält i LM |
+| `SEEHDSObservationGrowth` | `SEEHDSObservationBase` | Tillväxtkurva; lägger till IoÖ-constraints (SNOMED-koder, Quantity, LOINC) |
+
+Alla GetObservations-implementationer instansierar `SEEHDSObservationBase` (eller en specialisering av den). För tillväxtkurvadata ska `SEEHDSObservationGrowth` användas eftersom IoÖ v3 anger specifika krav på koder och enheter.
 
 ---
 
@@ -394,6 +408,46 @@ En `Provenance`-resurs skapas per `Observation`-resurs.
 | `2.16.840.1.113883.6.96` | `http://snomed.info/sct` | SNOMED CT |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
+
+---
+
+---
+
+## IoÖ Tillväxtkurva för barn och ungdom v3
+
+Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska användas för fyra tillväxtmätningar. Profilen `SEEHDSObservationGrowth` implementerar dessa krav.
+
+### Kodtabell – IoÖ SNOMED CT-koder → FHIR
+
+Kodsystem för `observationBody.observationType.type.codeSystem`: `1.2.752.116.2.1.1` (SNOMED CT SE) → URI `http://snomed.info/sct`.
+
+| Mättyp | SNOMED CT-kod | SNOMED CT-display | LOINC | Enhet (UCUM) | Precision |
+|---|---|---|---|---|---|
+| Längd (primär) | `1153637007` | Kroppslängd | `8302-2` | `cm` | 0–1 decimal (t.ex. 49.5) |
+| Längd (alternativ) | `50373000` | Mått på kroppslängd | `8302-2` | `cm` | 0–1 decimal |
+| Längd (bakåtkompatibel) | `248334005` | Längd i liggande | `8302-2` | `cm` | Ej för nyanslutning |
+| Vikt | `27113001` | Kroppsvikt | `29463-7` | `kg` | 0–3 decimaler (t.ex. 5.830) |
+| Huvudomfång | `363812007` | Huvudomfång | `9843-4` | `cm` | 1 decimal (t.ex. 38.5) |
+| Graviditetslängd vid födelse | `412726003` | Graviditetslängd vid födelse | `11885-1` | `d` | Heltal (t.ex. 280) |
+
+### IoÖ-fält → FHIR Observation mappning
+
+Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR `SEEHDSObservationGrowth`:
+
+| IoÖ-fält | Innehåll per IoÖ | FHIR-element | Kommentar |
+|---|---|---|---|
+| `observationType.type.code` | SNOMED CT-kod, se tabell ovan | `Observation.code.coding[snomedSE].code` | Obligatorisk per IoÖ; ska vara en av de 6 koderna |
+| `observationType.type.codeSystem` | `1.2.752.116.2.1.1` (SNOMED CT SE) | `Observation.code.coding[snomedSE].system` | URI: `http://snomed.info/sct` |
+| `observationType.value.value` | Decimal (enhet beror på mättyp) | `Observation.valueQuantity.value` | Längd: 0–1 dec.; Vikt: 0–3 dec.; HuC: 1 dec.; Gest: heltal |
+| `observationType.value.unit` | `cm` / `kg` / `d` | `Observation.valueQuantity.unit` + `valueQuantity.code` | UCUM-kod sätts parallellt med textenhet |
+| (härledd) | LOINC per mättyp, se tabell | `Observation.code.coding[loinc].code` | Valfri; läggs till av bryggan för EHDS/EPS-konsumenter |
+
+### IoÖ-kommentarer
+
+- **Längd:** IoÖ anger `1153637007` (kroppslängd) som primärkod och `50373000` (mått på kroppslängd) som alternativ. Koden `248334005` (längd i liggande) stöds bakåtkompatibelt men ska **inte** användas vid nyanslutning.
+- **Vikt:** Enbart kod `27113001` (kroppsvikt). Enhet alltid `kg`, decimalseparator `"."` (XML-standard).
+- **Huvudomfång:** Enbart kod `363812007`. Enhet alltid `cm` med 1 decimal.
+- **Graviditetslängd vid födelse:** Kod `412726003`. Anges i **dagar** (heltal, enhet `d`). Representerar antalet dagar som graviditeten beräknas ha varat vid barnets födelse.
 
 ---
 
