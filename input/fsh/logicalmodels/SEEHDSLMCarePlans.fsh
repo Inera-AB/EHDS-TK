@@ -8,7 +8,7 @@ Severity: #error
 
 Logical: SEEHDSLMCarePlans
 Id: se-ehds-lm-care-plans
-Title: "LM – Vårdplan (GetCarePlans v2.0)"
+Title: "GetCarePlans"
 Description: """
   Logisk modell för tjänstekontraktet GetCarePlans
   (RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCarePlans:2).

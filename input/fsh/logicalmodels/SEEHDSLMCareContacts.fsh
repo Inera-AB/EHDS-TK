@@ -3,7 +3,7 @@
 
 Logical: SEEHDSLMCareContacts
 Id: se-ehds-lm-care-contacts
-Title: "LM – Vårdkontakter (GetCareContacts v3.0)"
+Title: "GetCareContacts"
 Description: """
   Logisk modell för tjänstekontraktet GetCareContacts
   (RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCareContacts:3).
