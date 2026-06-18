@@ -1,6 +1,6 @@
 Logical: SEEHDSLMRequestActivities
 Id: se-ehds-lm-request-activities
-Title: "LM – Remisstatus (GetRequestActivities)"
+Title: "GetRequestActivities"
 Description: "Logisk modell för remisstatus och processaktiviteter hämtad via GetRequestActivities (crm:requeststatus v2.0)."
 
 * requestHeader 1..1 BackboneElement "Header med metadata"

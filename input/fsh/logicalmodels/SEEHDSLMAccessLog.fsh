@@ -1,6 +1,6 @@
 Logical: SEEHDSLMAccessLog
 Id: se-ehds-lm-access-log
-Title: "LM – Åtkomstloggar (GetAccessLogForPatient)"
+Title: "GetAccessLogForPatient"
 Description: "Logisk modell för patientens åtkomstloggar hämtad via GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Krävs för 1177 Journal 1.1, 2.0 men ej för NPÖ."
 
 * accessLogId 1..1 Identifier "Loggpostens identifierare"
