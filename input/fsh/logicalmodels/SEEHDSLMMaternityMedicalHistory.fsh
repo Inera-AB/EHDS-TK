@@ -23,7 +23,7 @@ Characteristics: #can-be-target
 * maternityMedicalRecord.maternityMedicalRecordHeader.documentTime 1..1 instant "Dokumentets tidpunkt"
 * maternityMedicalRecord.maternityMedicalRecordHeader.patientId 1..1 Identifier "Patientens id"
 * maternityMedicalRecord.maternityMedicalRecordHeader.patientId.value 1..1 string "Patientens personnummer/samordningsnummer"
-* maternityMedicalRecord.maternityMedicalRecordHeader.patientId.system 1..1 string "OID för identifierartyp"
+* maternityMedicalRecord.maternityMedicalRecordHeader.patientId.system 1..1 uri "OID för identifierartyp (t.ex. urn:oid:1.2.752.129.2.1.3.1)"
 
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional 1..1 BackboneElement "Ansvarig hälso- och sjukvårdspersonal"
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.authorTime 1..1 instant "Tidpunkt"
