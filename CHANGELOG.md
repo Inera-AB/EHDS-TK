@@ -6,6 +6,24 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versions follow [Semantic Versioning](https://semver.org/).
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — this changelog is generated automatically by [release-please](https://github.com/googleapis/release-please).
 
+## [0.3.0](https://github.com/oskthu2/EHDS-TK/compare/v0.2.0...v0.3.0) (2026-06-18)
+
+
+### Features
+
+* add SEEHDSObservationBase + update growth profile per IoÖ v3 ([98d2894](https://github.com/oskthu2/EHDS-TK/commit/98d28940d7ec9a63fdd115714713fd279488ca23))
+* complete GetAlertInformation with full TKB body structure ([18a9ada](https://github.com/oskthu2/EHDS-TK/commit/18a9ada1e3fe1c60561df43457465bd0887cce8c))
+
+
+### Bug Fixes
+
+* **search-parameters:** korrigera careGiverId-mappning och lägg till SP-005 ([d3491eb](https://github.com/oskthu2/EHDS-TK/commit/d3491eb370bb3b360370a9672b44c539cbe5c972))
+
+
+### Documentation
+
+* **search-parameters:** sourceSystemHSAId ej tillämplig i FHIR-kontext ([c7df1e3](https://github.com/oskthu2/EHDS-TK/commit/c7df1e3e469ae085ead49ab04cf4107b1d3dcea9))
+
 ## [0.2.0](https://github.com/oskthu2/EHDS-TK/compare/v0.1.0...v0.2.0) (2026-06-17)
 
 
