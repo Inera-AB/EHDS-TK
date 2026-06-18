@@ -6,6 +6,18 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versions follow [Semantic Versioning](https://semver.org/).
 Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/) — this changelog is generated automatically by [release-please](https://github.com/googleapis/release-please).
 
+## [0.3.1](https://github.com/oskthu2/EHDS-TK/compare/v0.3.0...v0.3.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **logicalmodels:** återgå till uri för patientId.system (bygg-krasch) ([2ea5f0b](https://github.com/oskthu2/EHDS-TK/commit/2ea5f0bead1da47b92bbbacb256a7e484ee48fbb))
+
+
+### Documentation
+
+* **search-parameters:** omarbeta strategier för careUnit och careGiverId ([8426093](https://github.com/oskthu2/EHDS-TK/commit/84260931e8f8e4fbb0f61ef8969c8dbada586ec5))
+
 ## [0.3.0](https://github.com/oskthu2/EHDS-TK/compare/v0.2.0...v0.3.0) (2026-06-18)
 
 
