@@ -89,10 +89,41 @@ GET /Encounter?patient.identifier=...&date=ge2024-01-01&date=le2024-12-31
 
 `careUnitHSAId` filtrerar i RIVTA på vårdenhet via Sparr-strukturen. I FHIR-mappningen hamnar detta i `Provenance`, inte på huvud-resursen (Encounter/DocumentReference). Det finns inget standardiserat sökfält för att filtrera resurser efter vilken vårdenhet som producerade dem via Provenance.
 
-Alternativa strategier:
-1. **Anpassad sökparameter** (rekommenderas): Definiera en `SearchParameter` som söker på `Provenance?agent.who.identifier` via reverse chaining med `_has`. Exempel: `Encounter?_has:Provenance:target:agent.who.identifier=urn:oid:1.2.752.129.2.1.4.1|HSAID`. Detta kräver att servern stöder `_has` och att Provenance-resurser är konsekvent skapade.
-2. **Ignorera filtret**: Returnera alla poster och låta FHIR-klienten filtrera lokalt. Acceptabelt om datamängden är liten men skalas dåligt.
-3. **Uttryckt i resursen direkt**: Lagra en kopia av `careUnitHSAId` som ett `identifier` eller `extension` på huvud-resursen och definiera en sökparameter mot det. Tillför redundans men förenklar sökning.
+Tre strategier för att hantera `careUnitHSAId`:
+
+**Strategi 1 – Anpassad serverdefinierad sökparameter via Provenance (rekommenderas)**
+
+Definiera en `SearchParameter`-resurs med kod `careUnit` som implementerar sökning via `Provenance.agent[author].who.identifier` med reverse chaining. En serverdefinierad sökparameter skapar en **gemensam lösning för alla resurstyper** (Encounter, DocumentReference, Observation, osv.) och undviker att varje resurstyp behöver en separat lösning.
+
+```
+GET /Encounter?patient.identifier=...&careUnit=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+GET /DocumentReference?patient.identifier=...&careUnit=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+```
+
+Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per vård-event med korrekt `agent[author]`.
+
+**Strategi 2 – Encounter som resurs-nyckel**
+
+Knyt alla relevanta resurser till den Encounter där de uppstod (`DocumentReference.encounter`, `Observation.encounter`, m.fl.). Dokument som tillgängliggörs som FHIR-resurser för en patient bör alltid knytas till en Encounter. Filtrering på vårdenhet sker sedan via `Encounter.serviceProvider`:
+
+```
+GET /DocumentReference?patient.identifier=...&encounter.service-provider.identifier=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+```
+
+Förutsätter att alla resurser konsekvent refererar till en Encounter och att Encounter har `serviceProvider` satt till vårdenheten.
+
+**Strategi 3 – Direkt ansvarig eller utförare på resursen**
+
+Filtrering via den utförande organisationen som är länkad till resursen:
+
+a) Via `performer` → `PractitionerRole.organization` → `Organization`:
+```
+GET /Observation?patient.identifier=...&performer.organization.identifier=urn:oid:...|SE...
+```
+
+b) Direkt `Organization` som `performer` om resursen stöder det (t.ex. `Observation.performer` eller `DiagnosticReport.performer` kan referera en Organization direkt).
+
+Täcker inte alla resurstyper (t.ex. `Condition` saknar `performer`) och kräver att `PractitionerRole`-resurser skapas konsekvent med `organization`-länk.
 
 > **Beslut saknas (SP-001):** Valet av strategi för `careUnitHSAId`-filtrering är öppet.
 
@@ -135,20 +166,19 @@ Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se `SEEHDSObse
 
 #### careGiverId – tre möjliga strategier
 
-`careGiverId` i GetAccessLogForPatient avser den juridiskt ansvariga vårdgivaren (yttre Sparr-nivå), konsekvent med hur `healthcareProfessionalCareGiverHSAId` hanteras i övriga kontrakt. I FHIR-mappningen lagras detta i `Provenance.agent[custodian].who.identifier` — inte på AuditEvent direkt.
+`careGiverId` i GetAccessLogForPatient avser den juridiskt ansvariga vårdgivaren (yttre Sparr-nivå), konsekvent med hur `healthcareProfessionalCareGiverHSAId` hanteras i övriga kontrakt. I FHIR-mappningen lagras detta i `Provenance.agent[custodian].who.identifier` — inte på resursen direkt.
 
 Tre strategier för att filtrera på `careGiverId` diskuteras:
 
-**Strategi 1 – Provenance-omvänd kedja (rekommenderas som standard)**
+**Strategi 1 – Anpassad serverdefinierad sökparameter via Provenance (rekommenderas)**
 
-Använd FHIR:s `_has`-parameter för att filtera `AuditEvent`-resurser vars associerade `Provenance` pekar på en viss vårdgivare:
+Precis som för `careUnitHSAId` (Strategi 1 ovan) definieras en `SearchParameter`-resurs med kod `careGiver` som söker via `Provenance.agent[custodian].who.identifier`. Detta ger en **gemensam lösning för alla resurstyper** — careGiverId behövs ändå för korrekt Sparr-tillämpning, vilket innebär att Provenance alltid ska skapas med `agent[custodian]` satt. En serverdefinierad sökparameter gör informationen sökbar utan att duplicera den.
 
 ```
-GET /AuditEvent?patient.identifier=...&date=ge2024-01-01
-  &_has:Provenance:target:agent.who.identifier=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+GET /AuditEvent?patient.identifier=...&date=ge2024-01-01&careGiver=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
 ```
 
-Kräver att servern stöder `_has` (reverse chaining) och att Provenance-resurser konsekvent skapas per AuditEvent med korrekt `agent[custodian]`. Fungerar utan serverspecifika tillägg men `_has` implementeras ej i alla FHIR-servrar.
+Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per AuditEvent med korrekt `agent[custodian]`.
 
 **Strategi 2 – HSA-trädklättring**
 
@@ -172,7 +202,7 @@ GET /{careGiverId}/fhir/AuditEvent?patient.identifier=...
 
 Här är `careGiverId` implicit i URL-kontexten och behöver inte vara en sökparameter. Klienten vet vilken vårdgivare den söker mot via URL:ens bas. Fördelen är enkel söksyntax; nackdelen är att det kräver ett val av serverarkitektur och fungerar dåligt om en klient vill söka över flera vårdgivare i ett anrop.
 
-> **Jämförelse:** Strategi 1 är mest FHIR-standard men kräver `_has`-stöd. Strategi 2 minskar FHIR-serverkraven men lägger komplexitet i bryggan och skapar HSA-beroende. Strategi 3 passar bäst om varje installation alltid representerar exakt en vårdgivare (typiskt för en brygga per region). Beslutet är arkitekturellt och beroende av val av FHIR-serverprodukt — se SP-005.
+> **Jämförelse:** Strategi 1 är mest FHIR-standard och naturlig förlängning av hur Provenance redan används för Sparr i alla andra TKs. Strategi 2 minskar FHIR-serverkraven men lägger komplexitet i bryggan och skapar HSA-beroende. Strategi 3 passar bäst om varje installation alltid representerar exakt en vårdgivare (typiskt för en brygga per region). Beslutet är arkitekturellt och beroende av val av FHIR-serverprodukt — se SP-005.
 
 ---
 
