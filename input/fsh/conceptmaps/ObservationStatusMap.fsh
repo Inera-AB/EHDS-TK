@@ -1,6 +1,5 @@
 Instance: ObservationStatusMap
 InstanceOf: ConceptMap
-Id: observation-status-map
 Title: "GetObservations – observationStatus (SNOMED CT) → FHIR ObservationStatus"
 Description: """
   Mappning från RIVTA GetObservations observationStatus-koder (SNOMED CT,
@@ -12,6 +11,7 @@ Description: """
 """
 Usage: #definition
 
+* id = "observation-status-map"
 * url = "https://fhir.inera.se/ConceptMap/observation-status-map"
 * name = "ObservationStatusMap"
 * title = "GetObservations observationStatus → FHIR ObservationStatus"
