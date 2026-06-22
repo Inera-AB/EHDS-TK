@@ -1,7 +1,7 @@
 # GetVaccinationHistory – Vaccinationshistorik
 
 **Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0  
-**FHIR-profil:** [SEEHDSImmunization](StructureDefinition-se-ehds-immunization.html)  
+**FHIR-profiler:** [SEEHDSImmunization](StructureDefinition-se-ehds-immunization.html) | [SEEHDSDevice](StructureDefinition-se-ehds-device.html)  
 **Logisk modell:** [SEEHDSLMVaccinationHistory](StructureDefinition-se-ehds-lm-vaccination-history.html)  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v1.0, 2.0)  
 **EHDS-koppling:** Patient Summary – Vaccinationer
@@ -21,8 +21,10 @@
 
 ```
 SEEHDSImmunization (1 per administrationRecord)
-  └── performer[0].actor → PractitionerRole (administrationRecord.performer)
-  └── performer[1].actor → Organization (administrationRecord.performerOrg)
+  ├── extension[registrationDevice] → SEEHDSDevice (registrationRecord.sourceSystem*)
+  ├── performer[0].actor → PractitionerRole (administrationRecord.performer)
+  ├── performer[1].actor → Organization (administrationRecord.performerOrg)
+  ├── performer[2].actor → Organization (registrationRecord.careGiverOrg)
   └── protocolApplied[0] (vaccineTargetDisease, doseOrdinalNumber, numberOfPrescribedDoses)
 ```
 
@@ -30,6 +32,10 @@ Varje `vaccinationMedicalRecord`-post kan innehålla ett `registrationRecord 1..
 många `administrationRecord 0..*`. En `Immunization`-resurs skapas per `administrationRecord`.
 Fält från `registrationRecord` som saknar specifikt `administrationRecord`-fält delas/ärvs
 av alla Immunization-resurser från samma post. Se [VAC-001](#öppna-frågor).
+
+Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemContact`) samlas
+i en separat `SEEHDSDevice`-resurs som refereras via `Immunization.extension[registrationDevice]`
+i stället för enskilda extensions på Immunization.
 
 ---
 
@@ -85,12 +91,27 @@ av alla Immunization-resurser från samma post. Se [VAC-001](#öppna-frågor).
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorId` | 0..1 | Ej mappad | Kontaktpersonens identifierare hos juridisk vårdgivare – inget FHIR-fält för kontaktperson på registreringsnivå |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorName` | 0..1 | Ej mappad | Kontaktpersonens namn hos juridisk vårdgivare – se actorId ovan |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemName` | 1..1 | `Immunization.extension[sourceSystem].systemName` | Källsystemets klartextnamn |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductName` | 0..1 | `Immunization.extension[sourceSystem].productName` | Källsystemets produktnamn |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductVersion` | 0..1 | `Immunization.extension[sourceSystem].productVersion` | Källsystemets produktversion |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorId` | 0..1 | `Immunization.extension[sourceSystem].contactId` | Identifierare för källsystemsansvarig kontakt |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorName` | 0..1 | `Immunization.extension[sourceSystem].contactName` | Namn på källsystemsansvarig kontakt |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemName` | 1..1 | `Device.deviceName[systemName].name` | Källsystemets klartextnamn; via `Immunization.extension[registrationDevice]` → SEEHDSDevice |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductName` | 0..1 | `Device.deviceName[productName].name` | Källsystemets produktnamn; se Device-tabell nedan |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductVersion` | 0..1 | `Device.version.value` | Källsystemets produktversion; se Device-tabell nedan |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorId` | 0..1 | `Device.extension[sourceSystemContact].actorId` | Identifierare för källsystemsansvarig kontakt; se Device-tabell nedan |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorName` | 0..1 | `Device.extension[sourceSystemContact].actorName` | Namn på källsystemsansvarig kontakt; se Device-tabell nedan |
 | `vaccinationMedicalRecordBody.registrationRecord.careUnitSmiId` | 0..1 | `Immunization.extension[careUnitSmiId]` | SMI-id för utförande vårdenhet (Folkhälsomyndigheten) |
+
+---
+
+## Mappningstabell – SEEHDSDevice (sourceSystem-fält)
+
+`Immunization.extension[registrationDevice]` refererar en `SEEHDSDevice`-resurs som samlar
+alla källsystemsmetadata från `registrationRecord`. Resursen skapas alltid (sourceSystemName är 1..1).
+
+| RIVTA-element | Kard. | Device-element | Kommentar |
+|---|---|---|---|
+| `registrationRecord.sourceSystemName` | 1..1 | `Device.deviceName[systemName].name` | type = `user-friendly-name` |
+| `registrationRecord.sourceSystemProductName` | 0..1 | `Device.deviceName[productName].name` | type = `model-name` |
+| `registrationRecord.sourceSystemProductVersion` | 0..1 | `Device.version.value` | Produktversion som fritext |
+| `registrationRecord.sourceSystemContact.actorId` | 0..1 | `Device.extension[sourceSystemContact].actorId` | Kontaktpersonens identifierare |
+| `registrationRecord.sourceSystemContact.actorName` | 0..1 | `Device.extension[sourceSystemContact].actorName` | Kontaktpersonens namn |
 
 ---
 
@@ -181,6 +202,20 @@ Primär tidskälla är `vaccinationMedicalRecordHeader.documentTime` om den finn
 faktisk vaccinationstidpunkt. Om `documentTime` saknas används
 `accountableHealthCareProfessional.authorTime` som fallback (dokumentationstidpunkt).
 `registrationRecord.date` (date, ej dateTime) används alltid som `Immunization.recorded`.
+
+### sourceSystem-fält → SEEHDSDevice (registrationDevice)
+
+`registrationRecord` innehåller fem källsystemsfält (`sourceSystemName`, `sourceSystemProductName`,
+`sourceSystemProductVersion`, `sourceSystemContact.actorId`, `sourceSystemContact.actorName`)
+som tillsammans beskriver det system varifrån vaccinationsregistreringen härstammar.
+
+I stället för att lägga dessa som enskilda extensions direkt på Immunization samlas de i en
+`SEEHDSDevice`-resurs och refereras via `Immunization.extension[registrationDevice]`. Fördelar:
+
+- `Device` är FHIR:s semantiskt korrekta resurs för IT-system som genererar klinisk data
+- Eliminerar ett sub-extension-mönster (`extension[sourceSystem].systemName` etc.) till förmån för  
+  väldefinierade Device-element (`deviceName`, `version`)
+- Möjliggör enkel sökning på källsystem: `Device.deviceName.name` är ett sökbart fält
 
 ### performer-indexering
 
