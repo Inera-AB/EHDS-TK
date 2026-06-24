@@ -31,7 +31,7 @@ Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetRefer
   "name" : "ReferralOutcomeTypeCodeCS",
   "title" : "ReferralOutcomeTypeCode",
   "status" : "active",
-  "date" : "2026-06-24T16:41:16+00:00",
+  "date" : "2026-06-24T16:59:36+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

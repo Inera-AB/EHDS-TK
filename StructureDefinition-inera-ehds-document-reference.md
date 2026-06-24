@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-document-
   "name" : "IneraEHDSDocumentReference",
   "title" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-06-24T16:41:16+00:00",
+  "date" : "2026-06-24T16:59:36+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

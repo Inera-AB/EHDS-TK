@@ -50,7 +50,7 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "name" : "DeliveryCodeVS",
   "title" : "DeliveryCode — ValueSet",
   "status" : "active",
-  "date" : "2026-06-24T16:41:16+00:00",
+  "date" : "2026-06-24T16:59:36+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

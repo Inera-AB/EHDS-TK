@@ -18,7 +18,7 @@
   fhir:name [ fhir:v "ImmunizationLegalAuthenticator"] ; # 
   fhir:title [ fhir:v "Juridisk äkthetsintygsgivare för vaccination"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-06-24T16:41:16+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T16:59:36+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Inera AB"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Inera AB" ] ;

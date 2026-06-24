@@ -112,7 +112,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "name" : "IneraEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-06-24T16:41:16+00:00",
+  "date" : "2026-06-24T16:59:36+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-observati
   "name" : "IneraEHDSObservationBase",
   "title" : "SE EHDS Observation Base – GetObservations",
   "status" : "draft",
-  "date" : "2026-06-24T16:41:16+00:00",
+  "date" : "2026-06-24T16:59:36+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
