@@ -50,7 +50,7 @@ Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus.
   "name" : "AssessmentCategoryVS",
   "title" : "AssessmentCategory — ValueSet",
   "status" : "active",
-  "date" : "2026-06-24T16:59:36+00:00",
+  "date" : "2026-06-24T18:15:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

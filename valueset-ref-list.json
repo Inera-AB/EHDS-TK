@@ -131,8 +131,8 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-observations.html" : "GetObservations",
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations"
+    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-inera-ehds-lm-observations.html" : "GetObservations"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",
@@ -153,8 +153,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/typeofcareplan-cs"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-care-plans.html" : "GetCarePlans",
-    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)"
+    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
+    "StructureDefinition-inera-ehds-lm-care-plans.html" : "GetCarePlans"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofleavecode-vs",

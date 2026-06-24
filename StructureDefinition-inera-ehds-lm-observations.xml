@@ -128,7 +128,7 @@ Snomed CT OID: 1.2.752.116.2.1.1.">relationType</a><a name="inera-ehds-lm-observ
   <name value="IneraEHDSLMObservations"/>
   <title value="GetObservations"/>
   <status value="draft"/>
-  <date value="2026-06-24T16:59:36+00:00"/>
+  <date value="2026-06-24T18:15:06+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

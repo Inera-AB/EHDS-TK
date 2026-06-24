@@ -152,7 +152,7 @@ informationOwner/InformationOwnerType 1..1).">relation</a><a name="inera-ehds-lm
   <name value="IneraEHDSLMMedicationHistory"/>
   <title value="GetMedicationHistory"/>
   <status value="draft"/>
-  <date value="2026-06-24T16:59:36+00:00"/>
+  <date value="2026-06-24T18:15:06+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
