@@ -22,8 +22,8 @@
     "uses" : {
     },
     "ValueSet-growth-observation-type-vs.html" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
-    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus",
-    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)"
+    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)",
+    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus"
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/deliverycode",

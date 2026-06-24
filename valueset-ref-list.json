@@ -54,8 +54,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/errorcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory",
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory"
+    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory",
+    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/examinationstatuscode-vs",
@@ -118,8 +118,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/resultcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory",
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory"
+    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory",
+    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs",
@@ -131,8 +131,8 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-lm-observations.html" : "GetObservations"
+    "StructureDefinition-inera-ehds-lm-observations.html" : "GetObservations",
+    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",

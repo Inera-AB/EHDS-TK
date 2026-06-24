@@ -31,7 +31,7 @@ Kodverk för felkoder i svar från tjänstekontrakten i domänen clinicalprocess
   "name" : "ErrorCodeCS",
   "title" : "ErrorCode",
   "status" : "active",
-  "date" : "2026-06-24T18:25:37+00:00",
+  "date" : "2026-06-24T18:50:27+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

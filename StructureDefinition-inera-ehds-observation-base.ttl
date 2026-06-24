@@ -18,7 +18,7 @@
   fhir:name [ fhir:v "IneraEHDSObservationBase"] ; # 
   fhir:title [ fhir:v "SE EHDS Observation Base – GetObservations"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-06-24T18:25:37+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T18:50:27+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Inera AB"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Inera AB" ] ;

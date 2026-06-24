@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-organizat
   "name" : "IneraEHDSOrganization",
   "title" : "SE EHDS Organization – Organisationsenhet",
   "status" : "draft",
-  "date" : "2026-06-24T18:25:37+00:00",
+  "date" : "2026-06-24T18:50:27+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
