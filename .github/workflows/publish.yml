@@ -30,6 +30,7 @@ jobs:
         run: |
           REF="${{ github.ref }}"
           BRANCH="${{ github.ref_name }}"
+
           if [[ "$REF" == refs/tags/v* ]]; then
             VERSION="${BRANCH#v}"
             CONFIG_VERSION=$(grep '^version:' sushi-config.yaml | awk '{print $2}' | tr -d '"' | tr -d "'")
@@ -41,8 +42,8 @@ jobs:
             echo "is_release=true"           >> $GITHUB_OUTPUT
             echo "version=${VERSION}"        >> $GITHUB_OUTPUT
           elif [[ "$BRANCH" == "main" ]]; then
-            echo "deploy_path="              >> $GITHUB_OUTPUT
-            echo "is_release=false"          >> $GITHUB_OUTPUT
+            echo "deploy_path="            >> $GITHUB_OUTPUT
+            echo "is_release=false"        >> $GITHUB_OUTPUT
           elif [[ "$BRANCH" == "develop" ]]; then
             echo "deploy_path=branches/develop" >> $GITHUB_OUTPUT
             echo "is_release=false"             >> $GITHUB_OUTPUT
@@ -51,9 +52,13 @@ jobs:
             echo "deploy_path=branches/${SLUG}" >> $GITHUB_OUTPUT
             echo "is_release=false"             >> $GITHUB_OUTPUT
           fi
+
           echo "ig_name=${{ github.event.repository.name }}" >> $GITHUB_OUTPUT
-          IG_SLUG=$(python3 -c "from urllib.parse import urlparse; import json; c=json.load(open('package-list.json'))['canonical']; print(urlparse(c).path.strip('/'))")
-          echo "ig_slug=${IG_SLUG}" >> $GITHUB_OUTPUT
+
+          # Extract the last path segment of canonical as the fhir-portal slug.
+          # e.g. https://fhir.inera.se/ig/template → template
+          CANONICAL_SLUG=$(python3 -c "import json; d=json.load(open('package-list.json')); print(d['canonical'].rstrip('/').split('/')[-1])")
+          echo "ig_slug=${CANONICAL_SLUG}" >> $GITHUB_OUTPUT
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -123,9 +128,9 @@ jobs:
         run: |
           MANIFEST=output/package.manifest.json
           PKG_ID=$(jq -r '.name' "$MANIFEST")
-          echo "IG_VERSION=$(jq -r '.version' "$MANIFEST")"       >> $GITHUB_ENV
+          echo "IG_VERSION=$(jq -r '.version' "$MANIFEST")" >> $GITHUB_ENV
           IG_FILE="output/ImplementationGuide-${PKG_ID}.json"
-          echo "IG_TITLE=$(jq -r '.title' "$IG_FILE")"            >> $GITHUB_ENV
+          echo "IG_TITLE=$(jq -r '.title' "$IG_FILE")"       >> $GITHUB_ENV
           echo "IG_DESCRIPTION=$(jq -r '.description' "$IG_FILE")" >> $GITHUB_ENV
 
       - name: Update package-list.json for tagged release
@@ -138,9 +143,14 @@ jobs:
           import json, os
           v    = os.environ['VERSION']
           date = os.environ['DATE']
+
           with open('package-list.json') as f:
               pl = json.load(f)
+
+          # Use the canonical URL from package-list.json as the base —
+          # avoids mismatch between repo name and canonical slug.
           base = pl['canonical'].rstrip('/')
+
           pl['list'] = [e for e in pl['list'] if e.get('version') != v]
           pl['list'].append({
               "version": v,
@@ -151,19 +161,17 @@ jobs:
               "fhirversion": ["4.0.1"],
               "current": False
           })
+
           with open('package-list.json', 'w') as f:
               json.dump(pl, f, indent=2)
               f.write('\n')
           PYEOF
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add package-list.json
-          if git diff --cached --quiet; then
-            echo "package-list.json already up to date — no commit needed."
-          else
-            git commit -m "chore: add package-list entry for v${{ steps.meta.outputs.version }}"
-            git push origin HEAD:main
-          fi
+          git commit -m "chore: add package-list entry for v${{ steps.meta.outputs.version }}"
+          git push origin HEAD:main
 
       - name: Deploy to GitHub Pages (gh-pages branch)
         uses: peaceiris/actions-gh-pages@v4
@@ -196,7 +204,13 @@ jobs:
           keep_files: true
           commit_message: "deploy: history.html + package-list.json at root for v${{ steps.meta.outputs.version }}"
 
-      # fhir-portal (optional — kräver FHIR_PORTAL_TOKEN som repo-hemlighet)
+      # ---------------------------------------------------------------
+      # fhir-portal integration (optional — release builds only)
+      # Activate by adding FHIR_PORTAL_TOKEN as a repository secret:
+      #   Settings → Secrets and variables → Actions → New repository secret
+      # A fine-grained PAT with Contents: Read and write on inera-ab/fhir-portal.
+      # IG metadata is read from build output (package.manifest.json / ImplementationGuide-*.json).
+      # ---------------------------------------------------------------
       - name: Publish IG to fhir-portal
         if: steps.meta.outputs.is_release == 'true' && env.FHIR_PORTAL_TOKEN != ''
         env:
@@ -207,7 +221,7 @@ jobs:
           external_repository: inera-ab/fhir-portal
           publish_branch: gh-pages
           publish_dir: ./output
-          destination_dir: ${{ steps.meta.outputs.ig_slug }}/${{ env.IG_VERSION }}
+          destination_dir: ig/${{ steps.meta.outputs.ig_slug }}/${{ env.IG_VERSION }}
           keep_files: true
           commit_message: "deploy: ${{ steps.meta.outputs.ig_slug }} v${{ env.IG_VERSION }}"
 
@@ -221,13 +235,13 @@ jobs:
           external_repository: inera-ab/fhir-portal
           publish_branch: gh-pages
           publish_dir: /tmp/ig-root
-          destination_dir: ${{ steps.meta.outputs.ig_slug }}
+          destination_dir: ig/${{ steps.meta.outputs.ig_slug }}
           keep_files: true
-          commit_message: "deploy: history.html at ${{ steps.meta.outputs.ig_slug }} for v${{ env.IG_VERSION }}"
+          commit_message: "deploy: history.html at ig/${{ steps.meta.outputs.ig_slug }} for v${{ env.IG_VERSION }}"
 
       - name: Update IG registry on fhir-portal
         if: env.FHIR_PORTAL_TOKEN != ''
         env:
           FHIR_PORTAL_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
           GH_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
-        run: gh api repos/inera-ab/fhir-portal/dispatches --method POST -f event_type=ig-deployed -f "client_payload[ig_name]=${{ github.event.repository.name }}" -f "client_payload[ig_title]=${{ env.IG_TITLE }}" -f "client_payload[ig_description]=${{ env.IG_DESCRIPTION }}" -f "client_payload[ig_version]=${{ env.IG_VERSION }}" -f "client_payload[is_release]=${{ startsWith(github.ref, 'refs/tags/v') }}"
+        run: gh api repos/inera-ab/fhir-portal/dispatches --method POST -f event_type=ig-deployed -f "client_payload[ig_name]=${{ steps.meta.outputs.ig_slug }}" -f "client_payload[ig_title]=${{ env.IG_TITLE }}" -f "client_payload[ig_description]=${{ env.IG_DESCRIPTION }}" -f "client_payload[ig_version]=${{ env.IG_VERSION }}" -f "client_payload[is_release]=${{ startsWith(github.ref, 'refs/tags/v') }}"
