@@ -31,7 +31,7 @@ Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetIma
   "name" : "ExaminationStatusCodeCS",
   "title" : "ExaminationStatusCode",
   "status" : "active",
-  "date" : "2026-06-24T18:15:06+00:00",
+  "date" : "2026-06-24T18:25:37+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

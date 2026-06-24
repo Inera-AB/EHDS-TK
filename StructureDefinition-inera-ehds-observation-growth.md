@@ -53,7 +53,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-observati
   "name" : "IneraEHDSObservationGrowth",
   "title" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
   "status" : "draft",
-  "date" : "2026-06-24T18:15:06+00:00",
+  "date" : "2026-06-24T18:25:37+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

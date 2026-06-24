@@ -267,15 +267,15 @@
     "sources" : ["2.16.840.1.113883.4.642.3.141"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-service-request-referral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-imaging-study.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
     "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-inera-ehds-imaging-study.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/bodysite-laterality",
@@ -402,8 +402,8 @@
     "uses" : {
     },
     "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)"
   },
   {
@@ -418,23 +418,23 @@
     "sources" : ["2.16.840.1.113883.4.642.3.79"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-flag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
     "StructureDefinition-inera-ehds-service-request-referral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-document-reference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-task.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
-    "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
+    "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-medication-statement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
-    "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-flag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
     "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
+    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
+    "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-inera-ehds-task.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
+    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
     "StructureDefinition-inera-ehds-imaging-study.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"
   },
   {
@@ -463,8 +463,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.164"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-code",
@@ -492,8 +492,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.168"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-stage",
@@ -507,8 +507,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.170"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-stage-type",
@@ -522,8 +522,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.171"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-ver-status",
@@ -537,8 +537,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.166"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/contactentity-type",
@@ -566,10 +566,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.5"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/device-nametype",
@@ -653,8 +653,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.235"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)"
   },
   {
@@ -669,8 +669,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.234"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)"
   },
   {
@@ -954,12 +954,12 @@
     "uses" : {
     },
     "StructureDefinition-inera-ehds-lm-maternity-medical-history.html" : "GetMaternityMedicalHistory",
+    "StructureDefinition-inera-ehds-organization.html" : "SE EHDS Organization – Organisationsenhet",
     "StructureDefinition-inera-ehds-lm-referral-outcome.html" : "GetReferralOutcome",
     "StructureDefinition-inera-ehds-lm-imaging-outcome.html" : "GetImagingOutcome",
-    "StructureDefinition-inera-ehds-organization.html" : "SE EHDS Organization – Organisationsenhet",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-patient.html" : "SE EHDS Patient",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-patient.html" : "SE EHDS Patient"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/identifier-use",
@@ -974,12 +974,12 @@
     "uses" : {
     },
     "StructureDefinition-inera-ehds-lm-maternity-medical-history.html" : "GetMaternityMedicalHistory",
+    "StructureDefinition-inera-ehds-organization.html" : "SE EHDS Organization – Organisationsenhet",
     "StructureDefinition-inera-ehds-lm-referral-outcome.html" : "GetReferralOutcome",
     "StructureDefinition-inera-ehds-lm-imaging-outcome.html" : "GetImagingOutcome",
-    "StructureDefinition-inera-ehds-organization.html" : "SE EHDS Organization – Organisationsenhet",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-patient.html" : "SE EHDS Patient",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-patient.html" : "SE EHDS Patient"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/immunization-function",
@@ -1106,29 +1106,29 @@
     "sources" : ["2.16.840.1.113883.4.642.3.20"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-flag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-inera-ehds-audit-event.html" : "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)",
-    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
     "StructureDefinition-inera-ehds-organization.html" : "SE EHDS Organization – Organisationsenhet",
+    "StructureDefinition-inera-ehds-audit-event.html" : "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)",
     "StructureDefinition-inera-ehds-service-request-referral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-document-reference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-task.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
-    "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
+    "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-medication-statement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
-    "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-    "StructureDefinition-inera-ehds-device.html" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-flag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
     "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
-    "StructureDefinition-inera-ehds-patient.html" : "SE EHDS Patient",
+    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
     "StructureDefinition-inera-ehds-provenance.html" : "SE EHDS Provenance",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
+    "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-patient.html" : "SE EHDS Patient",
+    "StructureDefinition-inera-ehds-device.html" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-inera-ehds-task.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
+    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
     "StructureDefinition-inera-ehds-imaging-study.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"
   },
   {
@@ -1171,8 +1171,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.169"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/marital-status",
@@ -1327,10 +1327,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.403"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-codes",
@@ -1344,10 +1344,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.396"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-interpretation",
@@ -1361,10 +1361,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.399"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-methods",
@@ -1378,10 +1378,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.395"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-status",
@@ -1395,8 +1395,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.400"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/organization-type",
@@ -1604,10 +1604,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.407"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/referencerange-meaning",
@@ -1621,10 +1621,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.397"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/report-codes",
@@ -1638,8 +1638,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.233"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)"
   },
   {
@@ -1698,17 +1698,17 @@
     "sources" : ["2.16.840.1.113883.4.642.3.27"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
-    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-imaging-study.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
     "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
     "StructureDefinition-inera-ehds-medication-statement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-inera-ehds-observation-lab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-inera-ehds-imaging-study.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/route-codes",
@@ -1722,9 +1722,9 @@
     "sources" : ["2.16.840.1.113883.4.642.3.98"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
     "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
-    "StructureDefinition-inera-ehds-medication-statement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)"
+    "StructureDefinition-inera-ehds-medication-statement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
+    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/security-labels",
@@ -1742,24 +1742,24 @@
     "sources" : ["2.16.840.1.113883.4.642.3.47"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-inera-ehds-flag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
     "StructureDefinition-inera-ehds-audit-event.html" : "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)",
-    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
     "StructureDefinition-inera-ehds-service-request-referral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-document-reference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-task.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
-    "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
+    "StructureDefinition-inera-ehds-diagnostic-report-lab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
     "StructureDefinition-inera-ehds-medication-statement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
-    "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-flag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
     "StructureDefinition-inera-ehds-diagnostic-report-referral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
+    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-inera-ehds-diagnostic-report-imaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-inera-ehds-encounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
+    "StructureDefinition-inera-ehds-immunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-observation-maternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-inera-ehds-task.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
+    "StructureDefinition-inera-ehds-allergy-intolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
     "StructureDefinition-inera-ehds-imaging-study.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"
   },
   {
@@ -1981,8 +1981,8 @@
     "systems" : ["http://loinc.org"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/uv/ips/ValueSet/problem-type-uv-ips",
@@ -1994,8 +1994,8 @@
     "systems" : ["http://terminology.hl7.org/CodeSystem/condition-category"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/uv/ips/ValueSet/problems-uv-ips",
@@ -2007,8 +2007,8 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-inera-ehds-condition-functional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "http://hl7.org/fhir/uv/ips/ValueSet/results-blood-group-snomed-ct-ips-free-set",
@@ -2346,8 +2346,8 @@
     "uses" : {
     },
     "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-lm-observations.html" : "GetObservations",
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-inera-ehds-lm-observations.html" : "GetObservations"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",
