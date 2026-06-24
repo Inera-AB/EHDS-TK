@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-observati
   "name" : "IneraEHDSObservationLab",
   "title" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
   "status" : "draft",
-  "date" : "2026-06-24T12:34:00+00:00",
+  "date" : "2026-06-24T18:28:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

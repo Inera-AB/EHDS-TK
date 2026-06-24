@@ -19,7 +19,7 @@
   fhir:title [ fhir:v "SE Observation Status (SNOMED CT urval 56431000052106)"] ; # 
   fhir:status [ fhir:v "active"] ; # 
   fhir:experimental [ fhir:v false] ; # 
-  fhir:date [ fhir:v "2026-06-24T12:34:00+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T18:28:07+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Inera AB"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Inera AB" ] ;

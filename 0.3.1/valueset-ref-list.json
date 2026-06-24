@@ -54,8 +54,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/errorcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory",
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory"
+    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory",
+    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/examinationstatuscode-vs",
@@ -118,8 +118,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/resultcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory",
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory"
+    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory",
+    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs",
@@ -153,8 +153,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/typeofcareplan-cs"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-care-plans.html" : "GetCarePlans",
-    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)"
+    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
+    "StructureDefinition-inera-ehds-lm-care-plans.html" : "GetCarePlans"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofleavecode-vs",

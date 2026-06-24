@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
   "name" : "IneraEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-06-24T12:34:00+00:00",
+  "date" : "2026-06-24T18:28:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

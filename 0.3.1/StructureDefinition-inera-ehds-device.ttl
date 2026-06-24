@@ -18,7 +18,7 @@
   fhir:name [ fhir:v "IneraEHDSDevice"] ; # 
   fhir:title [ fhir:v "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-06-24T12:34:00+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T18:28:07+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Inera AB"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Inera AB" ] ;

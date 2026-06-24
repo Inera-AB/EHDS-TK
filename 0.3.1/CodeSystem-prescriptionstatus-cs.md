@@ -31,7 +31,7 @@ Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination ä
   "name" : "PrescriptionStatusCS",
   "title" : "PrescriptionStatus",
   "status" : "active",
-  "date" : "2026-06-24T12:34:00+00:00",
+  "date" : "2026-06-24T18:28:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
