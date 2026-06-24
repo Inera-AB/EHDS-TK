@@ -1,1 +1,229 @@
-bmFtZTogQnVpbGQgYW5kIHB1Ymxpc2ggSUcKCm9uOgogIHB1c2g6CiAgICBicmFuY2hlczoKICAgICAgLSBtYWluCiAgICAgIC0gZGV2ZWxvcAogICAgICAtICdmZWF0dXJlLyoqJwogICAgICAtICdzdXBwb3J0LyoqJwogICAgdGFnczoKICAgICAgLSAndionCiAgd29ya2Zsb3dfZGlzcGF0Y2g6Cgpjb25jdXJyZW5jeToKICBncm91cDogcGFnZXMtJHt7IGdpdGh1Yi5yZWYgfX0KICBjYW5jZWwtaW4tcHJvZ3Jlc3M6IHRydWUKCnBlcm1pc3Npb25zOgogIGNvbnRlbnRzOiB3cml0ZQoKam9iczoKICBidWlsZDoKICAgIG5hbWU6IEJ1aWxkIElHCiAgICBydW5zLW9uOiB1YnVudHUtbGF0ZXN0CiAgICBzdGVwczoKICAgICAgLSB1c2VzOiBhY3Rpb25zL2NoZWNrb3V0QHY0CgogICAgICAtIG5hbWU6IERldGVybWluZSBkZXBsb3kgcGF0aCBhbmQgdmFsaWRhdGUgdGFnCiAgICAgICAgaWQ6IG1ldGEKICAgICAgICBydW46IHwKICAgICAgICAgIFJFRj0iJHt7IGdpdGh1Yi5yZWYgfX0iCiAgICAgICAgICBCUkFOQ0g9IiR7eyBnaXRodWIucmVmX25hbWUgfX0iCiAgICAgICAgICBpZiBbWyAiJFJFRiIgPT0gcmVmcy90YWdzL3YqIF1dOyB0aGVuCiAgICAgICAgICAgIFZFUlNJT049IiR7QlJBTkNII3Z9IgogICAgICAgICAgICBDT05GSUdfVkVSU0lPTj0kKGdyZXAgJ152ZXJzaW9uOicgc3VzaGktY29uZmlnLnlhbWwgfCBhd2sgJ3twcmludCAkMn0nIHwgdHIgLWQgJyInIHwgdHIgLWQgIiciKQogICAgICAgICAgICBpZiBbICIkVkVSU0lPTiIgIT0gIiRDT05GSUdfVkVSU0lPTiIgXTsgdGhlbgogICAgICAgICAgICAgIGVjaG8gIjo6ZXJyb3I6OlRhZyAke0JSQU5DSH0gKCR7VkVSU0lPTn0pIGRvZXMgbm90IG1hdGNoIHN1c2hpLWNvbmZpZy55YW1sIHZlcnNpb24gKCR7Q09ORklHX1ZFUlNJT059KS4gVXBkYXRlIHN1c2hpLWNvbmZpZy55YW1sIGJlZm9yZSB0YWdnaW5nLiIKICAgICAgICAgICAgICBleGl0IDEKICAgICAgICAgICAgZmkKICAgICAgICAgICAgZWNobyAiZGVwbG95X3BhdGg9JHtWRVJTSU9OfSIgICAgPj4gJEdJVEhVQl9PVVRQVVQKICAgICAgICAgICAgZWNobyAiaXNfcmVsZWFzZT10cnVlIiAgICAgICAgICAgPj4gJEdJVEhVQl9PVVRQVVQKICAgICAgICAgICAgZWNobyAidmVyc2lvbj0ke1ZFUlNJT059IiAgICAgICAgPj4gJEdJVEhVQl9PVVRQVVQKICAgICAgICAgIGVsaWYgW1sgIiRCUkFOQ0giID09ICJtYWluIiBdXTsgdGhlbgogICAgICAgICAgICBlY2hvICJkZXBsb3lfcGF0aD0iICAgICAgICAgICAgICA+PiAkR0lUSFVCX09VVFBVVAogICAgICAgICAgICBlY2hvICJpc19yZWxlYXNlPWZhbHNlIiAgICAgICAgICA+PiAkR0lUSFVCX09VVFBVVAogICAgICAgICAgZWxpZiBbWyAiJEJSQU5DSCIgPT0gImRldmVsb3AiIF1dOyB0aGVuCiAgICAgICAgICAgIGVjaG8gImRlcGxveV9wYXRoPWJyYW5jaGVzL2RldmVsb3AiID4+ICRHSVRIVUJfT1VUUFVUCiAgICAgICAgICAgIGVjaG8gImlzX3JlbGVhc2U9ZmFsc2UiICAgICAgICAgICAgID4+ICRHSVRIVUJfT1VUUFVUCiAgICAgICAgICBlbHNlCiAgICAgICAgICAgIFNMVUc9JChlY2hvICIkQlJBTkNIIiB8IHNlZCAnc3xbXmEtekEtWjAtOV18LXxnJyB8IHNlZCAnc3wtXCt8LXxnJyB8IHNlZCAnc3xeLXx8O3N8LSR8fCcpCiAgICAgICAgICAgIGVjaG8gImRlcGxveV9wYXRoPWJyYW5jaGVzLyR7U0xVR30iID4+ICRHSVRIVUJfT1VUUFVUCiAgICAgICAgICAgIGVjaG8gImlzX3JlbGVhc2U9ZmFsc2UiICAgICAgICAgICAgID4+ICRHSVRIVUJfT1VUUFVUCiAgICAgICAgICBmaQogICAgICAgICAgZWNobyAiaWdfbmFtZT0ke3sgZ2l0aHViLmV2ZW50LnJlcG9zaXRvcnkubmFtZSB9fSIgPj4gJEdJVEhVQl9PVVRQVVQKICAgICAgICAgIElHX1NMVUc9JChweXRob24zIC1jICJmcm9tIHVybGxpYi5wYXJzZSBpbXBvcnQgdXJscGFyc2U7IGltcG9ydCBqc29uOyBjPWpzb24ubG9hZChvcGVuKCdwYWNrYWdlLWxpc3QuanNvbicpKVsnY2Fub25pY2FsJ107IHByaW50KHVybHBhcnNlKGMpLnBhdGguc3RyaXAoJy8nKSkiKQogICAgICAgICAgZWNobyAiaWdfc2x1Zz0ke0lHX1NMVUd9IiA+PiAkR0lUSFVCX09VVFBVVAoKICAgICAgLSBuYW1lOiBTZXQgdXAgTm9kZS5qcwogICAgICAgIHVzZXM6IGFjdGlvbnMvc2V0dXAtbm9kZUB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBub2RlLXZlcnNpb246ICcyMCcKCiAgICAgIC0gbmFtZTogU2V0IHVwIEphdmEKICAgICAgICB1c2VzOiBhY3Rpb25zL3NldHVwLWphdmFAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZGlzdHJpYnV0aW9uOiB0ZW11cmluCiAgICAgICAgICBqYXZhLXZlcnNpb246ICcxNycKCiAgICAgIC0gbmFtZTogU2V0IHVwIFJ1YnkgYW5kIEpla3lsbAogICAgICAgIHVzZXM6IHJ1Ynkvc2V0dXAtcnVieUB2MQogICAgICAgIHdpdGg6CiAgICAgICAgICBydWJ5LXZlcnNpb246ICczLjMnCgogICAgICAtIG5hbWU6IEluc3RhbGwgSmVreWxsCiAgICAgICAgcnVuOiBnZW0gaW5zdGFsbCBqZWt5bGwKCiAgICAgIC0gbmFtZTogSW5zdGFsbCBTVVNISQogICAgICAgIHJ1bjogbnBtIGluc3RhbGwgLWcgZnNoLXN1c2hpCgogICAgICAtIG5hbWU6IFJlc3RvcmUgRkhJUiBwYWNrYWdlIGNhY2hlCiAgICAgICAgdXNlczogYWN0aW9ucy9jYWNoZUB2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBwYXRoOiB+Ly5maGlyL3BhY2thZ2VzCiAgICAgICAgICBrZXk6IGZoaXItcGFja2FnZXMtJHt7IGhhc2hGaWxlcygnc3VzaGktY29uZmlnLnlhbWwnKSB9fQogICAgICAgICAgcmVzdG9yZS1rZXlzOiBmaGlyLXBhY2thZ2VzLQoKICAgICAgLSBuYW1lOiBSZXN0b3JlIElHIFB1Ymxpc2hlciBjYWNoZQogICAgICAgIHVzZXM6IGFjdGlvbnMvY2FjaGVAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgcGF0aDogaW5wdXQtY2FjaGUvcHVibGlzaGVyLmphcgogICAgICAgICAga2V5OiBpZy1wdWJsaXNoZXItJHt7IGhhc2hGaWxlcygnaWcuaW5pJykgfX0KCiAgICAgIC0gbmFtZTogRG93bmxvYWQgSUcgUHVibGlzaGVyCiAgICAgICAgcnVuOiB8CiAgICAgICAgICBta2RpciAtcCBpbnB1dC1jYWNoZQogICAgICAgICAgaWYgWyAhIC1mIGlucHV0LWNhY2hlL3B1Ymxpc2hlci5qYXIgXTsgdGhlbgogICAgICAgICAgICBjdXJsIC1zTCBodHRwczovL2dpdGh1Yi5jb20vSEw3L2ZoaXItaWctcHVibGlzaGVyL3JlbGVhc2VzL2xhdGVzdC9kb3dubG9hZC9wdWJsaXNoZXIuamFyIFwKICAgICAgICAgICAgICAtbyBpbnB1dC1jYWNoZS9wdWJsaXNoZXIuamFyCiAgICAgICAgICBmaQoKICAgICAgLSBuYW1lOiBSdW4gU1VTSEkKICAgICAgICBydW46IHN1c2hpIC4KCiAgICAgIC0gbmFtZTogQnVpbGQgSUcKICAgICAgICBydW46IHwKICAgICAgICAgIGJ1aWxkKCkgewogICAgICAgICAgICBqYXZhIC1qYXIgaW5wdXQtY2FjaGUvcHVibGlzaGVyLmphciAtaWcgaWcuaW5pICIkQCIKICAgICAgICAgIH0KICAgICAgICAgIGlmIGJ1aWxkIC10eCBodHRwczovL3R4LmZoaXIub3JnL3I0OyB0aGVuCiAgICAgICAgICAgIGVjaG8gIkJ1aWxkIHN1Y2NlZWRlZCB3aXRoIHRlcm1pbm9sb2d5IHNlcnZlci4iCiAgICAgICAgICBlbHNlCiAgICAgICAgICAgIGVjaG8gIlRYIGF0dGVtcHQgMSBmYWlsZWQsIHJldHJ5aW5nIGluIDMwcy4uLiIKICAgICAgICAgICAgc2xlZXAgMzAKICAgICAgICAgICAgaWYgYnVpbGQgLXR4IGh0dHBzOi8vdHguZmhpci5vcmcvcjQ7IHRoZW4KICAgICAgICAgICAgICBlY2hvICJCdWlsZCBzdWNjZWVkZWQgb24gcmV0cnkuIgogICAgICAgICAgICBlbHNlCiAgICAgICAgICAgICAgZWNobyAiVFggc2VydmVyIHVuYXZhaWxhYmxlIOKAlCBidWlsZGluZyB3aXRob3V0IHRlcm1pbm9sb2d5IHZhbGlkYXRpb24uIgogICAgICAgICAgICAgIGJ1aWxkIC10eCBuL2EKICAgICAgICAgICAgZmkKICAgICAgICAgIGZpCgogICAgICAtIG5hbWU6IFJlYWQgSUcgbWV0YWRhdGEgZnJvbSBidWlsZCBvdXRwdXQKICAgICAgICBydW46IHwKICAgICAgICAgIE1BTklGRVNUPW91dHB1dC9wYWNrYWdlLm1hbmlmZXN0Lmpzb24KICAgICAgICAgIFBLR19JRD0kKGpxIC1yICcubmFtZScgIiRNQU5JRkVTVCIpCiAgICAgICAgICBlY2hvICJJR19WRVJTSU9OPSQoanEgLXIgJy52ZXJzaW9uJyAiJE1BTklGRVNUIikiICAgICAgID4+ICRHSVRIVUJfRU5WCiAgICAgICAgICBJR19GSUxFPSJvdXRwdXQvSW1wbGVtZW50YXRpb25HdWlkZS0ke1BLR19JRH0uanNvbiIKICAgICAgICAgIGVjaG8gIklHX1RJVExFPSQoanEgLXIgJy50aXRsZScgIiRJR19GSUxFIikiICAgICAgICAgICAgPj4gJEdJVEhVQl9FTlYKICAgICAgICAgIGVjaG8gIklHX0RFU0NSSVBUSU9OPSQoanEgLXIgJy5kZXNjcmlwdGlvbicgIiRJR19GSUxFIikiID4+ICRHSVRIVUJfRU5WCgogICAgICAtIG5hbWU6IFVwZGF0ZSBwYWNrYWdlLWxpc3QuanNvbiBmb3IgdGFnZ2VkIHJlbGVhc2UKICAgICAgICBpZjogc3RlcHMubWV0YS5vdXRwdXRzLmlzX3JlbGVhc2UgPT0gJ3RydWUnCiAgICAgICAgZW52OgogICAgICAgICAgVkVSU0lPTjogJHt7IHN0ZXBzLm1ldGEub3V0cHV0cy52ZXJzaW9uIH19CiAgICAgICAgcnVuOiB8CiAgICAgICAgICBleHBvcnQgREFURT0kKGRhdGUgKyVZLSVtLSVkKQogICAgICAgICAgcHl0aG9uMyAtIDw8J1BZRU9GJwogICAgICAgICAgaW1wb3J0IGpzb24sIG9zCiAgICAgICAgICB2ICAgID0gb3MuZW52aXJvblsnVkVSU0lPTiddCiAgICAgICAgICBkYXRlID0gb3MuZW52aXJvblsnREFURSddCiAgICAgICAgICB3aXRoIG9wZW4oJ3BhY2thZ2UtbGlzdC5qc29uJykgYXMgZjoKICAgICAgICAgICAgICBwbCA9IGpzb24ubG9hZChmKQogICAgICAgICAgYmFzZSA9IHBsWydjYW5vbmljYWwnXS5yc3RyaXAoJy8nKQogICAgICAgICAgcGxbJ2xpc3QnXSA9IFtlIGZvciBlIGluIHBsWydsaXN0J10gaWYgZS5nZXQoJ3ZlcnNpb24nKSAhPSB2XQogICAgICAgICAgcGxbJ2xpc3QnXS5hcHBlbmQoewogICAgICAgICAgICAgICJ2ZXJzaW9uIjogdiwKICAgICAgICAgICAgICAiZGVzYyI6IGYiUmVsZWFzZSB7dn0gKHtkYXRlfSkiLAogICAgICAgICAgICAgICJwYXRoIjogZiJ7YmFzZX0ve3Z9IiwKICAgICAgICAgICAgICAic3RhdHVzIjogImRyYWZ0IiwKICAgICAgICAgICAgICAic2VxdWVuY2UiOiAiU1RVIDEiLAogICAgICAgICAgICAgICJmaGlydmVyc2lvbiI6IFsiNC4wLjEiXSwKICAgICAgICAgICAgICAiY3VycmVudCI6IEZhbHNlCiAgICAgICAgICB9KQogICAgICAgICAgd2l0aCBvcGVuKCdwYWNrYWdlLWxpc3QuanNvbicsICd3JykgYXMgZjoKICAgICAgICAgICAgICBqc29uLmR1bXAocGwsIGYsIGluZGVudD0yKQogICAgICAgICAgICAgIGYud3JpdGUoJ1xuJykKICAgICAgICAgIFBZRU9GCiAgICAgICAgICBnaXQgY29uZmlnIHVzZXIubmFtZSAiZ2l0aHViLWFjdGlvbnNbYm90XSIKICAgICAgICAgIGdpdCBjb25maWcgdXNlci5lbWFpbCAiZ2l0aHViLWFjdGlvbnNbYm90XUB1c2Vycy5ub3JlcGx5LmdpdGh1Yi5jb20iCiAgICAgICAgICBnaXQgYWRkIHBhY2thZ2UtbGlzdC5qc29uCiAgICAgICAgICBnaXQgY29tbWl0IC1tICJjaG9yZTogYWRkIHBhY2thZ2UtbGlzdCBlbnRyeSBmb3IgdiR7eyBzdGVwcy5tZXRhLm91dHB1dHMudmVyc2lvbiB9fSIKICAgICAgICAgIGdpdCBwdXNoIG9yaWdpbiBIRUFEOm1haW4KCiAgICAgIC0gbmFtZTogRGVwbG95IHRvIEdpdEh1YiBQYWdlcyAoZ2gtcGFnZXMgYnJhbmNoKQogICAgICAgIHVzZXM6IHBlYWNlaXJpcy9hY3Rpb25zLWdoLXBhZ2VzQHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIGdpdGh1Yl90b2tlbjogJHt7IHNlY3JldHMuR0lUSFVCX1RPS0VOIH19CiAgICAgICAgICBwdWJsaXNoX2RpcjogLi9vdXRwdXQKICAgICAgICAgIGRlc3RpbmF0aW9uX2RpcjogJHt7IHN0ZXBzLm1ldGEub3V0cHV0cy5kZXBsb3lfcGF0aCB9fQogICAgICAgICAga2VlcF9maWxlczogdHJ1ZQogICAgICAgICAgY29tbWl0X21lc3NhZ2U6ICJkZXBsb3k6ICR7eyBnaXRodWIucmVmX25hbWUgfX0g4oaSICR7eyBzdGVwcy5tZXRhLm91dHB1dHMuZGVwbG95X3BhdGggfX0iCgogICAgICAtIG5hbWU6IFByZXBhcmUgSUcgcm9vdCBmaWxlcyBmb3IgaGlzdG9yeSBwYWdlCiAgICAgICAgaWY6IHN0ZXBzLm1ldGEub3V0cHV0cy5pc19yZWxlYXNlID09ICd0cnVlJwogICAgICAgIHJ1bjogfAogICAgICAgICAgbWtkaXIgLXAgL3RtcC9pZy1yb290CiAgICAgICAgICBjcCBwYWNrYWdlLWxpc3QuanNvbiAvdG1wL2lnLXJvb3QvcGFja2FnZS1saXN0Lmpzb24KICAgICAgICAgIGlmIFsgLWYgb3V0cHV0L2hpc3RvcnkuaHRtbCBdOyB0aGVuCiAgICAgICAgICAgIGNwIG91dHB1dC9oaXN0b3J5Lmh0bWwgL3RtcC9pZy1yb290L2hpc3RvcnkuaHRtbAogICAgICAgICAgICBjcCBvdXRwdXQvaGlzdG9yeS5odG1sIC90bXAvaWctcm9vdC9pbmRleC5odG1sCiAgICAgICAgICBlbHNlCiAgICAgICAgICAgIGVjaG8gImhpc3RvcnkuaHRtbCBub3QgZ2VuZXJhdGVkIGJ5IElHIFB1Ymxpc2hlciDigJQgc2tpcHBpbmciCiAgICAgICAgICBmaQoKICAgICAgLSBuYW1lOiBEZXBsb3kgaGlzdG9yeS5odG1sIHRvIGdoLXBhZ2VzIHJvb3QKICAgICAgICBpZjogc3RlcHMubWV0YS5vdXRwdXRzLmlzX3JlbGVhc2UgPT0gJ3RydWUnCiAgICAgICAgdXNlczogcGVhY2VpcmlzL2FjdGlvbnMtZ2gtcGFnZXNAdjQKICAgICAgICB3aXRoOgogICAgICAgICAgZ2l0aHViX3Rva2VuOiAke3sgc2VjcmV0cy5HSVRIVUJfVE9LRU4gfX0KICAgICAgICAgIHB1Ymxpc2hfZGlyOiAvdG1wL2lnLXJvb3QKICAgICAgICAgIGRlc3RpbmF0aW9uX2RpcjogIiIKICAgICAgICAgIGtlZXBfZmlsZXM6IHRydWUKICAgICAgICAgIGNvbW1pdF9tZXNzYWdlOiAiZGVwbG95OiBoaXN0b3J5Lmh0bWwgKyBwYWNrYWdlLWxpc3QuanNvbiBhdCByb290IGZvciB2JHt7IHN0ZXBzLm1ldGEub3V0cHV0cy52ZXJzaW9uIH19IgoKICAgICAgIyBmaGlyLXBvcnRhbCAob3B0aW9uYWwg4oCUIGtyw6R2ZXIgRkhJUl9QT1JUQUxfVE9LRU4gc29tIHJlcG8taGVtbGlnaGV0KQogICAgICAtIG5hbWU6IFB1Ymxpc2ggSUcgdG8gZmhpci1wb3J0YWwKICAgICAgICBpZjogc3RlcHMubWV0YS5vdXRwdXRzLmlzX3JlbGVhc2UgPT0gJ3RydWUnICYmIGVudi5GSElSX1BPUlRBTF9UT0tFTiAhPSAnJwogICAgICAgIGVudjoKICAgICAgICAgIEZISVJfUE9SVEFMX1RPS0VOOiAke3sgc2VjcmV0cy5GSElSX1BPUlRBTF9UT0tFTiB9fQogICAgICAgIHVzZXM6IHBlYWNlaXJpcy9hY3Rpb25zLWdoLXBhZ2VzQHY0CiAgICAgICAgd2l0aDoKICAgICAgICAgIHBlcnNvbmFsX3Rva2VuOiAke3sgc2VjcmV0cy5GSElSX1BPUlRBTF9UT0tFTiB9fQogICAgICAgICAgZXh0ZXJuYWxfcmVwb3NpdG9yeTogaW5lcmEtYWIvZmhpci1wb3J0YWwKICAgICAgICAgIHB1Ymxpc2hfYnJhbmNoOiBnaC1wYWdlcwogICAgICAgICAgcHVibGlzaF9kaXI6IC4vb3V0cHV0CiAgICAgICAgICBkZXN0aW5hdGlvbl9kaXI6ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMuaWdfc2x1ZyB9fS8ke3sgZW52LklHX1ZFUlNJT04gfX0KICAgICAgICAgIGtlZXBfZmlsZXM6IHRydWUKICAgICAgICAgIGNvbW1pdF9tZXNzYWdlOiAiZGVwbG95OiAke3sgc3RlcHMubWV0YS5vdXRwdXRzLmlnX3NsdWcgfX0gdiR7eyBlbnYuSUdfVkVSU0lPTiB9fSIKCiAgICAgIC0gbmFtZTogRGVwbG95IGhpc3RvcnkuaHRtbCB0byBmaGlyLXBvcnRhbCBJRyByb290CiAgICAgICAgaWY6IHN0ZXBzLm1ldGEub3V0cHV0cy5pc19yZWxlYXNlID09ICd0cnVlJyAmJiBlbnYuRkhJUl9QT1JUQUxfVE9LRU4gIT0gJycKICAgICAgICBlbnY6CiAgICAgICAgICBGSElSX1BPUlRBTF9UT0tFTjogJHt7IHNlY3JldHMuRkhJUl9QT1JUQUxfVE9LRU4gfX0KICAgICAgICB1c2VzOiBwZWFjZWlyaXMvYWN0aW9ucy1naC1wYWdlc0B2NAogICAgICAgIHdpdGg6CiAgICAgICAgICBwZXJzb25hbF90b2tlbjogJHt7IHNlY3JldHMuRkhJUl9QT1JUQUxfVE9LRU4gfX0KICAgICAgICAgIGV4dGVybmFsX3JlcG9zaXRvcnk6IGluZXJhLWFiL2ZoaXItcG9ydGFsCiAgICAgICAgICBwdWJsaXNoX2JyYW5jaDogZ2gtcGFnZXMKICAgICAgICAgIHB1Ymxpc2hfZGlyOiAvdG1wL2lnLXJvb3QKICAgICAgICAgIGRlc3RpbmF0aW9uX2RpcjogJHt7IHN0ZXBzLm1ldGEub3V0cHV0cy5pZ19zbHVnIH19CiAgICAgICAgICBrZWVwX2ZpbGVzOiB0cnVlCiAgICAgICAgICBjb21taXRfbWVzc2FnZTogImRlcGxveTogaGlzdG9yeS5odG1sIGF0ICR7eyBzdGVwcy5tZXRhLm91dHB1dHMuaWdfc2x1ZyB9fSBmb3IgdiR7eyBlbnYuSUdfVkVSU0lPTiB9fSIKCiAgICAgIC0gbmFtZTogVXBkYXRlIElHIHJlZ2lzdHJ5IG9uIGZoaXItcG9ydGFsCiAgICAgICAgaWY6IGVudi5GSElSX1BPUlRBTF9UT0tFTiAhPSAnJwogICAgICAgIGVudjoKICAgICAgICAgIEZISVJfUE9SVEFMX1RPS0VOOiAke3sgc2VjcmV0cy5GSElSX1BPUlRBTF9UT0tFTiB9fQogICAgICAgICAgR0hfVE9LRU46ICR7eyBzZWNyZXRzLkZISVJfUE9SVEFMX1RPS0VOIH19CiAgICAgICAgcnVuOiBnaCBhcGkgcmVwb3MvaW5lcmEtYWIvZmhpci1wb3J0YWwvZGlzcGF0Y2hlcyAtLW1ldGhvZCBQT1NUIC1mIGV2ZW50X3R5cGU9aWctZGVwbG95ZWQgLWYgImNsaWVudF9wYXlsb2FkW2lnX25hbWVdPSR7eyBnaXRodWIuZXZlbnQucmVwb3NpdG9yeS5uYW1lIH19IiAtZiAiY2xpZW50X3BheWxvYWRbaWdfdGl0bGVdPSR7eyBlbnYuSUdfVElUTEUgfX0iIC1mICJjbGllbnRfcGF5bG9hZFtpZ19kZXNjcmlwdGlvbl09JHt7IGVudi5JR19ERVNDUklQVElPTiB9fSIgLWYgImNsaWVudF9wYXlsb2FkW2lnX3ZlcnNpb25dPSR7eyBlbnYuSUdfVkVSU0lPTiB9fSIgLWYgImNsaWVudF9wYXlsb2FkW2lzX3JlbGVhc2VdPSR7eyBzdGFydHNXaXRoKGdpdGh1Yi5yZWYsICdyZWZzL3RhZ3MvdicpIH19Igo=
+name: Build and publish IG
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+      - 'support/**'
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build IG
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Determine deploy path and validate tag
+        id: meta
+        run: |
+          REF="${{ github.ref }}"
+          BRANCH="${{ github.ref_name }}"
+          if [[ "$REF" == refs/tags/v* ]]; then
+            VERSION="${BRANCH#v}"
+            CONFIG_VERSION=$(grep '^version:' sushi-config.yaml | awk '{print $2}' | tr -d '"' | tr -d "'")
+            if [ "$VERSION" != "$CONFIG_VERSION" ]; then
+              echo "::error::Tag ${BRANCH} (${VERSION}) does not match sushi-config.yaml version (${CONFIG_VERSION}). Update sushi-config.yaml before tagging."
+              exit 1
+            fi
+            echo "deploy_path=${VERSION}"    >> $GITHUB_OUTPUT
+            echo "is_release=true"           >> $GITHUB_OUTPUT
+            echo "version=${VERSION}"        >> $GITHUB_OUTPUT
+          elif [[ "$BRANCH" == "main" ]]; then
+            echo "deploy_path="              >> $GITHUB_OUTPUT
+            echo "is_release=false"          >> $GITHUB_OUTPUT
+          elif [[ "$BRANCH" == "develop" ]]; then
+            echo "deploy_path=branches/develop" >> $GITHUB_OUTPUT
+            echo "is_release=false"             >> $GITHUB_OUTPUT
+          else
+            SLUG=$(echo "$BRANCH" | sed 's|[^a-zA-Z0-9]|-|g' | sed 's|-\+|-|g' | sed 's|^-||;s|-$||')
+            echo "deploy_path=branches/${SLUG}" >> $GITHUB_OUTPUT
+            echo "is_release=false"             >> $GITHUB_OUTPUT
+          fi
+          echo "ig_name=${{ github.event.repository.name }}" >> $GITHUB_OUTPUT
+          IG_SLUG=$(python3 -c "from urllib.parse import urlparse; import json; c=json.load(open('package-list.json'))['canonical']; print(urlparse(c).path.strip('/'))")
+          echo "ig_slug=${IG_SLUG}" >> $GITHUB_OUTPUT
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Ruby and Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+
+      - name: Install Jekyll
+        run: gem install jekyll
+
+      - name: Install SUSHI
+        run: npm install -g fsh-sushi
+
+      - name: Restore FHIR package cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.fhir/packages
+          key: fhir-packages-${{ hashFiles('sushi-config.yaml') }}
+          restore-keys: fhir-packages-
+
+      - name: Restore IG Publisher cache
+        uses: actions/cache@v4
+        with:
+          path: input-cache/publisher.jar
+          key: ig-publisher-${{ hashFiles('ig.ini') }}
+
+      - name: Download IG Publisher
+        run: |
+          mkdir -p input-cache
+          if [ ! -f input-cache/publisher.jar ]; then
+            curl -sL https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
+              -o input-cache/publisher.jar
+          fi
+
+      - name: Run SUSHI
+        run: sushi .
+
+      - name: Build IG
+        run: |
+          build() {
+            java -jar input-cache/publisher.jar -ig ig.ini "$@"
+          }
+          if build -tx https://tx.fhir.org/r4; then
+            echo "Build succeeded with terminology server."
+          else
+            echo "TX attempt 1 failed, retrying in 30s..."
+            sleep 30
+            if build -tx https://tx.fhir.org/r4; then
+              echo "Build succeeded on retry."
+            else
+              echo "TX server unavailable — building without terminology validation."
+              build -tx n/a
+            fi
+          fi
+
+      - name: Read IG metadata from build output
+        run: |
+          MANIFEST=output/package.manifest.json
+          PKG_ID=$(jq -r '.name' "$MANIFEST")
+          echo "IG_VERSION=$(jq -r '.version' "$MANIFEST")"       >> $GITHUB_ENV
+          IG_FILE="output/ImplementationGuide-${PKG_ID}.json"
+          echo "IG_TITLE=$(jq -r '.title' "$IG_FILE")"            >> $GITHUB_ENV
+          echo "IG_DESCRIPTION=$(jq -r '.description' "$IG_FILE")" >> $GITHUB_ENV
+
+      - name: Update package-list.json for tagged release
+        if: steps.meta.outputs.is_release == 'true'
+        env:
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          export DATE=$(date +%Y-%m-%d)
+          python3 - <<'PYEOF'
+          import json, os
+          v    = os.environ['VERSION']
+          date = os.environ['DATE']
+          with open('package-list.json') as f:
+              pl = json.load(f)
+          base = pl['canonical'].rstrip('/')
+          pl['list'] = [e for e in pl['list'] if e.get('version') != v]
+          pl['list'].append({
+              "version": v,
+              "desc": f"Release {v} ({date})",
+              "path": f"{base}/{v}",
+              "status": "draft",
+              "sequence": "STU 1",
+              "fhirversion": ["4.0.1"],
+              "current": False
+          })
+          with open('package-list.json', 'w') as f:
+              json.dump(pl, f, indent=2)
+              f.write('\n')
+          PYEOF
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package-list.json
+          git commit -m "chore: add package-list entry for v${{ steps.meta.outputs.version }}"
+          git push origin HEAD:main
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          destination_dir: ${{ steps.meta.outputs.deploy_path }}
+          keep_files: true
+          commit_message: "deploy: ${{ github.ref_name }} → ${{ steps.meta.outputs.deploy_path }}"
+
+      - name: Prepare IG root files for history page
+        if: steps.meta.outputs.is_release == 'true'
+        run: |
+          mkdir -p /tmp/ig-root
+          cp package-list.json /tmp/ig-root/package-list.json
+          if [ -f output/history.html ]; then
+            cp output/history.html /tmp/ig-root/history.html
+            cp output/history.html /tmp/ig-root/index.html
+          else
+            echo "history.html not generated by IG Publisher — skipping"
+          fi
+
+      - name: Deploy history.html to gh-pages root
+        if: steps.meta.outputs.is_release == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/ig-root
+          destination_dir: ""
+          keep_files: true
+          commit_message: "deploy: history.html + package-list.json at root for v${{ steps.meta.outputs.version }}"
+
+      # fhir-portal (optional — kräver FHIR_PORTAL_TOKEN som repo-hemlighet)
+      - name: Publish IG to fhir-portal
+        if: steps.meta.outputs.is_release == 'true' && env.FHIR_PORTAL_TOKEN != ''
+        env:
+          FHIR_PORTAL_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.FHIR_PORTAL_TOKEN }}
+          external_repository: inera-ab/fhir-portal
+          publish_branch: gh-pages
+          publish_dir: ./output
+          destination_dir: ${{ steps.meta.outputs.ig_slug }}/${{ env.IG_VERSION }}
+          keep_files: true
+          commit_message: "deploy: ${{ steps.meta.outputs.ig_slug }} v${{ env.IG_VERSION }}"
+
+      - name: Deploy history.html to fhir-portal IG root
+        if: steps.meta.outputs.is_release == 'true' && env.FHIR_PORTAL_TOKEN != ''
+        env:
+          FHIR_PORTAL_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.FHIR_PORTAL_TOKEN }}
+          external_repository: inera-ab/fhir-portal
+          publish_branch: gh-pages
+          publish_dir: /tmp/ig-root
+          destination_dir: ${{ steps.meta.outputs.ig_slug }}
+          keep_files: true
+          commit_message: "deploy: history.html at ${{ steps.meta.outputs.ig_slug }} for v${{ env.IG_VERSION }}"
+
+      - name: Update IG registry on fhir-portal
+        if: env.FHIR_PORTAL_TOKEN != ''
+        env:
+          FHIR_PORTAL_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
+          GH_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
+        run: gh api repos/inera-ab/fhir-portal/dispatches --method POST -f event_type=ig-deployed -f "client_payload[ig_name]=${{ github.event.repository.name }}" -f "client_payload[ig_title]=${{ env.IG_TITLE }}" -f "client_payload[ig_description]=${{ env.IG_DESCRIPTION }}" -f "client_payload[ig_version]=${{ env.IG_VERSION }}" -f "client_payload[is_release]=${{ startsWith(github.ref, 'refs/tags/v') }}"
