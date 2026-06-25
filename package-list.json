@@ -35,6 +35,17 @@
         "4.0.1"
       ],
       "current": false
+    },
+    {
+      "version": "0.3.3",
+      "desc": "Release 0.3.3 (2026-06-25)",
+      "path": "https://fhir.inera.se/ig/ehds-tk/0.3.3",
+      "status": "draft",
+      "sequence": "STU 1",
+      "fhirversion": [
+        "4.0.1"
+      ],
+      "current": false
     }
   ]
 }
