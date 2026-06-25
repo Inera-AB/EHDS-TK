@@ -21,11 +21,11 @@
      ]
   ] ) ; # 
   fhir:url [ fhir:v "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-laboratory-order-outcome"^^xsd:anyURI] ; # 
-  fhir:version [ fhir:v "0.3.2"] ; # 
+  fhir:version [ fhir:v "0.3.3"] ; # 
   fhir:name [ fhir:v "IneraEHDSLMLaboratoryOrderOutcome"] ; # 
   fhir:title [ fhir:v "GetLaboratoryOrderOutcome"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-06-25T06:56:03+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-25T07:52:35+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Inera AB"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Inera AB" ] ;

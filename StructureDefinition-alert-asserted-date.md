@@ -1,4 +1,4 @@
-# Signeringstidpunkt för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# Signeringstidpunkt för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserted-date | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserted-date | *Version*:0.3.3 |
 | Draft as of 2026-06-25 | *Computable Name*:AlertAssertedDate |
 
 Tidpunkt för signering av uppmärksamhetsinformation (alertInformationHeader.legalAuthenticator.signatureTime).
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-asserted-date.
   "resourceType" : "StructureDefinition",
   "id" : "alert-asserted-date",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserted-date",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "AlertAssertedDate",
   "title" : "Signeringstidpunkt för uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

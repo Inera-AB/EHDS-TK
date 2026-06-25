@@ -3,14 +3,14 @@
   "id" : "assessmentcategory-vs",
   "text" : {
     "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet assessmentcategory-vs</b></p><a name=\"assessmentcategory-vs\"> </a><a name=\"hcassessmentcategory-vs\"> </a><ul><li>Include alla koder som definieras i <a href=\"CodeSystem-assessmentcategory-cs.html\"><code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.3.2</span></li></ul></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet assessmentcategory-vs</b></p><a name=\"assessmentcategory-vs\"> </a><a name=\"hcassessmentcategory-vs\"> </a><ul><li>Include alla koder som definieras i <a href=\"CodeSystem-assessmentcategory-cs.html\"><code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.3.3</span></li></ul></div>"
   },
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "AssessmentCategoryVS",
   "title" : "AssessmentCategory — ValueSet",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

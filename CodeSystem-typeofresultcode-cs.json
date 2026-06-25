@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem typeofresultcode-cs</b></p><a name=\"typeofresultcode-cs\"> </a><a name=\"hctypeofresultcode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/typeofresultcode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">PREL<a name=\"typeofresultcode-cs-PREL\"> </a></td><td>Preliminärsvar</td><td>Preliminärt svar</td></tr><tr><td style=\"white-space:nowrap\">DEF<a name=\"typeofresultcode-cs-DEF\"> </a></td><td>Definitivsvar</td><td>Definitivt svar</td></tr><tr><td style=\"white-space:nowrap\">TILL<a name=\"typeofresultcode-cs-TILL\"> </a></td><td>Tilläggssvar</td><td>Tilläggssvar</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/CodeSystem/typeofresultcode",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "TypeOfResultCodeCS",
   "title" : "TypeOfResultCode",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

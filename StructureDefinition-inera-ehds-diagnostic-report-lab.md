@@ -1,4 +1,4 @@
-# SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-lab | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-lab | *Version*:0.3.3 |
 | Draft as of 2026-06-25 | *Computable Name*:IneraEHDSDiagnosticReportLab |
 
  
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-diagnosti
   "resourceType" : "StructureDefinition",
   "id" : "inera-ehds-diagnostic-report-lab",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-lab",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "IneraEHDSDiagnosticReportLab",
   "title" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
   "status" : "draft",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

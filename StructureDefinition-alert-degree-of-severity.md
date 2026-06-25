@@ -1,4 +1,4 @@
-# Allvarlighetsgrad för överkänslighet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# Allvarlighetsgrad för överkänslighet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity | *Version*:0.3.3 |
 | Draft as of 2026-06-25 | *Computable Name*:AlertDegreeOfSeverity |
 
 Bedömning av överkänslighetens allvarlighetsgrad (alertInformationBody.hypersensitivity.degreeOfSeverity). KV Allvarlighetsgrad 1.2.752.129.2.2.3.3.
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-degree-of-seve
   "resourceType" : "StructureDefinition",
   "id" : "alert-degree-of-severity",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "AlertDegreeOfSeverity",
   "title" : "Allvarlighetsgrad för överkänslighet",
   "status" : "draft",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

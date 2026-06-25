@@ -14,11 +14,11 @@
      fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem referraloutcometypecode-cs</b></p><a name=\"referraloutcometypecode-cs\"> </a><a name=\"hcreferraloutcometypecode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/referraloutcometypecode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">SS<a name=\"referraloutcometypecode-cs-SS\"> </a></td><td>Slutsvar på remissfråga</td><td>Slutsvar på remissfråga</td></tr><tr><td style=\"white-space:nowrap\">SR<a name=\"referraloutcometypecode-cs-SR\"> </a></td><td>Svar på remissfråga</td><td>Svar på remissfråga</td></tr></table></div>"^^rdf:XMLLiteral ]
   ] ; # 
   fhir:url [ fhir:v "https://fhir.inera.se/CodeSystem/referraloutcometypecode"^^xsd:anyURI] ; # 
-  fhir:version [ fhir:v "0.3.2"] ; # 
+  fhir:version [ fhir:v "0.3.3"] ; # 
   fhir:name [ fhir:v "ReferralOutcomeTypeCodeCS"] ; # 
   fhir:title [ fhir:v "ReferralOutcomeTypeCode"] ; # 
   fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2026-06-25T06:56:03+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-25T07:52:35+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Inera AB"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Inera AB" ] ;

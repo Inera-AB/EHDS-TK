@@ -1,4 +1,4 @@
-# Källsystem för vaccinationsregistrering - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# Källsystem för vaccinationsregistrering - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-registration-device | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-registration-device | *Version*:0.3.3 |
 | Draft as of 2026-06-25 | *Computable Name*:ImmunizationRegistrationDevice |
 
 Referens till den Device-resurs som beskriver källsystemet varifrån vaccinationsregistreringen härstammar (registrationRecord.sourceSystemName/productName/productVersion/sourceSystemContact).
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-immunization-registr
   "resourceType" : "StructureDefinition",
   "id" : "immunization-registration-device",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-registration-device",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "ImmunizationRegistrationDevice",
   "title" : "Källsystem för vaccinationsregistrering",
   "status" : "draft",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

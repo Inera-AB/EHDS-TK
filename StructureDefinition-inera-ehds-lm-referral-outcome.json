@@ -10,11 +10,11 @@
     "valueCode" : "can-be-target"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-referral-outcome",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "IneraEHDSLMReferralOutcome",
   "title" : "GetReferralOutcome",
   "status" : "draft",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# SexCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# SexCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs | *Version*:0.3.3 |
 | Active as of 2026-06-25 | *Computable Name*:SexCodeVS |
 
  
@@ -46,11 +46,11 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "sexcode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "SexCodeVS",
   "title" : "SexCode — ValueSet",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

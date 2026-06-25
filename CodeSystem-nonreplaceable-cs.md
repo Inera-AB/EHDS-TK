@@ -1,4 +1,4 @@
-# NonReplaceable - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# NonReplaceable - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome | *Version*:0.3.3 |
 | Active as of 2026-06-25 | *Computable Name*:NonReplaceableCS |
 
  
@@ -27,11 +27,11 @@ Kodverk för aktör som har angett att ett läkemedel inte är utbytbart i GetMe
   "resourceType" : "CodeSystem",
   "id" : "nonreplaceable-cs",
   "url" : "https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "NonReplaceableCS",
   "title" : "NonReplaceable",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

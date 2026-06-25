@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem assessmentcategory-cs</b></p><a name=\"assessmentcategory-cs\"> </a><a name=\"hcassessmentcategory-cs\"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">pad-pad<a name=\"assessmentcategory-cs-pad-pad\"> </a></td><td>PADL-bedömning</td></tr><tr><td style=\"white-space:nowrap\">fun-fun<a name=\"assessmentcategory-cs-fun-fun\"> </a></td><td>Funktionsnedsättningsbedömning</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "AssessmentCategoryCS",
   "title" : "AssessmentCategory",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

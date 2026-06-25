@@ -1,4 +1,4 @@
-# ResultCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# ResultCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/resultcode-vs | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/resultcode-vs | *Version*:0.3.3 |
 | Active as of 2026-06-25 | *Computable Name*:ResultCodeVS |
 
  
@@ -47,11 +47,11 @@ Tillåtna värden för resultCode i svar.
   "resourceType" : "ValueSet",
   "id" : "resultcode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/resultcode-vs",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "ResultCodeVS",
   "title" : "ResultCode — ValueSet",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

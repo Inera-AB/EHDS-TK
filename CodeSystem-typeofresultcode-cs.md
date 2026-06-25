@@ -1,4 +1,4 @@
-# TypeOfResultCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# TypeOfResultCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/typeofresultcode | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/CodeSystem/typeofresultcode | *Version*:0.3.3 |
 | Active as of 2026-06-25 | *Computable Name*:TypeOfResultCodeCS |
 
  
@@ -27,11 +27,11 @@ Kodverk för typ av resultat (TypeOfResultCodeEnum). Används i GetImagingOutcom
   "resourceType" : "CodeSystem",
   "id" : "typeofresultcode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/typeofresultcode",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "TypeOfResultCodeCS",
   "title" : "TypeOfResultCode",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,6 +1,6 @@
 {
   "package": "inera.ehds.tk",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "fhirVersion": "4.0.1",
   "jurisdiction": "SE",
   "extensions": [

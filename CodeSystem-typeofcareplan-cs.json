@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem typeofcareplan-cs</b></p><a name=\"typeofcareplan-cs\"> </a><a name=\"hctypeofcareplan-cs\"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/CodeSystem/typeofcareplan-cs</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">SIP<a name=\"typeofcareplan-cs-SIP\"> </a></td><td>Samordnad individuell plan</td></tr><tr><td style=\"white-space:nowrap\">SPLPTLRV<a name=\"typeofcareplan-cs-SPLPTLRV\"> </a></td><td>Samordnad plan enligt LPT och LRV</td></tr><tr><td style=\"white-space:nowrap\">SPU<a name=\"typeofcareplan-cs-SPU\"> </a></td><td>Samordnad plan vid utskrivning</td></tr><tr><td style=\"white-space:nowrap\">VP<a name=\"typeofcareplan-cs-VP\"> </a></td><td>Vårdplan</td></tr><tr><td style=\"white-space:nowrap\">HP<a name=\"typeofcareplan-cs-HP\"> </a></td><td>Habiliteringsplan</td></tr><tr><td style=\"white-space:nowrap\">RP<a name=\"typeofcareplan-cs-RP\"> </a></td><td>Rehabiliteringsplan</td></tr><tr><td style=\"white-space:nowrap\">GP<a name=\"typeofcareplan-cs-GP\"> </a></td><td>Genomförandeplan</td></tr><tr><td style=\"white-space:nowrap\">SVP<a name=\"typeofcareplan-cs-SVP\"> </a></td><td>Standardiserad vårdplan</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/CodeSystem/typeofcareplan-cs",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "TypeOfCarePlanCS",
   "title" : "TypeOfCarePlan",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

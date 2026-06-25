@@ -1,4 +1,4 @@
-# Kommentar om vårdbegränsning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# Kommentar om vårdbegränsning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-restriction-of-care-comment | *Version*:0.3.2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-restriction-of-care-comment | *Version*:0.3.3 |
 | Draft as of 2026-06-25 | *Computable Name*:AlertRestrictionOfCareComment |
 
 Information om uppmärksammat förhållande som inte avser överkänslighet, sjukdom eller behandling (alertInformationBody.restrictionOfCare.restrictionOfCareComment).
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-restriction-of
   "resourceType" : "StructureDefinition",
   "id" : "alert-restriction-of-care-comment",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-restriction-of-care-comment",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "AlertRestrictionOfCareComment",
   "title" : "Kommentar om vårdbegränsning",
   "status" : "draft",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

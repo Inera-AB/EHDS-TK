@@ -1,4 +1,4 @@
-# KV Anteckningstyp - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
+# KV Anteckningstyp - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:urn:oid:1.2.752.129.2.2.2.11 | *Version*:0.3.2 |
+| *Official URL*:urn:oid:1.2.752.129.2.2.2.11 | *Version*:0.3.3 |
 | Active as of 2026-06-25 | *Computable Name*:ClinicalDocumentNoteCodeCS |
 
  
@@ -27,11 +27,11 @@ Kodverk för typ av journalanteckning enligt KV Anteckningstyp. OID: 1.2.752.129
   "resourceType" : "CodeSystem",
   "id" : "clinicaldocumentnotecode-cs",
   "url" : "urn:oid:1.2.752.129.2.2.2.11",
-  "version" : "0.3.2",
+  "version" : "0.3.3",
   "name" : "ClinicalDocumentNoteCodeCS",
   "title" : "KV Anteckningstyp",
   "status" : "active",
-  "date" : "2026-06-25T06:56:03+00:00",
+  "date" : "2026-06-25T07:52:35+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

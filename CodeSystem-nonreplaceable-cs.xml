@@ -6,11 +6,11 @@
     <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: CodeSystem nonreplaceable-cs</b></p><a name="nonreplaceable-cs"> </a><a name="hcnonreplaceable-cs"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome</code> definierar följande koder:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">Prescriber<a name="nonreplaceable-cs-Prescriber"> </a></td><td>Förskrivare</td><td>Förskrivaren har angett att läkemedlet inte är utbytbart</td></tr><tr><td style="white-space:nowrap">Patient<a name="nonreplaceable-cs-Patient"> </a></td><td>Patient</td><td>Patienten har begärt att läkemedlet inte ska bytas ut</td></tr></table></div>
   </text>
   <url value="https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome"/>
-  <version value="0.3.2"/>
+  <version value="0.3.3"/>
   <name value="NonReplaceableCS"/>
   <title value="NonReplaceable"/>
   <status value="active"/>
-  <date value="2026-06-25T06:56:03+00:00"/>
+  <date value="2026-06-25T07:52:35+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

@@ -6,11 +6,11 @@
     <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: CodeSystem examinationstatuscode-cs</b></p><a name="examinationstatuscode-cs"> </a><a name="hcexaminationstatuscode-cs"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/examinationstatuscode</code> definierar följande koder:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">Initierad<a name="examinationstatuscode-cs-Initierad"> </a></td><td>Initierad</td><td>Undersökning initierad</td></tr><tr><td style="white-space:nowrap">Planerad<a name="examinationstatuscode-cs-Planerad"> </a></td><td>Planerad (bevakad)</td><td>Undersökning planerad</td></tr><tr><td style="white-space:nowrap">Tidbokad<a name="examinationstatuscode-cs-Tidbokad"> </a></td><td>Tidbokad</td><td>Undersökning tidbokad</td></tr><tr><td style="white-space:nowrap">Uppskjuten<a name="examinationstatuscode-cs-Uppskjuten"> </a></td><td>Uppskjuten</td><td>Undersökning uppskjuten</td></tr><tr><td style="white-space:nowrap">Annullerad<a name="examinationstatuscode-cs-Annullerad"> </a></td><td>Annullerad</td><td>Undersökning annullerad</td></tr><tr><td style="white-space:nowrap">Pagaende<a name="examinationstatuscode-cs-Pagaende"> </a></td><td>Pågående</td><td>Undersökning pågående</td></tr><tr><td style="white-space:nowrap">Avvakta<a name="examinationstatuscode-cs-Avvakta"> </a></td><td>Avvakta</td><td>Undersökning avvakta</td></tr><tr><td style="white-space:nowrap">Avbruten<a name="examinationstatuscode-cs-Avbruten"> </a></td><td>Avbruten</td><td>Undersökning avbruten</td></tr><tr><td style="white-space:nowrap">Avklarad<a name="examinationstatuscode-cs-Avklarad"> </a></td><td>Avklarad</td><td>Undersökning avklarad</td></tr><tr><td style="white-space:nowrap">Inaktuell<a name="examinationstatuscode-cs-Inaktuell"> </a></td><td>Inaktuell</td><td>Undersökning inaktuell</td></tr><tr><td style="white-space:nowrap">Makulerad<a name="examinationstatuscode-cs-Makulerad"> </a></td><td>Makulerad</td><td>Undersökning makulerad</td></tr></table></div>
   </text>
   <url value="https://fhir.inera.se/CodeSystem/examinationstatuscode"/>
-  <version value="0.3.2"/>
+  <version value="0.3.3"/>
   <name value="ExaminationStatusCodeCS"/>
   <title value="ExaminationStatusCode"/>
   <status value="active"/>
-  <date value="2026-06-25T06:56:03+00:00"/>
+  <date value="2026-06-25T07:52:35+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
