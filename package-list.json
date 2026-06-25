@@ -10,7 +10,7 @@
     {
       "version": "current",
       "desc": "Continuous Integration Build \u2014 latest commit on main branch",
-      "path": "https://oskthu2.github.io/ehds-tk/branches/main",
+      "path": "https://inera-ab.github.io/ehds-tk",
       "status": "ci-build",
       "current": true
     },
@@ -18,6 +18,17 @@
       "version": "0.3.1",
       "desc": "Release 0.3.1 (2026-06-24)",
       "path": "https://fhir.inera.se/ig/ehds-tk/0.3.1",
+      "status": "draft",
+      "sequence": "STU 1",
+      "fhirversion": [
+        "4.0.1"
+      ],
+      "current": false
+    },
+    {
+      "version": "0.3.2",
+      "desc": "Release 0.3.2 (2026-06-25)",
+      "path": "https://fhir.inera.se/ig/ehds-tk/0.3.2",
       "status": "draft",
       "sequence": "STU 1",
       "fhirversion": [
