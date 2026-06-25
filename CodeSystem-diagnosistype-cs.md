@@ -1,4 +1,4 @@
-# DiagnosisType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# DiagnosisType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs | *Version*:0.3.1 |
-| Active as of 2026-06-24 | *Computable Name*:DiagnosisTypeCS |
+| *Official URL*:https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs | *Version*:0.3.2 |
+| Active as of 2026-06-25 | *Computable Name*:DiagnosisTypeCS |
 
  
 Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen. 
@@ -27,11 +27,11 @@ Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för
   "resourceType" : "CodeSystem",
   "id" : "diagnosistype-cs",
   "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "DiagnosisTypeCS",
   "title" : "DiagnosisType",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

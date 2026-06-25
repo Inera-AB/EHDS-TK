@@ -14,11 +14,11 @@
      fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem deliverycode-cs</b></p><a name=\"deliverycode-cs\"> </a><a name=\"hcdeliverycode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/deliverycode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">0<a name=\"deliverycode-cs-0\"> </a></td><td>Ej angivet</td><td>Förlossningssätt ej angivet</td></tr><tr><td style=\"white-space:nowrap\">1<a name=\"deliverycode-cs-1\"> </a></td><td>X-gravid</td><td>X-gravid</td></tr><tr><td style=\"white-space:nowrap\">2<a name=\"deliverycode-cs-2\"> </a></td><td>Spontan abort</td><td>Spontan abort</td></tr><tr><td style=\"white-space:nowrap\">4<a name=\"deliverycode-cs-4\"> </a></td><td>Dödfött</td><td>Dödfött barn</td></tr><tr><td style=\"white-space:nowrap\">5<a name=\"deliverycode-cs-5\"> </a></td><td>Levande fött</td><td>Levande fött barn</td></tr></table></div>"^^rdf:XMLLiteral ]
   ] ; # 
   fhir:url [ fhir:v "https://fhir.inera.se/CodeSystem/deliverycode"^^xsd:anyURI] ; # 
-  fhir:version [ fhir:v "0.3.1"] ; # 
+  fhir:version [ fhir:v "0.3.2"] ; # 
   fhir:name [ fhir:v "DeliveryCodeCS"] ; # 
   fhir:title [ fhir:v "DeliveryCode"] ; # 
   fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2026-06-24T18:50:27+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-25T06:56:03+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Inera AB"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Inera AB" ] ;

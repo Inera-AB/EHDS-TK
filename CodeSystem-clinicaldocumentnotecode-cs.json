@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem clinicaldocumentnotecode-cs</b></p><a name=\"clinicaldocumentnotecode-cs\"> </a><a name=\"hcclinicaldocumentnotecode-cs\"> </a><p>Detta  kodsystem <code>urn:oid:1.2.752.129.2.2.2.11</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">utr<a name=\"clinicaldocumentnotecode-cs-utr\"> </a></td><td>Utredning</td></tr><tr><td style=\"white-space:nowrap\">atb<a name=\"clinicaldocumentnotecode-cs-atb\"> </a></td><td>Åtgärd/Behandling</td></tr><tr><td style=\"white-space:nowrap\">sam<a name=\"clinicaldocumentnotecode-cs-sam\"> </a></td><td>Sammanfattning</td></tr><tr><td style=\"white-space:nowrap\">sao<a name=\"clinicaldocumentnotecode-cs-sao\"> </a></td><td>Samordning</td></tr><tr><td style=\"white-space:nowrap\">ins<a name=\"clinicaldocumentnotecode-cs-ins\"> </a></td><td>Inskrivning</td></tr><tr><td style=\"white-space:nowrap\">slu<a name=\"clinicaldocumentnotecode-cs-slu\"> </a></td><td>Slutanteckning</td></tr><tr><td style=\"white-space:nowrap\">auf<a name=\"clinicaldocumentnotecode-cs-auf\"> </a></td><td>Anteckning utan fysiskt möte</td></tr><tr><td style=\"white-space:nowrap\">sva<a name=\"clinicaldocumentnotecode-cs-sva\"> </a></td><td>Slutenvårdsanteckning</td></tr><tr><td style=\"white-space:nowrap\">bes<a name=\"clinicaldocumentnotecode-cs-bes\"> </a></td><td>Besöksanteckning</td></tr></table></div>"
   },
   "url" : "urn:oid:1.2.752.129.2.2.2.11",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "ClinicalDocumentNoteCodeCS",
   "title" : "KV Anteckningstyp",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

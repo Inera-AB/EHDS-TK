@@ -1,4 +1,4 @@
-# TypeOfPrescription — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# TypeOfPrescription — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofprescription-vs | *Version*:0.3.1 |
-| Active as of 2026-06-24 | *Computable Name*:TypeOfPrescriptionVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofprescription-vs | *Version*:0.3.2 |
+| Active as of 2026-06-25 | *Computable Name*:TypeOfPrescriptionVS |
 
  
 Tillåtna värden för typeOfPrescription i GetMedicationHistory. 
@@ -46,11 +46,11 @@ Tillåtna värden för typeOfPrescription i GetMedicationHistory.
   "resourceType" : "ValueSet",
   "id" : "typeofprescription-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofprescription-vs",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "TypeOfPrescriptionVS",
   "title" : "TypeOfPrescription — ValueSet",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# PrescriptionStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# PrescriptionStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/prescriptionstatus | *Version*:0.3.1 |
-| Active as of 2026-06-24 | *Computable Name*:PrescriptionStatusCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/prescriptionstatus | *Version*:0.3.2 |
+| Active as of 2026-06-25 | *Computable Name*:PrescriptionStatusCS |
 
  
 Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination är aktiv eller inaktiv. 
@@ -27,11 +27,11 @@ Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination ä
   "resourceType" : "CodeSystem",
   "id" : "prescriptionstatus-cs",
   "url" : "https://fhir.inera.se/CodeSystem/prescriptionstatus",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "PrescriptionStatusCS",
   "title" : "PrescriptionStatus",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

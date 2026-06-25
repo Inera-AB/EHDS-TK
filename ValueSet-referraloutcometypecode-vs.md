@@ -1,4 +1,4 @@
-# ReferralOutcomeTypeCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# ReferralOutcomeTypeCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/referraloutcometypecode-vs | *Version*:0.3.1 |
-| Active as of 2026-06-24 | *Computable Name*:ReferralOutcomeTypeCodeVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/referraloutcometypecode-vs | *Version*:0.3.2 |
+| Active as of 2026-06-25 | *Computable Name*:ReferralOutcomeTypeCodeVS |
 
  
 Tillåtna värden för referralOutcomeTypeCode i GetReferralOutcome. 
@@ -46,11 +46,11 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "referraloutcometypecode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/referraloutcometypecode-vs",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "ReferralOutcomeTypeCodeVS",
   "title" : "ReferralOutcomeTypeCode — ValueSet",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

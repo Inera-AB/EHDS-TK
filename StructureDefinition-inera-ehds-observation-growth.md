@@ -1,4 +1,4 @@
-# SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-growth | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSObservationGrowth |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-growth | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSObservationGrowth |
 
  
 Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad graviditetslängd) för barn och ungdom, baserad på: 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-observati
   "resourceType" : "StructureDefinition",
   "id" : "inera-ehds-observation-growth",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-growth",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSObservationGrowth",
   "title" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

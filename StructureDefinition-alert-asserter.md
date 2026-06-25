@@ -1,4 +1,4 @@
-# Juridisk äkthetsintygsgivare för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# Juridisk äkthetsintygsgivare för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserter | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:AlertAsserter |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserter | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:AlertAsserter |
 
 HSA-id för juridisk äkthetsintygsgivare (alertInformationHeader.legalAuthenticator.legalAuthenticatorHSAId).
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-asserter.csv),
   "resourceType" : "StructureDefinition",
   "id" : "alert-asserter",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserter",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "AlertAsserter",
   "title" : "Juridisk äkthetsintygsgivare för uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

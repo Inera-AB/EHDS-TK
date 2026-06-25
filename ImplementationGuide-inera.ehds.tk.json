@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ImplementationGuide inera.ehds.tk</b></p><a name=\"inera.ehds.tk\"> </a><a name=\"hcinera.ehds.tk\"> </a><h2>IneraEHDSTK</h2><p>Den officiella URL:en för denna implementationsguide är: </p><pre>https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk</pre><div><p>FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för att informationsförsörja NPÖ och 1177 Journal.</p>\n</div></div>"
   },
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

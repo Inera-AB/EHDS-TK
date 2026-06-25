@@ -1,4 +1,4 @@
-# TypeOfLeaveCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# TypeOfLeaveCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/typeofleavecode | *Version*:0.3.1 |
-| Active as of 2026-06-24 | *Computable Name*:TypeOfLeaveCodeCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/typeofleavecode | *Version*:0.3.2 |
+| Active as of 2026-06-25 | *Computable Name*:TypeOfLeaveCodeCS |
 
  
 Kodverk för typ av ledighet (TypeOfLeaveCodeEnum). Används i GetMaternityMedicalHistory. 
@@ -27,11 +27,11 @@ Kodverk för typ av ledighet (TypeOfLeaveCodeEnum). Används i GetMaternityMedic
   "resourceType" : "CodeSystem",
   "id" : "typeofleavecode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/typeofleavecode",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "TypeOfLeaveCodeCS",
   "title" : "TypeOfLeaveCode",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

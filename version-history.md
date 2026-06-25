@@ -1,4 +1,4 @@
-# Version History - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# Version History - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * **Version History**
@@ -13,6 +13,8 @@ This page records changes between published versions of this Implementation Guid
 
 | | | | |
 | :--- | :--- | :--- | :--- |
+| 0.3.2 | 2026-06-25 | Draft | Re-release to correct deployment pipeline and publishing paths. |
+| 0.3.1 | 2026-06-24 | Draft | First published release. |
 | 0.1.0 | 2026-06-16 | Draft | Initial template version. |
 
 -------

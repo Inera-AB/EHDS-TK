@@ -1,4 +1,4 @@
-# Sökparametrar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# Sökparametrar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * **Sökparametrar**

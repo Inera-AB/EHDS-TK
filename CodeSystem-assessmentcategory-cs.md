@@ -1,4 +1,4 @@
-# AssessmentCategory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# AssessmentCategory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs | *Version*:0.3.1 |
-| Active as of 2026-06-24 | *Computable Name*:AssessmentCategoryCS |
+| *Official URL*:https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs | *Version*:0.3.2 |
+| Active as of 2026-06-25 | *Computable Name*:AssessmentCategoryCS |
 
  
 Bedömningskategori för funktionsstatus. Tillåtna värden är 'pad-pad' (PADL-bedömning) och 'fun-fun' (funktionsnedsättningsbedömning). Definierat i enum XSD v2.1 för domänen. 
@@ -27,11 +27,11 @@ Bedömningskategori för funktionsstatus. Tillåtna värden är 'pad-pad' (PADL-
   "resourceType" : "CodeSystem",
   "id" : "assessmentcategory-cs",
   "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "AssessmentCategoryCS",
   "title" : "AssessmentCategory",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

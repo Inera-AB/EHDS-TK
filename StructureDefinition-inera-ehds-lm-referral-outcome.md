@@ -1,4 +1,4 @@
-# GetReferralOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# GetReferralOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-referral-outcome | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSLMReferralOutcome |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-referral-outcome | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSLMReferralOutcome |
 
  
 Logisk modell för tjänstekontraktet GetReferralOutcome (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcome:3). Representerar responsens informationsstruktur — svar på konsultationsremiss och begäran om övertagande av vårdansvar. Meddelandeformatet är kompatibelt med HL7v3 CDA v.2. 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-referr
     "valueCode" : "can-be-target"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-referral-outcome",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSLMReferralOutcome",
   "title" : "GetReferralOutcome",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

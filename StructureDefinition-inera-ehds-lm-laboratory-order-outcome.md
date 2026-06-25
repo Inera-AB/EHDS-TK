@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# GetLaboratoryOrderOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-laboratory-order-outcome | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSLMLaboratoryOrderOutcome |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-laboratory-order-outcome | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSLMLaboratoryOrderOutcome |
 
  
 Logisk modell för tjänstekontraktet GetLaboratoryOrderOutcome (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcome:4). Representerar responsens informationsstruktur — multidisciplinära laboratoriesvar för en patient. 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-labora
     "valueCode" : "can-be-target"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-laboratory-order-outcome",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSLMLaboratoryOrderOutcome",
   "title" : "GetLaboratoryOrderOutcome",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

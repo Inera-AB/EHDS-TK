@@ -1,4 +1,4 @@
-# GetMaternityMedicalHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# GetMaternityMedicalHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-maternity-medical-history | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSLMMaternityMedicalHistory |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-maternity-medical-history | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSLMMaternityMedicalHistory |
 
  
 Logisk modell för tjänstekontraktet GetMaternityMedicalHistory (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetMaternityMedicalHistory:2). Representerar responsens informationsstruktur — mödravårdsjournal för en patient. 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-matern
     "valueCode" : "can-be-target"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-maternity-medical-history",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSLMMaternityMedicalHistory",
   "title" : "GetMaternityMedicalHistory",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

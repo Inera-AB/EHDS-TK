@@ -1,4 +1,4 @@
-# SE EHDS Provenance - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# SE EHDS Provenance - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-provenance | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSProvenance |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-provenance | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSProvenance |
 
  
 Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance med två agenter som speglar spärr-hierarkin enligt PDL: 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-provenanc
   "resourceType" : "StructureDefinition",
   "id" : "inera-ehds-provenance",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-provenance",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSProvenance",
   "title" : "SE EHDS Provenance",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

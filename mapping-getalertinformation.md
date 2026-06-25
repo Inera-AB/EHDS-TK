@@ -1,4 +1,4 @@
-# GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * **GetAlertInformation – Uppmärksamhetsinformation**

@@ -1,4 +1,4 @@
-# Introduction - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# Introduction - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * **Introduction**
@@ -7,8 +7,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSTK |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSTK |
 
 # Introduktion
 
@@ -108,11 +108,11 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "resourceType" : "ImplementationGuide",
   "id" : "inera.ehds.tk",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

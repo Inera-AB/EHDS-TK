@@ -1,4 +1,4 @@
-# GetObservations – observationStatus (SNOMED CT) → FHIR ObservationStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# GetObservations – observationStatus (SNOMED CT) → FHIR ObservationStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ConceptMap/observation-status-map | *Version*:0.3.1 |
+| *Official URL*:https://fhir.inera.se/ConceptMap/observation-status-map | *Version*:0.3.2 |
 | Active as of 2025-01-01 | *Computable Name*:ObservationStatusMap |
 
  
@@ -23,7 +23,7 @@ Mappar SNOMED CT-koder från urvals-id 56431000052106 till FHIR ObservationStatu
   "resourceType" : "ConceptMap",
   "id" : "observation-status-map",
   "url" : "https://fhir.inera.se/ConceptMap/observation-status-map",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "ObservationStatusMap",
   "title" : "GetObservations observationStatus → FHIR ObservationStatus",
   "status" : "active",

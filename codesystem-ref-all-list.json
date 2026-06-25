@@ -9,11 +9,11 @@
     "oids" : ["1.2.840.10008.2.16.4"],
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
-    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
     "http://hl7.org/fhir/R4/valueset-dicm-405-mediatype.html" : "Media Type Code",
+    "http://hl7.org/fhir/R4/valueset-audit-event-type.html" : "Audit Event ID",
     "http://hl7.org/fhir/R4/valueset-audit-event-sub-type.html" : "Audit Event Sub-Type",
-    "http://hl7.org/fhir/R4/valueset-audit-event-type.html" : "Audit Event ID"
+    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
+    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType"
   },
   {
     "url" : "http://hl7.org/fhir/CodeSystem/medication-statement-status",
@@ -337,8 +337,8 @@
     "oids" : ["2.16.840.1.113883.4.642.4.401"],
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-observation-status.html" : "ObservationStatus",
-    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus"
+    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus",
+    "http://hl7.org/fhir/R4/valueset-observation-status.html" : "ObservationStatus"
   },
   {
     "url" : "http://hl7.org/fhir/provenance-entity-role",
@@ -386,9 +386,9 @@
     "oids" : ["2.16.840.1.113883.4.642.4.114"],
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-task-intent.html" : "TaskIntent",
     "http://hl7.org/fhir/R4/valueset-care-plan-intent.html" : "Care Plan Intent",
-    "http://hl7.org/fhir/R4/valueset-request-intent.html" : "RequestIntent"
+    "http://hl7.org/fhir/R4/valueset-request-intent.html" : "RequestIntent",
+    "http://hl7.org/fhir/R4/valueset-task-intent.html" : "TaskIntent"
   },
   {
     "url" : "http://hl7.org/fhir/request-priority",
@@ -423,9 +423,9 @@
     "description" : "One of the resource types defined as part of this version of FHIR.",
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-care-plan-activity-kind.html" : "Care Plan Activity Kind",
     "http://hl7.org/fhir/R4/valueset-audit-entity-type.html" : "Audit event entity type",
-    "http://hl7.org/fhir/R4/valueset-resource-types.html" : "ResourceType"
+    "http://hl7.org/fhir/R4/valueset-resource-types.html" : "ResourceType",
+    "http://hl7.org/fhir/R4/valueset-care-plan-activity-kind.html" : "Care Plan Activity Kind"
   },
   {
     "url" : "http://hl7.org/fhir/restful-interaction",
@@ -484,13 +484,13 @@
     "oids" : ["2.16.840.1.113883.6.1"],
     "uses" : {
     },
-    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-results-radiology-observations-uv-ips.html" : "Results Radiology Observation - IPS",
-    "http://hl7.org/fhir/R4/valueset-c80-doc-typecodes.html" : "Document Type Value Set",
     "http://hl7.org/fhir/R4/valueset-document-classcodes.html" : "Document Class Value Set",
     "http://hl7.org/fhir/uv/ips/STU1.1/ValueSet-results-laboratory-observations-uv-ips.html" : "Results Laboratory Observation - IPS",
-    "http://hl7.org/fhir/R4/valueset-observation-codes.html" : "LOINC Codes",
+    "http://hl7.org/fhir/R4/valueset-report-codes.html" : "LOINC Diagnostic Report Codes",
     "http://hl7.org/fhir/uv/ips/STU2/ValueSet-problem-type-loinc.html" : "Problem Type (LOINC)",
-    "http://hl7.org/fhir/R4/valueset-report-codes.html" : "LOINC Diagnostic Report Codes"
+    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-results-radiology-observations-uv-ips.html" : "Results Radiology Observation - IPS",
+    "http://hl7.org/fhir/R4/valueset-c80-doc-typecodes.html" : "Document Type Value Set",
+    "http://hl7.org/fhir/R4/valueset-observation-codes.html" : "LOINC Codes"
   },
   {
     "url" : "http://snomed.info/sct",
@@ -502,50 +502,50 @@
     "oids" : ["2.16.840.1.113883.6.96"],
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-referencerange-appliesto.html" : "Observation Reference Range Applies To Codes",
-    "http://hl7.org/fhir/R4/valueset-condition-code.html" : "Condition/Problem/Diagnosis Codes",
-    "http://hl7.org/fhir/R4/valueset-condition-stage-type.html" : "Condition Stage Type",
-    "http://hl7.org/fhir/R4/valueset-reason-medication-status-codes.html" : "SNOMED CT Drug Therapy Status codes ",
-    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-medication-uv-ips.html" : "Medications - IPS",
-    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-problems-uv-ips.html" : "Problems - IPS",
     "http://hl7.org/fhir/uv/ips/STU1.1/ValueSet-results-blood-group-snomed-ct-ips-free-set.html" : "Results Blood Group - SNOMED CT IPS Free Set",
-    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-vaccines-uv-ips.html" : "Vaccines - IPS",
-    "http://hl7.org/fhir/R4/valueset-administration-method-codes.html" : "SNOMED CT Administration Method Codes",
-    "http://hl7.org/fhir/uv/ips/STU1.1/ValueSet-results-microorganism-snomed-ct-ips-free-set.html" : "Results Microorganism - SNOMED CT IPS Free Set",
-    "http://hl7.org/fhir/R4/valueset-c80-practice-codes.html" : "Practice Setting Code Value Set",
-    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-allergies-intolerances-uv-ips.html" : "Allergies & Intolerances - IPS",
-    "http://hl7.org/fhir/R4/valueset-servicerequest-orderdetail.html" : "Service Request Order Details Codes",
-    "http://hl7.org/fhir/R4/valueset-flag-code.html" : "Flag Code",
-    "http://hl7.org/fhir/R4/valueset-performer-role.html" : "Procedure Performer Role Codes",
-    "http://hl7.org/fhir/R4/valueset-condition-stage.html" : "Condition Stage",
-    "http://hl7.org/fhir/R4/valueset-body-site.html" : "SNOMED CT Body Structures",
-    "http://hl7.org/fhir/R4/valueset-procedure-reason.html" : "Procedure Reason Codes",
-    "http://hl7.org/fhir/R4/valueset-immunization-reason.html" : "Immunization Reason Codes",
-    "http://hl7.org/fhir/R4/valueset-observation-methods.html" : "Observation Methods",
-    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus",
-    "http://hl7.org/fhir/R4/valueset-participant-role.html" : "Participant Roles",
-    "http://hl7.org/fhir/R4/valueset-bodysite-laterality.html" : "Laterality",
-    "http://hl7.org/fhir/R4/valueset-medication-codes.html" : "SNOMED CT Medication Codes",
-    "http://hl7.org/fhir/R4/valueset-device-type.html" : "Device Type",
-    "http://hl7.org/fhir/R4/valueset-procedure-code.html" : "Procedure Codes (SNOMED CT)",
-    "http://hl7.org/fhir/R4/valueset-approach-site-codes.html" : "SNOMED CT Anatomical Structure for Administration Site Codes",
+    "http://hl7.org/fhir/R4/valueset-condition-stage-type.html" : "Condition Stage Type",
+    "http://hl7.org/fhir/R4/valueset-servicerequest-category.html" : "Service Request Category Codes",
     "http://hl7.org/fhir/uv/ips/STU2/ValueSet-target-diseases-uv-ips.html" : "Vaccine Target Diseases - IPS",
-    "ValueSet-growth-observation-type-vs.html" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
-    "http://hl7.org/fhir/R4/valueset-substance-code.html" : "Substance Code",
-    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)",
-    "http://hl7.org/fhir/R4/valueset-route-codes.html" : "SNOMED CT Route Codes",
     "http://hl7.org/fhir/R4/valueset-clinical-findings.html" : "SNOMED CT Clinical Findings",
+    "http://hl7.org/fhir/R4/valueset-device-type.html" : "Device Type",
+    "http://hl7.org/fhir/R4/valueset-care-plan-activity-outcome.html" : "Care Plan Activity Outcome",
+    "http://hl7.org/fhir/R4/valueset-flag-code.html" : "Flag Code",
+    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-medication-uv-ips.html" : "Medications - IPS",
+    "http://hl7.org/fhir/R4/valueset-medication-as-needed-reason.html" : "SNOMED CT Medication As Needed Reason Codes",
+    "http://hl7.org/fhir/R4/valueset-encounter-reason.html" : "Encounter Reason Codes",
+    "http://hl7.org/fhir/R4/valueset-reason-medication-status-codes.html" : "SNOMED CT Drug Therapy Status codes ",
+    "http://hl7.org/fhir/R4/valueset-procedure-code.html" : "Procedure Codes (SNOMED CT)",
+    "http://hl7.org/fhir/R4/valueset-condition-severity.html" : "Condition/Diagnosis Severity",
+    "http://hl7.org/fhir/uv/ips/STU1.1/ValueSet-results-presence-absence-snomed-ct-ips-free-set.html" : "Results Presence Absence - SNOMED CT IPS Free Set",
+    "http://hl7.org/fhir/uv/ips/STU1.1/ValueSet-results-microorganism-snomed-ct-ips-free-set.html" : "Results Microorganism - SNOMED CT IPS Free Set",
+    "http://hl7.org/fhir/R4/valueset-referencerange-appliesto.html" : "Observation Reference Range Applies To Codes",
+    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus",
+    "http://hl7.org/fhir/R4/valueset-servicerequest-orderdetail.html" : "Service Request Order Details Codes",
+    "http://hl7.org/fhir/R4/valueset-c80-facilitycodes.html" : "Facility Type Code Value Set",
+    "http://hl7.org/fhir/R4/valueset-condition-stage.html" : "Condition Stage",
+    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-allergies-intolerances-uv-ips.html" : "Allergies & Intolerances - IPS",
+    "http://hl7.org/fhir/R4/valueset-approach-site-codes.html" : "SNOMED CT Anatomical Structure for Administration Site Codes",
+    "http://hl7.org/fhir/R4/valueset-c80-practice-codes.html" : "Practice Setting Code Value Set",
+    "http://hl7.org/fhir/R4/valueset-immunization-reason.html" : "Immunization Reason Codes",
+    "http://hl7.org/fhir/R4/valueset-body-site.html" : "SNOMED CT Body Structures",
+    "http://hl7.org/fhir/R4/valueset-route-codes.html" : "SNOMED CT Route Codes",
+    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-vaccines-uv-ips.html" : "Vaccines - IPS",
+    "http://hl7.org/fhir/R4/valueset-substance-code.html" : "Substance Code",
+    "http://hl7.org/fhir/R4/valueset-performer-role.html" : "Procedure Performer Role Codes",
+    "ValueSet-growth-observation-type-vs.html" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
+    "http://hl7.org/fhir/R4/valueset-administration-method-codes.html" : "SNOMED CT Administration Method Codes",
+    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)",
+    "http://hl7.org/fhir/R4/valueset-manifestation-or-symptom.html" : "Manifestation and Symptom Codes",
+    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-allergy-reaction-uv-ips.html" : "Allergy Reaction - IPS",
+    "http://hl7.org/fhir/R4/valueset-observation-methods.html" : "Observation Methods",
+    "http://hl7.org/fhir/R4/valueset-medication-codes.html" : "SNOMED CT Medication Codes",
+    "http://hl7.org/fhir/R4/valueset-procedure-reason.html" : "Procedure Reason Codes",
+    "http://hl7.org/fhir/R4/valueset-bodysite-laterality.html" : "Laterality",
     "http://hl7.org/fhir/R4/valueset-immunization-status-reason.html" : "Immunization Status Reason Codes",
     "http://hl7.org/fhir/R4/valueset-additional-instruction-codes.html" : "SNOMED CT Additional Dosage Instructions",
-    "http://hl7.org/fhir/R4/valueset-medication-as-needed-reason.html" : "SNOMED CT Medication As Needed Reason Codes",
-    "http://hl7.org/fhir/R4/valueset-servicerequest-category.html" : "Service Request Category Codes",
-    "http://hl7.org/fhir/R4/valueset-care-plan-activity-outcome.html" : "Care Plan Activity Outcome",
-    "http://hl7.org/fhir/R4/valueset-c80-facilitycodes.html" : "Facility Type Code Value Set",
-    "http://hl7.org/fhir/uv/ips/STU1.1/ValueSet-results-presence-absence-snomed-ct-ips-free-set.html" : "Results Presence Absence - SNOMED CT IPS Free Set",
-    "http://hl7.org/fhir/R4/valueset-encounter-reason.html" : "Encounter Reason Codes",
-    "http://hl7.org/fhir/R4/valueset-condition-severity.html" : "Condition/Diagnosis Severity",
-    "http://hl7.org/fhir/R4/valueset-manifestation-or-symptom.html" : "Manifestation and Symptom Codes",
-    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-allergy-reaction-uv-ips.html" : "Allergy Reaction - IPS"
+    "http://hl7.org/fhir/uv/ips/STU2/ValueSet-problems-uv-ips.html" : "Problems - IPS",
+    "http://hl7.org/fhir/R4/valueset-condition-code.html" : "Condition/Problem/Diagnosis Codes",
+    "http://hl7.org/fhir/R4/valueset-participant-role.html" : "Participant Roles"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/admit-source",
@@ -677,8 +677,8 @@
     "oids" : ["2.16.840.1.113883.4.642.1.1201"],
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
-    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType"
+    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
+    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/data-absent-reason",
@@ -796,8 +796,8 @@
     "description" : "This CodeSystem contains Additional FHIR-defined Security Role types not defined elsewhere",
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
-    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType"
+    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
+    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/flag-category",
@@ -1087,8 +1087,8 @@
     "oids" : ["2.16.840.1.113883.5.8"],
     "uses" : {
     },
-    "http://terminology.hl7.org/7.2.0/ValueSet-v3-PurposeOfUse.html" : "PurposeOfUse",
-    "http://hl7.org/fhir/R4/valueset-immunization-status-reason.html" : "Immunization Status Reason Codes"
+    "http://hl7.org/fhir/R4/valueset-immunization-status-reason.html" : "Immunization Status Reason Codes",
+    "http://terminology.hl7.org/7.2.0/ValueSet-v3-PurposeOfUse.html" : "PurposeOfUse"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/v3-DataOperation",
@@ -1173,8 +1173,8 @@
     "oids" : ["2.16.840.1.113883.5.88"],
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
-    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType"
+    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
+    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
@@ -1187,10 +1187,10 @@
     "uses" : {
     },
     "http://hl7.org/fhir/R4/valueset-series-performer-function.html" : "ImagingStudy series performer function",
-    "http://hl7.org/fhir/R4/valueset-encounter-participant-type.html" : "Participant type",
-    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
     "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
-    "http://hl7.org/fhir/R4/valueset-provenance-activity-type.html" : "Provenance activity type"
+    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
+    "http://hl7.org/fhir/R4/valueset-provenance-activity-type.html" : "Provenance activity type",
+    "http://hl7.org/fhir/R4/valueset-encounter-participant-type.html" : "Participant type"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/v3-RoleClass",
@@ -1202,8 +1202,8 @@
     "oids" : ["2.16.840.1.113883.5.110"],
     "uses" : {
     },
-    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
-    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType"
+    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
+    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
@@ -1216,8 +1216,8 @@
     "uses" : {
     },
     "http://terminology.hl7.org/7.2.0/ValueSet-v3-ServiceDeliveryLocationRoleType.html" : "ServiceDeliveryLocationRoleType",
-    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType",
-    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType"
+    "http://hl7.org/fhir/R4/valueset-security-role-type.html" : "SecurityRoleType",
+    "http://hl7.org/fhir/R4/valueset-participation-role-type.html" : "ParticipationRoleType"
   },
   {
     "url" : "http://www.whocc.no/atc",
@@ -1234,7 +1234,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/deliverycode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "DeliveryCodeCS",
     "title" : "DeliveryCode",
@@ -1245,7 +1245,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/errorcode-actoutcome",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ErrorCodeCS",
     "title" : "ErrorCode",
@@ -1256,7 +1256,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/examinationstatuscode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ExaminationStatusCodeCS",
     "title" : "ExaminationStatusCode",
@@ -1267,7 +1267,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/fetalpositioncode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "FetalPositionCodeCS",
     "title" : "FetalPositionCode",
@@ -1278,7 +1278,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/prescriptionstatus",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "PrescriptionStatusCS",
     "title" : "PrescriptionStatus",
@@ -1289,7 +1289,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/referraloutcometypecode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ReferralOutcomeTypeCodeCS",
     "title" : "ReferralOutcomeTypeCode",
@@ -1300,7 +1300,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/resultcode-actoutcome",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ResultCodeCS",
     "title" : "ResultCode",
@@ -1311,7 +1311,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/sexcode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "SexCodeCS",
     "title" : "SexCode",
@@ -1322,7 +1322,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofcareplan-cs",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfCarePlanCS",
     "title" : "TypeOfCarePlan",
@@ -1333,7 +1333,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofleavecode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfLeaveCodeCS",
     "title" : "TypeOfLeaveCode",
@@ -1344,7 +1344,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofprescription",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfPrescriptionCS",
     "title" : "TypeOfPrescription",
@@ -1355,7 +1355,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofresultcode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfResultCodeCS",
     "title" : "TypeOfResultCode",
@@ -1366,7 +1366,7 @@
   },
   {
     "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "AssessmentCategoryCS",
     "title" : "AssessmentCategory",
@@ -1377,7 +1377,7 @@
   },
   {
     "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "DiagnosisTypeCS",
     "title" : "DiagnosisType",
@@ -1399,7 +1399,7 @@
   },
   {
     "url" : "urn:oid:1.2.752.129.2.2.2.11",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ClinicalDocumentNoteCodeCS",
     "title" : "KV Anteckningstyp",

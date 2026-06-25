@@ -1,4 +1,4 @@
-# ExaminationStatusCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# ExaminationStatusCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/examinationstatuscode | *Version*:0.3.1 |
-| Active as of 2026-06-24 | *Computable Name*:ExaminationStatusCodeCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/examinationstatuscode | *Version*:0.3.2 |
+| Active as of 2026-06-25 | *Computable Name*:ExaminationStatusCodeCS |
 
  
 Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetImagingOutcome. 
@@ -27,11 +27,11 @@ Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetIma
   "resourceType" : "CodeSystem",
   "id" : "examinationstatuscode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/examinationstatuscode",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "ExaminationStatusCodeCS",
   "title" : "ExaminationStatusCode",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

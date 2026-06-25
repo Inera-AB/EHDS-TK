@@ -1,4 +1,4 @@
-# SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-allergy-intolerance | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSAllergyIntolerance |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-allergy-intolerance | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSAllergyIntolerance |
 
  
 Sekundär profil för allergier och överkänslighet från GetAlertInformation. 
@@ -47,11 +47,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-allergy-i
   "resourceType" : "StructureDefinition",
   "id" : "inera-ehds-allergy-intolerance",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-allergy-intolerance",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSAllergyIntolerance",
   "title" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

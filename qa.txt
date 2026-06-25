@@ -2,8 +2,8 @@ IneraEHDSTK : Validation Results
 =========================================
 
 err = 38, warn = 2652, info = 362
-IG Publisher Version: 2.2.9
-Generated Wed Jun 24 18:53:50 UTC 2026. FHIR version 4.0.1 for inera.ehds.tk#0.3.1 (canonical = https://fhir.inera.se/ig/ehds-tk)
+IG Publisher Version: 2.2.9 Out of date - current version is null
+Generated Thu Jun 25 06:59:19 UTC 2026. FHIR version 4.0.1 for inera.ehds.tk#0.3.2 (canonical = https://fhir.inera.se/ig/ehds-tk)
  Build Errors : 12 / 0 / 0
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-assessmentcategory-cs : 2 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-clinicaldocumentnotecode-cs : 2 / 2 / 3

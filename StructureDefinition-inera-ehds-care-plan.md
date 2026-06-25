@@ -1,4 +1,4 @@
-# SE EHDS CarePlan – Vårdplan (GetCarePlans) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# SE EHDS CarePlan – Vårdplan (GetCarePlans) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-care-plan | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSCarePlan |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-care-plan | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSCarePlan |
 
  
 Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-care-plan
   "resourceType" : "StructureDefinition",
   "id" : "inera-ehds-care-plan",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-care-plan",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSCarePlan",
   "title" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

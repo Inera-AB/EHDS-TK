@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem diagnosistype-cs</b></p><a name=\"diagnosistype-cs\"> </a><a name=\"hcdiagnosistype-cs\"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">Huvuddiagnos<a name=\"diagnosistype-cs-Huvuddiagnos\"> </a></td><td>Huvuddiagnos</td></tr><tr><td style=\"white-space:nowrap\">Bidiagnos<a name=\"diagnosistype-cs-Bidiagnos\"> </a></td><td>Bidiagnos</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "DiagnosisTypeCS",
   "title" : "DiagnosisType",
   "status" : "active",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

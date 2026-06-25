@@ -1,4 +1,4 @@
-# SE EHDS Task – Remisstatus (GetRequestActivities) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# SE EHDS Task – Remisstatus (GetRequestActivities) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-task | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSTask |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-task | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSTask |
 
  
 Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0. 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-task.csv)
   "resourceType" : "StructureDefinition",
   "id" : "inera-ehds-task",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-task",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSTask",
   "title" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

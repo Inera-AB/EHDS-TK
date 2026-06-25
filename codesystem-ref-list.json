@@ -21,13 +21,13 @@
     "oids" : ["2.16.840.1.113883.6.96"],
     "uses" : {
     },
+    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus",
     "ValueSet-growth-observation-type-vs.html" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
-    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)",
-    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus"
+    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)"
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/deliverycode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "DeliveryCodeCS",
     "title" : "DeliveryCode",
@@ -38,7 +38,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/errorcode-actoutcome",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ErrorCodeCS",
     "title" : "ErrorCode",
@@ -49,7 +49,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/examinationstatuscode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ExaminationStatusCodeCS",
     "title" : "ExaminationStatusCode",
@@ -60,7 +60,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/fetalpositioncode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "FetalPositionCodeCS",
     "title" : "FetalPositionCode",
@@ -71,7 +71,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/prescriptionstatus",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "PrescriptionStatusCS",
     "title" : "PrescriptionStatus",
@@ -82,7 +82,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/referraloutcometypecode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ReferralOutcomeTypeCodeCS",
     "title" : "ReferralOutcomeTypeCode",
@@ -93,7 +93,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/resultcode-actoutcome",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ResultCodeCS",
     "title" : "ResultCode",
@@ -104,7 +104,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/sexcode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "SexCodeCS",
     "title" : "SexCode",
@@ -115,7 +115,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofcareplan-cs",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfCarePlanCS",
     "title" : "TypeOfCarePlan",
@@ -126,7 +126,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofleavecode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfLeaveCodeCS",
     "title" : "TypeOfLeaveCode",
@@ -137,7 +137,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofprescription",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfPrescriptionCS",
     "title" : "TypeOfPrescription",
@@ -148,7 +148,7 @@
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/typeofresultcode",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "TypeOfResultCodeCS",
     "title" : "TypeOfResultCode",
@@ -159,7 +159,7 @@
   },
   {
     "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "AssessmentCategoryCS",
     "title" : "AssessmentCategory",
@@ -170,7 +170,7 @@
   },
   {
     "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "DiagnosisTypeCS",
     "title" : "DiagnosisType",
@@ -181,7 +181,7 @@
   },
   {
     "url" : "urn:oid:1.2.752.129.2.2.2.11",
-    "version" : "0.3.1",
+    "version" : "0.3.2",
     "status" : "active",
     "name" : "ClinicalDocumentNoteCodeCS",
     "title" : "KV Anteckningstyp",

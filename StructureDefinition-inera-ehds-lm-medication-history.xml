@@ -148,11 +148,11 @@ informationOwner/InformationOwnerType 1..1).">relation</a><a name="inera-ehds-lm
     <valueCode value="can-be-target"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-medication-history"/>
-  <version value="0.3.1"/>
+  <version value="0.3.2"/>
   <name value="IneraEHDSLMMedicationHistory"/>
   <title value="GetMedicationHistory"/>
   <status value="draft"/>
-  <date value="2026-06-24T18:50:27+00:00"/>
+  <date value="2026-06-25T06:56:03+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

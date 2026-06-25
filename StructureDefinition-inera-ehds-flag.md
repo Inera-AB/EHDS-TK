@@ -1,4 +1,4 @@
-# SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.1
+# SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.2
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-flag | *Version*:0.3.1 |
-| Draft as of 2026-06-24 | *Computable Name*:IneraEHDSFlag |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-flag | *Version*:0.3.2 |
+| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSFlag |
 
  
 Primär profil för ALL uppmärksamhetsinformation från GetAlertInformation (clinicalprocess:healthcond:description v2.0). 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-flag.csv)
   "resourceType" : "StructureDefinition",
   "id" : "inera-ehds-flag",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-flag",
-  "version" : "0.3.1",
+  "version" : "0.3.2",
   "name" : "IneraEHDSFlag",
   "title" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
   "status" : "draft",
-  "date" : "2026-06-24T18:50:27+00:00",
+  "date" : "2026-06-25T06:56:03+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
