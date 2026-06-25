@@ -6,6 +6,8 @@ This page records changes between published versions of this Implementation Guid
 
 | Version | Date | Status | Description |
 |---------|------|--------|-------------|
+| 0.3.2 | 2026-06-25 | Draft | Re-release to correct deployment pipeline and publishing paths. |
+| 0.3.1 | 2026-06-24 | Draft | First published release. |
 | 0.1.0 | 2026-06-16 | Draft | Initial template version. |
 
 ---
