@@ -41,17 +41,36 @@ Body-typen avgörs av vilket XOR-element som anges i `alertInformationBody`.
 | Body-typ | Flag.code | Kommentar |
 |---|---|---|
 | `hypersensitivity` | `atcSubstance` (code.coding) eller `hypersensitivityAgentCode` (code.coding); fritext i code.text | XOR: pharmaceuticalHypersensitivity eller otherHypersensitivity |
-| `seriousDisease` | `seriousDisease.disease` (ICD10/SNOMED) | |
-| `treatment` | `treatment.treatmentCode` (KVÅ) | Tomt CodeableConcept om enbart treatmentDescription finns |
-| `communicableDisease` | `communicableDiseaseCode` (ICD10) | |
+| `seriousDisease` | `seriousDisease.disease` (ICD10/SNOMED rekommenderas av TKBn) | SNOMED CT från Socialstyrelsens kodverkslista för uppmärksamhetsinformation, urvalet "Annat medicinskt tillstånd" (OID `1.2.752.116.3.1.16.1.1`), kan/bör användas som primärt kodverk – se [ALERT-002](#öppna-frågor) |
+| `treatment` | `treatment.treatmentCode` (KVÅ rekommenderas av TKBn) | Tomt CodeableConcept om enbart treatmentDescription finns. SNOMED CT från Socialstyrelsens kodverkslista, urvalet "Behandling" (OID `1.2.752.116.3.1.16.1.2`), kan/bör användas som alternativ/komplement – se [ALERT-002](#öppna-frågor) |
+| `communicableDisease` | `communicableDiseaseCode` (ICD10 rekommenderas av TKBn) | SNOMED CT från Socialstyrelsens kodverkslista (urvalen "Förekomst av smittämne"/"Förekomst av smittsam sjukdom") kan anges som alternativ/komplement – exakt OID för dessa två urval är ej bekräftat i denna IG, se [ALERT-002](#öppna-frågor) |
 | `unstructuredAlertInformation` | `unstructuredAlertInformationHeading` som code.text | Ingen strukturerad kod |
 | `restrictionOfCare` | Tomt CodeableConcept | Ingen strukturerad kod |
+
+> **Om ALERT-002:** Socialstyrelsens kodverkslista för uppmärksamhetsinformation (SNOMED CT,
+> OID-familjen `1.2.752.116.3.1.16.1.x`) är identifierad som nationellt kodverk för värden
+> per UMI-typ och används nu ovan för `seriousDisease`/`treatment`/`communicableDisease`.
+> Kvarstående öppen del av ALERT-002: motsvarande nationellt kodverk saknas fortfarande för
+> själva `typeOfAlertInformation`-diskriminatorn (`Flag.category[alertType]`) samt för styrning
+> av `AllergyIntolerance.category`.
 
 ---
 
 ## Flag.status
 
-Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `active` (poster som returneras av tjänsten är per definition aktiva uppmärksamhetssignaler vid svarstillfället).
+`Flag.status` sätts enligt följande:
+
+| Villkor | Flag.status |
+|---|---|
+| `alertInformationBody.obsoleteTime` saknas | `active` |
+| `alertInformationBody.obsoleteTime` är satt | `inactive` |
+
+`entered-in-error` används inte.
+
+Detta motsvarar Socialstyrelsens UMI-regel (observerad förekomst & negation=falskt → `active`,
+negation=sant → `inactive`). Denna TKB saknar ett explicit negation-fält – `obsoleteTime`
+(faktisk inaktivering, se nedan) används som närmast tillgängliga signal för inaktivering tills
+en källa som är modellerad enligt UMI (med explicit negation-fält) konsumeras direkt.
 
 ---
 
@@ -92,11 +111,11 @@ Följande fält är gemensamma för alla body-typer (förekommer oberoende av XO
 | `alertInformationBody.typeOfAlertInformation` | 1..1 | `Flag.category[alertType]` | Kodsystem se [ALERT-002](#öppna-frågor) |
 | `alertInformationBody.validityTimePeriod.start` | 1..1 | `Flag.period.start` | YYYYMMDDHHMMSS → ISO 8601 |
 | `alertInformationBody.validityTimePeriod.end` | 0..1 | `Flag.period.end` | Planerat giltighetsslutt; se nedan om obsoleteTime |
-| `alertInformationBody.obsoleteTime` | 0..1 | `Flag.period.end` | Faktisk inaktivering; används om ≤ validityTimePeriod.end eller om period.end ej är satt |
-| `alertInformationBody.obsoleteComment` | 0..1 | `Flag.extension[alertInformationComment]` | Konkateneras: "Inaktiveringskommentar: {obsoleteComment}" |
+| `alertInformationBody.obsoleteTime` | 0..1 | `Flag.period.end` + `Flag.status` | Faktisk inaktivering: driver `period.end` (används om ≤ validityTimePeriod.end eller om period.end ej är satt) OCH `Flag.status = inactive` (se [Flag.status](#flagstatus) ovan) |
+| `alertInformationBody.obsoleteComment` | 0..1 | `Flag.extension[alertInformationComment]` | Konkateneras: "Inaktiveringskommentar: {obsoleteComment}". Extensionen är standard `note` (hl7.fhir.uv.extensions), se [ALERT-005](#stängda-frågor) |
 | `alertInformationBody.ascertainedDate` | 0..1 | `Flag.extension[alertAscertainedDate]` | Datum för konstaterande |
 | `alertInformationBody.verifiedTime` | 0..1 | `Flag.extension[alertVerifiedTime]` | Tidpunkt för verifiering i källsystem |
-| `alertInformationBody.alertInformationComment` | 0..1 | `Flag.extension[alertInformationComment]` | Klinisk kommentar; vid allergi även `AllergyIntolerance.note.text` |
+| `alertInformationBody.alertInformationComment` | 0..1 | `Flag.extension[alertInformationComment]` | Klinisk kommentar; standard `note`-extension (ej längre lokal extension, se [ALERT-005](#stängda-frågor)); vid allergi även `AllergyIntolerance.note.text` |
 
 > **Notering om period.end och obsoleteTime:** Båda mappar till `Flag.period.end`. Om båda är satta används det minsta värdet (= faktisk giltighetstid). `obsoleteComment` konkateneras i `alertInformationComment`.
 
@@ -121,6 +140,8 @@ Gäller när `alertInformationBody.hypersensitivity` är angivet. Skapar Flag **
 | `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.pharmaceuticalProductId` | 0..* | `Flag.extension[pharmaceuticalHypersensitivity].pharmaceuticalProductId` | NPL-id (1.2.752.129.2.1.5.1); lista |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgentCode` | 0..1 | `Flag.code.coding` | Agenskod (LMK-kod, CAS-kod m.fl.). XOR med pharmaceuticalHypersensitivity |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgent` | 0..1 | `Flag.code.text` | Agens i fritext |
+| `alertInformationBody.hypersensitivity.degreeOfSeverity` (härledd) | — | `Flag.extension[criticalityLevel]` | FHIR-mappad tregradig allvarlighetsgrad via ConceptMap `AlertCriticalityMap`; se [ALERT-004](#stängda-frågor). Gör Flag självförsörjande utan AllergyIntolerance |
+| `alertInformationBody.hypersensitivity.degreeOfCertainty` (härledd) | — | `Flag.extension[verificationStatus]` | FHIR-mappad visshetsgrad via ConceptMap `AlertVerificationStatusMap`; se [ALERT-004](#stängda-frågor). Gör Flag självförsörjande utan AllergyIntolerance |
 
 ### AllergyIntolerance-fält (hypersensitivity)
 
@@ -138,14 +159,15 @@ AllergyIntolerance skapas enbart när body = hypersensitivity. Fält från heade
 | `alertInformationBody.ascertainedDate` | 0..1 | `AllergyIntolerance.onsetDateTime` | Datum för konstaterande av överkänslighet |
 | `alertInformationBody.alertInformationComment` | 0..1 | `AllergyIntolerance.note.text` | Klinisk kommentar |
 | `alertInformationBody.hypersensitivity.typeOfHypersensitivity` | 0..1 | `AllergyIntolerance.category` | Härleds från typeOfHypersensitivity; se [ALERT-002](#öppna-frågor) |
-| `alertInformationBody.hypersensitivity.degreeOfCertainty` | 0..1 | `AllergyIntolerance.verificationStatus` | Kräver ConceptMap KV Visshetsgrad → FHIR verificationStatus; se [ALERT-004](#öppna-frågor) |
-| `alertInformationBody.hypersensitivity.degreeOfSeverity` | 0..1 | `AllergyIntolerance.reaction.severity` | Kräver ConceptMap KV Allvarlighetsgrad → FHIR severity; se [ALERT-004](#öppna-frågor) |
+| `alertInformationBody.hypersensitivity.degreeOfCertainty` | 0..1 | `AllergyIntolerance.verificationStatus` | ConceptMap `AlertVerificationStatusMap`: KV Visshetsgrad → FHIR verificationStatus; se [ALERT-004](#stängda-frågor) |
+| `alertInformationBody.hypersensitivity.degreeOfSeverity` | 0..1 | `AllergyIntolerance.reaction.severity` | ConceptMap `AlertCriticalityMap`: KV Allvarlighetsgrad → FHIR reaction.severity (designbeslut: besvärande→mild, skadlig→moderate, livshotande→severe); se [ALERT-004](#stängda-frågor) |
+| `alertInformationBody.hypersensitivity.degreeOfSeverity` | 0..1 | `AllergyIntolerance.criticality` | ConceptMap `AlertCriticalityMap`, tvågradig reduktion: life-threatening/harmful → high, discomforting → low; se [ALERT-004](#stängda-frågor) |
 | `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.atcSubstance` | 0..1 | `AllergyIntolerance.code.coding` | ATC-kod som primär substanskod |
 | `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.nonATCSubstance` | 0..1 | `AllergyIntolerance.code.text` | Fritext substansnamn (fallback om atcSubstance saknas) |
 | `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.pharmaceuticalProductId` | 0..* | `AllergyIntolerance.reaction.substance.coding` | NPL-id (1.2.752.129.2.1.5.1) |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgentCode` | 0..1 | `AllergyIntolerance.code.coding` | Agenskod (LMK, CAS m.fl.) |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgent` | 0..1 | `AllergyIntolerance.code.text` | Agens i fritext (fallback om agenskod saknas) |
-| (härledd – alltid active) | — | `AllergyIntolerance.clinicalStatus` | `active`; inget statusfält i TKBn |
+| `alertInformationBody.obsoleteTime` (härledd) | — | `AllergyIntolerance.clinicalStatus` | `active` om obsoleteTime saknas, `inactive` om satt – samma regel som `Flag.status` (se [Flag.status](#flagstatus)) |
 | (härledd – alltid allergy) | — | `AllergyIntolerance.type` | `allergy`; härledd av att body = hypersensitivity |
 
 ---
@@ -156,7 +178,7 @@ Gäller när `alertInformationBody.seriousDisease` är angivet. Skapar enbart Fl
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `alertInformationBody.seriousDisease.disease` | 1..1 | `Flag.code` | Sjukdomskod (ICD10/SNOMED); se [ALERT-002](#öppna-frågor) |
+| `alertInformationBody.seriousDisease.disease` | 1..1 | `Flag.code` | Sjukdomskod. ICD10/SNOMED rekommenderas av TKBn; SNOMED CT från Socialstyrelsens kodverkslista, urvalet "Annat medicinskt tillstånd" (OID `1.2.752.116.3.1.16.1.1`), rekommenderas primärt – se [ALERT-002](#öppna-frågor) |
 
 ---
 
@@ -166,7 +188,7 @@ Gäller när `alertInformationBody.treatment` är angivet. Skapar enbart Flag.
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `alertInformationBody.treatment.treatmentCode` | 0..1 | `Flag.code` | KVÅ-kod (1.2.752.116.1.3.2.1.4); tomt CodeableConcept om enbart treatmentDescription |
+| `alertInformationBody.treatment.treatmentCode` | 0..1 | `Flag.code` | KVÅ-kod (1.2.752.116.1.3.2.1.4) rekommenderas av TKBn; SNOMED CT från Socialstyrelsens kodverkslista, urvalet "Behandling" (OID `1.2.752.116.3.1.16.1.2`), kan/bör användas som alternativ/komplement – se [ALERT-002](#öppna-frågor). Tomt CodeableConcept om enbart treatmentDescription |
 | `alertInformationBody.treatment.treatmentDescription` | 1..1 | `Flag.extension[treatmentDescription]` | Fritextbeskrivning av behandlingen |
 | `alertInformationBody.treatment.pharmaceuticalTreatment` | 0..* | `Flag.extension[pharmaceuticalTreatment]` | ATC-kod (1.2.752.129.2.2.3.1.1); lista – ryms ej i Flag.code (1..1) |
 
@@ -178,8 +200,15 @@ Gäller när `alertInformationBody.communicableDisease` är angivet. Skapar enba
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `alertInformationBody.communicableDisease.communicableDiseaseCode` | 1..1 | `Flag.code` | ICD10-kod; se [ALERT-002](#öppna-frågor) |
+| `alertInformationBody.communicableDisease.communicableDiseaseCode` | 1..1 | `Flag.code` | ICD10-kod rekommenderas av TKBn. SNOMED CT från Socialstyrelsens kodverkslista för uppmärksamhetsinformation (urvalen "Förekomst av smittämne"/"Förekomst av smittsam sjukdom") kan anges som alternativ/komplement i `Flag.code.coding` (flera codings, ett per kodsystem); se [ALERT-002](#öppna-frågor) |
 | `alertInformationBody.communicableDisease.routeOfTransmission` | 0..1 | `Flag.extension[routeOfTransmission]` | KV Smittväg |
+
+> **SNOMED CT som alternativ/komplement till ICD10:** `communicableDiseaseCode` kan populeras
+> med både en ICD10-coding och en SNOMED CT-coding i samma `Flag.code.coding`-lista, om
+> källsystemet tillhandahåller båda. Exakt OID för Socialstyrelsens SNOMED CT-urval för
+> "Förekomst av smittämne" respektive "Förekomst av smittsam sjukdom" är ännu inte bekräftat
+> i denna IG (till skillnad från "Annat medicinskt tillstånd" `1.2.752.116.3.1.16.1.1` och
+> "Behandling" `1.2.752.116.3.1.16.1.2`) – se [ALERT-002](#öppna-frågor).
 
 ---
 
@@ -271,7 +300,15 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 | ID | Fråga |
 |---|---|
-| ALERT-002 | **Okänt kodsystem för `typeOfAlertInformation`.** OID och URI för kodsystemet är inte dokumenterat i TKB:n. Avgör vilka koder som styr om AllergyIntolerance skapas och hur de mappas till `AllergyIntolerance.category`. |
-| ALERT-004 | **ConceptMap saknas: degreeOfCertainty/degreeOfSeverity → FHIR.** `hypersensitivity.degreeOfCertainty` (KV Visshetsgrad 1.2.752.129.2.2.3.11) behöver ConceptMap till `AllergyIntolerance.verificationStatus`. `hypersensitivity.degreeOfSeverity` (KV Allvarlighetsgrad 1.2.752.129.2.2.3.3) behöver ConceptMap till `AllergyIntolerance.reaction.severity`. Sätt temporärt `confirmed` tills ConceptMap finns. |
+| ALERT-002 | **Delvis löst.** Kodverk för värden per UMI-typ (Socialstyrelsens kodverkslista för uppmärksamhetsinformation, OID-familjen `1.2.752.116.3.1.16.1.x`) är nu identifierat och används för `seriousDisease`/`treatment`/`communicableDisease` (se ovan). Kvarstår: kodsystem för själva `typeOfAlertInformation`-diskriminatorn (`Flag.category[alertType]`) är fortfarande okänt/lokalt i TKBn, vilket också styr om `AllergyIntolerance` skapas och hur `AllergyIntolerance.category` sätts. |
 | PDL-001 | **`approvedForPatient` (boolean) saknar FHIR-motsvarighet.** `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er. |
 | GENERAL-001 | **Tidsstämpelformat.** RIVTA använder `YYYYMMDDhhmmss` utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta `Europe/Stockholm` (CET/CEST). Gäller alla tidsfält i alla tjänstekontrakt. |
+
+---
+
+## Stängda frågor
+
+| ID | Fråga | Beslut |
+|---|---|---|
+| ALERT-004 | ConceptMap saknades för `degreeOfCertainty`/`degreeOfSeverity` → FHIR. | **Stängd.** ConceptMaps `AlertVerificationStatusMap.fsh` (degreeOfCertainty → verificationStatus) och `AlertCriticalityMap.fsh` (degreeOfSeverity → criticalityLevel/criticality/reaction.severity) skapade. Källkoderna i ConceptMaps är textuella platshållare i väntan på publicerade kodvärden för KV Allvarlighetsgrad/KV Visshetsgrad. |
+| ALERT-005 | `Flag` saknade standard `note`-element; lokal extension `alertInformationComment` användes. | **Stängd.** Bytt till standardextensionen `http://hl7.org/fhir/StructureDefinition/note` (paketet `hl7.fhir.uv.extensions`, tillagt som beroende i sushi-config.yaml), i linje med HL7 Sweden UMI-FHIR-arbetsgruppens mönster. Slicenamnet `alertInformationComment` behålls för bakåtspårbarhet. |

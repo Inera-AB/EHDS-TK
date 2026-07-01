@@ -17,6 +17,12 @@ Description: """
   Flag.category[alertType]           = typeOfAlertInformation (obligatorisk).
   Flag.category[hypersensitivityType] = typeOfHypersensitivity (när body = hypersensitivity).
   Flag.code                           = den kliniska koden specifik för body-typen.
+  Flag.status                        = active/inactive härledd av obsoleteTime (se ALERT-006/status-fältet).
+
+  Vid hypersensitivity görs Flag självförsörjande (oberoende av AllergyIntolerance) genom att
+  FHIR-mappade extensions för allvarlighetsgrad (criticalityLevel) och visshetsgrad
+  (verificationStatus) sätts direkt på Flag, utöver de råa källkoderna (degreeOfSeverity/
+  degreeOfCertainty) – i linje med HL7 Sweden UMI-FHIR-arbetsgruppens mönster.
 
   Täcker NPÖ 2.0 och 1177 Journal 2.0.
 """
@@ -27,7 +33,16 @@ Description: """
 * extension[flagDetail] ^short = "Referens till AllergyIntolerance när body = hypersensitivity (R4: flag-detail; R5: supportingInfo)"
 
 // ─── Gemensamma body-extensions ──────────────────────────────────────────────
-* extension contains AlertInformationComment named alertInformationComment 0..1 MS
+* extension contains
+    http://hl7.org/fhir/StructureDefinition/note named alertInformationComment 0..1 MS
+* extension[alertInformationComment] ^short = """
+    Kommentar till uppmärksamhetssignalen (alertInformationBody.alertInformationComment).
+    Standard `note`-extension (hl7.fhir.uv.extensions) används istället för en lokal
+    extension, i linje med Socialstyrelsens/HL7 Sweden UMI-FHIR-arbetsgruppens mönster
+    för Flag – se ALERT-005 (stängd).
+    Om obsoleteComment är angivet konkateneras det med prefix 'Inaktiveringskommentar: {obsoleteComment}'.
+    För body = unstructuredAlertInformation: unstructuredAlertInformationContent läggs här.
+  """
 * extension contains AlertAscertainedDate named alertAscertainedDate 0..1 MS
 * extension contains AlertVerifiedTime named alertVerifiedTime 0..1 MS
 * extension contains AlertAssertedDate named alertAssertedDate 0..1 MS
@@ -38,6 +53,20 @@ Description: """
 * extension contains AlertDegreeOfSeverity named degreeOfSeverity 0..1 MS
 * extension contains AlertDegreeOfCertainty named degreeOfCertainty 0..1 MS
 * extension contains AlertPharmaceuticalHypersensitivity named pharmaceuticalHypersensitivity 0..1 MS
+* extension contains AlertCriticalityLevel named criticalityLevel 0..1 MS
+* extension contains AlertVerificationStatus named verificationStatus 0..1 MS
+* extension[criticalityLevel] ^short = """
+    FHIR-mappad allvarlighetsgrad (tregradig skala), härledd från degreeOfSeverity via
+    ConceptMap AlertCriticalityMap – se ALERT-004. Sätts direkt på Flag (utöver den råa
+    degreeOfSeverity-koden) så att Flag är självförsörjande utan AllergyIntolerance, i linje
+    med HL7 Sweden UMI-FHIR-arbetsgruppens criticalityLevel-mönster.
+  """
+* extension[verificationStatus] ^short = """
+    FHIR-mappad visshetsgrad (som AllergyIntolerance.verificationStatus), härledd från
+    degreeOfCertainty via ConceptMap AlertVerificationStatusMap – se ALERT-004. Sätts direkt
+    på Flag (utöver den råa degreeOfCertainty-koden) så att Flag är självförsörjande utan
+    AllergyIntolerance, i linje med HL7 Sweden UMI-FHIR-arbetsgruppens verificationStatus-mönster.
+  """
 
 // ─── XOR body: treatment ─────────────────────────────────────────────────────
 * extension contains AlertTreatmentDescription named treatmentDescription 0..1 MS
@@ -65,7 +94,13 @@ Description: """
 * meta.security ^short = "PDL-kontroll (alertInformationHeader.approvedForPatient) – se PDL-001"
 
 * status 1..1 MS
-* status ^short = "Alltid 'active' – inget statusfält i TKBn; returnerade poster är per definition aktiva"
+* status ^short = """
+    active om alertInformationBody.obsoleteTime saknas; inactive om obsoleteTime är satt.
+    Motsvarar Socialstyrelsens UMI-regel (observerad förekomst & negation=falskt → active,
+    negation=sant → inactive): denna TKB saknar ett explicit negation-fält, så obsoleteTime
+    (faktisk inaktivering, se ALERT-006) används som närmast tillgängliga signal tills en
+    källa med explicit negation-fält (UMI-modellerad) konsumeras. entered-in-error används inte.
+  """
 
 // ─── Body-fält ────────────────────────────────────────────────────────────────
 
@@ -83,9 +118,17 @@ Description: """
     Klinisk kod per body-typ (XOR):
     hypersensitivity: atcSubstance (code.coding) eller hypersensitivityAgentCode (code.coding);
       fritext i code.text (nonATCSubstance / hypersensitivityAgent)
-    seriousDisease: seriousDisease.disease (ICD10/SNOMED)
-    treatment: treatment.treatmentCode (KVÅ); tomt CodeableConcept om enbart treatmentDescription
-    communicableDisease: communicableDiseaseCode (ICD10)
+    seriousDisease: seriousDisease.disease. ICD10/SNOMED rekommenderas av TKBn; SNOMED CT från
+      Socialstyrelsens kodverkslista för uppmärksamhetsinformation, urvalet "Annat medicinskt
+      tillstånd" (OID 1.2.752.116.3.1.16.1.1), kan/bör användas som primärt kodverk – se ALERT-002.
+    treatment: treatment.treatmentCode. KVÅ (1.2.752.116.1.3.2.1.4) rekommenderas av TKBn; SNOMED CT
+      från Socialstyrelsens kodverkslista, urvalet "Behandling" (OID 1.2.752.116.3.1.16.1.2), kan/bör
+      användas som alternativ/komplement – se ALERT-002. Tomt CodeableConcept om enbart
+      treatmentDescription anges.
+    communicableDisease: communicableDiseaseCode. ICD10 rekommenderas av TKBn; SNOMED CT från
+      Socialstyrelsens kodverkslista för uppmärksamhetsinformation (urvalen "Förekomst av smittämne"/
+      "Förekomst av smittsam sjukdom") kan anges som alternativ/komplement – exakt OID för dessa två
+      urval är ej bekräftat i denna IG, se ALERT-002.
     unstructuredAlertInformation: unstructuredAlertInformationHeading som code.text
     restrictionOfCare: ingen strukturerad kod; tomt CodeableConcept
   """
@@ -104,16 +147,9 @@ Description: """
 * encounter ^short = "Kopplad vårdkontakt (alertInformationHeader.careContactId)"
 
 // ─── Extension-definitioner ───────────────────────────────────────────────────
-
-Extension: AlertInformationComment
-Id: alert-information-comment
-Title: "Kommentar till uppmärksamhetssignal"
-Description: """
-  Kommentar angående uppmärksamhetssignalen (alertInformationBody.alertInformationComment).
-  Om obsoleteComment är angivet konkateneras det med prefix 'Inaktiveringskommentar: {obsoleteComment}'.
-  För body = unstructuredAlertInformation: unstructuredAlertInformationContent läggs här.
-"""
-* value[x] only string
+// OBS: kommentarextensionen (alertInformationComment) använder standard `note`-extensionen
+// (http://hl7.org/fhir/StructureDefinition/note, hl7.fhir.uv.extensions) via slicingen ovan –
+// se ALERT-005. Ingen lokal extension definieras längre för detta ändamål.
 
 Extension: AlertAscertainedDate
 Id: alert-ascertained-date
@@ -165,6 +201,40 @@ Id: alert-degree-of-certainty
 Title: "Visshet för överkänslighet"
 Description: "Visshetsgrad för överkänsligheten (alertInformationBody.hypersensitivity.degreeOfCertainty). KV Visshetsgrad 1.2.752.129.2.2.3.11."
 * value[x] only CodeableConcept
+
+Extension: AlertCriticalityLevel
+Id: alert-criticality-level
+Title: "Allvarlighetsgrad (FHIR-mappad, tregradig skala)"
+Description: """
+  FHIR-mappad allvarlighetsgrad för överkänslighet, satt direkt på `Flag` så att `Flag` är
+  självförsörjande även när ingen `AllergyIntolerance`-resurs skapas – i linje med HL7 Sweden
+  UMI-FHIR-arbetsgruppens `criticalityLevel`-mönster.
+
+  Härleds från alertInformationBody.hypersensitivity.degreeOfSeverity (KV Allvarlighetsgrad,
+  1.2.752.129.2.2.3.3) via ConceptMap AlertCriticalityMap (se ALERT-004):
+  livshotande → life-threatening, skadlig → harmful, besvärande → discomforting.
+
+  Samma ConceptMap reducerar värdet vidare till en tvågradig skala
+  (life-threatening/harmful → high, discomforting → low) för `AllergyIntolerance.criticality`.
+"""
+* value[x] only CodeableConcept
+* value[x] from AlertCriticalityLevelVS (required)
+
+Extension: AlertVerificationStatus
+Id: alert-verification-status
+Title: "Visshetsgrad (FHIR-mappad, som AllergyIntolerance.verificationStatus)"
+Description: """
+  FHIR-mappad visshetsgrad, satt direkt på `Flag` så att `Flag` är självförsörjande även när
+  ingen `AllergyIntolerance`-resurs skapas – i linje med HL7 Sweden UMI-FHIR-arbetsgruppens
+  `verificationStatus`-mönster på Flag.
+
+  Härleds från alertInformationBody.hypersensitivity.degreeOfCertainty (KV Visshetsgrad,
+  1.2.752.129.2.2.3.11) via ConceptMap AlertVerificationStatusMap (se ALERT-004):
+  misstänkt → presumed. Om degreeOfCertainty saknas antas observationen fastställd → confirmed.
+  entered-in-error används inte.
+"""
+* value[x] only code
+* value[x] from http://hl7.org/fhir/ValueSet/allergyintolerance-verification (required)
 
 Extension: AlertPharmaceuticalHypersensitivity
 Id: alert-pharmaceutical-hypersensitivity

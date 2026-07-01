@@ -2,6 +2,8 @@
 // Kontrakt: GetAlertInformation v2.0
 // Namespace: urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:2
 // Uppdaterad: 2026-06-17 med fullständig body-struktur per faktisk TKB
+// Uppdaterad: 2026-07-01 med Socialstyrelsens kodverkslista för uppmärksamhetsinformation
+//   som kandidatbindning (SNOMED CT) för seriousDisease/treatment/communicableDisease (ALERT-002)
 
 Logical: IneraEHDSLMAlertInformation
 Id: inera-ehds-lm-alert-information
@@ -292,7 +294,10 @@ Characteristics: #can-be-target
   """
 
 * alertInformation.alertInformationBody.seriousDisease.disease 1..1 CodeableConcept "Sjukdomskod (CVType)" """
-    Allvarlig sjukdom som patienten har. ICD10/SNOMED rekommenderas.
+    Allvarlig sjukdom som patienten har. ICD10/SNOMED rekommenderas av TKBn.
+    SNOMED CT från Socialstyrelsens kodverkslista för uppmärksamhetsinformation,
+    urvalet "Annat medicinskt tillstånd" (OID 1.2.752.116.3.1.16.1.1), kan/bör
+    användas som primärt kodverk – se ALERT-002.
     Kardinalitet: Obligatorisk.
   """
 
@@ -309,7 +314,10 @@ Characteristics: #can-be-target
   """
 
 * alertInformation.alertInformationBody.treatment.treatmentCode 0..1 CodeableConcept "Behandlingskod (CVType)" """
-    Preciserad uppgift om behandlingen. KVÅ-kod (1.2.752.116.1.3.2.1.4) rekommenderas.
+    Preciserad uppgift om behandlingen. KVÅ-kod (1.2.752.116.1.3.2.1.4) rekommenderas av TKBn.
+    SNOMED CT från Socialstyrelsens kodverkslista för uppmärksamhetsinformation, urvalet
+    "Behandling" (OID 1.2.752.116.3.1.16.1.2), kan/bör användas som alternativ/komplement –
+    se ALERT-002.
     Kardinalitet: Valfri.
   """
 
@@ -326,7 +334,10 @@ Characteristics: #can-be-target
   """
 
 * alertInformation.alertInformationBody.communicableDisease.communicableDiseaseCode 1..1 CodeableConcept "Smittsam sjukdomskod (CVType)" """
-    Kod för smittsam sjukdom. ICD10 rekommenderas.
+    Kod för smittsam sjukdom. ICD10 rekommenderas av TKBn. SNOMED CT från Socialstyrelsens
+    kodverkslista för uppmärksamhetsinformation (urvalen "Förekomst av smittämne"/
+    "Förekomst av smittsam sjukdom") kan anges som alternativ/komplement – exakt OID för
+    dessa två urval är ej bekräftat i denna IG, se ALERT-002.
     Kardinalitet: Obligatorisk.
   """
 

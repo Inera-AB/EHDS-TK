@@ -11,7 +11,8 @@ Description: """
 
   Populeras med klinisk information från hypersensitivity-blocket:
   - atcSubstance/hypersensitivityAgentCode → AllergyIntolerance.code
-  - degreeOfSeverity → AllergyIntolerance.reaction.severity
+  - degreeOfSeverity → AllergyIntolerance.reaction.severity (tregradig, via ConceptMap AlertCriticalityMap)
+  - degreeOfSeverity → AllergyIntolerance.criticality (reducerad tvågradig skala, se ALERT-004)
   - degreeOfCertainty → AllergyIntolerance.verificationStatus (se ALERT-004)
   - ascertainedDate → AllergyIntolerance.onsetDateTime
   - alertInformationComment → AllergyIntolerance.note
@@ -39,10 +40,20 @@ Description: """
 * recordedDate ^short = "Registreringstidpunkt (alertInformationHeader.accountableHealthcareProfessional.authorTime)"
 
 * clinicalStatus MS
-* clinicalStatus ^short = "Alltid 'active' – härledd; inget statusfält i TKBn"
+* clinicalStatus ^short = """
+    'active' om alertInformationBody.obsoleteTime saknas, 'inactive' om obsoleteTime är satt –
+    samma regel som Flag.status (se ALERT-008). entered-in-error används inte.
+  """
 
 * verificationStatus MS
-* verificationStatus ^short = "Visshet (alertInformationBody.hypersensitivity.degreeOfCertainty → ConceptMap till verificationStatus); se ALERT-004"
+* verificationStatus ^short = "Visshet (alertInformationBody.hypersensitivity.degreeOfCertainty → ConceptMap AlertVerificationStatusMap); se ALERT-004"
+
+* criticality MS
+* criticality ^short = """
+    Allvarlighetsgrad, tvågradig skala (alertInformationBody.hypersensitivity.degreeOfSeverity
+    → ConceptMap AlertCriticalityMap: life-threatening/harmful → high, discomforting → low);
+    se ALERT-004. Speglar samma källvärde som Flag.extension[criticalityLevel] (tregradigt).
+  """
 
 * type MS
 * type ^short = "Alltid 'allergy' – härledd av att body = hypersensitivity"
@@ -66,7 +77,7 @@ Description: """
 * reaction ^short = "Reaktionsinformation (delar av hypersensitivity)"
 
 * reaction.severity MS
-* reaction.severity ^short = "Allvarlighetsgrad (hypersensitivity.degreeOfSeverity → ConceptMap till reaction.severity)"
+* reaction.severity ^short = "Allvarlighetsgrad (hypersensitivity.degreeOfSeverity → ConceptMap AlertCriticalityMap till reaction.severity)"
 
 * reaction.substance MS
 * reaction.substance ^short = "Läkemedelsprodukt (pharmaceuticalHypersensitivity.pharmaceuticalProductId → reaction.substance.coding med NPL-id)"
