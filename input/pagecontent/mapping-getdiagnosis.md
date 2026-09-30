@@ -30,6 +30,8 @@
 | `diagnosisHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `diagnosisHeader.careContactId` | 0..1 | `Condition.encounter.identifier` | Logisk referens till Encounter |
 
+> **OBS:** `diagnosisHeader.documentTime` har kardinalitet **0..0** i GetDiagnosis:2 och skickas aldrig av tjänstekontraktet. Detta avviker från det generella PatientSummaryHeader-mönstret (se README.md/mappings.md) där `documentTime` normalt är källan för `recordedDate`/`Provenance.recorded`. För GetDiagnosis är `accountableHealthcareProfessional.authorTime` den korrekta och enda källan för både `Condition.recordedDate` (ovan) och `Provenance.recorded` (se nedan).
+
 ---
 
 ## Mappningstabell – diagnosisBody

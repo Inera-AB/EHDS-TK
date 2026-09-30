@@ -82,8 +82,9 @@ Varje element som mappas från tjänstekontraktet ska:
 - Ha `^short` med klartext och RIVTA-fältnamnet, t.ex.:
   ```fsh
   * recordedDate MS
-  * recordedDate ^short = "Registreringsdatum (diagnosisHeader.documentTime från RIVTA)"
+  * recordedDate ^short = "Registreringsdatum (headerfältet som tjänstekontraktet faktiskt sätter, t.ex. accountableHealthcareProfessional.authorTime)"
   ```
+  > **OBS:** Exemplet ovan gäller det generella fallet. Kontrollera alltid tjänstekontraktets fältregler (TKB) för det aktuella elementet – flera TK:er (t.ex. GetDiagnosis) har `documentTime` satt till kardinalitet 0..0 och skickar aldrig fältet. I sådana fall är `accountableHealthcareProfessional.authorTime` den korrekta källan för `recordedDate`/`Provenance.recorded`, inte `documentTime`.
 
 ### Kardinalitet
 Om tjänstekontraktet kräver ett fält (1..1 eller 1..*) ska profilen skärpa FHIR:s kardinalitet i enlighet med detta.
@@ -104,7 +105,7 @@ Alla tjänstekontrakt med `PatientSummaryHeader` (eller motsvarande header) mapp
 |---|---|---|
 | `patientId` | `{Resurs}.subject.identifier` | Personnummer/samordningsnummer via OID→URI |
 | `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
-| `documentTime` | `{Resurs}.recordedDate` (eller resursens primära tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601, tolkas som Europe/Stockholm |
+| `documentTime` | `{Resurs}.recordedDate` (eller resursens primära tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601, tolkas som Europe/Stockholm. **Gäller endast om `documentTime` faktiskt skickas (kardinalitet > 0..0) enligt tjänstekontraktets TKB** – t.ex. GetDiagnosis har `documentTime` 0..0 och använder istället `accountableHealthcareProfessional.authorTime`. Verifiera alltid mot tjänstekontraktets egen mappningssida. |
 | `accountableHealthcareProfessional` | `{Resurs}.recorder` eller `author` (Reference(SEBasePractitionerRole)) | Ansvarig hälso- och sjukvårdspersonal |
 | `legalAuthenticator` | `{Resurs}.asserter` eller `authenticator` (Reference(SEBasePractitionerRole)) | Rättslig äkthetsintygsgivare |
 | `legalAuthenticator` (datum) | `{Resurs}.extension[assertedDate]` | YYYYMMDD → YYYY-MM-DD |
@@ -132,7 +133,7 @@ En `Provenance`-resurs skapas per FHIR-resurs och inkluderas i sökbundeln med `
 | `agent[2]` | `assembler` | `EHDS_BRIDGE_HSA_ID` (env-variabel) |
 
 - `Provenance.target` refererar resursen via `urn:uuid:{resurs.id}`
-- `Provenance.recorded` sätts till `documentTime` (ISO 8601 + UTC)
+- `Provenance.recorded` sätts till `documentTime` (ISO 8601 + UTC) **när tjänstekontraktet skickar `documentTime`**. Om `documentTime` har kardinalitet 0..0 (t.ex. GetDiagnosis) sätts `Provenance.recorded` istället från `accountableHealthcareProfessional.authorTime` – se tjänstekontraktets mappningssida för den auktoritativa källan.
 
 ---
 
