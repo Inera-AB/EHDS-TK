@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-flag | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSFlag |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSFlag |
 
  
 Primär profil för ALL uppmärksamhetsinformation från GetAlertInformation (clinicalprocess:healthcond:description v2.0). 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-flag.csv)
   "name" : "IneraEHDSFlag",
   "title" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

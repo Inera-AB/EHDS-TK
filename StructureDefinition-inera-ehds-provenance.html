@@ -285,7 +285,7 @@
         
           Draft
           
-            as of 2026-06-25
+            as of 2026-09-30
           
         
       </td>
@@ -398,7 +398,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="Detta element ingår i sammanfattningar">Σ</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7" id="ae" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck03.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img onClick="tableRowAction(this)" src="tbl_vjoin_end-open.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_slice.png" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Skivdefinition" class="hierarchy"/> <a style="font-style: italic; font-style: italic" no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.agent" title="An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place." data-no-external="true">Skivor för agent</a><a name="k-Provenance.agent"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000; font-style: italic" title="Detta element måste stödjas">S</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="font-style: italic"></span><span style="font-style: italic">2</span><span style="font-style: italic">..</span><span style="font-style: italic">*</span></td>
@@ -575,7 +575,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/organization.html">Organization</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId) – inre Sparr</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // ae32cc86-41ed-49b6-bdc1-2e421ee66828
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // e577c914-bbe4-4d7b-900c-d073e336bf56
 document.getElementById('cbinera-ehds-provenanceK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-provenanceK'), 'constraint', document.getElementById('cbinera-ehds-provenanceK-constraint').checked, document.getElementById('ppinera-ehds-provenanceK'));
 document.getElementById('cbinera-ehds-provenanceK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -663,73 +663,6 @@ filterDesc(document.getElementById('inera-ehds-provenanceK'), 'obligation', docu
       <b>Uttryck</b>
     </td>
   </tr>
-  <tr>
-    <td>dom-2</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL NOT contain nested Resources</td>
-    <td>
-      <code>contained.contained.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-3</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource</td>
-    <td>
-      <code>contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-4</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated</td>
-    <td>
-      <code>contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-5</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a security label</td>
-    <td>
-      <code>contained.meta.security.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-6</td>
-    <td>bästa praxis</td>
-    <td>Provenance</td>
-    <td>A resource should have narrative for robust management</td>
-    <td>
-      <code>text.`div`.exists()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ele-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** element</b>
-    </td>
-    <td>All FHIR elements must have a @value or children</td>
-    <td>
-      <code>hasValue() or (children().count() &gt; id.count())</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ext-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** extensions</b>
-    </td>
-    <td>Must have either extensions or value[x], not both</td>
-    <td>
-      <code>extension.exists() != value.exists()</code>
-    </td>
-  </tr>
 </table>
 
           
@@ -757,7 +690,7 @@ filterDesc(document.getElementById('inera-ehds-provenanceK'), 'obligation', docu
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">1</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7" id="ac" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck03.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img onClick="tableRowAction(this)" src="tbl_vjoin_end-open.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_slice.png" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Skivdefinition" class="hierarchy"/> <a style="font-style: italic; font-style: italic" no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.agent" data-no-external="true">Skivor för agent</a><a name="Provenance.agent"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000; font-style: italic" title="Detta element måste stödjas">S</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="font-style: italic"></span><span style="font-style: italic">2</span><span style="font-style: italic">..</span><span style="opacity: 0.5; font-style: italic">*</span></td>
@@ -823,7 +756,7 @@ filterDesc(document.getElementById('inera-ehds-provenanceK'), 'obligation', docu
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">1</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/organization.html">Organization</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId) – inre Sparr</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // ae32cc86-41ed-49b6-bdc1-2e421ee66828
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // e577c914-bbe4-4d7b-900c-d073e336bf56
 document.getElementById('cbinera-ehds-provenanceD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-provenanceD'), 'constraint', document.getElementById('cbinera-ehds-provenanceD-constraint').checked, document.getElementById('ppinera-ehds-provenanceD'));
 document.getElementById('cbinera-ehds-provenanceD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -920,7 +853,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="Detta element ingår i sammanfattningar">Σ</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white" id="al" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_primitive.png" alt="." style="background-color: white; background-color: inherit" title="Primitiv datatyp" class="hierarchy"/> <a no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.policy" title="Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc." data-no-external="true">policy</a><a name="s-Provenance.policy"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
@@ -935,7 +868,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Reason the activity is occurring<br class="binding"/><span style="font-weight:bold" title="null" class="binding">Bindning: </span><a href="http://terminology.hl7.org/7.2.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span title="null" class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span title="null" class="binding">)</span><span title="null" class="binding">: </span><span title="null" class="binding">The reason the activity took place.</span><br/></td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Reason the activity is occurring<br class="binding"/><span style="font-weight:bold" title="null" class="binding">Bindning: </span><a href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span title="null" class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span title="null" class="binding">)</span><span title="null" class="binding">: </span><span title="null" class="binding">The reason the activity took place.</span><br/></td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7" id="ao" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_datatype.gif" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Datatyp" class="hierarchy"/> <a no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.activity" title="An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." data-no-external="true">activity</a><a name="s-Provenance.activity"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
@@ -1224,7 +1157,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Signature">Signature</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Signature on target<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // ae32cc86-41ed-49b6-bdc1-2e421ee66828
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // e577c914-bbe4-4d7b-900c-d073e336bf56
 document.getElementById('cbinera-ehds-provenanceS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-provenanceS'), 'constraint', document.getElementById('cbinera-ehds-provenanceS-constraint').checked, document.getElementById('ppinera-ehds-provenanceS'));
 document.getElementById('cbinera-ehds-provenanceS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1277,12 +1210,12 @@ filterDesc(document.getElementById('inera-ehds-provenanceS'), 'obligation', docu
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The reason the activity took place.">
-      <a style="opacity: 1.0" href="http://terminology.hl7.org/7.2.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
+      <a style="opacity: 1.0" href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
       <button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
     <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till 3.1.0, versionen som hittas via paketreferenserna">&#x1F4E6;3.1.0</td>
     <td>
-      <a href="http://terminology.hl7.org/7.2.0">THO v7.2</a>
+      <a href="http://terminology.hl7.org/7.4.0">THO v7.4</a>
     </td>
   </tr>
   <tr>
@@ -1432,73 +1365,6 @@ filterDesc(document.getElementById('inera-ehds-provenanceS'), 'obligation', docu
       <b>Uttryck</b>
     </td>
   </tr>
-  <tr>
-    <td>dom-2</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL NOT contain nested Resources</td>
-    <td>
-      <code>contained.contained.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-3</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource</td>
-    <td>
-      <code>contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-4</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated</td>
-    <td>
-      <code>contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-5</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a security label</td>
-    <td>
-      <code>contained.meta.security.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-6</td>
-    <td>bästa praxis</td>
-    <td>Provenance</td>
-    <td>A resource should have narrative for robust management</td>
-    <td>
-      <code>text.`div`.exists()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ele-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** element</b>
-    </td>
-    <td>All FHIR elements must have a @value or children</td>
-    <td>
-      <code>hasValue() or (children().count() &gt; id.count())</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ext-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** extensions</b>
-    </td>
-    <td>Must have either extensions or value[x], not both</td>
-    <td>
-      <code>extension.exists() != value.exists()</code>
-    </td>
-  </tr>
 </table>
 
           
@@ -1536,7 +1402,7 @@ filterDesc(document.getElementById('inera-ehds-provenanceS'), 'obligation', docu
 <span style="color: Gray">// occurred[x]: <span style="color: navy; opacity: 0.8">When the activity occurred</span>. En av dessa 2:</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.occurredPeriod" title="The period during which the activity occurred" class="dict"><span style="text-decoration: underline">occurredPeriod</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Period">Period</a></span>}, <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">When the activity occurred</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.occurredDateTime" title="The period during which the activity occurred" class="dict"><span style="text-decoration: underline">occurredDateTime</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">dateTime</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">When the activity occurred</span>
-    "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.recorded" title="The instant of time at which the activity was recorded (detta element måste stödjas)" class="dict"><span style="text-decoration: underline">recorded</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: brown" title="Detta element är obligatoriskt"><b>R!</b></span> <span style="color: navy; opacity: 0.8">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</span>
+    "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.recorded" title="The instant of time at which the activity was recorded (detta element måste stödjas)" class="dict"><span style="text-decoration: underline">recorded</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: brown" title="Detta element är obligatoriskt"><b>R!</b></span> <span style="color: navy; opacity: 0.8">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.policy" title="Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc" class="dict"><span style="text-decoration: underline">policy</span></a>" : ["&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#uri">uri</a></span>&gt;"], <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">Policy or plan the activity was defined by</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.location" title="Where the activity occurred, if relevant" class="dict"><span style="text-decoration: underline">location</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a></span>(Location|4.0.1)}, <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">Where the activity occurred, if relevant</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.reason" title="The reason that the activity was taking place" class="dict"><span style="text-decoration: underline">reason</span></a>" : [{<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></span>}], <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Reason the activity is occurring</a></span>
@@ -1642,7 +1508,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="Detta element ingår i sammanfattningar">Σ</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7" id="ae" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck03.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img onClick="tableRowAction(this)" src="tbl_vjoin_end-open.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_slice.png" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Skivdefinition" class="hierarchy"/> <a style="font-style: italic; font-style: italic" no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.agent" title="An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place." data-no-external="true">Skivor för agent</a><a name="ka-Provenance.agent"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000; font-style: italic" title="Detta element måste stödjas">S</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="font-style: italic"></span><span style="font-style: italic">2</span><span style="font-style: italic">..</span><span style="font-style: italic">*</span></td>
@@ -1819,7 +1685,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/organization.html">Organization</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId) – inre Sparr</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // ae32cc86-41ed-49b6-bdc1-2e421ee66828
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // e577c914-bbe4-4d7b-900c-d073e336bf56
 document.getElementById('cbinera-ehds-provenanceKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-provenanceKA'), 'constraint', document.getElementById('cbinera-ehds-provenanceKA-constraint').checked, document.getElementById('ppinera-ehds-provenanceKA'));
 document.getElementById('cbinera-ehds-provenanceKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1907,73 +1773,6 @@ filterDesc(document.getElementById('inera-ehds-provenanceKA'), 'obligation', doc
       <b>Uttryck</b>
     </td>
   </tr>
-  <tr>
-    <td>dom-2</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL NOT contain nested Resources</td>
-    <td>
-      <code>contained.contained.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-3</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource</td>
-    <td>
-      <code>contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-4</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated</td>
-    <td>
-      <code>contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-5</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a security label</td>
-    <td>
-      <code>contained.meta.security.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-6</td>
-    <td>bästa praxis</td>
-    <td>Provenance</td>
-    <td>A resource should have narrative for robust management</td>
-    <td>
-      <code>text.`div`.exists()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ele-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** element</b>
-    </td>
-    <td>All FHIR elements must have a @value or children</td>
-    <td>
-      <code>hasValue() or (children().count() &gt; id.count())</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ext-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** extensions</b>
-    </td>
-    <td>Must have either extensions or value[x], not both</td>
-    <td>
-      <code>extension.exists() != value.exists()</code>
-    </td>
-  </tr>
 </table>
 
           
@@ -2001,7 +1800,7 @@ filterDesc(document.getElementById('inera-ehds-provenanceKA'), 'obligation', doc
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">1</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7" id="ac" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck03.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img onClick="tableRowAction(this)" src="tbl_vjoin_end-open.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_slice.png" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Skivdefinition" class="hierarchy"/> <a style="font-style: italic; font-style: italic" no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.agent" data-no-external="true">Skivor för agent</a><a name="a-Provenance.agent"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000; font-style: italic" title="Detta element måste stödjas">S</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="font-style: italic"></span><span style="font-style: italic">2</span><span style="font-style: italic">..</span><span style="opacity: 0.5; font-style: italic">*</span></td>
@@ -2067,7 +1866,7 @@ filterDesc(document.getElementById('inera-ehds-provenanceKA'), 'obligation', doc
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">1</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/organization.html">Organization</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId) – inre Sparr</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // ae32cc86-41ed-49b6-bdc1-2e421ee66828
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // e577c914-bbe4-4d7b-900c-d073e336bf56
 document.getElementById('cbinera-ehds-provenanceDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-provenanceDA'), 'constraint', document.getElementById('cbinera-ehds-provenanceDA-constraint').checked, document.getElementById('ppinera-ehds-provenanceDA'));
 document.getElementById('cbinera-ehds-provenanceDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2163,7 +1962,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span><span style="padding-left: 3px; padding-right: 3px; color: black; null" title="Detta element ingår i sammanfattningar">Σ</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white" id="al" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_primitive.png" alt="." style="background-color: white; background-color: inherit" title="Primitiv datatyp" class="hierarchy"/> <a no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.policy" title="Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc." data-no-external="true">policy</a><a name="sa-Provenance.policy"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
@@ -2178,7 +1977,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td>
-<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Reason the activity is occurring<br class="binding"/><span style="font-weight:bold" title="null" class="binding">Bindning: </span><a href="http://terminology.hl7.org/7.2.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span title="null" class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span title="null" class="binding">)</span><span title="null" class="binding">: </span><span title="null" class="binding">The reason the activity took place.</span><br/></td></tr>
+<td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Reason the activity is occurring<br class="binding"/><span style="font-weight:bold" title="null" class="binding">Bindning: </span><a href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span title="null" class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span title="null" class="binding">)</span><span title="null" class="binding">: </span><span title="null" class="binding">The reason the activity took place.</span><br/></td></tr>
 <tr fhir="generated-heirarchy" style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7" id="ao" data-fhir="generated-heirarchy"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_datatype.gif" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Datatyp" class="hierarchy"/> <a no-external="true" href="StructureDefinition-inera-ehds-provenance-definitions.html#Provenance.activity" title="An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." data-no-external="true">activity</a><a name="sa-Provenance.activity"> </a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
@@ -2467,7 +2266,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..*</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#Signature">Signature</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Signature on target<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // ae32cc86-41ed-49b6-bdc1-2e421ee66828
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // e577c914-bbe4-4d7b-900c-d073e336bf56
 document.getElementById('cbinera-ehds-provenanceSA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-provenanceSA'), 'constraint', document.getElementById('cbinera-ehds-provenanceSA-constraint').checked, document.getElementById('ppinera-ehds-provenanceSA'));
 document.getElementById('cbinera-ehds-provenanceSA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2520,12 +2319,12 @@ filterDesc(document.getElementById('inera-ehds-provenanceSA'), 'obligation', doc
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The reason the activity took place.">
-      <a style="opacity: 1.0" href="http://terminology.hl7.org/7.2.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
+      <a style="opacity: 1.0" href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
       <button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
     <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till 3.1.0, versionen som hittas via paketreferenserna">&#x1F4E6;3.1.0</td>
     <td>
-      <a href="http://terminology.hl7.org/7.2.0">THO v7.2</a>
+      <a href="http://terminology.hl7.org/7.4.0">THO v7.4</a>
     </td>
   </tr>
   <tr>
@@ -2675,73 +2474,6 @@ filterDesc(document.getElementById('inera-ehds-provenanceSA'), 'obligation', doc
       <b>Uttryck</b>
     </td>
   </tr>
-  <tr>
-    <td>dom-2</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL NOT contain nested Resources</td>
-    <td>
-      <code>contained.contained.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-3</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource</td>
-    <td>
-      <code>contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-4</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated</td>
-    <td>
-      <code>contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-5</td>
-    <td>error</td>
-    <td>Provenance</td>
-    <td>If a resource is contained in another resource, it SHALL NOT have a security label</td>
-    <td>
-      <code>contained.meta.security.empty()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>dom-6</td>
-    <td>bästa praxis</td>
-    <td>Provenance</td>
-    <td>A resource should have narrative for robust management</td>
-    <td>
-      <code>text.`div`.exists()</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ele-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** element</b>
-    </td>
-    <td>All FHIR elements must have a @value or children</td>
-    <td>
-      <code>hasValue() or (children().count() &gt; id.count())</code>
-    </td>
-  </tr>
-  <tr>
-    <td>ext-1</td>
-    <td>error</td>
-    <td>
-      <b>**ALLA** extensions</b>
-    </td>
-    <td>Must have either extensions or value[x], not both</td>
-    <td>
-      <code>extension.exists() != value.exists()</code>
-    </td>
-  </tr>
 </table>
 
           
@@ -2779,7 +2511,7 @@ filterDesc(document.getElementById('inera-ehds-provenanceSA'), 'obligation', doc
 <span style="color: Gray">// occurred[x]: <span style="color: navy; opacity: 0.8">When the activity occurred</span>. En av dessa 2:</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.occurredPeriod" title="The period during which the activity occurred" class="dict"><span style="text-decoration: underline">occurredPeriod</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#Period">Period</a></span>}, <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">When the activity occurred</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.occurredDateTime" title="The period during which the activity occurred" class="dict"><span style="text-decoration: underline">occurredDateTime</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">dateTime</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">When the activity occurred</span>
-    "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.recorded" title="The instant of time at which the activity was recorded (detta element måste stödjas)" class="dict"><span style="text-decoration: underline">recorded</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: brown" title="Detta element är obligatoriskt"><b>R!</b></span> <span style="color: navy; opacity: 0.8">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)</span>
+    "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.recorded" title="The instant of time at which the activity was recorded (detta element måste stödjas)" class="dict"><span style="text-decoration: underline">recorded</span></a>" : "&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#instant">instant</a></span>&gt;", <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: brown" title="Detta element är obligatoriskt"><b>R!</b></span> <span style="color: navy; opacity: 0.8">Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.policy" title="Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc" class="dict"><span style="text-decoration: underline">policy</span></a>" : ["&lt;<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#uri">uri</a></span>&gt;"], <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">Policy or plan the activity was defined by</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.location" title="Where the activity occurred, if relevant" class="dict"><span style="text-decoration: underline">location</span></a>" : {<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/references.html#Reference">Reference</a></span>(Location|4.0.1)}, <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8">Where the activity occurred, if relevant</span>
     "<a href="StructureDefinition-inera-ehds-provenance.html#Provenance.reason" title="The reason that the activity was taking place" class="dict"><span style="text-decoration: underline">reason</span></a>" : [{<span style="color: darkgreen"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></span>}], <span style="color: Gray">//</span> <span style="color: brown" title=""><b>C?</b></span> <span style="color: navy; opacity: 0.8"><a href="http://hl7.org/fhir/R4/null.html" style="color: navy">Reason the activity is occurring</a></span>
@@ -2879,7 +2611,7 @@ Sammanfattning
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 25, 2026 07:52+0000">2026-06-25</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 09:02+0000">2026-09-30</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

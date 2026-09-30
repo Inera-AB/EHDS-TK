@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-encounter | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSEncounter |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSEncounter |
 
  
 Profil för vårdkontakter mappat från RIVTA-tjänstekontraktet GetCareContacts (clinicalprocess:logistics:logistics v3.0). Täcker NPÖ 2.0, 3.0 och 1177 Journal 2.0, 3.0. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-encounter
   "name" : "IneraEHDSEncounter",
   "title" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

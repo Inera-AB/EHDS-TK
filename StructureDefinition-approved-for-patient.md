@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:ApprovedForPatient |
+| Draft as of 2026-09-30 | *Computable Name*:ApprovedForPatient |
 
 Anger om information är godkänd för delning med patient (approvedForPatient, Regel 3).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-approved-for-patient
   "name" : "ApprovedForPatient",
   "title" : "Godkänd för patient",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

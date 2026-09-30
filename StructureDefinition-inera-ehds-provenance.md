@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-provenance | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSProvenance |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSProvenance |
 
  
 Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance med två agenter som speglar spärr-hierarkin enligt PDL: 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-provenanc
   "name" : "IneraEHDSProvenance",
   "title" : "SE EHDS Provenance",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -107,7 +107,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-provenanc
     {
       "id" : "Provenance.recorded",
       "path" : "Provenance.recorded",
-      "short" : "Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601)",
+      "short" : "Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime – se tjänstekontraktets mappningssida",
       "mustSupport" : true
     },
     {

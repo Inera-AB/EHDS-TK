@@ -363,6 +363,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
+<blockquote>
+  <p><strong>OBS:</strong> <code class="language-plaintext highlighter-rouge">diagnosisHeader.documentTime</code> har kardinalitet <strong>0..0</strong> i GetDiagnosis:2 och skickas aldrig av tjänstekontraktet. Detta avviker från det generella PatientSummaryHeader-mönstret (se README.md/mappings.md) där <code class="language-plaintext highlighter-rouge">documentTime</code> normalt är källan för <code class="language-plaintext highlighter-rouge">recordedDate</code>/<code class="language-plaintext highlighter-rouge">Provenance.recorded</code>. För GetDiagnosis är <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional.authorTime</code> den korrekta och enda källan för både <code class="language-plaintext highlighter-rouge">Condition.recordedDate</code> (ovan) och <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> (se nedan).</p>
+</blockquote>
+
 <hr />
 
 <h2 id="mappningstabell--diagnosisbody">Mappningstabell – diagnosisBody</h2>
@@ -677,12 +681,22 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
     </tr>
     <tr>
+      <td>Jämförelsetid (Sparr/CheckBlocks)</td>
+      <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.accountableHealthcareProfessional.authorTime</code></td>
+      <td>Skickas som jämförelsetidpunkt vid anrop till spärrtjänsten (motsvarande <code class="language-plaintext highlighter-rouge">blockComparisonTime</code> i TK:er med <code class="language-plaintext highlighter-rouge">accessControlHeader</code>)</td>
+    </tr>
+    <tr>
       <td>Patientgodkännande</td>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.approvedForPatient</code> (boolean)</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.meta.security</code>; se <a href="#öppna-frågor">PDL-001</a></td>
     </tr>
   </tbody>
 </table>
+
+<p><strong>OBS – jämförelsetid:</strong> GetDiagnosis:2 har inget <code class="language-plaintext highlighter-rouge">accessControlHeader.blockComparisonTime</code> (till skillnad från t.ex.
+GetCareDocumentation och GetLaboratoryOrderOutcome). <code class="language-plaintext highlighter-rouge">authorTime</code> är det enda tidsfältet i headern som skickas
+(<code class="language-plaintext highlighter-rouge">documentTime</code> är 0..0, se ovan) och är därför källan till den jämförelsetidpunkt som anropet till spärrtjänsten
+ska använda.</p>
 
 <hr />
 
@@ -827,7 +841,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Jun 25, 2026 07:52+0000">2026-06-25</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 09:02+0000">2026-09-30</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

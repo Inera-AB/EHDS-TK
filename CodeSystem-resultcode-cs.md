@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/resultcode-actoutcome | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:ResultCodeCS |
+| Active as of 2026-09-30 | *Computable Name*:ResultCodeCS |
 
  
 Kodverk för resultatkod i svar från tjänstekontrakten i domänen clinicalprocess:activityprescription:actoutcome. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [ResultCodeVS](ValueSet-resultcode-vs.md)
+* [ResultCode — ValueSet](ValueSet-resultcode-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Kodverk för resultatkod i svar från tjänstekontrakten i domänen clinicalproc
   "name" : "ResultCodeCS",
   "title" : "ResultCode",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

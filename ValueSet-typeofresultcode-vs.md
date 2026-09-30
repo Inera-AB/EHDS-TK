@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:TypeOfResultCodeVS |
+| Active as of 2026-09-30 | *Computable Name*:TypeOfResultCodeVS |
 
  
 Tillåtna värden för typeOfResult i GetImagingOutcome. 
@@ -50,7 +50,7 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "name" : "TypeOfResultCodeVS",
   "title" : "TypeOfResultCode — ValueSet",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

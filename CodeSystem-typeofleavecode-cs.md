@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/typeofleavecode | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:TypeOfLeaveCodeCS |
+| Active as of 2026-09-30 | *Computable Name*:TypeOfLeaveCodeCS |
 
  
 Kodverk för typ av ledighet (TypeOfLeaveCodeEnum). Används i GetMaternityMedicalHistory. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [TypeOfLeaveCodeVS](ValueSet-typeofleavecode-vs.md)
+* [TypeOfLeaveCode — ValueSet](ValueSet-typeofleavecode-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Kodverk för typ av ledighet (TypeOfLeaveCodeEnum). Används i GetMaternityMedic
   "name" : "TypeOfLeaveCodeCS",
   "title" : "TypeOfLeaveCode",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

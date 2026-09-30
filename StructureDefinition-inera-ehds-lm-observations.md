@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-observations | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSLMObservations |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSLMObservations |
 
  
 Logisk modell för tjänstekontraktet GetObservations (RIV-TA urn:riv:clinicalprocess:healthcond:basic:GetObservationsInteraction:2). Representerar responsens informationsstruktur — en samling observationer som matchar sökkriterier i begäran, inklusive header-information. Meddelandemodellen från avsnitt 5.1 V-MIM — Observationer i TKB motsvarar en observation i svarsmeddelandet. 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-observ
   "name" : "IneraEHDSLMObservations",
   "title" : "GetObservations",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -3,7 +3,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="inera-ehds-patient"/>
   <text>
-    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: StructureDefinition inera-ehds-patient</b></p><a name="inera-ehds-patient"> </a><a name="hcinera-ehds-patient"> </a><table border="0" cellpadding="0" cellspacing="0" style="border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;"><tr style="border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top"><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Elementets logiska namn">Namn</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Information om användningen av elementet">Flaggor</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Lägsta och högsta antal gånger elementet kan förekomma i instansen">Kard.</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px; width: 100px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Referens till elementets typ">Typ</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Ytterligare information om elementet">Beskrivning &amp; begränsningar</a><span style="float: right"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC" alt="doco" style="background-color: inherit"/></a></span></th></tr><tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_resource.png" alt="." style="background-color: white; background-color: inherit" title="Resurs" class="hierarchy"/> <a href="StructureDefinition-inera-ehds-patient-definitions.html#Patient">Patient</a><a name="Patient"> </a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/uv/ips/STU2/StructureDefinition-Patient-uv-ips.html">PatientUvIps(2.0.0)</a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">Information about an individual or animal receiving health care services</span></td></tr>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: StructureDefinition inera-ehds-patient</b></p><a name="inera-ehds-patient"> </a><a name="hcinera-ehds-patient"> </a><table border="0" cellpadding="0" cellspacing="0" style="border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;"><tr style="border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top"><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Elementets logiska namn">Namn</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Information om användningen av elementet">Flaggor</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Lägsta och högsta antal gånger elementet kan förekomma i instansen">Kard.</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px; width: 100px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Referens till elementets typ">Typ</a></th><th style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px" class="hierarchy"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Ytterligare information om elementet">Beskrivning &amp; begränsningar</a><span style="float: right"><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC" alt="doco" style="background-color: inherit"/></a></span></th></tr><tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_resource.png" alt="." style="background-color: white; background-color: inherit" title="Resurs" class="hierarchy"/> <a href="StructureDefinition-inera-ehds-patient-definitions.html#Patient">Patient</a><a name="Patient"> </a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">*</span></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/uv/ips/2.0.1/StructureDefinition-Patient-uv-ips.html">PatientUvIps(2.0.1)</a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">Information about an individual or animal receiving health care services</span></td></tr>
 <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck03.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_slice.png" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Skivdefinition" class="hierarchy"/> <a style="font-style: italic; font-style: italic" href="StructureDefinition-inera-ehds-patient-definitions.html#Patient.identifier">Skivor för identifier</a><a name="Patient.identifier"> </a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"/><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="font-style: italic"/><span style="opacity: 0.5; font-style: italic">0</span><span style="opacity: 0.5; font-style: italic">..</span><span style="opacity: 0.5; font-style: italic">*</span></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; font-style: italic; opacity: 0.5; font-style: italic" href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="font-style: italic">Patientidentifierare (patientId från RIVTA)</span><br style="font-style: italic"/><span style="font-weight:bold; font-style: italic">Skiva: </span><span style="font-style: italic">Oordnad, Öppen av value:system</span></td></tr>
 <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck035.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slicer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_slice_item.png" alt="." style="background-color: white; background-color: inherit" title="Skivobjekt" class="hierarchy"/> <a href="StructureDefinition-inera-ehds-patient-definitions.html#Patient.identifier:personnummer" title="Skiva personnummer">identifier:personnummer</a><a name="Patient.identifier:personnummer"> </a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#Identifier">Identifier</a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Personnummer</td></tr>
 <tr style="border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7"><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck0350.png)" class="hierarchy"><img src="tbl_spacer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slice.png" alt="." style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="." style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <a href="StructureDefinition-inera-ehds-patient-definitions.html#Patient.identifier:personnummer.system">system</a><a name="Patient.identifier:personnummer.system"> </a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000" title="Detta element måste stödjas">S</span></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">1..<span style="opacity: 0.5">1</span></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#uri">uri</a></td><td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">The namespace for the identifier value</span><br/><span style="font-weight:bold">Obligatoriskt mönster: </span><span style="color: darkgreen">http://electronichealth.se/identifier/personnummer</span></td></tr>
@@ -21,7 +21,7 @@
   <name value="IneraEHDSPatient"/>
   <title value="SE EHDS Patient"/>
   <status value="draft"/>
-  <date value="2026-06-25T07:52:35+00:00"/>
+  <date value="2026-09-30T09:02:48+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -71,7 +71,7 @@
   <derivation value="constraint"/>
   <snapshot>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version">
-      <valueString value="2.0.0"/>
+      <valueString value="2.0.1"/>
     </extension>
     <element id="Patient">
       <path value="Patient"/>
@@ -91,7 +91,7 @@
         <human value="If the resource is contained in another resource, it SHALL NOT contain nested Resources"/>
         <expression value="contained.contained.empty()"/>
         <xpath value="not(parent::f:contained and f:contained)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1"/>
       </constraint>
       <constraint>
         <key value="dom-3"/>
@@ -99,7 +99,7 @@
         <human value="If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource"/>
         <expression value="contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()"/>
         <xpath value="not(exists(for $id in f:contained/*/f:id/@value return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1"/>
       </constraint>
       <constraint>
         <key value="dom-4"/>
@@ -107,7 +107,7 @@
         <human value="If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated"/>
         <expression value="contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()"/>
         <xpath value="not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1"/>
       </constraint>
       <constraint>
         <key value="dom-5"/>
@@ -115,7 +115,7 @@
         <human value="If a resource is contained in another resource, it SHALL NOT have a security label"/>
         <expression value="contained.meta.security.empty()"/>
         <xpath value="not(exists(f:contained/*/f:meta/f:security))"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1"/>
       </constraint>
       <constraint>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice">
@@ -129,7 +129,7 @@
         <human value="A resource should have narrative for robust management"/>
         <expression value="text.`div`.exists()"/>
         <xpath value="exists(f:text/h:div)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -187,7 +187,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -213,7 +213,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="This element is labeled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation"/>
@@ -240,13 +240,13 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
       <binding>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet">
-          <valueCanonical value="http://hl7.org/fhir/ValueSet/all-languages"/>
+          <valueCanonical value="http://hl7.org/fhir/ValueSet/all-languages|4.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
           <valueString value="Language"/>
@@ -281,7 +281,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -343,7 +343,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -351,7 +351,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -371,7 +371,7 @@
       </base>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/individual-genderIdentity|5.3.0-ballot-tc1"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/individual-genderIdentity|5.3.0"/>
       </type>
       <condition value="ele-1"/>
       <constraint>
@@ -380,7 +380,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -388,7 +388,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -407,7 +407,7 @@
       </base>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/individual-pronouns|5.3.0-ballot-tc1"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/individual-pronouns|5.3.0"/>
       </type>
       <condition value="ele-1"/>
       <constraint>
@@ -416,7 +416,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -424,7 +424,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -453,7 +453,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -461,7 +461,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the resource that contains them"/>
@@ -477,10 +477,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -488,10 +488,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -499,10 +499,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.identifier"/>
@@ -532,7 +532,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -560,10 +560,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -571,10 +571,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -582,10 +582,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.identifier"/>
@@ -609,7 +609,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -961,10 +961,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -972,10 +972,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -983,10 +983,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.identifier"/>
@@ -1010,7 +1010,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -1362,10 +1362,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -1373,10 +1373,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -1384,10 +1384,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.identifier"/>
@@ -1411,7 +1411,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -1780,7 +1780,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="This element is labelled as a modifier because it is a status element that can indicate that a record should not be treated as valid"/>
@@ -1804,10 +1804,10 @@
           <valueCode value="SHALL:populate"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -1815,10 +1815,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -1826,10 +1826,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.name"/>
@@ -1853,7 +1853,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ips-pat-1"/>
@@ -1861,7 +1861,7 @@
         <human value="Patient.name.given, Patient.name.family or Patient.name.text SHALL be present"/>
         <expression value="family.exists() or given.exists() or text.exists()"/>
         <xpath value="f:given or f:family or f:text"/>
-        <source value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips"/>
+        <source value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -1935,7 +1935,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -1943,7 +1943,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -1958,10 +1958,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -1969,10 +1969,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -1980,10 +1980,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.name.use"/>
@@ -2007,7 +2007,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="true"/>
@@ -2040,10 +2040,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2051,10 +2051,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2062,10 +2062,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.name.text"/>
@@ -2089,7 +2089,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -2109,10 +2109,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2120,10 +2120,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2131,10 +2131,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.name.family"/>
@@ -2158,7 +2158,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -2182,10 +2182,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2193,10 +2193,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2204,10 +2204,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.name.given"/>
@@ -2233,7 +2233,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -2272,7 +2272,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -2310,7 +2310,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -2344,7 +2344,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -2367,10 +2367,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2378,10 +2378,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2389,10 +2389,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.telecom"/>
@@ -2416,7 +2416,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -2440,10 +2440,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2451,10 +2451,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2462,10 +2462,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.gender"/>
@@ -2489,7 +2489,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -2521,10 +2521,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2532,10 +2532,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2543,10 +2543,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.birthDate"/>
@@ -2570,7 +2570,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -2617,7 +2617,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="This element is labeled as a modifier because once a patient is marked as deceased, the actions that are appropriate to perform on the patient may be significantly different."/>
@@ -2641,10 +2641,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2652,10 +2652,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -2663,10 +2663,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.address"/>
@@ -2690,7 +2690,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -2729,7 +2729,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -2779,7 +2779,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -2818,7 +2818,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -2857,7 +2857,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="pat-1"/>
@@ -2865,7 +2865,7 @@
         <human value="SHALL at least contain a contact's details or a reference to an organization"/>
         <expression value="name.exists() or telecom.exists() or address.exists() or organization.exists()"/>
         <xpath value="exists(f:name) or exists(f:telecom) or exists(f:address) or exists(f:organization)"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Patient|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -2926,7 +2926,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -2934,7 +2934,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -2968,7 +2968,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -2976,7 +2976,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
@@ -3007,7 +3007,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3053,7 +3053,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3092,7 +3092,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3130,7 +3130,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3168,7 +3168,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3216,7 +3216,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3253,7 +3253,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3288,7 +3288,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3349,7 +3349,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -3357,7 +3357,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3391,7 +3391,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -3399,7 +3399,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
@@ -3431,13 +3431,13 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
       <binding>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet">
-          <valueCanonical value="http://hl7.org/fhir/ValueSet/all-languages"/>
+          <valueCanonical value="http://hl7.org/fhir/ValueSet/all-languages|4.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
           <valueString value="Language"/>
@@ -3481,7 +3481,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3504,10 +3504,10 @@
           <valueCode value="SHALL:populate-if-known"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -3515,10 +3515,10 @@
           <valueCode value="SHALL:handle"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <extension url="http://hl7.org/fhir/StructureDefinition/obligation">
@@ -3526,10 +3526,10 @@
           <valueCode value="SHOULD:display"/>
         </extension>
         <extension url="actor">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1"/>
         </extension>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/snapshot-source">
-          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.0"/>
+          <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips|2.0.1"/>
         </extension>
       </extension>
       <path value="Patient.generalPractitioner"/>
@@ -3556,7 +3556,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <mustSupport value="true"/>
       <isModifier value="false"/>
@@ -3597,7 +3597,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -3632,7 +3632,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="This element is labeled as a modifier because it might not be the main Patient resource, and the referenced patient should be used instead of this Patient record. This is when the link.type value is 'replaced-by'"/>
@@ -3694,7 +3694,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -3702,7 +3702,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="false"/>
@@ -3736,7 +3736,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <constraint>
         <key value="ext-1"/>
@@ -3744,7 +3744,7 @@
         <human value="Must have either extensions or value[x], not both"/>
         <expression value="extension.exists() != value.exists()"/>
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension|4.0.1"/>
       </constraint>
       <isModifier value="true"/>
       <isModifierReason value="Modifier extensions are expected to modify the meaning or interpretation of the element that contains them"/>
@@ -3780,7 +3780,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="true"/>
@@ -3817,7 +3817,7 @@
         <human value="All FHIR elements must have a @value or children"/>
         <expression value="hasValue() or (children().count() &gt; id.count())"/>
         <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element|4.0.1"/>
       </constraint>
       <isModifier value="false"/>
       <isSummary value="true"/>

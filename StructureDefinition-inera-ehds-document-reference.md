@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-document-reference | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSDocumentReference |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSDocumentReference |
 
  
 Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation (clinicalprocess:healthcond:description v3.0). Täcker NPÖ 3.0 och 1177 Journal 3.0. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-document-
   "name" : "IneraEHDSDocumentReference",
   "title" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

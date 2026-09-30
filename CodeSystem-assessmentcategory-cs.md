@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:AssessmentCategoryCS |
+| Active as of 2026-09-30 | *Computable Name*:AssessmentCategoryCS |
 
  
 Bedömningskategori för funktionsstatus. Tillåtna värden är 'pad-pad' (PADL-bedömning) och 'fun-fun' (funktionsnedsättningsbedömning). Definierat i enum XSD v2.1 för domänen. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [AssessmentCategoryVS](ValueSet-assessmentcategory-vs.md)
+* [AssessmentCategory — ValueSet](ValueSet-assessmentcategory-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Bedömningskategori för funktionsstatus. Tillåtna värden är 'pad-pad' (PADL-
   "name" : "AssessmentCategoryCS",
   "title" : "AssessmentCategory",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

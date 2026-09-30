@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/prescriptionstatus-vs | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:PrescriptionStatusVS |
+| Active as of 2026-09-30 | *Computable Name*:PrescriptionStatusVS |
 
  
 Tillåtna värden för prescriptionStatus i GetMedicationHistory. 
@@ -50,7 +50,7 @@ Tillåtna värden för prescriptionStatus i GetMedicationHistory.
   "name" : "PrescriptionStatusVS",
   "title" : "PrescriptionStatus — ValueSet",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

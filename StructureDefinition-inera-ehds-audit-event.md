@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSAuditEvent |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSAuditEvent |
 
  
 Profil för åtkomstloggar mappat från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-audit-eve
   "name" : "IneraEHDSAuditEvent",
   "title" : "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

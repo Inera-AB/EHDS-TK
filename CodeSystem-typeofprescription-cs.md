@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/typeofprescription | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:TypeOfPrescriptionCS |
+| Active as of 2026-09-30 | *Computable Name*:TypeOfPrescriptionCS |
 
  
 Kodverk för ordinationstyp i GetMedicationHistory. Anger om en ordination är en insättnings- eller utsättningsordination. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [TypeOfPrescriptionVS](ValueSet-typeofprescription-vs.md)
+* [TypeOfPrescription — ValueSet](ValueSet-typeofprescription-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Kodverk för ordinationstyp i GetMedicationHistory. Anger om en ordination är e
   "name" : "TypeOfPrescriptionCS",
   "title" : "TypeOfPrescription",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

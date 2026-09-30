@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserter | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:AlertAsserter |
+| Draft as of 2026-09-30 | *Computable Name*:AlertAsserter |
 
 HSA-id för juridisk äkthetsintygsgivare (alertInformationHeader.legalAuthenticator.legalAuthenticatorHSAId).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-asserter.csv),
   "name" : "AlertAsserter",
   "title" : "Juridisk äkthetsintygsgivare för uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

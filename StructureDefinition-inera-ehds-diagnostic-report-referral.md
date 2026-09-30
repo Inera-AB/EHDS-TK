@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-referral | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSDiagnosticReportReferral |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSDiagnosticReportReferral |
 
  
 Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med IneraEHDSServiceRequestReferral. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-diagnosti
   "name" : "IneraEHDSDiagnosticReportReferral",
   "title" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

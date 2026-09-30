@@ -1,6 +1,5 @@
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -8,45 +7,56 @@
 
 <https://fhir.inera.se/ig/ehds-tk/CodeSystem/referraloutcometypecode-cs> a fhir:CodeSystem ;
   fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "referraloutcometypecode-cs"] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem referraloutcometypecode-cs</b></p><a name=\"referraloutcometypecode-cs\"> </a><a name=\"hcreferraloutcometypecode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/referraloutcometypecode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">SS<a name=\"referraloutcometypecode-cs-SS\"> </a></td><td>Slutsvar på remissfråga</td><td>Slutsvar på remissfråga</td></tr><tr><td style=\"white-space:nowrap\">SR<a name=\"referraloutcometypecode-cs-SR\"> </a></td><td>Svar på remissfråga</td><td>Svar på remissfråga</td></tr></table></div>"^^rdf:XMLLiteral ]
-  ] ; # 
-  fhir:url [ fhir:v "https://fhir.inera.se/CodeSystem/referraloutcometypecode"^^xsd:anyURI] ; # 
-  fhir:version [ fhir:v "0.3.3"] ; # 
-  fhir:name [ fhir:v "ReferralOutcomeTypeCodeCS"] ; # 
-  fhir:title [ fhir:v "ReferralOutcomeTypeCode"] ; # 
-  fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2026-06-25T07:52:35+00:00"^^xsd:dateTime] ; # 
-  fhir:publisher [ fhir:v "Inera AB"] ; # 
-  fhir:contact ( [
-     fhir:name [ fhir:v "Inera AB" ] ;
-     fhir:telecom ( [
-       fhir:system [ fhir:v "url" ] ;
-       fhir:value [ fhir:v "https://www.inera.se" ]
-     ] )
-  ] ) ; # 
-  fhir:description [ fhir:v "Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetReferralOutcome."] ; # 
-  fhir:jurisdiction ( [
-     fhir:coding ( [
-       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
-       fhir:code [ fhir:v "SE" ] ;
-       fhir:display [ fhir:v "Sweden" ]
-     ] )
-  ] ) ; # 
-  fhir:caseSensitive [ fhir:v true] ; # 
-  fhir:content [ fhir:v "complete"] ; # 
-  fhir:count [ fhir:v "2"^^xsd:nonNegativeInteger] ; # 
-  fhir:concept ( [
-     fhir:code [ fhir:v "SS" ] ;
-     fhir:display [ fhir:v "Slutsvar på remissfråga" ] ;
-     fhir:definition [ fhir:v "Slutsvar på remissfråga" ]
-  ] [
-     fhir:code [ fhir:v "SR" ] ;
-     fhir:display [ fhir:v "Svar på remissfråga" ] ;
-     fhir:definition [ fhir:v "Svar på remissfråga" ]
-  ] ) . # 
+  fhir:Resource.id [ fhir:value "referraloutcometypecode-cs"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem referraloutcometypecode-cs</b></p><a name=\"referraloutcometypecode-cs\"> </a><a name=\"hcreferraloutcometypecode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/referraloutcometypecode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">SS<a name=\"referraloutcometypecode-cs-SS\"> </a></td><td>Slutsvar på remissfråga</td><td>Slutsvar på remissfråga</td></tr><tr><td style=\"white-space:nowrap\">SR<a name=\"referraloutcometypecode-cs-SR\"> </a></td><td>Svar på remissfråga</td><td>Svar på remissfråga</td></tr></table></div>"
+  ] ;
+  fhir:CodeSystem.url [ fhir:value "https://fhir.inera.se/CodeSystem/referraloutcometypecode"] ;
+  fhir:CodeSystem.version [ fhir:value "0.3.3"] ;
+  fhir:CodeSystem.name [ fhir:value "ReferralOutcomeTypeCodeCS"] ;
+  fhir:CodeSystem.title [ fhir:value "ReferralOutcomeTypeCode"] ;
+  fhir:CodeSystem.status [ fhir:value "active"] ;
+  fhir:CodeSystem.date [ fhir:value "2026-09-30T09:02:48+00:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.publisher [ fhir:value "Inera AB"] ;
+  fhir:CodeSystem.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "Inera AB" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
+     ]
+  ] ;
+  fhir:CodeSystem.description [ fhir:value "Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetReferralOutcome."] ;
+  fhir:CodeSystem.jurisdiction [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "SE" ] ;
+       fhir:Coding.display [ fhir:value "Sweden" ]
+     ]
+  ] ;
+  fhir:CodeSystem.caseSensitive [ fhir:value "true"^^xsd:boolean] ;
+  fhir:CodeSystem.content [ fhir:value "complete"] ;
+  fhir:CodeSystem.count [ fhir:value "2"^^xsd:nonNegativeInteger] ;
+  fhir:CodeSystem.concept [
+     fhir:index 0 ;
+     fhir:CodeSystem.concept.code [ fhir:value "SS" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Slutsvar på remissfråga" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Slutsvar på remissfråga" ]
+  ], [
+     fhir:index 1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "SR" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Svar på remissfråga" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Svar på remissfråga" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/referraloutcometypecode-cs.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

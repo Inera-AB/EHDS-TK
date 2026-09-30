@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-functional | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSConditionFunctional |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSConditionFunctional |
 
  
 Profil för funktionstillstånd och ADL-bedömningar mappat från RIVTA-tjänstekontraktet GetFunctionalStatus (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
   "name" : "IneraEHDSConditionFunctional",
   "title" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

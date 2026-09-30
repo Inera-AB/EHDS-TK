@@ -1,6 +1,5 @@
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -8,81 +7,101 @@
 
 <https://fhir.inera.se/ig/ehds-tk/CodeSystem/examinationstatuscode-cs> a fhir:CodeSystem ;
   fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "examinationstatuscode-cs"] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem examinationstatuscode-cs</b></p><a name=\"examinationstatuscode-cs\"> </a><a name=\"hcexaminationstatuscode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/examinationstatuscode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">Initierad<a name=\"examinationstatuscode-cs-Initierad\"> </a></td><td>Initierad</td><td>Undersökning initierad</td></tr><tr><td style=\"white-space:nowrap\">Planerad<a name=\"examinationstatuscode-cs-Planerad\"> </a></td><td>Planerad (bevakad)</td><td>Undersökning planerad</td></tr><tr><td style=\"white-space:nowrap\">Tidbokad<a name=\"examinationstatuscode-cs-Tidbokad\"> </a></td><td>Tidbokad</td><td>Undersökning tidbokad</td></tr><tr><td style=\"white-space:nowrap\">Uppskjuten<a name=\"examinationstatuscode-cs-Uppskjuten\"> </a></td><td>Uppskjuten</td><td>Undersökning uppskjuten</td></tr><tr><td style=\"white-space:nowrap\">Annullerad<a name=\"examinationstatuscode-cs-Annullerad\"> </a></td><td>Annullerad</td><td>Undersökning annullerad</td></tr><tr><td style=\"white-space:nowrap\">Pagaende<a name=\"examinationstatuscode-cs-Pagaende\"> </a></td><td>Pågående</td><td>Undersökning pågående</td></tr><tr><td style=\"white-space:nowrap\">Avvakta<a name=\"examinationstatuscode-cs-Avvakta\"> </a></td><td>Avvakta</td><td>Undersökning avvakta</td></tr><tr><td style=\"white-space:nowrap\">Avbruten<a name=\"examinationstatuscode-cs-Avbruten\"> </a></td><td>Avbruten</td><td>Undersökning avbruten</td></tr><tr><td style=\"white-space:nowrap\">Avklarad<a name=\"examinationstatuscode-cs-Avklarad\"> </a></td><td>Avklarad</td><td>Undersökning avklarad</td></tr><tr><td style=\"white-space:nowrap\">Inaktuell<a name=\"examinationstatuscode-cs-Inaktuell\"> </a></td><td>Inaktuell</td><td>Undersökning inaktuell</td></tr><tr><td style=\"white-space:nowrap\">Makulerad<a name=\"examinationstatuscode-cs-Makulerad\"> </a></td><td>Makulerad</td><td>Undersökning makulerad</td></tr></table></div>"^^rdf:XMLLiteral ]
-  ] ; # 
-  fhir:url [ fhir:v "https://fhir.inera.se/CodeSystem/examinationstatuscode"^^xsd:anyURI] ; # 
-  fhir:version [ fhir:v "0.3.3"] ; # 
-  fhir:name [ fhir:v "ExaminationStatusCodeCS"] ; # 
-  fhir:title [ fhir:v "ExaminationStatusCode"] ; # 
-  fhir:status [ fhir:v "active"] ; # 
-  fhir:date [ fhir:v "2026-06-25T07:52:35+00:00"^^xsd:dateTime] ; # 
-  fhir:publisher [ fhir:v "Inera AB"] ; # 
-  fhir:contact ( [
-     fhir:name [ fhir:v "Inera AB" ] ;
-     fhir:telecom ( [
-       fhir:system [ fhir:v "url" ] ;
-       fhir:value [ fhir:v "https://www.inera.se" ]
-     ] )
-  ] ) ; # 
-  fhir:description [ fhir:v "Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetImagingOutcome."] ; # 
-  fhir:jurisdiction ( [
-     fhir:coding ( [
-       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
-       fhir:code [ fhir:v "SE" ] ;
-       fhir:display [ fhir:v "Sweden" ]
-     ] )
-  ] ) ; # 
-  fhir:caseSensitive [ fhir:v true] ; # 
-  fhir:content [ fhir:v "complete"] ; # 
-  fhir:count [ fhir:v "11"^^xsd:nonNegativeInteger] ; # 
-  fhir:concept ( [
-     fhir:code [ fhir:v "Initierad" ] ;
-     fhir:display [ fhir:v "Initierad" ] ;
-     fhir:definition [ fhir:v "Undersökning initierad" ]
-  ] [
-     fhir:code [ fhir:v "Planerad" ] ;
-     fhir:display [ fhir:v "Planerad (bevakad)" ] ;
-     fhir:definition [ fhir:v "Undersökning planerad" ]
-  ] [
-     fhir:code [ fhir:v "Tidbokad" ] ;
-     fhir:display [ fhir:v "Tidbokad" ] ;
-     fhir:definition [ fhir:v "Undersökning tidbokad" ]
-  ] [
-     fhir:code [ fhir:v "Uppskjuten" ] ;
-     fhir:display [ fhir:v "Uppskjuten" ] ;
-     fhir:definition [ fhir:v "Undersökning uppskjuten" ]
-  ] [
-     fhir:code [ fhir:v "Annullerad" ] ;
-     fhir:display [ fhir:v "Annullerad" ] ;
-     fhir:definition [ fhir:v "Undersökning annullerad" ]
-  ] [
-     fhir:code [ fhir:v "Pagaende" ] ;
-     fhir:display [ fhir:v "Pågående" ] ;
-     fhir:definition [ fhir:v "Undersökning pågående" ]
-  ] [
-     fhir:code [ fhir:v "Avvakta" ] ;
-     fhir:display [ fhir:v "Avvakta" ] ;
-     fhir:definition [ fhir:v "Undersökning avvakta" ]
-  ] [
-     fhir:code [ fhir:v "Avbruten" ] ;
-     fhir:display [ fhir:v "Avbruten" ] ;
-     fhir:definition [ fhir:v "Undersökning avbruten" ]
-  ] [
-     fhir:code [ fhir:v "Avklarad" ] ;
-     fhir:display [ fhir:v "Avklarad" ] ;
-     fhir:definition [ fhir:v "Undersökning avklarad" ]
-  ] [
-     fhir:code [ fhir:v "Inaktuell" ] ;
-     fhir:display [ fhir:v "Inaktuell" ] ;
-     fhir:definition [ fhir:v "Undersökning inaktuell" ]
-  ] [
-     fhir:code [ fhir:v "Makulerad" ] ;
-     fhir:display [ fhir:v "Makulerad" ] ;
-     fhir:definition [ fhir:v "Undersökning makulerad" ]
-  ] ) . # 
+  fhir:Resource.id [ fhir:value "examinationstatuscode-cs"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem examinationstatuscode-cs</b></p><a name=\"examinationstatuscode-cs\"> </a><a name=\"hcexaminationstatuscode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/examinationstatuscode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">Initierad<a name=\"examinationstatuscode-cs-Initierad\"> </a></td><td>Initierad</td><td>Undersökning initierad</td></tr><tr><td style=\"white-space:nowrap\">Planerad<a name=\"examinationstatuscode-cs-Planerad\"> </a></td><td>Planerad (bevakad)</td><td>Undersökning planerad</td></tr><tr><td style=\"white-space:nowrap\">Tidbokad<a name=\"examinationstatuscode-cs-Tidbokad\"> </a></td><td>Tidbokad</td><td>Undersökning tidbokad</td></tr><tr><td style=\"white-space:nowrap\">Uppskjuten<a name=\"examinationstatuscode-cs-Uppskjuten\"> </a></td><td>Uppskjuten</td><td>Undersökning uppskjuten</td></tr><tr><td style=\"white-space:nowrap\">Annullerad<a name=\"examinationstatuscode-cs-Annullerad\"> </a></td><td>Annullerad</td><td>Undersökning annullerad</td></tr><tr><td style=\"white-space:nowrap\">Pagaende<a name=\"examinationstatuscode-cs-Pagaende\"> </a></td><td>Pågående</td><td>Undersökning pågående</td></tr><tr><td style=\"white-space:nowrap\">Avvakta<a name=\"examinationstatuscode-cs-Avvakta\"> </a></td><td>Avvakta</td><td>Undersökning avvakta</td></tr><tr><td style=\"white-space:nowrap\">Avbruten<a name=\"examinationstatuscode-cs-Avbruten\"> </a></td><td>Avbruten</td><td>Undersökning avbruten</td></tr><tr><td style=\"white-space:nowrap\">Avklarad<a name=\"examinationstatuscode-cs-Avklarad\"> </a></td><td>Avklarad</td><td>Undersökning avklarad</td></tr><tr><td style=\"white-space:nowrap\">Inaktuell<a name=\"examinationstatuscode-cs-Inaktuell\"> </a></td><td>Inaktuell</td><td>Undersökning inaktuell</td></tr><tr><td style=\"white-space:nowrap\">Makulerad<a name=\"examinationstatuscode-cs-Makulerad\"> </a></td><td>Makulerad</td><td>Undersökning makulerad</td></tr></table></div>"
+  ] ;
+  fhir:CodeSystem.url [ fhir:value "https://fhir.inera.se/CodeSystem/examinationstatuscode"] ;
+  fhir:CodeSystem.version [ fhir:value "0.3.3"] ;
+  fhir:CodeSystem.name [ fhir:value "ExaminationStatusCodeCS"] ;
+  fhir:CodeSystem.title [ fhir:value "ExaminationStatusCode"] ;
+  fhir:CodeSystem.status [ fhir:value "active"] ;
+  fhir:CodeSystem.date [ fhir:value "2026-09-30T09:02:48+00:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.publisher [ fhir:value "Inera AB"] ;
+  fhir:CodeSystem.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "Inera AB" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
+     ]
+  ] ;
+  fhir:CodeSystem.description [ fhir:value "Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetImagingOutcome."] ;
+  fhir:CodeSystem.jurisdiction [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "SE" ] ;
+       fhir:Coding.display [ fhir:value "Sweden" ]
+     ]
+  ] ;
+  fhir:CodeSystem.caseSensitive [ fhir:value "true"^^xsd:boolean] ;
+  fhir:CodeSystem.content [ fhir:value "complete"] ;
+  fhir:CodeSystem.count [ fhir:value "11"^^xsd:nonNegativeInteger] ;
+  fhir:CodeSystem.concept [
+     fhir:index 0 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Initierad" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Initierad" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning initierad" ]
+  ], [
+     fhir:index 1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Planerad" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Planerad (bevakad)" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning planerad" ]
+  ], [
+     fhir:index 2 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Tidbokad" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Tidbokad" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning tidbokad" ]
+  ], [
+     fhir:index 3 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Uppskjuten" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Uppskjuten" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning uppskjuten" ]
+  ], [
+     fhir:index 4 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Annullerad" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Annullerad" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning annullerad" ]
+  ], [
+     fhir:index 5 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Pagaende" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Pågående" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning pågående" ]
+  ], [
+     fhir:index 6 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Avvakta" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Avvakta" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning avvakta" ]
+  ], [
+     fhir:index 7 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Avbruten" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Avbruten" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning avbruten" ]
+  ], [
+     fhir:index 8 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Avklarad" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Avklarad" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning avklarad" ]
+  ], [
+     fhir:index 9 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Inaktuell" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Inaktuell" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning inaktuell" ]
+  ], [
+     fhir:index 10 ;
+     fhir:CodeSystem.concept.code [ fhir:value "Makulerad" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Makulerad" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Undersökning makulerad" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/examinationstatuscode-cs.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

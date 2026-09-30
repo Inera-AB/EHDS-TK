@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/examinationstatuscode | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:ExaminationStatusCodeCS |
+| Active as of 2026-09-30 | *Computable Name*:ExaminationStatusCodeCS |
 
  
 Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetImagingOutcome. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [ExaminationStatusCodeVS](ValueSet-examinationstatuscode-vs.md)
+* [ExaminationStatusCode — ValueSet](ValueSet-examinationstatuscode-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetIma
   "name" : "ExaminationStatusCodeCS",
   "title" : "ExaminationStatusCode",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

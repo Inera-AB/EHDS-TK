@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-medication-history | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSLMMedicationHistory |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSLMMedicationHistory |
 
  
 Logisk modell för tjänstekontraktet GetMedicationHistory (RIV-TA urn:riv:clinicalprocess:activityprescription:actoutcome:GetMedicationHistoryResponder:2). Representerar responsens informationsstruktur — läkemedelshistorik per patient. 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-medica
   "name" : "IneraEHDSLMMedicationHistory",
   "title" : "GetMedicationHistory",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

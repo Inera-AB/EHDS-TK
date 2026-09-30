@@ -12,7 +12,7 @@
   <sch:pattern>
     <sch:title>f:AllergyIntolerance</sch:title>
     <sch:rule context="f:AllergyIntolerance">
-      <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0-ballot-tc1']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0-ballot-tc1': maximum cardinality of 'extension' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0': maximum cardinality of 'extension' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

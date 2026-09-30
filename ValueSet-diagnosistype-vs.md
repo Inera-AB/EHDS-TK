@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/diagnosistype-vs | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:DiagnosisTypeVS |
+| Active as of 2026-09-30 | *Computable Name*:DiagnosisTypeVS |
 
  
 Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis. 
@@ -50,7 +50,7 @@ Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.
   "name" : "DiagnosisTypeVS",
   "title" : "DiagnosisType — ValueSet",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

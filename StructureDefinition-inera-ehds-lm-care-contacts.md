@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-care-contacts | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSLMCareContacts |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSLMCareContacts |
 
  
 Logisk modell för tjänstekontraktet GetCareContacts (RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCareContacts:3). Representerar responsens informationsstruktur (GetCareContactsResponseType). En lista med CareContactType returneras. 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-care-c
   "name" : "IneraEHDSLMCareContacts",
   "title" : "GetCareContacts",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

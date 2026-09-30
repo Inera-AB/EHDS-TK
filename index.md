@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSTK |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSTK |
 
 # Introduktion
 
@@ -112,7 +112,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "name" : "IneraEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -140,7 +140,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "7.2.0"
+    "version" : "7.4.0"
   },
   {
     "id" : "hl7ext",
@@ -767,6 +767,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-degree-of-severity.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-degree-of-severity"
@@ -779,6 +783,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-assessmentcategory-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/assessmentcategory-cs"
@@ -791,6 +799,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-assessmentcategory-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/assessmentcategory-vs"
@@ -803,6 +815,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-treatment-description.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-treatment-description"
@@ -815,6 +831,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-ascertained-date.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-ascertained-date"
@@ -827,6 +847,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-deliverycode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/deliverycode-cs"
@@ -839,6 +863,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-deliverycode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/deliverycode-vs"
@@ -851,6 +879,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-diagnosistype-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/diagnosistype-cs"
@@ -863,6 +895,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-diagnosistype-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/diagnosistype-vs"
@@ -875,6 +911,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-errorcode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/errorcode-cs"
@@ -887,6 +927,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-errorcode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/errorcode-vs"
@@ -899,6 +943,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-examinationstatuscode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/examinationstatuscode-cs"
@@ -911,6 +959,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-examinationstatuscode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/examinationstatuscode-vs"
@@ -923,6 +975,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-fetalpositioncode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/fetalpositioncode-cs"
@@ -935,6 +991,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-fetalpositioncode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/fetalpositioncode-vs"
@@ -947,6 +1007,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-immunization-is-dose-complete.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/immunization-is-dose-complete"
@@ -959,6 +1023,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-access-log.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-access-log"
@@ -971,6 +1039,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-alert-information.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-alert-information"
@@ -983,6 +1055,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-care-contacts.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-care-contacts"
@@ -995,6 +1071,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-care-documentation.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-care-documentation"
@@ -1007,6 +1087,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-care-plans.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-care-plans"
@@ -1019,6 +1103,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-diagnosis.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-diagnosis"
@@ -1031,6 +1119,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-functional-status.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-functional-status"
@@ -1043,6 +1135,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-imaging-outcome.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-imaging-outcome"
@@ -1055,6 +1151,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-laboratory-order-outcome.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-laboratory-order-outcome"
@@ -1067,6 +1167,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-maternity-medical-history.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-maternity-medical-history"
@@ -1079,6 +1183,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-medication-history.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-medication-history"
@@ -1091,6 +1199,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-observations.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-observations"
@@ -1103,6 +1215,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ConceptMap"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ConceptMap-observation-status-map.html"
       }],
       "reference" : {
         "reference" : "ConceptMap/observation-status-map"
@@ -1115,6 +1231,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-referral-outcome.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-referral-outcome"
@@ -1127,6 +1247,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-request-activities.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-request-activities"
@@ -1139,6 +1263,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-lm-vaccination-history.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-lm-vaccination-history"
@@ -1151,6 +1279,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-approved-for-patient.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/approved-for-patient"
@@ -1163,6 +1295,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-asserter.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-asserter"
@@ -1175,6 +1311,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-immunization-legal-authenticator.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/immunization-legal-authenticator"
@@ -1187,6 +1327,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-restriction-of-care-comment.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-restriction-of-care-comment"
@@ -1199,6 +1343,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-information-comment.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-information-comment"
@@ -1211,6 +1359,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-clinicaldocumentnotecode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/clinicaldocumentnotecode-cs"
@@ -1223,6 +1375,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-clinicaldocumentnotecode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/clinicaldocumentnotecode-vs"
@@ -1235,6 +1391,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-immunization-registration-device.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/immunization-registration-device"
@@ -1247,6 +1407,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-device-source-system-contact.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/device-source-system-contact"
@@ -1259,6 +1423,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-pharmaceutical-treatment.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-pharmaceutical-treatment"
@@ -1271,6 +1439,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-pharmaceutical-hypersensitivity.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-pharmaceutical-hypersensitivity"
@@ -1283,6 +1455,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-maternity-section.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/maternity-section"
@@ -1295,6 +1471,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-nonreplaceable-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/nonreplaceable-cs"
@@ -1307,6 +1487,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-immunization-patient-postal-code.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/immunization-patient-postal-code"
@@ -1319,6 +1503,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-prescriptionstatus-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/prescriptionstatus-cs"
@@ -1331,6 +1519,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-prescriptionstatus-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/prescriptionstatus-vs"
@@ -1343,6 +1535,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-referraloutcometypecode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/referraloutcometypecode-cs"
@@ -1355,6 +1551,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-referraloutcometypecode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/referraloutcometypecode-vs"
@@ -1367,6 +1567,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-related-alert-information.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/related-alert-information"
@@ -1379,6 +1583,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-resultcode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/resultcode-cs"
@@ -1391,6 +1599,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-resultcode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/resultcode-vs"
@@ -1403,6 +1615,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-allergy-intolerance.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-allergy-intolerance"
@@ -1415,6 +1631,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-audit-event.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-audit-event"
@@ -1427,6 +1647,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-care-plan.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-care-plan"
@@ -1439,6 +1663,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-condition-diagnosis.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-condition-diagnosis"
@@ -1451,6 +1679,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-condition-functional.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-condition-functional"
@@ -1463,6 +1695,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-device.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-device"
@@ -1475,6 +1711,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-diagnostic-report-imaging.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-diagnostic-report-imaging"
@@ -1487,6 +1727,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-diagnostic-report-referral.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-diagnostic-report-referral"
@@ -1499,6 +1743,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-diagnostic-report-lab.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-diagnostic-report-lab"
@@ -1511,6 +1759,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-document-reference.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-document-reference"
@@ -1523,6 +1775,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-encounter.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-encounter"
@@ -1535,6 +1791,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-flag.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-flag"
@@ -1547,6 +1807,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-imaging-study.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-imaging-study"
@@ -1559,6 +1823,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-immunization.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-immunization"
@@ -1571,6 +1839,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-medication-statement.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-medication-statement"
@@ -1583,6 +1855,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-observation-base.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-observation-base"
@@ -1595,6 +1871,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-observation-lab.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-observation-lab"
@@ -1607,6 +1887,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-observation-maternity.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-observation-maternity"
@@ -1619,6 +1903,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-observation-growth.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-observation-growth"
@@ -1631,6 +1919,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-organization.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-organization"
@@ -1643,6 +1935,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-patient.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-patient"
@@ -1655,6 +1951,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-provenance.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-provenance"
@@ -1667,6 +1967,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-service-request-referral.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-service-request-referral"
@@ -1679,6 +1983,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-task.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/inera-ehds-task"
@@ -1691,6 +1999,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-se-observation-status-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/se-observation-status-vs"
@@ -1703,6 +2015,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-sexcode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/sexcode-cs"
@@ -1715,6 +2031,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-sexcode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/sexcode-vs"
@@ -1727,6 +2047,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-asserted-date.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-asserted-date"
@@ -1739,6 +2063,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-route-of-transmission.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-route-of-transmission"
@@ -1751,6 +2079,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-verified-time.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-verified-time"
@@ -1763,6 +2095,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-growth-observation-type-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/growth-observation-type-vs"
@@ -1775,6 +2111,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-typeofcareplan-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/typeofcareplan-cs"
@@ -1787,6 +2127,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-typeofcareplan-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/typeofcareplan-vs"
@@ -1799,6 +2143,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-typeofleavecode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/typeofleavecode-cs"
@@ -1811,6 +2159,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-typeofleavecode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/typeofleavecode-vs"
@@ -1823,6 +2175,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-typeofprescription-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/typeofprescription-cs"
@@ -1835,6 +2191,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-typeofprescription-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/typeofprescription-vs"
@@ -1847,6 +2207,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-typeofresultcode-cs.html"
       }],
       "reference" : {
         "reference" : "CodeSystem/typeofresultcode-cs"
@@ -1859,6 +2223,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "ValueSet-typeofresultcode-vs.html"
       }],
       "reference" : {
         "reference" : "ValueSet/typeofresultcode-vs"
@@ -1871,6 +2239,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-alert-degree-of-certainty.html"
       }],
       "reference" : {
         "reference" : "StructureDefinition/alert-degree-of-certainty"

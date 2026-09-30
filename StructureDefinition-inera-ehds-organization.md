@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-organization | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSOrganization |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSOrganization |
 
  
 Profil för organisationsenheter i EHDS-TK-mappningar (vårdenheter, juridiska vårdgivare m.fl.). 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-organizat
   "name" : "IneraEHDSOrganization",
   "title" : "SE EHDS Organization – Organisationsenhet",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

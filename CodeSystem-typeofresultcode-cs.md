@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/typeofresultcode | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:TypeOfResultCodeCS |
+| Active as of 2026-09-30 | *Computable Name*:TypeOfResultCodeCS |
 
  
 Kodverk för typ av resultat (TypeOfResultCodeEnum). Används i GetImagingOutcome och GetReferralOutcome. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [TypeOfResultCodeVS](ValueSet-typeofresultcode-vs.md)
+* [TypeOfResultCode — ValueSet](ValueSet-typeofresultcode-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Kodverk för typ av resultat (TypeOfResultCodeEnum). Används i GetImagingOutcom
   "name" : "TypeOfResultCodeCS",
   "title" : "TypeOfResultCode",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

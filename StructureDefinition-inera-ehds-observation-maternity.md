@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-maternity | *Version*:0.3.3 |
-| Draft as of 2026-06-25 | *Computable Name*:IneraEHDSObservationMaternity |
+| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSObservationMaternity |
 
  
 Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet GetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-observati
   "name" : "IneraEHDSObservationMaternity",
   "title" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
   "status" : "draft",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

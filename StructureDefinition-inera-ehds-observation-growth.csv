@@ -119,11 +119,11 @@ user content","",0,*,"","","","Extension {[]} {[]}
 ","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
 ","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
-"Observation.code.coding","Observation.code.coding","","","",1,*,"Y","","Y","Coding {[CanonicalType[http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips]]} {[]}
+"Observation.code.coding","Observation.code.coding","","","",1,*,"Y","","Y","Coding {[CanonicalType[http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips|2.0.1]]} {[]}
 ","Kodat observationstyps-värde; SNOMED CT SE-koder (http://snomed.info/sct)","A reference to a code defined by a terminology system.","Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true.","Allows for alternative encodings within a code system, and translations to other code systems.","","","","","","","",,,,,"","value:system}
 ","SNOMED CT-kod (obligatorisk per IoÖ) + valfri LOINC-kod för EHDS-interoperabilitet",,"open","CodeableConcept.coding",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","C*E.1-8, C*E.10-22","union(., ./translation)"
-"Observation.code.coding:snomedSE","Observation.code.coding","snomedSE","","",1,1,"Y","","Y","Coding {[CanonicalType[http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips]]} {[]}
+"Observation.code.coding:snomedSE","Observation.code.coding","snomedSE","","",1,1,"Y","","Y","Coding {[CanonicalType[http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips|2.0.1]]} {[]}
 ","SNOMED CT SE-kod (IoÖ-obligatorisk):
 1153637007 | kroppslängd |
 50373000   | mått på kroppslängd |
@@ -157,7 +157,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Observation.code.coding:snomedSE.display.extension:translation","Observation.code.coding.display.extension","translation","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/translation|5.3.0-ballot-tc1]]} {[]}
+"Observation.code.coding:snomedSE.display.extension:translation","Observation.code.coding.display.extension","translation","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/translation|5.3.0]]} {[]}
 ","Language Translation (Localization)","Language translation from base language of resource to another language, used to provide translations for strings, including markdown. Generally, the type of the translation extension SHOULD match that of the element being extended.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","ST.translation"
@@ -166,7 +166,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Observation.code.coding:snomedSE.userSelected","Observation.code.coding.userSelected","","","",0,1,"","","Y","boolean {[]} {[]}
 ","If this coding was chosen directly by the user","Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays).","Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.","This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.","","","","","","","",,,,,"",,,,"Coding.userSelected",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Sometimes implied by being first","CD.codingRationale"
-"Observation.code.coding:loinc","Observation.code.coding","loinc","","",0,1,"Y","","Y","Coding {[CanonicalType[http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips]]} {[]}
+"Observation.code.coding:loinc","Observation.code.coding","loinc","","",0,1,"Y","","Y","Coding {[CanonicalType[http://hl7.org/fhir/uv/ips/StructureDefinition/Coding-uv-ips|2.0.1]]} {[]}
 ","Valfri LOINC-kod för EHDS/EPS-interoperabilitet:
 8302-2 (Body height)                  ↔ 1153637007 / 50373000 / 248334005
 29463-7 (Body weight)                 ↔ 27113001
@@ -198,7 +198,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Observation.code.coding:loinc.display.extension:translation","Observation.code.coding.display.extension","translation","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/translation|5.3.0-ballot-tc1]]} {[]}
+"Observation.code.coding:loinc.display.extension:translation","Observation.code.coding.display.extension","translation","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/translation|5.3.0]]} {[]}
 ","Language Translation (Localization)","Language translation from base language of resource to another language, used to provide translations for strings, including markdown. Generally, the type of the translation extension SHOULD match that of the element being extended.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","ST.translation"
@@ -216,7 +216,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Observation.code.text.extension:translation","Observation.code.text.extension","translation","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/translation|5.3.0-ballot-tc1]]} {[]}
+"Observation.code.text.extension:translation","Observation.code.text.extension","translation","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/translation|5.3.0]]} {[]}
 ","Language Translation (Localization)","Language translation from base language of resource to another language, used to provide translations for strings, including markdown. Generally, the type of the translation extension SHOULD match that of the element being extended.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"ele-1
 ","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","ST.translation"

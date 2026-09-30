@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/referraloutcometypecode | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:ReferralOutcomeTypeCodeCS |
+| Active as of 2026-09-30 | *Computable Name*:ReferralOutcomeTypeCodeCS |
 
  
 Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetReferralOutcome. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [ReferralOutcomeTypeCodeVS](ValueSet-referraloutcometypecode-vs.md)
+* [ReferralOutcomeTypeCode — ValueSet](ValueSet-referraloutcometypecode-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetRefer
   "name" : "ReferralOutcomeTypeCodeCS",
   "title" : "ReferralOutcomeTypeCode",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

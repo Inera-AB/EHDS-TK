@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs | *Version*:0.3.3 |
-| Active as of 2026-06-25 | *Computable Name*:DiagnosisTypeCS |
+| Active as of 2026-09-30 | *Computable Name*:DiagnosisTypeCS |
 
  
 Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
-* [DiagnosisTypeVS](ValueSet-diagnosistype-vs.md)
+* [DiagnosisType — ValueSet](ValueSet-diagnosistype-vs.md)
 
 
 
@@ -31,7 +31,7 @@ Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för
   "name" : "DiagnosisTypeCS",
   "title" : "DiagnosisType",
   "status" : "active",
-  "date" : "2026-06-25T07:52:35+00:00",
+  "date" : "2026-09-30T09:02:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
