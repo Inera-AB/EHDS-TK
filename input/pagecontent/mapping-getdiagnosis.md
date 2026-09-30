@@ -140,7 +140,13 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
 | Inre Sparr (vårdenhet) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Jämförelsetid (Sparr/CheckBlocks) | `diagnosisHeader.accountableHealthcareProfessional.authorTime` | Skickas som jämförelsetidpunkt vid anrop till spärrtjänsten (motsvarande `blockComparisonTime` i TK:er med `accessControlHeader`) |
 | Patientgodkännande | `diagnosisHeader.approvedForPatient` (boolean) | `Condition.meta.security`; se [PDL-001](#öppna-frågor) |
+
+**OBS – jämförelsetid:** GetDiagnosis:2 har inget `accessControlHeader.blockComparisonTime` (till skillnad från t.ex.
+GetCareDocumentation och GetLaboratoryOrderOutcome). `authorTime` är det enda tidsfältet i headern som skickas
+(`documentTime` är 0..0, se ovan) och är därför källan till den jämförelsetidpunkt som anropet till spärrtjänsten
+ska använda.
 
 ---
 

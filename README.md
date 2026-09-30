@@ -111,6 +111,7 @@ Alla tjänstekontrakt med `PatientSummaryHeader` (eller motsvarande header) mapp
 | `legalAuthenticator` (datum) | `{Resurs}.extension[assertedDate]` | YYYYMMDD → YYYY-MM-DD |
 | `careProviderHSAId` | `Provenance.agent[custodian].who.identifier` | Juridiskt ansvarig vårdgivare — yttre Sparr |
 | `careUnitHSAId` | `Provenance.agent[author].who.identifier` | Informationsägare vårdenhet — inre Sparr |
+| (jämförelsetid, Sparr/CheckBlocks) | Skickas till spärrtjänsten vid filtreringsanropet | Källa varierar per TK: `accessControlHeader.blockComparisonTime` där det finns (t.ex. GetCareDocumentation), annars `accountableHealthcareProfessional.authorTime` (t.ex. GetDiagnosis, som saknar `blockComparisonTime`). Se tjänstekontraktets egen mappningssida. |
 | `approvedForPatient = false` | `{Resurs}.meta.security` kod `NOPATIENT` | PDL — information ej avsedd att visas för patient (se avsnitt 10) |
 
 > `recorder`/`asserter` används för Condition. `author`/`authenticator` används för DocumentReference. Välj det fält i FHIR-resursen som semantiskt bäst motsvarar rollen.
