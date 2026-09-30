@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
   "name" : "IneraEHDSConditionFunctional",
   "title" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
   "status" : "draft",
-  "date" : "2026-09-30T09:02:48+00:00",
+  "date" : "2026-09-30T10:52:57+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

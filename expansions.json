@@ -1,8 +1,8 @@
 {
   "resourceType" : "Bundle",
-  "id" : "4d4fee32-e7ec-42d2-9969-320b897b606b",
+  "id" : "b7a3518b-96b4-491c-8134-32aed3288d87",
   "meta" : {
-    "lastUpdated" : "2026-09-30T09:02:48.453+00:00"
+    "lastUpdated" : "2026-09-30T10:52:57.421+00:00"
   },
   "type" : "collection",
   "entry" : [{
@@ -18,7 +18,7 @@
       "name" : "AssessmentCategoryVS",
       "title" : "AssessmentCategory — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -27,8 +27,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:4ff630cc-4c30-47ca-9567-b5f9b8b0e66e",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:1df86afb-521b-4fe8-86af-8f5e6e1875b2",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 2,
         "offset" : 0,
         "parameter" : [{
@@ -75,7 +75,7 @@
       "name" : "ClinicalDocumentNoteCodeVS",
       "title" : "KV Anteckningstyp — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -84,8 +84,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:0b7a8f69-3c31-4f78-9abf-9047d2fb08dc",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:d8bcb17b-19fd-41e1-9ee0-325b55db1e74",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 9,
         "offset" : 0,
         "parameter" : [{
@@ -160,7 +160,7 @@
       "name" : "DeliveryCodeVS",
       "title" : "DeliveryCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -169,8 +169,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:29af7cda-4235-45ef-a375-a8b560b9ce1f",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:0152e004-2d1f-4903-b569-0cbc753b3dbf",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 5,
         "offset" : 0,
         "parameter" : [{
@@ -229,7 +229,7 @@
       "name" : "DiagnosisTypeVS",
       "title" : "DiagnosisType — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -238,8 +238,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:b0aec8d7-a9ae-431a-a397-d17bcd1151e3",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:1554f880-1075-474e-9b91-8d25d02d065d",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 2,
         "offset" : 0,
         "parameter" : [{
@@ -286,7 +286,7 @@
       "name" : "ErrorCodeVS",
       "title" : "ErrorCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -295,8 +295,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:27562c6e-6175-47ba-bfcb-76ff26d95205",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:52871315-ad6d-4766-b2b7-96024ff60e4a",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 1,
         "offset" : 0,
         "parameter" : [{
@@ -339,7 +339,7 @@
       "name" : "ExaminationStatusCodeVS",
       "title" : "ExaminationStatusCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -348,8 +348,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:7d2cad57-1bdf-436d-ae55-bd89966e492f",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:b9bf5ef4-825e-4611-9c76-2799cc3ac995",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 11,
         "offset" : 0,
         "parameter" : [{
@@ -432,7 +432,7 @@
       "name" : "FetalPositionCodeVS",
       "title" : "FetalPositionCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -441,8 +441,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:97443a0a-683b-4441-814b-5372c872f82a",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:93530356-d74b-43ed-8811-4c01f8cb4bec",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 4,
         "offset" : 0,
         "parameter" : [{
@@ -497,7 +497,7 @@
       "name" : "GrowthObservationTypeVS",
       "title" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
       "status" : "draft",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -506,8 +506,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:f8ac1d20-b789-40c0-8805-b36900a90cd8",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:b9216315-08f9-41c9-831c-bc63e175dcdc",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 6,
         "offset" : 0,
         "parameter" : [{
@@ -587,7 +587,7 @@
       "name" : "PrescriptionStatusVS",
       "title" : "PrescriptionStatus — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -596,8 +596,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:08825e93-49ce-429d-8f43-eaf11417c564",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:c2a1ee20-24a1-4fec-a713-d5e7ecf03690",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 2,
         "offset" : 0,
         "parameter" : [{
@@ -644,7 +644,7 @@
       "name" : "ReferralOutcomeTypeCodeVS",
       "title" : "ReferralOutcomeTypeCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -653,8 +653,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:209e2afc-9f27-42a7-a54c-247b6b037bb6",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:5e95924f-19cf-4bb1-b739-30dad9792f50",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 2,
         "offset" : 0,
         "parameter" : [{
@@ -701,7 +701,7 @@
       "name" : "ResultCodeVS",
       "title" : "ResultCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -710,8 +710,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:87bb7c80-a8a1-4bd4-82f6-153d10cd4112",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:a89a4569-efb2-4815-a86b-f1fa81764898",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -763,7 +763,7 @@
       "title" : "SE Observation Status (SNOMED CT urval 56431000052106)",
       "status" : "active",
       "experimental" : false,
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -772,8 +772,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:d0b4a5b1-2c34-4913-bd68-900c649ee841",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:cbde0e53-5e75-4f55-b62f-0cf05adeb789",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 5,
         "offset" : 0,
         "parameter" : [{
@@ -849,7 +849,7 @@
       "name" : "SexCodeVS",
       "title" : "SexCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -858,8 +858,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:52f32a9c-caea-413f-b83d-efa46a880f18",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:db4c0609-0f59-44e8-8d6a-bda6618011dc",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 4,
         "offset" : 0,
         "parameter" : [{
@@ -914,7 +914,7 @@
       "name" : "TypeOfCarePlanVS",
       "title" : "TypeOfCarePlan — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -923,8 +923,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:12a7c29c-eabd-43df-86af-93d37cdf5a64",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:9522671b-f991-41e4-8530-7d479c02f46a",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 8,
         "offset" : 0,
         "parameter" : [{
@@ -995,7 +995,7 @@
       "name" : "TypeOfLeaveCodeVS",
       "title" : "TypeOfLeaveCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -1004,8 +1004,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:c13627d1-5ace-40f9-9c3b-597cd2a47b3e",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:04e6f119-cd79-492e-a24d-66ce551df5b7",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
@@ -1056,7 +1056,7 @@
       "name" : "TypeOfPrescriptionVS",
       "title" : "TypeOfPrescription — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -1065,8 +1065,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:a8c40f93-bf11-4857-90f2-2809d84f88f3",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:597d3ed1-94c6-4a22-ac9f-19181fbf67dd",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 2,
         "offset" : 0,
         "parameter" : [{
@@ -1113,7 +1113,7 @@
       "name" : "TypeOfResultCodeVS",
       "title" : "TypeOfResultCode — ValueSet",
       "status" : "active",
-      "date" : "2026-09-30T09:02:48+00:00",
+      "date" : "2026-09-30T10:52:57+00:00",
       "jurisdiction" : [{
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
@@ -1122,8 +1122,8 @@
         }]
       }],
       "expansion" : {
-        "identifier" : "urn:uuid:869894b1-5a3e-4ae7-8694-56e0d12dd117",
-        "timestamp" : "2026-09-30T09:11:20+00:00",
+        "identifier" : "urn:uuid:e8f144a8-a7bc-4ee3-a060-f8bb216a4dba",
+        "timestamp" : "2026-09-30T10:55:47+00:00",
         "total" : 3,
         "offset" : 0,
         "parameter" : [{
