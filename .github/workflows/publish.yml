@@ -173,7 +173,26 @@ jobs:
           git commit -m "chore: add package-list entry for v${{ steps.meta.outputs.version }}"
           git push origin HEAD:main
 
+      # Builds for different refs (e.g. main and a v* tag pushed together) run
+      # concurrently and all push to gh-pages, so a push can be rejected as
+      # non-fast-forward. Retry once after a pause; the action re-clones gh-pages.
       - name: Deploy to GitHub Pages (gh-pages branch)
+        id: deploy_pages
+        continue-on-error: true
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          destination_dir: ${{ steps.meta.outputs.deploy_path }}
+          keep_files: true
+          commit_message: "deploy: ${{ github.ref_name }} → ${{ steps.meta.outputs.deploy_path }}"
+
+      - name: Wait before retrying gh-pages deploy
+        if: steps.deploy_pages.outcome == 'failure'
+        run: sleep 60
+
+      - name: Deploy to GitHub Pages (gh-pages branch, retry)
+        if: steps.deploy_pages.outcome == 'failure'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -239,9 +258,13 @@ jobs:
           keep_files: true
           commit_message: "deploy: history.html at ig/${{ steps.meta.outputs.ig_slug }} for v${{ env.IG_VERSION }}"
 
+      # Registry notification is best effort: the IG is already deployed at this
+      # point, so an expired/invalid FHIR_PORTAL_TOKEN only produces a warning.
       - name: Update IG registry on fhir-portal
         if: env.FHIR_PORTAL_TOKEN != ''
         env:
           FHIR_PORTAL_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
           GH_TOKEN: ${{ secrets.FHIR_PORTAL_TOKEN }}
-        run: gh api repos/inera-ab/fhir-portal/dispatches --method POST -f event_type=ig-deployed -f "client_payload[ig_name]=${{ github.event.repository.name }}" -f "client_payload[ig_slug]=${{ steps.meta.outputs.ig_slug }}" -f "client_payload[ig_title]=${{ env.IG_TITLE }}" -f "client_payload[ig_description]=${{ env.IG_DESCRIPTION }}" -f "client_payload[ig_version]=${{ env.IG_VERSION }}" -f "client_payload[is_release]=${{ startsWith(github.ref, 'refs/tags/v') }}"
+        run: >-
+          gh api repos/inera-ab/fhir-portal/dispatches --method POST -f event_type=ig-deployed -f "client_payload[ig_name]=${{ github.event.repository.name }}" -f "client_payload[ig_slug]=${{ steps.meta.outputs.ig_slug }}" -f "client_payload[ig_title]=${{ env.IG_TITLE }}" -f "client_payload[ig_description]=${{ env.IG_DESCRIPTION }}" -f "client_payload[ig_version]=${{ env.IG_VERSION }}" -f "client_payload[is_release]=${{ startsWith(github.ref, 'refs/tags/v') }}" ||
+          echo "::warning::Could not notify fhir-portal (check that the FHIR_PORTAL_TOKEN secret is valid and not expired)."
