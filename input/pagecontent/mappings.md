@@ -40,7 +40,7 @@ Alla tjänstekontrakt (utom GetAccessLogForPatient) delar ett headermönster som
 |---|---|---|
 | `patientId` | `{Resurs}.subject.identifier` | OID→URI-konvertering krävs |
 | `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
-| `documentTime` | `{Resurs}.recordedDate` (eller primär tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm) |
+| `documentTime` | `{Resurs}.recordedDate` (eller primär tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm). **Gäller endast de TK:er där `documentTime` faktiskt skickas.** GetDiagnosis har `documentTime` 0..0 per TKB och använder istället `accountableHealthcareProfessional.authorTime` för `recordedDate` – se den tjänstekontraktsspecifika mappningssidan för auktoritativ källa per TK. |
 | `accountableHealthcareProfessional` | `{Resurs}.recorder` / `author` / `performer` | Logisk referens via HSA-id |
 | `legalAuthenticator` | `{Resurs}.asserter` / `authenticator` | Logisk referens via HSA-id |
 | `careProviderHSAId` | `Provenance.agent[custodian].who.identifier` | Yttre Sparr |
