@@ -5,7 +5,13 @@ Title: "SE EHDS Condition – Diagnos (GetDiagnosis)"
 Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0."
 
 * extension contains
-    http://hl7.org/fhir/StructureDefinition/condition-assertedDate named assertedDate 0..1 MS
+    http://hl7.org/fhir/StructureDefinition/condition-assertedDate named assertedDate 0..1 MS and
+    ConditionChronicDiagnosis named chronicDiagnosis 0..1 MS and
+    http://hl7.org/fhir/StructureDefinition/condition-related named relatedCondition 0..* MS
+* extension[chronicDiagnosis] ^short = "Kronisk diagnos (diagnosisBody.chronicDiagnosis) – se DIAG-001"
+* extension[relatedCondition] ^short = "Relaterad diagnos (diagnosisBody.relatedDiagnosis.documentId) – logisk referens via identifier, se DIAG-002"
+* extension[relatedCondition].valueReference.identifier 1..1 MS
+* extension[relatedCondition].valueReference.identifier ^short = "Den relaterade diagnosens dokumentid (relatedDiagnosis.documentId) – motsvarar Condition.identifier på den relaterade diagnosen"
 
 * subject only Reference(IneraEHDSPatient)
 * subject MS
@@ -58,3 +64,11 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 
 * onsetDateTime MS
 * onsetDateTime ^short = "Bedömningstidpunkt (diagnosisBody.diagnosisTime) – YYYYMMDDHHMMSS → ISO 8601"
+
+Extension: ConditionChronicDiagnosis
+Id: condition-chronic-diagnosis
+Title: "Kronisk diagnos"
+Description: "Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001."
+* ^context[0].type = #element
+* ^context[0].expression = "Condition"
+* value[x] only boolean

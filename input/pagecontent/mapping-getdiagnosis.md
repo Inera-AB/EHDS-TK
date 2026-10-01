@@ -39,14 +39,14 @@
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `diagnosisBody.typeOfDiagnosis` | 1..1 | `Condition.category[diagnostyp]` | Huvuddiagnos (HD) eller Bidiagnos (BY); se tabell nedan |
-| `diagnosisBody.chronicDiagnosis` | 0..1 | Ej mappad (se [DIAG-001](#föreslagna-nya-issues)) | Boolean – inget direktmappat FHIR Condition-element |
+| `diagnosisBody.chronicDiagnosis` | 0..1 | `Condition.extension[chronicDiagnosis].valueBoolean` | Lokal extension [ConditionChronicDiagnosis](StructureDefinition-condition-chronic-diagnosis.html); utelämnas om fältet saknas (se [DIAG-001](mapping-issues.html#designbeslut-fattade)) |
 | `diagnosisBody.diagnosisTime` | 0..1 | `Condition.onsetDateTime` | YYYYMMDDHHMMSS → ISO 8601 |
 | `diagnosisBody.diagnosisCode` | 0..1 | `Condition.code` | Se underelement nedan |
 | `diagnosisBody.diagnosisCode.code` | — | `Condition.code.coding.code` | ICD-10-SE kod, t.ex. `J18.9` |
 | `diagnosisBody.diagnosisCode.codeSystem` | — | `Condition.code.coding.system` | OID `1.2.752.116.1.1.1.1.3` → `https://www.icd10.se/` |
 | `diagnosisBody.diagnosisCode.displayName` | — | `Condition.code.coding.display` | Kodverkets officiella benämning |
 | `diagnosisBody.diagnosisCode.originalText` | — | `Condition.code.text` | Fritext; fallback: `displayName` om saknad |
-| `diagnosisBody.relatedDiagnosis.documentId` | 1..1 (om relatedDiagnosis) | Ej mappad (se [DIAG-002](#föreslagna-nya-issues)) | Referens till relaterad diagnos via dokumentid – inget standardelement |
+| `diagnosisBody.relatedDiagnosis.documentId` | 1..1 (om relatedDiagnosis) | `Condition.extension[relatedCondition].valueReference.identifier.value` | Standardextension `condition-related` (HL7). En extension per `relatedDiagnosis`. Logisk referens: `identifier` ska ha samma `system` som `Condition.identifier` på den relaterade diagnosen (se [DIAG-002](mapping-issues.html#designbeslut-fattade)) |
 
 ---
 
@@ -219,9 +219,9 @@ ska använda.
 
 ---
 
-## Föreslagna nya issues
+## Beslutade issues
 
-| ID | Fält | Beskrivning |
+| ID | Fält | Beslut |
 |---|---|---|
-| DIAG-001 | `diagnosisBody.chronicDiagnosis` | Boolean – inget direktmappat FHIR Condition-element. Alternativ: (a) extension `Condition.extension[chronicDiagnosis]` med boolean, eller (b) `Condition.category` med en kod för kronisk diagnos från ett lokalt/nationellt kodsystem. Kräver designbeslut. |
-| DIAG-002 | `diagnosisBody.relatedDiagnosis.documentId` | Referens till relaterad diagnos via dokumentid. Inget standardelement i Condition. Alternativ: (a) `Condition.extension[relatedCondition]` med logisk referens, eller (b) `Condition.note` med dokumentid i fritext. Kräver designbeslut. |
+| DIAG-001 | `diagnosisBody.chronicDiagnosis` | Lokal extension `Condition.extension[chronicDiagnosis]` ([ConditionChronicDiagnosis](StructureDefinition-condition-chronic-diagnosis.html)) med `valueBoolean`. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
+| DIAG-002 | `diagnosisBody.relatedDiagnosis.documentId` | Standardextension `Condition.extension[relatedCondition]` (`condition-related`) med logisk referens via `valueReference.identifier`. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
