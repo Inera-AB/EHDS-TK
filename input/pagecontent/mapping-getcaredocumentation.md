@@ -110,7 +110,7 @@ Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `careDocumentation.body.clinicalDocumentNoteText` | 0..1 | `DocumentReference.content[0].attachment.data` | Journalanteckning (string). Fritext: base64 med `contentType: text/plain; charset=utf-8`. DocBook-XML: transformeras till XHTML och kodas base64 med `contentType: text/html; charset=utf-8` (Strategi A), och kan dessutom mappas till en `Composition` med en sektion per DocBook-sektion (Strategi B). Se [DOC-004](#clinicaldocumentnotetext-och-docbook). XOR med multimediaEntry |
+| `careDocumentation.body.clinicalDocumentNoteText` | 0..1 | `DocumentReference.content[0].attachment.data` | Journalanteckning (string). Fritext: base64 med `contentType: text/plain; charset=utf-8`. DocBook-XML: transformeras till XHTML och kodas base64 med `contentType: text/html; charset=utf-8` (Strategi A), och kan dessutom mappas till en `Composition` med en sektion per DocBook-sektion (Strategi B). Se [DocBook-mappning](guidance-docbook-narrative.html). XOR med multimediaEntry |
 | `careDocumentation.body.multimediaEntry.mediaType` | 1..1 (om multimediaEntry) | `DocumentReference.content[0].attachment.contentType` | MIME-typ (t.ex. `application/pdf`, `image/jpeg`) |
 | `careDocumentation.body.multimediaEntry.value` | 0..1 (XOR) | `DocumentReference.content[0].attachment.data` | Binärdata (base64-kodat). Ömsesidigt uteslutande med reference (se FSH Invariant `getcaredocumentation-multimedia-xor`) |
 | `careDocumentation.body.multimediaEntry.reference` | 0..1 (XOR) | `DocumentReference.content[0].attachment.url` | URL till externt dokument. Ömsesidigt uteslutande med value |
@@ -196,101 +196,18 @@ IG:n. Se [DOC-001](#beslutade-issues).
 ### clinicalDocumentNoteText och DocBook
 
 `clinicalDocumentNoteText` är av typen string. När DocBook används ska fältet innehålla XML.
-Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas:
+Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas.
 
-```xml
-<clinicalDocumentNoteText>
-  &lt;?xml version="1.0" encoding="utf-8"?&gt;
-  &lt;article&gt;
-    &lt;section&gt;
-      &lt;title&gt;Bedömning&lt;/title&gt;
-      &lt;para&gt;Patienten mår bra.&lt;/para&gt;
-    &lt;/section&gt;
-  &lt;/article&gt;
-</clinicalDocumentNoteText>
-```
+DocBook förs **inte** över som DocBook till FHIR:
 
-#### DocBook ska inte föras över till FHIR
-
-DocBook-XML förs **inte** över som DocBook till FHIR-resursen. Innehållet transformeras i
-stället till XHTML (Strategi A) och kan dessutom struktureras som en `Composition` med en
-sektion per DocBook-`<section>` (Strategi B).
-
-**Steg 1 – avkodning.** Entity-kodningen tas bort av den vanliga XML-parsningen av
-RIVTA-svaret. Strängvärdet som parsern ger är alltså DocBook-XML i klartext
-(`<?xml …?><article>…`). Ingen ytterligare avkodning ska göras.
-
-**Steg 2 – identifiering.** RIVTA-fältet saknar egen typindikator. Om det avkodade värdet,
-efter att inledande blanktecken tagits bort, börjar med `<` och kan tolkas som välformad XML
-med rotelementet `article` behandlas det som DocBook. Annars behandlas det som fritext.
-Kan DocBook-innehållet inte tolkas faller mappningen tillbaka på fritext, så att inget innehåll
-tappas.
-
-**Steg 3 – mappning.**
-
-| Innehåll | `content[0].attachment.contentType` | `content[0].attachment.data` |
-|---|---|---|
-| Fritext | `text/plain; charset=utf-8` | Texten, base64-kodad |
-| DocBook | `text/html; charset=utf-8` | XHTML enligt Strategi A, base64-kodad |
-
-#### Strategi A – DocBook → XHTML i content.attachment (obligatorisk)
-
-DocBook-dokumentet transformeras till ett XHTML-fragment (en `<div xmlns="http://www.w3.org/1999/xhtml">`)
-som behåller källans ordning och struktur:
-
-| DocBook | XHTML |
+| Innehåll | Mappning |
 |---|---|
-| `<article>` | `<div>` (rot) |
-| `<section>` | `<div>`, nästlade sektioner nästlas |
-| `<title>` i `<section>` | `<h2>`–`<h6>` efter nästlingsdjup |
-| `<para>` | `<p>` |
-| `<emphasis>` | `<em>`; `<emphasis role="bold">`/`role="strong"` → `<strong>` |
-| `<itemizedlist>` / `<orderedlist>` / `<listitem>` | `<ul>` / `<ol>` / `<li>` |
-| `<ulink url="…">` / `<link xlink:href="…">` | `<a href="…">` |
-| `<informaltable>` / `<table>` med `<tgroup>`, `<thead>`, `<tbody>`, `<row>`, `<entry>` | `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`/`<td>` |
-| `<literallayout>` / `<programlisting>` | `<pre>` |
-| Okända element | Elementet tas bort men textinnehållet behålls |
+| Fritext | `content[0].attachment` med `contentType: text/plain; charset=utf-8` |
+| DocBook – Strategi A (obligatorisk) | Transformeras till XHTML i `content[0].attachment` med `contentType: text/html; charset=utf-8` |
+| DocBook – Strategi B (valfri) | Dessutom en `Composition` med en `section` per DocBook-`<section>`, kopplad via `Provenance.target` |
 
-XHTML:en läggs i `content.attachment` och **inte** i resursens `DomainResource.text`.
-`text` ska sammanfatta resursen, inte bära dokumentets faktiska innehåll.
-
-Exemplet ovan ger:
-
-```html
-<div xmlns="http://www.w3.org/1999/xhtml">
-  <div>
-    <h2>Bedömning</h2>
-    <p>Patienten mår bra.</p>
-  </div>
-</div>
-```
-
-#### Strategi B – Composition.section per DocBook-sektion (valfri)
-
-Utöver Strategi A kan en fristående `Composition` skapas när DocBook-innehållet har
-strukturella sektioner. Den gör sektionerna sökbara och navigerbara var för sig.
-
-| DocBook | Composition |
-|---|---|
-| `<section><title>…</title>…</section>` | En `section` med `title` från `<title>` och `text` (Narrative, `status = generated`) med sektionens eget innehåll som XHTML |
-| Nästlad `<section>` | Nästlad `section.section` |
-| Löst innehåll direkt under `<article>` | En avslutande namnlös `section` |
-| Inget `<section>`-element alls | En enda namnlös `section` med hela innehållet |
-
-Övriga fält i `Composition`:
-- `status` är alltid `final`.
-- `type`, `subject`, `date` och `author` kopieras från `DocumentReference`.
-- `title` sätts från `clinicalDocumentNoteTitle`, och som fallback till "Journalanteckning".
-
-`Composition` saknar ett eget element som pekar på `DocumentReference`. Kopplingen görs genom
-att samma `Provenance` har både `DocumentReference` och `Composition` i `Provenance.target`.
-Den `Provenance` bär redan Sparr-agenterna, så samma spärrkontroll gäller för båda resurserna.
-
-**Känd begränsning:** Löst innehåll direkt under `<article>` hamnar i en avslutande sektion och
-behåller inte sin ursprungliga position. Strategi A bevarar alltid exakt ordning och är den
-representation som ska användas för visning.
-
-Se [DOC-004](#beslutade-issues).
+Avkodning, identifiering av DocBook, elementmappning, exempel och begränsningar beskrivs på
+undersidan [DocBook-mappning](guidance-docbook-narrative.html). Se även [DOC-004](#beslutade-issues).
 
 ---
 
@@ -346,4 +263,4 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | DOC-001 | **Paginering via `hasMore` stöds inte.** `hasMore` mappas inte till FHIR och behöver hanteras utanför IG:n. |
 | DOC-002 | **`Provenance.recorded` faller tillbaka på `header.record.timestamp`.** `Provenance.recorded` = `header.author.timestamp`; när `author` (och därmed `author.timestamp`) saknas används `header.record.timestamp`. |
 | DOC-003 | **`signature.timestamp` → `DocumentReference.extension[ext-signature-time]`** när den finns. När den saknas sätts ingen ersättning. |
-| DOC-004 | **`clinicalDocumentNoteText` är av typen string.** När DocBook används ska fältet innehålla XML, och XML-tecknen måste då entity-kodas. DocBook förs inte över till FHIR. Innehållet transformeras till XHTML i `content.attachment` med `contentType: text/html; charset=utf-8` (Strategi A, obligatorisk). Det kan dessutom mappas till en `Composition` med en sektion per DocBook-sektion, kopplad via `Provenance.target` (Strategi B, valfri). Fritext mappas som `text/plain`. Se [clinicalDocumentNoteText och DocBook](#clinicaldocumentnotetext-och-docbook). |
+| DOC-004 | **`clinicalDocumentNoteText` är av typen string.** När DocBook används ska fältet innehålla XML, och XML-tecknen måste då entity-kodas. DocBook förs inte över till FHIR. Innehållet transformeras till XHTML i `content.attachment` med `contentType: text/html; charset=utf-8` (Strategi A, obligatorisk). Det kan dessutom mappas till en `Composition` med en sektion per DocBook-sektion, kopplad via `Provenance.target` (Strategi B, valfri). Fritext mappas som `text/plain`. Se [DocBook-mappning](guidance-docbook-narrative.html). |

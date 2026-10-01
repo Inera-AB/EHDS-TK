@@ -48,6 +48,8 @@ pages:
     title: GetCareContacts – Vårdkontakter
   mapping-getcaredocumentation.md:
     title: GetCareDocumentation – Anteckningar
+  guidance-docbook-narrative.md:
+    title: DocBook-mappning – clinicalDocumentNoteText
   mapping-getlaboratoryorderoutcome.md:
     title: GetLaboratoryOrderOutcome – Provsvar
   mapping-getimagingoutcome.md:
