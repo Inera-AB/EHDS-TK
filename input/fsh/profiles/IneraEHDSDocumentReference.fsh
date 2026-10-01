@@ -45,9 +45,9 @@ Description: """
 * content 1..* MS
 * content.attachment 1..1 MS
 * content.attachment.contentType MS
-* content.attachment.contentType ^short = "Mimetyp (careDocumentation.body.multimediaEntry.mediaType)"
+* content.attachment.contentType ^short = "Mimetyp (careDocumentation.body.multimediaEntry.mediaType); för clinicalDocumentNoteText text/plain; charset=utf-8 (fritext) eller text/html; charset=utf-8 (DocBook → XHTML, DOC-004)"
 * content.attachment.data MS
-* content.attachment.data ^short = "Anteckningstext/binärinnehåll (careDocumentation.body.clinicalDocumentNoteText / multimediaEntry.value) – för clinicalDocumentNoteText base64-kodas strängvärdet efter XML-parsning (DocBook-XML i klartext, se DOC-004)"
+* content.attachment.data ^short = "Anteckningstext/binärinnehåll (careDocumentation.body.clinicalDocumentNoteText / multimediaEntry.value) – för clinicalDocumentNoteText: fritext base64-kodas som text/plain; DocBook-XML transformeras till XHTML och base64-kodas som text/html (DOC-004)"
 * content.attachment.url MS
 * content.attachment.url ^short = "Referens till extern fil (careDocumentation.body.multimediaEntry.reference)"
 * content.attachment.title MS
