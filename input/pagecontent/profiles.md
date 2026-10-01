@@ -27,6 +27,7 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 | [IneraEHDSCarePlan](StructureDefinition-inera-ehds-care-plan.html) | CarePlan | GetCarePlans |
 | [IneraEHDSEncounter](StructureDefinition-inera-ehds-encounter.html) | Encounter | GetCareContacts |
 | [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.html) | DocumentReference | GetCareDocumentation |
+| [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) | Composition | GetCareDocumentation – valfri strukturerad representation av DocBook ([DocBook-mappning](guidance-docbook-narrative.html)) |
 
 ---
 

@@ -27,7 +27,7 @@ IneraEHDSDocumentReference (1 per careDocumentation)
   └── author → PractitionerRole (header.author)
   └── authenticator → PractitionerRole (header.signature)
   └── content[0].attachment (XOR: clinicalDocumentNoteText eller multimediaEntry)
-Composition (valfri, 0..1 per careDocumentation – endast när clinicalDocumentNoteText är DocBook, se DOC-004)
+IneraEHDSCompositionCareDocumentation (valfri, 0..1 per careDocumentation – endast när innehållet är DocBook, se DOC-004)
   └── section[] (en per DocBook-<section>)
 ```
 
@@ -196,7 +196,9 @@ IG:n. Se [DOC-001](#beslutade-issues).
 ### clinicalDocumentNoteText och DocBook
 
 `clinicalDocumentNoteText` är av typen string. När DocBook används ska fältet innehålla XML.
-Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas.
+Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas. DocBook i
+textfältet känns igen på den entity-kodade XML:en, medan DocBook i en bilaga känns igen på
+`multimediaEntry.mediaType`.
 
 DocBook förs **inte** över som DocBook till FHIR:
 
@@ -204,7 +206,8 @@ DocBook förs **inte** över som DocBook till FHIR:
 |---|---|
 | Fritext | `content[0].attachment` med `contentType: text/plain; charset=utf-8` |
 | DocBook – Strategi A (obligatorisk) | Transformeras till XHTML i `content[0].attachment` med `contentType: text/html; charset=utf-8` |
-| DocBook – Strategi B (valfri) | Dessutom en `Composition` med en `section` per DocBook-`<section>`, kopplad via `Provenance.target` |
+| DocBook – Strategi B (valfri) | Dessutom en `Composition` enligt [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) med en `section` per DocBook-`<section>`, kopplad via `Provenance.target` |
+| Bilaga (`multimediaEntry`) med `mediaType` `application/docbook+xml` | Transformeras på samma sätt som DocBook i textfältet |
 
 Avkodning, identifiering av DocBook, elementmappning, exempel och begränsningar beskrivs på
 undersidan [DocBook-mappning](guidance-docbook-narrative.html). Se även [DOC-004](#beslutade-issues).

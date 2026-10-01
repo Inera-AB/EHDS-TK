@@ -50,7 +50,7 @@ pages:
   mapping-getcaredocumentation.md:
     title: GetCareDocumentation – Anteckningar
   guidance-docbook-narrative.md:
-    title: DocBook-mappning – clinicalDocumentNoteText
+    title: DocBook-mappning – clinicalDocumentNoteText och bilagor
   mapping-getlaboratoryorderoutcome.md:
     title: GetLaboratoryOrderOutcome – Provsvar
   mapping-getimagingoutcome.md:

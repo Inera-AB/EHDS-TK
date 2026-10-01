@@ -1,7 +1,7 @@
-# DocBook-mappning – clinicalDocumentNoteText
+# DocBook-mappning – clinicalDocumentNoteText och bilagor
 
-**Gäller:** GetCareDocumentation v3.0 (`careDocumentation.body.clinicalDocumentNoteText`)  
-**FHIR-resurser:** [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.html) (obligatorisk), `Composition` (valfri)  
+**Gäller:** GetCareDocumentation v3.0 (`careDocumentation.body.clinicalDocumentNoteText` och `careDocumentation.body.multimediaEntry`)  
+**FHIR-resurser:** [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.html) (obligatorisk), [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) (valfri)  
 **Designbeslut:** DOC-004 i [Mappningsissues och Designbeslut](mapping-issues.html#designbeslut-fattade)  
 **Mappningssida:** [GetCareDocumentation – Anteckningar](mapping-getcaredocumentation.html)
 
@@ -32,7 +32,14 @@ format som FHIR-konsumenter kan använda direkt:
 | Strategi | Resultat | Krav |
 |---|---|---|
 | **A – XHTML** | `DocumentReference.content[0].attachment` med XHTML och `contentType: text/html; charset=utf-8` | Obligatorisk |
-| **B – Composition** | En fristående `Composition` med en `section` per DocBook-`<section>` | Valfri |
+| **B – Composition** | En fristående `Composition` enligt [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) med en `section` per DocBook-`<section>` | Valfri – men om den skapas ska den följa profilen |
+
+DocBook kan förekomma på två ställen, som identifieras på olika sätt (se [Steg 2](#steg-2--identifiering-av-docbook)):
+
+| Källa | Hur DocBook-innehållet levereras |
+|---|---|
+| `clinicalDocumentNoteText` | Som entity-kodad XML i textfältet (se exemplet ovan) |
+| `multimediaEntry` (bilaga) | Som base64-kodad fil i `multimediaEntry.value`, med `multimediaEntry.mediaType` som anger formatet |
 
 ---
 
@@ -40,12 +47,15 @@ format som FHIR-konsumenter kan använda direkt:
 
 ```
 RIVTA-svar (XML)
-  └── clinicalDocumentNoteText (entity-kodad sträng)
-        │  1. XML-parsning av RIVTA-svaret avkodar entiteterna
+  ├── clinicalDocumentNoteText (entity-kodad sträng)
+  │     │  1. XML-parsning av RIVTA-svaret avkodar entiteterna
+  │     │  2. DocBook om värdet börjar med <?xml / <article och har roten article
+  └── multimediaEntry.value (base64) + mediaType
+        │  1. base64-avkodning
+        │  2. DocBook om mediaType = application/docbook+xml (eller XML med roten article)
         ▼
-      strängvärde
-        │  2. Identifiering: DocBook eller fritext?
-        ├── fritext ──► content.attachment (text/plain; charset=utf-8)
+        ├── inte DocBook ──► content.attachment oförändrat
+        │                    (text: text/plain; charset=utf-8 – bilaga: ursprunglig mediaType)
         └── DocBook
               ├── 3A. DocBook → XHTML ──► content.attachment (text/html; charset=utf-8)
               └── 3B. (valfri) DocBook → Composition.section[] ──► Composition
@@ -57,8 +67,8 @@ RIVTA-svar (XML)
 
 ## Steg 1 – Avkodning
 
-Entity-kodningen tas bort av den vanliga XML-parsningen av RIVTA-svaret. Strängvärdet som
-parsern ger är alltså DocBook-XML i klartext:
+**clinicalDocumentNoteText:** Entity-kodningen tas bort av den vanliga XML-parsningen av
+RIVTA-svaret. Strängvärdet som parsern ger är alltså DocBook-XML i klartext:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -73,23 +83,51 @@ parsern ger är alltså DocBook-XML i klartext:
 Ingen ytterligare avkodning ska göras. Att avkoda en gång till skulle förstöra innehåll där
 källtexten själv innehåller `&amp;`, `&lt;` osv.
 
+**multimediaEntry (bilaga):** `multimediaEntry.value` är base64-kodad. Bilagans innehåll fås
+genom base64-avkodning, och teckenkodningen anges av XML-deklarationen i filen (UTF-8 om den
+saknas).
+
 ---
 
 ## Steg 2 – Identifiering av DocBook
 
-RIVTA-fältet saknar en egen typindikator för fritext respektive DocBook. Följande regel används:
+Regeln skiljer sig beroende på var innehållet ligger.
 
-1. Ta bort inledande blanktecken från det avkodade strängvärdet.
-2. Om värdet börjar med `<`, kan tolkas som välformad XML och har rotelementet `article`
-   (eventuellt föregånget av en XML-deklaration) behandlas det som **DocBook**.
-3. Annars behandlas värdet som **fritext**.
+### I clinicalDocumentNoteText
 
-Om värdet ser ut som DocBook men inte kan tolkas, eller om transformationen misslyckas, faller
-mappningen tillbaka på fritext (`text/plain`) med strängvärdet oförändrat, så att inget innehåll
-tappas.
+Textfältet saknar en egen typindikator. DocBook känns igen på att fältet innehåller
+**entity-kodad XML**, som i exemplet under [Bakgrund](#bakgrund):
 
-> **OBS:** Regeln är en heuristik som inte är fastställd i TKB:n. Den kan behöva justeras om
-> källsystem visar sig skicka DocBook med en annan rot.
+1. I det råa RIVTA-svaret börjar elementets innehåll (efter inledande blanktecken) med
+   `&lt;?xml` eller `&lt;article`. Efter XML-parsning (steg 1) motsvarar det att strängvärdet
+   börjar med `<?xml` eller `<article`.
+2. Det avkodade värdet är välformad XML med rotelementet `article`.
+
+Är båda villkoren uppfyllda behandlas innehållet som **DocBook**. Annars behandlas det som
+**fritext**, även om texten råkar innehålla enstaka tecken som `<` eller `&`.
+
+### I en bilaga (multimediaEntry)
+
+En bilaga har en uttrycklig typindikator. DocBook känns igen på `multimediaEntry.mediaType`:
+
+| `mediaType` | Hantering |
+|---|---|
+| `application/docbook+xml` | **DocBook** – transformeras enligt Strategi A (och valfritt B) |
+| `application/xml` eller `text/xml` med rotelementet `article` efter avkodning | **DocBook** – transformeras på samma sätt |
+| Övriga (t.ex. `application/pdf`, `image/jpeg`) | Ingen transformation – `value` och `mediaType` förs över oförändrade till `content.attachment` |
+
+En bilaga som innehåller `multimediaEntry.reference` (URL) i stället för `value` transformeras
+inte, eftersom innehållet inte finns i svaret.
+
+### Om tolkningen misslyckas
+
+Om innehållet ser ut som DocBook men inte kan tolkas, eller om transformationen misslyckas:
+
+- `clinicalDocumentNoteText` mappas som fritext (`text/plain; charset=utf-8`) med strängvärdet
+  oförändrat.
+- En bilaga förs över oförändrad med sin ursprungliga `mediaType`.
+
+Inget innehåll tappas.
 
 ---
 
@@ -154,6 +192,10 @@ Utöver Strategi A kan en fristående `Composition` skapas när innehållet är 
 dokumentets sektioner adresserbara var för sig, till exempel för navigering eller för att visa
 enskilda avsnitt.
 
+Strategi B är valfri, men en `Composition` som skapas ska följa profilen
+[IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html).
+Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.
+
 ### Sektionsmappning
 
 | DocBook | Composition.section |
@@ -176,7 +218,7 @@ som Strategi A ger, men begränsad till sektionens eget innehåll. Nästlade sek
 | `type` | Kopieras från `DocumentReference.type` |
 | `subject` | Kopieras från `DocumentReference.subject` |
 | `date` | Kopieras från `DocumentReference.date` |
-| `author` | Kopieras från `DocumentReference.author` |
+| `author` | Kopieras från `DocumentReference.author`. Om `author` saknas i källan används vårdenheten (`accessControlHeader.accountableCareUnit`) som logisk referens till `Organization`, eftersom `Composition.author` är obligatorisk |
 | `title` | `clinicalDocumentNoteTitle`; fallback `"Journalanteckning"` |
 
 ### Koppling till DocumentReference
@@ -280,12 +322,11 @@ Den stylade sektionen "Observera" bryts inte ut som egen rubrik. Den ligger dire
 
 ## Kända begränsningar
 
-- **Identifieringen är en heuristik.** RIVTA-fältet anger inte om innehållet är fritext eller
-  DocBook. Se [Steg 2](#steg-2--identifiering-av-docbook).
+- **Identifieringen i clinicalDocumentNoteText bygger på innehållet.** Textfältet saknar typindikator, så
+  DocBook känns igen på den entity-kodade XML:en. Se [Steg 2](#steg-2--identifiering-av-docbook).
 - **Dokumentordning i Strategi B.** Löst innehåll direkt under `<article>` vid sidan av
   strukturella `<section>`-element samlas i en avslutande sektion i stället för att behålla
   sin ursprungliga position. Det är en medveten förenkling för att inget innehåll ska tappas.
   Strategi A bevarar alltid exakt källordning och är den representation som ska användas när
   exakt visuell återgivning krävs.
 - **Ingen direkt länk Composition → DocumentReference.** Kopplingen går via `Provenance.target`.
-- **Ingen egen Composition-profil.** Strategi B beskrivs här men har ännu ingen profil i IG:n.
