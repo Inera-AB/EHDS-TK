@@ -28,7 +28,7 @@ Mappningarna spårar varje element i de logiska modellerna till det FHIR-profil-
 | GetReferralOutcome | [IneraEHDSLMReferralOutcome](StructureDefinition-inera-ehds-lm-referral-outcome.html) | [IneraEHDSServiceRequestReferral](StructureDefinition-inera-ehds-service-request-referral.html) + [IneraEHDSDiagnosticReportReferral](StructureDefinition-inera-ehds-diagnostic-report-referral.html) | [mapping-getreferraloutcome](mapping-getreferraloutcome.html) |
 | GetRequestActivities | [IneraEHDSLMRequestActivities](StructureDefinition-inera-ehds-lm-request-activities.html) | [IneraEHDSTask](StructureDefinition-inera-ehds-task.html) | [mapping-getrequestactivities](mapping-getrequestactivities.html) |
 | GetObservations | [IneraEHDSLMObservations](StructureDefinition-inera-ehds-lm-observations.html) | [IneraEHDSObservationGrowth](StructureDefinition-inera-ehds-observation-growth.html) | [mapping-getobservations](mapping-getobservations.html) |
-| GetAccessLogForPatient | [IneraEHDSLMAccessLog](StructureDefinition-inera-ehds-lm-access-log.html) | [IneraEHDSAuditEvent](StructureDefinition-inera-ehds-audit-event.html) | [mapping-getaccesslogforpatient](mapping-getaccesslogforpatient.html) |
+| GetAccessLogForPatient | [IneraEHDSLMAccessLog](StructureDefinition-inera-ehds-lm-access-log.html) | [IneraEHDSAuditEvent](StructureDefinition-inera-ehds-audit-event.html) | [Auditloggning – bilaga GetAccessLogForPatient](mapping-getaccesslogforpatient.html#bilaga--getaccesslogforpatient) |
 
 ---
 

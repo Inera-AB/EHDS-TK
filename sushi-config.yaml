@@ -61,7 +61,7 @@ pages:
   mapping-getobservations.md:
     title: GetObservations – Tillväxtkurva
   mapping-getaccesslogforpatient.md:
-    title: GetAccessLogForPatient – Åtkomstloggar
+    title: Auditloggning – åtkomstloggar i ett EHDS-kompatibelt FHIR-API
   search-parameters.md:
     title: Sökparametrar
   mapping-issues.md:

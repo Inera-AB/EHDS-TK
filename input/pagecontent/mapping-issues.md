@@ -58,6 +58,11 @@ Denna sida dokumenterar öppna designfrågor och fattade beslut för mappningar 
 | REQ-002 | GetRequestActivities | `Task.requester` saknar källfält i LM. Avsändaren kan finnas i requestHeader via `senderHSAId` i fullständigt RIVTA-schema. | Öppen | Verifiera mot RIVTA XSD. |
 | LOG-001 | GetAccessLogForPatient | `AuditEvent.patient` är en R4B-utökning som inte finns i basen av FHIR R4. | Hög | Utred om lokal extension eller `entity[patient]`-mönstret (entity.role = 1) ska användas för R4-kompatibilitet. |
 | LOG-002 | GetAccessLogForPatient | `accessType`-kodvärden (Läsning/Sökning) behöver formellt kodverk. Utred om DICOM AuditEventID-koder eller ett lokalt Inera-kodverk ska användas. | Medium | Utred kodverksval och publicera CodeSystem som del av IG. |
+| AUDIT-001 | Auditloggning | Ska IG:n definiera AuditEvent-profiler som ärver från IHE BALP (`IHE.BasicAudit.PatientQuery`/`PatientRead`, paket `ihe.iti.balp`)? Dagens IneraEHDSAuditEvent täcker bara GetAccessLogForPatient. | Öppen | Se [Auditloggning](mapping-getaccesslogforpatient.html). |
+| AUDIT-002 | Auditloggning | Hur anropande system skickar användarens HSA-id, roll och syfte (purpose of use) till bryggan behöver fastställas. | Öppen | Token-claims, SAML-attribut eller headrar. |
+| AUDIT-003 | Auditloggning | Träfflistans granularitet i AuditEvent: en entity per utlämnad resurs eller en gräns. | Öppen | Se [Auditloggning](mapping-getaccesslogforpatient.html#trafflistan). |
+| AUDIT-004 | Auditloggning | Var bryggans AuditEvent lagras (Audit Record Repository) och hur de görs tillgängliga. | Öppen | Nationell, regional eller lokal loggtjänst. |
+| AUDIT-005 | Auditloggning | Koppling mellan bryggans loggpost och källsystemens PDL-loggning. | Öppen | T.ex. via RIVTA `logId` eller korrelations-id. |
 | PDL-001 | Alla TK | `approvedForPatient` (boolean, `1..1`) i alla TK-headrar saknar standardmappning till FHIR `meta.security`. | **Beslutat** | `approvedForPatient = false` → `meta.security` kod `NOPATIENT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`. Dokumenterat i README avsnitt 9 och i alla berörda profilers `^short`. |
 | GENERAL-001 | Alla TK | RIVTA-tidsstämplar använder formatet `YYYYMMDDhhmmss` (utan tidzon). FHIR kräver ISO 8601 med tidzon. | Öppen | Konvertera till ISO 8601. Antag tidzon Europe/Stockholm (CET/CEST). Implementera i EHDS-bryggan. |
 
@@ -106,4 +111,4 @@ Följande begränsningar i FHIR R4 påverkar mappningarna i denna implementation
 6. **`Observation.value[x]` stödjer variabelprecisions-datum dåligt** — FHIR R4 `dateTime` kräver specifik precisionsnivå, men RIVTA-tidsstämplar kan ha varierande precision (se OBS-001). **Beslutat:** `valueString` för `YYYY`/`YYYYMM`, `valueDateTime` för `YYYYMMDD`/`YYYYMMDDHHMMSS`.
 7. **Inga standardiserade FHIR-element för samtycke/Sparr-information** — `approvedForPatient`-flaggan i RIVTA-headrar har ingen direkt FHIR-motsvarighet. **Beslutat:** `meta.security` med kod `NOPATIENT` (v3-ActCode) om `false` (se PDL-001).
 8. **`Flag` saknar `note`-element i R4** — `alertInformationComment` kan inte mappas till standardelement på Flag (se ALERT-005). Kräver custom extension.
-9. **`AuditEvent.patient` är R4B-tillägg** — för GetAccessLogForPatient behövs workaround för ren R4-kompatibilitet (se LOG-001).
+9. **`AuditEvent.patient` är R4B-tillägg** — i R4 anges patienten med BALP:s entity-mönster (`entity.role = 1`), se [Auditloggning](mapping-getaccesslogforpatient.html) och LOG-001.
