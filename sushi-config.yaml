@@ -18,6 +18,7 @@ jurisdiction: urn:iso:std:iso:3166#SE "Sweden"
 dependencies:
   hl7.fhir.uv.ips: 1.1.0
   hl7.fhir.eu.eps: current
+  ihe.iti.balp: 1.1.4
 parameters:
   show-inherited-invariants: false
   usage-stats-opt-out: true
@@ -61,7 +62,7 @@ pages:
   mapping-getobservations.md:
     title: GetObservations – Tillväxtkurva
   mapping-getaccesslogforpatient.md:
-    title: Auditloggning – åtkomstloggar i ett EHDS-kompatibelt FHIR-API
+    title: Åtkomstloggar – patientåtkomst och auditloggning
   search-parameters.md:
     title: Sökparametrar
   mapping-issues.md:

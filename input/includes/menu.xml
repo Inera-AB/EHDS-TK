@@ -50,7 +50,7 @@
                 <li><a href="mapping-getobservations.html">GetObservations – Tillväxtkurva</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Logg</li>
-                <li><a href="mapping-getaccesslogforpatient.html">Auditloggning (IHE mXDE/BALP)</a></li>
+                <li><a href="mapping-getaccesslogforpatient.html">Åtkomstloggar och auditloggning</a></li>
               </ul>
             </li>
             <li class="dropdown">

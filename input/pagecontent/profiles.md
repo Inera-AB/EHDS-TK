@@ -70,4 +70,6 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | Profil | Basresurs | Tjänstekontrakt |
 |---|---|---|
-| [IneraEHDSAuditEvent](StructureDefinition-inera-ehds-audit-event.html) | AuditEvent | GetAccessLogForPatient |
+| [IneraEHDSAuditEventReadAccessLog](StructureDefinition-inera-ehds-audit-event-read-access-log.html) | AuditEvent | GetAccessLogForPatient – läsning av åtkomstloggar |
+| [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html) | IHE BALP PatientQuery | Loggpost som skapas vid sökning/träfflista i API:et ([Auditloggning](mapping-getaccesslogforpatient.html)) |
+| [IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.html) | IHE BALP PatientRead | Loggpost som skapas vid innehållshämtning i API:et ([Auditloggning](mapping-getaccesslogforpatient.html)) |

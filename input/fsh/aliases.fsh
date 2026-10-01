@@ -27,3 +27,9 @@ Alias: $ImagingStudy-uv-ips                   = http://hl7.org/fhir/uv/ips/Struc
 
 // FHIR extensions
 Alias: $patient-birthPlace = http://hl7.org/fhir/StructureDefinition/patient-birthPlace
+
+// IHE Basic Audit Log Patterns (BALP)
+Alias: $BALP-PatientQuery = https://profiles.ihe.net/ITI/BALP/StructureDefinition/IHE.BasicAudit.PatientQuery
+Alias: $BALP-PatientRead  = https://profiles.ihe.net/ITI/BALP/StructureDefinition/IHE.BasicAudit.PatientRead
+Alias: $v3-ParticipationType = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
+Alias: $v3-ActReason         = http://terminology.hl7.org/CodeSystem/v3-ActReason

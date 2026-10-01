@@ -1,26 +1,63 @@
-# Auditloggning – åtkomstloggar i ett EHDS-kompatibelt FHIR-API
+# Åtkomstloggar – patientåtkomst och auditloggning i ett EHDS-kompatibelt FHIR-API
 
 **Gäller:** EHDS-bryggor och andra FHIR-API:er som lämnar ut patientdata från RIVTA-tjänstekontrakten i denna IG  
-**FHIR-resurs:** `AuditEvent` (FHIR R4) enligt IHE Basic Audit Log Patterns (BALP)  
-**IHE-profiler:** mXDE med basprofilerna MHD, QEDm och ATNA/BALP  
-**Relaterat:** [Bilaga – GetAccessLogForPatient](#bilaga--getaccesslogforpatient) (patientens hämtning av åtkomstloggar)
+**FHIR-resurs:** `AuditEvent` (FHIR R4)  
+**Profiler:**
+- [IneraEHDSAuditEventReadAccessLog](StructureDefinition-inera-ehds-audit-event-read-access-log.html) – läsning av källsystemens åtkomstloggar (GetAccessLogForPatient)
+- [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html) – loggpost som skapas vid sökning och träfflista (bygger på IHE BALP PatientQuery)
+- [IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.html) – loggpost som skapas vid innehållshämtning (bygger på IHE BALP PatientRead)
+
+**IHE-profiler:** mXDE med basprofilerna MHD, QEDm och ATNA/BALP
 
 ---
 
-## Bakgrund och antaganden
+## Patientens åtkomst till loggar via API:et {#patientatkomst}
 
-EHDS ställer krav på att åtkomst till elektroniska patientuppgifter loggas, så att det går att
-följa upp vem som har tagit del av en patients uppgifter och i vilket syfte. EURIDICE hänvisar
-till IHE:s profiler för hur detta ska realiseras tekniskt.
+EHDS ger patienten rätt att få veta vem som har tagit del av patientens elektroniska
+patientuppgifter. I ett EHDS-kompatibelt FHIR-API tillhandahålls därför åtkomstloggar till
+patienten som en del av API:et, på samma sätt som övriga patientuppgifter. Patienten (eller en
+app som agerar för patienten, t.ex. 1177 Journal) hämtar loggarna som `AuditEvent`-resurser:
 
-Denna IG gör följande antaganden:
+```
+GET [base]/AuditEvent?patient.identifier=http://electronichealth.se/identifier/personnummer|191212121212&date=ge2026-01-01
+```
+
+Sökningen motsvarar ATNA ITI-81 Retrieve ATNA Audit Event. Se även
+[Sökparametrar](search-parameters.html) för filtrering på datum och vårdgivare.
+
+En fullständig bild av vem som har tagit del av patientens uppgifter består av två delar:
+
+| Del | Var loggarna skapas | Hur de når patienten | Profil |
+|---|---|---|---|
+| **Källsystemens åtkomstloggar** | I journalsystemen, när vårdpersonal läser journalen direkt i källsystemet | Hämtas via RIVTA-tjänstekontraktet GetAccessLogForPatient och mappas till `AuditEvent` | [IneraEHDSAuditEventReadAccessLog](StructureDefinition-inera-ehds-audit-event-read-access-log.html), se [Läsning av källsystemens åtkomstloggar](#getaccesslogforpatient) |
+| **API:ets egna loggposter** | I FHIR-API:et (t.ex. bryggan), när patientdata lämnas ut via API:et | Lagras i ett Audit Record Repository och lämnas ut via `GET [base]/AuditEvent` | [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html), [IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.html), se [Loggar som måste skapas](#loggar-som-maste-skapas) |
+
+Källsystemens loggar täcker inte utlämningar som sker via API:et. Om API:et inte skapar egna
+loggposter kan patienten alltså inte se att uppgifterna lämnats ut den vägen. Därför ställs
+kraven i nästa avsnitt.
+
+Patientens egen hämtning av loggar är också en utlämning av patientdata. Den ska loggas på samma
+sätt som andra utlämningar, med syftet `PATRQT`.
+
+---
+
+## Loggar som måste skapas när API:et nyttjas {#loggar-som-maste-skapas}
+
+**Dessa loggar måste skapas när detta API nyttjas för att kunna stödja patientåtkomsten till
+loggar.** Varje gång API:et lämnar ut patientdata ska det skapa en loggpost som patienten
+senare kan ta del av enligt [föregående avsnitt](#patientatkomst).
+
+### Antaganden
+
+EURIDICE hänvisar till IHE:s profiler för hur loggningen ska realiseras tekniskt. Denna IG gör
+följande antaganden:
 
 1. **Kravnivån är klinisk åtkomstloggning.** För FHIR-bryggor och liknande API:er motsvarar
    kraven IHE **mXDE** (Mobile Cross-Enterprise Document Data Element Extraction) och dess
    basprofiler.
 2. **mXDE kombinerar tre förmågor:**
 
-   | Profil | Förmåga | Relevans för bryggan |
+   | Profil | Förmåga | Relevans för API:et |
    |---|---|---|
    | **MHD** (Mobile access to Health Documents) | Dokumentsökning och dokumenthämtning | `DocumentReference`-sökning och hämtning av dokumentinnehåll, t.ex. [GetCareDocumentation](mapping-getcaredocumentation.html) |
    | **QEDm** (Query for Existing Data for Mobile) | Sökning i strukturerad data | Sökning efter `Condition`, `AllergyIntolerance`, `MedicationStatement`, `Immunization`, `Observation`, `Encounter` m.fl. |
@@ -41,98 +78,94 @@ Denna IG gör följande antaganden:
    | **Vilken patient** | Patientens identitet (personnummer eller samordningsnummer) |
    | **Resultat** | Om utlämningen lyckades eller nekades/misslyckades |
 
----
-
-## Vilka händelser som loggas
+### Händelser och profiler
 
 En `AuditEvent` skapas per FHIR-interaktion som lämnar ut, eller försöker lämna ut,
-patientdata. Händelsen skapas även när interaktionen nekas eller misslyckas.
+patientdata.
 
-| Händelse | FHIR-interaktion | IHE-transaktion | BALP-mönster | `type` | `subtype` | `action` |
+| Händelse | FHIR-interaktion | IHE-transaktion | Profil | `type` | `subtype` | `action` |
 |---|---|---|---|---|---|---|
-| Sökning + träfflista, dokument | `GET [base]/DocumentReference?patient=…` | MHD ITI-67 Find Document References | Patient Query | `DCM#110112` "Query" | `urn:ihe:event-type-code#ITI-67` och `http://hl7.org/fhir/restful-interaction#search-type` | `E` |
-| Sökning + träfflista, strukturerad data | `GET [base]/Condition?patient=…` m.fl. | QEDm PCC-44 Mobile Query Existing Data | Patient Query | `DCM#110112` "Query" | `http://hl7.org/fhir/restful-interaction#search-type` | `E` |
-| Innehållshämtning, dokument (framtida) | `GET` av `DocumentReference.content.attachment.url` | MHD ITI-68 Retrieve Document | Patient Read | `DCM#110106` "Export" | `urn:ihe:event-type-code#ITI-68` | `R` |
-| Läsning av enskild resurs (framtida) | `GET [base]/[typ]/[id]` | – | Patient Read | `http://terminology.hl7.org/CodeSystem/audit-event-type#rest` | `http://hl7.org/fhir/restful-interaction#read` | `R` |
+| Sökning + träfflista, dokument | `GET [base]/DocumentReference?patient=…` | MHD ITI-67 Find Document References | [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html) | `audit-event-type#rest` | `restful-interaction#search-type` och `urn:ihe:event-type-code#ITI-67` | `E` |
+| Sökning + träfflista, strukturerad data | `GET [base]/Condition?patient=…` m.fl. | QEDm PCC-44 Mobile Query Existing Data | [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html) | `audit-event-type#rest` | `restful-interaction#search-type` | `E` |
+| Patientens hämtning av åtkomstloggar | `GET [base]/AuditEvent?patient=…` | ATNA ITI-81 Retrieve ATNA Audit Event | [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html) | `audit-event-type#rest` | `restful-interaction#search-type` | `E` |
+| Läsning av enskild resurs (framtida) | `GET [base]/[typ]/[id]` | – | [IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.html) | `audit-event-type#rest` | `restful-interaction#read` | `R` |
+| Innehållshämtning, dokument (framtida) | `GET` av `DocumentReference.content.attachment.url` | MHD ITI-68 Retrieve Document | [IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.html) | `audit-event-type#rest` | `restful-interaction#read` och `urn:ihe:event-type-code#ITI-68` | `R` |
+
+Kodsystem: `audit-event-type` = `http://terminology.hl7.org/CodeSystem/audit-event-type`,
+`restful-interaction` = `http://hl7.org/fhir/restful-interaction`.
 
 Sökning och träfflista loggas i **samma** `AuditEvent`. Frågan registreras som en
-query-entity och de resurser som lämnades ut i träfflistan registreras som egna entities
-(se [Träfflistan](#trafflistan)).
+query-entity och de resurser som lämnades ut registreras som egna entities (se
+[Träfflistan](#trafflistan)).
 
-Där en IHE-transaktion har egna auditkrav (MHD ITI-67/ITI-68) används transaktionens
-`subtype` tillsammans med BALP-mönstret. Övriga interaktioner följer BALP:s generiska mönster.
+### Vad Inera-profilerna lägger till utöver BALP
 
----
+Profilerna ärver från IHE BALP (`ihe.iti.balp`) och skärper följande:
 
-## AuditEvent-struktur
-
-### Grundfält
-
-| AuditEvent-element | Innehåll | Kommentar |
+| Krav | BALP | Inera-profilerna |
 |---|---|---|
-| `type` | Se tabellen ovan | |
-| `subtype` | Se tabellen ovan | |
-| `action` | `E` (sökning) eller `R` (läsning/hämtning) | |
-| `recorded` | Tidpunkt då händelsen registrerades | ISO 8601 med tidszon |
-| `outcome` | Se [Resultat](#resultat-outcome) | |
-| `outcomeDesc` | Felbeskrivning vid nekad/misslyckad utlämning | Får inte innehålla patientdata |
-| `purposeOfEvent` | Se [Syfte](#syfte-purpose-of-use) | |
-| `source.observer` | Den nod som registrerade händelsen (bryggan) | `Reference(Device)` med identifier |
-| `source.type` | `http://terminology.hl7.org/CodeSystem/security-source-type#4` "Application Server" | |
+| Användaragent (`agent[user]`) | 0..1 | 1..1, med identifier (HSA-id eller personnummer) |
+| Syfte (`purposeOfEvent`, `agent[user].purposeOfUse`) | Valfritt | Obligatoriskt |
+| Källsystem/vårdgivare | – | Ny slice `agent[custodian]`, en per källsystem som bidrog |
+| Loggkälla (`source.observer`) | Valfri typ | `Reference(Device)` – bryggan |
+| Patient (`entity[patient].what`) | `Reference(Patient)` | `Reference(IneraEHDSPatient)` |
+| Träfflista | Antal och innehåll registreras inte | Varje utlämnad resurs registreras som entity (PatientQuery) |
 
 ### Vem – agenter
 
 | Agent | `agent.type` | `agent.who` | `requestor` | Övrigt |
 |---|---|---|---|---|
-| **Användare** | BALP användaragent (`http://terminology.hl7.org/CodeSystem/extra-security-role-type#humanuser`) | Identifier med användarens HSA-id (`urn:oid:1.2.752.129.2.1.4.1`); för patient som användare personnummer | `true` | `agent.role`: användarens befattning/roll när den finns. `agent.purposeOfUse`: se nedan |
-| **Applikation (klient)** | `DCM#110153` "Source Role ID" | Identifier för klientapplikationen (t.ex. OAuth `client_id`) | `false` | `agent.network`: klientens nätverksadress |
-| **Bryggan (server)** | `DCM#110152` "Destination Role ID" | `Reference(Device)` för bryggan | `false` | `agent.network`: serverns adress |
-| **Källsystem** | `http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST` "custodian" | Identifier med källsystemets eller vårdgivarens HSA-id | `false` | En agent per källsystem som bidrog till svaret, se [Källsystem](#kallsystem-och-noder) |
+| **Användare** (`agent[user]`) | `v3-ParticipationType#IRCP` "information recipient" | Identifier med användarens HSA-id (`urn:oid:1.2.752.129.2.1.4.1`); för patienten själv personnummer | `true` | `role`: befattning/roll om den finns. `purposeOfUse`: se nedan |
+| **Applikation** (`agent[client]`) | PatientQuery: `DCM#110153` "Source Role ID"; PatientRead: `DCM#110152` "Destination Role ID" | Identifier för klientapplikationen (t.ex. OAuth `client_id`) | `false` | `network`: klientens adress (obligatorisk i BALP) |
+| **API:et/bryggan** (`agent[server]`) | PatientQuery: `DCM#110152`; PatientRead: `DCM#110153` | `Reference(Device)` eller identifier för bryggan | `false` | `network`: serverns adress (obligatorisk i BALP) |
+| **Källsystem** (`agent[custodian]`) | `v3-ParticipationType#CST` "custodian" | Identifier med källsystemets eller vårdgivarens HSA-id | `false` | En agent per källsystem, se [Källsystem](#kallsystem-och-noder) |
+
+Att klient och server har olika DICOM-roller för sökning respektive läsning följer BALP.
 
 När åtkomsttoken är en OAuth-token eller SAML-assertion följs BALP:s mönster för
-tokenanvändning: uppgifter ur token (t.ex. subjekt, `client_id`, organisation) förs över till
-användar- och applikationsagenterna.
+tokenanvändning: uppgifter ur token (t.ex. subjekt, `client_id`, organisation, syfte) förs
+över till användar- och applikationsagenterna.
 
-### Vilken patient – entity
+### Vilken patient – entity[patient]
 
-FHIR R4 saknar `AuditEvent.patient`. Patienten anges därför med BALP:s entity-mönster:
+FHIR R4 saknar `AuditEvent.patient`. Patienten anges med BALP:s entity-mönster:
 
 | Element | Värde |
 |---|---|
-| `entity.type` | `http://terminology.hl7.org/CodeSystem/audit-entity-type#1` "Person" |
-| `entity.role` | `http://terminology.hl7.org/CodeSystem/object-role#1` "Patient" |
+| `entity.type` | `audit-entity-type#1` "Person" |
+| `entity.role` | `object-role#1` "Patient" |
 | `entity.what` | `Reference(IneraEHDSPatient)` med `identifier` = personnummer eller samordningsnummer |
 
-Varje `AuditEvent` gäller exakt en patient. En fråga som inte är avgränsad till en patient
-lämnar inte ut patientdata i denna IG och ska inte tillåtas.
+Varje `AuditEvent` gäller exakt en patient. Om en sökning ger träffar för flera patienter skapas
+en `AuditEvent` per patient, enligt BALP.
 
-### Frågan – entity
+### Frågan – entity[query]
 
 | Element | Värde |
 |---|---|
-| `entity.type` | `http://terminology.hl7.org/CodeSystem/audit-entity-type#2` "System Object" |
-| `entity.role` | `http://terminology.hl7.org/CodeSystem/object-role#24` "Query" |
-| `entity.query` | Frågesträngen (base64), t.ex. `Condition?patient=…&clinical-status=active` |
+| `entity.type` | `audit-entity-type#2` "System Object" |
+| `entity.role` | `object-role#24` "Query" |
+| `entity.query` | Den råa frågesträngen, base64-kodad |
+| `entity.description` | Valfritt: den tvättade frågesträngen i klartext |
 
 ### Träfflistan {#trafflistan}
 
-Träfflistan är en utlämning i sig. Varje resurs som lämnades ut i sökresultatet registreras som
-en entity i samma `AuditEvent`:
+Träfflistan är en utlämning i sig. Varje resurs som lämnades ut registreras som en entity i
+samma `AuditEvent`:
 
 | Element | Värde |
 |---|---|
-| `entity.type` | `http://terminology.hl7.org/CodeSystem/audit-entity-type#2` "System Object" |
-| `entity.role` | `http://terminology.hl7.org/CodeSystem/object-role#4` "Domain Resource" |
+| `entity.type` | Resurstypen, t.ex. `http://hl7.org/fhir/resource-types#Condition` |
+| `entity.role` | `object-role#4` "Domain Resource" |
 | `entity.what` | Referens till den utlämnade resursen (`[typ]/[id]`), eller logisk referens via identifier |
 
 Resurser som filtrerades bort före utlämning, till exempel på grund av spärr eller
-`approvedForPatient = false`, registreras **inte** som utlämnade. Om filtrering skett anges det
-i `outcomeDesc` utan att den bortfiltrerade informationen avslöjas.
+`approvedForPatient = false`, registreras **inte**.
 
 ### Syfte (purpose of use)
 
-Syftet anges i `AuditEvent.purposeOfEvent` och i användaragentens `agent.purposeOfUse`, med
-koder från `http://terminology.hl7.org/CodeSystem/v3-ActReason`:
+Syftet anges i `AuditEvent.purposeOfEvent` och i `agent[user].purposeOfUse`, med koder från
+`http://terminology.hl7.org/CodeSystem/v3-ActReason`:
 
 | Situation | Kod |
 |---|---|
@@ -141,44 +174,45 @@ koder från `http://terminology.hl7.org/CodeSystem/v3-ActReason`:
 | Patientens egen åtkomst, t.ex. via 1177 Journal | `PATRQT` |
 
 Syftet ska komma från anropet (t.ex. åtkomsttokenens claims). Om syftet saknas i ett anrop som
-kräver ett syfte ska utlämningen nekas och loggas med `outcome = 4`.
+kräver ett syfte ska utlämningen nekas och loggas (se nedan).
 
 ### Resultat (outcome)
 
+Inera-profilerna, liksom BALP, beskriver **lyckade** utlämningar (`outcome = 0`, även med noll
+träffar). Nekade och misslyckade försök ska också loggas. De loggas med samma struktur men utan
+`meta.profile` till profilerna, med ett `OperationOutcome` till klienten enligt FHIR:s mönster
+för nekad åtkomst:
+
 | Situation | `outcome` |
 |---|---|
-| Utlämning genomförd (även med noll träffar) | `0` "Success" |
+| Utlämning genomförd | `0` "Success" |
 | Utlämning nekad, t.ex. saknad behörighet, saknat syfte eller spärr på hela svaret | `4` "Minor failure" |
 | Fel i källsystem eller underliggande RIVTA-anrop | `8` "Serious failure" |
-| Fel i bryggan | `12` "Major failure" |
+| Fel i API:et/bryggan | `12` "Major failure" |
+
+`outcomeDesc` får inte avslöja bortfiltrerad eller spärrad information.
 
 ### Källsystem och noder {#kallsystem-och-noder}
 
 En utlämning från bryggan bygger på ett eller flera RIVTA-anrop mot källsystem. För
 spårbarhet hela vägen tillbaka till källan:
 
-- Bryggan registreras som `source.observer` och som serveragent.
-- Varje källsystem (eller vårdgivare) som bidrog till svaret registreras som en agent av typen
-  custodian, med samma HSA-id som används i `Provenance.agent[custodian]` för de utlämnade
-  resurserna.
+- Bryggan registreras som `source.observer` och som `agent[server]`.
+- Varje källsystem (eller vårdgivare) som bidrog till svaret registreras som `agent[custodian]`,
+  med samma HSA-id som `Provenance.agent[custodian]` för de utlämnade resurserna.
 - RIVTA-anropets `logId` (`result.logId`, där det finns) kan anges som extra identifier på
-  källsystemsagenten, så att bryggans loggpost kan kopplas till källsystemets egen loggpost.
+  `agent[custodian]`, så att API:ets loggpost kan kopplas till källsystemets egen loggpost.
 
----
-
-## Lagring och åtkomst till loggposterna (ATNA)
+### Lagring (ATNA)
 
 - `AuditEvent` skickas till ett **Audit Record Repository** enligt ATNA, med FHIR-överföring
   (ITI-20 Record Audit Event, FHIR Feed) eller ett likvärdigt säkert flöde.
 - Loggposter får inte ändras eller raderas av den som utför åtkomsten och ska bevaras enligt
-  gällande krav på loggning (t.ex. patientdatalagen).
-- Uppföljning och patientinsyn i loggarna görs via ATNA ITI-81 Retrieve ATNA Audit Event
-  (`GET [base]/AuditEvent?patient=…`), se även [Sökparametrar](search-parameters.html).
+  gällande krav (t.ex. patientdatalagen).
 - Loggposterna innehåller inte själva patientdatat, bara referenser till det som lämnades ut.
+- Loggposterna lämnas ut till patienten enligt [Patientens åtkomst till loggar](#patientatkomst).
 
----
-
-## Exempel – sökning efter diagnoser
+### Exempel – sökning efter diagnoser
 
 En användare i vården söker aktiva diagnoser för en patient via QEDm. Två `Condition` lämnas ut
 från ett källsystem.
@@ -186,7 +220,8 @@ från ett källsystem.
 ```json
 {
   "resourceType": "AuditEvent",
-  "type": { "system": "http://dicom.nema.org/resources/ontology/DCM", "code": "110112", "display": "Query" },
+  "meta": { "profile": ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-query"] },
+  "type": { "system": "http://terminology.hl7.org/CodeSystem/audit-event-type", "code": "rest", "display": "Restful Operation" },
   "subtype": [{ "system": "http://hl7.org/fhir/restful-interaction", "code": "search-type", "display": "search type" }],
   "action": "E",
   "recorded": "2026-10-01T10:15:00+02:00",
@@ -194,7 +229,7 @@ från ett källsystem.
   "purposeOfEvent": [{ "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason", "code": "TREAT" }] }],
   "agent": [
     {
-      "type": { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/extra-security-role-type", "code": "humanuser" }] },
+      "type": { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType", "code": "IRCP", "display": "information recipient" }] },
       "who": { "identifier": { "system": "urn:oid:1.2.752.129.2.1.4.1", "value": "SE2321000016-ABC1" } },
       "requestor": true,
       "purposeOfUse": [{ "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason", "code": "TREAT" }] }]
@@ -208,7 +243,8 @@ från ett källsystem.
     {
       "type": { "coding": [{ "system": "http://dicom.nema.org/resources/ontology/DCM", "code": "110152", "display": "Destination Role ID" }] },
       "who": { "reference": "Device/ehds-brygga" },
-      "requestor": false
+      "requestor": false,
+      "network": { "address": "ehds-brygga.example.se", "type": "1" }
     },
     {
       "type": { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType", "code": "CST", "display": "custodian" }] },
@@ -233,12 +269,12 @@ från ett källsystem.
     },
     {
       "what": { "reference": "Condition/diag-1" },
-      "type": { "system": "http://terminology.hl7.org/CodeSystem/audit-entity-type", "code": "2" },
+      "type": { "system": "http://hl7.org/fhir/resource-types", "code": "Condition" },
       "role": { "system": "http://terminology.hl7.org/CodeSystem/object-role", "code": "4" }
     },
     {
       "what": { "reference": "Condition/diag-2" },
-      "type": { "system": "http://terminology.hl7.org/CodeSystem/audit-entity-type", "code": "2" },
+      "type": { "system": "http://hl7.org/fhir/resource-types", "code": "Condition" },
       "role": { "system": "http://terminology.hl7.org/CodeSystem/object-role", "code": "4" }
     }
   ]
@@ -247,33 +283,22 @@ från ett källsystem.
 
 ---
 
-## Öppna frågor
+## Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient {#getaccesslogforpatient}
 
-| ID | Fråga |
-|---|---|
-| AUDIT-001 | **Egen AuditEvent-profil baserad på BALP.** Ska IG:n definiera profiler som ärver från IHE BALP (`IHE.BasicAudit.PatientQuery`, `IHE.BasicAudit.PatientRead`) med beroende till paketet `ihe.iti.balp`? Dagens [IneraEHDSAuditEvent](StructureDefinition-inera-ehds-audit-event.html) är gjord för GetAccessLogForPatient och täcker inte mönstren på denna sida. |
-| AUDIT-002 | **Källa för syfte och användaridentitet.** Hur anropande system skickar användarens HSA-id, roll och syfte till bryggan (token-claims, SAML-attribut eller headrar) behöver fastställas. |
-| AUDIT-003 | **Träfflistans granularitet.** En entity per utlämnad resurs ger fullständig spårbarhet men stora loggposter vid stora träfflistor. Alternativ: entity per resurs upp till en gräns, därefter referens till ett sparat sökresultat. |
-| AUDIT-004 | **Audit Record Repository.** Var bryggans loggposter lagras (nationell loggtjänst, regional tjänst eller lokalt) och hur de görs tillgängliga för uppföljning och för patienten. |
-| AUDIT-005 | **Koppling till källsystemens PDL-loggning.** Hur bryggans loggpost och källsystemens egna åtkomstloggar knyts ihop, t.ex. via `logId` eller en gemensam korrelations-id. |
+**Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogForPatient v1.1, 2.0  
+**FHIR-profil:** [IneraEHDSAuditEventReadAccessLog](StructureDefinition-inera-ehds-audit-event-read-access-log.html)  
+**Logisk modell:** [IneraEHDSLMAccessLog](StructureDefinition-inera-ehds-lm-access-log.html)  
+**Krävs för NPÖ:** Nej | **Krävs för 1177 Journal:** Ja (v1.1, 2.0)
 
----
-
-## Bilaga – GetAccessLogForPatient
-
-`informationsecurity:auditing:log` GetAccessLogForPatient v1.1, 2.0 är ett separat
-tjänstekontrakt som används av **1177 Journal** (krävs inte för NPÖ) för att låta patienten se
-vem som har tagit del av patientens journal i källsystemen. Det handlar alltså om att **lämna
-ut** befintliga åtkomstloggar, inte om bryggans egen auditloggning ovan. Att hämta
-åtkomstloggar är i sig en utlämning av patientdata och ska loggas enligt mönstren ovan.
-
-**FHIR-profil:** [IneraEHDSAuditEvent](StructureDefinition-inera-ehds-audit-event.html)  
-**Logisk modell:** [IneraEHDSLMAccessLog](StructureDefinition-inera-ehds-lm-access-log.html)
+GetAccessLogForPatient används för att lämna ut källsystemens befintliga åtkomstloggar till
+patienten. Varje loggpost mappas till en `AuditEvent` enligt
+IneraEHDSAuditEventReadAccessLog. Profilen används bara för att **läsa** loggar. Den används
+inte för de loggposter API:et själv skapar (se [Loggar som måste skapas](#loggar-som-maste-skapas)).
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `accessLogId` | 1..1 | `AuditEvent.entity[loggpost].what.identifier.value` | Loggpostens unika identifierare |
-| `patientId` | 1..1 | `AuditEvent.entity[patient].what` | Patientens identitet, entity-mönstret ovan (`entity.role = 1`) |
+| `patientId` | 1..1 | `AuditEvent.entity[patient].what` | Patientens identitet, entity-mönstret (`entity.role = 1`) |
 | `accessTime` | 1..1 | `AuditEvent.recorded` | Åtkomsttidpunkt; ISO 8601 |
 | `accessType` | 1..1 | `AuditEvent.type` | Åtkomsttyp (Läsning/Sökning), se LOG-002 |
 | `accessSubType` | 0..1 | `AuditEvent.subtype` | Mer specifik klassificering av händelsen |
@@ -286,4 +311,19 @@ ut** befintliga åtkomstloggar, inte om bryggans egen auditloggning ovan. Att h�
 | `accessedResource` | 0..1 | `AuditEvent.entity[resurs].description` | Resurs eller tjänst som åtkoms |
 | `result.*` | – | Ej mappad | Tekniska svarsfält – hanteras av transportlagret |
 
-Öppna frågor för bilagan: LOG-001 och LOG-002 i [Mappningsissues](mapping-issues.html).
+Öppna frågor: LOG-001 och LOG-002 i [Mappningsissues](mapping-issues.html).
+
+---
+
+## Öppna frågor
+
+| ID | Fråga |
+|---|---|
+| AUDIT-002 | **Källa för syfte och användaridentitet.** Hur anropande system skickar användarens HSA-id, roll och syfte till API:et (token-claims, SAML-attribut eller headrar) behöver fastställas. |
+| AUDIT-003 | **Träfflistans granularitet.** En entity per utlämnad resurs ger fullständig spårbarhet men stora loggposter vid stora träfflistor. Alternativ: entity per resurs upp till en gräns, därefter referens till ett sparat sökresultat. |
+| AUDIT-004 | **Audit Record Repository.** Var API:ets loggposter lagras (nationell, regional eller lokal loggtjänst) och hur de görs tillgängliga för patienten tillsammans med källsystemens loggar. |
+| AUDIT-005 | **Koppling till källsystemens PDL-loggning.** Hur API:ets loggpost och källsystemens egna åtkomstloggar knyts ihop, t.ex. via `logId` eller ett gemensamt korrelations-id. |
+
+AUDIT-001 (egna AuditEvent-profiler baserade på BALP) är beslutad: se
+[IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html) och
+[IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.html).
