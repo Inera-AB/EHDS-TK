@@ -1,8 +1,15 @@
-Profile: IneraEHDSAuditEvent
+Profile: IneraEHDSAuditEventReadAccessLog
 Parent: AuditEvent
-Id: inera-ehds-audit-event
-Title: "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)"
-Description: "Profil för åtkomstloggar mappat från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ."
+Id: inera-ehds-audit-event-read-access-log
+Title: "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)"
+Description: """
+  Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till
+  patienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient
+  (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.
+
+  Profilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas
+  när API:et nyttjas beskrivs av IneraEHDSAuditEventPatientQuery och IneraEHDSAuditEventPatientRead.
+"""
 
 * agent 1..* MS
 * agent ^short = "Aktörer i loggposten"

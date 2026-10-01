@@ -11,6 +11,10 @@ Description: """
   signature för signeringsinformation.
 """
 
+* extension contains
+    DocumentReferenceSignatureTime named ext-signature-time 0..1 MS
+* extension[ext-signature-time] ^short = "Signeringstidpunkt (careDocumentation.header.signature.timestamp) – utelämnas om signature.timestamp saknas (DOC-003)"
+
 * subject only Reference(IneraEHDSPatient)
 * subject MS
 * subject ^short = "Patient (careDocumentation.header.accessControlHeader.patientId)"
@@ -41,9 +45,9 @@ Description: """
 * content 1..* MS
 * content.attachment 1..1 MS
 * content.attachment.contentType MS
-* content.attachment.contentType ^short = "Mimetyp (careDocumentation.body.multimediaEntry.mediaType)"
+* content.attachment.contentType ^short = "Mimetyp (careDocumentation.body.multimediaEntry.mediaType); för clinicalDocumentNoteText text/plain; charset=utf-8 (fritext) eller text/html; charset=utf-8 (DocBook → XHTML, DOC-004)"
 * content.attachment.data MS
-* content.attachment.data ^short = "Anteckningstext/binärinnehåll (careDocumentation.body.clinicalDocumentNoteText / multimediaEntry.value)"
+* content.attachment.data ^short = "Anteckningstext/binärinnehåll (careDocumentation.body.clinicalDocumentNoteText / multimediaEntry.value) – för clinicalDocumentNoteText: fritext base64-kodas som text/plain; DocBook-XML transformeras till XHTML och base64-kodas som text/html (DOC-004)"
 * content.attachment.url MS
 * content.attachment.url ^short = "Referens till extern fil (careDocumentation.body.multimediaEntry.reference)"
 * content.attachment.title MS
@@ -53,3 +57,11 @@ Description: """
 * context.encounter only Reference(IneraEHDSEncounter)
 * context.encounter MS
 * context.encounter ^short = "Tillhörande vårdkontakt (careDocumentation.header.accessControlHeader – koppling via vårdkontakt-id)"
+
+Extension: DocumentReferenceSignatureTime
+Id: ext-signature-time
+Title: "Signeringstidpunkt för journalanteckning"
+Description: "Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003."
+* ^context[0].type = #element
+* ^context[0].expression = "DocumentReference"
+* value[x] only dateTime
