@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/fetalpositioncode-vs | *Version*:0.3.3 |
-| Active as of 2026-09-30 | *Computable Name*:FetalPositionCodeVS |
+| Active as of 2026-10-01 | *Computable Name*:FetalPositionCodeVS |
 
  
 Tillåtna värden för fosterläge i GetMaternityMedicalHistory. 
@@ -50,7 +50,7 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "name" : "FetalPositionCodeVS",
   "title" : "FetalPositionCode — ValueSet",
   "status" : "active",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

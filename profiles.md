@@ -34,6 +34,7 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 | [IneraEHDSCarePlan](StructureDefinition-inera-ehds-care-plan.md) | CarePlan | GetCarePlans |
 | [IneraEHDSEncounter](StructureDefinition-inera-ehds-encounter.md) | Encounter | GetCareContacts |
 | [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.md) | DocumentReference | GetCareDocumentation |
+| [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.md) | Composition | GetCareDocumentation – valfri strukturerad representation av DocBook ([DocBook-mappning](guidance-docbook-narrative.md)) |
 
 -------
 
@@ -77,5 +78,7 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | | | |
 | :--- | :--- | :--- |
-| [IneraEHDSAuditEvent](StructureDefinition-inera-ehds-audit-event.md) | AuditEvent | GetAccessLogForPatient |
+| [IneraEHDSAuditEventReadAccessLog](StructureDefinition-inera-ehds-audit-event-read-access-log.md) | AuditEvent | GetAccessLogForPatient – läsning av åtkomstloggar |
+| [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.md) | IHE BALP PatientQuery | Loggpost som skapas vid sökning/träfflista i API:et ([Auditloggning](mapping-getaccesslogforpatient.md)) |
+| [IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.md) | IHE BALP PatientRead | Loggpost som skapas vid innehållshämtning i API:et ([Auditloggning](mapping-getaccesslogforpatient.md)) |
 

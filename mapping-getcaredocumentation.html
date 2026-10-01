@@ -123,6 +123,7 @@
                 <li><a href="mapping-getcareplans.html">GetCarePlans – Vårdplan</a></li>
                 <li><a href="mapping-getcarecontacts.html">GetCareContacts – Vårdkontakter</a></li>
                 <li><a href="mapping-getcaredocumentation.html">GetCareDocumentation – Anteckningar</a></li>
+                <li><a href="guidance-docbook-narrative.html">&#160;&#160;&#8627; DocBook-mappning</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Laboratorie och diagnostik</li>
                 <li><a href="mapping-getlaboratoryorderoutcome.html">GetLaboratoryOrderOutcome – Provsvar</a></li>
@@ -138,7 +139,7 @@
                 <li><a href="mapping-getobservations.html">GetObservations – Tillväxtkurva</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Logg</li>
-                <li><a href="mapping-getaccesslogforpatient.html">GetAccessLogForPatient – Åtkomstloggar</a></li>
+                <li><a href="mapping-getaccesslogforpatient.html">Åtkomstloggar och auditloggning</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -232,13 +233,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><a href="#xor-villkor-för-body-innehåll" id="markdown-toc-xor-villkor-för-body-innehåll">XOR-villkor för body-innehåll</a></li>
           <li><a href="#dissentingopinion" id="markdown-toc-dissentingopinion">dissentingOpinion</a></li>
           <li><a href="#hasmore-paginering" id="markdown-toc-hasmore-paginering">hasMore (paginering)</a></li>
+          <li><a href="#clinicaldocumentnotetext-och-docbook" id="markdown-toc-clinicaldocumentnotetext-och-docbook">clinicalDocumentNoteText och DocBook</a></li>
         </ul>
       </li>
       <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
       <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
       <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
       <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
-      <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
+      <li><a href="#beslutade-issues" id="markdown-toc-beslutade-issues">Beslutade issues</a></li>
     </ul>
   </li>
 </ul>
@@ -276,6 +278,8 @@ Se DES-005 i <a href="mapping-issues.html">mapping-issues</a>.</p>
   └── author → PractitionerRole (header.author)
   └── authenticator → PractitionerRole (header.signature)
   └── content[0].attachment (XOR: clinicalDocumentNoteText eller multimediaEntry)
+IneraEHDSCompositionCareDocumentation (valfri, 0..1 per careDocumentation – endast när innehållet är DocBook, se DOC-004)
+  └── section[] (en per DocBook-&lt;section&gt;)
 </code></pre></div></div>
 
 <p>Varje <code class="language-plaintext highlighter-rouge">careDocumentation</code>-post ger upphov till en <code class="language-plaintext highlighter-rouge">DocumentReference</code>. Kroppen är ett
@@ -370,8 +374,8 @@ eller URL) – se Härledda fält nedan.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.record.timestamp</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">DocumentReference.date</code></td>
-      <td>Tidpunkt då journalposten skapades; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se <a href="#öppna-frågor">GENERAL-001</a></td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.date</code>; även <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> om <code class="language-plaintext highlighter-rouge">author.timestamp</code> saknas</td>
+      <td>Tidpunkt då journalposten skapades; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se <a href="#öppna-frågor">GENERAL-001</a>. Fallback för <code class="language-plaintext highlighter-rouge">Provenance.recorded</code>, se <a href="#beslutade-issues">DOC-002</a></td>
     </tr>
   </tbody>
 </table>
@@ -404,7 +408,7 @@ eller URL) – se Härledda fält nedan.</p>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.author.timestamp</code></td>
       <td>1..1 (om author)</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.recorded</code></td>
-      <td>Tidpunkt då journalinformationen skapades av författaren; YYYYMMDDHHMMSS → ISO 8601</td>
+      <td>Tidpunkt då journalinformationen skapades av författaren; YYYYMMDDHHMMSS → ISO 8601. Saknas <code class="language-plaintext highlighter-rouge">author</code> används <code class="language-plaintext highlighter-rouge">record.timestamp</code>, se <a href="#beslutade-issues">DOC-002</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.author.byRole</code></td>
@@ -454,8 +458,8 @@ eller URL) – se Härledda fält nedan.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.signature.timestamp</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">DocumentReference.extension[signatureTime]</code></td>
-      <td>Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.extension[ext-signature-time].valueDateTime</code></td>
+      <td>Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. Extensionen (<a href="StructureDefinition-ext-signature-time.html">ext-signature-time</a>) sätts endast när värdet finns – ingen ersättning annars, se <a href="#beslutade-issues">DOC-003</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.signature.byRole</code></td>
@@ -574,7 +578,7 @@ eller URL) – se Härledda fält nedan.</p>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.body.clinicalDocumentNoteText</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">DocumentReference.content[0].attachment.data</code></td>
-      <td>Fritext journalanteckning; kodas som base64 med <code class="language-plaintext highlighter-rouge">contentType: text/plain; charset=utf-8</code>. XOR med multimediaEntry</td>
+      <td>Journalanteckning (string). Fritext: base64 med <code class="language-plaintext highlighter-rouge">contentType: text/plain; charset=utf-8</code>. DocBook-XML: transformeras till XHTML och kodas base64 med <code class="language-plaintext highlighter-rouge">contentType: text/html; charset=utf-8</code> (Strategi A), och kan dessutom mappas till en <code class="language-plaintext highlighter-rouge">Composition</code> med en sektion per DocBook-sektion (Strategi B). Se <a href="guidance-docbook-narrative.html">DocBook-mappning</a>. XOR med multimediaEntry</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.body.multimediaEntry.mediaType</code></td>
@@ -669,13 +673,13 @@ och indikerar att ytterligare data kan hämtas.</p>
       <td><code class="language-plaintext highlighter-rouge">hasMore[i].logicalAddress</code></td>
       <td>1..1</td>
       <td>Ej mappad</td>
-      <td>Logisk adress för ytterligare data; transportlagerspecifikt – se <a href="#öppna-frågor">DOC-001</a></td>
+      <td>Stöds inte av IG:n; paginering hanteras utanför IG:n – se <a href="#beslutade-issues">DOC-001</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">hasMore[i].reference</code></td>
       <td>1..1</td>
       <td>Ej mappad</td>
-      <td>Referens för partiell hämtning; används i nästa anrop via hasMoreReference – se <a href="#öppna-frågor">DOC-001</a></td>
+      <td>Stöds inte av IG:n; paginering hanteras utanför IG:n – se <a href="#beslutade-issues">DOC-001</a></td>
     </tr>
   </tbody>
 </table>
@@ -747,10 +751,48 @@ med delfälten <code class="language-plaintext highlighter-rouge">opinionId</cod
 <h3 id="hasmore-paginering">hasMore (paginering)</h3>
 
 <p><code class="language-plaintext highlighter-rouge">hasMore 0..*</code> är ett toppnivåelement parallellt med <code class="language-plaintext highlighter-rouge">careDocumentation</code> och <code class="language-plaintext highlighter-rouge">result</code> i
-responsstrukturen (inte under body). Det indikerar att svaret är paginerat och att ytterligare
-data kan hämtas. Det finns inget FHIR-ekvivalent för detta pagineringsmönster. Dokumenteras
-i IG: konsumenten måste anropa tjänsten upprepade gånger (med <code class="language-plaintext highlighter-rouge">hasMore[i].logicalAddress</code> och
-<code class="language-plaintext highlighter-rouge">reference</code>) tills alla sidor är hämtade. Se <a href="#öppna-frågor">DOC-001</a>.</p>
+responsstrukturen (inte under body) och indikerar att svaret är paginerat. Paginering via
+<code class="language-plaintext highlighter-rouge">hasMore</code> <strong>stöds inte</strong> av denna IG och mappas inte till FHIR. Den behöver hanteras utanför
+IG:n. Se <a href="#beslutade-issues">DOC-001</a>.</p>
+
+<h3 id="clinicaldocumentnotetext-och-docbook">clinicalDocumentNoteText och DocBook</h3>
+
+<p><code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> är av typen string. När DocBook används ska fältet innehålla XML.
+Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas. DocBook i
+textfältet känns igen på den entity-kodade XML:en, medan DocBook i en bilaga känns igen på
+<code class="language-plaintext highlighter-rouge">multimediaEntry.mediaType</code>.</p>
+
+<p>DocBook förs <strong>inte</strong> över som DocBook till FHIR:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Innehåll</th>
+      <th>Mappning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fritext</td>
+      <td><code class="language-plaintext highlighter-rouge">content[0].attachment</code> med <code class="language-plaintext highlighter-rouge">contentType: text/plain; charset=utf-8</code></td>
+    </tr>
+    <tr>
+      <td>DocBook – Strategi A (obligatorisk)</td>
+      <td>Transformeras till XHTML i <code class="language-plaintext highlighter-rouge">content[0].attachment</code> med <code class="language-plaintext highlighter-rouge">contentType: text/html; charset=utf-8</code></td>
+    </tr>
+    <tr>
+      <td>DocBook – Strategi B (valfri)</td>
+      <td>Dessutom en <code class="language-plaintext highlighter-rouge">Composition</code> enligt <a href="StructureDefinition-inera-ehds-composition-care-documentation.html">IneraEHDSCompositionCareDocumentation</a> med en <code class="language-plaintext highlighter-rouge">section</code> per DocBook-<code class="language-plaintext highlighter-rouge">&lt;section&gt;</code>, kopplad via <code class="language-plaintext highlighter-rouge">Provenance.target</code></td>
+    </tr>
+    <tr>
+      <td>Bilaga (<code class="language-plaintext highlighter-rouge">multimediaEntry</code>) med <code class="language-plaintext highlighter-rouge">mediaType</code> <code class="language-plaintext highlighter-rouge">application/docbook+xml</code></td>
+      <td>Transformeras på samma sätt som DocBook i textfältet</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Avkodning, identifiering av DocBook, elementmappning, exempel och begränsningar beskrivs på
+undersidan <a href="guidance-docbook-narrative.html">DocBook-mappning</a>. Se även <a href="#beslutade-issues">DOC-004</a>.</p>
 
 <hr />
 
@@ -813,8 +855,8 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
   </tbody>
 </table>
 
-<p><code class="language-plaintext highlighter-rouge">Provenance.target</code> refererar <code class="language-plaintext highlighter-rouge">DocumentReference</code> via <code class="language-plaintext highlighter-rouge">urn:uuid:{resurs.id}</code>.<br />
-<code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">careDocumentation.header.author.timestamp</code> (ISO 8601).</p>
+<p><code class="language-plaintext highlighter-rouge">Provenance.target</code> refererar <code class="language-plaintext highlighter-rouge">DocumentReference</code> via <code class="language-plaintext highlighter-rouge">urn:uuid:{resurs.id}</code>, och även <code class="language-plaintext highlighter-rouge">Composition</code> när en sådan skapas (DOC-004, Strategi B).<br />
+<code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">careDocumentation.header.author.timestamp</code> (ISO 8601). Om <code class="language-plaintext highlighter-rouge">author</code> saknas används <code class="language-plaintext highlighter-rouge">careDocumentation.header.record.timestamp</code> som fallback (DOC-002).</p>
 
 <hr />
 
@@ -858,10 +900,6 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
   </thead>
   <tbody>
     <tr>
-      <td>DOC-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">hasMore 0..*</code> saknar FHIR-ekvivalent.</strong> Pagineringsmönstret i GetCareDocumentation har ingen direkt representation i FHIR DocumentReference. Konsumentlösningar måste hantera paginering på RIVTA-nivå innan FHIR-transformation. Dokumenteras i IG.</td>
-    </tr>
-    <tr>
       <td>PDL-001</td>
       <td><strong><code class="language-plaintext highlighter-rouge">approvedForPatient</code> (boolean) saknar standardiserat FHIR-kodsystem.</strong> Fältet finns i <code class="language-plaintext highlighter-rouge">accessControlHeader</code> men <code class="language-plaintext highlighter-rouge">meta.security</code> i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut; se central issue i <a href="mapping-issues.html">mapping-issues</a>.</td>
     </tr>
@@ -872,27 +910,31 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
   </tbody>
 </table>
 
-<h2 id="föreslagna-nya-issues">Föreslagna nya issues</h2>
+<h2 id="beslutade-issues">Beslutade issues</h2>
 
 <table>
   <thead>
     <tr>
       <th>ID</th>
-      <th>Förslag</th>
+      <th>Beslut</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>DOC-001</td>
+      <td><strong>Paginering via <code class="language-plaintext highlighter-rouge">hasMore</code> stöds inte.</strong> <code class="language-plaintext highlighter-rouge">hasMore</code> mappas inte till FHIR och behöver hanteras utanför IG:n.</td>
+    </tr>
+    <tr>
       <td>DOC-002</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">careDocumentation.header.author</code> är valfri (0..1) men <code class="language-plaintext highlighter-rouge">author.timestamp</code> är obligatorisk inom blocket.</strong> Om <code class="language-plaintext highlighter-rouge">author</code> saknas helt finns ingen <code class="language-plaintext highlighter-rouge">Provenance.recorded</code>-källa. Beslut behövs: sätt <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> till <code class="language-plaintext highlighter-rouge">record.timestamp</code> som fallback, eller kräv att <code class="language-plaintext highlighter-rouge">author</code> alltid finns?</td>
+      <td><strong><code class="language-plaintext highlighter-rouge">Provenance.recorded</code> faller tillbaka på <code class="language-plaintext highlighter-rouge">header.record.timestamp</code>.</strong> <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">header.author.timestamp</code>; när <code class="language-plaintext highlighter-rouge">author</code> (och därmed <code class="language-plaintext highlighter-rouge">author.timestamp</code>) saknas används <code class="language-plaintext highlighter-rouge">header.record.timestamp</code>.</td>
     </tr>
     <tr>
       <td>DOC-003</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">signature.timestamp</code> är valfri (0..1) trots att det är signeringsinformation.</strong> Till skillnad från PatientSummaryHeader-konventionen (där <code class="language-plaintext highlighter-rouge">signatureTime 1..1</code> inom <code class="language-plaintext highlighter-rouge">legalAuthenticator</code>) är det JoL-specifika <code class="language-plaintext highlighter-rouge">signature.timestamp</code> valfritt. Ingen extension[assertedDate] används; istället används <code class="language-plaintext highlighter-rouge">DocumentReference.extension[signatureTime]</code>. Bekräfta om detta är korrekt lösning.</td>
+      <td><strong><code class="language-plaintext highlighter-rouge">signature.timestamp</code> → <code class="language-plaintext highlighter-rouge">DocumentReference.extension[ext-signature-time]</code></strong> när den finns. När den saknas sätts ingen ersättning.</td>
     </tr>
     <tr>
       <td>DOC-004</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> kodas som base64 i <code class="language-plaintext highlighter-rouge">attachment.data</code>.</strong> Om texten är DocBook-formaterad och <code class="language-plaintext highlighter-rouge">entity encoded</code> enligt TKB-specifikationen, behöver det klargöras om base64-inkodning av den entity-encodade texten är korrekt, eller om dekodning ska ske först.</td>
+      <td><strong><code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> är av typen string.</strong> När DocBook används ska fältet innehålla XML, och XML-tecknen måste då entity-kodas. DocBook förs inte över till FHIR. Innehållet transformeras till XHTML i <code class="language-plaintext highlighter-rouge">content.attachment</code> med <code class="language-plaintext highlighter-rouge">contentType: text/html; charset=utf-8</code> (Strategi A, obligatorisk). Det kan dessutom mappas till en <code class="language-plaintext highlighter-rouge">Composition</code> med en sektion per DocBook-sektion, kopplad via <code class="language-plaintext highlighter-rouge">Provenance.target</code> (Strategi B, valfri). Fritext mappas som <code class="language-plaintext highlighter-rouge">text/plain</code>. Se <a href="guidance-docbook-narrative.html">DocBook-mappning</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -916,7 +958,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 10:52+0000">2026-09-30</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis | *Version*:0.3.3 |
-| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSConditionDiagnosis |
+| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSConditionDiagnosis |
 
  
 Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
   "name" : "IneraEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -127,6 +127,39 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
         "code" : "Extension",
         "profile" : ["http://hl7.org/fhir/StructureDefinition/condition-assertedDate"]
       }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.extension:chronicDiagnosis",
+      "path" : "Condition.extension",
+      "sliceName" : "chronicDiagnosis",
+      "short" : "Kronisk diagnos (diagnosisBody.chronicDiagnosis) – se DIAG-001",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.extension:relatedCondition",
+      "path" : "Condition.extension",
+      "sliceName" : "relatedCondition",
+      "short" : "Relaterad diagnos (diagnosisBody.relatedDiagnosis.documentId) – logisk referens via identifier, se DIAG-002",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/condition-related"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.extension:relatedCondition.value[x].identifier",
+      "path" : "Condition.extension.value[x].identifier",
+      "short" : "Den relaterade diagnosens dokumentid (relatedDiagnosis.documentId) – motsvarar Condition.identifier på den relaterade diagnosen",
+      "min" : 1,
       "mustSupport" : true
     },
     {

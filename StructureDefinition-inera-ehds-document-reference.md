@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-document-reference | *Version*:0.3.3 |
-| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSDocumentReference |
+| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSDocumentReference |
 
  
 Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation (clinicalprocess:healthcond:description v3.0). Täcker NPÖ 3.0 och 1177 Journal 3.0. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-document-
   "name" : "IneraEHDSDocumentReference",
   "title" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -112,6 +112,31 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-document-
       "mustSupport" : true
     },
     {
+      "id" : "DocumentReference.extension",
+      "path" : "DocumentReference.extension",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "url"
+        }],
+        "ordered" : false,
+        "rules" : "open"
+      }
+    },
+    {
+      "id" : "DocumentReference.extension:ext-signature-time",
+      "path" : "DocumentReference.extension",
+      "sliceName" : "ext-signature-time",
+      "short" : "Signeringstidpunkt (careDocumentation.header.signature.timestamp) – utelämnas om signature.timestamp saknas (DOC-003)",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time"]
+      }],
+      "mustSupport" : true
+    },
+    {
       "id" : "DocumentReference.status",
       "path" : "DocumentReference.status",
       "short" : "Dokumentstatus – 'current' normalt; härledd",
@@ -178,13 +203,13 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-document-
     {
       "id" : "DocumentReference.content.attachment.contentType",
       "path" : "DocumentReference.content.attachment.contentType",
-      "short" : "Mimetyp (careDocumentation.body.multimediaEntry.mediaType)",
+      "short" : "Mimetyp (careDocumentation.body.multimediaEntry.mediaType); för clinicalDocumentNoteText text/plain; charset=utf-8 (fritext) eller text/html; charset=utf-8 (DocBook → XHTML, DOC-004)",
       "mustSupport" : true
     },
     {
       "id" : "DocumentReference.content.attachment.data",
       "path" : "DocumentReference.content.attachment.data",
-      "short" : "Anteckningstext/binärinnehåll (careDocumentation.body.clinicalDocumentNoteText / multimediaEntry.value)",
+      "short" : "Anteckningstext/binärinnehåll (careDocumentation.body.clinicalDocumentNoteText / multimediaEntry.value) – för clinicalDocumentNoteText: fritext base64-kodas som text/plain; DocBook-XML transformeras till XHTML och base64-kodas som text/html (DOC-004)",
       "mustSupport" : true
     },
     {

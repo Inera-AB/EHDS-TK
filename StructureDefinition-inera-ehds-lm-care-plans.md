@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-care-plans | *Version*:0.3.3 |
-| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSLMCarePlans |
+| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSLMCarePlans |
 
  
 Logisk modell för tjänstekontraktet GetCarePlans (RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCarePlans:2). Representerar responsens informationsstruktur (GetCarePlansResponseType). En lista med CarePlanType returneras, var och en med header- och body-element. 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-care-p
   "name" : "IneraEHDSLMCarePlans",
   "title" : "GetCarePlans",
   "status" : "draft",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

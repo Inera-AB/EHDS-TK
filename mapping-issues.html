@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"21"}
-    h3,h4,h5,h6{--heading-prefix:"21"}</style>
+    <style type="text/css">h2{--heading-prefix:"22"}
+    h3,h4,h5,h6{--heading-prefix:"22"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -123,6 +123,7 @@
                 <li><a href="mapping-getcareplans.html">GetCarePlans – Vårdplan</a></li>
                 <li><a href="mapping-getcarecontacts.html">GetCareContacts – Vårdkontakter</a></li>
                 <li><a href="mapping-getcaredocumentation.html">GetCareDocumentation – Anteckningar</a></li>
+                <li><a href="guidance-docbook-narrative.html">&#160;&#160;&#8627; DocBook-mappning</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Laboratorie och diagnostik</li>
                 <li><a href="mapping-getlaboratoryorderoutcome.html">GetLaboratoryOrderOutcome – Provsvar</a></li>
@@ -138,7 +139,7 @@
                 <li><a href="mapping-getobservations.html">GetObservations – Tillväxtkurva</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Logg</li>
-                <li><a href="mapping-getaccesslogforpatient.html">GetAccessLogForPatient – Åtkomstloggar</a></li>
+                <li><a href="mapping-getaccesslogforpatient.html">Åtkomstloggar och auditloggning</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -262,20 +263,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><strong>Kliniska detaljer i non-allergi body-typer saknar FHIR-standardelement.</strong> <code class="language-plaintext highlighter-rouge">seriousDisease.disease</code>, <code class="language-plaintext highlighter-rouge">treatment.treatmentDescription/Code/pharmaceuticalTreatment</code>, <code class="language-plaintext highlighter-rouge">communicableDisease.communicableDiseaseCode/routeOfTransmission</code>, <code class="language-plaintext highlighter-rouge">restrictionOfCare.restrictionOfCareComment</code> och <code class="language-plaintext highlighter-rouge">unstructuredAlertInformation.*</code> saknar standardelement i Flag.</td>
       <td>Öppen</td>
       <td>Custom extensions på Flag. Alternativ: <code class="language-plaintext highlighter-rouge">flag-detail</code>-extension med länk till Condition/Observation per body-typ. Kräver designbeslut om representationsdjup.</td>
-    </tr>
-    <tr>
-      <td>DIAG-001</td>
-      <td>GetDiagnosis</td>
-      <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis</code> – Boolean, inget direktmappat FHIR Condition-element.</td>
-      <td>Öppen</td>
-      <td>Alternativ: (a) extension <code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis]</code> med boolean, eller (b) <code class="language-plaintext highlighter-rouge">Condition.category</code> med kod för kronisk diagnos. Kräver designbeslut.</td>
-    </tr>
-    <tr>
-      <td>DIAG-002</td>
-      <td>GetDiagnosis</td>
-      <td><code class="language-plaintext highlighter-rouge">diagnosisBody.relatedDiagnosis.documentId</code> – Referens till relaterad diagnos via dokumentid. Inget standardelement i Condition.</td>
-      <td>Öppen</td>
-      <td>Alternativ: (a) <code class="language-plaintext highlighter-rouge">Condition.extension[relatedCondition]</code> med logisk referens, eller (b) <code class="language-plaintext highlighter-rouge">Condition.note</code> med dokumentid i fritext. Kräver designbeslut.</td>
     </tr>
     <tr>
       <td>FUNC-001</td>
@@ -579,34 +566,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Beslut om dessa ska inkluderas alls i bryggan.</td>
     </tr>
     <tr>
-      <td>DOC-001</td>
-      <td>GetCareDocumentation</td>
-      <td><code class="language-plaintext highlighter-rouge">hasMore</code>-paginering i GetCareDocumentation har ingen FHIR-motsvarighet. Konsumenten måste anropa tjänsten flera gånger.</td>
-      <td>Öppen</td>
-      <td>Dokumentera i IG att paginering hanteras på tjänstenivå, ej i FHIR-resurser.</td>
-    </tr>
-    <tr>
-      <td>DOC-002</td>
-      <td>GetCareDocumentation</td>
-      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.author</code> är valfri (0..1) men <code class="language-plaintext highlighter-rouge">author.timestamp</code> är obligatorisk inom blocket. Om <code class="language-plaintext highlighter-rouge">author</code> saknas finns ingen <code class="language-plaintext highlighter-rouge">Provenance.recorded</code>-källa.</td>
-      <td>Öppen</td>
-      <td>Sätt <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> till <code class="language-plaintext highlighter-rouge">record.timestamp</code> som fallback, eller kräv att <code class="language-plaintext highlighter-rouge">author</code> alltid finns?</td>
-    </tr>
-    <tr>
-      <td>DOC-003</td>
-      <td>GetCareDocumentation</td>
-      <td><code class="language-plaintext highlighter-rouge">signature.timestamp</code> är valfri (0..1) trots att det är signeringsinformation. Ingen extension[assertedDate] används.</td>
-      <td>Öppen</td>
-      <td>Bekräfta om <code class="language-plaintext highlighter-rouge">DocumentReference.extension[signatureTime]</code> är korrekt lösning.</td>
-    </tr>
-    <tr>
-      <td>DOC-004</td>
-      <td>GetCareDocumentation</td>
-      <td><code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> kodas som base64 i <code class="language-plaintext highlighter-rouge">attachment.data</code>. Klargör om base64-inkodning av entity-encodad DocBook-text är korrekt, eller om dekodning ska ske först.</td>
-      <td>Öppen</td>
-      <td>Behöver klargöras med källsystemsleverantörer.</td>
-    </tr>
-    <tr>
       <td>REQ-001</td>
       <td>GetRequestActivities</td>
       <td><code class="language-plaintext highlighter-rouge">requestId</code> kan avse antingen aktivitetens eget id eller referens till remissen. Ska <code class="language-plaintext highlighter-rouge">Task.identifier</code> och <code class="language-plaintext highlighter-rouge">Task.focus</code> båda populeras?</td>
@@ -633,6 +592,34 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><code class="language-plaintext highlighter-rouge">accessType</code>-kodvärden (Läsning/Sökning) behöver formellt kodverk. Utred om DICOM AuditEventID-koder eller ett lokalt Inera-kodverk ska användas.</td>
       <td>Medium</td>
       <td>Utred kodverksval och publicera CodeSystem som del av IG.</td>
+    </tr>
+    <tr>
+      <td>AUDIT-002</td>
+      <td>Auditloggning</td>
+      <td>Hur anropande system skickar användarens HSA-id, roll och syfte (purpose of use) till bryggan behöver fastställas.</td>
+      <td>Öppen</td>
+      <td>Token-claims, SAML-attribut eller headrar.</td>
+    </tr>
+    <tr>
+      <td>AUDIT-003</td>
+      <td>Auditloggning</td>
+      <td>Träfflistans granularitet i AuditEvent: en entity per utlämnad resurs eller en gräns.</td>
+      <td>Öppen</td>
+      <td>Se <a href="mapping-getaccesslogforpatient.html#trafflistan">Auditloggning</a>.</td>
+    </tr>
+    <tr>
+      <td>AUDIT-004</td>
+      <td>Auditloggning</td>
+      <td>Var bryggans AuditEvent lagras (Audit Record Repository) och hur de görs tillgängliga.</td>
+      <td>Öppen</td>
+      <td>Nationell, regional eller lokal loggtjänst.</td>
+    </tr>
+    <tr>
+      <td>AUDIT-005</td>
+      <td>Auditloggning</td>
+      <td>Koppling mellan bryggans loggpost och källsystemens PDL-loggning.</td>
+      <td>Öppen</td>
+      <td>T.ex. via RIVTA <code class="language-plaintext highlighter-rouge">logId</code> eller korrelations-id.</td>
     </tr>
     <tr>
       <td>PDL-001</td>
@@ -743,6 +730,48 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Bevarar alla anatomiska platser utan informationsförlust. Extension utgår vid R5-migration.</td>
     </tr>
     <tr>
+      <td>DIAG-001</td>
+      <td>GetDiagnosis</td>
+      <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis</code> → lokal extension <code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis]</code> (<a href="StructureDefinition-condition-chronic-diagnosis.html">ConditionChronicDiagnosis</a>) med <code class="language-plaintext highlighter-rouge">valueBoolean</code>. Extensionen utelämnas om fältet saknas i källan.</td>
+      <td>Bevarar källans boolean oförändrad, inklusive explicit <code class="language-plaintext highlighter-rouge">false</code>. Alternativet <code class="language-plaintext highlighter-rouge">Condition.category</code> valdes bort eftersom kodsystem för "kronisk" saknas och <code class="language-plaintext highlighter-rouge">false</code> inte kan uttryckas meningsfullt som kategori.</td>
+    </tr>
+    <tr>
+      <td>DIAG-002</td>
+      <td>GetDiagnosis</td>
+      <td><code class="language-plaintext highlighter-rouge">diagnosisBody.relatedDiagnosis.documentId</code> → standardextension <code class="language-plaintext highlighter-rouge">Condition.extension[relatedCondition]</code> (<code class="language-plaintext highlighter-rouge">http://hl7.org/fhir/StructureDefinition/condition-related</code>) med logisk referens <code class="language-plaintext highlighter-rouge">valueReference.identifier.value = documentId</code>. En extension per <code class="language-plaintext highlighter-rouge">relatedDiagnosis</code>; <code class="language-plaintext highlighter-rouge">identifier.system</code> sätts lika som <code class="language-plaintext highlighter-rouge">Condition.identifier.system</code> på den relaterade diagnosen.</td>
+      <td>HL7-standardextension för samband mellan diagnoser (t.ex. bidiagnos → huvuddiagnos). Logisk referens kräver inte att den relaterade Condition-resursen finns i samma svar. Alternativet <code class="language-plaintext highlighter-rouge">Condition.note</code> valdes bort då det inte är maskinläsbart.</td>
+    </tr>
+    <tr>
+      <td>DOC-001</td>
+      <td>GetCareDocumentation</td>
+      <td>Paginering via <code class="language-plaintext highlighter-rouge">hasMore</code> stöds inte av IG:n och mappas inte till FHIR. Den behöver hanteras utanför IG:n.</td>
+      <td>FHIR DocumentReference saknar motsvarighet till RIVTA-pagineringen.</td>
+    </tr>
+    <tr>
+      <td>DOC-002</td>
+      <td>GetCareDocumentation</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">header.author.timestamp</code>; när <code class="language-plaintext highlighter-rouge">author.timestamp</code> saknas (dvs. <code class="language-plaintext highlighter-rouge">author</code> saknas) faller <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> tillbaka på <code class="language-plaintext highlighter-rouge">header.record.timestamp</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.recorded</code> är 1..1 och <code class="language-plaintext highlighter-rouge">record.timestamp</code> är alltid närvarande (1..1).</td>
+    </tr>
+    <tr>
+      <td>DOC-003</td>
+      <td>GetCareDocumentation</td>
+      <td><code class="language-plaintext highlighter-rouge">signature.timestamp</code> mappas till <code class="language-plaintext highlighter-rouge">DocumentReference.extension[ext-signature-time]</code> (<a href="StructureDefinition-ext-signature-time.html">ext-signature-time</a>) när den finns. När den saknas sätts ingen ersättning.</td>
+      <td>Bevarar signeringstidpunkten utan att hitta på värden när den saknas i källan.</td>
+    </tr>
+    <tr>
+      <td>DOC-004</td>
+      <td>GetCareDocumentation</td>
+      <td><code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> är av typen string. När DocBook används ska fältet innehålla XML, och XML-tecknen måste då entity-kodas (t.ex. <code class="language-plaintext highlighter-rouge">&amp;lt;article&amp;gt;</code>). DocBook förs <strong>inte</strong> över som DocBook till FHIR. DocBook-innehåll transformeras till XHTML i <code class="language-plaintext highlighter-rouge">DocumentReference.content.attachment</code> med <code class="language-plaintext highlighter-rouge">contentType: text/html; charset=utf-8</code> (Strategi A, obligatorisk). Det kan dessutom mappas till en <code class="language-plaintext highlighter-rouge">Composition</code> enligt <a href="StructureDefinition-inera-ehds-composition-care-documentation.html">IneraEHDSCompositionCareDocumentation</a> med en <code class="language-plaintext highlighter-rouge">section</code> per DocBook-<code class="language-plaintext highlighter-rouge">&lt;section&gt;</code>, kopplad via <code class="language-plaintext highlighter-rouge">Provenance.target</code> (Strategi B, valfri, men profilen gäller om den skapas). DocBook i <code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> känns igen på entity-kodad XML; DocBook i en bilaga känns igen på <code class="language-plaintext highlighter-rouge">multimediaEntry.mediaType</code> (<code class="language-plaintext highlighter-rouge">application/docbook+xml</code>). Fritext mappas som <code class="language-plaintext highlighter-rouge">text/plain; charset=utf-8</code>. Se <a href="guidance-docbook-narrative.html">DocBook-mappning</a>.</td>
+      <td>DocBook är ett källsystemsformat som FHIR-konsumenter inte kan förväntas rendera. XHTML kan visas direkt och bevarar källans ordning, och Composition ger sektionerna struktur.</td>
+    </tr>
+    <tr>
+      <td>AUDIT-001</td>
+      <td>Auditloggning</td>
+      <td>Egna AuditEvent-profiler som ärver från IHE BALP (paket <code class="language-plaintext highlighter-rouge">ihe.iti.balp</code>): <a href="StructureDefinition-inera-ehds-audit-event-patient-query.html">IneraEHDSAuditEventPatientQuery</a> (sökning och träfflista) och <a href="StructureDefinition-inera-ehds-audit-event-patient-read.html">IneraEHDSAuditEventPatientRead</a> (innehållshämtning). Den tidigare profilen för GetAccessLogForPatient heter nu <a href="StructureDefinition-inera-ehds-audit-event-read-access-log.html">IneraEHDSAuditEventReadAccessLog</a> och används bara för att läsa loggar.</td>
+      <td>Loggposterna som API:et skapar måste följa IHE:s mönster (mXDE/ATNA) och kunna lämnas ut till patienten. Att skilja på att läsa loggar och att skapa loggar gör profilernas syfte tydligt.</td>
+    </tr>
+    <tr>
       <td>FUNC-001</td>
       <td>GetFunctionalStatus</td>
       <td>PADL-poster kodas som <code class="language-plaintext highlighter-rouge">Condition.note</code> med format <code class="language-plaintext highlighter-rouge">[typeOfAssessment]: assessment</code>.</td>
@@ -766,7 +795,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><strong><code class="language-plaintext highlighter-rouge">Observation.value[x]</code> stödjer variabelprecisions-datum dåligt</strong> — FHIR R4 <code class="language-plaintext highlighter-rouge">dateTime</code> kräver specifik precisionsnivå, men RIVTA-tidsstämplar kan ha varierande precision (se OBS-001). <strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">valueString</code> för <code class="language-plaintext highlighter-rouge">YYYY</code>/<code class="language-plaintext highlighter-rouge">YYYYMM</code>, <code class="language-plaintext highlighter-rouge">valueDateTime</code> för <code class="language-plaintext highlighter-rouge">YYYYMMDD</code>/<code class="language-plaintext highlighter-rouge">YYYYMMDDHHMMSS</code>.</li>
   <li><strong>Inga standardiserade FHIR-element för samtycke/Sparr-information</strong> — <code class="language-plaintext highlighter-rouge">approvedForPatient</code>-flaggan i RIVTA-headrar har ingen direkt FHIR-motsvarighet. <strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">meta.security</code> med kod <code class="language-plaintext highlighter-rouge">NOPATIENT</code> (v3-ActCode) om <code class="language-plaintext highlighter-rouge">false</code> (se PDL-001).</li>
   <li><strong><code class="language-plaintext highlighter-rouge">Flag</code> saknar <code class="language-plaintext highlighter-rouge">note</code>-element i R4</strong> — <code class="language-plaintext highlighter-rouge">alertInformationComment</code> kan inte mappas till standardelement på Flag (se ALERT-005). Kräver custom extension.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">AuditEvent.patient</code> är R4B-tillägg</strong> — för GetAccessLogForPatient behövs workaround för ren R4-kompatibilitet (se LOG-001).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">AuditEvent.patient</code> är R4B-tillägg</strong> — i R4 anges patienten med BALP:s entity-mönster (<code class="language-plaintext highlighter-rouge">entity.role = 1</code>), se <a href="mapping-getaccesslogforpatient.html">Auditloggning</a> och LOG-001.</li>
 </ol>
 
 
@@ -788,7 +817,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 10:52+0000">2026-09-30</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

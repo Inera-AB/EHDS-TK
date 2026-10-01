@@ -28,6 +28,8 @@ IneraEHDSDocumentReference (1 per careDocumentation)
   └── author → PractitionerRole (header.author)
   └── authenticator → PractitionerRole (header.signature)
   └── content[0].attachment (XOR: clinicalDocumentNoteText eller multimediaEntry)
+IneraEHDSCompositionCareDocumentation (valfri, 0..1 per careDocumentation – endast när innehållet är DocBook, se DOC-004)
+  └── section[] (en per DocBook-<section>)
 
 ```
 
@@ -55,7 +57,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | :--- | :--- | :--- | :--- |
 | `careDocumentation.header.sourceSystemId` | 1..1 | `DocumentReference.meta.source` | Format:`urn:oid:1.2.752.129.2.1.4.1#{hsaId}`(root = HSA-id för källsystemet) |
 | `careDocumentation.header.record.recordId` | 1..1 | `DocumentReference.masterIdentifier` | Källsystemets primärnyckel; unik och beständig identifierare |
-| `careDocumentation.header.record.timestamp` | 1..1 | `DocumentReference.date` | Tidpunkt då journalposten skapades; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor) |
+| `careDocumentation.header.record.timestamp` | 1..1 | `DocumentReference.date`; även`Provenance.recorded`om`author.timestamp`saknas | Tidpunkt då journalposten skapades; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor). Fallback för`Provenance.recorded`, se[DOC-002](#beslutade-issues) |
 
 ### author (dokumentationsansvarig)
 
@@ -63,7 +65,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | :--- | :--- | :--- | :--- |
 | `careDocumentation.header.author.authorId` | 0..1 | `DocumentReference.author[0]`(Reference(PractitionerRole)) | Författarens HSA-id; logisk referens |
 | `careDocumentation.header.author.name` | 0..1 | `PractitionerRole.practitioner.display` | Författarens visningsnamn |
-| `careDocumentation.header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Tidpunkt då journalinformationen skapades av författaren; YYYYMMDDHHMMSS → ISO 8601 |
+| `careDocumentation.header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Tidpunkt då journalinformationen skapades av författaren; YYYYMMDDHHMMSS → ISO 8601. Saknas`author`används`record.timestamp`, se[DOC-002](#beslutade-issues) |
 | `careDocumentation.header.author.byRole` | 0..1 | `PractitionerRole.code` | Yrkesroll för författaren |
 | `careDocumentation.header.author.orgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | HSA-id för organisationsenhet som författaren är uppdragstagare i |
 | `careDocumentation.header.author.orgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet som författaren är uppdragstagare i |
@@ -74,7 +76,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | :--- | :--- | :--- | :--- |
 | `careDocumentation.header.signature.signatureId` | 0..1 | `DocumentReference.authenticator`(Reference(PractitionerRole)) | Signerarens HSA-id; logisk referens |
 | `careDocumentation.header.signature.name` | 0..1 | `PractitionerRole.practitioner.display` | Signerarens visningsnamn |
-| `careDocumentation.header.signature.timestamp` | 0..1 | `DocumentReference.extension[signatureTime]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
+| `careDocumentation.header.signature.timestamp` | 0..1 | `DocumentReference.extension[ext-signature-time].valueDateTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. Extensionen ([ext-signature-time](StructureDefinition-ext-signature-time.md)) sätts endast när värdet finns – ingen ersättning annars, se[DOC-003](#beslutade-issues) |
 | `careDocumentation.header.signature.byRole` | 0..1 | `PractitionerRole.code` | Yrkesroll för signeraren |
 
 -------
@@ -108,7 +110,7 @@ Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `careDocumentation.body.clinicalDocumentNoteText` | 0..1 | `DocumentReference.content[0].attachment.data` | Fritext journalanteckning; kodas som base64 med`contentType: text/plain; charset=utf-8`. XOR med multimediaEntry |
+| `careDocumentation.body.clinicalDocumentNoteText` | 0..1 | `DocumentReference.content[0].attachment.data` | Journalanteckning (string). Fritext: base64 med`contentType: text/plain; charset=utf-8`. DocBook-XML: transformeras till XHTML och kodas base64 med`contentType: text/html; charset=utf-8`(Strategi A), och kan dessutom mappas till en`Composition`med en sektion per DocBook-sektion (Strategi B). Se[DocBook-mappning](guidance-docbook-narrative.md). XOR med multimediaEntry |
 | `careDocumentation.body.multimediaEntry.mediaType` | 1..1 (om multimediaEntry) | `DocumentReference.content[0].attachment.contentType` | MIME-typ (t.ex.`application/pdf`,`image/jpeg`) |
 | `careDocumentation.body.multimediaEntry.value` | 0..1 (XOR) | `DocumentReference.content[0].attachment.data` | Binärdata (base64-kodat). Ömsesidigt uteslutande med reference (se FSH Invariant`getcaredocumentation-multimedia-xor`) |
 | `careDocumentation.body.multimediaEntry.reference` | 0..1 (XOR) | `DocumentReference.content[0].attachment.url` | URL till externt dokument. Ömsesidigt uteslutande med value |
@@ -133,8 +135,8 @@ Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `hasMore[i].logicalAddress` | 1..1 | Ej mappad | Logisk adress för ytterligare data; transportlagerspecifikt – se[DOC-001](#öppna-frågor) |
-| `hasMore[i].reference` | 1..1 | Ej mappad | Referens för partiell hämtning; används i nästa anrop via hasMoreReference – se[DOC-001](#öppna-frågor) |
+| `hasMore[i].logicalAddress` | 1..1 | Ej mappad | Stöds inte av IG:n; paginering hanteras utanför IG:n – se[DOC-001](#beslutade-issues) |
+| `hasMore[i].reference` | 1..1 | Ej mappad | Stöds inte av IG:n; paginering hanteras utanför IG:n – se[DOC-001](#beslutade-issues) |
 
 -------
 
@@ -176,7 +178,22 @@ Det finns inget standardiserat FHIR R4-element för avvikande meningar i `Docume
 
 ### hasMore (paginering)
 
-`hasMore 0..*` är ett toppnivåelement parallellt med `careDocumentation` och `result` i responsstrukturen (inte under body). Det indikerar att svaret är paginerat och att ytterligare data kan hämtas. Det finns inget FHIR-ekvivalent för detta pagineringsmönster. Dokumenteras i IG: konsumenten måste anropa tjänsten upprepade gånger (med `hasMore[i].logicalAddress` och `reference`) tills alla sidor är hämtade. Se [DOC-001](#öppna-frågor).
+`hasMore 0..*` är ett toppnivåelement parallellt med `careDocumentation` och `result` i responsstrukturen (inte under body) och indikerar att svaret är paginerat. Paginering via `hasMore` **stöds inte** av denna IG och mappas inte till FHIR. Den behöver hanteras utanför IG:n. Se [DOC-001](#beslutade-issues).
+
+### clinicalDocumentNoteText och DocBook
+
+`clinicalDocumentNoteText` är av typen string. När DocBook används ska fältet innehålla XML. Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas. DocBook i textfältet känns igen på den entity-kodade XML:en, medan DocBook i en bilaga känns igen på `multimediaEntry.mediaType`.
+
+DocBook förs **inte** över som DocBook till FHIR:
+
+| | |
+| :--- | :--- |
+| Fritext | `content[0].attachment`med`contentType: text/plain; charset=utf-8` |
+| DocBook – Strategi A (obligatorisk) | Transformeras till XHTML i`content[0].attachment`med`contentType: text/html; charset=utf-8` |
+| DocBook – Strategi B (valfri) | Dessutom en`Composition`enligt[IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.md)med en`section`per DocBook-`<section>`, kopplad via`Provenance.target` |
+| Bilaga (`multimediaEntry`) med`mediaType``application/docbook+xml` | Transformeras på samma sätt som DocBook i textfältet |
+
+Avkodning, identifiering av DocBook, elementmappning, exempel och begränsningar beskrivs på undersidan [DocBook-mappning](guidance-docbook-narrative.md). Se även [DOC-004](#beslutade-issues).
 
 -------
 
@@ -199,8 +216,8 @@ GetCareDocumentation använder JoL-header v2.2. PDL-fälten för Sparr hämtas *
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `careDocumentation.header.accessControlHeader.accountableHealthcareProvider` |
 | `agent[author]` | Informationsägande vårdenhet | `careDocumentation.header.accessControlHeader.accountableCareUnit` |
 
-`Provenance.target` refererar `DocumentReference` via `urn:uuid:{resurs.id}`.
- `Provenance.recorded` = `careDocumentation.header.author.timestamp` (ISO 8601).
+`Provenance.target` refererar `DocumentReference` via `urn:uuid:{resurs.id}`, och även `Composition` när en sådan skapas (DOC-004, Strategi B).
+ `Provenance.recorded` = `careDocumentation.header.author.timestamp` (ISO 8601). Om `author` saknas används `careDocumentation.header.record.timestamp` som fallback (DOC-002).
 
 -------
 
@@ -220,15 +237,15 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 | | |
 | :--- | :--- |
-| DOC-001 | **`hasMore 0..*` saknar FHIR-ekvivalent.**Pagineringsmönstret i GetCareDocumentation har ingen direkt representation i FHIR DocumentReference. Konsumentlösningar måste hantera paginering på RIVTA-nivå innan FHIR-transformation. Dokumenteras i IG. |
 | PDL-001 | **`approvedForPatient` (boolean) saknar standardiserat FHIR-kodsystem.**Fältet finns i`accessControlHeader`men`meta.security`i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut; se central issue i[mapping-issues](mapping-issues.md). |
 | GENERAL-001 | **Tidsstämpelformat.**RIVTA använder`YYYYMMDDhhmmss`utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta`Europe/Stockholm`(CET/CEST). Gäller alla tidsfält. |
 
-## Föreslagna nya issues
+## Beslutade issues
 
 | | |
 | :--- | :--- |
-| DOC-002 | **`careDocumentation.header.author` är valfri (0..1) men `author.timestamp` är obligatorisk inom blocket.**Om`author`saknas helt finns ingen`Provenance.recorded`-källa. Beslut behövs: sätt`Provenance.recorded`till`record.timestamp`som fallback, eller kräv att`author`alltid finns? |
-| DOC-003 | **`signature.timestamp` är valfri (0..1) trots att det är signeringsinformation.**Till skillnad från PatientSummaryHeader-konventionen (där`signatureTime 1..1`inom`legalAuthenticator`) är det JoL-specifika`signature.timestamp`valfritt. Ingen extension[assertedDate] används; istället används`DocumentReference.extension[signatureTime]`. Bekräfta om detta är korrekt lösning. |
-| DOC-004 | **`clinicalDocumentNoteText` kodas som base64 i `attachment.data`.**Om texten är DocBook-formaterad och`entity encoded`enligt TKB-specifikationen, behöver det klargöras om base64-inkodning av den entity-encodade texten är korrekt, eller om dekodning ska ske först. |
+| DOC-001 | **Paginering via `hasMore` stöds inte.**`hasMore`mappas inte till FHIR och behöver hanteras utanför IG:n. |
+| DOC-002 | **`Provenance.recorded` faller tillbaka på `header.record.timestamp`.**`Provenance.recorded`=`header.author.timestamp`; när`author`(och därmed`author.timestamp`) saknas används`header.record.timestamp`. |
+| DOC-003 | **`signature.timestamp` → `DocumentReference.extension[ext-signature-time]`**när den finns. När den saknas sätts ingen ersättning. |
+| DOC-004 | **`clinicalDocumentNoteText` är av typen string.**När DocBook används ska fältet innehålla XML, och XML-tecknen måste då entity-kodas. DocBook förs inte över till FHIR. Innehållet transformeras till XHTML i`content.attachment`med`contentType: text/html; charset=utf-8`(Strategi A, obligatorisk). Det kan dessutom mappas till en`Composition`med en sektion per DocBook-sektion, kopplad via`Provenance.target`(Strategi B, valfri). Fritext mappas som`text/plain`. Se[DocBook-mappning](guidance-docbook-narrative.md). |
 

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-allergy-intolerance | *Version*:0.3.3 |
-| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSAllergyIntolerance |
+| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSAllergyIntolerance |
 
  
 Sekundär profil för allergier och överkänslighet från GetAlertInformation. 
@@ -51,7 +51,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-allergy-i
   "name" : "IneraEHDSAllergyIntolerance",
   "title" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
   "status" : "draft",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

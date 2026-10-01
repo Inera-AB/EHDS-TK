@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-device | *Version*:0.3.3 |
-| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSDevice |
+| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSDevice |
 
  
 Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0. 
@@ -43,7 +43,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-device.cs
   "name" : "IneraEHDSDevice",
   "title" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
   "status" : "draft",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

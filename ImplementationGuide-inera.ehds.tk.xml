@@ -11,7 +11,7 @@
   <name value="IneraEHDSTK"/>
   <title value="Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-09-30T10:52:57+00:00"/>
+  <date value="2026-10-01T18:35:17+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -56,6 +56,11 @@
     <uri value="http://hl7.eu/fhir/eps/ImplementationGuide/hl7.fhir.eu.eps"/>
     <packageId value="hl7.fhir.eu.eps"/>
     <version value="current"/>
+  </dependsOn>
+  <dependsOn id="ihe_iti_balp">
+    <uri value="https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp"/>
+    <packageId value="ihe.iti.balp"/>
+    <version value="1.1.4"/>
   </dependsOn>
   <definition>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -902,6 +907,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/condition-chronic-diagnosis"/>
+      </reference>
+      <name value="Kronisk diagnos"/>
+      <description value="Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="CodeSystem"/>
       </extension>
       <reference>
@@ -1092,10 +1108,32 @@
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/inera-ehds-audit-event"/>
+        <reference value="StructureDefinition/inera-ehds-audit-event-patient-read"/>
       </reference>
-      <name value="SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)"/>
-      <description value="Profil för åtkomstloggar mappat från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ."/>
+      <name value="SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"/>
+      <description value="Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) lämnar ut en&#xA;enskild resurs eller ett dokuments innehåll för en patient, t.ex. läsning av en resurs eller&#xA;(framtida) MHD ITI-68 Retrieve Document. Loggposterna behövs för att patienten ska kunna få&#xA;veta vem som har tagit del av patientens uppgifter.&#xA;&#xA;Ärver från IHE BALP PatientRead och lägger till:&#xA;- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska&#xA;- en agent per källsystem/vårdgivare som innehållet kommer från (agent[custodian])&#xA;- bryggan som loggkälla (source.observer)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/inera-ehds-audit-event-read-access-log"/>
+      </reference>
+      <name value="SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)"/>
+      <description value="Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till&#xA;patienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient&#xA;(informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.&#xA;&#xA;Profilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas&#xA;när API:et nyttjas beskrivs av IneraEHDSAuditEventPatientQuery och IneraEHDSAuditEventPatientRead."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/inera-ehds-audit-event-patient-query"/>
+      </reference>
+      <name value="SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)"/>
+      <description value="Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en&#xA;sökning på en patients uppgifter och lämnar ut träfflistan, t.ex. MHD ITI-67 Find Document&#xA;References eller QEDm PCC-44. Loggposterna behövs för att patienten ska kunna få veta vem som&#xA;har tagit del av patientens uppgifter.&#xA;&#xA;Ärver från IHE BALP PatientQuery och lägger till:&#xA;- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska&#xA;- en agent per källsystem/vårdgivare som bidrog till svaret (agent[custodian])&#xA;- bryggan som loggkälla (source.observer)&#xA;- träfflistan: varje utlämnad resurs registreras som en entity med entity.type = resurstypen&#xA;  (http://hl7.org/fhir/resource-types) och entity.role = object-role#4 &quot;Domain Resource&quot;"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1107,6 +1145,17 @@
       </reference>
       <name value="SE EHDS CarePlan – Vårdplan (GetCarePlans)"/>
       <description value="Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/inera-ehds-composition-care-documentation"/>
+      </reference>
+      <name value="SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)"/>
+      <description value="Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när&#xA;innehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType&#xA;application/docbook+xml). Varje DocBook-&lt;section&gt; blir en Composition.section med XHTML-narrativ&#xA;(Strategi B, se DOC-004 och sidan DocBook-mappning).&#xA;&#xA;Kompletterar IneraEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).&#xA;Composition kopplas till DocumentReference genom att samma Provenance har båda i&#xA;Provenance.target."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1378,6 +1427,17 @@
         <valueString value="StructureDefinition:extension"/>
       </extension>
       <reference>
+        <reference value="StructureDefinition/ext-signature-time"/>
+      </reference>
+      <name value="Signeringstidpunkt för journalanteckning"/>
+      <description value="Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
         <reference value="StructureDefinition/alert-asserted-date"/>
       </reference>
       <name value="Signeringstidpunkt för uppmärksamhetssignal"/>
@@ -1629,6 +1689,14 @@
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="guidance-docbook-narrative.html"/>
+        </extension>
+        <nameUrl value="guidance-docbook-narrative.html"/>
+        <title value="DocBook-mappning – clinicalDocumentNoteText och bilagor"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
           <valueUrl value="mapping-getlaboratoryorderoutcome.html"/>
         </extension>
         <nameUrl value="mapping-getlaboratoryorderoutcome.html"/>
@@ -1672,7 +1740,7 @@
           <valueUrl value="mapping-getaccesslogforpatient.html"/>
         </extension>
         <nameUrl value="mapping-getaccesslogforpatient.html"/>
-        <title value="GetAccessLogForPatient – Åtkomstloggar"/>
+        <title value="Åtkomstloggar – patientåtkomst och auditloggning"/>
         <generation value="markdown"/>
       </page>
       <page>

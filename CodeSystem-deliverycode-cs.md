@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/deliverycode | *Version*:0.3.3 |
-| Active as of 2026-09-30 | *Computable Name*:DeliveryCodeCS |
+| Active as of 2026-10-01 | *Computable Name*:DeliveryCodeCS |
 
  
 Kodverk för förlossningssätt (DeliveryCodeEnum). Används i GetMaternityMedicalHistory. 
@@ -31,7 +31,7 @@ Kodverk för förlossningssätt (DeliveryCodeEnum). Används i GetMaternityMedic
   "name" : "DeliveryCodeCS",
   "title" : "DeliveryCode",
   "status" : "active",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

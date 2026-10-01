@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script src="assets/js/mermaid.js" type="text/javascript"></script>
     <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
-    <style type="text/css">h2{--heading-prefix:"27.28"}
-    h3,h4,h5,h6{--heading-prefix:"27.28"}</style>
+    <style type="text/css">h2{--heading-prefix:"28.31"}
+    h3,h4,h5,h6{--heading-prefix:"28.31"}</style>
     <div id="segment-header" class="segment">    <!-- segment-header -->
       <div class="container">    <!-- container -->
 
@@ -123,6 +123,7 @@
                 <li><a href="mapping-getcareplans.html">GetCarePlans – Vårdplan</a></li>
                 <li><a href="mapping-getcarecontacts.html">GetCareContacts – Vårdkontakter</a></li>
                 <li><a href="mapping-getcaredocumentation.html">GetCareDocumentation – Anteckningar</a></li>
+                <li><a href="guidance-docbook-narrative.html">&nbsp;&nbsp;↳ DocBook-mappning</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Laboratorie och diagnostik</li>
                 <li><a href="mapping-getlaboratoryorderoutcome.html">GetLaboratoryOrderOutcome – Provsvar</a></li>
@@ -138,7 +139,7 @@
                 <li><a href="mapping-getobservations.html">GetObservations – Tillväxtkurva</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Logg</li>
-                <li><a href="mapping-getaccesslogforpatient.html">GetAccessLogForPatient – Åtkomstloggar</a></li>
+                <li><a href="mapping-getaccesslogforpatient.html">Åtkomstloggar och auditloggning</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -281,7 +282,7 @@
         
           Draft
           
-            as of 2026-09-30
+            as of 2026-10-01
           
         
       </td>
@@ -599,7 +600,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <tr><td style="font-size: 11px"><b>SHOULD</b>:<a href="http://hl7.org/fhir/extensions/5.3.0/CodeSystem-obligation.html#obligation-display" title="Obligation Codes: display">display</a></td>
 <td style="font-size: 11px; opacity: 0.5;"><a href="http://hl7.org/fhir/uv/ips/2.0.1/ActorDefinition-Consumer.html">Consumer (IPS)</a></td>
 <td style="font-size: 11px">from <a href="http://hl7.org/fhir/uv/ips/2.0.1/StructureDefinition-ImagingStudy-uv-ips.html">ImagingStudy (IPS)</a></td></tr></table></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 22e030e8-b691-4fb1-83fe-ad4c93334163
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // c1ec2d99-4028-413d-80e7-cafead83c019
 document.getElementById('cbinera-ehds-imaging-studyK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-imaging-studyK'), 'constraint', document.getElementById('cbinera-ehds-imaging-studyK-constraint').checked, document.getElementById('ppinera-ehds-imaging-studyK'));
 document.getElementById('cbinera-ehds-imaging-studyK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -651,7 +652,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyK'), 'obligation', d
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l2249">​</a>
+    <td title="Type of acquired data in the instance."><a name="l2253">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -692,7 +693,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyK'), 'obligation', d
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l2339">​</a>
+    <td title="Type of acquired data in the instance."><a name="l2343">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -822,7 +823,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyK'), 'obligation', d
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">1</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#id">id</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Instans-UID (imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP)</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 22e030e8-b691-4fb1-83fe-ad4c93334163
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // c1ec2d99-4028-413d-80e7-cafead83c019
 document.getElementById('cbinera-ehds-imaging-studyD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-imaging-studyD'), 'constraint', document.getElementById('cbinera-ehds-imaging-studyD-constraint').checked, document.getElementById('ppinera-ehds-imaging-studyD'));
 document.getElementById('cbinera-ehds-imaging-studyD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1328,7 +1329,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Description of instance</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 22e030e8-b691-4fb1-83fe-ad4c93334163
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // c1ec2d99-4028-413d-80e7-cafead83c019
 document.getElementById('cbinera-ehds-imaging-studyS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-imaging-studyS'), 'constraint', document.getElementById('cbinera-ehds-imaging-studyS-constraint').checked, document.getElementById('ppinera-ehds-imaging-studyS'));
 document.getElementById('cbinera-ehds-imaging-studyS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1425,7 +1426,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyS'), 'obligation', d
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l6118">​</a>
+    <td title="Type of acquired data in the instance."><a name="l6122">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -1481,7 +1482,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyS'), 'obligation', d
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l6240">​</a>
+    <td title="Type of acquired data in the instance."><a name="l6244">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -1959,7 +1960,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <tr><td style="font-size: 11px"><b>SHOULD</b>:<a href="http://hl7.org/fhir/extensions/5.3.0/CodeSystem-obligation.html#obligation-display" title="Obligation Codes: display">display</a></td>
 <td style="font-size: 11px; opacity: 0.5;"><a href="http://hl7.org/fhir/uv/ips/2.0.1/ActorDefinition-Consumer.html">Consumer (IPS)</a></td>
 <td style="font-size: 11px">from <a href="http://hl7.org/fhir/uv/ips/2.0.1/StructureDefinition-ImagingStudy-uv-ips.html">ImagingStudy (IPS)</a></td></tr></table></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 22e030e8-b691-4fb1-83fe-ad4c93334163
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // c1ec2d99-4028-413d-80e7-cafead83c019
 document.getElementById('cbinera-ehds-imaging-studyKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-imaging-studyKA'), 'constraint', document.getElementById('cbinera-ehds-imaging-studyKA-constraint').checked, document.getElementById('ppinera-ehds-imaging-studyKA'));
 document.getElementById('cbinera-ehds-imaging-studyKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2011,7 +2012,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyKA'), 'obligation', 
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l8150">​</a>
+    <td title="Type of acquired data in the instance."><a name="l8154">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -2052,7 +2053,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyKA'), 'obligation', 
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l8240">​</a>
+    <td title="Type of acquired data in the instance."><a name="l8244">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -2182,7 +2183,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studyKA'), 'obligation', 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">1</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a style="opacity: 0.5; opacity: 0.5" href="http://hl7.org/fhir/R4/datatypes.html#id">id</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Instans-UID (imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP)</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 22e030e8-b691-4fb1-83fe-ad4c93334163
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // c1ec2d99-4028-413d-80e7-cafead83c019
 document.getElementById('cbinera-ehds-imaging-studyDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-imaging-studyDA'), 'constraint', document.getElementById('cbinera-ehds-imaging-studyDA-constraint').checked, document.getElementById('ppinera-ehds-imaging-studyDA'));
 document.getElementById('cbinera-ehds-imaging-studyDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2687,7 +2688,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Description of instance</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 22e030e8-b691-4fb1-83fe-ad4c93334163
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // c1ec2d99-4028-413d-80e7-cafead83c019
 document.getElementById('cbinera-ehds-imaging-studySA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('inera-ehds-imaging-studySA'), 'constraint', document.getElementById('cbinera-ehds-imaging-studySA-constraint').checked, document.getElementById('ppinera-ehds-imaging-studySA'));
 document.getElementById('cbinera-ehds-imaging-studySA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2784,7 +2785,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studySA'), 'obligation', 
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l12016">​</a>
+    <td title="Type of acquired data in the instance."><a name="l12020">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -2840,7 +2841,7 @@ filterDesc(document.getElementById('inera-ehds-imaging-studySA'), 'obligation', 
     <td>
       <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
-    <td title="Type of acquired data in the instance."><a name="l12138">​</a>
+    <td title="Type of acquired data in the instance."><a name="l12142">​</a>
       <a style="opacity: 1.0" href="??">AcquisitionModality (saknad länk)</a>
       <button data-clipboard-text="http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html" title="Klicka för att kopiera URL" class="btn-copy"></button>
     </td>
@@ -3097,7 +3098,7 @@ Sammanfattning
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 10:52+0000">2026-09-30</span>
+          IG &copy; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

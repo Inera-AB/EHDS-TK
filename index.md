@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.3 |
-| Draft as of 2026-09-30 | *Computable Name*:IneraEHDSTK |
+| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSTK |
 
 # Introduktion
 
@@ -112,7 +112,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "name" : "IneraEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -163,6 +163,12 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     "uri" : "http://hl7.eu/fhir/eps/ImplementationGuide/hl7.fhir.eu.eps",
     "packageId" : "hl7.fhir.eu.eps",
     "version" : "current"
+  },
+  {
+    "id" : "ihe_iti_balp",
+    "uri" : "https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp",
+    "packageId" : "ihe.iti.balp",
+    "version" : "1.1.4"
   }],
   "definition" : {
     "extension" : [{
@@ -1358,6 +1364,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-condition-chronic-diagnosis.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/condition-chronic-diagnosis"
+      },
+      "name" : "Kronisk diagnos",
+      "description" : "Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "CodeSystem"
       },
       {
@@ -1634,13 +1656,45 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-audit-event.html"
+        "valueUri" : "StructureDefinition-inera-ehds-audit-event-patient-read.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-audit-event"
+        "reference" : "StructureDefinition/inera-ehds-audit-event-patient-read"
       },
-      "name" : "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)",
-      "description" : "Profil för åtkomstloggar mappat från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.",
+      "name" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
+      "description" : "Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) lämnar ut en\nenskild resurs eller ett dokuments innehåll för en patient, t.ex. läsning av en resurs eller\n(framtida) MHD ITI-68 Retrieve Document. Loggposterna behövs för att patienten ska kunna få\nveta vem som har tagit del av patientens uppgifter.\n\nÄrver från IHE BALP PatientRead och lägger till:\n- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska\n- en agent per källsystem/vårdgivare som innehållet kommer från (agent[custodian])\n- bryggan som loggkälla (source.observer)",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-audit-event-read-access-log.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/inera-ehds-audit-event-read-access-log"
+      },
+      "name" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
+      "description" : "Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till\npatienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient\n(informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.\n\nProfilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas\nnär API:et nyttjas beskrivs av IneraEHDSAuditEventPatientQuery och IneraEHDSAuditEventPatientRead.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-audit-event-patient-query.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/inera-ehds-audit-event-patient-query"
+      },
+      "name" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
+      "description" : "Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en\nsökning på en patients uppgifter och lämnar ut träfflistan, t.ex. MHD ITI-67 Find Document\nReferences eller QEDm PCC-44. Loggposterna behövs för att patienten ska kunna få veta vem som\nhar tagit del av patientens uppgifter.\n\nÄrver från IHE BALP PatientQuery och lägger till:\n- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska\n- en agent per källsystem/vårdgivare som bidrog till svaret (agent[custodian])\n- bryggan som loggkälla (source.observer)\n- träfflistan: varje utlämnad resurs registreras som en entity med entity.type = resurstypen\n  (http://hl7.org/fhir/resource-types) och entity.role = object-role#4 \"Domain Resource\"",
       "exampleBoolean" : false
     },
     {
@@ -1657,6 +1711,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
       "description" : "Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-inera-ehds-composition-care-documentation.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/inera-ehds-composition-care-documentation"
+      },
+      "name" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
+      "description" : "Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när\ninnehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType\napplication/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ\n(Strategi B, se DOC-004 och sidan DocBook-mappning).\n\nKompletterar IneraEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).\nComposition kopplas till DocumentReference genom att samma Provenance har båda i\nProvenance.target.",
       "exampleBoolean" : false
     },
     {
@@ -2050,6 +2120,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-ext-signature-time.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ext-signature-time"
+      },
+      "name" : "Signeringstidpunkt för journalanteckning",
+      "description" : "Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:extension"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-alert-asserted-date.html"
       }],
       "reference" : {
@@ -2379,6 +2465,15 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "guidance-docbook-narrative.html"
+        }],
+        "nameUrl" : "guidance-docbook-narrative.html",
+        "title" : "DocBook-mappning – clinicalDocumentNoteText och bilagor",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
           "valueUrl" : "mapping-getlaboratoryorderoutcome.html"
         }],
         "nameUrl" : "mapping-getlaboratoryorderoutcome.html",
@@ -2427,7 +2522,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
           "valueUrl" : "mapping-getaccesslogforpatient.html"
         }],
         "nameUrl" : "mapping-getaccesslogforpatient.html",
-        "title" : "GetAccessLogForPatient – Åtkomstloggar",
+        "title" : "Åtkomstloggar – patientåtkomst och auditloggning",
         "generation" : "markdown"
       },
       {

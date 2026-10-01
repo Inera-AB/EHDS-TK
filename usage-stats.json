@@ -147,6 +147,13 @@
       ]
     },
     {
+      "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis",
+      "title": "Kronisk diagnos",
+      "types": [
+        "boolean"
+      ]
+    },
+    {
       "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact",
       "title": "Källsystemskontakt",
       "types": [
@@ -202,6 +209,13 @@
         "UsageContext",
         "Dosage",
         "Meta"
+      ]
+    },
+    {
+      "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time",
+      "title": "Signeringstidpunkt för journalanteckning",
+      "types": [
+        "dateTime"
       ]
     },
     {
@@ -352,14 +366,28 @@
     ],
     "AuditEvent": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event",
-        "title": "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)"
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-query",
+        "title": "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)"
+      },
+      {
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-read",
+        "title": "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"
+      },
+      {
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-read-access-log",
+        "title": "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)"
       }
     ],
     "CarePlan": [
       {
         "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-care-plan",
         "title": "SE EHDS CarePlan – Vårdplan (GetCarePlans)"
+      }
+    ],
+    "Composition": [
+      {
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-composition-care-documentation",
+        "title": "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)"
       }
     ],
     "Condition": [
@@ -484,6 +512,9 @@
     "http://hl7.org/fhir/StructureDefinition/condition-assertedDate": [
       "Condition"
     ],
+    "http://hl7.org/fhir/StructureDefinition/condition-related": [
+      "Condition"
+    ],
     "http://hl7.org/fhir/StructureDefinition/data-absent-reason": [
       "Observation.effective[x]"
     ],
@@ -605,8 +636,14 @@
     "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient": [
       "CarePlan"
     ],
+    "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis": [
+      "Condition"
+    ],
     "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact": [
       "Device"
+    ],
+    "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time": [
+      "DocumentReference"
     ],
     "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-is-dose-complete": [
       "Immunization"

@@ -216,11 +216,25 @@
   "name" : "ApprovedForPatient"
 },
 {
+  "id" : "condition-chronic-diagnosis",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis",
+  "version" : "0.3.3",
+  "name" : "ConditionChronicDiagnosis"
+},
+{
   "id" : "device-source-system-contact",
   "type" : "StructureDefinition",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact",
   "version" : "0.3.3",
   "name" : "DeviceSourceSystemContact"
+},
+{
+  "id" : "ext-signature-time",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time",
+  "version" : "0.3.3",
+  "name" : "DocumentReferenceSignatureTime"
 },
 {
   "id" : "immunization-is-dose-complete",
@@ -258,11 +272,25 @@
   "name" : "IneraEHDSAllergyIntolerance"
 },
 {
-  "id" : "inera-ehds-audit-event",
+  "id" : "inera-ehds-audit-event-patient-query",
   "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-query",
   "version" : "0.3.3",
-  "name" : "IneraEHDSAuditEvent"
+  "name" : "IneraEHDSAuditEventPatientQuery"
+},
+{
+  "id" : "inera-ehds-audit-event-patient-read",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-read",
+  "version" : "0.3.3",
+  "name" : "IneraEHDSAuditEventPatientRead"
+},
+{
+  "id" : "inera-ehds-audit-event-read-access-log",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-read-access-log",
+  "version" : "0.3.3",
+  "name" : "IneraEHDSAuditEventReadAccessLog"
 },
 {
   "id" : "inera-ehds-care-plan",
@@ -270,6 +298,13 @@
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-care-plan",
   "version" : "0.3.3",
   "name" : "IneraEHDSCarePlan"
+},
+{
+  "id" : "inera-ehds-composition-care-documentation",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-composition-care-documentation",
+  "version" : "0.3.3",
+  "name" : "IneraEHDSCompositionCareDocumentation"
 },
 {
   "id" : "inera-ehds-condition-diagnosis",

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-legal-authenticator | *Version*:0.3.3 |
-| Draft as of 2026-09-30 | *Computable Name*:ImmunizationLegalAuthenticator |
+| Draft as of 2026-10-01 | *Computable Name*:ImmunizationLegalAuthenticator |
 
 Signeringstidpunkt och HSA-id för juridisk äkthetsintygsgivare (vaccinationMedicalRecordHeader.legalAuthenticator).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-immunization-legal-a
   "name" : "ImmunizationLegalAuthenticator",
   "title" : "Juridisk äkthetsintygsgivare för vaccination",
   "status" : "draft",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

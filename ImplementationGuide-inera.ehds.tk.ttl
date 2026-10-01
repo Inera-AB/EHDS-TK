@@ -17,7 +17,7 @@
   fhir:ImplementationGuide.name [ fhir:value "IneraEHDSTK"] ;
   fhir:ImplementationGuide.title [ fhir:value "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"] ;
   fhir:ImplementationGuide.status [ fhir:value "draft"] ;
-  fhir:ImplementationGuide.date [ fhir:value "2026-09-30T10:52:57+00:00"^^xsd:dateTime] ;
+  fhir:ImplementationGuide.date [ fhir:value "2026-10-01T18:35:17+00:00"^^xsd:dateTime] ;
   fhir:ImplementationGuide.publisher [ fhir:value "Inera AB"] ;
   fhir:ImplementationGuide.contact [
      fhir:index 0 ;
@@ -90,6 +90,15 @@
      ] ;
      fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "hl7.fhir.eu.eps" ] ;
      fhir:ImplementationGuide.dependsOn.version [ fhir:value "current" ]
+  ], [
+     fhir:index 4 ;
+     fhir:Element.id [ fhir:value "ihe_iti_balp" ] ;
+     fhir:ImplementationGuide.dependsOn.uri [
+       fhir:value "https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp" ;
+       fhir:link <https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp>
+     ] ;
+     fhir:ImplementationGuide.dependsOn.packageId [ fhir:value "ihe.iti.balp" ] ;
+     fhir:ImplementationGuide.dependsOn.version [ fhir:value "1.1.4" ]
   ] ;
   fhir:ImplementationGuide.definition [
      fhir:Element.extension [
@@ -1268,6 +1277,20 @@
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis> ;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/condition-chronic-diagnosis" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Kronisk diagnos" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 38 ;
+       fhir:Element.extension [
+         fhir:index 0 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
          fhir:Extension.valueString [ fhir:value "CodeSystem" ]
        ] ;
        fhir:ImplementationGuide.definition.resource.reference [
@@ -1278,7 +1301,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för typ av journalanteckning enligt KV Anteckningstyp. OID: 1.2.752.129.2.2.2.11." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 38 ;
+       fhir:index 39 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1292,7 +1315,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation enligt KV Anteckningstyp (OID: 1.2.752.129.2.2.2.11)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 39 ;
+       fhir:index 40 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1306,7 +1329,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Referens till den Device-resurs som beskriver källsystemet varifrån\nvaccinationsregistreringen härstammar\n(registrationRecord.sourceSystemName/productName/productVersion/sourceSystemContact)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 40 ;
+       fhir:index 41 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1320,7 +1343,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 41 ;
+       fhir:index 42 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1334,7 +1357,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Läkemedel som används vid uppmärksammad behandling, ATC-kod rekommenderas (alertInformationBody.treatment.pharmaceuticalTreatment). Lista med 0..* – ryms ej i Flag.code (1..1)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 42 ;
+       fhir:index 43 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1348,7 +1371,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kompletterande substansdetaljer för läkemedelsöverkänslighet\n(alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity).\nPrimär substans: atcSubstance → Flag.code.coding; nonATCSubstance → Flag.code.text.\nDenna extension bär kvarvarande detaljer: nonATCSubstanceComment och pharmaceuticalProductId." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 43 ;
+       fhir:index 44 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1362,7 +1385,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Diskriminatorkoder för de tre sektionerna i mödravårdsjournalen (GetMaternityMedicalHistory v2.0). Varje Observation-resurs som skapas ur ett maternityMedicalRecord sätter Observation.code till en av dessa koder." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 44 ;
+       fhir:index 45 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1376,7 +1399,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för aktör som har angett att ett läkemedel inte är utbytbart i GetMedicationHistory (DispensationAuthorizationType)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 45 ;
+       fhir:index 46 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1390,7 +1413,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Patientens postnummer vid vaccinationstillfället (registrationRecord.patientPostalCode)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 46 ;
+       fhir:index 47 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1404,7 +1427,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination är aktiv eller inaktiv." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 47 ;
+       fhir:index 48 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1418,7 +1441,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för prescriptionStatus i GetMedicationHistory." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 48 ;
+       fhir:index 49 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1432,7 +1455,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetReferralOutcome." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 49 ;
+       fhir:index 50 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1446,7 +1469,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för referralOutcomeTypeCode i GetReferralOutcome." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 50 ;
+       fhir:index 51 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1460,7 +1483,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Information om samband med andra uppmärksamhetssignaler (alertInformationBody.relatedAlertInformation)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 51 ;
+       fhir:index 52 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1474,7 +1497,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för resultatkod i svar från tjänstekontrakten i domänen clinicalprocess:activityprescription:actoutcome." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 52 ;
+       fhir:index 53 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1488,7 +1511,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för resultCode i svar." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 53 ;
+       fhir:index 54 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1502,21 +1525,49 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Sekundär profil för allergier och överkänslighet från GetAlertInformation.\n\nSkapas ENBART när alertInformationBody = hypersensitivity.\nDen tillhörande IneraEHDSFlag-resursen är alltid primär och pekar på denna\nresurs via Flag.extension[flag-detail] (standard R4-extension; R5: supportingInfo).\n\nPopuleras med klinisk information från hypersensitivity-blocket:\n- atcSubstance/hypersensitivityAgentCode → AllergyIntolerance.code\n- degreeOfSeverity → AllergyIntolerance.reaction.severity\n- degreeOfCertainty → AllergyIntolerance.verificationStatus (se ALERT-004)\n- ascertainedDate → AllergyIntolerance.onsetDateTime\n- alertInformationComment → AllergyIntolerance.note\n- pharmaceuticalProductId → AllergyIntolerance.reaction.substance.coding (NPL-id)\n\nTäcker NPÖ 2.0 och 1177 Journal 2.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 54 ;
+       fhir:index 55 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
          fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
        ] ;
        fhir:ImplementationGuide.definition.resource.reference [
-         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event> ;
-         fhir:Reference.reference [ fhir:value "StructureDefinition/inera-ehds-audit-event" ]
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-read> ;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/inera-ehds-audit-event-patient-read" ]
        ] ;
-       fhir:ImplementationGuide.definition.resource.name [ fhir:value "SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)" ] ;
-       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för åtkomstloggar mappat från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ." ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) lämnar ut en\nenskild resurs eller ett dokuments innehåll för en patient, t.ex. läsning av en resurs eller\n(framtida) MHD ITI-68 Retrieve Document. Loggposterna behövs för att patienten ska kunna få\nveta vem som har tagit del av patientens uppgifter.\n\nÄrver från IHE BALP PatientRead och lägger till:\n- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska\n- en agent per källsystem/vårdgivare som innehållet kommer från (agent[custodian])\n- bryggan som loggkälla (source.observer)" ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 55 ;
+       fhir:index 56 ;
+       fhir:Element.extension [
+         fhir:index 0 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-read-access-log> ;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/inera-ehds-audit-event-read-access-log" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till\npatienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient\n(informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.\n\nProfilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas\nnär API:et nyttjas beskrivs av IneraEHDSAuditEventPatientQuery och IneraEHDSAuditEventPatientRead." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 57 ;
+       fhir:Element.extension [
+         fhir:index 0 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-query> ;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/inera-ehds-audit-event-patient-query" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en\nsökning på en patients uppgifter och lämnar ut träfflistan, t.ex. MHD ITI-67 Find Document\nReferences eller QEDm PCC-44. Loggposterna behövs för att patienten ska kunna få veta vem som\nhar tagit del av patientens uppgifter.\n\nÄrver från IHE BALP PatientQuery och lägger till:\n- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska\n- en agent per källsystem/vårdgivare som bidrog till svaret (agent[custodian])\n- bryggan som loggkälla (source.observer)\n- träfflistan: varje utlämnad resurs registreras som en entity med entity.type = resurstypen\n  (http://hl7.org/fhir/resource-types) och entity.role = object-role#4 \"Domain Resource\"" ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 58 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1530,7 +1581,21 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 56 ;
+       fhir:index 59 ;
+       fhir:Element.extension [
+         fhir:index 0 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:resource" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-composition-care-documentation> ;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/inera-ehds-composition-care-documentation" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när\ninnehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType\napplication/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ\n(Strategi B, se DOC-004 och sidan DocBook-mappning).\n\nKompletterar IneraEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).\nComposition kopplas till DocumentReference genom att samma Provenance har båda i\nProvenance.target." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 60 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1544,7 +1609,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 57 ;
+       fhir:index 61 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1558,7 +1623,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för funktionstillstånd och ADL-bedömningar mappat från RIVTA-tjänstekontraktet\nGetFunctionalStatus (clinicalprocess:healthcond:description v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nTKBn har två bedömningskategorier: 'pad-pad' (PADL-bedömning) och 'fun-fun'\n(funktionsnedsättningsbedömning med ICF-kod). Condition.code mappas mot\nassessmentCategory (för PADL) eller disability.disabilityAssessment (ICF-kod).\nInget statusfält, tidperiod eller svårighetsgradfält finns i TKBn – dessa är härleddda." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 58 ;
+       fhir:index 62 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1572,7 +1637,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från IneraEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)" ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 59 ;
+       fhir:index 63 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1586,7 +1651,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med IneraEHDSImagingStudy för att representera både undersökning och svar." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 60 ;
+       fhir:index 64 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1600,7 +1665,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med IneraEHDSServiceRequestReferral." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 61 ;
+       fhir:index 65 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1614,7 +1679,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för laboratorieresultat mappat från RIVTA-tjänstekontraktet GetLaboratoryOrderOutcome (clinicalprocess:healthcond:actoutcome v4.2). Täcker NPÖ v4.2 och 1177 Journal v4.2." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 62 ;
+       fhir:index 66 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1628,7 +1693,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation\n(clinicalprocess:healthcond:description v3.0). Täcker NPÖ 3.0 och 1177 Journal 3.0.\n\nAnvänder JoL-header v2.2 (ej PatientSummaryHeader): accessControlHeader för PDL,\nrecord för journaluppgift-metadata, author för dokumentationsansvarig,\nsignature för signeringsinformation." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 63 ;
+       fhir:index 67 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1642,7 +1707,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för vårdkontakter mappat från RIVTA-tjänstekontraktet GetCareContacts (clinicalprocess:logistics:logistics v3.0). Täcker NPÖ 2.0, 3.0 och 1177 Journal 2.0, 3.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 64 ;
+       fhir:index 68 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1656,7 +1721,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Primär profil för ALL uppmärksamhetsinformation från GetAlertInformation\n(clinicalprocess:healthcond:description v2.0).\n\nVarje alertInformation-post ger alltid en Flag-resurs.\nOm typeOfAlertInformation anger allergi/överkänslighet (body = hypersensitivity)\nskapas dessutom en IneraEHDSAllergyIntolerance-resurs som pekas ut via\nextension[flag-detail] (standard R4-extension; kallas supportingInfo i R5).\n\nBody-strukturen är XOR: exakt en av hypersensitivity, seriousDisease, treatment,\ncommunicableDisease, restrictionOfCare, unstructuredAlertInformation anges per post.\n\nFlag.category[alertType]           = typeOfAlertInformation (obligatorisk).\nFlag.category[hypersensitivityType] = typeOfHypersensitivity (när body = hypersensitivity).\nFlag.code                           = den kliniska koden specifik för body-typen.\n\nTäcker NPÖ 2.0 och 1177 Journal 2.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 65 ;
+       fhir:index 69 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1670,7 +1735,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för bilddiagnostiska undersökningar mappat från RIVTA-tjänstekontraktet GetImagingOutcome (clinicalprocess:healthcond:actoutcome v1.0). Täcker NPÖ 1.0 och 1177 Journal 1.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 66 ;
+       fhir:index 70 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1684,7 +1749,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för vaccinationer mappat från RIVTA-tjänstekontraktet GetVaccinationHistory (clinicalprocess:activityprescription:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 67 ;
+       fhir:index 71 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1698,7 +1763,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för läkemedelsordinationer, förskrivningar och administrerade läkemedel mappat från RIVTA-tjänstekontraktet GetMedicationHistory (clinicalprocess:activityprescription:actoutcome v2.2). Täcker NPÖ 2.2 och 1177 Journal 2.2." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 68 ;
+       fhir:index 72 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1712,7 +1777,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Basprofil för alla observationer från GetObservations\n(clinicalprocess:healthcond:basic v2.0).\n\nProfilen fångar den generella TK-mappningen och används som förälder av\ndomänspecifika profiler (t.ex. IneraEHDSObservationGrowth för tillväxtkurva).\n\nNyckeldesignbeslut:\n- observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int).\n  Varje gren mappas till respektive FHIR value[x]-variant.\n- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.\n- observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.\n- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).\n  Välj FHIR-element per deltagartyp (se mappningssida).\n- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 69 ;
+       fhir:index 73 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1726,7 +1791,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrderOutcome. Används i kombination med IneraEHDSDiagnosticReportLab." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 70 ;
+       fhir:index 74 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1740,7 +1805,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet\nGetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nOBS: TKBn har tre separata sektioner (registrationRecord, pregnancyCheckupRecord,\npostDeliveryRecord) med egna sektionsspecifika fält. En Observation skapas per sektion\nmed Observation.code som diskriminator (se MAT-001 i mapping-issues). Fältnamnen\ni ^short nedan refererar till sektionsspecifika element – implementatören väljer rätt\nsektionselement baserat på Observation.code." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 71 ;
+       fhir:index 75 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1754,7 +1819,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad\ngraviditetslängd) för barn och ungdom, baserad på:\n- GetObservations (clinicalprocess:healthcond:basic v2.0)\n- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)\n\nÄrver IneraEHDSObservationBase och lägger till:\n- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)\n- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)\n- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)\n- LOINC-kod-slice på code.coding för EHDS/EPS-interoperabilitet\n- category = vital-signs\n\nKodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 72 ;
+       fhir:index 76 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1768,7 +1833,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för organisationsenheter i EHDS-TK-mappningar (vårdenheter, juridiska vårdgivare m.fl.).\n\nIdentifier-slicen ger stöd för HSA-id och SMI-id (Folkhälsomyndighetens\nid för vaccinationsenheter i det nationella vaccinationsregistret).\nNamn, kontaktuppgifter och adress mappar fält som annars inte har plats\ni resurserna de refereras ifrån." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 73 ;
+       fhir:index 77 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1782,7 +1847,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Patientprofil för EHDS-TK IG. Ärver från IPS Patient och lägger till svenska identifierarslicar." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 74 ;
+       fhir:index 78 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1796,7 +1861,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance\nmed två agenter som speglar spärr-hierarkin enligt PDL:\n- custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren\n- author (inre Sparr) — den informationsägande vårdenheten\n\nOBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering\nbaserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver\nProvenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte\ninkluderas i svaret — filtreringen sker då redan på servernivå." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 75 ;
+       fhir:index 79 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1810,7 +1875,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för konsultationsremisser mappat från RIVTA-tjänstekontraktet GetReferralOutcome\n(clinicalprocess:healthcond:actoutcome v3.2). Täcker NPÖ 3.2 och 1177 Journal 3.2.\n\nNotera: GetReferralOutcome returnerar remissvaret, inte remissen i sig. Remissens\nmetadata finns under referralOutcomeBody.referral och är begränsad till id, orsak,\ntid och avsändare. Inget mottagarfält, prioritet, typ eller diagnos finns i TKBn\nför remissens del." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 76 ;
+       fhir:index 80 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1824,7 +1889,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 77 ;
+       fhir:index 81 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1838,7 +1903,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna statusvärden för GetObservations observationStatus.\nUrvals-id 56431000052106, SNOMED CT SE (OID 1.2.752.116.2.1.1).\nMappning till FHIR ObservationStatus via ConceptMap observation-status-map." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 78 ;
+       fhir:index 82 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1852,7 +1917,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för kön (SexCodeEnum). Används i GetMaternityMedicalHistory för barnets kön. OBS: Överväg att använda HL7 AdministrativeGender istället." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 79 ;
+       fhir:index 83 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1866,7 +1931,21 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för kön i GetMaternityMedicalHistory." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 80 ;
+       fhir:index 84 ;
+       fhir:Element.extension [
+         fhir:index 0 ;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
+         fhir:Extension.valueString [ fhir:value "StructureDefinition:extension" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.reference [
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time> ;
+         fhir:Reference.reference [ fhir:value "StructureDefinition/ext-signature-time" ]
+       ] ;
+       fhir:ImplementationGuide.definition.resource.name [ fhir:value "Signeringstidpunkt för journalanteckning" ] ;
+       fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003." ] ;
+       fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
+     ], [
+       fhir:index 85 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1880,7 +1959,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tidpunkt för signering av uppmärksamhetsinformation (alertInformationHeader.legalAuthenticator.signatureTime)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 81 ;
+       fhir:index 86 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1894,7 +1973,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kod för hur sjukdomen smittar (alertInformationBody.communicableDisease.routeOfTransmission). KV Smittväg." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 82 ;
+       fhir:index 87 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1908,7 +1987,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tidpunkt då uppmärksamhetssignalen verifierades i det lokala systemet (alertInformationBody.verifiedTime)." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 83 ;
+       fhir:index 88 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1922,7 +2001,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "SNOMED CT-koder för tillväxtmätningar enligt Interaktionsöverenskommelse\nTillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15).\n\nAlla koder från kodsystemet SNOMED CT SE (OID 1.2.752.116.2.1.1).\n\nKoder:\n- 1153637007 | Kroppslängd | (primärkod för längd)\n- 50373000   | Mått på kroppslängd | (alternativkod för längd)\n- 248334005  | Längd i liggande | (bakåtkompatibel – ej för nyanslutning)\n- 27113001   | Kroppsvikt |\n- 363812007  | Huvudomfång |\n- 412726003  | Graviditetslängd vid födelse |" ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 84 ;
+       fhir:index 89 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1936,7 +2015,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Typ av vård- och omsorgsplan enligt clinicalprocess:logistics:logistics v3.0. Definierad i clinicalprocess_logistics_logistics_enum_3.0.xsd." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 85 ;
+       fhir:index 90 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1950,7 +2029,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för typeOfCarePlan i GetCarePlans enligt clinicalprocess:logistics:logistics." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 86 ;
+       fhir:index 91 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1964,7 +2043,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för typ av ledighet (TypeOfLeaveCodeEnum). Används i GetMaternityMedicalHistory." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 87 ;
+       fhir:index 92 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1978,7 +2057,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för typ av ledighet i GetMaternityMedicalHistory." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 88 ;
+       fhir:index 93 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -1992,7 +2071,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för ordinationstyp i GetMedicationHistory. Anger om en ordination är en insättnings- eller utsättningsordination." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 89 ;
+       fhir:index 94 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -2006,7 +2085,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för typeOfPrescription i GetMedicationHistory." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 90 ;
+       fhir:index 95 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -2020,7 +2099,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Kodverk för typ av resultat (TypeOfResultCodeEnum). Används i GetImagingOutcome och GetReferralOutcome." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 91 ;
+       fhir:index 96 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -2034,7 +2113,7 @@
        fhir:ImplementationGuide.definition.resource.description [ fhir:value "Tillåtna värden för typeOfResult i GetImagingOutcome." ] ;
        fhir:ImplementationGuide.definition.resource.exampleBoolean [ fhir:value "false"^^xsd:boolean ]
      ], [
-       fhir:index 92 ;
+       fhir:index 97 ;
        fhir:Element.extension [
          fhir:index 0 ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/resource-information" ] ;
@@ -2192,13 +2271,23 @@
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
+           fhir:Extension.valueUrl [ fhir:value "guidance-docbook-narrative.html" ]
+         ] ;
+         fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "guidance-docbook-narrative.html" ] ;
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "DocBook-mappning – clinicalDocumentNoteText och bilagor" ] ;
+         fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
+       ], [
+         fhir:index 14 ;
+         fhir:Element.extension [
+           fhir:index 0 ;
+           fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
            fhir:Extension.valueUrl [ fhir:value "mapping-getlaboratoryorderoutcome.html" ]
          ] ;
          fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "mapping-getlaboratoryorderoutcome.html" ] ;
          fhir:ImplementationGuide.definition.page.title [ fhir:value "GetLaboratoryOrderOutcome – Provsvar" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 14 ;
+         fhir:index 15 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2208,7 +2297,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "GetImagingOutcome – Bilddiagnostik" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 15 ;
+         fhir:index 16 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2218,7 +2307,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "GetReferralOutcome – Remisser" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 16 ;
+         fhir:index 17 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2228,7 +2317,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "GetRequestActivities – Remisstatus" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 17 ;
+         fhir:index 18 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2238,17 +2327,17 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "GetObservations – Tillväxtkurva" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 18 ;
+         fhir:index 19 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
            fhir:Extension.valueUrl [ fhir:value "mapping-getaccesslogforpatient.html" ]
          ] ;
          fhir:ImplementationGuide.definition.page.nameUrl [ fhir:value "mapping-getaccesslogforpatient.html" ] ;
-         fhir:ImplementationGuide.definition.page.title [ fhir:value "GetAccessLogForPatient – Åtkomstloggar" ] ;
+         fhir:ImplementationGuide.definition.page.title [ fhir:value "Åtkomstloggar – patientåtkomst och auditloggning" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 19 ;
+         fhir:index 20 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2258,7 +2347,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "Sökparametrar" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 20 ;
+         fhir:index 21 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2268,7 +2357,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "Mappningsissues och Designbeslut" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 21 ;
+         fhir:index 22 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2278,7 +2367,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "Profiles" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 22 ;
+         fhir:index 23 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2288,7 +2377,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "Terminology" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 23 ;
+         fhir:index 24 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2298,7 +2387,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "Examples" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 24 ;
+         fhir:index 25 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;
@@ -2308,7 +2397,7 @@
          fhir:ImplementationGuide.definition.page.title [ fhir:value "Downloads" ] ;
          fhir:ImplementationGuide.definition.page.generation [ fhir:value "markdown" ]
        ], [
-         fhir:index 25 ;
+         fhir:index 26 ;
          fhir:Element.extension [
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name" ] ;

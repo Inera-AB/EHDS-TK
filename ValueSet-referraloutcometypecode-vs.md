@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/referraloutcometypecode-vs | *Version*:0.3.3 |
-| Active as of 2026-09-30 | *Computable Name*:ReferralOutcomeTypeCodeVS |
+| Active as of 2026-10-01 | *Computable Name*:ReferralOutcomeTypeCodeVS |
 
  
 Tillåtna värden för referralOutcomeTypeCode i GetReferralOutcome. 
@@ -50,7 +50,7 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "name" : "ReferralOutcomeTypeCodeVS",
   "title" : "ReferralOutcomeTypeCode — ValueSet",
   "status" : "active",
-  "date" : "2026-09-30T10:52:57+00:00",
+  "date" : "2026-10-01T18:35:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

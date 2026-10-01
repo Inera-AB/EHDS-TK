@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script src="assets/js/mermaid.js" type="text/javascript"></script>
     <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
-    <style type="text/css">h2{--heading-prefix:"27.29"}
-    h3,h4,h5,h6{--heading-prefix:"27.29"}</style>
+    <style type="text/css">h2{--heading-prefix:"28.32"}
+    h3,h4,h5,h6{--heading-prefix:"28.32"}</style>
     <div id="segment-header" class="segment">    <!-- segment-header -->
       <div class="container">    <!-- container -->
 
@@ -123,6 +123,7 @@
                 <li><a href="mapping-getcareplans.html">GetCarePlans – Vårdplan</a></li>
                 <li><a href="mapping-getcarecontacts.html">GetCareContacts – Vårdkontakter</a></li>
                 <li><a href="mapping-getcaredocumentation.html">GetCareDocumentation – Anteckningar</a></li>
+                <li><a href="guidance-docbook-narrative.html">&nbsp;&nbsp;↳ DocBook-mappning</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Laboratorie och diagnostik</li>
                 <li><a href="mapping-getlaboratoryorderoutcome.html">GetLaboratoryOrderOutcome – Provsvar</a></li>
@@ -138,7 +139,7 @@
                 <li><a href="mapping-getobservations.html">GetObservations – Tillväxtkurva</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Logg</li>
-                <li><a href="mapping-getaccesslogforpatient.html">GetAccessLogForPatient – Åtkomstloggar</a></li>
+                <li><a href="mapping-getaccesslogforpatient.html">Åtkomstloggar och auditloggning</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -258,7 +259,7 @@
         
           Draft
           
-            as of 2026-09-30
+            as of 2026-10-01
           
         
       </td>
@@ -496,7 +497,7 @@ The IPS assumes that either the type of the vaccine for particular disease or di
 <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="key_Immunization.protocolApplied.targetDisease">  </a><span style="color: grey">92</span><b>. Immunization.protocolApplied.targetDisease</b><a href="#key_Immunization.protocolApplied.targetDisease" title="link to here" class="self-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="16" xmlns:xlink="http://www.w3.org/1999/xlink" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z"></path></svg></a></span></td></tr><tr><td style="white-space: nowrap">Definition</td><td><p>The particular disease against which the patient has been immunized.</p>
 <p>Additional conformance bindings provided for use for this element in specific (jurisdictional or other) contexts include (these bindings are represented in the StructureDefinition as instances of the <a href="http://hl7.org/fhir/tools/StructureDefinition/additional-binding">elementdefinition-additionalBinding</a> extension):</p>
 <ul>
-<li><a name="l5572">​</a><a href="http://hl7.org/fhir/uv/ips/2.0.1/./ValueSet-target-diseases-uv-ips.html">targetDiseases-uv-ips</a></li>
+<li><a name="l5576">​</a><a href="http://hl7.org/fhir/uv/ips/2.0.1/./ValueSet-target-diseases-uv-ips.html">targetDiseases-uv-ips</a></li>
 </ul>
 <br/><div style="color:DarkGray;text-decoration:line-through"><p>The vaccine preventable disease the dose is being administered against.</p>
 </div></td></tr><tr><td style="white-space: nowrap">Kort</td><td>Målsjukdom (administrationRecord.vaccineTargetDisease)<span style="color:DarkGray;text-decoration:line-through">Vaccine preventatable disease being targetted</span></td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Kontroll</a></td><td><span style="color:DarkGray">0</span>..<span style="color:DarkGray">*</span></td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/terminologies.html">Bindning</a></td><td><span>Koderna BÖR tas från <span style="color:DarkGray;text-decoration:line-through">För exempelkoder, se </span> <a href="http://hl7.org/fhir/uv/ips/2.0.1/ValueSet-target-diseases-uv-ips.html">VaccineTargetDiseasesUvIps (2.0.1)</a><span style="color:DarkGray;text-decoration:line-through">http://hl7.org/fhir/ValueSet/immunization-target-disease|4.0.1</span><br/>(<a href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a> to <span class="copy-text-inline"><code>http://hl7.org/fhir/uv/ips/ValueSet/target-diseases-uv-ips|2.0.1</code><button data-clipboard-text="http://hl7.org/fhir/uv/ips/ValueSet/target-diseases-uv-ips|2.0.1" title="Klicka för att kopiera URL" class="btn-copy"></button></span>)</span><br/><p>The particular disease or diseases against which the patient has been immunized.</p>
@@ -987,7 +988,7 @@ The IPS assumes that either the type of the vaccine for particular disease or di
 <tr><td colspan="2" class="structure"><span class="self-link-parent"><a name="Immunization.protocolApplied.targetDisease">  </a><span style="color: grey">182</span><b>. Immunization.protocolApplied.targetDisease</b><a href="#Immunization.protocolApplied.targetDisease" title="link to here" class="self-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" width="16" xmlns:xlink="http://www.w3.org/1999/xlink" class="self-link" height="16"><path d="M1520 1216q0-40-28-68l-208-208q-28-28-68-28-42 0-72 32 3 3 19 18.5t21.5 21.5 15 19 13 25.5 3.5 27.5q0 40-28 68t-68 28q-15 0-27.5-3.5t-25.5-13-19-15-21.5-21.5-18.5-19q-33 31-33 73 0 40 28 68l206 207q27 27 68 27 40 0 68-26l147-146q28-28 28-67zm-703-705q0-40-28-68l-206-207q-28-28-68-28-39 0-68 27l-147 146q-28 28-28 67 0 40 28 68l208 208q27 27 68 27 42 0 72-31-3-3-19-18.5t-21.5-21.5-15-19-13-25.5-3.5-27.5q0-40 28-68t68-28q15 0 27.5 3.5t25.5 13 19 15 21.5 21.5 18.5 19q33-31 33-73zm895 705q0 120-85 203l-147 146q-83 83-203 83-121 0-204-85l-206-207q-83-83-83-203 0-123 88-209l-88-88q-86 88-208 88-120 0-204-84l-208-208q-84-84-84-204t85-203l147-146q83-83 203-83 121 0 204 85l206 207q83 83 83 203 0 123-88 209l88 88q86-88 208-88 120 0 204 84l208 208q84 84 84 204z"></path></svg></a></span></td></tr><tr><td style="white-space: nowrap">Definition</td><td><p style="font-size: 11px">The particular disease against which the patient has been immunized.</p>
 <p style="font-size: 11px">Additional conformance bindings provided for use for this element in specific (jurisdictional or other) contexts include (these bindings are represented in the StructureDefinition as instances of the <a href="http://hl7.org/fhir/tools/StructureDefinition/additional-binding">elementdefinition-additionalBinding</a> extension):</p>
 <ul>
-<li style="font-size: 11px"><a name="l14974">​</a><a href="http://hl7.org/fhir/uv/ips/2.0.1/./ValueSet-target-diseases-uv-ips.html">targetDiseases-uv-ips</a></li>
+<li style="font-size: 11px"><a name="l14978">​</a><a href="http://hl7.org/fhir/uv/ips/2.0.1/./ValueSet-target-diseases-uv-ips.html">targetDiseases-uv-ips</a></li>
 </ul>
 </td></tr><tr><td style="white-space: nowrap">Kort</td><td>Målsjukdom (administrationRecord.vaccineTargetDisease)</td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/conformance-rules.html#conformance">Kontroll</a></td><td>0..*</td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/terminologies.html">Bindning</a></td><td><span>Koderna BÖR tas från  <a href="http://hl7.org/fhir/uv/ips/2.0.1/ValueSet-target-diseases-uv-ips.html">VaccineTargetDiseasesUvIps (2.0.1)</a><br/>(<a href="http://hl7.org/fhir/R4/terminologies.html#preferred">preferred</a> to <span class="copy-text-inline"><code>http://hl7.org/fhir/uv/ips/ValueSet/target-diseases-uv-ips|2.0.1</code><button data-clipboard-text="http://hl7.org/fhir/uv/ips/ValueSet/target-diseases-uv-ips|2.0.1" title="Klicka för att kopiera URL" class="btn-copy"></button></span>)</span><br/><p>The particular disease or diseases against which the patient has been immunized.</p>
 </td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/datatypes.html">Typ</a></td><td><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/conformance-rules.html#ismodifier">Är modifierare</a></td><td>false</td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/conformance-rules.html#mustSupport">Måste stödjas</a></td><td>true</td></tr><tr><td style="white-space: nowrap"><a href="http://hl7.org/fhir/R4/search.html#summary">Sammanfattning</a></td><td>false</td></tr><tr><td style="white-space: nowrap">Invarianter</td><td><b title="Formell invariantidentifierare">ele-1</b>: All FHIR elements must have a @value or children (<code>hasValue() or (children().count() &gt; id.count())</code>)</td></tr>
@@ -1038,7 +1039,7 @@ The IPS assumes that either the type of the vaccine for particular disease or di
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 10:52+0000">2026-09-30</span>
+          IG &copy; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

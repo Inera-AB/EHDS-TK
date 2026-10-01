@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"27"}
-    h3,h4,h5,h6{--heading-prefix:"27.0"}</style>
+    <style type="text/css">h2{--heading-prefix:"28"}
+    h3,h4,h5,h6{--heading-prefix:"28.0"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -123,6 +123,7 @@
                 <li><a href="mapping-getcareplans.html">GetCarePlans – Vårdplan</a></li>
                 <li><a href="mapping-getcarecontacts.html">GetCareContacts – Vårdkontakter</a></li>
                 <li><a href="mapping-getcaredocumentation.html">GetCareDocumentation – Anteckningar</a></li>
+                <li><a href="guidance-docbook-narrative.html">&#160;&#160;&#8627; DocBook-mappning</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Laboratorie och diagnostik</li>
                 <li><a href="mapping-getlaboratoryorderoutcome.html">GetLaboratoryOrderOutcome – Provsvar</a></li>
@@ -138,7 +139,7 @@
                 <li><a href="mapping-getobservations.html">GetObservations – Tillväxtkurva</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Logg</li>
-                <li><a href="mapping-getaccesslogforpatient.html">GetAccessLogForPatient – Åtkomstloggar</a></li>
+                <li><a href="mapping-getaccesslogforpatient.html">Åtkomstloggar och auditloggning</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -454,11 +455,56 @@ resurs via Flag.extension[flag-detail] (standard R4-extension; R5: supportingInf
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-audit-event.html"
-                  title="StructureDefinition/inera-ehds-audit-event">SE EHDS AuditEvent – Åtkomstloggar (GetAccessLogForPatient)</a>
+               <a href="StructureDefinition-inera-ehds-audit-event-patient-read.html"
+                  title="StructureDefinition/inera-ehds-audit-event-patient-read">SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)</a>
             </td>
             <td>
-<p>Profil för åtkomstloggar mappat från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.</p>
+<p>Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) lämnar ut en
+enskild resurs eller ett dokuments innehåll för en patient, t.ex. läsning av en resurs eller
+(framtida) MHD ITI-68 Retrieve Document. Loggposterna behövs för att patienten ska kunna få
+veta vem som har tagit del av patientens uppgifter.</p>
+
+<p>Ärver från IHE BALP PatientRead och lägger till:</p>
+<ul>
+  <li>användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska</li>
+  <li>en agent per källsystem/vårdgivare som innehållet kommer från (agent[custodian])</li>
+  <li>bryggan som loggkälla (source.observer)</li>
+</ul>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-inera-ehds-audit-event-read-access-log.html"
+                  title="StructureDefinition/inera-ehds-audit-event-read-access-log">SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)</a>
+            </td>
+            <td>
+<p>Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till
+patienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient
+(informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.</p>
+
+<p>Profilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas
+när API:et nyttjas beskrivs av IneraEHDSAuditEventPatientQuery och IneraEHDSAuditEventPatientRead.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-inera-ehds-audit-event-patient-query.html"
+                  title="StructureDefinition/inera-ehds-audit-event-patient-query">SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)</a>
+            </td>
+            <td>
+<p>Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en
+sökning på en patients uppgifter och lämnar ut träfflistan, t.ex. MHD ITI-67 Find Document
+References eller QEDm PCC-44. Loggposterna behövs för att patienten ska kunna få veta vem som
+har tagit del av patientens uppgifter.</p>
+
+<p>Ärver från IHE BALP PatientQuery och lägger till:</p>
+<ul>
+  <li>användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska</li>
+  <li>en agent per källsystem/vårdgivare som bidrog till svaret (agent[custodian])</li>
+  <li>bryggan som loggkälla (source.observer)</li>
+  <li>träfflistan: varje utlämnad resurs registreras som en entity med entity.type = resurstypen
+(http://hl7.org/fhir/resource-types) och entity.role = object-role#4 "Domain Resource"</li>
+</ul>
 </td>
          </tr>
          <tr>
@@ -468,6 +514,22 @@ resurs via Flag.extension[flag-detail] (standard R4-extension; R5: supportingInf
             </td>
             <td>
 <p>Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-inera-ehds-composition-care-documentation.html"
+                  title="StructureDefinition/inera-ehds-composition-care-documentation">SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)</a>
+            </td>
+            <td>
+<p>Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när
+innehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType
+application/docbook+xml). Varje DocBook-&lt;section&gt; blir en Composition.section med XHTML-narrativ
+(Strategi B, se DOC-004 och sidan DocBook-mappning).</p>
+
+<p>Kompletterar IneraEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).
+Composition kopplas till DocumentReference genom att samma Provenance har båda i
+Provenance.target.</p>
 </td>
          </tr>
          <tr>
@@ -852,6 +914,15 @@ För body = unstructuredAlertInformation: unstructuredAlertInformationContent l�
          </tr>
          <tr>
             <td style="column-width:30%">
+               <a href="StructureDefinition-condition-chronic-diagnosis.html"
+                  title="StructureDefinition/condition-chronic-diagnosis">Kronisk diagnos</a>
+            </td>
+            <td>
+<p>Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
                <a href="StructureDefinition-immunization-registration-device.html"
                   title="StructureDefinition/immunization-registration-device">Källsystem för vaccinationsregistrering</a>
             </td>
@@ -907,6 +978,15 @@ Denna extension bär kvarvarande detaljer: nonATCSubstanceComment och pharmaceut
             </td>
             <td>
 <p>Information om samband med andra uppmärksamhetssignaler (alertInformationBody.relatedAlertInformation).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-ext-signature-time.html"
+                  title="StructureDefinition/ext-signature-time">Signeringstidpunkt för journalanteckning</a>
+            </td>
+            <td>
+<p>Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003.</p>
 </td>
          </tr>
          <tr>
@@ -1373,7 +1453,7 @@ genereras av bryggan.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 10:52+0000">2026-09-30</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

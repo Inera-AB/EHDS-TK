@@ -123,6 +123,7 @@
                 <li><a href="mapping-getcareplans.html">GetCarePlans – Vårdplan</a></li>
                 <li><a href="mapping-getcarecontacts.html">GetCareContacts – Vårdkontakter</a></li>
                 <li><a href="mapping-getcaredocumentation.html">GetCareDocumentation – Anteckningar</a></li>
+                <li><a href="guidance-docbook-narrative.html">&#160;&#160;&#8627; DocBook-mappning</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Laboratorie och diagnostik</li>
                 <li><a href="mapping-getlaboratoryorderoutcome.html">GetLaboratoryOrderOutcome – Provsvar</a></li>
@@ -138,7 +139,7 @@
                 <li><a href="mapping-getobservations.html">GetObservations – Tillväxtkurva</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Logg</li>
-                <li><a href="mapping-getaccesslogforpatient.html">GetAccessLogForPatient – Åtkomstloggar</a></li>
+                <li><a href="mapping-getaccesslogforpatient.html">Åtkomstloggar och auditloggning</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -230,7 +231,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
         </ul>
       </li>
       <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
-      <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
+      <li><a href="#beslutade-issues" id="markdown-toc-beslutade-issues">Beslutade issues</a></li>
     </ul>
   </li>
 </ul>
@@ -390,8 +391,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis</code></td>
       <td>0..1</td>
-      <td>Ej mappad (se <a href="#föreslagna-nya-issues">DIAG-001</a>)</td>
-      <td>Boolean – inget direktmappat FHIR Condition-element</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis].valueBoolean</code></td>
+      <td>Lokal extension <a href="StructureDefinition-condition-chronic-diagnosis.html">ConditionChronicDiagnosis</a>; utelämnas om fältet saknas (se <a href="mapping-issues.html#designbeslut-fattade">DIAG-001</a>)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.diagnosisTime</code></td>
@@ -432,8 +433,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.relatedDiagnosis.documentId</code></td>
       <td>1..1 (om relatedDiagnosis)</td>
-      <td>Ej mappad (se <a href="#föreslagna-nya-issues">DIAG-002</a>)</td>
-      <td>Referens till relaterad diagnos via dokumentid – inget standardelement</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.extension[relatedCondition].valueReference.identifier.value</code></td>
+      <td>Standardextension <code class="language-plaintext highlighter-rouge">condition-related</code> (HL7). En extension per <code class="language-plaintext highlighter-rouge">relatedDiagnosis</code>. Logisk referens: <code class="language-plaintext highlighter-rouge">identifier</code> ska ha samma <code class="language-plaintext highlighter-rouge">system</code> som <code class="language-plaintext highlighter-rouge">Condition.identifier</code> på den relaterade diagnosen (se <a href="mapping-issues.html#designbeslut-fattade">DIAG-002</a>)</td>
     </tr>
   </tbody>
 </table>
@@ -798,26 +799,26 @@ ska använda.</p>
 
 <hr />
 
-<h2 id="föreslagna-nya-issues">Föreslagna nya issues</h2>
+<h2 id="beslutade-issues">Beslutade issues</h2>
 
 <table>
   <thead>
     <tr>
       <th>ID</th>
       <th>Fält</th>
-      <th>Beskrivning</th>
+      <th>Beslut</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>DIAG-001</td>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis</code></td>
-      <td>Boolean – inget direktmappat FHIR Condition-element. Alternativ: (a) extension <code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis]</code> med boolean, eller (b) <code class="language-plaintext highlighter-rouge">Condition.category</code> med en kod för kronisk diagnos från ett lokalt/nationellt kodsystem. Kräver designbeslut.</td>
+      <td>Lokal extension <code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis]</code> (<a href="StructureDefinition-condition-chronic-diagnosis.html">ConditionChronicDiagnosis</a>) med <code class="language-plaintext highlighter-rouge">valueBoolean</code>. Se <a href="mapping-issues.html#designbeslut-fattade">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>DIAG-002</td>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.relatedDiagnosis.documentId</code></td>
-      <td>Referens till relaterad diagnos via dokumentid. Inget standardelement i Condition. Alternativ: (a) <code class="language-plaintext highlighter-rouge">Condition.extension[relatedCondition]</code> med logisk referens, eller (b) <code class="language-plaintext highlighter-rouge">Condition.note</code> med dokumentid i fritext. Kräver designbeslut.</td>
+      <td>Standardextension <code class="language-plaintext highlighter-rouge">Condition.extension[relatedCondition]</code> (<code class="language-plaintext highlighter-rouge">condition-related</code>) med logisk referens via <code class="language-plaintext highlighter-rouge">valueReference.identifier</code>. Se <a href="mapping-issues.html#designbeslut-fattade">Mappningsissues</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -841,7 +842,7 @@ ska använda.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Sep 30, 2026 10:52+0000">2026-09-30</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
