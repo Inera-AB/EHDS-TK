@@ -13,8 +13,8 @@
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `diagnosisHeader.documentId` | 1..1 | `Condition.identifier[0].value` | Källsystemets dokumentidentitet |
-| `diagnosisHeader.sourceSystemHSAId` | 1..1 | `Condition.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
-| `diagnosisHeader.patientId.extension` | 1..1 | `Condition.subject.identifier.value` | Personnummer eller samordningsnummer |
+| `diagnosisHeader.sourceSystemHSAId` | 1..1 | `Condition.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
+| `diagnosisHeader.patientId.extension` | 1..1 | `Condition.subject.identifier.value` | Personnummer eller samordningsnummer; logisk referens, se [GENERAL-006](mappings.html#patientreferens) |
 | `diagnosisHeader.patientId.root` | 1..1 | `Condition.subject.identifier.system` | OID→URI, se tabell nedan |
 | `diagnosisHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Condition.recordedDate` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
@@ -123,6 +123,8 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ## diagnosisType – kv_diagnostyp
 
+Slicen `category[diagnostyp]` låser `coding.system` till kv_diagnostyp och har en obligatorisk (required) bindning till [DiagnosisTypeVS](ValueSet-diagnosistype-vs.html). Kodsystemet finns i IG-paketet som fragmentet [DiagnosisTypeCS](CodeSystem-diagnosistype-cs.html) med koderna `HD` och `BY`.
+
 `Condition.category[diagnostyp]` innehåller en kod från Ineras kodverk `kv_diagnostyp`:
 
 | RIVTA typeOfDiagnosis | Kod | System |
@@ -184,7 +186,7 @@ ska använda.
 {
   "resourceType": "Condition",
   "meta": {
-    "source": "urn:oid:1.2.752.129.2.1.4.1#SE2321000016-4HK5",
+    "source": "https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5",
     "profile": [
       "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis",
       "http://hl7.eu/fhir/eps/StructureDefinition/condition-obl-eu-eps"
@@ -215,7 +217,7 @@ ska använda.
 | ID | Fråga |
 |---|---|
 | PDL-001 | **`approvedForPatient` (boolean) saknar direkt FHIR-motsvarighet.** Fältet finns i alla PatientSummaryHeader-kontrakt men `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Nuvarande lösning: enkoda som `meta.security`-tagg med lokalt kodsystem. Behöver gemensamt beslut för alla TK:er. |
-| GENERAL-001 | **Tidsstämpelformat.** RIVTA använder `YYYYMMDDhhmmss` utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta `Europe/Stockholm` (CET/CEST). Gäller alla tidsfält i alla tjänstekontrakt. |
+| GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ---
 

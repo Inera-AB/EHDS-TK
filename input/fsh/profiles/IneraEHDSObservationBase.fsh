@@ -31,7 +31,7 @@ Description: """
 * identifier.system ^short = "OID för informationsägande vårdgivare (observationId.root) – format urn:oid:{root}"
 
 * meta.source MS
-* meta.source ^short = "Källsystem (header) – HSA-id för det system som tillgängliggör informationen"
+* meta.source ^short = "Källsystem (header) – HSA-id för det system som tillgängliggör informationen – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * meta.security MS
 * meta.security ^short = """

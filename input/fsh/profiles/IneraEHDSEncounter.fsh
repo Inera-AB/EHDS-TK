@@ -19,7 +19,7 @@ Description: "Profil för vårdkontakter mappat från RIVTA-tjänstekontraktet G
 * subject ^short = "Patient (patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * status 1..1 MS
 * status ^short = "Kontaktstatus (careContactStatus – SNOMED CT SE, SCTID 53761000052103)"

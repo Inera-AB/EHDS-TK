@@ -18,7 +18,7 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * subject ^short = "Patient (diagnosisHeader.patientId) – OID→URI för personnummer/samordningsnummer"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (diagnosisHeader.sourceSystemHSAId) – urn:oid:1.2.752.129.2.1.4.1#{hsaId}"
+* meta.source ^short = "Källsystem HSA-id (diagnosisHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * recorder only Reference(PractitionerRole)
 * recorder MS
@@ -45,7 +45,8 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * category[diagnostyp].coding.system 1..1 MS
 * category[diagnostyp].coding.system = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
 * category[diagnostyp].coding.code 1..1 MS
-* category[diagnostyp] ^short = "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos)"
+* category[diagnostyp] from DiagnosisTypeVS (required)
+* category[diagnostyp] ^short = "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos) från kv_diagnostyp"
 
 * code 1..1 MS
 * code ^short = "Diagnoskod (diagnosisBody.diagnosisCode)"

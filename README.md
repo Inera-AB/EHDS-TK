@@ -103,9 +103,9 @@ Alla tjänstekontrakt med `PatientSummaryHeader` (eller motsvarande header) mapp
 
 | Header-fält | FHIR-destination | Syfte |
 |---|---|---|
-| `patientId` | `{Resurs}.subject.identifier` | Personnummer/samordningsnummer via OID→URI |
-| `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
-| `documentTime` | `{Resurs}.recordedDate` (eller resursens primära tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601, tolkas som Europe/Stockholm. **Gäller endast om `documentTime` faktiskt skickas (kardinalitet > 0..0) enligt tjänstekontraktets TKB** – t.ex. GetDiagnosis har `documentTime` 0..0 och använder istället `accountableHealthcareProfessional.authorTime`. Verifiera alltid mot tjänstekontraktets egen mappningssida. |
+| `patientId` | `{Resurs}.subject.identifier` | Personnummer/samordningsnummer via OID→URI. Logisk referens – medvetet avsteg från IPS krav på `subject.reference` (GENERAL-006) |
+| `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
+| `documentTime` | `{Resurs}.recordedDate` (eller resursens primära tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601 med offset, tolkas som Europe/Stockholm med sommartid (GENERAL-001). **Gäller endast om `documentTime` faktiskt skickas (kardinalitet > 0..0) enligt tjänstekontraktets TKB** – t.ex. GetDiagnosis har `documentTime` 0..0 och använder istället `accountableHealthcareProfessional.authorTime`. Verifiera alltid mot tjänstekontraktets egen mappningssida. |
 | `accountableHealthcareProfessional` | `{Resurs}.recorder` eller `author` (Reference(SEBasePractitionerRole)) | Ansvarig hälso- och sjukvårdspersonal |
 | `legalAuthenticator` | `{Resurs}.asserter` eller `authenticator` (Reference(SEBasePractitionerRole)) | Rättslig äkthetsintygsgivare |
 | `legalAuthenticator` (datum) | `{Resurs}.extension[assertedDate]` | YYYYMMDD → YYYY-MM-DD |

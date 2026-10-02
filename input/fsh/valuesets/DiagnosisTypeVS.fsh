@@ -5,6 +5,6 @@
 ValueSet: DiagnosisTypeVS
 Id: diagnosistype-vs
 Title: "DiagnosisType — ValueSet"
-Description: "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis."
+Description: "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp."
 * ^status = #active
 * include codes from system DiagnosisTypeCS

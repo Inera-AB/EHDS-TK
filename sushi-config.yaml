@@ -16,8 +16,12 @@ publisher:
   url: https://www.inera.se
 jurisdiction: urn:iso:std:iso:3166#SE "Sweden"
 dependencies:
-  hl7.fhir.uv.ips: 1.1.0
-  hl7.fhir.eu.eps: current
+  # Fasta versioner för reproducerbara byggen (inga "current").
+  hl7.fhir.uv.ips: 2.0.0
+  # Ingen stabil EPS-release finns ännu; 1.0.0-ballot är den senast publicerade versionen.
+  hl7.fhir.eu.eps: 1.0.0-ballot
+  # Explicit beroende: Obligation-extensionen som EPS obligations-profiler (t.ex. condition-obl-eu-eps) bygger på.
+  hl7.fhir.uv.extensions.r4: 5.3.0
   ihe.iti.balp: 1.1.4
 parameters:
   show-inherited-invariants: false

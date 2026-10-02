@@ -37,7 +37,7 @@ representeras via extensions – se [MED-001](#öppna-frågor).
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `medicationMedicalRecordHeader.documentId` | 1..1 | `MedicationStatement.identifier[0].value` | Källsystemets dokumentidentifierare |
-| `medicationMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `MedicationStatement.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `medicationMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `MedicationStatement.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `medicationMedicalRecordHeader.documentTitle` | 0..0 | Ej mappad | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
 | `medicationMedicalRecordHeader.patientId.extension` | 1..1 | `MedicationStatement.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `medicationMedicalRecordHeader.patientId.root` | 1..1 | `MedicationStatement.subject.identifier.system` | OID→URI, se tabell nedan |
@@ -248,7 +248,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | MED-002 | **`typeOfPrescription` (I/U) mappar inte naturligt till `MedicationStatement.status`.** I=Insättning och U=Utsättning anger ordinationshändelsens karaktär, inte dess aktuella status. Nuvarande beslut: bevara i extension; status härleds primärt från `prescriptionStatus`. Alternativ: ignorera `prescriptionStatus` och sätt `status=active` för I, `status=stopped` för U. |
 | MED-003 | **`drug` XOR-villkor kan inte uttryckas i FSH-kardinalitet.** Fem varianter (unstructured/merchandise/drugArticle/drug/generics) är ömsesidigt uteslutande enligt TKB. FSH Invariant med FHIRPath implementeras som workaround. |
 | PDL-001 | **`approvedForPatient` (boolean) saknar standardiserat FHIR-kodsystem.** Fältet mappas tentativt till `meta.security` men inget standardiserat kodsystem för detta begrepp finns. Behöver gemensamt beslut; se central issue i [mapping-issues](mapping-issues.html). |
-| GENERAL-001 | **Tidsstämpelformat.** RIVTA använder `YYYYMMDDhhmmss` utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta `Europe/Stockholm` (CET/CEST). Gäller alla tidsfält. |
+| GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ## Föreslagna nya issues
 

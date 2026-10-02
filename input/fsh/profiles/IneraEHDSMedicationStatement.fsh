@@ -9,7 +9,7 @@ Description: "Profil för läkemedelsordinationer, förskrivningar och administr
 * subject ^short = "Patient (medicationMedicalRecordHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (medicationMedicalRecordHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (medicationMedicalRecordHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * informationSource only Reference(PractitionerRole)
 * informationSource MS

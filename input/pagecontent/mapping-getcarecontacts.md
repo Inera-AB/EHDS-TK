@@ -20,7 +20,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `careContact.documentId` | 1..1 | `Encounter.identifier[0].value` | Källsystemets dokumentidentitet; unik inom källsystemet |
-| `careContact.sourceSystemHSAId` | 1..1 | `Encounter.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `careContact.sourceSystemHSAId` | 1..1 | `Encounter.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `careContact.patientId.extension` | 1..1 | `Encounter.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `careContact.patientId.root` | 1..1 | `Encounter.subject.identifier.system` | OID→URI-konvertering (se OID-tabell nedan) |
 

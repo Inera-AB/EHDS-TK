@@ -19,7 +19,7 @@ Description: """
 * subject ^short = "Patient (maternityMedicalRecordHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (maternityMedicalRecordHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (maternityMedicalRecordHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * performer MS
 * performer ^short = "Ansvarig personal/enhet (maternityMedicalRecordHeader.accountableHealthcareProfessional)"

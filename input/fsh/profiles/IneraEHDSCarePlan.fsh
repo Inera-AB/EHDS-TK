@@ -12,7 +12,7 @@ Description: "Profil för vård- och omsorgsplaner mappat från RIVTA-tjänsteko
 * subject ^short = "Patient (patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * author only Reference(PractitionerRole or Organization)
 * author MS

@@ -9,7 +9,7 @@ Description: "Profil för laboratorieresultat mappat från RIVTA-tjänstekontrak
 * subject ^short = "Patient (header.accessControlHeader.patientId – JoL-header)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (header.sourceSystemId)"
+* meta.source ^short = "Källsystem HSA-id (header.sourceSystemId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * performer only Reference(PractitionerRole or Organization)
 * performer MS

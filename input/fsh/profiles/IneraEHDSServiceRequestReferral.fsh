@@ -17,7 +17,7 @@ Description: """
 * subject ^short = "Patient (referralOutcomeHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * identifier MS
 * identifier ^short = "Remissidentifierare (referralOutcomeBody.referral.referralId)"

@@ -1,13 +1,13 @@
-// Genererad från TKB clinicalprocess:healthcond:description v3.0.5
-// Kontrakt: GetDiagnosis v2.0
-// Genererad: 2026-03-19
+// Kontrakt: GetDiagnosis v2.0 (diagnosisBody.typeOfDiagnosis)
+// Fragment av Ineras kodverk kv_diagnostyp – endast de koder som används av GetDiagnosis.
 
 CodeSystem: DiagnosisTypeCS
 Id: diagnosistype-cs
-Title: "DiagnosisType"
-Description: "Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen."
-* ^url = "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs"
+Title: "KV Diagnostyp (fragment)"
+Description: "Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n."
+* ^url = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
 * ^status = #active
-* ^content = #complete
-* #Huvuddiagnos "Huvuddiagnos" "Huvuddiagnos"
-* #Bidiagnos "Bidiagnos" "Bidiagnos"
+* ^content = #fragment
+* ^caseSensitive = true
+* #HD "Huvuddiagnos" "Huvuddiagnos"
+* #BY "Bidiagnos" "Bidiagnos"
