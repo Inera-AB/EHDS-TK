@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-is-dose-complete | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:ImmunizationIsDoseComplete |
+| Draft as of 2026-10-02 | *Computable Name*:ImmunizationIsDoseComplete |
 
 Anger om hela den ordinerade dosen administrerades (administrationRecord.isDoseComplete).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-immunization-is-dose
   "name" : "ImmunizationIsDoseComplete",
   "title" : "Fullständig dos administrerad",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

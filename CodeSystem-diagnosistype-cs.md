@@ -1,18 +1,18 @@
-# DiagnosisType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# KV Diagnostyp (fragment) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **DiagnosisType**
+* **KV Diagnostyp (fragment)**
 
-## CodeSystem: DiagnosisType 
+## CodeSystem: KV Diagnostyp (fragment) 
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs | *Version*:0.3.3 |
-| Active as of 2026-10-01 | *Computable Name*:DiagnosisTypeCS |
+| *Official URL*:https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp | *Version*:0.3.3 |
+| Active as of 2026-10-02 | *Computable Name*:DiagnosisTypeCS |
 
  
-Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen. 
+Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n. 
 
  This Code system is referenced in the content logical definition of the following value sets: 
 
@@ -26,12 +26,12 @@ Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för
 {
   "resourceType" : "CodeSystem",
   "id" : "diagnosistype-cs",
-  "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs",
+  "url" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
   "version" : "0.3.3",
   "name" : "DiagnosisTypeCS",
-  "title" : "DiagnosisType",
+  "title" : "KV Diagnostyp (fragment)",
   "status" : "active",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -40,7 +40,7 @@ Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen.",
+  "description" : "Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n.",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -48,15 +48,15 @@ Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för
       "display" : "Sweden"
     }]
   }],
-  "content" : "complete",
-  "count" : 2,
+  "caseSensitive" : true,
+  "content" : "fragment",
   "concept" : [{
-    "code" : "Huvuddiagnos",
+    "code" : "HD",
     "display" : "Huvuddiagnos",
     "definition" : "Huvuddiagnos"
   },
   {
-    "code" : "Bidiagnos",
+    "code" : "BY",
     "display" : "Bidiagnos",
     "definition" : "Bidiagnos"
   }]

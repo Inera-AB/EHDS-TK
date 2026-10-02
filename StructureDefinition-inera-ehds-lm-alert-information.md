@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-alert-information | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSLMAlertInformation |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSLMAlertInformation |
 
  
 Logisk modell för tjänstekontraktet GetAlertInformation (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:2). Representerar responsens informationsstruktur: uppmärksamhetsinformation för en patient, exempelvis överkänslighet mot läkemedel, allvarlig sjukdom, behandling, smittsam sjukdom, vårdbegränsning eller historisk varning. 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-alert-
   "name" : "IneraEHDSLMAlertInformation",
   "title" : "GetAlertInformation",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

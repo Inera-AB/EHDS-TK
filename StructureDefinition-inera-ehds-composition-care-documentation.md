@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-composition-care-documentation | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSCompositionCareDocumentation |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSCompositionCareDocumentation |
 
  
 Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när innehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType application/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ (Strategi B, se DOC-004 och sidan DocBook-mappning). 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-compositi
   "name" : "IneraEHDSCompositionCareDocumentation",
   "title" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

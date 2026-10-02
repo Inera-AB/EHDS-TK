@@ -32,8 +32,8 @@
     "status" : "active",
     "name" : "DiagnosisTypeVS",
     "title" : "DiagnosisType — ValueSet",
-    "description" : "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.",
-    "systems" : ["https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs"]
+    "description" : "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp.",
+    "systems" : ["https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"]
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/errorcode-vs",

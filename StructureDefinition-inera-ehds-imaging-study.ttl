@@ -10,14 +10,14 @@
   fhir:Resource.id [ fhir:value "inera-ehds-imaging-study"] ;
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "extensions" ] ;
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: StructureDefinition inera-ehds-imaging-study</b></p><a name=\"inera-ehds-imaging-study\"> </a><a name=\"hcinera-ehds-imaging-study\"> </a><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;\"><tr style=\"border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top\"><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Elementets logiska namn\">Namn</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Information om användningen av elementet\">Flaggor</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Lägsta och högsta antal gånger elementet kan förekomma i instansen\">Kard.</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px; width: 100px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Referens till elementets typ\">Typ</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Ytterligare information om elementet\">Beskrivning &amp; begränsningar</a><span style=\"float: right\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/></a></span></th></tr><tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_resource.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy\">ImagingStudy</a><a name=\"ImagingStudy\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/uv/ips/2.0.1/StructureDefinition-ImagingStudy-uv-ips.html\">ImagingStudyUvIps(2.0.1)</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">A set of images produced in single study (one or more series of references images)</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.meta\">meta</a><a name=\"ImagingStudy.meta\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck100.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.meta.source\">source</a><a name=\"ImagingStudy.meta.source\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#uri\">uri</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.status\">status</a><a name=\"ImagingStudy.status\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#code\">code</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Undersökningsstatus – härledd (inget direkt statusfält i TKBn)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.modality\">modality</a><a name=\"ImagingStudy.modality\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Modalitet (imagingOutcomeBody.imageRecording.modalityData.typeOfModality)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_reference.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Referens till en annan resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.subject\">subject</a><a name=\"ImagingStudy.subject\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/references.html\">Reference</a>(<a href=\"StructureDefinition-inera-ehds-patient.html\">SE EHDS Patient</a>)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Patient (imagingOutcomeHeader.patientId)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.started\">started</a><a name=\"ImagingStudy.started\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#dateTime\">dateTime</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Undersökningstidpunkt (imagingOutcomeBody.imageRecording.examinationTimePeriod.start)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_reference.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Referens till en annan resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.referrer\">referrer</a><a name=\"ImagingStudy.referrer\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/references.html\">Reference</a>(<a href=\"http://hl7.org/fhir/R4/practitionerrole.html\">PractitionerRole</a>)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Remitterande läkare (imagingOutcomeBody.referral.accountableHealthcareProfessional)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_reference.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Referens till en annan resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.interpreter\">interpreter</a><a name=\"ImagingStudy.interpreter\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/references.html\">Reference</a>(<a href=\"http://hl7.org/fhir/R4/practitionerrole.html\">PractitionerRole</a>)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Tolkande radiolog (imagingOutcomeHeader.accountableHealthcareProfessional)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck01.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series\">series</a><a name=\"ImagingStudy.series\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.uid\">uid</a><a name=\"ImagingStudy.series.uid\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#id\">id</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">DICOM Series Instance UID (härledd/genererad; dicomSOP är SOP Instance UID på instansnivå)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.modality\">modality</a><a name=\"ImagingStudy.series.modality\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Serieens modalitet (imagingOutcomeBody.imageRecording.modalityData.typeOfModality)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck001.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.instance\">instance</a><a name=\"ImagingStudy.series.instance\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck0000.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.instance.uid\">uid</a><a name=\"ImagingStudy.series.instance.uid\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#id\">id</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Instans-UID (imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP)</td></tr>#xD;\n<tr><td colspan=\"5\" class=\"hierarchy\"><br/><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Förklaring för detta format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/> Dokumentation för detta format</a></td></tr></table></div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: StructureDefinition inera-ehds-imaging-study</b></p><a name=\"inera-ehds-imaging-study\"> </a><a name=\"hcinera-ehds-imaging-study\"> </a><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;\"><tr style=\"border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top\"><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Elementets logiska namn\">Namn</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Information om användningen av elementet\">Flaggor</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Lägsta och högsta antal gånger elementet kan förekomma i instansen\">Kard.</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px; width: 100px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Referens till elementets typ\">Typ</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Ytterligare information om elementet\">Beskrivning &amp; begränsningar</a><span style=\"float: right\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/></a></span></th></tr><tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_resource.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy\">ImagingStudy</a><a name=\"ImagingStudy\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/uv/ips/STU2/StructureDefinition-ImagingStudy-uv-ips.html\">ImagingStudyUvIps(2.0.0)</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">A set of images produced in single study (one or more series of references images)</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.meta\">meta</a><a name=\"ImagingStudy.meta\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck100.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.meta.source\">source</a><a name=\"ImagingStudy.meta.source\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#uri\">uri</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.status\">status</a><a name=\"ImagingStudy.status\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#code\">code</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Undersökningsstatus – härledd (inget direkt statusfält i TKBn)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.modality\">modality</a><a name=\"ImagingStudy.modality\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Modalitet (imagingOutcomeBody.imageRecording.modalityData.typeOfModality)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_reference.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Referens till en annan resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.subject\">subject</a><a name=\"ImagingStudy.subject\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/references.html\">Reference</a>(<a href=\"StructureDefinition-inera-ehds-patient.html\">SE EHDS Patient</a>)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Patient (imagingOutcomeHeader.patientId)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.started\">started</a><a name=\"ImagingStudy.started\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#dateTime\">dateTime</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Undersökningstidpunkt (imagingOutcomeBody.imageRecording.examinationTimePeriod.start)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_reference.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Referens till en annan resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.referrer\">referrer</a><a name=\"ImagingStudy.referrer\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/references.html\">Reference</a>(<a href=\"http://hl7.org/fhir/R4/practitionerrole.html\">PractitionerRole</a>)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Remitterande läkare (imagingOutcomeBody.referral.accountableHealthcareProfessional)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_reference.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Referens till en annan resurs\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.interpreter\">interpreter</a><a name=\"ImagingStudy.interpreter\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"Detta element måste stödjas\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/references.html\">Reference</a>(<a href=\"http://hl7.org/fhir/R4/practitionerrole.html\">PractitionerRole</a>)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Tolkande radiolog (imagingOutcomeHeader.accountableHealthcareProfessional)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck01.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series\">series</a><a name=\"ImagingStudy.series\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.uid\">uid</a><a name=\"ImagingStudy.series.uid\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#id\">id</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">DICOM Series Instance UID (härledd/genererad; dicomSOP är SOP Instance UID på instansnivå)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.modality\">modality</a><a name=\"ImagingStudy.series.modality\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Serieens modalitet (imagingOutcomeBody.imageRecording.modalityData.typeOfModality)</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck001.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.instance\">instance</a><a name=\"ImagingStudy.series.instance\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck0000.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-inera-ehds-imaging-study-definitions.html#ImagingStudy.series.instance.uid\">uid</a><a name=\"ImagingStudy.series.instance.uid\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#id\">id</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Instans-UID (imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP)</td></tr>#xD;\n<tr><td colspan=\"5\" class=\"hierarchy\"><br/><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Förklaring för detta format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/> Dokumentation för detta format</a></td></tr></table></div>"
   ] ;
   fhir:StructureDefinition.url [ fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-imaging-study"] ;
   fhir:StructureDefinition.version [ fhir:value "0.3.3"] ;
   fhir:StructureDefinition.name [ fhir:value "IneraEHDSImagingStudy"] ;
   fhir:StructureDefinition.title [ fhir:value "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"] ;
   fhir:StructureDefinition.status [ fhir:value "draft"] ;
-  fhir:StructureDefinition.date [ fhir:value "2026-10-01T18:35:17+00:00"^^xsd:dateTime] ;
+  fhir:StructureDefinition.date [ fhir:value "2026-10-02T11:47:48+00:00"^^xsd:dateTime] ;
   fhir:StructureDefinition.publisher [ fhir:value "Inera AB"] ;
   fhir:StructureDefinition.contact [
      fhir:index 0 ;
@@ -77,7 +77,7 @@
      fhir:Element.extension [
        fhir:index 0 ;
        fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version" ] ;
-       fhir:Extension.valueString [ fhir:value "2.0.1" ]
+       fhir:Extension.valueString [ fhir:value "2.0.0" ]
      ] ;
      fhir:StructureDefinition.snapshot.element [
        fhir:index 0 ;
@@ -100,8 +100,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.contained.empty()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(parent::f:contained and f:contained)" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource>
          ]
        ], [
          fhir:index 1 ;
@@ -111,8 +111,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.where((('#'+id in (%resource.descendants().reference | %resource.descendants().as(canonical) | %resource.descendants().as(uri) | %resource.descendants().as(url))) or descendants().where(reference = '#').exists() or descendants().where(as(canonical) = '#').exists() or descendants().where(as(canonical) = '#').exists()).not()).trace('unmatched', id).empty()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(for $id in f:contained/*/f:id/@value return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource>
          ]
        ], [
          fhir:index 2 ;
@@ -122,8 +122,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource>
          ]
        ], [
          fhir:index 3 ;
@@ -133,8 +133,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "contained.meta.security.empty()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "not(exists(f:contained/*/f:meta/f:security))" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource>
          ]
        ], [
          fhir:index 4 ;
@@ -153,8 +153,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "text.`div`.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:text/h:div)" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/DomainResource" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/DomainResource>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -226,8 +226,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -397,7 +397,7 @@
        fhir:index 7 ;
        fhir:Element.id [ fhir:value "ImagingStudy.meta.source" ] ;
        fhir:ElementDefinition.path [ fhir:value "ImagingStudy.meta.source" ] ;
-       fhir:ElementDefinition.short [ fhir:value "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId)" ] ;
+       fhir:ElementDefinition.short [ fhir:value "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)" ] ;
        fhir:ElementDefinition.definition [ fhir:value "A uri that identifies the source system of the resource. This provides a minimal amount of [Provenance](http://hl7.org/fhir/R4/provenance.html#) information that can be used to track or differentiate the source of information in the resource. The source may identify another FHIR server, document, message, database, etc." ] ;
        fhir:ElementDefinition.comment [ fhir:value "In the provenance resource, this corresponds to Provenance.entity.what[x]. The exact use of the source (and the implied Provenance.entity.role) is left to implementer discretion. Only one nominated source is allowed; for additional provenance details, a full Provenance resource should be used. \n\nThis element can be used to indicate where the current master source of a resource that has a canonical URL if the resource is no longer hosted at the canonical URL." ] ;
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ] ;
@@ -579,8 +579,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ] ;
@@ -612,8 +612,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -623,8 +623,8 @@
            fhir:index 0 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/ValueSet/all-languages|4.0.1" ;
-             fhir:link <http://hl7.org/fhir/ValueSet/all-languages|4.0.1>
+             fhir:value "http://hl7.org/fhir/ValueSet/all-languages" ;
+             fhir:link <http://hl7.org/fhir/ValueSet/all-languages>
            ]
          ], [
            fhir:index 1 ;
@@ -677,8 +677,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -756,8 +756,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -767,8 +767,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -812,8 +812,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -823,8 +823,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ] ;
@@ -848,15 +848,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -870,15 +870,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -892,15 +892,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -936,8 +936,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -986,8 +986,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -1002,8 +1002,8 @@
          ] ;
          fhir:ElementDefinition.binding.strength [ fhir:value "required" ] ;
          fhir:ElementDefinition.binding.valueSet [
-           fhir:value "http://hl7.org/fhir/uv/ips/ValueSet/imaging-study-status-uv-ips|2.0.1" ;
-           fhir:link <http://hl7.org/fhir/uv/ips/ValueSet/imaging-study-status-uv-ips|2.0.1>
+           fhir:value "http://hl7.org/fhir/uv/ips/ValueSet/imaging-study-status-uv-ips" ;
+           fhir:link <http://hl7.org/fhir/uv/ips/ValueSet/imaging-study-status-uv-ips>
          ]
        ] ;
        fhir:ElementDefinition.mapping [
@@ -1052,8 +1052,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -1102,15 +1102,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1124,15 +1124,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1146,15 +1146,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1187,8 +1187,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -1290,8 +1290,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -1301,8 +1301,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -1325,15 +1325,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1347,15 +1347,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1387,8 +1387,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -1425,8 +1425,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -1475,8 +1475,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -1517,8 +1517,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -1559,8 +1559,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -1595,15 +1595,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1617,15 +1617,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1639,15 +1639,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -1686,8 +1686,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -1757,8 +1757,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -1814,8 +1814,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -1868,8 +1868,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -1920,8 +1920,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -1960,8 +1960,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2004,8 +2004,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2049,8 +2049,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2081,15 +2081,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2103,15 +2103,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2125,15 +2125,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2156,9 +2156,9 @@
          fhir:index 0 ;
          fhir:ElementDefinition.type.code [ fhir:value "CodeableConcept" ] ;
          fhir:ElementDefinition.type.profile [
-           fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips|2.0.1" ;
+           fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips" ;
            fhir:index 0 ;
-           fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips|2.0.1>
+           fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips>
          ]
        ] ;
        fhir:ElementDefinition.constraint [
@@ -2169,8 +2169,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -2191,8 +2191,8 @@
              fhir:index 2 ;
              fhir:Extension.url [ fhir:value "valueSet" ] ;
              fhir:Extension.valueCanonical [
-               fhir:value "http://hl7.org/fhir/uv/ips/ValueSet/results-radiology-observations-uv-ips|2.0.1" ;
-               fhir:link <http://hl7.org/fhir/uv/ips/ValueSet/results-radiology-observations-uv-ips|2.0.1>
+               fhir:value "http://hl7.org/fhir/uv/ips/ValueSet/results-radiology-observations-uv-ips" ;
+               fhir:link <http://hl7.org/fhir/uv/ips/ValueSet/results-radiology-observations-uv-ips>
              ]
            ], [
              fhir:index 3 ;
@@ -2252,8 +2252,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2292,15 +2292,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2314,15 +2314,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2336,15 +2336,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2363,9 +2363,9 @@
          fhir:index 0 ;
          fhir:ElementDefinition.type.code [ fhir:value "CodeableConcept" ] ;
          fhir:ElementDefinition.type.profile [
-           fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips|2.0.1" ;
+           fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips" ;
            fhir:index 0 ;
-           fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips|2.0.1>
+           fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/CodeableConcept-uv-ips>
          ]
        ] ;
        fhir:ElementDefinition.constraint [
@@ -2376,8 +2376,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -2459,8 +2459,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2507,8 +2507,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2551,8 +2551,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2579,15 +2579,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2601,15 +2601,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2623,15 +2623,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2658,8 +2658,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -2736,8 +2736,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -2747,8 +2747,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2795,8 +2795,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -2806,8 +2806,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ] ;
@@ -2831,15 +2831,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2853,15 +2853,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2875,15 +2875,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -2921,8 +2921,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -2971,8 +2971,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -2999,15 +2999,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -3021,15 +3021,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -3043,15 +3043,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -3082,8 +3082,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -3145,8 +3145,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3189,8 +3189,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3236,8 +3236,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3276,8 +3276,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3329,8 +3329,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3387,8 +3387,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3427,8 +3427,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3476,8 +3476,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3561,8 +3561,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -3572,8 +3572,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3620,8 +3620,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -3631,8 +3631,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ] ;
@@ -3669,8 +3669,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3747,8 +3747,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3779,15 +3779,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -3801,15 +3801,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -3823,15 +3823,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -3858,8 +3858,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -3936,8 +3936,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -3947,8 +3947,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -3995,8 +3995,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ], [
          fhir:index 1 ;
@@ -4006,8 +4006,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "extension.exists() != value.exists()" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Extension" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Extension>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "true"^^xsd:boolean ] ;
@@ -4031,15 +4031,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -4053,15 +4053,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -4075,15 +4075,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -4121,8 +4121,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -4150,15 +4150,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Creator" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Creator>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -4172,15 +4172,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -4194,15 +4194,15 @@
            fhir:index 1 ;
            fhir:Extension.url [ fhir:value "actor" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/ActorDefinition/Consumer>
            ]
          ], [
            fhir:index 2 ;
            fhir:Extension.url [ fhir:value "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source" ] ;
            fhir:Extension.valueCanonical [
-             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1" ;
-             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.1>
+             fhir:value "http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0" ;
+             fhir:link <http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips|2.0.0>
            ]
          ] ;
          fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/obligation" ]
@@ -4233,8 +4233,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ] ;
@@ -4296,8 +4296,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -4337,8 +4337,8 @@
          fhir:ElementDefinition.constraint.expression [ fhir:value "hasValue() or (children().count() > id.count())" ] ;
          fhir:ElementDefinition.constraint.xpath [ fhir:value "@value|f:*|h:div" ] ;
          fhir:ElementDefinition.constraint.source [
-           fhir:value "http://hl7.org/fhir/StructureDefinition/Element|4.0.1" ;
-           fhir:link <http://hl7.org/fhir/StructureDefinition/Element|4.0.1>
+           fhir:value "http://hl7.org/fhir/StructureDefinition/Element" ;
+           fhir:link <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ;
        fhir:ElementDefinition.isModifier [ fhir:value "false"^^xsd:boolean ] ;
@@ -4363,7 +4363,7 @@
        fhir:index 1 ;
        fhir:Element.id [ fhir:value "ImagingStudy.meta.source" ] ;
        fhir:ElementDefinition.path [ fhir:value "ImagingStudy.meta.source" ] ;
-       fhir:ElementDefinition.short [ fhir:value "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId)" ] ;
+       fhir:ElementDefinition.short [ fhir:value "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)" ] ;
        fhir:ElementDefinition.mustSupport [ fhir:value "true"^^xsd:boolean ]
      ], [
        fhir:index 2 ;

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-task | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSTask |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSTask |
 
  
 Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-task.csv)
   "name" : "IneraEHDSTask",
   "title" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -92,7 +92,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-task.csv)
     {
       "id" : "Task.meta.source",
       "path" : "Task.meta.source",
-      "short" : "Källsystem HSA-id (requestHeader.sourceSystemHSAId)",
+      "short" : "Källsystem HSA-id (requestHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
       "mustSupport" : true
     },
     {

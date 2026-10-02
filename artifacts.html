@@ -1055,7 +1055,7 @@ Denna extension bär kvarvarande detaljer: nonATCSubstanceComment och pharmaceut
                <a href="ValueSet-diagnosistype-vs.html" title="ValueSet/diagnosistype-vs">DiagnosisType — ValueSet</a>
             </td>
             <td>
-<p>Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.</p>
+<p>Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp.</p>
 </td>
          </tr>
          <tr>
@@ -1281,15 +1281,6 @@ Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15).</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="CodeSystem-diagnosistype-cs.html"
-                  title="CodeSystem/diagnosistype-cs">DiagnosisType</a>
-            </td>
-            <td>
-<p>Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
                <a href="CodeSystem-errorcode-cs.html" title="CodeSystem/errorcode-cs">ErrorCode</a>
             </td>
             <td>
@@ -1321,6 +1312,15 @@ Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15).</p>
             </td>
             <td>
 <p>Kodverk för typ av journalanteckning enligt KV Anteckningstyp. OID: 1.2.752.129.2.2.2.11.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-diagnosistype-cs.html"
+                  title="CodeSystem/diagnosistype-cs">KV Diagnostyp (fragment)</a>
+            </td>
+            <td>
+<p>Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n.</p>
 </td>
          </tr>
          <tr>
@@ -1453,7 +1453,7 @@ genereras av bryggan.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

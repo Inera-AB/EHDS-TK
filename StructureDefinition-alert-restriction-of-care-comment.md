@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-restriction-of-care-comment | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:AlertRestrictionOfCareComment |
+| Draft as of 2026-10-02 | *Computable Name*:AlertRestrictionOfCareComment |
 
 Information om uppmärksammat förhållande som inte avser överkänslighet, sjukdom eller behandling (alertInformationBody.restrictionOfCare.restrictionOfCareComment).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-restriction-of
   "name" : "AlertRestrictionOfCareComment",
   "title" : "Kommentar om vårdbegränsning",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

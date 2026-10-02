@@ -10,14 +10,14 @@
   fhir:Resource.id [ fhir:value "diagnosistype-cs"] ;
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "generated" ] ;
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem diagnosistype-cs</b></p><a name=\"diagnosistype-cs\"> </a><a name=\"hcdiagnosistype-cs\"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">Huvuddiagnos<a name=\"diagnosistype-cs-Huvuddiagnos\"> </a></td><td>Huvuddiagnos</td></tr><tr><td style=\"white-space:nowrap\">Bidiagnos<a name=\"diagnosistype-cs-Bidiagnos\"> </a></td><td>Bidiagnos</td></tr></table></div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem diagnosistype-cs</b></p><a name=\"diagnosistype-cs\"> </a><a name=\"hcdiagnosistype-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp</code> tillhandahåller <b>ett fragment</b> som inkluderar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">HD<a name=\"diagnosistype-cs-HD\"> </a></td><td>Huvuddiagnos</td><td>Huvuddiagnos</td></tr><tr><td style=\"white-space:nowrap\">BY<a name=\"diagnosistype-cs-BY\"> </a></td><td>Bidiagnos</td><td>Bidiagnos</td></tr></table></div>"
   ] ;
-  fhir:CodeSystem.url [ fhir:value "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs"] ;
+  fhir:CodeSystem.url [ fhir:value "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"] ;
   fhir:CodeSystem.version [ fhir:value "0.3.3"] ;
   fhir:CodeSystem.name [ fhir:value "DiagnosisTypeCS"] ;
-  fhir:CodeSystem.title [ fhir:value "DiagnosisType"] ;
+  fhir:CodeSystem.title [ fhir:value "KV Diagnostyp (fragment)"] ;
   fhir:CodeSystem.status [ fhir:value "active"] ;
-  fhir:CodeSystem.date [ fhir:value "2026-10-01T18:35:17+00:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.date [ fhir:value "2026-10-02T11:47:48+00:00"^^xsd:dateTime] ;
   fhir:CodeSystem.publisher [ fhir:value "Inera AB"] ;
   fhir:CodeSystem.contact [
      fhir:index 0 ;
@@ -28,7 +28,7 @@
        fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
      ]
   ] ;
-  fhir:CodeSystem.description [ fhir:value "Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen."] ;
+  fhir:CodeSystem.description [ fhir:value "Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n."] ;
   fhir:CodeSystem.jurisdiction [
      fhir:index 0 ;
      fhir:CodeableConcept.coding [
@@ -38,16 +38,16 @@
        fhir:Coding.display [ fhir:value "Sweden" ]
      ]
   ] ;
-  fhir:CodeSystem.content [ fhir:value "complete"] ;
-  fhir:CodeSystem.count [ fhir:value "2"^^xsd:nonNegativeInteger] ;
+  fhir:CodeSystem.caseSensitive [ fhir:value "true"^^xsd:boolean] ;
+  fhir:CodeSystem.content [ fhir:value "fragment"] ;
   fhir:CodeSystem.concept [
      fhir:index 0 ;
-     fhir:CodeSystem.concept.code [ fhir:value "Huvuddiagnos" ] ;
+     fhir:CodeSystem.concept.code [ fhir:value "HD" ] ;
      fhir:CodeSystem.concept.display [ fhir:value "Huvuddiagnos" ] ;
      fhir:CodeSystem.concept.definition [ fhir:value "Huvuddiagnos" ]
   ], [
      fhir:index 1 ;
-     fhir:CodeSystem.concept.code [ fhir:value "Bidiagnos" ] ;
+     fhir:CodeSystem.concept.code [ fhir:value "BY" ] ;
      fhir:CodeSystem.concept.display [ fhir:value "Bidiagnos" ] ;
      fhir:CodeSystem.concept.definition [ fhir:value "Bidiagnos" ]
   ] .

@@ -55,7 +55,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `header.sourceSystemId` | 1..1 | `DiagnosticReport.meta.source` | Format:`urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `header.sourceSystemId` | 1..1 | `DiagnosticReport.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `header.record.recordId` | 1..1 | `DiagnosticReport.identifier[record]` | Källsystemets postidentifierare |
 | `header.record.timestamp` | 1..1 | `DiagnosticReport.issued` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor) |
 
@@ -317,7 +317,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | :--- | :--- |
 | LAB-001 | **`analysis.result.value` är av typen AnyValueType.**TKB:n modellerar värdet som en polymorf typ som kan bära kvantitativa, kvalitativa, textuella och kodade värden. FHIR:s`Observation.value[x]`har stöd för detta men kräver att bryggan tolkar innehållet och väljer rätt valuetype. Om innehållet är en sträng utan enhet och utan strukturerad information är`valueString`säkraste fallback. Behöver formella regler för typbestämning. |
 | PDL-001 | **`approvedForPatient` (boolean) saknar standardiserad FHIR-motsvarighet.**Fältet finns i JoL-headern via`accessControlHeader.approvedForPatient`. Nuvarande approach:`DiagnosticReport.meta.security`med ett lokalt definierat kodsystem. Behöver gemensamt beslut för alla TK:er. |
-| GENERAL-001 | **Tidsstämpelformat.**RIVTA använder`YYYYMMDDhhmmss`utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta`Europe/Stockholm`(CET/CEST). Gäller alla tidsfält i alla tjänstekontrakt. |
+| GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
 ## Föreslagna nya issues
 

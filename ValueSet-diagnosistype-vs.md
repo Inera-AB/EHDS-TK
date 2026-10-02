@@ -9,13 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/diagnosistype-vs | *Version*:0.3.3 |
-| Active as of 2026-10-01 | *Computable Name*:DiagnosisTypeVS |
+| Active as of 2026-10-02 | *Computable Name*:DiagnosisTypeVS |
 
  
-Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis. 
+Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp. 
 
  **References** 
 
+* [SE EHDS Condition – Diagnos (GetDiagnosis)](StructureDefinition-inera-ehds-condition-diagnosis.md)
 * [GetDiagnosis](StructureDefinition-inera-ehds-lm-diagnosis.md)
 
 ### Logisk definition (CLD)
@@ -50,7 +51,7 @@ Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.
   "name" : "DiagnosisTypeVS",
   "title" : "DiagnosisType — ValueSet",
   "status" : "active",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -59,7 +60,7 @@ Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.",
+  "description" : "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp.",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -69,7 +70,7 @@ Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.
   }],
   "compose" : {
     "include" : [{
-      "system" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs"
+      "system" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
     }]
   }
 }

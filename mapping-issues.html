@@ -628,13 +628,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><strong>Beslutat</strong></td>
       <td><code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> kod <code class="language-plaintext highlighter-rouge">NOPATIENT</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/v3-ActCode</code>. Dokumenterat i README avsnitt 9 och i alla berörda profilers <code class="language-plaintext highlighter-rouge">^short</code>.</td>
     </tr>
-    <tr>
-      <td>GENERAL-001</td>
-      <td>Alla TK</td>
-      <td>RIVTA-tidsstämplar använder formatet <code class="language-plaintext highlighter-rouge">YYYYMMDDhhmmss</code> (utan tidzon). FHIR kräver ISO 8601 med tidzon.</td>
-      <td>Öppen</td>
-      <td>Konvertera till ISO 8601. Antag tidzon Europe/Stockholm (CET/CEST). Implementera i EHDS-bryggan.</td>
-    </tr>
   </tbody>
 </table>
 
@@ -676,6 +669,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
+      <td>GENERAL-001</td>
+      <td>Alla TK</td>
+      <td>RIVTA-tidsstämplar (<code class="language-plaintext highlighter-rouge">YYYYMMDDhhmmss</code>, utan tidszon) tolkas som lokal tid i <code class="language-plaintext highlighter-rouge">Europe/Stockholm</code> med hänsyn till sommartid. <code class="language-plaintext highlighter-rouge">dateTime</code> får explicit offset (<code class="language-plaintext highlighter-rouge">+01:00</code>/<code class="language-plaintext highlighter-rouge">+02:00</code>). <code class="language-plaintext highlighter-rouge">instant</code>-fält (t.ex. <code class="language-plaintext highlighter-rouge">Provenance.recorded</code>, <code class="language-plaintext highlighter-rouge">DocumentReference.date</code>) anger samma tidpunkt, helst med samma offset-form; <code class="language-plaintext highlighter-rouge">Z</code> endast efter korrekt konvertering. Se <a href="mappings.html#tidszon">Tidsstämplar och tidszon</a>.</td>
+      <td><code class="language-plaintext highlighter-rouge">dateTime</code> med klockslag utan tidszon är ogiltigt i FHIR. Att blint lägga till <code class="language-plaintext highlighter-rouge">Z</code> på lokal tid ger 1–2 timmars fel. Samma offset-form för <code class="language-plaintext highlighter-rouge">dateTime</code> och <code class="language-plaintext highlighter-rouge">instant</code> gör data konsekvent.</td>
+    </tr>
+    <tr>
       <td>GENERAL-002</td>
       <td>Alla TK</td>
       <td>OID-till-URI-mappning för <code class="language-plaintext highlighter-rouge">patientId.root</code>: fasta mappningar <code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.3.1</code> → personnummer URI, <code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.3.3</code> → samordningsnummer URI, <code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code> → <code class="language-plaintext highlighter-rouge">urn:oid</code> passthrough. Okänt OID behålls som <code class="language-plaintext highlighter-rouge">urn:oid</code>.</td>
@@ -692,6 +691,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>GetAlertInformation</td>
       <td>Flag vs AllergyIntolerance: Flag skapas alltid. AllergyIntolerance skapas dessutom om <code class="language-plaintext highlighter-rouge">hypersensitivity</code>-blocket anges. <code class="language-plaintext highlighter-rouge">Flag.extension[allergyReference]</code> pekar på AllergyIntolerance.</td>
       <td>Flag täcker alla typer av uppmärksamhetsinformation. AllergyIntolerance skapas kompletterande för allergier för EHDS EPS-kompatibilitet.</td>
+    </tr>
+    <tr>
+      <td>GENERAL-005</td>
+      <td>Alla TK</td>
+      <td><code class="language-plaintext highlighter-rouge">meta.source</code> = källsystemets Endpoint i tjänstekatalogen: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code>. Se <a href="mappings.html#meta-source">meta.source</a>.</td>
+      <td>Det tidigare formatet <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1#{hsaId}</code> är inte en giltig OID-URN i FHIR och avvisas vid validering.</td>
+    </tr>
+    <tr>
+      <td>GENERAL-006</td>
+      <td>Alla TK</td>
+      <td>Patienten anges som logisk referens via <code class="language-plaintext highlighter-rouge">identifier</code> (personnummer/samordningsnummer) i alla profiler, konsekvent för t.ex. <code class="language-plaintext highlighter-rouge">Condition.subject</code> och <code class="language-plaintext highlighter-rouge">DocumentReference.subject</code>. Medvetet avsteg från IPS krav på <code class="language-plaintext highlighter-rouge">subject.reference</code>. Se <a href="mappings.html#patientreferens">Patientreferens</a>.</td>
+      <td>RIVTA-svaren innehåller ingen Patient-resurs och bryggan skapar ingen. Avsteget dokumenteras i stället för att en Patient-resurs fabriceras.</td>
     </tr>
     <tr>
       <td>ALERT-003</td>
@@ -817,7 +828,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

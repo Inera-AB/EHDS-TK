@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSTK |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSTK |
 
 # Introduktion
 
@@ -112,7 +112,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "name" : "IneraEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -143,16 +143,6 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     "version" : "7.4.0"
   },
   {
-    "id" : "hl7ext",
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
-    }],
-    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
-    "packageId" : "hl7.fhir.uv.extensions.r4",
-    "version" : "5.3.0"
-  },
-  {
     "id" : "hl7_fhir_uv_ips",
     "uri" : "http://hl7.org/fhir/uv/ips/ImplementationGuide/hl7.fhir.uv.ips",
     "packageId" : "hl7.fhir.uv.ips",
@@ -162,7 +152,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     "id" : "hl7_fhir_eu_eps",
     "uri" : "http://hl7.eu/fhir/eps/ImplementationGuide/hl7.fhir.eu.eps",
     "packageId" : "hl7.fhir.eu.eps",
-    "version" : "current"
+    "version" : "1.0.0-ballot"
+  },
+  {
+    "id" : "hl7_fhir_uv_extensions_r4",
+    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+    "packageId" : "hl7.fhir.uv.extensions.r4",
+    "version" : "5.3.0"
   },
   {
     "id" : "ihe_iti_balp",
@@ -884,22 +880,6 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "CodeSystem-diagnosistype-cs.html"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/diagnosistype-cs"
-      },
-      "name" : "DiagnosisType",
-      "description" : "Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
       },
       {
@@ -910,7 +890,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
         "reference" : "ValueSet/diagnosistype-vs"
       },
       "name" : "DiagnosisType — ValueSet",
-      "description" : "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis.",
+      "description" : "Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp.",
       "exampleBoolean" : false
     },
     {
@@ -1407,6 +1387,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "KV Anteckningstyp — ValueSet",
       "description" : "Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation enligt KV Anteckningstyp (OID: 1.2.752.129.2.2.2.11).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CodeSystem-diagnosistype-cs.html"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/diagnosistype-cs"
+      },
+      "name" : "KV Diagnostyp (fragment)",
+      "description" : "Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n.",
       "exampleBoolean" : false
     },
     {

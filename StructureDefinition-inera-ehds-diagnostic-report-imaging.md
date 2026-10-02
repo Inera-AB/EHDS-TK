@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-imaging | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSDiagnosticReportImaging |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSDiagnosticReportImaging |
 
  
 Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med IneraEHDSImagingStudy för att representera både undersökning och svar. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-diagnosti
   "name" : "IneraEHDSDiagnosticReportImaging",
   "title" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -92,7 +92,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-diagnosti
     {
       "id" : "DiagnosticReport.meta.source",
       "path" : "DiagnosticReport.meta.source",
-      "short" : "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId)",
+      "short" : "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
       "mustSupport" : true
     },
     {

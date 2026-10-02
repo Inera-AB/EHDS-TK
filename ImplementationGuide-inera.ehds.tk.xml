@@ -11,7 +11,7 @@
   <name value="IneraEHDSTK"/>
   <title value="Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-10-01T18:35:17+00:00"/>
+  <date value="2026-10-02T11:47:48+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -39,14 +39,6 @@
     <packageId value="hl7.terminology.r4"/>
     <version value="7.4.0"/>
   </dependsOn>
-  <dependsOn id="hl7ext">
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
-      <valueMarkdown value="Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"/>
-    </extension>
-    <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
-    <packageId value="hl7.fhir.uv.extensions.r4"/>
-    <version value="5.3.0"/>
-  </dependsOn>
   <dependsOn id="hl7_fhir_uv_ips">
     <uri value="http://hl7.org/fhir/uv/ips/ImplementationGuide/hl7.fhir.uv.ips"/>
     <packageId value="hl7.fhir.uv.ips"/>
@@ -55,7 +47,12 @@
   <dependsOn id="hl7_fhir_eu_eps">
     <uri value="http://hl7.eu/fhir/eps/ImplementationGuide/hl7.fhir.eu.eps"/>
     <packageId value="hl7.fhir.eu.eps"/>
-    <version value="current"/>
+    <version value="1.0.0-ballot"/>
+  </dependsOn>
+  <dependsOn id="hl7_fhir_uv_extensions_r4">
+    <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
+    <packageId value="hl7.fhir.uv.extensions.r4"/>
+    <version value="5.3.0"/>
   </dependsOn>
   <dependsOn id="ihe_iti_balp">
     <uri value="https://profiles.ihe.net/ITI/BALP/ImplementationGuide/ihe.iti.balp"/>
@@ -577,24 +574,13 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CodeSystem"/>
-      </extension>
-      <reference>
-        <reference value="CodeSystem/diagnosistype-cs"/>
-      </reference>
-      <name value="DiagnosisType"/>
-      <description value="Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="ValueSet"/>
       </extension>
       <reference>
         <reference value="ValueSet/diagnosistype-vs"/>
       </reference>
       <name value="DiagnosisType — ValueSet"/>
-      <description value="Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis."/>
+      <description value="Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -936,6 +922,17 @@
       </reference>
       <name value="KV Anteckningstyp — ValueSet"/>
       <description value="Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation enligt KV Anteckningstyp (OID: 1.2.752.129.2.2.2.11)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/diagnosistype-cs"/>
+      </reference>
+      <name value="KV Diagnostyp (fragment)"/>
+      <description value="Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

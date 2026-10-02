@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-base | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSObservationBase |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSObservationBase |
 
  
 Basprofil för alla observationer från GetObservations (clinicalprocess:healthcond:basic v2.0). 
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-observati
   "name" : "IneraEHDSObservationBase",
   "title" : "SE EHDS Observation Base – GetObservations",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -111,7 +111,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-observati
     {
       "id" : "Observation.meta.source",
       "path" : "Observation.meta.source",
-      "short" : "Källsystem (header) – HSA-id för det system som tillgängliggör informationen",
+      "short" : "Källsystem (header) – HSA-id för det system som tillgängliggör informationen – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
       "mustSupport" : true
     },
     {

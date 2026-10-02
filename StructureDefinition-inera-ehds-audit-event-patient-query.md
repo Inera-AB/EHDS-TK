@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-query | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSAuditEventPatientQuery |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSAuditEventPatientQuery |
 
  
 Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en sökning på en patients uppgifter och lämnar ut träfflistan, t.ex. MHD ITI-67 Find Document References eller QEDm PCC-44. Loggposterna behövs för att patienten ska kunna få veta vem som har tagit del av patientens uppgifter. 
@@ -47,7 +47,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-audit-eve
   "name" : "IneraEHDSAuditEventPatientQuery",
   "title" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

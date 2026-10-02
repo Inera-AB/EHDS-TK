@@ -83,7 +83,7 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett `matern
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `maternityMedicalRecordHeader.documentId` | 1..1 | `Observation.identifier[0].value` | Unikt dokument-id; suffix`#{sektionskod}`läggs till för att skilja de tre Observation-resurserna |
-| `maternityMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `Observation.meta.source` | Format:`urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `maternityMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `Observation.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `maternityMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Dokumenttitel finns inte som strukturerat fält i Observation; kan eventuellt läggas i`Observation.note[0].text`men anses ej kliniskt relevant för FHIR-konsumtion (se MAT-002) |
 | `maternityMedicalRecordHeader.documentTime` | 1..1 | `Observation.issued` | Dokumentets registreringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. OBS:`authorTime`(se nedan) används för`effectiveDateTime` |
 | `maternityMedicalRecordHeader.patientId.value` | 1..1 | `Observation.subject.identifier.value` | Personnummer eller samordningsnummer |

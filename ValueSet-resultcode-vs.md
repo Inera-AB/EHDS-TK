@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/resultcode-vs | *Version*:0.3.3 |
-| Active as of 2026-10-01 | *Computable Name*:ResultCodeVS |
+| Active as of 2026-10-02 | *Computable Name*:ResultCodeVS |
 
  
 Tillåtna värden för resultCode i svar. 
@@ -51,7 +51,7 @@ Tillåtna värden för resultCode i svar.
   "name" : "ResultCodeVS",
   "title" : "ResultCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

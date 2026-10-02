@@ -269,13 +269,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.sourceSystemHSAId</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.meta.source</code></td>
-      <td>Format: <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1#{hsaId}</code></td>
+      <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.extension</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.subject.identifier.value</code></td>
-      <td>Personnummer eller samordningsnummer</td>
+      <td>Personnummer eller samordningsnummer; logisk referens, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.root</code></td>
@@ -632,6 +632,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h2 id="diagnosistype--kv_diagnostyp">diagnosisType – kv_diagnostyp</h2>
 
+<p>Slicen <code class="language-plaintext highlighter-rouge">category[diagnostyp]</code> låser <code class="language-plaintext highlighter-rouge">coding.system</code> till kv_diagnostyp och har en obligatorisk (required) bindning till <a href="ValueSet-diagnosistype-vs.html">DiagnosisTypeVS</a>. Kodsystemet finns i IG-paketet som fragmentet <a href="CodeSystem-diagnosistype-cs.html">DiagnosisTypeCS</a> med koderna <code class="language-plaintext highlighter-rouge">HD</code> och <code class="language-plaintext highlighter-rouge">BY</code>.</p>
+
 <p><code class="language-plaintext highlighter-rouge">Condition.category[diagnostyp]</code> innehåller en kod från Ineras kodverk <code class="language-plaintext highlighter-rouge">kv_diagnostyp</code>:</p>
 
 <table>
@@ -750,7 +752,7 @@ ska använda.</p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Condition"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.752.129.2.1.4.1#SE2321000016-4HK5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"http://hl7.eu/fhir/eps/StructureDefinition/condition-obl-eu-eps"</span><span class="w">
@@ -792,7 +794,7 @@ ska använda.</p>
     </tr>
     <tr>
       <td>GENERAL-001</td>
-      <td><strong>Tidsstämpelformat.</strong> RIVTA använder <code class="language-plaintext highlighter-rouge">YYYYMMDDhhmmss</code> utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta <code class="language-plaintext highlighter-rouge">Europe/Stockholm</code> (CET/CEST). Gäller alla tidsfält i alla tjänstekontrakt.</td>
+      <td><strong>Beslutat – tidszon.</strong> RIVTA-tidsstämplar tolkas som lokal tid i <code class="language-plaintext highlighter-rouge">Europe/Stockholm</code> (sommartid beaktas). <code class="language-plaintext highlighter-rouge">dateTime</code> får explicit offset (<code class="language-plaintext highlighter-rouge">+01:00</code>/<code class="language-plaintext highlighter-rouge">+02:00</code>); <code class="language-plaintext highlighter-rouge">instant</code> anger samma tidpunkt, helst med samma offset-form. Se <a href="mappings.html#tidszon">Tidsstämplar och tidszon</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -842,7 +844,7 @@ ska använda.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

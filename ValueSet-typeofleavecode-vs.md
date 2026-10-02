@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofleavecode-vs | *Version*:0.3.3 |
-| Active as of 2026-10-01 | *Computable Name*:TypeOfLeaveCodeVS |
+| Active as of 2026-10-02 | *Computable Name*:TypeOfLeaveCodeVS |
 
  
 Tillåtna värden för typ av ledighet i GetMaternityMedicalHistory. 
@@ -50,7 +50,7 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "name" : "TypeOfLeaveCodeVS",
   "title" : "TypeOfLeaveCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

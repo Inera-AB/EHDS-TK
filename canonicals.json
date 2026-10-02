@@ -104,13 +104,6 @@
   "name" : "AssessmentCategoryCS"
 },
 {
-  "id" : "diagnosistype-cs",
-  "type" : "CodeSystem",
-  "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs",
-  "version" : "0.3.3",
-  "name" : "DiagnosisTypeCS"
-},
-{
   "id" : "maternity-section",
   "type" : "CodeSystem",
   "url" : "https://fhir.inera.se/ig/ehds-tk/CodeSystem/maternity-section",
@@ -683,6 +676,13 @@
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs",
   "version" : "0.3.3",
   "name" : "TypeOfResultCodeVS"
+},
+{
+  "id" : "diagnosistype-cs",
+  "type" : "CodeSystem",
+  "url" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
+  "version" : "0.3.3",
+  "name" : "DiagnosisTypeCS"
 },
 {
   "id" : "clinicaldocumentnotecode-cs",

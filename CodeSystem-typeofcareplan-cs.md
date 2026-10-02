@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/typeofcareplan-cs | *Version*:0.3.3 |
-| Active as of 2026-10-01 | *Computable Name*:TypeOfCarePlanCS |
+| Active as of 2026-10-02 | *Computable Name*:TypeOfCarePlanCS |
 
  
 Typ av vård- och omsorgsplan enligt clinicalprocess:logistics:logistics v3.0. Definierad i clinicalprocess_logistics_logistics_enum_3.0.xsd. 
@@ -31,7 +31,7 @@ Typ av vård- och omsorgsplan enligt clinicalprocess:logistics:logistics v3.0. D
   "name" : "TypeOfCarePlanCS",
   "title" : "TypeOfCarePlan",
   "status" : "active",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

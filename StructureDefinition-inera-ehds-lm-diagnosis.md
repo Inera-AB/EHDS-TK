@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-diagnosis | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSLMDiagnosis |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSLMDiagnosis |
 
  
 Logisk modell för tjänstekontraktet GetDiagnosis (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetDiagnosisResponder:2). Representerar responsens informationsstruktur: registrerade diagnoser för en patient inklusive diagnoskod per ursprungligt diagnosticeringstillfälle. 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-diagno
   "name" : "IneraEHDSLMDiagnosis",
   "title" : "GetDiagnosis",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -343,7 +343,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-lm-diagno
       "id" : "inera-ehds-lm-diagnosis.diagnosis.diagnosisBody.typeOfDiagnosis",
       "path" : "inera-ehds-lm-diagnosis.diagnosis.diagnosisBody.typeOfDiagnosis",
       "short" : "Typ av diagnos",
-      "definition" : "Anges som \"Huvuddiagnos\" eller \"Bidiagnos\". Se DiagnosisTypeCS/DiagnosisTypeVS.\nKardinalitet: Obligatorisk.",
+      "definition" : "Anges som HD (huvuddiagnos) eller BY (bidiagnos) från kv_diagnostyp. Se DiagnosisTypeCS/DiagnosisTypeVS.\nKardinalitet: Obligatorisk.",
       "min" : 1,
       "max" : "1",
       "type" : [{

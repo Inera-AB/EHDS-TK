@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:urn:oid:1.2.752.129.2.2.2.11 | *Version*:0.3.3 |
-| Active as of 2026-10-01 | *Computable Name*:ClinicalDocumentNoteCodeCS |
+| Active as of 2026-10-02 | *Computable Name*:ClinicalDocumentNoteCodeCS |
 
  
 Kodverk för typ av journalanteckning enligt KV Anteckningstyp. OID: 1.2.752.129.2.2.2.11. 
@@ -31,7 +31,7 @@ Kodverk för typ av journalanteckning enligt KV Anteckningstyp. OID: 1.2.752.129
   "name" : "ClinicalDocumentNoteCodeCS",
   "title" : "KV Anteckningstyp",
   "status" : "active",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

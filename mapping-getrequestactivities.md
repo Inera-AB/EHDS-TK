@@ -21,7 +21,7 @@
 | :--- | :--- | :--- | :--- |
 | `requestHeader.patientId.extension` | 1..1 | `Task.for.identifier.value` | Personnummer eller samordningsnummer |
 | `requestHeader.patientId.root` | 1..1 | `Task.for.identifier.system` | OID→URI-konvertering; se OID-tabell nedan |
-| `requestHeader.sourceSystemHSAId` | 1..1 | `Task.meta.source` | Format:`urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `requestHeader.sourceSystemHSAId` | 1..1 | `Task.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `requestHeader.documentTime` | 1..1 | `Task.authoredOn` | YYYYMMDDHHMMSS → ISO 8601 |
 | `requestHeader.careProviderHSAId` | 1..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
 | `requestHeader.careUnitHSAId` | 1..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |

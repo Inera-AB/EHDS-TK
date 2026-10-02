@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:ConditionChronicDiagnosis |
+| Draft as of 2026-10-02 | *Computable Name*:ConditionChronicDiagnosis |
 
 Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-condition-chronic-di
   "name" : "ConditionChronicDiagnosis",
   "title" : "Kronisk diagnos",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

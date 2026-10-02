@@ -126,7 +126,7 @@ These define sets of codes used by systems conforming to this implementation gui
 | :--- | :--- |
 | [AssessmentCategory — ValueSet](ValueSet-assessmentcategory-vs.md) | Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus. |
 | [DeliveryCode — ValueSet](ValueSet-deliverycode-vs.md) | Tillåtna värden för förlossningssätt i GetMaternityMedicalHistory. |
-| [DiagnosisType — ValueSet](ValueSet-diagnosistype-vs.md) | Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis. |
+| [DiagnosisType — ValueSet](ValueSet-diagnosistype-vs.md) | Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp. |
 | [ErrorCode — ValueSet](ValueSet-errorcode-vs.md) | Tillåtna värden för errorCode i svar. |
 | [ExaminationStatusCode — ValueSet](ValueSet-examinationstatuscode-vs.md) | Tillåtna värden för examinationStatus i GetImagingOutcome. |
 | [FetalPositionCode — ValueSet](ValueSet-fetalpositioncode-vs.md) | Tillåtna värden för fosterläge i GetMaternityMedicalHistory. |
@@ -192,11 +192,11 @@ These define new code systems used by systems conforming to this implementation 
 | :--- | :--- |
 | [AssessmentCategory](CodeSystem-assessmentcategory-cs.md) | Bedömningskategori för funktionsstatus. Tillåtna värden är 'pad-pad' (PADL-bedömning) och 'fun-fun' (funktionsnedsättningsbedömning). Definierat i enum XSD v2.1 för domänen. |
 | [DeliveryCode](CodeSystem-deliverycode-cs.md) | Kodverk för förlossningssätt (DeliveryCodeEnum). Används i GetMaternityMedicalHistory. |
-| [DiagnosisType](CodeSystem-diagnosistype-cs.md) | Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen. |
 | [ErrorCode](CodeSystem-errorcode-cs.md) | Kodverk för felkoder i svar från tjänstekontrakten i domänen clinicalprocess:activityprescription:actoutcome. |
 | [ExaminationStatusCode](CodeSystem-examinationstatuscode-cs.md) | Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetImagingOutcome. |
 | [FetalPositionCode](CodeSystem-fetalpositioncode-cs.md) | Kodverk för fosterläge (FetalPositionCodeEnum). Används i GetMaternityMedicalHistory. |
 | [KV Anteckningstyp](CodeSystem-clinicaldocumentnotecode-cs.md) | Kodverk för typ av journalanteckning enligt KV Anteckningstyp. OID: 1.2.752.129.2.2.2.11. |
+| [KV Diagnostyp (fragment)](CodeSystem-diagnosistype-cs.md) | Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n. |
 | [MaternityMedicalSection](CodeSystem-maternity-section.md) | Diskriminatorkoder för de tre sektionerna i mödravårdsjournalen (GetMaternityMedicalHistory v2.0). Varje Observation-resurs som skapas ur ett maternityMedicalRecord sätter Observation.code till en av dessa koder. |
 | [NonReplaceable](CodeSystem-nonreplaceable-cs.md) | Kodverk för aktör som har angett att ett läkemedel inte är utbytbart i GetMedicationHistory (DispensationAuthorizationType). |
 | [PrescriptionStatus](CodeSystem-prescriptionstatus-cs.md) | Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination är aktiv eller inaktiv. |

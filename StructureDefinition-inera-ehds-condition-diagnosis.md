@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSConditionDiagnosis |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSConditionDiagnosis |
 
  
 Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
   "name" : "IneraEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -102,7 +102,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
     {
       "id" : "Condition.meta.source",
       "path" : "Condition.meta.source",
-      "short" : "Källsystem HSA-id (diagnosisHeader.sourceSystemHSAId) – urn:oid:1.2.752.129.2.1.4.1#{hsaId}",
+      "short" : "Källsystem HSA-id (diagnosisHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
       "mustSupport" : true
     },
     {
@@ -189,10 +189,14 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-condition
       "id" : "Condition.category:diagnostyp",
       "path" : "Condition.category",
       "sliceName" : "diagnostyp",
-      "short" : "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos)",
+      "short" : "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos) från kv_diagnostyp",
       "min" : 1,
       "max" : "1",
-      "mustSupport" : true
+      "mustSupport" : true,
+      "binding" : {
+        "strength" : "required",
+        "valueSet" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/diagnosistype-vs"
+      }
     },
     {
       "id" : "Condition.category:diagnostyp.coding",

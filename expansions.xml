@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="0e5bc68e-bb33-41c9-bde9-d646e7befbc5"/>
+  <id value="ff331fd8-e393-407d-9e9b-5d46edd5b7ea"/>
   <meta>
-    <lastUpdated value="2026-10-01T18:35:17.987+00:00"/>
+    <lastUpdated value="2026-10-02T11:47:48.420+00:00"/>
   </meta>
   <type value="collection"/>
   <entry>
@@ -92,7 +92,7 @@
         <name value="AssessmentCategoryVS"/>
         <title value="AssessmentCategory — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -101,8 +101,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:a0e26414-8b85-49cd-8979-68fe36ddbe9f"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:46c17cad-88b3-4dee-86ca-ceacfbde326a"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="2"/>
           <offset value="0"/>
           <parameter>
@@ -370,7 +370,7 @@
         <name value="ClinicalDocumentNoteCodeVS"/>
         <title value="KV Anteckningstyp — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -379,8 +379,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:4a573f3e-2591-45e7-a664-da17df8a58dc"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:1b07f632-056c-4806-9187-3e63efa98772"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="9"/>
           <offset value="0"/>
           <parameter>
@@ -592,7 +592,7 @@
         <name value="DeliveryCodeVS"/>
         <title value="DeliveryCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -601,8 +601,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:b3da0d2a-04a9-40ec-a6b3-a4bd686e60d0"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:1140c5ec-362b-413d-b706-5ddd1ef87f91"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="5"/>
           <offset value="0"/>
           <parameter>
@@ -658,9 +658,9 @@
           <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
             <p class="res-header-id"/>
             <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion utförd internt baserad på 
-              <a href="CodeSystem-diagnosistype-cs.html">codesystem DiagnosisType v0.3.3 (CodeSystem)</a>
+              <a href="CodeSystem-diagnosistype-cs.html">codesystem KV Diagnostyp (fragment) v0.3.3 (CodeSystem)</a>
               <span class="copy-text-inline">
-                <button data-clipboard-text="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs|0.3.3" title="Klicka för att kopiera URL" class="btn-copy"> </button>
+                <button data-clipboard-text="https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp|0.3.3" title="Klicka för att kopiera URL" class="btn-copy"> </button>
               </span>
             </p>
             <p>Denna värdemängd innehåller 2 begrepp</p>
@@ -687,43 +687,43 @@
               </tr>
               <tr>
                 <td>
-                  <a name="x-https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs-Huvuddiagnos"> </a>
-                  <code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs</code>
+                  <a name="x-https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp-HD"> </a>
+                  <code>https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp</code>
                 </td>
                 <td style="white-space:nowrap">  
-                  <a href="CodeSystem-diagnosistype-cs.html#diagnosistype-cs-Huvuddiagnos">Huvuddiagnos</a>
+                  <a href="CodeSystem-diagnosistype-cs.html#diagnosistype-cs-HD">HD</a>
                 </td>
                 <td/>
                 <td>Huvuddiagnos</td>
                 <td>
                   <span class="copy-text-inline">
-                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs&quot;, &quot;version&quot;: &quot;0.3.3&quot;, &quot;code&quot;: &quot;Huvuddiagnos&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp&quot;, &quot;version&quot;: &quot;0.3.3&quot;, &quot;code&quot;: &quot;HD&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
                   </span>
                 </td>
                 <td>
                   <span class="copy-text-inline">
-                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs&quot;&gt;&lt;version value=&quot;0.3.3&quot;&gt;&lt;code value=&quot;Huvuddiagnos&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp&quot;&gt;&lt;version value=&quot;0.3.3&quot;&gt;&lt;code value=&quot;HD&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
                   </span>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <a name="x-https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs-Bidiagnos"> </a>
-                  <code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs</code>
+                  <a name="x-https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp-BY"> </a>
+                  <code>https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp</code>
                 </td>
                 <td style="white-space:nowrap">  
-                  <a href="CodeSystem-diagnosistype-cs.html#diagnosistype-cs-Bidiagnos">Bidiagnos</a>
+                  <a href="CodeSystem-diagnosistype-cs.html#diagnosistype-cs-BY">BY</a>
                 </td>
                 <td/>
                 <td>Bidiagnos</td>
                 <td>
                   <span class="copy-text-inline">
-                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs&quot;, &quot;version&quot;: &quot;0.3.3&quot;, &quot;code&quot;: &quot;Bidiagnos&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp&quot;, &quot;version&quot;: &quot;0.3.3&quot;, &quot;code&quot;: &quot;BY&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
                   </span>
                 </td>
                 <td>
                   <span class="copy-text-inline">
-                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs&quot;&gt;&lt;version value=&quot;0.3.3&quot;&gt;&lt;code value=&quot;Bidiagnos&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp&quot;&gt;&lt;version value=&quot;0.3.3&quot;&gt;&lt;code value=&quot;BY&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
                   </span>
                 </td>
               </tr>
@@ -735,7 +735,7 @@
         <name value="DiagnosisTypeVS"/>
         <title value="DiagnosisType — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -744,8 +744,14 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:48ff41ce-9a67-440a-a000-127139bec7c5"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed">
+            <valueBoolean value="true"/>
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/valueset-unclosed-reason">
+            <valueString value="This extension is based on a fragment of the code system https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"/>
+          </extension>
+          <identifier value="urn:uuid:22eb2c94-596d-486e-8932-993778bfbe41"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="2"/>
           <offset value="0"/>
           <parameter>
@@ -766,15 +772,19 @@
           </parameter>
           <parameter>
             <name value="used-codesystem"/>
-            <valueUri value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs|0.3.3"/>
+            <valueUri value="https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp|0.3.3"/>
+          </parameter>
+          <parameter>
+            <name value="used-fragment"/>
+            <valueUri value="https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp|0.3.3"/>
           </parameter>
           <contains>
-            <system value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs"/>
-            <code value="Huvuddiagnos"/>
+            <system value="https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"/>
+            <code value="HD"/>
           </contains>
           <contains>
-            <system value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs"/>
-            <code value="Bidiagnos"/>
+            <system value="https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"/>
+            <code value="BY"/>
           </contains>
         </expansion>
       </ValueSet>
@@ -845,7 +855,7 @@
         <name value="ErrorCodeVS"/>
         <title value="ErrorCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -854,8 +864,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:d097dd5a-46d3-41d4-8992-e3bbf30e5f31"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:e640bd41-3d2a-4a49-ade4-0d6e7d28afd2"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="1"/>
           <offset value="0"/>
           <parameter>
@@ -1161,7 +1171,7 @@
         <name value="ExaminationStatusCodeVS"/>
         <title value="ExaminationStatusCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -1170,8 +1180,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:eb40d962-fad9-433e-a7bf-cf096549ab39"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:123c42a0-d40e-4808-a5e9-1fe2a44047d5"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="11"/>
           <offset value="0"/>
           <parameter>
@@ -1370,7 +1380,7 @@
         <name value="FetalPositionCodeVS"/>
         <title value="FetalPositionCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -1379,8 +1389,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:61a61d85-ad78-490c-9618-932398449481"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:df34965d-ac74-4c0e-8cf7-dc4f85d81b6b"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="4"/>
           <offset value="0"/>
           <parameter>
@@ -1603,7 +1613,7 @@
         <name value="GrowthObservationTypeVS"/>
         <title value="Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)"/>
         <status value="draft"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -1612,8 +1622,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:56147fa9-0ef5-43bd-a406-c4a943259764"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:f5c4bb3a-e239-4868-a735-e12d2642efda"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="6"/>
           <offset value="0"/>
           <parameter>
@@ -1767,7 +1777,7 @@
         <name value="PrescriptionStatusVS"/>
         <title value="PrescriptionStatus — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -1776,8 +1786,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:9ea2bf68-7533-4585-a7fa-1b1bde9bfc42"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:afed37f1-37d2-4eef-aac1-7c120690fa6d"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="2"/>
           <offset value="0"/>
           <parameter>
@@ -1898,7 +1908,7 @@
         <name value="ReferralOutcomeTypeCodeVS"/>
         <title value="ReferralOutcomeTypeCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -1907,8 +1917,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:4db0124c-1def-4f3f-99d1-780af5ae8a5e"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:0b9df578-c473-47ee-b447-35ece3ed19fd"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="2"/>
           <offset value="0"/>
           <parameter>
@@ -2050,7 +2060,7 @@
         <name value="ResultCodeVS"/>
         <title value="ResultCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -2059,8 +2069,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:30c7f601-8d34-4f03-a6a5-d88a96aa32e3"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:d085a920-0cf6-4b52-8b31-5c34ca57a14a"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="3"/>
           <offset value="0"/>
           <parameter>
@@ -2258,7 +2268,7 @@
         <title value="SE Observation Status (SNOMED CT urval 56431000052106)"/>
         <status value="active"/>
         <experimental value="false"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -2267,8 +2277,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:0f03fc21-2fa6-45d8-b947-f00501317c36"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:6386e5ae-90db-4ee4-8893-3d4e3799bca9"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="5"/>
           <offset value="0"/>
           <parameter>
@@ -2460,7 +2470,7 @@
         <name value="SexCodeVS"/>
         <title value="SexCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -2469,8 +2479,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:90db9d24-36c6-4e31-9dc6-df4d8c679131"/>
-          <timestamp value="2026-10-01T18:37:20+00:00"/>
+          <identifier value="urn:uuid:23f73976-a579-41da-9183-3a349ba83dc7"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="4"/>
           <offset value="0"/>
           <parameter>
@@ -2725,7 +2735,7 @@
         <name value="TypeOfCarePlanVS"/>
         <title value="TypeOfCarePlan — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -2734,8 +2744,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:5bf82ee8-aac2-4637-8431-c5ba9de1e01c"/>
-          <timestamp value="2026-10-01T18:37:21+00:00"/>
+          <identifier value="urn:uuid:76c5c746-46c6-48ef-be42-033605052f08"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="8"/>
           <offset value="0"/>
           <parameter>
@@ -2901,7 +2911,7 @@
         <name value="TypeOfLeaveCodeVS"/>
         <title value="TypeOfLeaveCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -2910,8 +2920,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:f71fd960-8e79-4ee7-83c3-e2d3c8a996de"/>
-          <timestamp value="2026-10-01T18:37:21+00:00"/>
+          <identifier value="urn:uuid:33f291dc-5a10-4aae-8bde-952726b4d570"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="3"/>
           <offset value="0"/>
           <parameter>
@@ -3036,7 +3046,7 @@
         <name value="TypeOfPrescriptionVS"/>
         <title value="TypeOfPrescription — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -3045,8 +3055,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:bb46ec36-b5bc-4cb5-ab22-296a35095869"/>
-          <timestamp value="2026-10-01T18:37:21+00:00"/>
+          <identifier value="urn:uuid:303a3a0c-0a18-43d2-ab99-6e52290c3752"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="2"/>
           <offset value="0"/>
           <parameter>
@@ -3188,7 +3198,7 @@
         <name value="TypeOfResultCodeVS"/>
         <title value="TypeOfResultCode — ValueSet"/>
         <status value="active"/>
-        <date value="2026-10-01T18:35:17+00:00"/>
+        <date value="2026-10-02T11:47:48+00:00"/>
         <jurisdiction>
           <coding>
             <system value="urn:iso:std:iso:3166"/>
@@ -3197,8 +3207,8 @@
           </coding>
         </jurisdiction>
         <expansion>
-          <identifier value="urn:uuid:362cb25f-2db8-4b9f-b0fc-641bab01fa12"/>
-          <timestamp value="2026-10-01T18:37:21+00:00"/>
+          <identifier value="urn:uuid:726a4dda-313e-4a90-93c5-92f7f5c6ae6b"/>
+          <timestamp value="2026-10-02T11:49:29+00:00"/>
           <total value="3"/>
           <offset value="0"/>
           <parameter>

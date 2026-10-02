@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserted-date | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:AlertAssertedDate |
+| Draft as of 2026-10-02 | *Computable Name*:AlertAssertedDate |
 
 Tidpunkt för signering av uppmärksamhetsinformation (alertInformationHeader.legalAuthenticator.signatureTime).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-asserted-date.
   "name" : "AlertAssertedDate",
   "title" : "Signeringstidpunkt för uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

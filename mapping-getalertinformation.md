@@ -67,7 +67,7 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `acti
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `alertInformationHeader.documentId` | 1..1 | `Flag.identifier.value` | Källsystemets dokumentidentifierare |
-| `alertInformationHeader.sourceSystemHSAId` | 1..1 | `Flag.meta.source` | Format:`urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `alertInformationHeader.sourceSystemHSAId` | 1..1 | `Flag.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `alertInformationHeader.patientId.extension` | 1..1 | `Flag.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `alertInformationHeader.patientId.root` | 1..1 | `Flag.subject.identifier.system` | OID→URI, se tabell nedan |
 | `alertInformationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm); se[GENERAL-001](#öppna-frågor) |
@@ -138,7 +138,7 @@ AllergyIntolerance skapas enbart när body = hypersensitivity. Fält från heade
 | `alertInformationHeader.documentId` | 1..1 | `AllergyIntolerance.identifier.value` | Samma dokumentid som Flag |
 | `alertInformationHeader.patientId.extension` | 1..1 | `AllergyIntolerance.patient.identifier.value` | Personnummer eller samordningsnummer |
 | `alertInformationHeader.patientId.root` | 1..1 | `AllergyIntolerance.patient.identifier.system` | OID→URI, se tabell nedan |
-| `alertInformationHeader.sourceSystemHSAId` | 1..1 | `AllergyIntolerance.meta.source` | Format:`urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `alertInformationHeader.sourceSystemHSAId` | 1..1 | `AllergyIntolerance.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `alertInformationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `AllergyIntolerance.recordedDate` | YYYYMMDDHHMMSS → ISO 8601 |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `AllergyIntolerance.recorder`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `alertInformationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `AllergyIntolerance.asserter`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
@@ -281,5 +281,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ALERT-002 | **Okänt kodsystem för `typeOfAlertInformation`.**OID och URI för kodsystemet är inte dokumenterat i TKB:n. Avgör vilka koder som styr om AllergyIntolerance skapas och hur de mappas till`AllergyIntolerance.category`. |
 | ALERT-004 | **ConceptMap saknas: degreeOfCertainty/degreeOfSeverity → FHIR.**`hypersensitivity.degreeOfCertainty`(KV Visshetsgrad 1.2.752.129.2.2.3.11) behöver ConceptMap till`AllergyIntolerance.verificationStatus`.`hypersensitivity.degreeOfSeverity`(KV Allvarlighetsgrad 1.2.752.129.2.2.3.3) behöver ConceptMap till`AllergyIntolerance.reaction.severity`. Sätt temporärt`confirmed`tills ConceptMap finns. |
 | PDL-001 | **`approvedForPatient` (boolean) saknar FHIR-motsvarighet.**`meta.security`i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er. |
-| GENERAL-001 | **Tidsstämpelformat.**RIVTA använder`YYYYMMDDhhmmss`utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta`Europe/Stockholm`(CET/CEST). Gäller alla tidsfält i alla tjänstekontrakt. |
+| GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 

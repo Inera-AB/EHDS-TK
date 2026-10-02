@@ -340,7 +340,7 @@ PADL-typ krävs.</p>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.sourceSystemHSAId</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.meta.source</code></td>
-      <td>Format: <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1#{hsaId}</code></td>
+      <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.documentTime</code></td>
@@ -734,7 +734,7 @@ PADL-typ krävs.</p>
     </tr>
     <tr>
       <td>GENERAL-001</td>
-      <td><strong>Öppen:</strong> Tidsstämpelformat. RIVTA använder <code class="language-plaintext highlighter-rouge">YYYYMMDDhhmmss</code> utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta <code class="language-plaintext highlighter-rouge">Europe/Stockholm</code> (CET/CEST). Gäller alla tidsfält i alla tjänstekontrakt.</td>
+      <td><strong>Beslutat – tidszon.</strong> RIVTA-tidsstämplar tolkas som lokal tid i <code class="language-plaintext highlighter-rouge">Europe/Stockholm</code> (sommartid beaktas). <code class="language-plaintext highlighter-rouge">dateTime</code> får explicit offset (<code class="language-plaintext highlighter-rouge">+01:00</code>/<code class="language-plaintext highlighter-rouge">+02:00</code>); <code class="language-plaintext highlighter-rouge">instant</code> anger samma tidpunkt, helst med samma offset-form. Se <a href="mappings.html#tidszon">Tidsstämplar och tidszon</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -779,7 +779,7 @@ PADL-typ krävs.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

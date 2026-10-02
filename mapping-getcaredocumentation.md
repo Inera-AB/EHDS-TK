@@ -43,7 +43,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `careDocumentation.header.accessControlHeader.patientId.extension` | 1..1 | `DocumentReference.subject.identifier.value` | Personnummer eller samordningsnummer |
+| `careDocumentation.header.accessControlHeader.patientId.extension` | 1..1 | `DocumentReference.subject.identifier.value` | Personnummer eller samordningsnummer; logisk referens, se[GENERAL-006](mappings.md#patientreferens) |
 | `careDocumentation.header.accessControlHeader.patientId.root` | 1..1 | `DocumentReference.subject.identifier.system` | OID→URI, se tabell nedan |
 | `careDocumentation.header.accessControlHeader.accountableHealthcareProvider` | 0..1 | `Provenance.agent[custodian].who.identifier` | **Yttre Sparr**– vårdgivarens HSA-id (direkt i accessControlHeader, inte under author-blocket) |
 | `careDocumentation.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr**– vårdenhetens HSA-id (direkt i accessControlHeader) |
@@ -55,7 +55,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `careDocumentation.header.sourceSystemId` | 1..1 | `DocumentReference.meta.source` | Format:`urn:oid:1.2.752.129.2.1.4.1#{hsaId}`(root = HSA-id för källsystemet) |
+| `careDocumentation.header.sourceSystemId` | 1..1 | `DocumentReference.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}`(root = HSA-id för källsystemet) |
 | `careDocumentation.header.record.recordId` | 1..1 | `DocumentReference.masterIdentifier` | Källsystemets primärnyckel; unik och beständig identifierare |
 | `careDocumentation.header.record.timestamp` | 1..1 | `DocumentReference.date`; även`Provenance.recorded`om`author.timestamp`saknas | Tidpunkt då journalposten skapades; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor). Fallback för`Provenance.recorded`, se[DOC-002](#beslutade-issues) |
 
@@ -238,7 +238,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | | |
 | :--- | :--- |
 | PDL-001 | **`approvedForPatient` (boolean) saknar standardiserat FHIR-kodsystem.**Fältet finns i`accessControlHeader`men`meta.security`i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut; se central issue i[mapping-issues](mapping-issues.md). |
-| GENERAL-001 | **Tidsstämpelformat.**RIVTA använder`YYYYMMDDhhmmss`utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta`Europe/Stockholm`(CET/CEST). Gäller alla tidsfält. |
+| GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
 ## Beslutade issues
 

@@ -198,7 +198,7 @@ Kräver att servern implementerar den anpassade sökparametern och att Provenanc
 
 **Strategi 2 – HSA-trädklättring**
 
-HSA-katalogen är hierarkisk: en vårdgivare (`careGiverId`) kan ha ett eller flera hundra HSA-id:n på underordnade enheter. Idén är att bryggan, innan sökningen, slår upp alla HSA-id:n under given vårdgivare i HSA och sedan filtrerar på enhetsnivå via `_source` — det vill säga `meta.source`-URI:erna för de ingående systemen (format `urn:oid:1.2.752.129.2.1.4.1#{hsaId}`). Fördelen är att inga anpassade FHIR-parametrar behövs utöver standard `_source`; nackdelen är ett externt beroende på HSA-tjänsten och potentiellt ett stort antal enhets-HSA-id:n att söka på.
+HSA-katalogen är hierarkisk: en vårdgivare (`careGiverId`) kan ha ett eller flera hundra HSA-id:n på underordnade enheter. Idén är att bryggan, innan sökningen, slår upp alla HSA-id:n under given vårdgivare i HSA och sedan filtrerar på enhetsnivå via `_source` — det vill säga `meta.source`-URI:erna för de ingående systemen (format `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}`). Fördelen är att inga anpassade FHIR-parametrar behövs utöver standard `_source`; nackdelen är ett externt beroende på HSA-tjänsten och potentiellt ett stort antal enhets-HSA-id:n att söka på.
 
 ```
 # Pseudokod

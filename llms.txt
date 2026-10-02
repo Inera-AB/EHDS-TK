@@ -38,7 +38,7 @@
 * [AssessmentCategory](CodeSystem-assessmentcategory-cs.md)
 * [KV Anteckningstyp](CodeSystem-clinicaldocumentnotecode-cs.md)
 * [DeliveryCode](CodeSystem-deliverycode-cs.md)
-* [DiagnosisType](CodeSystem-diagnosistype-cs.md)
+* [KV Diagnostyp (fragment)](CodeSystem-diagnosistype-cs.md)
 * [ErrorCode](CodeSystem-errorcode-cs.md)
 * [ExaminationStatusCode](CodeSystem-examinationstatuscode-cs.md)
 * [FetalPositionCode](CodeSystem-fetalpositioncode-cs.md)

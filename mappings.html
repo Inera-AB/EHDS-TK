@@ -215,6 +215,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#syfte" id="markdown-toc-syfte">Syfte</a></li>
       <li><a href="#översikt-per-tjänstekontrakt" id="markdown-toc-översikt-per-tjänstekontrakt">Översikt per tjänstekontrakt</a></li>
       <li><a href="#gemensamt-headermönster" id="markdown-toc-gemensamt-headermönster">Gemensamt headermönster</a></li>
+      <li><a href="#tidszon" id="markdown-toc-tidszon">Tidsstämplar och tidszon (GENERAL-001)</a></li>
+      <li><a href="#meta-source" id="markdown-toc-meta-source">meta.source – källsystem (GENERAL-005)</a></li>
+      <li><a href="#patientreferens" id="markdown-toc-patientreferens">Patientreferens – logisk referens (GENERAL-006)</a></li>
     </ul>
   </li>
 </ul>
@@ -355,12 +358,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td><code class="language-plaintext highlighter-rouge">patientId</code></td>
       <td><code class="language-plaintext highlighter-rouge">{Resurs}.subject.identifier</code></td>
-      <td>OID→URI-konvertering krävs</td>
+      <td>OID→URI-konvertering krävs; logisk referens, se <a href="#patientreferens">GENERAL-006</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">sourceSystemHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">{Resurs}.meta.source</code></td>
-      <td>Format: <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1#{hsaId}</code></td>
+      <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code>, se <a href="#meta-source">GENERAL-005</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">documentTime</code></td>
@@ -394,6 +397,58 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <p><strong>OBS om server-side filtrering:</strong> Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver Provenance-spärr-agenterna och <code class="language-plaintext highlighter-rouge">approvedForPatient</code>-säkerhetsmärkning (se PDL-001) inte inkluderas i svaret — filtreringen sker då redan på servernivå.</p>
 </blockquote>
 
+<hr />
+
+<h3 id="tidszon">Tidsstämplar och tidszon (GENERAL-001)</h3>
+
+<p>RIVTA-tidsstämplar (<code class="language-plaintext highlighter-rouge">YYYYMMDDhhmmss</code>) saknar tidszon. FHIR kräver tidszon för <code class="language-plaintext highlighter-rouge">dateTime</code> med
+klockslag och för <code class="language-plaintext highlighter-rouge">instant</code>. Följande regler gäller för alla tjänstekontrakt:</p>
+
+<ol>
+  <li><strong>Tolkning:</strong> RIVTA-tidsstämplar tolkas som <strong>lokal tid i <code class="language-plaintext highlighter-rouge">Europe/Stockholm</code></strong>, med hänsyn till
+sommartid (CET <code class="language-plaintext highlighter-rouge">+01:00</code>, CEST <code class="language-plaintext highlighter-rouge">+02:00</code>).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">dateTime</code> med klockslag</strong> får explicit offset, t.ex. <code class="language-plaintext highlighter-rouge">20230601120000</code> →
+<code class="language-plaintext highlighter-rouge">2023-06-01T12:00:00+02:00</code> och <code class="language-plaintext highlighter-rouge">20230115120000</code> → <code class="language-plaintext highlighter-rouge">2023-01-15T12:00:00+01:00</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">instant</code></strong> (t.ex. <code class="language-plaintext highlighter-rouge">Provenance.recorded</code>, <code class="language-plaintext highlighter-rouge">DocumentReference.date</code>, <code class="language-plaintext highlighter-rouge">DiagnosticReport.issued</code>,
+<code class="language-plaintext highlighter-rouge">Observation.issued</code>, <code class="language-plaintext highlighter-rouge">AuditEvent.recorded</code>) ska ange <strong>samma tidpunkt</strong> som motsvarande lokala
+tid. För konsekvens rekommenderas samma offset-form som för <code class="language-plaintext highlighter-rouge">dateTime</code>
+(<code class="language-plaintext highlighter-rouge">2023-06-01T12:00:00+02:00</code>). UTC-form (<code class="language-plaintext highlighter-rouge">2023-06-01T10:00:00Z</code>) är tillåten endast efter
+korrekt konvertering. Att lägga till <code class="language-plaintext highlighter-rouge">Z</code> på en okonverterad lokal tid är fel (1–2 timmars avvikelse).</li>
+  <li><strong>Lägre precision:</strong> <code class="language-plaintext highlighter-rouge">YYYYMMDD</code> → <code class="language-plaintext highlighter-rouge">date</code> (<code class="language-plaintext highlighter-rouge">2023-06-01</code>) utan tidszon. <code class="language-plaintext highlighter-rouge">YYYYMM</code>/<code class="language-plaintext highlighter-rouge">YYYY</code> → se OBS-001.</li>
+  <li><strong>Sommartidsövergångar:</strong> En lokal tid som förekommer två gånger (när sommartiden slutar)
+tolkas som den tidigare förekomsten (<code class="language-plaintext highlighter-rouge">+02:00</code>). En lokal tid som inte finns (när sommartiden
+börjar) flyttas fram med övergångens längd.</li>
+</ol>
+
+<h3 id="meta-source">meta.source – källsystem (GENERAL-005)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">meta.source</code> anges som källsystemets Endpoint i Ineras tjänstekatalog:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://tjanstekatalogen.inera.se/Endpoint/{hsaId}
+</code></pre></div></div>
+
+<p>där <code class="language-plaintext highlighter-rouge">{hsaId}</code> är källsystemets HSA-id (<code class="language-plaintext highlighter-rouge">sourceSystemHSAId</code>/<code class="language-plaintext highlighter-rouge">sourceSystemId</code>). Det tidigare formatet
+<code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1#{hsaId}</code> är inte en giltig OID-URN i FHIR och ska inte användas.</p>
+
+<h3 id="patientreferens">Patientreferens – logisk referens (GENERAL-006)</h3>
+
+<p>Patienten anges i alla profiler som en <strong>logisk referens</strong> till
+<a href="StructureDefinition-inera-ehds-patient.html">IneraEHDSPatient</a> via <code class="language-plaintext highlighter-rouge">identifier</code>
+(personnummer eller samordningsnummer, OID→URI enligt GENERAL-002):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://electronichealth.se/identifier/personnummer"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191212121212"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Detta gäller <code class="language-plaintext highlighter-rouge">subject</code> respektive <code class="language-plaintext highlighter-rouge">patient</code> i samtliga resurser, t.ex. både <code class="language-plaintext highlighter-rouge">Condition.subject</code> och
+<code class="language-plaintext highlighter-rouge">DocumentReference.subject</code>.</p>
+
+<blockquote>
+  <p><strong>Medvetet avsteg från IPS:</strong> IPS-profilerna (t.ex. Condition-uv-ips) kräver <code class="language-plaintext highlighter-rouge">subject.reference</code>.
+RIVTA-svaren innehåller ingen Patient-resurs, och bryggan skapar ingen. En resurs med enbart
+logisk referens uppfyller därför inte IPS-kravet på <code class="language-plaintext highlighter-rouge">subject.reference</code> vid validering. Om en
+Patient-resurs finns tillgänglig (t.ex. i samma Bundle) kan <code class="language-plaintext highlighter-rouge">reference</code> anges utöver <code class="language-plaintext highlighter-rouge">identifier</code>.</p>
+</blockquote>
+
 
 
 
@@ -413,7 +468,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 1, 2026 18:35+0000">2026-10-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-immunization | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:IneraEHDSImmunization |
+| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSImmunization |
 
  
 Profil för vaccinationer mappat från RIVTA-tjänstekontraktet GetVaccinationHistory (clinicalprocess:activityprescription:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-immunizat
   "name" : "IneraEHDSImmunization",
   "title" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -97,7 +97,7 @@ Other representations of profile: [CSV](StructureDefinition-inera-ehds-immunizat
     {
       "id" : "Immunization.meta.source",
       "path" : "Immunization.meta.source",
-      "short" : "Källsystem HSA-id (vaccinationMedicalRecordHeader.sourceSystemHSAId)",
+      "short" : "Källsystem HSA-id (vaccinationMedicalRecordHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
       "mustSupport" : true
     },
     {

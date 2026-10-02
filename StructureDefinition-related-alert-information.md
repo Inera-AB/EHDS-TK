@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/related-alert-information | *Version*:0.3.3 |
-| Draft as of 2026-10-01 | *Computable Name*:RelatedAlertInformation |
+| Draft as of 2026-10-02 | *Computable Name*:RelatedAlertInformation |
 
 Information om samband med andra uppmärksamhetssignaler (alertInformationBody.relatedAlertInformation).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-related-alert-inform
   "name" : "RelatedAlertInformation",
   "title" : "Relaterad uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-10-01T18:35:17+00:00",
+  "date" : "2026-10-02T11:47:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

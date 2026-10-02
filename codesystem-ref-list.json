@@ -21,9 +21,9 @@
     "oids" : ["2.16.840.1.113883.6.96"],
     "uses" : {
     },
-    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus",
     "ValueSet-growth-observation-type-vs.html" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
-    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)"
+    "ValueSet-se-observation-status-vs.html" : "SE Observation Status (SNOMED CT urval 56431000052106)",
+    "ConceptMap-observation-status-map.html" : "GetObservations observationStatus → FHIR ObservationStatus"
   },
   {
     "url" : "https://fhir.inera.se/CodeSystem/deliverycode",
@@ -169,12 +169,12 @@
     "ValueSet-assessmentcategory-vs.html" : "AssessmentCategory — ValueSet"
   },
   {
-    "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/diagnosistype-cs",
+    "url" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
     "version" : "0.3.3",
     "status" : "active",
     "name" : "DiagnosisTypeCS",
-    "title" : "DiagnosisType",
-    "description" : "Kodverk för typ av diagnos (huvud- respektive bidiagnos). Definierat i XSD för domänen.",
+    "title" : "KV Diagnostyp (fragment)",
+    "description" : "Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n.",
     "uses" : {
     },
     "ValueSet-diagnosistype-vs.html" : "DiagnosisType — ValueSet"
