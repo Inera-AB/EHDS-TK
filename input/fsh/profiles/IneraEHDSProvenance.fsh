@@ -18,7 +18,7 @@ Description: """
 * target ^short = "Referens till resursen som Provenance gäller"
 
 * recorded 1..1 MS
-* recorded ^short = "Tidpunkt för dokumentation (documentTime från RIVTA, UTC ISO 8601). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime; för GetCareDocumentation (JoL-header) används header.author.timestamp med fallback header.record.timestamp (DOC-002) – se tjänstekontraktets mappningssida"
+* recorded ^short = "Tidpunkt för dokumentation (documentTime från RIVTA, tolkad som Europe/Stockholm och angiven med offset, se GENERAL-001). OBS: för TK:er där documentTime har kardinalitet 0..0 (t.ex. GetDiagnosis) används istället accountableHealthcareProfessional.authorTime; för GetCareDocumentation (JoL-header) används header.author.timestamp med fallback header.record.timestamp (DOC-002) – se tjänstekontraktets mappningssida"
 
 * agent 2..* MS
 * agent ^slicing.discriminator.type = #value

@@ -20,7 +20,7 @@ Description: """
 * subject ^short = "Patient (careDocumentation.header.accessControlHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (careDocumentation.header.sourceSystemId)"
+* meta.source ^short = "Källsystem HSA-id (careDocumentation.header.sourceSystemId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * author only Reference(PractitionerRole)
 * author MS

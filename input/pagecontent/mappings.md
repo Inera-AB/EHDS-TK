@@ -38,8 +38,8 @@ Alla tjänstekontrakt (utom GetAccessLogForPatient) delar ett headermönster som
 
 | Header-element | FHIR-destination | Notering |
 |---|---|---|
-| `patientId` | `{Resurs}.subject.identifier` | OID→URI-konvertering krävs |
-| `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `patientId` | `{Resurs}.subject.identifier` | OID→URI-konvertering krävs; logisk referens, se [GENERAL-006](#patientreferens) |
+| `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}`, se [GENERAL-005](#meta-source) |
 | `documentTime` | `{Resurs}.recordedDate` (eller primär tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm). **Gäller endast de TK:er där `documentTime` faktiskt skickas.** GetDiagnosis har `documentTime` 0..0 per TKB och använder istället `accountableHealthcareProfessional.authorTime` för `recordedDate` – se den tjänstekontraktsspecifika mappningssidan för auktoritativ källa per TK. |
 | `accountableHealthcareProfessional` | `{Resurs}.recorder` / `author` / `performer` | Logisk referens via HSA-id |
 | `legalAuthenticator` | `{Resurs}.asserter` / `authenticator` | Logisk referens via HSA-id |
@@ -47,3 +47,53 @@ Alla tjänstekontrakt (utom GetAccessLogForPatient) delar ett headermönster som
 | `careUnitHSAId` | `Provenance.agent[author].who.identifier` | Inre Sparr |
 
 > **OBS om server-side filtrering:** Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver Provenance-spärr-agenterna och `approvedForPatient`-säkerhetsmärkning (se PDL-001) inte inkluderas i svaret — filtreringen sker då redan på servernivå.
+
+---
+
+### Tidsstämplar och tidszon (GENERAL-001) {#tidszon}
+
+RIVTA-tidsstämplar (`YYYYMMDDhhmmss`) saknar tidszon. FHIR kräver tidszon för `dateTime` med
+klockslag och för `instant`. Följande regler gäller för alla tjänstekontrakt:
+
+1. **Tolkning:** RIVTA-tidsstämplar tolkas som **lokal tid i `Europe/Stockholm`**, med hänsyn till
+   sommartid (CET `+01:00`, CEST `+02:00`).
+2. **`dateTime` med klockslag** får explicit offset, t.ex. `20230601120000` →
+   `2023-06-01T12:00:00+02:00` och `20230115120000` → `2023-01-15T12:00:00+01:00`.
+3. **`instant`** (t.ex. `Provenance.recorded`, `DocumentReference.date`, `DiagnosticReport.issued`,
+   `Observation.issued`, `AuditEvent.recorded`) ska ange **samma tidpunkt** som motsvarande lokala
+   tid. För konsekvens rekommenderas samma offset-form som för `dateTime`
+   (`2023-06-01T12:00:00+02:00`). UTC-form (`2023-06-01T10:00:00Z`) är tillåten endast efter
+   korrekt konvertering. Att lägga till `Z` på en okonverterad lokal tid är fel (1–2 timmars avvikelse).
+4. **Lägre precision:** `YYYYMMDD` → `date` (`2023-06-01`) utan tidszon. `YYYYMM`/`YYYY` → se OBS-001.
+5. **Sommartidsövergångar:** En lokal tid som förekommer två gånger (när sommartiden slutar)
+   tolkas som den tidigare förekomsten (`+02:00`). En lokal tid som inte finns (när sommartiden
+   börjar) flyttas fram med övergångens längd.
+
+### meta.source – källsystem (GENERAL-005) {#meta-source}
+
+`meta.source` anges som källsystemets Endpoint i Ineras tjänstekatalog:
+
+```
+https://tjanstekatalogen.inera.se/Endpoint/{hsaId}
+```
+
+där `{hsaId}` är källsystemets HSA-id (`sourceSystemHSAId`/`sourceSystemId`). Det tidigare formatet
+`urn:oid:1.2.752.129.2.1.4.1#{hsaId}` är inte en giltig OID-URN i FHIR och ska inte användas.
+
+### Patientreferens – logisk referens (GENERAL-006) {#patientreferens}
+
+Patienten anges i alla profiler som en **logisk referens** till
+[IneraEHDSPatient](StructureDefinition-inera-ehds-patient.html) via `identifier`
+(personnummer eller samordningsnummer, OID→URI enligt GENERAL-002):
+
+```json
+"subject": { "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" } }
+```
+
+Detta gäller `subject` respektive `patient` i samtliga resurser, t.ex. både `Condition.subject` och
+`DocumentReference.subject`.
+
+> **Medvetet avsteg från IPS:** IPS-profilerna (t.ex. Condition-uv-ips) kräver `subject.reference`.
+> RIVTA-svaren innehåller ingen Patient-resurs, och bryggan skapar ingen. En resurs med enbart
+> logisk referens uppfyller därför inte IPS-kravet på `subject.reference` vid validering. Om en
+> Patient-resurs finns tillgänglig (t.ex. i samma Bundle) kan `reference` anges utöver `identifier`.

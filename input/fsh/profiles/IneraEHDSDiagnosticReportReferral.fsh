@@ -9,7 +9,7 @@ Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. 
 * subject ^short = "Patient (referralOutcomeHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * performer only Reference(PractitionerRole or Organization)
 * performer MS

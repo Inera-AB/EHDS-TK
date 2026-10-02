@@ -16,8 +16,14 @@ publisher:
   url: https://www.inera.se
 jurisdiction: urn:iso:std:iso:3166#SE "Sweden"
 dependencies:
+  # Fasta versioner för reproducerbara byggen (inga "current").
+  # IPS hålls på 1.1.0: i IPS 2.x finns inte Observation-results-uv-ips (bas för tillväxt-/mödravårdsprofilerna)
+  # och Observation-results-laboratory-uv-ips har ersatts av Observation-results-laboratory-pathology-uv-ips.
   hl7.fhir.uv.ips: 1.1.0
-  hl7.fhir.eu.eps: current
+  # Ingen stabil EPS-release finns ännu; 1.0.0-ballot är den senast publicerade versionen.
+  hl7.fhir.eu.eps: 1.0.0-ballot
+  # Explicit beroende: Obligation-extensionen som EPS obligations-profiler (t.ex. condition-obl-eu-eps) bygger på.
+  hl7.fhir.uv.extensions.r4: 5.3.0
   ihe.iti.balp: 1.1.4
 parameters:
   show-inherited-invariants: false

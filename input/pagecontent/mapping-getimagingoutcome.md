@@ -30,7 +30,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `imagingOutcomeHeader.documentId` | 1..1 | `DiagnosticReport.identifier[0].value` | Källsystemets dokumentidentifierare |
-| `imagingOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `imagingOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `imagingOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.extension[title]` | Dokumenttitel; kräver lokal extension då DiagnosticReport saknar title-fält i R4 |
 | `imagingOutcomeHeader.documentTime` | 0..1 | `DiagnosticReport.issued` | Tidpunkt för dokumentet; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `imagingOutcomeHeader.patientId.value` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
@@ -283,7 +283,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | IMG-001 | **`typeOfResult` (PREL/DEF/TILL) → `DiagnosticReport.status` – verifiera korrekthet.** Mappningen PREL→`preliminary`, DEF→`final`, TILL→`amended` är rimlig men kodvärdenas exakta semantik i kv_typeOfResult behöver verifieras mot TKB-förvaltningens dokumentation. Det är oklart om `TILL` avser ett tilläggsutlåtande (amended) eller ett kompletterande svar (appended). Dessutom: om `nullified=true` sätts `entered-in-error` oavsett `typeOfResult` – konfirmera denna prioritering med TKB-förvaltningen. |
 | IMG-002 | **DICOM-bilddata (`imageDicomData.dicomSOP` + `dicomValue`/`dicomReference`) – ImagingStudy-design.** `dicomValue` är base64-binär DICOM-data som inte kan inkluderas i en FHIR-resurs utan via en `Binary`-resurs eller extern lagring. `dicomReference` är en URL (t.ex. WADO-RS) som fungerar direkt som `ImagingStudy.series.instance.url`. Behöver beslut om: (1) om Binary-resurser ska skapas för `dicomValue`; (2) hur DICOM-serie-UID konstrueras när det saknas i TKB:n; (3) om `imageDicomData` ska mappas till en serie per SOP-klass eller en instans per element. Detsamma gäller `imageStructuredData.imageData.value` och `imageData.mediaType`. |
 | PDL-001 | **`approvedForPatient` (boolean) saknar standardiserad FHIR-motsvarighet.** Fältet finns i PatientSummaryHeader-mönstret men `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er. |
-| GENERAL-001 | **Tidsstämpelformat.** RIVTA använder `YYYYMMDDhhmmss` utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta `Europe/Stockholm` (CET/CEST). Gäller alla tidsfält i alla tjänstekontrakt. |
+| GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ## Föreslagna nya issues
 

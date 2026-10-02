@@ -18,7 +18,7 @@ Description: """
 * subject ^short = "Patient (functionalStatusAssessmentHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (functionalStatusAssessmentHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (functionalStatusAssessmentHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * recorder only Reference(PractitionerRole)
 * recorder MS

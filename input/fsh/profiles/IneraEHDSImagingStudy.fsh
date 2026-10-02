@@ -9,7 +9,7 @@ Description: "Profil för bilddiagnostiska undersökningar mappat från RIVTA-tj
 * subject ^short = "Patient (imagingOutcomeHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * status 1..1 MS
 * status ^short = "Undersökningsstatus – härledd (inget direkt statusfält i TKBn)"

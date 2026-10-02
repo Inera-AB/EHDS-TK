@@ -20,7 +20,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `carePlan.documentId` | 1..1 | `CarePlan.identifier[0].value` | Källsystemets dokumentidentitet; unik inom källsystemet |
-| `carePlan.sourceSystemHSAId` | 1..1 | `CarePlan.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `carePlan.sourceSystemHSAId` | 1..1 | `CarePlan.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `carePlan.patientId.extension` | 1..1 | `CarePlan.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `carePlan.patientId.root` | 1..1 | `CarePlan.subject.identifier.system` | OID→URI-konvertering (se OID-tabell nedan) |
 

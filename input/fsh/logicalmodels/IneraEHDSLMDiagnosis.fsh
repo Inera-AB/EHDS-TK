@@ -134,7 +134,7 @@ Characteristics: #can-be-target
   """
 
 * diagnosis.diagnosisBody.typeOfDiagnosis 1..1 CodeableConcept "Typ av diagnos" """
-    Anges som "Huvuddiagnos" eller "Bidiagnos". Se DiagnosisTypeCS/DiagnosisTypeVS.
+    Anges som HD (huvuddiagnos) eller BY (bidiagnos) från kv_diagnostyp. Se DiagnosisTypeCS/DiagnosisTypeVS.
     Kardinalitet: Obligatorisk.
   """
 * diagnosis.diagnosisBody.typeOfDiagnosis from DiagnosisTypeVS (required)

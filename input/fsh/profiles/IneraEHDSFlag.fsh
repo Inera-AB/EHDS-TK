@@ -59,7 +59,7 @@ Description: """
 * subject ^short = "Patient (alertInformationHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (alertInformationHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (alertInformationHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * meta.security MS
 * meta.security ^short = "PDL-kontroll (alertInformationHeader.approvedForPatient) – se PDL-001"

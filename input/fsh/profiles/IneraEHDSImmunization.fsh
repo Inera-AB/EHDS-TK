@@ -21,7 +21,7 @@ Description: "Profil för vaccinationer mappat från RIVTA-tjänstekontraktet Ge
 * patient ^short = "Patient (vaccinationMedicalRecordHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (vaccinationMedicalRecordHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (vaccinationMedicalRecordHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * meta.security MS
 * meta.security ^short = "PDL-kontroll (vaccinationMedicalRecordHeader.approvedForPatient) – se PDL-001"

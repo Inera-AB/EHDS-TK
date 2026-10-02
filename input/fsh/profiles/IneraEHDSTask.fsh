@@ -9,7 +9,7 @@ Description: "Profil för remisstatus och processaktiviteter mappat från RIVTA-
 * for ^short = "Patient (requestHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (requestHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (requestHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * owner only Reference(PractitionerRole or Organization)
 * owner MS

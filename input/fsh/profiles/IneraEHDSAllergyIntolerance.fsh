@@ -25,7 +25,7 @@ Description: """
 * patient ^short = "Patient (alertInformationHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (alertInformationHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (alertInformationHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * recorder only Reference(PractitionerRole)
 * recorder MS

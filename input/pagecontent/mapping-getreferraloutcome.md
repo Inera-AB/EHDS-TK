@@ -25,7 +25,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `referralOutcomeHeader.documentId` | 1..1 | `DiagnosticReport.identifier[0].value` | Källsystemets dokumentidentifierare |
-| `referralOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` |
+| `referralOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `referralOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.extension[title]` | Dokumenttitel; extension krävs då DiagnosticReport saknar title-fält i R4 |
 | `referralOutcomeHeader.documentTime` | 1..1 | `DiagnosticReport.issued` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `referralOutcomeHeader.patientId.value` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
@@ -194,7 +194,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|
 | REF-001 | **`act 0..*` saknar standard DiagnosticReport-element.** `referralOutcomeBody.act` innehåller kodad åtgärd (`actCode`), fritext (`actText`), tidpunkt (`actTime`) och eventuell multimedia (`actResult` med `mediaType`/`value`/`reference`). Nuvarande lösning: textinnehåll och bilagor → `presentedForm`, kodad åtgärd → custom extension. Alternativ: en `Procedure`-resurs per `act`-post länkad via `DiagnosticReport.result`. Kräver beslut. |
 | PDL-001 | **`approvedForPatient` (boolean) saknar standardiserad FHIR-motsvarighet.** Fältet finns i headern men `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er; se central issue i [mapping-issues](mapping-issues.html). |
-| GENERAL-001 | **Tidsstämpelformat.** RIVTA använder `YYYYMMDDhhmmss` utan tidszon; FHIR kräver ISO 8601 med tidszon. Konvertering ska anta `Europe/Stockholm` (CET/CEST). Gäller alla tidsfält. |
+| GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ## Föreslagna nya issues
 

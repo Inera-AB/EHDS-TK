@@ -9,7 +9,7 @@ Description: "Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutc
 * subject ^short = "Patient (imagingOutcomeHeader.patientId)"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId)"
+* meta.source ^short = "Källsystem HSA-id (imagingOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * performer only Reference(PractitionerRole or Organization)
 * performer MS
