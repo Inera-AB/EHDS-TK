@@ -212,6 +212,32 @@ ska använda.
 
 ---
 
+## Must Support-element som inte mappas
+
+`IneraEHDSConditionDiagnosis` ärver Must Support-flaggor från `$Condition-uv-ips` (IPS Condition,
+resursversion 1.1.0 – samma version som paketet `hl7.fhir.uv.ips` 1.1.0 är pinnat till). Två av
+dessa ärvda element fylls aldrig i av GetDiagnosis v2.0, eftersom tjänstekontraktets logiska
+modell (`IneraEHDSLMDiagnosis`) saknar motsvarande uppgift:
+
+| Element | Must Support-källa | Varför GetDiagnosis inte kan fylla i det |
+|---|---|---|
+| `Condition.severity` | Ärvd från IPS Condition 1.1.0 (`0..1`) | `diagnosisBody` har inget svårighetsgradsfält. |
+| `Condition.subject.reference` | Ärvd från IPS Condition 1.1.0, där elementet är `1..1` MS (obligatoriskt) | Medvetet avsteg, se [GENERAL-006](mappings.html#patientreferens): `subject` sätts alltid som logisk referens via `subject.identifier`; en `Patient`-resurs bundlas aldrig. |
+
+`Condition.bodySite`, `Condition.note` och `Condition.abatement[x]` är **inte** Must Support i den
+här profilen – varken IPS Condition eller `IneraEHDSConditionDiagnosis` sätter en MS-flagga på
+dem. (EHDS-bryggans `SEEHDSCondition`-profil lägger till egna MS-flaggor på `bodySite`, `note` och
+`abatement[x]`, så motsvarande avsnitt där listar fler element – se EHDS-bryggans
+[mapping-getdiagnosis](https://oskthu2.github.io/EHDS-brygga/mapping-getdiagnosis.html#must-support-element-som-inte-kan-mappas).)
+GetDiagnosis v2.0:s logiska modell har dessutom bara en enda bedömningstidpunkt
+(`diagnosisBody.diagnosisTime`), ingen diagnosperiod med start/slut, vilket är ytterligare ett
+skäl till att `abatement[x]` inte är aktuellt här.
+
+`Condition.category.text` är inte ett Must Support-element i någon av profilerna – endast
+`category[diagnostyp].coding` är Must Support och obligatorisk.
+
+---
+
 ## Öppna frågor
 
 | ID | Fråga |
