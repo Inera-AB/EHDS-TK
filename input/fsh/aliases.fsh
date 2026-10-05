@@ -13,17 +13,22 @@ Alias: $nationelltReservnummer = http://electronichealth.se/identifier/nationell
 
 // HSA-id systems
 Alias: $hsaid-se   = urn:oid:1.2.752.29.4.19
-Alias: $hsaid-ntjp = urn:oid:1.2.752.129.2.1.4.1
 
-// IPS profiles
-Alias: $Patient-uv-ips                        = http://hl7.org/fhir/uv/ips/StructureDefinition/Patient-uv-ips
-Alias: $Condition-uv-ips                      = http://hl7.org/fhir/uv/ips/StructureDefinition/Condition-uv-ips
-Alias: $AllergyIntolerance-uv-ips             = http://hl7.org/fhir/uv/ips/StructureDefinition/AllergyIntolerance-uv-ips
-Alias: $MedicationStatement-uv-ips            = http://hl7.org/fhir/uv/ips/StructureDefinition/MedicationStatement-uv-ips
-Alias: $Immunization-uv-ips                   = http://hl7.org/fhir/uv/ips/StructureDefinition/Immunization-uv-ips
-Alias: $Observation-results-uv-ips            = http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-results-uv-ips
-Alias: $Observation-results-laboratory-uv-ips = http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-results-laboratory-uv-ips
-Alias: $ImagingStudy-uv-ips                   = http://hl7.org/fhir/uv/ips/StructureDefinition/ImagingStudy-uv-ips
+// HL7 Europe Core (hl7.fhir.eu.base 2.0.0-ballot) – basprofiler för EURIDICE (hl7.fhir.eu.health-data-api)
+Alias: $PatientEuCore              = http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core
+Alias: $ConditionEuCore            = http://hl7.eu/fhir/base/StructureDefinition/condition-eu-core
+Alias: $AllergyIntoleranceEuCore   = http://hl7.eu/fhir/base/StructureDefinition/allergyIntolerance-eu-core
+Alias: $MedicationStatementEuCore  = http://hl7.eu/fhir/base/StructureDefinition/medicationStatement-eu-core
+Alias: $ImmunizationEuCore         = http://hl7.eu/fhir/base/StructureDefinition/immunization-eu-core
+Alias: $MedicalTestResultEuCore    = http://hl7.eu/fhir/base/StructureDefinition/medicalTestResult-eu-core
+Alias: $DiagnosticReportEuCore     = http://hl7.eu/fhir/base/StructureDefinition/diagnosticReport-eu-core
+Alias: $FlagEuCore                 = http://hl7.eu/fhir/base/StructureDefinition/flag-eu-core
+Alias: $CompositionEuCore          = http://hl7.eu/fhir/base/StructureDefinition/composition-eu-core
+Alias: $OrganizationEuCore         = http://hl7.eu/fhir/base/StructureDefinition/organization-eu-core
+Alias: $PractitionerRoleEuCore     = http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core
+
+// Kodsystem för identifierartyper (svenska basprofiler)
+Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
 
 // FHIR extensions
 Alias: $patient-birthPlace = http://hl7.org/fhir/StructureDefinition/patient-birthPlace

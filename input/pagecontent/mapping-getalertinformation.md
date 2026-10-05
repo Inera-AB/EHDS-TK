@@ -1,8 +1,8 @@
 # GetAlertInformation – Uppmärksamhetsinformation
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetAlertInformation v2.0  
-**FHIR-profiler:** [IneraEHDSFlag](StructureDefinition-inera-ehds-flag.html) | [IneraEHDSAllergyIntolerance](StructureDefinition-inera-ehds-allergy-intolerance.html)  
-**Logisk modell:** [IneraEHDSLMAlertInformation](StructureDefinition-inera-ehds-lm-alert-information.html)  
+**FHIR-profiler:** [SEEHDSFlag](StructureDefinition-SEEHDSFlag.html) | [SEEHDSAllergyIntolerance](StructureDefinition-SEEHDSAllergyIntolerance.html)  
+**Logisk modell:** [SEEHDSLMAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.html)  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v2.0)  
 **EHDS-koppling:** Patient Summary – Allergier, överkänslighet och varningsinformation
 
@@ -12,11 +12,11 @@
 
 `Flag` skapas **alltid** för varje `alertInformation`-post, oavsett typ av uppmärksamhetssignal (beslut GENERAL-004, ALERT-003).
 
-Om body-typen är `hypersensitivity` skapas **dessutom** en `AllergyIntolerance`-resurs. I det fallet pekar `Flag` på `AllergyIntolerance` via `Flag.extension[flag-detail]` (standard R4-extension; kallas `supportingInfo` i R5).
+Om body-typen är `hypersensitivity` skapas **dessutom** en `AllergyIntolerance`-resurs. I det fallet pekar `Flag` på `AllergyIntolerance` via `Flag.extension[flagDetailExt]` (standard-extensionen flag-detail, som ärvs från EU Core Flag; kallas `supportingInfo` i R5).
 
 | Scenario | Resurser som skapas |
 |---|---|
-| body = `hypersensitivity` | `Flag` + `AllergyIntolerance` (länkad via `extension[flag-detail]`) |
+| body = `hypersensitivity` | `Flag` + `AllergyIntolerance` (länkad via `extension[flagDetailExt]`) |
 | body = `seriousDisease` | `Flag` (enbart) |
 | body = `treatment` | `Flag` (enbart) |
 | body = `communicableDisease` | `Flag` (enbart) |
@@ -259,7 +259,7 @@ PDL-styrning i GetAlertInformation utgår från `accountableHealthcareProfession
 |---|---|
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` |
 | `1.2.752.129.2.2.3.1.1` | `urn:oid:1.2.752.129.2.2.3.1.1` (ATC) |
 | `1.2.752.129.2.1.5.1` | `urn:oid:1.2.752.129.2.1.5.1` (NPL-id) |
 

@@ -1,8 +1,8 @@
 # GetVaccinationHistory – Vaccinationshistorik
 
 **Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0  
-**FHIR-profiler:** [IneraEHDSImmunization](StructureDefinition-inera-ehds-immunization.html) | [IneraEHDSDevice](StructureDefinition-inera-ehds-device.html) | [IneraEHDSOrganization](StructureDefinition-inera-ehds-organization.html)  
-**Logisk modell:** [IneraEHDSLMVaccinationHistory](StructureDefinition-inera-ehds-lm-vaccination-history.html)  
+**FHIR-profiler:** [SEEHDSImmunization](StructureDefinition-SEEHDSImmunization.html) | [SEEHDSDevice](StructureDefinition-SEEHDSDevice.html) | [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.html)  
+**Logisk modell:** [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html)  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v1.0, 2.0)  
 **EHDS-koppling:** Patient Summary – Vaccinationer
 
@@ -20,13 +20,13 @@
 ## Resurshierarki
 
 ```
-IneraEHDSImmunization (1 per administrationRecord)
-  ├── extension[registrationDevice] → IneraEHDSDevice (registrationRecord.sourceSystem*)
+SEEHDSImmunization (1 per administrationRecord)
+  ├── extension[registrationDevice] → SEEHDSDevice (registrationRecord.sourceSystem*)
   ├── performer[administering].actor → PractitionerRole (administrationRecord.performer)
-  ├── performer[administering].actor → IneraEHDSOrganization (administrationRecord.performerOrg)
+  ├── performer[administering].actor → SEEHDSOrganization (administrationRecord.performerOrg)
   │     └── identifier[smiId] = registrationRecord.careUnitSmiId
-  ├── performer[administering].actor → IneraEHDSOrganization (registrationRecord.careGiverOrg)
-  ├── performer[ordering].actor   → PractitionerRole/IneraEHDSOrganization (administrationRecord.prescriber*)
+  ├── performer[administering].actor → SEEHDSOrganization (registrationRecord.careGiverOrg)
+  ├── performer[ordering].actor   → PractitionerRole/SEEHDSOrganization (administrationRecord.prescriber*)
   └── protocolApplied[0] (vaccineTargetDisease, doseOrdinalNumber, numberOfPrescribedDoses)
 ```
 
@@ -36,7 +36,7 @@ Fält från `registrationRecord` som saknar specifikt `administrationRecord`-fä
 av alla Immunization-resurser från samma post. Se [VAC-001](#öppna-frågor).
 
 Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemContact`) samlas
-i en separat `IneraEHDSDevice`-resurs som refereras via `Immunization.extension[registrationDevice]`
+i en separat `SEEHDSDevice`-resurs som refereras via `Immunization.extension[registrationDevice]`
 i stället för enskilda extensions på Immunization.
 
 ---
@@ -93,18 +93,18 @@ i stället för enskilda extensions på Immunization.
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorId` | 0..1 | Ej mappad | Kontaktpersonens identifierare hos juridisk vårdgivare – inget FHIR-fält för kontaktperson på registreringsnivå |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorName` | 0..1 | Ej mappad | Kontaktpersonens namn hos juridisk vårdgivare – se actorId ovan |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemName` | 1..1 | `Device.deviceName[systemName].name` | Källsystemets klartextnamn; via `Immunization.extension[registrationDevice]` → IneraEHDSDevice |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemName` | 1..1 | `Device.deviceName[systemName].name` | Källsystemets klartextnamn; via `Immunization.extension[registrationDevice]` → SEEHDSDevice |
 | `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductName` | 0..1 | `Device.deviceName[productName].name` | Källsystemets produktnamn; se Device-tabell nedan |
 | `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductVersion` | 0..1 | `Device.version.value` | Källsystemets produktversion; se Device-tabell nedan |
 | `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorId` | 0..1 | `Device.extension[sourceSystemContact].actorId` | Identifierare för källsystemsansvarig kontakt; se Device-tabell nedan |
 | `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorName` | 0..1 | `Device.extension[sourceSystemContact].actorName` | Namn på källsystemsansvarig kontakt; se Device-tabell nedan |
-| `vaccinationMedicalRecordBody.registrationRecord.careUnitSmiId` | 0..1 | `IneraEHDSOrganization.identifier[smiId]` | SMI-id läggs som identifierarslice på den utförande vårdenhetens Organization-resurs (`performer[administering].actor`) – se Designbeslut nedan |
+| `vaccinationMedicalRecordBody.registrationRecord.careUnitSmiId` | 0..1 | `SEEHDSOrganization.identifier[smiId]` | SMI-id läggs som identifierarslice på den utförande vårdenhetens Organization-resurs (`performer[administering].actor`) – se Designbeslut nedan |
 
 ---
 
-## Mappningstabell – IneraEHDSDevice (sourceSystem-fält)
+## Mappningstabell – SEEHDSDevice (sourceSystem-fält)
 
-`Immunization.extension[registrationDevice]` refererar en `IneraEHDSDevice`-resurs som samlar
+`Immunization.extension[registrationDevice]` refererar en `SEEHDSDevice`-resurs som samlar
 alla källsystemsmetadata från `registrationRecord`. Resursen skapas alltid (sourceSystemName är 1..1).
 
 | RIVTA-element | Kard. | Device-element | Kommentar |
@@ -124,7 +124,7 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `administrationRecord.vaccinationProgramName` | 0..1 | `Immunization.protocolApplied[0].series` | Vaccinationsprogrammets namn (t.ex. "Nationellt barnvaccinationsprogram") |
-| `administrationRecord.prescriberOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande vårdenhetens HSA-id; actor = IneraEHDSOrganization; `function = OP` |
+| `administrationRecord.prescriberOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande vårdenhetens HSA-id; actor = SEEHDSOrganization; `function = OP` |
 | `administrationRecord.prescriberOrg.orgUnitName` | 0..1 | `Immunization.performer[ordering].actor.name` | Förskrivande vårdenhetens namn |
 | `administrationRecord.prescriberPerson.actorId` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande yrkesutövarens identifierare; actor = PractitionerRole; `function = OP` |
 | `administrationRecord.prescriberPerson.actorName` | 0..1 | `Immunization.performer[ordering].actor.display` | Förskrivande yrkesutövarens namn |
@@ -205,14 +205,14 @@ faktisk vaccinationstidpunkt. Om `documentTime` saknas används
 `accountableHealthCareProfessional.authorTime` som fallback (dokumentationstidpunkt).
 `registrationRecord.date` (date, ej dateTime) används alltid som `Immunization.recorded`.
 
-### sourceSystem-fält → IneraEHDSDevice (registrationDevice)
+### sourceSystem-fält → SEEHDSDevice (registrationDevice)
 
 `registrationRecord` innehåller fem källsystemsfält (`sourceSystemName`, `sourceSystemProductName`,
 `sourceSystemProductVersion`, `sourceSystemContact.actorId`, `sourceSystemContact.actorName`)
 som tillsammans beskriver det system varifrån vaccinationsregistreringen härstammar.
 
 I stället för att lägga dessa som enskilda extensions direkt på Immunization samlas de i en
-`IneraEHDSDevice`-resurs och refereras via `Immunization.extension[registrationDevice]`. Fördelar:
+`SEEHDSDevice`-resurs och refereras via `Immunization.extension[registrationDevice]`. Fördelar:
 
 - `Device` är FHIR:s semantiskt korrekta resurs för IT-system som genererar klinisk data
 - Eliminerar ett sub-extension-mönster (`extension[sourceSystem].systemName` etc.) till förmån för  
@@ -226,19 +226,19 @@ I stället för att lägga dessa som enskilda extensions direkt på Immunization
 | Slice | function | Källa | Actor-typ |
 |---|---|---|---|
 | `performer[administering]` | `AP` (Administering Provider) | `administrationRecord.performer` | PractitionerRole |
-| `performer[administering]` | `AP` | `administrationRecord.performerOrg` | IneraEHDSOrganization (inkl. SMI-id) |
-| `performer[administering]` | `AP` | `registrationRecord.careGiverOrg` | IneraEHDSOrganization |
-| `performer[ordering]` | `OP` (Ordering Provider) | `administrationRecord.prescriberPerson/prescriberOrg` | PractitionerRole / IneraEHDSOrganization |
+| `performer[administering]` | `AP` | `administrationRecord.performerOrg` | SEEHDSOrganization (inkl. SMI-id) |
+| `performer[administering]` | `AP` | `registrationRecord.careGiverOrg` | SEEHDSOrganization |
+| `performer[ordering]` | `OP` (Ordering Provider) | `administrationRecord.prescriberPerson/prescriberOrg` | PractitionerRole / SEEHDSOrganization |
 
 `performer[administering]` är 0..* och täcker alla AP-roller.
 `performer[ordering]` är 0..1 och representerar prescriber.
 
-### careUnitSmiId → IneraEHDSOrganization.identifier[smiId]
+### careUnitSmiId → SEEHDSOrganization.identifier[smiId]
 
 `registrationRecord.careUnitSmiId` är SMI-id för den vårdenhet som administrerade vaccinet.
 I stället för en custom extension på Immunization läggs det som identifierarslice på
-`performer[administering].actor` (Organization) via `IneraEHDSOrganization.identifier[smiId]`.
-Samma Organization bär även HSA-id via `identifier[hsaId]`.
+`performer[administering].actor` (Organization) via `SEEHDSOrganization.identifier[smiId]`.
+Samma Organization bär även HSA-id via `identifier[hsaid]`.
 
 > OBS: SMI-id:ts OID (`urn:oid:1.2.752.194.10.1.1`) behöver verifieras mot Folkhälsomyndighetens  
 > faktiska NamingSystem – se [VAC-006](#öppna-frågor).
@@ -289,7 +289,7 @@ PDL-styrning utgår från `accountableHealthCareProfessional`-blocket i headern.
 |---|---|
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
@@ -304,7 +304,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | PDL-001 | **`approvedForPatient` (boolean) saknar standardiserat FHIR-kodsystem.** Fältet mappas tentativt till `meta.security` men inget standardiserat kodsystem för detta begrepp finns. Behöver gemensamt beslut; se central issue i [mapping-issues](mapping-issues.html). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
-| VAC-006 | **SMI-id OID behöver verifieras.** `IneraEHDSOrganization.identifier[smiId].system` sätts preliminärt till `urn:oid:1.2.752.194.10.1.1`. Korrigera mot Folkhälsomyndighetens faktiska NamingSystem för vaccinationsregistret. |
+| VAC-006 | **SMI-id OID behöver verifieras.** `SEEHDSOrganization.identifier[smiId].system` sätts preliminärt till `urn:oid:1.2.752.194.10.1.1`. Korrigera mot Folkhälsomyndighetens faktiska NamingSystem för vaccinationsregistret. |
 
 ## Föreslagna nya issues
 

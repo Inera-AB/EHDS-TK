@@ -1,8 +1,8 @@
 # GetImagingOutcome – Bilddiagnostik
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetImagingOutcome v1.0  
-**FHIR-profiler:** [IneraEHDSDiagnosticReportImaging](StructureDefinition-inera-ehds-diagnostic-report-imaging.html) (primär) | [ImagingStudy](http://hl7.org/fhir/R4/imagingstudy.html) (sekundär, per imageRecording)  
-**Logisk modell:** [IneraEHDSLMImagingOutcome](StructureDefinition-inera-ehds-lm-imaging-outcome.html)  
+**FHIR-profiler:** [SEEHDSDiagnosticReportImaging](StructureDefinition-SEEHDSDiagnosticReportImaging.html) (primär) | [ImagingStudy](http://hl7.org/fhir/R4/imagingstudy.html) (sekundär, per imageRecording)  
+**Logisk modell:** [SEEHDSLMImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.html)  
 **Krävs för NPÖ:** Ja (v1.0) | **Krävs för 1177 Journal:** Ja (v1.0)  
 **EHDS-koppling:** Medical imaging studies – bilddiagnostiska utlåtanden
 
@@ -13,15 +13,15 @@
 ```
 imagingOutcome 0..*
 │
-IneraEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
+SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
   └── ImagingStudy               (0..* per imageRecording – undersökning/DICOM-data)
 ```
 
-En `imagingOutcome` representerar ett bilddiagnostiskt utlåtande (t.ex. ett röntgensvar) och mappas till en `IneraEHDSDiagnosticReportImaging`. Varje `imageRecording` inom svaret (enskilda undersökningar med modalitetsdata) mappas till en separat `ImagingStudy`-instans. Referensen `DiagnosticReport.imagingStudy` binder ihop utlåtandet med undersökningarna. Se [IMG-002](#öppna-frågor) för DICOM-designfrågor.
+En `imagingOutcome` representerar ett bilddiagnostiskt utlåtande (t.ex. ett röntgensvar) och mappas till en `SEEHDSDiagnosticReportImaging`. Varje `imageRecording` inom svaret (enskilda undersökningar med modalitetsdata) mappas till en separat `ImagingStudy`-instans. Referensen `DiagnosticReport.imagingStudy` binder ihop utlåtandet med undersökningarna. Se [IMG-002](#öppna-frågor) för DICOM-designfrågor.
 
 ---
 
-## Mappningstabell – IneraEHDSDiagnosticReportImaging
+## Mappningstabell – SEEHDSDiagnosticReportImaging
 
 Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt till DiagnosticReport.
 
@@ -270,7 +270,7 @@ GetImagingOutcome v1.0 använder standardmönstret **PatientSummaryHeader** via 
 |---|---|---|
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` | Personnummer |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` | Samordningsnummer |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` | HSA-id (Inera NTjP) |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 

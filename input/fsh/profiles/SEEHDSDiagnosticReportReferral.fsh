@@ -1,0 +1,32 @@
+Profile: SEEHDSDiagnosticReportReferral
+Parent: $DiagnosticReportEuCore
+Id: SEEHDSDiagnosticReportReferral
+Title: "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)"
+Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med SEEHDSServiceRequestReferral."
+
+* subject only Reference(SEEHDSPatient)
+* subject MS
+* subject ^short = "Patient (referralOutcomeHeader.patientId)"
+
+* meta.source MS
+* meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
+
+* performer only Reference(SEEHDSPractitionerRole or SEEHDSOrganization)
+* performer MS
+* performer ^short = "Svarande specialist/enhet (referralOutcomeHeader.accountableHealthcareProfessional)"
+
+* issued MS
+* issued ^short = "Svarstidpunkt (referralOutcomeHeader.documentTime)"
+
+* status 1..1 MS
+* status ^short = "Härledd från referralOutcomeBody.referralOutcomeTypeCode"
+
+* basedOn MS
+* basedOn only Reference(SEEHDSServiceRequestReferral)
+* basedOn ^short = "Koppling till ursprungsremiss"
+
+* code 1..1 MS
+* code ^short = "Fast LOINC 11488-4 (Consult note) – referralOutcomeTypeCode avgör DiagnosticReport.status (se mappning)"
+
+* conclusion MS
+* conclusion ^short = "Konsultationssvar/bedömning (referralOutcomeBody.referralOutcomeText)"

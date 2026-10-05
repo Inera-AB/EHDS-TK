@@ -32,11 +32,34 @@ IG:t täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser i
 
 ---
 
+### Vad IG:n utlovar {#loften}
+
+IG:n utlovar att följande tre krav uppfylls **samtidigt**:
+
+| # | Löfte | Hur det uppfylls |
+|---|---|---|
+| 1 | **Samma kliniska information som TKB:erna, som FHIR-resurser.** | Varje element i tjänstekontraktens logiska modeller är mappat till ett FHIR-element, eller uttryckligen markerat som ej mappat med motivering. Profilerna kräver det som TKB:n kräver och inget som TKB:n inte bär. Se [Mappningar](mappings.html). |
+| 2 | **En giltig profilering av EURIDICE-IG:n** ([EU Health Data API](https://build.fhir.org/ig/euridice-org/eu-health-data-api/), `hl7.fhir.eu.health-data-api`). | EURIDICE anger att datamodellerna för resursåtkomst ärver från HL7 Europe Core (`hl7.fhir.eu.base`). Profilerna ärver därför EU Core-profilen där en sådan finns, och annars FHIR-basresursen. Kraven på API:et anges i [SEEHDSResourceAccessProvider](CapabilityStatement-SEEHDSResourceAccessProvider.html), som utgår från EURIDICE:s Resource Access Provider. |
+| 3 | **Svenska basprofilernas namngivnings- och slicingkonventioner** (HL7 Sweden, `hl7se.fhir.base`). | Profilerna heter `SEEHDS…` med `Id` lika med namnet. Identifierare slicas med samma slice-namn och system som de svenska basprofilerna: `personnummer`, `samordningsnummer`, `nationelltReservnummer`, och `hsaid` (system `urn:oid:1.2.752.29.4.19`, typ `PRN`). |
+
+Profilerna kan inte både ärva EU Core och de svenska basprofilerna, eftersom en profil bara kan ha en
+parent. Därför följs de svenska basprofilerna som konvention, medan EU Core är parent.
+
+#### IPS och EPS – inspiration, inte löfte
+
+IG:n utlovar **inte** följsamhet mot IPS (International Patient Summary) eller EPS (HL7 Europe
+Patient Summary). De har använts som inspiration, till exempel för vilka resurstyper som passar en
+informationsmängd. Krav och strukturer som bara fanns för att harmonisera med IPS eller EPS har tagits
+bort. Det gäller till exempel härledda statusvärden och kodningar utan stöd i TKB:n, och
+EPS-profiler i `meta.profile`.
+
+---
+
 ### Syfte
 
 Syftet med IG:t är att:
 
-1. Definiera FHIR-profiler (R4) som möjliggör EHDS-kompatibel representation av data från Ineras RIVTA-tjänstekontrakt
+1. Definiera FHIR-profiler (R4) som uppfyller de tre löftena ovan för data från Ineras RIVTA-tjänstekontrakt
 2. Dokumentera mappningen från RIVTA-element till FHIR-element, inklusive OID→URI-översättning, Provenance-mönster och Sparr-hantering
 3. Stödja implementörer som transformerar RIVTA-svar till FHIR-resurser för NPÖ och 1177 Journal
 
@@ -44,16 +67,18 @@ IG:t riktar sig till systemleverantörer, arkitekter och integrationsspecialiste
 
 ---
 
-### Arkitektur och EHDS-relation
+### Arkitektur
 
-Profilerna bygger på:
-- **IPS (International Patient Summary)** – profiler ärvs där de finns
-- **EU EPS (European Patient Summary)** – obligations-profilen sätts i `meta.profile` vid runtime
-- **HL7 Sweden basprofiler** – SEBasePractitionerRole och SEBaseOrganization används för personreferenser
+| Lager | Källa | Roll |
+|---|---|---|
+| API och åtkomst | EURIDICE (`hl7.fhir.eu.health-data-api`) | Resource Access Provider, patientavgränsade sökningar, MHD för dokument |
+| Datamodell | HL7 Europe Core (`hl7.fhir.eu.base`) | Parent för profilerna där EU Core-profil finns |
+| Konventioner | HL7 Sweden basprofiler (`hl7se.fhir.base`) | Namngivning och identifier-slicing |
+| Innehåll | Ineras TKB:er | Vilken klinisk information som bärs och vilka krav som gäller |
+| Auditloggning | IHE BALP (`ihe.iti.balp`) | Loggposter vid utlämning, se [Åtkomstloggar](mapping-getaccesslogforpatient.html) |
 
-Varje producerad FHIR-resurs bär **två profiler** i `meta.profile`:
-1. Aktuell EHDS-TK-profil (t.ex. `IneraEHDSConditionDiagnosis`)
-2. Relevant EU EPS obligations-profil
+Varje producerad FHIR-resurs anger sin EHDS-TK-profil i `meta.profile` (t.ex. `SEEHDSConditionDiagnosis`).
+Genom arvet uppfyller resursen även EU Core-profilen.
 
 ---
 
@@ -66,9 +91,12 @@ Alla kodverk och värdemängder som Inera förvaltar finns på [Inera Terminolog
 ### Beroenden
 
 Denna IG har beroenden till:
-- **HL7 IPS:** `hl7.fhir.uv.ips`
-- **EU EPS:** `hl7.fhir.eu.eps`
-- **SE-core (HL7 Sweden):** `hl7se.fhir.base`
+- **EURIDICE – EU Health Data API:** `hl7.fhir.eu.health-data-api` 1.0.0-ballot
+- **HL7 Europe Core:** `hl7.fhir.eu.base` 2.0.0-ballot
+- **IHE BALP:** `ihe.iti.balp` 1.1.4
+- **FHIR-extensions:** `hl7.fhir.uv.extensions.r4` 5.3.0
+
+HL7 Sweden basprofiler (`hl7se.fhir.base`) används som konvention och är inget paketberoende.
 
 ---
 

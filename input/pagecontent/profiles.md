@@ -2,14 +2,20 @@
 
 Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR-grupp. Se [Mappings](mappings.html) för hur respektive profil relaterar till RIVTA-tjänstekontrakten.
 
+Profilerna ärver HL7 Europe Core där en EU Core-profil finns, annars FHIR-basresursen, så att de är en giltig profilering av EURIDICE. De heter `SEEHDS…` med `Id` lika med namnet, enligt de svenska basprofilernas konvention. Se [Vad IG:n utlovar](index.html#loften).
+
+Kraven på API:et anges i [SEEHDSResourceAccessProvider](CapabilityStatement-SEEHDSResourceAccessProvider.html), som utgår från EURIDICE:s Resource Access Provider.
+
 ---
 
 ### Gemensamma profiler
 
 | Profil | Basresurs | Beskrivning |
 |---|---|---|
-| [IneraEHDSPatient](StructureDefinition-inera-ehds-patient.html) | Patient-uv-ips | Patient med svenska identifierarslicar (personnummer, samordningsnummer, nationelltReservnummer). |
-| [IneraEHDSProvenance](StructureDefinition-inera-ehds-provenance.html) | Provenance | Provenance med tre agenter: custodian (vårdgivare), author (vårdenhet), assembler (EHDS-bryggan). |
+| [SEEHDSPatient](StructureDefinition-SEEHDSPatient.html) | EU Core Patient (patient-eu-core) | Patient med identifierarslicar enligt SEBasePatient (personnummer, samordningsnummer, nationelltReservnummer). Skapas utifrån patientId, se GENERAL-006. |
+| [SEEHDSPractitionerRole](StructureDefinition-SEEHDSPractitionerRole.html) | EU Core PractitionerRole (practitionerRole-eu-core) | Personal i uppdrag; identifier-slice `hsaid` enligt SEBasePractitionerRole. Används som logisk referens. |
+| [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.html) | EU Core Organization (organization-eu-core) | Organisationsenhet; identifier-slice `hsaid` enligt SEBaseOrganization samt SMI-id. |
+| [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.html) | Provenance | Provenance med tre agenter: custodian (vårdgivare), author (vårdenhet), assembler (EHDS-bryggan). |
 
 ---
 
@@ -17,17 +23,17 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | Profil | Basresurs | Tjänstekontrakt |
 |---|---|---|
-| [IneraEHDSConditionDiagnosis](StructureDefinition-inera-ehds-condition-diagnosis.html) | Condition-uv-ips | GetDiagnosis |
-| [IneraEHDSAllergyIntolerance](StructureDefinition-inera-ehds-allergy-intolerance.html) | AllergyIntolerance-uv-ips | GetAlertInformation (allergi/överkänslighet) |
-| [IneraEHDSFlag](StructureDefinition-inera-ehds-flag.html) | Flag | GetAlertInformation (varning) |
-| [IneraEHDSMedicationStatement](StructureDefinition-inera-ehds-medication-statement.html) | MedicationStatement-uv-ips | GetMedicationHistory |
-| [IneraEHDSImmunization](StructureDefinition-inera-ehds-immunization.html) | Immunization-uv-ips | GetVaccinationHistory |
-| [IneraEHDSConditionFunctional](StructureDefinition-inera-ehds-condition-functional.html) | Condition-uv-ips | GetFunctionalStatus |
-| [IneraEHDSObservationMaternity](StructureDefinition-inera-ehds-observation-maternity.html) | Observation-results-uv-ips | GetMaternityMedicalHistory |
-| [IneraEHDSCarePlan](StructureDefinition-inera-ehds-care-plan.html) | CarePlan | GetCarePlans |
-| [IneraEHDSEncounter](StructureDefinition-inera-ehds-encounter.html) | Encounter | GetCareContacts |
-| [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.html) | DocumentReference | GetCareDocumentation |
-| [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) | Composition | GetCareDocumentation – valfri strukturerad representation av DocBook ([DocBook-mappning](guidance-docbook-narrative.html)) |
+| [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.html) | EU Core Condition (condition-eu-core) | GetDiagnosis |
+| [SEEHDSAllergyIntolerance](StructureDefinition-SEEHDSAllergyIntolerance.html) | EU Core AllergyIntolerance (allergyIntolerance-eu-core) | GetAlertInformation (allergi/överkänslighet) |
+| [SEEHDSFlag](StructureDefinition-SEEHDSFlag.html) | EU Core Flag (flag-eu-core) | GetAlertInformation (varning) |
+| [SEEHDSMedicationStatement](StructureDefinition-SEEHDSMedicationStatement.html) | EU Core MedicationStatement (medicationStatement-eu-core) | GetMedicationHistory |
+| [SEEHDSImmunization](StructureDefinition-SEEHDSImmunization.html) | EU Core Immunization (immunization-eu-core) | GetVaccinationHistory |
+| [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html) | EU Core Condition (condition-eu-core) | GetFunctionalStatus |
+| [SEEHDSObservationMaternity](StructureDefinition-SEEHDSObservationMaternity.html) | Observation | GetMaternityMedicalHistory |
+| [SEEHDSCarePlan](StructureDefinition-SEEHDSCarePlan.html) | CarePlan | GetCarePlans |
+| [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.html) | Encounter | GetCareContacts |
+| [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html) | DocumentReference | GetCareDocumentation |
+| [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.html) | EU Core Composition (composition-eu-core) | GetCareDocumentation – valfri strukturerad representation av DocBook ([DocBook-mappning](guidance-docbook-narrative.html)) |
 
 ---
 
@@ -35,8 +41,8 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | Profil | Basresurs | Tjänstekontrakt |
 |---|---|---|
-| [IneraEHDSDiagnosticReportLab](StructureDefinition-inera-ehds-diagnostic-report-lab.html) | DiagnosticReport-lab-uv-ips | GetLaboratoryOrderOutcome |
-| [IneraEHDSObservationLab](StructureDefinition-inera-ehds-observation-lab.html) | Observation-results-laboratory-uv-ips | GetLaboratoryOrderOutcome |
+| [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.html) | EU Core DiagnosticReport (diagnosticReport-eu-core) | GetLaboratoryOrderOutcome |
+| [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.html) | EU Core MedicalTestResult (medicalTestResult-eu-core) | GetLaboratoryOrderOutcome |
 
 ---
 
@@ -44,8 +50,8 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | Profil | Basresurs | Tjänstekontrakt |
 |---|---|---|
-| [IneraEHDSImagingStudy](StructureDefinition-inera-ehds-imaging-study.html) | ImagingStudy-uv-ips | GetImagingOutcome |
-| [IneraEHDSDiagnosticReportImaging](StructureDefinition-inera-ehds-diagnostic-report-imaging.html) | DiagnosticReport | GetImagingOutcome |
+| [SEEHDSImagingStudy](StructureDefinition-SEEHDSImagingStudy.html) | ImagingStudy | GetImagingOutcome |
+| [SEEHDSDiagnosticReportImaging](StructureDefinition-SEEHDSDiagnosticReportImaging.html) | EU Core DiagnosticReport (diagnosticReport-eu-core) | GetImagingOutcome |
 
 ---
 
@@ -53,9 +59,9 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | Profil | Basresurs | Tjänstekontrakt |
 |---|---|---|
-| [IneraEHDSServiceRequestReferral](StructureDefinition-inera-ehds-service-request-referral.html) | ServiceRequest | GetReferralOutcome |
-| [IneraEHDSDiagnosticReportReferral](StructureDefinition-inera-ehds-diagnostic-report-referral.html) | DiagnosticReport | GetReferralOutcome |
-| [IneraEHDSTask](StructureDefinition-inera-ehds-task.html) | Task | GetRequestActivities |
+| [SEEHDSServiceRequestReferral](StructureDefinition-SEEHDSServiceRequestReferral.html) | ServiceRequest | GetReferralOutcome |
+| [SEEHDSDiagnosticReportReferral](StructureDefinition-SEEHDSDiagnosticReportReferral.html) | EU Core DiagnosticReport (diagnosticReport-eu-core) | GetReferralOutcome |
+| [SEEHDSTask](StructureDefinition-SEEHDSTask.html) | Task | GetRequestActivities |
 
 ---
 
@@ -63,7 +69,7 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | Profil | Basresurs | Tjänstekontrakt |
 |---|---|---|
-| [IneraEHDSObservationGrowth](StructureDefinition-inera-ehds-observation-growth.html) | Observation-results-uv-ips | GetObservations |
+| [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.html) | SEEHDSObservationBase (Observation) | GetObservations |
 
 ---
 
@@ -71,6 +77,6 @@ Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR
 
 | Profil | Basresurs | Tjänstekontrakt |
 |---|---|---|
-| [IneraEHDSAuditEventReadAccessLog](StructureDefinition-inera-ehds-audit-event-read-access-log.html) | AuditEvent | GetAccessLogForPatient – läsning av åtkomstloggar |
-| [IneraEHDSAuditEventPatientQuery](StructureDefinition-inera-ehds-audit-event-patient-query.html) | IHE BALP PatientQuery | Loggpost som skapas vid sökning/träfflista i API:et ([Auditloggning](mapping-getaccesslogforpatient.html)) |
-| [IneraEHDSAuditEventPatientRead](StructureDefinition-inera-ehds-audit-event-patient-read.html) | IHE BALP PatientRead | Loggpost som skapas vid innehållshämtning i API:et ([Auditloggning](mapping-getaccesslogforpatient.html)) |
+| [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.html) | AuditEvent | GetAccessLogForPatient – läsning av åtkomstloggar |
+| [SEEHDSAuditEventPatientQuery](StructureDefinition-SEEHDSAuditEventPatientQuery.html) | IHE BALP PatientQuery | Loggpost som skapas vid sökning/träfflista i API:et ([Auditloggning](mapping-getaccesslogforpatient.html)) |
+| [SEEHDSAuditEventPatientRead](StructureDefinition-SEEHDSAuditEventPatientRead.html) | IHE BALP PatientRead | Loggpost som skapas vid innehållshämtning i API:et ([Auditloggning](mapping-getaccesslogforpatient.html)) |
