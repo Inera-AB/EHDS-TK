@@ -269,8 +269,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getmaternitymedicalhistory--mödravård">GetMaternityMedicalHistory – Mödravård</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetMaternityMedicalHistory v2.0<br />
-<strong>FHIR-profil:</strong> <a href="StructureDefinition-inera-ehds-observation-maternity.html">IneraEHDSObservationMaternity</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-maternity-medical-history.html">IneraEHDSLMMaternityMedicalHistory</a><br />
+<strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSObservationMaternity.html">SEEHDSObservationMaternity</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMMaternityMedicalHistory.html">SEEHDSLMMaternityMedicalHistory</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v2.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v2.0)<br />
 <strong>EHDS-koppling:</strong> Mödravårdsdata – bakgrundsinformation i Patient Summary</p>
 
@@ -1226,9 +1226,9 @@ ett svarsmeddelande från tjänstekontraktet representerar en färdig journalpos
 
 <h3 id="observationcategory">Observation.category</h3>
 
-<p>Alla Observation-resurser tilldelas kategorin <code class="language-plaintext highlighter-rouge">survey</code> från
-<code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/observation-category</code> för att reflektera
-att mödravårdsdata samlas in som strukturerade formuläruppgifter.</p>
+<p><code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte. GetMaternityMedicalHistory bär ingen kategori, och den statiska
+kategorin <code class="language-plaintext highlighter-rouge">survey</code> fanns bara för att harmonisera med IPS (GENERAL-007). Sektionen identifieras av
+<code class="language-plaintext highlighter-rouge">Observation.code</code>.</p>
 
 <h3 id="observationeffectivex">Observation.effective[x]</h3>
 
@@ -1363,7 +1363,7 @@ samtliga Observation-resurser producerade från det objektet.</p>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
       <td>HSA-id (Inera NTjP)</td>
     </tr>
   </tbody>
@@ -1452,7 +1452,7 @@ samtliga Observation-resurser producerade från det objektet.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

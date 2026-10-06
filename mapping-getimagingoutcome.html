@@ -213,7 +213,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <ul id="markdown-toc">
   <li><a href="#getimagingoutcome--bilddiagnostik" id="markdown-toc-getimagingoutcome--bilddiagnostik">GetImagingOutcome – Bilddiagnostik</a>    <ul>
       <li><a href="#resurshierarki" id="markdown-toc-resurshierarki">Resurshierarki</a></li>
-      <li><a href="#mappningstabell--ineraehdsdiagnosticreportimaging" id="markdown-toc-mappningstabell--ineraehdsdiagnosticreportimaging">Mappningstabell – IneraEHDSDiagnosticReportImaging</a>        <ul>
+      <li><a href="#mappningstabell--seehdsdiagnosticreportimaging" id="markdown-toc-mappningstabell--seehdsdiagnosticreportimaging">Mappningstabell – SEEHDSDiagnosticReportImaging</a>        <ul>
           <li><a href="#imagingoutcomeheader-patientsummaryheader" id="markdown-toc-imagingoutcomeheader-patientsummaryheader">imagingOutcomeHeader (PatientSummaryHeader)</a></li>
           <li><a href="#imagingoutcomebody" id="markdown-toc-imagingoutcomebody">imagingOutcomeBody</a></li>
         </ul>
@@ -251,8 +251,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getimagingoutcome--bilddiagnostik">GetImagingOutcome – Bilddiagnostik</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetImagingOutcome v1.0<br />
-<strong>FHIR-profiler:</strong> <a href="StructureDefinition-inera-ehds-diagnostic-report-imaging.html">IneraEHDSDiagnosticReportImaging</a> (primär) | <a href="http://hl7.org/fhir/R4/imagingstudy.html">ImagingStudy</a> (sekundär, per imageRecording)<br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-imaging-outcome.html">IneraEHDSLMImagingOutcome</a><br />
+<strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSDiagnosticReportImaging.html">SEEHDSDiagnosticReportImaging</a> (primär) | <a href="http://hl7.org/fhir/R4/imagingstudy.html">ImagingStudy</a> (sekundär, per imageRecording)<br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMImagingOutcome.html">SEEHDSLMImagingOutcome</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v1.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v1.0)<br />
 <strong>EHDS-koppling:</strong> Medical imaging studies – bilddiagnostiska utlåtanden</p>
 
@@ -262,15 +262,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>imagingOutcome 0..*
 │
-IneraEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
+SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
   └── ImagingStudy               (0..* per imageRecording – undersökning/DICOM-data)
 </code></pre></div></div>
 
-<p>En <code class="language-plaintext highlighter-rouge">imagingOutcome</code> representerar ett bilddiagnostiskt utlåtande (t.ex. ett röntgensvar) och mappas till en <code class="language-plaintext highlighter-rouge">IneraEHDSDiagnosticReportImaging</code>. Varje <code class="language-plaintext highlighter-rouge">imageRecording</code> inom svaret (enskilda undersökningar med modalitetsdata) mappas till en separat <code class="language-plaintext highlighter-rouge">ImagingStudy</code>-instans. Referensen <code class="language-plaintext highlighter-rouge">DiagnosticReport.imagingStudy</code> binder ihop utlåtandet med undersökningarna. Se <a href="#öppna-frågor">IMG-002</a> för DICOM-designfrågor.</p>
+<p>En <code class="language-plaintext highlighter-rouge">imagingOutcome</code> representerar ett bilddiagnostiskt utlåtande (t.ex. ett röntgensvar) och mappas till en <code class="language-plaintext highlighter-rouge">SEEHDSDiagnosticReportImaging</code>. Varje <code class="language-plaintext highlighter-rouge">imageRecording</code> inom svaret (enskilda undersökningar med modalitetsdata) mappas till en separat <code class="language-plaintext highlighter-rouge">ImagingStudy</code>-instans. Referensen <code class="language-plaintext highlighter-rouge">DiagnosticReport.imagingStudy</code> binder ihop utlåtandet med undersökningarna. Se <a href="#öppna-frågor">IMG-002</a> för DICOM-designfrågor.</p>
 
 <hr />
 
-<h2 id="mappningstabell--ineraehdsdiagnosticreportimaging">Mappningstabell – IneraEHDSDiagnosticReportImaging</h2>
+<h2 id="mappningstabell--seehdsdiagnosticreportimaging">Mappningstabell – SEEHDSDiagnosticReportImaging</h2>
 
 <p>Rotelementet <code class="language-plaintext highlighter-rouge">imagingOutcomeHeader</code> och <code class="language-plaintext highlighter-rouge">imagingOutcomeBody</code> mappas gemensamt till DiagnosticReport.</p>
 
@@ -1137,7 +1137,7 @@ code.coding.display = "Diagnostic imaging study"
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
       <td>HSA-id (Inera NTjP)</td>
     </tr>
   </tbody>
@@ -1220,7 +1220,7 @@ code.coding.display = "Diagnostic imaging study"
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

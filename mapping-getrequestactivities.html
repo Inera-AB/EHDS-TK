@@ -232,8 +232,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getrequestactivities--remisstatus">GetRequestActivities – Remisstatus</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">crm:requeststatus</code> GetRequestActivities v2.0<br />
-<strong>FHIR-profil:</strong> <a href="StructureDefinition-inera-ehds-task.html">IneraEHDSTask</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-request-activities.html">IneraEHDSLMRequestActivities</a><br />
+<strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSTask.html">SEEHDSTask</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMRequestActivities.html">SEEHDSLMRequestActivities</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v2.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v1.0, 2.0)<br />
 <strong>EHDS-koppling:</strong> Stödjande processinformation (ej separat EHDS-huvudkategori)</p>
 
@@ -320,7 +320,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><code class="language-plaintext highlighter-rouge">requestReceiver</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Task.owner</code></td>
-      <td>Reference(SEBaseOrganization) med <code class="language-plaintext highlighter-rouge">identifier.value</code> = mottagarens HSA-id</td>
+      <td>Reference(SEEHDSOrganization) med <code class="language-plaintext highlighter-rouge">identifier.value</code> = mottagarens HSA-id</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">activityType</code></td>
@@ -477,7 +477,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
       <td>HSA-id (Inera NTjP)</td>
     </tr>
   </tbody>
@@ -494,7 +494,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p><code class="language-plaintext highlighter-rouge">requestId</code> i LM är remissaktivitetens egen identifierare (ej remissen i sig). Den
 mappas därför till <code class="language-plaintext highlighter-rouge">Task.identifier[0].value</code> för att representera källsystemets id
 för detta aktivitetsobjekt. En referens till den underliggande remissen (om tillgänglig)
-kan läggas i <code class="language-plaintext highlighter-rouge">Task.focus</code> som <code class="language-plaintext highlighter-rouge">Reference(IneraEHDSServiceRequestReferral)</code>, men det
+kan läggas i <code class="language-plaintext highlighter-rouge">Task.focus</code> som <code class="language-plaintext highlighter-rouge">Reference(SEEHDSServiceRequestReferral)</code>, men det
 kräver att remiss-id är separat tillgängligt vilket ej framgår av LM-strukturen.</p>
 
 <h3 id="taskrequester">Task.requester</h3>
@@ -548,7 +548,7 @@ requestHeader eller requestId-strukturen.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

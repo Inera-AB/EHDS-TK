@@ -9,7 +9,7 @@
     "systems" : ["https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-functional-status.html" : "GetFunctionalStatus"
+    "StructureDefinition-SEEHDSLMFunctionalStatus.html" : "GetFunctionalStatus"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/clinicaldocumentnotecode-vs",
@@ -21,7 +21,7 @@
     "systems" : ["urn:oid:1.2.752.129.2.2.2.11"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-care-documentation.html" : "GetCareDocumentation"
+    "StructureDefinition-SEEHDSLMCareDocumentation.html" : "GetCareDocumentation"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/deliverycode-vs",
@@ -42,8 +42,8 @@
     "systems" : ["https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-diagnosis.html" : "GetDiagnosis",
-    "StructureDefinition-inera-ehds-condition-diagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-SEEHDSLMDiagnosis.html" : "GetDiagnosis",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/errorcode-vs",
@@ -55,8 +55,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/errorcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory",
-    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory"
+    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory",
+    "StructureDefinition-SEEHDSLMVaccinationHistory.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/examinationstatuscode-vs",
@@ -86,7 +86,7 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-growth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/prescriptionstatus-vs",
@@ -98,7 +98,7 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/prescriptionstatus"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory"
+    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/referraloutcometypecode-vs",
@@ -119,8 +119,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/resultcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory",
-    "StructureDefinition-inera-ehds-lm-vaccination-history.html" : "GetVaccinationHistory"
+    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory",
+    "StructureDefinition-SEEHDSLMVaccinationHistory.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs",
@@ -132,8 +132,8 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-observation-base.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-inera-ehds-lm-observations.html" : "GetObservations"
+    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSLMObservations.html" : "GetObservations"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",
@@ -154,8 +154,8 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/typeofcareplan-cs"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-care-plan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-inera-ehds-lm-care-plans.html" : "GetCarePlans"
+    "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
+    "StructureDefinition-SEEHDSLMCarePlans.html" : "GetCarePlans"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofleavecode-vs",
@@ -176,7 +176,7 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/typeofprescription"],
     "uses" : {
     },
-    "StructureDefinition-inera-ehds-lm-medication-history.html" : "GetMedicationHistory"
+    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs",

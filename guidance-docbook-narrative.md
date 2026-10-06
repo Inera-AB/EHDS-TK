@@ -8,7 +8,7 @@
 # DocBook-mappning – clinicalDocumentNoteText och bilagor
 
 **Gäller:** GetCareDocumentation v3.0 (`careDocumentation.body.clinicalDocumentNoteText` och `careDocumentation.body.multimediaEntry`)
- **FHIR-resurser:** [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.md) (obligatorisk), [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.md) (valfri)
+ **FHIR-resurser:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.md) (obligatorisk), [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.md) (valfri)
  **Designbeslut:** DOC-004 i [Mappningsissues och Designbeslut](mapping-issues.md#designbeslut-fattade)
  **Mappningssida:** [GetCareDocumentation – Anteckningar](mapping-getcaredocumentation.md)
 
@@ -36,7 +36,7 @@ DocBook är ett källsystemsformat som FHIR-konsumenter inte kan förväntas ren
 | | | |
 | :--- | :--- | :--- |
 | **A – XHTML** | `DocumentReference.content[0].attachment`med XHTML och`contentType: text/html; charset=utf-8` | Obligatorisk |
-| **B – Composition** | En fristående`Composition`enligt[IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.md)med en`section`per DocBook-`<section>` | Valfri – men om den skapas ska den följa profilen |
+| **B – Composition** | En fristående`Composition`enligt[SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.md)med en`section`per DocBook-`<section>` | Valfri – men om den skapas ska den följa profilen |
 
 DocBook kan förekomma på två ställen, som identifieras på olika sätt (se [Steg 2](#steg-2--identifiering-av-docbook)):
 
@@ -178,7 +178,7 @@ XHTML:en läggs i `content.attachment` och **inte** i resursens `DomainResource.
 
 Utöver Strategi A kan en fristående `Composition` skapas när innehållet är DocBook. Den gör dokumentets sektioner adresserbara var för sig, till exempel för navigering eller för att visa enskilda avsnitt.
 
-Strategi B är valfri, men en `Composition` som skapas ska följa profilen [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.md). Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.
+Strategi B är valfri, men en `Composition` som skapas ska följa profilen [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.md). Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.
 
 ### Sektionsmappning
 
@@ -276,9 +276,9 @@ Varje `section.text` är en `Narrative` med `status = generated` och samma slags
   "resourceType": "Composition",
   "status": "final",
   "type": { "coding": [{ "system": "urn:oid:1.2.752.129.2.2.2.11", "code": "bes" }] },
-  "subject": { "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" } },
+  "subject": { "reference": "Patient/pat-191212121212", "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" } },
   "date": "2023-06-01T12:00:00+02:00",
-  "author": [{ "identifier": { "system": "urn:oid:1.2.752.129.2.1.4.1", "value": "SE2321000016-1234" } }],
+  "author": [{ "identifier": { "system": "urn:oid:1.2.752.29.4.19", "value": "SE2321000016-1234" } }],
   "title": "Besöksanteckning",
   "section": [
     {

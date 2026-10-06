@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-pharmaceutical-treatment | *Version*:0.3.3 |
-| Draft as of 2026-10-02 | *Computable Name*:AlertPharmaceuticalTreatment |
+| Draft as of 2026-10-06 | *Computable Name*:AlertPharmaceuticalTreatment |
 
 Läkemedel som används vid uppmärksammad behandling, ATC-kod rekommenderas (alertInformationBody.treatment.pharmaceuticalTreatment). Lista med 0..* – ryms ej i Flag.code (1..1).
 
@@ -19,7 +19,7 @@ Läkemedel som används vid uppmärksammad behandling, ATC-kod rekommenderas (al
 
 **Användningar:**
 
-* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-inera-ehds-flag.md)
+* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-pharmaceutical-treatment)
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-pharmaceutical
   "name" : "AlertPharmaceuticalTreatment",
   "title" : "Läkemedel vid behandling",
   "status" : "draft",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

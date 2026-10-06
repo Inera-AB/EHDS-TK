@@ -241,8 +241,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getalertinformation--uppmärksamhetsinformation">GetAlertInformation – Uppmärksamhetsinformation</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetAlertInformation v2.0<br />
-<strong>FHIR-profiler:</strong> <a href="StructureDefinition-inera-ehds-flag.html">IneraEHDSFlag</a> | <a href="StructureDefinition-inera-ehds-allergy-intolerance.html">IneraEHDSAllergyIntolerance</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-alert-information.html">IneraEHDSLMAlertInformation</a><br />
+<strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSFlag.html">SEEHDSFlag</a> | <a href="StructureDefinition-SEEHDSAllergyIntolerance.html">SEEHDSAllergyIntolerance</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMAlertInformation.html">SEEHDSLMAlertInformation</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v2.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v2.0)<br />
 <strong>EHDS-koppling:</strong> Patient Summary – Allergier, överkänslighet och varningsinformation</p>
 
@@ -252,7 +252,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p><code class="language-plaintext highlighter-rouge">Flag</code> skapas <strong>alltid</strong> för varje <code class="language-plaintext highlighter-rouge">alertInformation</code>-post, oavsett typ av uppmärksamhetssignal (beslut GENERAL-004, ALERT-003).</p>
 
-<p>Om body-typen är <code class="language-plaintext highlighter-rouge">hypersensitivity</code> skapas <strong>dessutom</strong> en <code class="language-plaintext highlighter-rouge">AllergyIntolerance</code>-resurs. I det fallet pekar <code class="language-plaintext highlighter-rouge">Flag</code> på <code class="language-plaintext highlighter-rouge">AllergyIntolerance</code> via <code class="language-plaintext highlighter-rouge">Flag.extension[flag-detail]</code> (standard R4-extension; kallas <code class="language-plaintext highlighter-rouge">supportingInfo</code> i R5).</p>
+<p>Om body-typen är <code class="language-plaintext highlighter-rouge">hypersensitivity</code> skapas <strong>dessutom</strong> en <code class="language-plaintext highlighter-rouge">AllergyIntolerance</code>-resurs. I det fallet pekar <code class="language-plaintext highlighter-rouge">Flag</code> på <code class="language-plaintext highlighter-rouge">AllergyIntolerance</code> via <code class="language-plaintext highlighter-rouge">Flag.extension[flagDetailExt]</code> (standard-extensionen flag-detail, som ärvs från EU Core Flag; kallas <code class="language-plaintext highlighter-rouge">supportingInfo</code> i R5).</p>
 
 <table>
   <thead>
@@ -264,7 +264,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <tbody>
     <tr>
       <td>body = <code class="language-plaintext highlighter-rouge">hypersensitivity</code></td>
-      <td><code class="language-plaintext highlighter-rouge">Flag</code> + <code class="language-plaintext highlighter-rouge">AllergyIntolerance</code> (länkad via <code class="language-plaintext highlighter-rouge">extension[flag-detail]</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag</code> + <code class="language-plaintext highlighter-rouge">AllergyIntolerance</code> (länkad via <code class="language-plaintext highlighter-rouge">extension[flagDetailExt]</code>)</td>
     </tr>
     <tr>
       <td>body = <code class="language-plaintext highlighter-rouge">seriousDisease</code></td>
@@ -1118,7 +1118,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.2.3.1.1</code></td>
@@ -1183,7 +1183,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

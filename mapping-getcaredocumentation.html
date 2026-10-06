@@ -249,8 +249,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getcaredocumentation--journalanteckningar">GetCareDocumentation – Journalanteckningar</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetCareDocumentation v3.0<br />
-<strong>FHIR-profil:</strong> <a href="StructureDefinition-inera-ehds-document-reference.html">IneraEHDSDocumentReference</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-care-documentation.html">IneraEHDSLMCareDocumentation</a><br />
+<strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMCareDocumentation.html">SEEHDSLMCareDocumentation</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v3.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v3.0)<br />
 <strong>EHDS-koppling:</strong> Journalanteckningar – kan bidra till discharge report eller dokumentationsunderlag; bredare än EHDS discharge reports</p>
 
@@ -274,11 +274,11 @@ Se DES-005 i <a href="mapping-issues.html">mapping-issues</a>.</p>
 
 <h2 id="resurshierarki">Resurshierarki</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IneraEHDSDocumentReference (1 per careDocumentation)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEEHDSDocumentReference (1 per careDocumentation)
   └── author → PractitionerRole (header.author)
   └── authenticator → PractitionerRole (header.signature)
   └── content[0].attachment (XOR: clinicalDocumentNoteText eller multimediaEntry)
-IneraEHDSCompositionCareDocumentation (valfri, 0..1 per careDocumentation – endast när innehållet är DocBook, se DOC-004)
+SEEHDSCompositionCareDocumentation (valfri, 0..1 per careDocumentation – endast när innehållet är DocBook, se DOC-004)
   └── section[] (en per DocBook-&lt;section&gt;)
 </code></pre></div></div>
 
@@ -306,7 +306,7 @@ eller URL) – se Härledda fält nedan.</p>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader.patientId.extension</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">DocumentReference.subject.identifier.value</code></td>
-      <td>Personnummer eller samordningsnummer; logisk referens, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
+      <td>Personnummer eller samordningsnummer; <code class="language-plaintext highlighter-rouge">reference</code> till SEEHDSPatient + <code class="language-plaintext highlighter-rouge">identifier</code>, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader.patientId.root</code></td>
@@ -782,7 +782,7 @@ textfältet känns igen på den entity-kodade XML:en, medan DocBook i en bilaga 
     </tr>
     <tr>
       <td>DocBook – Strategi B (valfri)</td>
-      <td>Dessutom en <code class="language-plaintext highlighter-rouge">Composition</code> enligt <a href="StructureDefinition-inera-ehds-composition-care-documentation.html">IneraEHDSCompositionCareDocumentation</a> med en <code class="language-plaintext highlighter-rouge">section</code> per DocBook-<code class="language-plaintext highlighter-rouge">&lt;section&gt;</code>, kopplad via <code class="language-plaintext highlighter-rouge">Provenance.target</code></td>
+      <td>Dessutom en <code class="language-plaintext highlighter-rouge">Composition</code> enligt <a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html">SEEHDSCompositionCareDocumentation</a> med en <code class="language-plaintext highlighter-rouge">section</code> per DocBook-<code class="language-plaintext highlighter-rouge">&lt;section&gt;</code>, kopplad via <code class="language-plaintext highlighter-rouge">Provenance.target</code></td>
     </tr>
     <tr>
       <td>Bilaga (<code class="language-plaintext highlighter-rouge">multimediaEntry</code>) med <code class="language-plaintext highlighter-rouge">mediaType</code> <code class="language-plaintext highlighter-rouge">application/docbook+xml</code></td>
@@ -880,7 +880,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
     </tr>
   </tbody>
 </table>
@@ -958,7 +958,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

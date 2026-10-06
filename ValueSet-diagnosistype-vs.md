@@ -9,15 +9,15 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/diagnosistype-vs | *Version*:0.3.3 |
-| Active as of 2026-10-02 | *Computable Name*:DiagnosisTypeVS |
+| Active as of 2026-10-06 | *Computable Name*:DiagnosisTypeVS |
 
  
 Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos) och BY (bidiagnos) från kv_diagnostyp. 
 
  **References** 
 
-* [SE EHDS Condition – Diagnos (GetDiagnosis)](StructureDefinition-inera-ehds-condition-diagnosis.md)
-* [GetDiagnosis](StructureDefinition-inera-ehds-lm-diagnosis.md)
+* [SE EHDS Condition – Diagnos (GetDiagnosis)](StructureDefinition-SEEHDSConditionDiagnosis.md)
+* [GetDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md)
 
 ### Logisk definition (CLD)
 
@@ -51,7 +51,7 @@ Tillåtna värden för fältet typeOfDiagnosis i GetDiagnosis: HD (huvuddiagnos)
   "name" : "DiagnosisTypeVS",
   "title" : "DiagnosisType — ValueSet",
   "status" : "active",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

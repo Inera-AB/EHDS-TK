@@ -238,8 +238,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getmedicationhistory--läkemedelshistorik">GetMedicationHistory – Läkemedelshistorik</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:activityprescription:actoutcome</code> GetMedicationHistory v2.2<br />
-<strong>FHIR-profil:</strong> <a href="StructureDefinition-inera-ehds-medication-statement.html">IneraEHDSMedicationStatement</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-medication-history.html">IneraEHDSLMMedicationHistory</a><br />
+<strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSMedicationStatement.html">SEEHDSMedicationStatement</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMMedicationHistory.html">SEEHDSLMMedicationHistory</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v2.2) | <strong>Krävs för 1177 Journal:</strong> Ja (v2.2)<br />
 <strong>EHDS-koppling:</strong> Patient Summary – Aktuella läkemedel. EHDS har även separata domäner för ePrescription och eDispensation.</p>
 
@@ -258,7 +258,7 @@ Detta är en känd avvikelse i TKB:n och måste hanteras explicit i bryggkoden.<
 
 <h2 id="resurshierarki">Resurshierarki</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IneraEHDSMedicationStatement (1 per medicationMedicalRecord)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEEHDSMedicationStatement (1 per medicationMedicalRecord)
   └── informationSource → PractitionerRole (accountableHealthcareProfessional)
   └── medicationCodeableConcept (drug, 5 XOR-varianter)
   └── basedOn → (logisk referens om koppling till recept/SIL finns)
@@ -1066,7 +1066,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
     </tr>
   </tbody>
 </table>
@@ -1152,7 +1152,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

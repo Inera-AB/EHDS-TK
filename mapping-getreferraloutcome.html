@@ -243,8 +243,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getreferraloutcome--remissvar--konsultationssvar">GetReferralOutcome – Remissvar / Konsultationssvar</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetReferralOutcome v3.2<br />
-<strong>FHIR-profil:</strong> <a href="StructureDefinition-inera-ehds-diagnostic-report-referral.html">IneraEHDSDiagnosticReportReferral</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-referral-outcome.html">IneraEHDSLMReferralOutcome</a><br />
+<strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSDiagnosticReportReferral.html">SEEHDSDiagnosticReportReferral</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMReferralOutcome.html">SEEHDSLMReferralOutcome</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v3.2) | <strong>Krävs för 1177 Journal:</strong> Ja (v3.2)<br />
 <strong>EHDS-koppling:</strong> Remissvar – relaterar till vårdprocess och resultat (ej separat EHDS-huvudkategori)</p>
 
@@ -252,7 +252,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h2 id="resurshierarki">Resurshierarki</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IneraEHDSDiagnosticReportReferral (1 per referralOutcome)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEEHDSDiagnosticReportReferral (1 per referralOutcome)
   └── basedOn → ServiceRequest (logisk referens via referral.referralId)
   └── performer → PractitionerRole (accountableHealthcareProfessional)
 </code></pre></div></div>
@@ -797,7 +797,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
       <td>HSA-id (Inera NTjP)</td>
     </tr>
   </tbody>
@@ -876,7 +876,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -205,22 +205,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
    <p>Contents:</p>
    <ul>
       <li>
-         <a href="#1">Structures: Logical Models</a>
+         <a href="#1">Behavior: Capability Statements</a>
       </li>
       <li>
-         <a href="#2">Structures: Resource Profiles</a>
+         <a href="#2">Structures: Logical Models</a>
       </li>
       <li>
-         <a href="#3">Structures: Extension Definitions</a>
+         <a href="#3">Structures: Resource Profiles</a>
       </li>
       <li>
-         <a href="#4">Terminology: Value Sets</a>
+         <a href="#4">Structures: Extension Definitions</a>
       </li>
       <li>
-         <a href="#5">Terminology: Code Systems</a>
+         <a href="#5">Terminology: Value Sets</a>
       </li>
       <li>
-         <a href="#6">Terminology: Concept Maps</a>
+         <a href="#6">Terminology: Code Systems</a>
+      </li>
+      <li>
+         <a href="#7">Terminology: Concept Maps</a>
       </li>
    </ul>
 </div>
@@ -229,6 +232,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
      xmlns:html="http://www.w3.org/1999/xhtml">
    <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
    <a name="1"> </a>
+   <h3>Behavior: Capability Statements </h3>
+    <p>The following artifacts define the specific capabilities that different types of systems are expected to have in order to comply with this implementation guide.  Systems conforming to this implementation guide are expected to declare conformance to one or more of the following capability statements.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CapabilityStatement-SEEHDSResourceAccessProvider.html"
+                  title="CapabilityStatement/SEEHDSResourceAccessProvider">SE EHDS Resource Access Provider</a>
+            </td>
+            <td>
+<p>Krav på ett FHIR-API som tillhandahåller data från RIVTA-tjänstekontrakten enligt denna IG.
+Bygger på EURIDICE (EU Health Data API) Resource Access Provider och anger vilka profiler i
+denna IG som resurserna ska följa.</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="2"> </a>
    <h3>Structures: Logical Models </h3>
     <p>These define data models that represent the domain covered by this implementation guide in more business-friendly terms than the underlying FHIR resources.</p>
 <table class="grid">
@@ -236,8 +258,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <tbody>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-access-log.html"
-                  title="StructureDefinition/inera-ehds-lm-access-log">GetAccessLogForPatient</a>
+               <a href="StructureDefinition-SEEHDSLMAccessLog.html"
+                  title="StructureDefinition/SEEHDSLMAccessLog">GetAccessLogForPatient</a>
             </td>
             <td>
 <p>Logisk modell för patientens åtkomstloggar hämtad via GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Krävs för 1177 Journal 1.1, 2.0 men ej för NPÖ.</p>
@@ -245,8 +267,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-alert-information.html"
-                  title="StructureDefinition/inera-ehds-lm-alert-information">GetAlertInformation</a>
+               <a href="StructureDefinition-SEEHDSLMAlertInformation.html"
+                  title="StructureDefinition/SEEHDSLMAlertInformation">GetAlertInformation</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetAlertInformation
@@ -261,8 +283,8 @@ communicableDisease, restrictionOfCare, unstructuredAlertInformation ska anges p
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-care-contacts.html"
-                  title="StructureDefinition/inera-ehds-lm-care-contacts">GetCareContacts</a>
+               <a href="StructureDefinition-SEEHDSLMCareContacts.html"
+                  title="StructureDefinition/SEEHDSLMCareContacts">GetCareContacts</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetCareContacts
@@ -273,8 +295,8 @@ En lista med CareContactType returneras.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-care-documentation.html"
-                  title="StructureDefinition/inera-ehds-lm-care-documentation">GetCareDocumentation</a>
+               <a href="StructureDefinition-SEEHDSLMCareDocumentation.html"
+                  title="StructureDefinition/SEEHDSLMCareDocumentation">GetCareDocumentation</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetCareDocumentation
@@ -287,8 +309,8 @@ Meddelandeformatet är kompatibelt med HL7 v3 CDA v2.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-care-plans.html"
-                  title="StructureDefinition/inera-ehds-lm-care-plans">GetCarePlans</a>
+               <a href="StructureDefinition-SEEHDSLMCarePlans.html"
+                  title="StructureDefinition/SEEHDSLMCarePlans">GetCarePlans</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetCarePlans
@@ -299,8 +321,8 @@ En lista med CarePlanType returneras, var och en med header- och body-element.</
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-diagnosis.html"
-                  title="StructureDefinition/inera-ehds-lm-diagnosis">GetDiagnosis</a>
+               <a href="StructureDefinition-SEEHDSLMDiagnosis.html"
+                  title="StructureDefinition/SEEHDSLMDiagnosis">GetDiagnosis</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetDiagnosis
@@ -311,8 +333,8 @@ inklusive diagnoskod per ursprungligt diagnosticeringstillfälle.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-functional-status.html"
-                  title="StructureDefinition/inera-ehds-lm-functional-status">GetFunctionalStatus</a>
+               <a href="StructureDefinition-SEEHDSLMFunctionalStatus.html"
+                  title="StructureDefinition/SEEHDSLMFunctionalStatus">GetFunctionalStatus</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetFunctionalStatus
@@ -326,8 +348,8 @@ för assessmentCategory i svaret.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-imaging-outcome.html"
-                  title="StructureDefinition/inera-ehds-lm-imaging-outcome">GetImagingOutcome</a>
+               <a href="StructureDefinition-SEEHDSLMImagingOutcome.html"
+                  title="StructureDefinition/SEEHDSLMImagingOutcome">GetImagingOutcome</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetImagingOutcome
@@ -338,8 +360,8 @@ för en patient. Baseras på NPÖ RIV 2.2.0-specifikation.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-laboratory-order-outcome.html"
-                  title="StructureDefinition/inera-ehds-lm-laboratory-order-outcome">GetLaboratoryOrderOutcome</a>
+               <a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html"
+                  title="StructureDefinition/SEEHDSLMLaboratoryOrderOutcome">GetLaboratoryOrderOutcome</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetLaboratoryOrderOutcome
@@ -350,8 +372,8 @@ för en patient.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-maternity-medical-history.html"
-                  title="StructureDefinition/inera-ehds-lm-maternity-medical-history">GetMaternityMedicalHistory</a>
+               <a href="StructureDefinition-SEEHDSLMMaternityMedicalHistory.html"
+                  title="StructureDefinition/SEEHDSLMMaternityMedicalHistory">GetMaternityMedicalHistory</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetMaternityMedicalHistory
@@ -361,8 +383,8 @@ Representerar responsens informationsstruktur — mödravårdsjournal för en pa
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-medication-history.html"
-                  title="StructureDefinition/inera-ehds-lm-medication-history">GetMedicationHistory</a>
+               <a href="StructureDefinition-SEEHDSLMMedicationHistory.html"
+                  title="StructureDefinition/SEEHDSLMMedicationHistory">GetMedicationHistory</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetMedicationHistory
@@ -375,8 +397,8 @@ Representerar responsens informationsstruktur — läkemedelshistorik per patien
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-observations.html"
-                  title="StructureDefinition/inera-ehds-lm-observations">GetObservations</a>
+               <a href="StructureDefinition-SEEHDSLMObservations.html"
+                  title="StructureDefinition/SEEHDSLMObservations">GetObservations</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetObservations
@@ -389,8 +411,8 @@ en observation i svarsmeddelandet.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-referral-outcome.html"
-                  title="StructureDefinition/inera-ehds-lm-referral-outcome">GetReferralOutcome</a>
+               <a href="StructureDefinition-SEEHDSLMReferralOutcome.html"
+                  title="StructureDefinition/SEEHDSLMReferralOutcome">GetReferralOutcome</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetReferralOutcome
@@ -402,8 +424,8 @@ med HL7v3 CDA v.2.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-request-activities.html"
-                  title="StructureDefinition/inera-ehds-lm-request-activities">GetRequestActivities</a>
+               <a href="StructureDefinition-SEEHDSLMRequestActivities.html"
+                  title="StructureDefinition/SEEHDSLMRequestActivities">GetRequestActivities</a>
             </td>
             <td>
 <p>Logisk modell för remisstatus och processaktiviteter hämtad via GetRequestActivities (crm:requeststatus v2.0).</p>
@@ -411,8 +433,8 @@ med HL7v3 CDA v.2.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-lm-vaccination-history.html"
-                  title="StructureDefinition/inera-ehds-lm-vaccination-history">GetVaccinationHistory</a>
+               <a href="StructureDefinition-SEEHDSLMVaccinationHistory.html"
+                  title="StructureDefinition/SEEHDSLMVaccinationHistory">GetVaccinationHistory</a>
             </td>
             <td>
 <p>Logisk modell för tjänstekontraktet GetVaccinationHistory
@@ -422,7 +444,7 @@ Representerar responsens informationsstruktur — vaccinationsjournal per patien
          </tr>
       </tbody>
    </table>
-   <a name="2"> </a>
+   <a name="3"> </a>
    <h3>Structures: Resource Profiles </h3>
     <p>These define constraints on FHIR resources for systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -430,14 +452,14 @@ Representerar responsens informationsstruktur — vaccinationsjournal per patien
       <tbody>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-allergy-intolerance.html"
-                  title="StructureDefinition/inera-ehds-allergy-intolerance">SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)</a>
+               <a href="StructureDefinition-SEEHDSAllergyIntolerance.html"
+                  title="StructureDefinition/SEEHDSAllergyIntolerance">SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)</a>
             </td>
             <td>
 <p>Sekundär profil för allergier och överkänslighet från GetAlertInformation.</p>
 
 <p>Skapas ENBART när alertInformationBody = hypersensitivity.
-Den tillhörande IneraEHDSFlag-resursen är alltid primär och pekar på denna
+Den tillhörande SEEHDSFlag-resursen är alltid primär och pekar på denna
 resurs via Flag.extension[flag-detail] (standard R4-extension; R5: supportingInfo).</p>
 
 <p>Populeras med klinisk information från hypersensitivity-blocket:</p>
@@ -455,8 +477,8 @@ resurs via Flag.extension[flag-detail] (standard R4-extension; R5: supportingInf
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-audit-event-patient-read.html"
-                  title="StructureDefinition/inera-ehds-audit-event-patient-read">SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)</a>
+               <a href="StructureDefinition-SEEHDSAuditEventPatientRead.html"
+                  title="StructureDefinition/SEEHDSAuditEventPatientRead">SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)</a>
             </td>
             <td>
 <p>Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) lämnar ut en
@@ -474,8 +496,8 @@ veta vem som har tagit del av patientens uppgifter.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-audit-event-read-access-log.html"
-                  title="StructureDefinition/inera-ehds-audit-event-read-access-log">SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)</a>
+               <a href="StructureDefinition-SEEHDSAuditEventReadAccessLog.html"
+                  title="StructureDefinition/SEEHDSAuditEventReadAccessLog">SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)</a>
             </td>
             <td>
 <p>Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till
@@ -483,13 +505,13 @@ patienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient
 (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.</p>
 
 <p>Profilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas
-när API:et nyttjas beskrivs av IneraEHDSAuditEventPatientQuery och IneraEHDSAuditEventPatientRead.</p>
+när API:et nyttjas beskrivs av SEEHDSAuditEventPatientQuery och SEEHDSAuditEventPatientRead.</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-audit-event-patient-query.html"
-                  title="StructureDefinition/inera-ehds-audit-event-patient-query">SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)</a>
+               <a href="StructureDefinition-SEEHDSAuditEventPatientQuery.html"
+                  title="StructureDefinition/SEEHDSAuditEventPatientQuery">SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)</a>
             </td>
             <td>
 <p>Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en
@@ -509,8 +531,8 @@ har tagit del av patientens uppgifter.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-care-plan.html"
-                  title="StructureDefinition/inera-ehds-care-plan">SE EHDS CarePlan – Vårdplan (GetCarePlans)</a>
+               <a href="StructureDefinition-SEEHDSCarePlan.html"
+                  title="StructureDefinition/SEEHDSCarePlan">SE EHDS CarePlan – Vårdplan (GetCarePlans)</a>
             </td>
             <td>
 <p>Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0.</p>
@@ -518,8 +540,8 @@ har tagit del av patientens uppgifter.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-composition-care-documentation.html"
-                  title="StructureDefinition/inera-ehds-composition-care-documentation">SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)</a>
+               <a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html"
+                  title="StructureDefinition/SEEHDSCompositionCareDocumentation">SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)</a>
             </td>
             <td>
 <p>Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när
@@ -527,24 +549,24 @@ innehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType
 application/docbook+xml). Varje DocBook-&lt;section&gt; blir en Composition.section med XHTML-narrativ
 (Strategi B, se DOC-004 och sidan DocBook-mappning).</p>
 
-<p>Kompletterar IneraEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).
+<p>Kompletterar SEEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).
 Composition kopplas till DocumentReference genom att samma Provenance har båda i
 Provenance.target.</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-condition-diagnosis.html"
-                  title="StructureDefinition/inera-ehds-condition-diagnosis">SE EHDS Condition – Diagnos (GetDiagnosis)</a>
+               <a href="StructureDefinition-SEEHDSConditionDiagnosis.html"
+                  title="StructureDefinition/SEEHDSConditionDiagnosis">SE EHDS Condition – Diagnos (GetDiagnosis)</a>
             </td>
             <td>
-<p>Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0.</p>
+<p>Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Ärver HL7 Europe Core Condition (EURIDICE). Täcker NPÖ 2.0 och 1177 Journal 2.0.</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-condition-functional.html"
-                  title="StructureDefinition/inera-ehds-condition-functional">SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)</a>
+               <a href="StructureDefinition-SEEHDSConditionFunctional.html"
+                  title="StructureDefinition/SEEHDSConditionFunctional">SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)</a>
             </td>
             <td>
 <p>Profil för funktionstillstånd och ADL-bedömningar mappat från RIVTA-tjänstekontraktet
@@ -559,14 +581,14 @@ Inget statusfält, tidperiod eller svårighetsgradfält finns i TKBn – dessa �
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-device.html"
-                  title="StructureDefinition/inera-ehds-device">SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)</a>
+               <a href="StructureDefinition-SEEHDSDevice.html"
+                  title="StructureDefinition/SEEHDSDevice">SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)</a>
             </td>
             <td>
 <p>Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.</p>
 
 <p>Representerar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*
-och sourceSystemContact. Refereras från IneraEHDSImmunization via
+och sourceSystemContact. Refereras från SEEHDSImmunization via
 extension[registrationDevice].</p>
 
 <p>deviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)
@@ -577,26 +599,26 @@ extension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)</p
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-diagnostic-report-imaging.html"
-                  title="StructureDefinition/inera-ehds-diagnostic-report-imaging">SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)</a>
+               <a href="StructureDefinition-SEEHDSDiagnosticReportImaging.html"
+                  title="StructureDefinition/SEEHDSDiagnosticReportImaging">SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)</a>
             </td>
             <td>
-<p>Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med IneraEHDSImagingStudy för att representera både undersökning och svar.</p>
+<p>Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med SEEHDSImagingStudy för att representera både undersökning och svar.</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-diagnostic-report-referral.html"
-                  title="StructureDefinition/inera-ehds-diagnostic-report-referral">SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)</a>
+               <a href="StructureDefinition-SEEHDSDiagnosticReportReferral.html"
+                  title="StructureDefinition/SEEHDSDiagnosticReportReferral">SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)</a>
             </td>
             <td>
-<p>Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med IneraEHDSServiceRequestReferral.</p>
+<p>Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med SEEHDSServiceRequestReferral.</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-diagnostic-report-lab.html"
-                  title="StructureDefinition/inera-ehds-diagnostic-report-lab">SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)</a>
+               <a href="StructureDefinition-SEEHDSDiagnosticReportLab.html"
+                  title="StructureDefinition/SEEHDSDiagnosticReportLab">SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)</a>
             </td>
             <td>
 <p>Profil för laboratorieresultat mappat från RIVTA-tjänstekontraktet GetLaboratoryOrderOutcome (clinicalprocess:healthcond:actoutcome v4.2). Täcker NPÖ v4.2 och 1177 Journal v4.2.</p>
@@ -604,8 +626,8 @@ extension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)</p
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-document-reference.html"
-                  title="StructureDefinition/inera-ehds-document-reference">SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)</a>
+               <a href="StructureDefinition-SEEHDSDocumentReference.html"
+                  title="StructureDefinition/SEEHDSDocumentReference">SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)</a>
             </td>
             <td>
 <p>Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation
@@ -618,8 +640,8 @@ signature för signeringsinformation.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-encounter.html"
-                  title="StructureDefinition/inera-ehds-encounter">SE EHDS Encounter – Vårdkontakter (GetCareContacts)</a>
+               <a href="StructureDefinition-SEEHDSEncounter.html"
+                  title="StructureDefinition/SEEHDSEncounter">SE EHDS Encounter – Vårdkontakter (GetCareContacts)</a>
             </td>
             <td>
 <p>Profil för vårdkontakter mappat från RIVTA-tjänstekontraktet GetCareContacts (clinicalprocess:logistics:logistics v3.0). Täcker NPÖ 2.0, 3.0 och 1177 Journal 2.0, 3.0.</p>
@@ -627,8 +649,8 @@ signature för signeringsinformation.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-flag.html"
-                  title="StructureDefinition/inera-ehds-flag">SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)</a>
+               <a href="StructureDefinition-SEEHDSFlag.html"
+                  title="StructureDefinition/SEEHDSFlag">SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)</a>
             </td>
             <td>
 <p>Primär profil för ALL uppmärksamhetsinformation från GetAlertInformation
@@ -636,7 +658,7 @@ signature för signeringsinformation.</p>
 
 <p>Varje alertInformation-post ger alltid en Flag-resurs.
 Om typeOfAlertInformation anger allergi/överkänslighet (body = hypersensitivity)
-skapas dessutom en IneraEHDSAllergyIntolerance-resurs som pekas ut via
+skapas dessutom en SEEHDSAllergyIntolerance-resurs som pekas ut via
 extension[flag-detail] (standard R4-extension; kallas supportingInfo i R5).</p>
 
 <p>Body-strukturen är XOR: exakt en av hypersensitivity, seriousDisease, treatment,
@@ -651,8 +673,8 @@ Flag.code                           = den kliniska koden specifik för body-type
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-imaging-study.html"
-                  title="StructureDefinition/inera-ehds-imaging-study">SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)</a>
+               <a href="StructureDefinition-SEEHDSImagingStudy.html"
+                  title="StructureDefinition/SEEHDSImagingStudy">SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)</a>
             </td>
             <td>
 <p>Profil för bilddiagnostiska undersökningar mappat från RIVTA-tjänstekontraktet GetImagingOutcome (clinicalprocess:healthcond:actoutcome v1.0). Täcker NPÖ 1.0 och 1177 Journal 1.0.</p>
@@ -660,8 +682,8 @@ Flag.code                           = den kliniska koden specifik för body-type
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-immunization.html"
-                  title="StructureDefinition/inera-ehds-immunization">SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)</a>
+               <a href="StructureDefinition-SEEHDSImmunization.html"
+                  title="StructureDefinition/SEEHDSImmunization">SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)</a>
             </td>
             <td>
 <p>Profil för vaccinationer mappat från RIVTA-tjänstekontraktet GetVaccinationHistory (clinicalprocess:activityprescription:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0.</p>
@@ -669,8 +691,8 @@ Flag.code                           = den kliniska koden specifik för body-type
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-medication-statement.html"
-                  title="StructureDefinition/inera-ehds-medication-statement">SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)</a>
+               <a href="StructureDefinition-SEEHDSMedicationStatement.html"
+                  title="StructureDefinition/SEEHDSMedicationStatement">SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)</a>
             </td>
             <td>
 <p>Profil för läkemedelsordinationer, förskrivningar och administrerade läkemedel mappat från RIVTA-tjänstekontraktet GetMedicationHistory (clinicalprocess:activityprescription:actoutcome v2.2). Täcker NPÖ 2.2 och 1177 Journal 2.2.</p>
@@ -678,15 +700,15 @@ Flag.code                           = den kliniska koden specifik för body-type
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-observation-base.html"
-                  title="StructureDefinition/inera-ehds-observation-base">SE EHDS Observation Base – GetObservations</a>
+               <a href="StructureDefinition-SEEHDSObservationBase.html"
+                  title="StructureDefinition/SEEHDSObservationBase">SE EHDS Observation Base – GetObservations</a>
             </td>
             <td>
 <p>Basprofil för alla observationer från GetObservations
 (clinicalprocess:healthcond:basic v2.0).</p>
 
 <p>Profilen fångar den generella TK-mappningen och används som förälder av
-domänspecifika profiler (t.ex. IneraEHDSObservationGrowth för tillväxtkurva).</p>
+domänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).</p>
 
 <p>Nyckeldesignbeslut:</p>
 <ul>
@@ -704,17 +726,17 @@ Välj FHIR-element per deltagartyp (se mappningssida).</li>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-observation-lab.html"
-                  title="StructureDefinition/inera-ehds-observation-lab">SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)</a>
+               <a href="StructureDefinition-SEEHDSObservationLab.html"
+                  title="StructureDefinition/SEEHDSObservationLab">SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)</a>
             </td>
             <td>
-<p>Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrderOutcome. Används i kombination med IneraEHDSDiagnosticReportLab.</p>
+<p>Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrderOutcome. Används i kombination med SEEHDSDiagnosticReportLab.</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-observation-maternity.html"
-                  title="StructureDefinition/inera-ehds-observation-maternity">SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)</a>
+               <a href="StructureDefinition-SEEHDSObservationMaternity.html"
+                  title="StructureDefinition/SEEHDSObservationMaternity">SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)</a>
             </td>
             <td>
 <p>Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet
@@ -730,8 +752,8 @@ sektionselement baserat på Observation.code.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-observation-growth.html"
-                  title="StructureDefinition/inera-ehds-observation-growth">SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)</a>
+               <a href="StructureDefinition-SEEHDSObservationGrowth.html"
+                  title="StructureDefinition/SEEHDSObservationGrowth">SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)</a>
             </td>
             <td>
 <p>Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad
@@ -741,13 +763,11 @@ graviditetslängd) för barn och ungdom, baserad på:</p>
   <li>Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)</li>
 </ul>
 
-<p>Ärver IneraEHDSObservationBase och lägger till:</p>
+<p>Ärver SEEHDSObservationBase och lägger till:</p>
 <ul>
   <li>code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)</li>
   <li>value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)</li>
   <li>Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)</li>
-  <li>LOINC-kod-slice på code.coding för EHDS/EPS-interoperabilitet</li>
-  <li>category = vital-signs</li>
 </ul>
 
 <p>Kodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.</p>
@@ -757,11 +777,13 @@ graviditetslängd) för barn och ungdom, baserad på:</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-organization.html"
-                  title="StructureDefinition/inera-ehds-organization">SE EHDS Organization – Organisationsenhet</a>
+               <a href="StructureDefinition-SEEHDSOrganization.html"
+                  title="StructureDefinition/SEEHDSOrganization">SE EHDS Organization – Organisationsenhet</a>
             </td>
             <td>
-<p>Profil för organisationsenheter i EHDS-TK-mappningar (vårdenheter, juridiska vårdgivare m.fl.).</p>
+<p>Profil för organisationsenheter i EHDS-TK-mappningar (vårdenheter, juridiska vårdgivare m.fl.).
+Ärver HL7 Europe Core Organization (EURIDICE). Identifier-slicen följer svenska basprofilernas
+konvention (SEBaseOrganization: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN).</p>
 
 <p>Identifier-slicen ger stöd för HSA-id och SMI-id (Folkhälsomyndighetens
 id för vaccinationsenheter i det nationella vaccinationsregistret).
@@ -771,17 +793,32 @@ i resurserna de refereras ifrån.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-patient.html"
-                  title="StructureDefinition/inera-ehds-patient">SE EHDS Patient</a>
+               <a href="StructureDefinition-SEEHDSPatient.html"
+                  title="StructureDefinition/SEEHDSPatient">SE EHDS Patient</a>
             </td>
             <td>
-<p>Patientprofil för EHDS-TK IG. Ärver från IPS Patient och lägger till svenska identifierarslicar.</p>
+<p>Patientprofil för EHDS-TK. Ärver HL7 Europe Core Patient (EURIDICE) och följer svenska basprofilernas
+identifierarkonvention (SEBasePatient: slicarna personnummer, samordningsnummer, nationelltReservnummer).
+Skapas av API:et utifrån patientId i RIVTA-svaret, eftersom EU Core kräver subject.reference (GENERAL-006).</p>
 </td>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-provenance.html"
-                  title="StructureDefinition/inera-ehds-provenance">SE EHDS Provenance</a>
+               <a href="StructureDefinition-SEEHDSPractitionerRole.html"
+                  title="StructureDefinition/SEEHDSPractitionerRole">SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag</a>
+            </td>
+            <td>
+<p>Profil för hälso- och sjukvårdspersonal i uppdrag (medarbetaruppdrag) som refereras från
+EHDS-TK-resurserna (t.ex. accountableHealthcareProfessional, legalAuthenticator, author).
+Ärver HL7 Europe Core PractitionerRole (EURIDICE). Identifier-slicen följer svenska basprofilernas
+konvention (SEBasePractitionerRole: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN).
+Används normalt som logisk referens via identifier.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-SEEHDSProvenance.html"
+                  title="StructureDefinition/SEEHDSProvenance">SE EHDS Provenance</a>
             </td>
             <td>
 <p>Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance
@@ -799,8 +836,8 @@ inkluderas i svaret — filtreringen sker då redan på servernivå.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-service-request-referral.html"
-                  title="StructureDefinition/inera-ehds-service-request-referral">SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)</a>
+               <a href="StructureDefinition-SEEHDSServiceRequestReferral.html"
+                  title="StructureDefinition/SEEHDSServiceRequestReferral">SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)</a>
             </td>
             <td>
 <p>Profil för konsultationsremisser mappat från RIVTA-tjänstekontraktet GetReferralOutcome
@@ -814,8 +851,8 @@ för remissens del.</p>
          </tr>
          <tr>
             <td style="column-width:30%">
-               <a href="StructureDefinition-inera-ehds-task.html"
-                  title="StructureDefinition/inera-ehds-task">SE EHDS Task – Remisstatus (GetRequestActivities)</a>
+               <a href="StructureDefinition-SEEHDSTask.html"
+                  title="StructureDefinition/SEEHDSTask">SE EHDS Task – Remisstatus (GetRequestActivities)</a>
             </td>
             <td>
 <p>Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0.</p>
@@ -823,7 +860,7 @@ för remissens del.</p>
          </tr>
       </tbody>
    </table>
-   <a name="3"> </a>
+   <a name="4"> </a>
    <h3>Structures: Extension Definitions </h3>
     <p>These define constraints on FHIR data types for systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -1027,7 +1064,7 @@ Denna extension bär kvarvarande detaljer: nonATCSubstanceComment och pharmaceut
          </tr>
       </tbody>
    </table>
-   <a name="4"> </a>
+   <a name="5"> </a>
    <h3>Terminology: Value Sets </h3>
     <p>These define sets of codes used by systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -1255,7 +1292,7 @@ Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15).</p>
          </tr>
       </tbody>
    </table>
-   <a name="5"> </a>
+   <a name="6"> </a>
    <h3>Terminology: Code Systems </h3>
     <p>These define new code systems used by systems conforming to this implementation guide.</p>
 <table class="grid">
@@ -1413,7 +1450,7 @@ Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15).</p>
          </tr>
       </tbody>
    </table>
-   <a name="6"> </a>
+   <a name="7"> </a>
    <h3>Terminology: Concept Maps </h3>
     <p>These define transformations to convert between codes by systems conforming with this implementation guide.</p>
 <table class="grid">
@@ -1453,7 +1490,7 @@ genereras av bryggan.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

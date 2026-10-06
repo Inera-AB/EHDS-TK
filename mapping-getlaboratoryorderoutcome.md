@@ -8,8 +8,8 @@
 # GetLaboratoryOrderOutcome – Provsvar
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetLaboratoryOrderOutcome v4.2
- **FHIR-profiler:** [IneraEHDSDiagnosticReportLab](StructureDefinition-inera-ehds-diagnostic-report-lab.md) | [IneraEHDSObservationLab](StructureDefinition-inera-ehds-observation-lab.md)
- **Logisk modell:** [IneraEHDSLMLaboratoryOrderOutcome](StructureDefinition-inera-ehds-lm-laboratory-order-outcome.md)
+ **FHIR-profiler:** [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.md) | [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.md)
+ **Logisk modell:** [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md)
  **Krävs för NPÖ:** Ja (v4.2) | **Krävs för 1177 Journal:** Ja (v4.2)
  **EHDS-koppling:** Medical test results – laboratorie- och diagnostiska resultat
 
@@ -24,17 +24,17 @@
 ```
 laboratoryOrderOutcome 0..*
 │
-IneraEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
-  └── IneraEHDSObservationLab (1 per groupOfAnalyses.analysis)
+SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
+  └── SEEHDSObservationLab (1 per groupOfAnalyses.analysis)
         └── Specimen        (0..* per analysis.specimen)
 
 ```
 
-En `laboratoryOrderOutcome` representerar en beställning (order) med tillhörande analysresultat. Varje analys inom `groupOfAnalyses.analysis` mappas till en separat `IneraEHDSObservationLab`. Provrör/specimen kopplas till respektive `Observation` och kan delas mellan analyser med samma specimen-identifierare.
+En `laboratoryOrderOutcome` representerar en beställning (order) med tillhörande analysresultat. Varje analys inom `groupOfAnalyses.analysis` mappas till en separat `SEEHDSObservationLab`. Provrör/specimen kopplas till respektive `Observation` och kan delas mellan analyser med samma specimen-identifierare.
 
 -------
 
-## Mappningstabell – IneraEHDSDiagnosticReportLab
+## Mappningstabell – SEEHDSDiagnosticReportLab
 
 Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticReport-instans.
 
@@ -124,7 +124,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | | | |
 | :--- | :--- | :--- |
 | (härledd från analysis.status) | `DiagnosticReport.status` | Se[Härledda fält – DiagnosticReport.status](#diagnosticreportstatus) |
-| (groupOfAnalyses.analysis → ObservationLab) | `DiagnosticReport.result` | Reference(IneraEHDSObservationLab) per analys |
+| (groupOfAnalyses.analysis → ObservationLab) | `DiagnosticReport.result` | Reference(SEEHDSObservationLab) per analys |
 
 -------
 
@@ -140,9 +140,9 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 
 -------
 
-## Mappningstabell – IneraEHDSObservationLab (per analysis)
+## Mappningstabell – SEEHDSObservationLab (per analysis)
 
-Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `IneraEHDSObservationLab`-instans.
+Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SEEHDSObservationLab`-instans.
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -305,7 +305,7 @@ Observera att `accountableCareGiver` och `accountableCareUnit` är direkt under 
 | :--- | :--- | :--- |
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` | Personnummer |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` | Samordningsnummer |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` | HSA-id (Inera NTjP) |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 

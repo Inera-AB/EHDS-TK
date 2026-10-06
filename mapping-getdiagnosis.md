@@ -8,8 +8,8 @@
 # GetDiagnosis – Diagnoser
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetDiagnosis v2.0
- **FHIR-profil:** [IneraEHDSConditionDiagnosis](StructureDefinition-inera-ehds-condition-diagnosis.md)
- **Logisk modell:** [IneraEHDSLMDiagnosis](StructureDefinition-inera-ehds-lm-diagnosis.md)
+ **FHIR-profil:** [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.md)
+ **Logisk modell:** [SEEHDSLMDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md)
  **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v2.0)
  **EHDS-koppling:** Patient Summary – Problem/diagnoser
 
@@ -21,7 +21,7 @@
 | :--- | :--- | :--- | :--- |
 | `diagnosisHeader.documentId` | 1..1 | `Condition.identifier[0].value` | Källsystemets dokumentidentitet |
 | `diagnosisHeader.sourceSystemHSAId` | 1..1 | `Condition.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `diagnosisHeader.patientId.extension` | 1..1 | `Condition.subject.identifier.value` | Personnummer eller samordningsnummer; logisk referens, se[GENERAL-006](mappings.md#patientreferens) |
+| `diagnosisHeader.patientId.extension` | 1..1 | `Condition.subject.identifier.value` | Personnummer eller samordningsnummer;`reference`till SEEHDSPatient +`identifier`, se[GENERAL-006](mappings.md#patientreferens) |
 | `diagnosisHeader.patientId.root` | 1..1 | `Condition.subject.identifier.system` | OID→URI, se tabell nedan |
 | `diagnosisHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Condition.recordedDate` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor) |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
@@ -72,11 +72,7 @@
 
 ### clinicalStatus
 
-Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. LM innehåller `diagnosisBody.diagnosisTime` (single dateTime) men inget fält för avslutsdatum. Därför kan `clinicalStatus` inte härledas från ett slutdatum.
-
-| | |
-| :--- | :--- |
-| Alltid | `active` |
+Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `Condition.clinicalStatus` sätts därför **inte**. Tidigare sattes det alltid till `active` för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver `clinicalStatus` för diagnoser som inte är problemlisteposter.
 
 `Condition.verificationStatus` sätts alltid till `confirmed` (RIVTA-svar representerar bekräftade journaluppgifter).
 
@@ -101,14 +97,9 @@ Både `accountableHealthcareProfessional` och `legalAuthenticator` är av RIVTA-
 
 -------
 
-## EU-profiler i meta.profile
+## Profil i meta.profile
 
-Varje producerad Condition bär **två profiler** i `meta.profile`:
-
-| | |
-| :--- | :--- |
-| IneraEHDSConditionDiagnosis | `https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis` |
-| condition-obl-eu-eps | `http://hl7.eu/fhir/eps/StructureDefinition/condition-obl-eu-eps` |
+Varje producerad Condition anger profilen `https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis` i `meta.profile`. Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core genom arvet.
 
 -------
 
@@ -118,7 +109,7 @@ Varje producerad Condition bär **två profiler** i `meta.profile`:
 | :--- | :--- | :--- |
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` | Personnummer |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` | Samordningsnummer |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` | HSA-id (Inera NTjP) |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 | `1.2.752.29.4.19` | `urn:oid:1.2.752.29.4.19` | HSA-id (HL7 Sweden) |
 | `1.2.752.116.1.1.1.1.3` | `https://www.icd10.se/` | ICD-10-SE |
 | `2.16.840.1.113883.6.3` | `http://hl7.org/fhir/sid/icd-10` | ICD-10 (WHO) |
@@ -193,12 +184,10 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
   "meta": {
     "source": "https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5",
     "profile": [
-      "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis",
-      "http://hl7.eu/fhir/eps/StructureDefinition/condition-obl-eu-eps"
+      "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis"
     ]
   },
   "identifier": [{ "value": "doc-12345" }],
-  "clinicalStatus": { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/condition-clinical", "code": "active" }] },
   "verificationStatus": { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status", "code": "confirmed" }] },
   "category": [{
     "coding": [{
@@ -209,7 +198,10 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
   "code": {
     "coding": [{ "system": "https://www.icd10.se/", "code": "J18.9", "display": "Pneumoni, ospecificerad" }]
   },
-  "subject": { "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" } },
+  "subject": {
+    "reference": "Patient/pat-191212121212",
+    "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" }
+  },
   "onsetDateTime": "2023-06-01T12:00:00+02:00",
   "recordedDate": "2023-06-01T12:00:00+02:00"
 }

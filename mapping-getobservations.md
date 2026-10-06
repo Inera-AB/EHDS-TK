@@ -8,8 +8,8 @@
 # GetObservations – Kliniska observationer och mätvärden
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:basic` GetObservations v2.0
- **FHIR-profiler:** [IneraEHDSObservationBase](StructureDefinition-inera-ehds-observation-base.md) (generell) | [IneraEHDSObservationGrowth](StructureDefinition-inera-ehds-observation-growth.md) (tillväxtkurva)
- **Logisk modell:** [IneraEHDSLMObservations](StructureDefinition-inera-ehds-lm-observations.md)
+ **FHIR-profiler:** [SEEHDSObservationBase](StructureDefinition-SEEHDSObservationBase.md) (generell) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.md) (tillväxtkurva)
+ **Logisk modell:** [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.md)
  **Krävs för NPÖ:** Ja (v1.2) | **Krävs för 1177 Journal:** Ja (v1.2)
  **EHDS-koppling:** Kliniska mätresultat och tillväxtdata
  **IoÖ:** Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)
@@ -24,10 +24,10 @@ GetObservations-mappningen är uppdelad i två profiler:
 
 | | | |
 | :--- | :--- | :--- |
-| `IneraEHDSObservationBase` | IPS`Observation-results-uv-ips` | Basprofil för ALL mappning från GetObservations TK; täcker alla fält i LM |
-| `IneraEHDSObservationGrowth` | `IneraEHDSObservationBase` | Tillväxtkurva; lägger till IoÖ-constraints (SNOMED-koder, Quantity, LOINC) |
+| `SEEHDSObservationBase` | `Observation` | Basprofil för ALL mappning från GetObservations TK; täcker alla fält i LM. Tillväxtmätningar är inte medicinska testresultat, och tidpunkten kan saknas (EU Core MedicalTestResult kräver`effective[x]`), så basresursen används |
+| `SEEHDSObservationGrowth` | `SEEHDSObservationBase` | Tillväxtkurva; lägger till IoÖ-constraints (SNOMED-koder, Quantity) |
 
-Alla GetObservations-implementationer instansierar `IneraEHDSObservationBase` (eller en specialisering av den). För tillväxtkurvadata ska `IneraEHDSObservationGrowth` användas eftersom IoÖ v3 anger specifika krav på koder och enheter.
+Alla GetObservations-implementationer instansierar `SEEHDSObservationBase` (eller en specialisering av den). För tillväxtkurvadata ska `SEEHDSObservationGrowth` användas eftersom IoÖ v3 anger specifika krav på koder och enheter.
 
 -------
 
@@ -116,7 +116,7 @@ observations [0..*]
 | :--- | :--- | :--- | :--- |
 | `observationBody.observationType` | 0..1 | `Observation.code` | Typ av observation; om saknas används platshållarkod – se avsnitt Observation.code nedan |
 
-> **OBS:** Alla Observation-resurser från GetObservations tilldelas statisk `Observation.category = exam` (se avsnitt Observation.category nedan). `observationType` styr `Observation.code`, inte `category`.
+> **OBS:** `Observation.category` sätts inte (se avsnitt Observation.category nedan). `observationType` styr `Observation.code`, inte `category`.
 
 ### observationValue – XOR-union av värdetyper
 
@@ -285,9 +285,9 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 
 Saknad mappning: status sätts till `unknown` och en `OperationOutcome`-varning genereras.
 
-### Observation.category – statisk kod
+### Observation.category
 
-Alla Observation-resurser producerade från GetObservations tilldelas `Observation.category` med kod `exam` från `http://terminology.hl7.org/CodeSystem/observation-category` för att markera att de härrör från kliniska undersökningar/mätningar.
+`Observation.category` sätts inte. GetObservations bär ingen kategori, och den statiska kategorin `exam` fanns bara för att harmonisera med IPS (GENERAL-007).
 
 ### Observation.code – fallback
 
@@ -378,7 +378,7 @@ En `Provenance`-resurs skapas per `Observation`-resurs.
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` | Personnummer |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` | Samordningsnummer |
 | `1.2.752.74.9.1` | `urn:oid:1.2.752.74.9.1` | Nationell reservidentitet |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` | HSA-id (Inera NTjP) |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 | `2.16.840.1.113883.6.96` | `http://snomed.info/sct` | SNOMED CT |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
@@ -389,7 +389,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ## IoÖ Tillväxtkurva för barn och ungdom v3
 
-Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska användas för fyra tillväxtmätningar. Profilen `IneraEHDSObservationGrowth` implementerar dessa krav.
+Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska användas för fyra tillväxtmätningar. Profilen `SEEHDSObservationGrowth` implementerar dessa krav.
 
 ### Kodtabell – IoÖ SNOMED CT-koder → FHIR
 
@@ -406,7 +406,7 @@ Kodsystem för `observationBody.observationType.type.codeSystem`: `1.2.752.116.2
 
 ### IoÖ-fält → FHIR Observation mappning
 
-Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR `IneraEHDSObservationGrowth`:
+Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR `SEEHDSObservationGrowth`:
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -414,7 +414,6 @@ Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObserva
 | `observationType.type.codeSystem` | `1.2.752.116.2.1.1`(SNOMED CT SE) | `Observation.code.coding[snomedSE].system` | URI:`http://snomed.info/sct` |
 | `observationType.value.value` | Decimal (enhet beror på mättyp) | `Observation.valueQuantity.value` | Längd: 0–1 dec.; Vikt: 0–3 dec.; HuC: 1 dec.; Gest: heltal |
 | `observationType.value.unit` | `cm`/`kg`/`d` | `Observation.valueQuantity.unit`+`valueQuantity.code` | UCUM-kod sätts parallellt med textenhet |
-| (härledd) | LOINC per mättyp, se tabell | `Observation.code.coding[loinc].code` | Valfri; läggs till av bryggan för EHDS/EPS-konsumenter |
 
 ### IoÖ-kommentarer
 

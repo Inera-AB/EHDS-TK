@@ -228,6 +228,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR-grupp. Se <a href="mappings.html">Mappings</a> för hur respektive profil relaterar till RIVTA-tjänstekontrakten.</p>
 
+<p>Profilerna ärver HL7 Europe Core där en EU Core-profil finns, annars FHIR-basresursen, så att de är en giltig profilering av EURIDICE. De heter <code class="language-plaintext highlighter-rouge">SEEHDS…</code> med <code class="language-plaintext highlighter-rouge">Id</code> lika med namnet, enligt de svenska basprofilernas konvention. Se <a href="index.html#loften">Vad IG:n utlovar</a>.</p>
+
+<p>Kraven på API:et anges i <a href="CapabilityStatement-SEEHDSResourceAccessProvider.html">SEEHDSResourceAccessProvider</a>, som utgår från EURIDICE:s Resource Access Provider.</p>
+
 <hr />
 
 <h3 id="gemensamma-profiler">Gemensamma profiler</h3>
@@ -242,12 +246,22 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-patient.html">IneraEHDSPatient</a></td>
-      <td>Patient-uv-ips</td>
-      <td>Patient med svenska identifierarslicar (personnummer, samordningsnummer, nationelltReservnummer).</td>
+      <td><a href="StructureDefinition-SEEHDSPatient.html">SEEHDSPatient</a></td>
+      <td>EU Core Patient (patient-eu-core)</td>
+      <td>Patient med identifierarslicar enligt SEBasePatient (personnummer, samordningsnummer, nationelltReservnummer). Skapas utifrån patientId, se GENERAL-006.</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-provenance.html">IneraEHDSProvenance</a></td>
+      <td><a href="StructureDefinition-SEEHDSPractitionerRole.html">SEEHDSPractitionerRole</a></td>
+      <td>EU Core PractitionerRole (practitionerRole-eu-core)</td>
+      <td>Personal i uppdrag; identifier-slice <code class="language-plaintext highlighter-rouge">hsaid</code> enligt SEBasePractitionerRole. Används som logisk referens.</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-SEEHDSOrganization.html">SEEHDSOrganization</a></td>
+      <td>EU Core Organization (organization-eu-core)</td>
+      <td>Organisationsenhet; identifier-slice <code class="language-plaintext highlighter-rouge">hsaid</code> enligt SEBaseOrganization samt SMI-id.</td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-SEEHDSProvenance.html">SEEHDSProvenance</a></td>
       <td>Provenance</td>
       <td>Provenance med tre agenter: custodian (vårdgivare), author (vårdenhet), assembler (EHDS-bryggan).</td>
     </tr>
@@ -268,58 +282,58 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-condition-diagnosis.html">IneraEHDSConditionDiagnosis</a></td>
-      <td>Condition-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSConditionDiagnosis.html">SEEHDSConditionDiagnosis</a></td>
+      <td>EU Core Condition (condition-eu-core)</td>
       <td>GetDiagnosis</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-allergy-intolerance.html">IneraEHDSAllergyIntolerance</a></td>
-      <td>AllergyIntolerance-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSAllergyIntolerance.html">SEEHDSAllergyIntolerance</a></td>
+      <td>EU Core AllergyIntolerance (allergyIntolerance-eu-core)</td>
       <td>GetAlertInformation (allergi/överkänslighet)</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-flag.html">IneraEHDSFlag</a></td>
-      <td>Flag</td>
+      <td><a href="StructureDefinition-SEEHDSFlag.html">SEEHDSFlag</a></td>
+      <td>EU Core Flag (flag-eu-core)</td>
       <td>GetAlertInformation (varning)</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-medication-statement.html">IneraEHDSMedicationStatement</a></td>
-      <td>MedicationStatement-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSMedicationStatement.html">SEEHDSMedicationStatement</a></td>
+      <td>EU Core MedicationStatement (medicationStatement-eu-core)</td>
       <td>GetMedicationHistory</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-immunization.html">IneraEHDSImmunization</a></td>
-      <td>Immunization-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSImmunization.html">SEEHDSImmunization</a></td>
+      <td>EU Core Immunization (immunization-eu-core)</td>
       <td>GetVaccinationHistory</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-condition-functional.html">IneraEHDSConditionFunctional</a></td>
-      <td>Condition-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSConditionFunctional.html">SEEHDSConditionFunctional</a></td>
+      <td>EU Core Condition (condition-eu-core)</td>
       <td>GetFunctionalStatus</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-observation-maternity.html">IneraEHDSObservationMaternity</a></td>
-      <td>Observation-results-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSObservationMaternity.html">SEEHDSObservationMaternity</a></td>
+      <td>Observation</td>
       <td>GetMaternityMedicalHistory</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-care-plan.html">IneraEHDSCarePlan</a></td>
+      <td><a href="StructureDefinition-SEEHDSCarePlan.html">SEEHDSCarePlan</a></td>
       <td>CarePlan</td>
       <td>GetCarePlans</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-encounter.html">IneraEHDSEncounter</a></td>
+      <td><a href="StructureDefinition-SEEHDSEncounter.html">SEEHDSEncounter</a></td>
       <td>Encounter</td>
       <td>GetCareContacts</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-document-reference.html">IneraEHDSDocumentReference</a></td>
+      <td><a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a></td>
       <td>DocumentReference</td>
       <td>GetCareDocumentation</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-composition-care-documentation.html">IneraEHDSCompositionCareDocumentation</a></td>
-      <td>Composition</td>
+      <td><a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html">SEEHDSCompositionCareDocumentation</a></td>
+      <td>EU Core Composition (composition-eu-core)</td>
       <td>GetCareDocumentation – valfri strukturerad representation av DocBook (<a href="guidance-docbook-narrative.html">DocBook-mappning</a>)</td>
     </tr>
   </tbody>
@@ -339,13 +353,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-diagnostic-report-lab.html">IneraEHDSDiagnosticReportLab</a></td>
-      <td>DiagnosticReport-lab-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSDiagnosticReportLab.html">SEEHDSDiagnosticReportLab</a></td>
+      <td>EU Core DiagnosticReport (diagnosticReport-eu-core)</td>
       <td>GetLaboratoryOrderOutcome</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-observation-lab.html">IneraEHDSObservationLab</a></td>
-      <td>Observation-results-laboratory-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSObservationLab.html">SEEHDSObservationLab</a></td>
+      <td>EU Core MedicalTestResult (medicalTestResult-eu-core)</td>
       <td>GetLaboratoryOrderOutcome</td>
     </tr>
   </tbody>
@@ -365,13 +379,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-imaging-study.html">IneraEHDSImagingStudy</a></td>
-      <td>ImagingStudy-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSImagingStudy.html">SEEHDSImagingStudy</a></td>
+      <td>ImagingStudy</td>
       <td>GetImagingOutcome</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-diagnostic-report-imaging.html">IneraEHDSDiagnosticReportImaging</a></td>
-      <td>DiagnosticReport</td>
+      <td><a href="StructureDefinition-SEEHDSDiagnosticReportImaging.html">SEEHDSDiagnosticReportImaging</a></td>
+      <td>EU Core DiagnosticReport (diagnosticReport-eu-core)</td>
       <td>GetImagingOutcome</td>
     </tr>
   </tbody>
@@ -391,17 +405,17 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-service-request-referral.html">IneraEHDSServiceRequestReferral</a></td>
+      <td><a href="StructureDefinition-SEEHDSServiceRequestReferral.html">SEEHDSServiceRequestReferral</a></td>
       <td>ServiceRequest</td>
       <td>GetReferralOutcome</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-diagnostic-report-referral.html">IneraEHDSDiagnosticReportReferral</a></td>
-      <td>DiagnosticReport</td>
+      <td><a href="StructureDefinition-SEEHDSDiagnosticReportReferral.html">SEEHDSDiagnosticReportReferral</a></td>
+      <td>EU Core DiagnosticReport (diagnosticReport-eu-core)</td>
       <td>GetReferralOutcome</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-task.html">IneraEHDSTask</a></td>
+      <td><a href="StructureDefinition-SEEHDSTask.html">SEEHDSTask</a></td>
       <td>Task</td>
       <td>GetRequestActivities</td>
     </tr>
@@ -422,8 +436,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-observation-growth.html">IneraEHDSObservationGrowth</a></td>
-      <td>Observation-results-uv-ips</td>
+      <td><a href="StructureDefinition-SEEHDSObservationGrowth.html">SEEHDSObservationGrowth</a></td>
+      <td>SEEHDSObservationBase (Observation)</td>
       <td>GetObservations</td>
     </tr>
   </tbody>
@@ -443,17 +457,17 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-audit-event-read-access-log.html">IneraEHDSAuditEventReadAccessLog</a></td>
+      <td><a href="StructureDefinition-SEEHDSAuditEventReadAccessLog.html">SEEHDSAuditEventReadAccessLog</a></td>
       <td>AuditEvent</td>
       <td>GetAccessLogForPatient – läsning av åtkomstloggar</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-audit-event-patient-query.html">IneraEHDSAuditEventPatientQuery</a></td>
+      <td><a href="StructureDefinition-SEEHDSAuditEventPatientQuery.html">SEEHDSAuditEventPatientQuery</a></td>
       <td>IHE BALP PatientQuery</td>
       <td>Loggpost som skapas vid sökning/träfflista i API:et (<a href="mapping-getaccesslogforpatient.html">Auditloggning</a>)</td>
     </tr>
     <tr>
-      <td><a href="StructureDefinition-inera-ehds-audit-event-patient-read.html">IneraEHDSAuditEventPatientRead</a></td>
+      <td><a href="StructureDefinition-SEEHDSAuditEventPatientRead.html">SEEHDSAuditEventPatientRead</a></td>
       <td>IHE BALP PatientRead</td>
       <td>Loggpost som skapas vid innehållshämtning i API:et (<a href="mapping-getaccesslogforpatient.html">Auditloggning</a>)</td>
     </tr>
@@ -479,7 +493,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.3 |
-| Draft as of 2026-10-02 | *Computable Name*:IneraEHDSTK |
+| Draft as of 2026-10-06 | *Computable Name*:SEEHDSTK |
 
 # Introduktion
 
@@ -44,11 +44,29 @@ IG:t täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser i
 
 -------
 
+### Vad IG:n utlovar
+
+IG:n utlovar att följande tre krav uppfylls **samtidigt**:
+
+| | | |
+| :--- | :--- | :--- |
+| 1 | **Samma kliniska information som TKB:erna, som FHIR-resurser.** | Varje element i tjänstekontraktens logiska modeller är mappat till ett FHIR-element, eller uttryckligen markerat som ej mappat med motivering. Profilerna kräver det som TKB:n kräver och inget som TKB:n inte bär. Se[Mappningar](mappings.md). |
+| 2 | **En giltig profilering av EURIDICE-IG:n**([EU Health Data API](https://build.fhir.org/ig/euridice-org/eu-health-data-api/),`hl7.fhir.eu.health-data-api`). | EURIDICE anger att datamodellerna för resursåtkomst ärver från HL7 Europe Core (`hl7.fhir.eu.base`). Profilerna ärver därför EU Core-profilen där en sådan finns, och annars FHIR-basresursen. Kraven på API:et anges i[SEEHDSResourceAccessProvider](CapabilityStatement-SEEHDSResourceAccessProvider.md), som utgår från EURIDICE:s Resource Access Provider. |
+| 3 | **Svenska basprofilernas namngivnings- och slicingkonventioner**(HL7 Sweden,`hl7se.fhir.base`). | Profilerna heter`SEEHDS…`med`Id`lika med namnet. Identifierare slicas med samma slice-namn och system som de svenska basprofilerna:`personnummer`,`samordningsnummer`,`nationelltReservnummer`, och`hsaid`(system`urn:oid:1.2.752.29.4.19`, typ`PRN`). |
+
+Profilerna kan inte både ärva EU Core och de svenska basprofilerna, eftersom en profil bara kan ha en parent. Därför följs de svenska basprofilerna som konvention, medan EU Core är parent.
+
+#### IPS och EPS – inspiration, inte löfte
+
+IG:n utlovar **inte** följsamhet mot IPS (International Patient Summary) eller EPS (HL7 Europe Patient Summary). De har använts som inspiration, till exempel för vilka resurstyper som passar en informationsmängd. Krav och strukturer som bara fanns för att harmonisera med IPS eller EPS har tagits bort. Det gäller till exempel härledda statusvärden och kodningar utan stöd i TKB:n, och EPS-profiler i `meta.profile`.
+
+-------
+
 ### Syfte
 
 Syftet med IG:t är att:
 
-1. Definiera FHIR-profiler (R4) som möjliggör EHDS-kompatibel representation av data från Ineras RIVTA-tjänstekontrakt
+1. Definiera FHIR-profiler (R4) som uppfyller de tre löftena ovan för data från Ineras RIVTA-tjänstekontrakt
 1. Dokumentera mappningen från RIVTA-element till FHIR-element, inklusive OID→URI-översättning, Provenance-mönster och Sparr-hantering
 1. Stödja implementörer som transformerar RIVTA-svar till FHIR-resurser för NPÖ och 1177 Journal
 
@@ -56,18 +74,17 @@ IG:t riktar sig till systemleverantörer, arkitekter och integrationsspecialiste
 
 -------
 
-### Arkitektur och EHDS-relation
+### Arkitektur
 
-Profilerna bygger på:
+| | | |
+| :--- | :--- | :--- |
+| API och åtkomst | EURIDICE (`hl7.fhir.eu.health-data-api`) | Resource Access Provider, patientavgränsade sökningar, MHD för dokument |
+| Datamodell | HL7 Europe Core (`hl7.fhir.eu.base`) | Parent för profilerna där EU Core-profil finns |
+| Konventioner | HL7 Sweden basprofiler (`hl7se.fhir.base`) | Namngivning och identifier-slicing |
+| Innehåll | Ineras TKB:er | Vilken klinisk information som bärs och vilka krav som gäller |
+| Auditloggning | IHE BALP (`ihe.iti.balp`) | Loggposter vid utlämning, se[Åtkomstloggar](mapping-getaccesslogforpatient.md) |
 
-* **IPS (International Patient Summary)** – profiler ärvs där de finns
-* **EU EPS (European Patient Summary)** – obligations-profilen sätts i `meta.profile` vid runtime
-* **HL7 Sweden basprofiler** – SEBasePractitionerRole och SEBaseOrganization används för personreferenser
-
-Varje producerad FHIR-resurs bär **två profiler** i `meta.profile`:
-
-1. Aktuell EHDS-TK-profil (t.ex.`IneraEHDSConditionDiagnosis`)
-1. Relevant EU EPS obligations-profil
+Varje producerad FHIR-resurs anger sin EHDS-TK-profil i `meta.profile` (t.ex. `SEEHDSConditionDiagnosis`). Genom arvet uppfyller resursen även EU Core-profilen.
 
 -------
 
@@ -81,9 +98,12 @@ Alla kodverk och värdemängder som Inera förvaltar finns på [Inera Terminolog
 
 Denna IG har beroenden till:
 
-* **HL7 IPS:** `hl7.fhir.uv.ips`
-* **EU EPS:** `hl7.fhir.eu.eps`
-* **SE-core (HL7 Sweden):** `hl7se.fhir.base`
+* **EURIDICE – EU Health Data API:** `hl7.fhir.eu.health-data-api` 1.0.0-ballot
+* **HL7 Europe Core:** `hl7.fhir.eu.base` 2.0.0-ballot
+* **IHE BALP:** `ihe.iti.balp` 1.1.4
+* **FHIR-extensions:** `hl7.fhir.uv.extensions.r4` 5.3.0
+
+HL7 Sweden basprofiler (`hl7se.fhir.base`) används som konvention och är inget paketberoende.
 
 -------
 
@@ -109,10 +129,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "id" : "inera.ehds.tk",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk",
   "version" : "0.3.3",
-  "name" : "IneraEHDSTK",
+  "name" : "SEEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -143,16 +163,16 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     "version" : "7.4.0"
   },
   {
-    "id" : "hl7_fhir_uv_ips",
-    "uri" : "http://hl7.org/fhir/uv/ips/ImplementationGuide/hl7.fhir.uv.ips",
-    "packageId" : "hl7.fhir.uv.ips",
-    "version" : "1.1.0"
+    "id" : "hl7_fhir_eu_health_data_api",
+    "uri" : "http://hl7.eu/fhir/health-data-api/ImplementationGuide/hl7.fhir.eu.health-data-api",
+    "packageId" : "hl7.fhir.eu.health-data-api",
+    "version" : "1.0.0-ballot"
   },
   {
-    "id" : "hl7_fhir_eu_eps",
-    "uri" : "http://hl7.eu/fhir/eps/ImplementationGuide/hl7.fhir.eu.eps",
-    "packageId" : "hl7.fhir.eu.eps",
-    "version" : "1.0.0-ballot"
+    "id" : "hl7_fhir_eu_base",
+    "uri" : "http://hl7.eu/fhir/base/ImplementationGuide/hl7.fhir.eu.base",
+    "packageId" : "hl7.fhir.eu.base",
+    "version" : "2.0.0-ballot"
   },
   {
     "id" : "hl7_fhir_uv_extensions_r4",
@@ -1012,10 +1032,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-access-log.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMAccessLog.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-access-log"
+        "reference" : "StructureDefinition/SEEHDSLMAccessLog"
       },
       "name" : "GetAccessLogForPatient",
       "description" : "Logisk modell för patientens åtkomstloggar hämtad via GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Krävs för 1177 Journal 1.1, 2.0 men ej för NPÖ.",
@@ -1028,10 +1048,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-alert-information.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMAlertInformation.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-alert-information"
+        "reference" : "StructureDefinition/SEEHDSLMAlertInformation"
       },
       "name" : "GetAlertInformation",
       "description" : "Logisk modell för tjänstekontraktet GetAlertInformation\n(RIV-TA urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:2).\nRepresenterar responsens informationsstruktur: uppmärksamhetsinformation för en patient,\nexempelvis överkänslighet mot läkemedel, allvarlig sjukdom, behandling, smittsam sjukdom,\nvårdbegränsning eller historisk varning.\n\nBody-strukturen är XOR – exakt en av hypersensitivity, seriousDisease, treatment,\ncommunicableDisease, restrictionOfCare, unstructuredAlertInformation ska anges per post.",
@@ -1044,10 +1064,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-care-contacts.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMCareContacts.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-care-contacts"
+        "reference" : "StructureDefinition/SEEHDSLMCareContacts"
       },
       "name" : "GetCareContacts",
       "description" : "Logisk modell för tjänstekontraktet GetCareContacts\n(RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCareContacts:3).\nRepresenterar responsens informationsstruktur (GetCareContactsResponseType).\nEn lista med CareContactType returneras.",
@@ -1060,10 +1080,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-care-documentation.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMCareDocumentation.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-care-documentation"
+        "reference" : "StructureDefinition/SEEHDSLMCareDocumentation"
       },
       "name" : "GetCareDocumentation",
       "description" : "Logisk modell för tjänstekontraktet GetCareDocumentation\n(RIV-TA urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3).\nRepresenterar responsens informationsstruktur: journalanteckningar för en patient.\nAnteckningstyper: utredning, åtgärd/behandling, sammanfattning, samordning, inskrivning,\nslutanteckning, anteckning utan fysiskt möte, slutenvårdsanteckning och besöksanteckning.\nMeddelandeformatet är kompatibelt med HL7 v3 CDA v2.",
@@ -1076,10 +1096,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-care-plans.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMCarePlans.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-care-plans"
+        "reference" : "StructureDefinition/SEEHDSLMCarePlans"
       },
       "name" : "GetCarePlans",
       "description" : "Logisk modell för tjänstekontraktet GetCarePlans\n(RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCarePlans:2).\nRepresenterar responsens informationsstruktur (GetCarePlansResponseType).\nEn lista med CarePlanType returneras, var och en med header- och body-element.",
@@ -1092,10 +1112,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-diagnosis.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMDiagnosis.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-diagnosis"
+        "reference" : "StructureDefinition/SEEHDSLMDiagnosis"
       },
       "name" : "GetDiagnosis",
       "description" : "Logisk modell för tjänstekontraktet GetDiagnosis\n(RIV-TA urn:riv:clinicalprocess:healthcond:description:GetDiagnosisResponder:2).\nRepresenterar responsens informationsstruktur: registrerade diagnoser för en patient\ninklusive diagnoskod per ursprungligt diagnosticeringstillfälle.",
@@ -1108,10 +1128,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-functional-status.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMFunctionalStatus.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-functional-status"
+        "reference" : "StructureDefinition/SEEHDSLMFunctionalStatus"
       },
       "name" : "GetFunctionalStatus",
       "description" : "Logisk modell för tjänstekontraktet GetFunctionalStatus\n(RIV-TA urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatusResponder:2).\nRepresenterar responsens informationsstruktur: dokumenterade bedömningar av\nfunktionsnedsättningar och/eller aktivitetsförmåga (PADL) för en patient.\nBedömningskategori styrs av assessmentCategory: 'pad-pad' (PADL) eller 'fun-fun' (funktionsnedsättning).\nEn tjänsteproducent måste använda samma värde för categorization i engagemangsindex som\nför assessmentCategory i svaret.",
@@ -1124,10 +1144,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-imaging-outcome.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMImagingOutcome.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-imaging-outcome"
+        "reference" : "StructureDefinition/SEEHDSLMImagingOutcome"
       },
       "name" : "GetImagingOutcome",
       "description" : "Logisk modell för tjänstekontraktet GetImagingOutcome\n(RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetImagingOutcome:1).\nRepresenterar responsens informationsstruktur — bilddiagnostiska resultat\nför en patient. Baseras på NPÖ RIV 2.2.0-specifikation.",
@@ -1140,10 +1160,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-laboratory-order-outcome.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-laboratory-order-outcome"
+        "reference" : "StructureDefinition/SEEHDSLMLaboratoryOrderOutcome"
       },
       "name" : "GetLaboratoryOrderOutcome",
       "description" : "Logisk modell för tjänstekontraktet GetLaboratoryOrderOutcome\n(RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcome:4).\nRepresenterar responsens informationsstruktur — multidisciplinära laboratoriesvar\nför en patient.",
@@ -1156,10 +1176,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-maternity-medical-history.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMMaternityMedicalHistory.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-maternity-medical-history"
+        "reference" : "StructureDefinition/SEEHDSLMMaternityMedicalHistory"
       },
       "name" : "GetMaternityMedicalHistory",
       "description" : "Logisk modell för tjänstekontraktet GetMaternityMedicalHistory\n(RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetMaternityMedicalHistory:2).\nRepresenterar responsens informationsstruktur — mödravårdsjournal för en patient.",
@@ -1172,10 +1192,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-medication-history.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMMedicationHistory.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-medication-history"
+        "reference" : "StructureDefinition/SEEHDSLMMedicationHistory"
       },
       "name" : "GetMedicationHistory",
       "description" : "Logisk modell för tjänstekontraktet GetMedicationHistory\n(RIV-TA urn:riv:clinicalprocess:activityprescription:actoutcome:GetMedicationHistoryResponder:2).\nRepresenterar responsens informationsstruktur — läkemedelshistorik per patient.\n\nOBS: Kontraktet är tämligen omfattande. Se tillämpningsanvisningen\n(AB_clinicalprocess_activityprescription_actoutcome.docx) för implementationsdetaljer.",
@@ -1188,10 +1208,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-observations.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMObservations.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-observations"
+        "reference" : "StructureDefinition/SEEHDSLMObservations"
       },
       "name" : "GetObservations",
       "description" : "Logisk modell för tjänstekontraktet GetObservations\n(RIV-TA urn:riv:clinicalprocess:healthcond:basic:GetObservationsInteraction:2).\nRepresenterar responsens informationsstruktur — en samling observationer som\nmatchar sökkriterier i begäran, inklusive header-information.\nMeddelandemodellen från avsnitt 5.1 V-MIM — Observationer i TKB motsvarar\nen observation i svarsmeddelandet.",
@@ -1220,10 +1240,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-referral-outcome.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMReferralOutcome.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-referral-outcome"
+        "reference" : "StructureDefinition/SEEHDSLMReferralOutcome"
       },
       "name" : "GetReferralOutcome",
       "description" : "Logisk modell för tjänstekontraktet GetReferralOutcome\n(RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcome:3).\nRepresenterar responsens informationsstruktur — svar på konsultationsremiss\noch begäran om övertagande av vårdansvar. Meddelandeformatet är kompatibelt\nmed HL7v3 CDA v.2.",
@@ -1236,10 +1256,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-request-activities.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMRequestActivities.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-request-activities"
+        "reference" : "StructureDefinition/SEEHDSLMRequestActivities"
       },
       "name" : "GetRequestActivities",
       "description" : "Logisk modell för remisstatus och processaktiviteter hämtad via GetRequestActivities (crm:requeststatus v2.0).",
@@ -1252,10 +1272,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-lm-vaccination-history.html"
+        "valueUri" : "StructureDefinition-SEEHDSLMVaccinationHistory.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-lm-vaccination-history"
+        "reference" : "StructureDefinition/SEEHDSLMVaccinationHistory"
       },
       "name" : "GetVaccinationHistory",
       "description" : "Logisk modell för tjänstekontraktet GetVaccinationHistory\n(RIV-TA urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2).\nRepresenterar responsens informationsstruktur — vaccinationsjournal per patient.",
@@ -1636,13 +1656,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-allergy-intolerance.html"
+        "valueUri" : "StructureDefinition-SEEHDSAllergyIntolerance.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-allergy-intolerance"
+        "reference" : "StructureDefinition/SEEHDSAllergyIntolerance"
       },
       "name" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-      "description" : "Sekundär profil för allergier och överkänslighet från GetAlertInformation.\n\nSkapas ENBART när alertInformationBody = hypersensitivity.\nDen tillhörande IneraEHDSFlag-resursen är alltid primär och pekar på denna\nresurs via Flag.extension[flag-detail] (standard R4-extension; R5: supportingInfo).\n\nPopuleras med klinisk information från hypersensitivity-blocket:\n- atcSubstance/hypersensitivityAgentCode → AllergyIntolerance.code\n- degreeOfSeverity → AllergyIntolerance.reaction.severity\n- degreeOfCertainty → AllergyIntolerance.verificationStatus (se ALERT-004)\n- ascertainedDate → AllergyIntolerance.onsetDateTime\n- alertInformationComment → AllergyIntolerance.note\n- pharmaceuticalProductId → AllergyIntolerance.reaction.substance.coding (NPL-id)\n\nTäcker NPÖ 2.0 och 1177 Journal 2.0.",
+      "description" : "Sekundär profil för allergier och överkänslighet från GetAlertInformation.\n\nSkapas ENBART när alertInformationBody = hypersensitivity.\nDen tillhörande SEEHDSFlag-resursen är alltid primär och pekar på denna\nresurs via Flag.extension[flag-detail] (standard R4-extension; R5: supportingInfo).\n\nPopuleras med klinisk information från hypersensitivity-blocket:\n- atcSubstance/hypersensitivityAgentCode → AllergyIntolerance.code\n- degreeOfSeverity → AllergyIntolerance.reaction.severity\n- degreeOfCertainty → AllergyIntolerance.verificationStatus (se ALERT-004)\n- ascertainedDate → AllergyIntolerance.onsetDateTime\n- alertInformationComment → AllergyIntolerance.note\n- pharmaceuticalProductId → AllergyIntolerance.reaction.substance.coding (NPL-id)\n\nTäcker NPÖ 2.0 och 1177 Journal 2.0.",
       "exampleBoolean" : false
     },
     {
@@ -1652,10 +1672,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-audit-event-patient-read.html"
+        "valueUri" : "StructureDefinition-SEEHDSAuditEventPatientRead.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-audit-event-patient-read"
+        "reference" : "StructureDefinition/SEEHDSAuditEventPatientRead"
       },
       "name" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
       "description" : "Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) lämnar ut en\nenskild resurs eller ett dokuments innehåll för en patient, t.ex. läsning av en resurs eller\n(framtida) MHD ITI-68 Retrieve Document. Loggposterna behövs för att patienten ska kunna få\nveta vem som har tagit del av patientens uppgifter.\n\nÄrver från IHE BALP PatientRead och lägger till:\n- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska\n- en agent per källsystem/vårdgivare som innehållet kommer från (agent[custodian])\n- bryggan som loggkälla (source.observer)",
@@ -1668,13 +1688,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-audit-event-read-access-log.html"
+        "valueUri" : "StructureDefinition-SEEHDSAuditEventReadAccessLog.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-audit-event-read-access-log"
+        "reference" : "StructureDefinition/SEEHDSAuditEventReadAccessLog"
       },
       "name" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
-      "description" : "Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till\npatienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient\n(informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.\n\nProfilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas\nnär API:et nyttjas beskrivs av IneraEHDSAuditEventPatientQuery och IneraEHDSAuditEventPatientRead.",
+      "description" : "Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till\npatienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient\n(informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ.\n\nProfilen används INTE för att logga användningen av FHIR-API:et. De loggposter som ska skapas\nnär API:et nyttjas beskrivs av SEEHDSAuditEventPatientQuery och SEEHDSAuditEventPatientRead.",
       "exampleBoolean" : false
     },
     {
@@ -1684,10 +1704,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-audit-event-patient-query.html"
+        "valueUri" : "StructureDefinition-SEEHDSAuditEventPatientQuery.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-audit-event-patient-query"
+        "reference" : "StructureDefinition/SEEHDSAuditEventPatientQuery"
       },
       "name" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
       "description" : "Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en\nsökning på en patients uppgifter och lämnar ut träfflistan, t.ex. MHD ITI-67 Find Document\nReferences eller QEDm PCC-44. Loggposterna behövs för att patienten ska kunna få veta vem som\nhar tagit del av patientens uppgifter.\n\nÄrver från IHE BALP PatientQuery och lägger till:\n- användaragent (agent[user]) och syfte (purposeOfEvent, agent[user].purposeOfUse) är obligatoriska\n- en agent per källsystem/vårdgivare som bidrog till svaret (agent[custodian])\n- bryggan som loggkälla (source.observer)\n- träfflistan: varje utlämnad resurs registreras som en entity med entity.type = resurstypen\n  (http://hl7.org/fhir/resource-types) och entity.role = object-role#4 \"Domain Resource\"",
@@ -1700,10 +1720,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-care-plan.html"
+        "valueUri" : "StructureDefinition-SEEHDSCarePlan.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-care-plan"
+        "reference" : "StructureDefinition/SEEHDSCarePlan"
       },
       "name" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
       "description" : "Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0.",
@@ -1716,13 +1736,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-composition-care-documentation.html"
+        "valueUri" : "StructureDefinition-SEEHDSCompositionCareDocumentation.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-composition-care-documentation"
+        "reference" : "StructureDefinition/SEEHDSCompositionCareDocumentation"
       },
       "name" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
-      "description" : "Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när\ninnehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType\napplication/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ\n(Strategi B, se DOC-004 och sidan DocBook-mappning).\n\nKompletterar IneraEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).\nComposition kopplas till DocumentReference genom att samma Provenance har båda i\nProvenance.target.",
+      "description" : "Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när\ninnehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType\napplication/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ\n(Strategi B, se DOC-004 och sidan DocBook-mappning).\n\nKompletterar SEEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).\nComposition kopplas till DocumentReference genom att samma Provenance har båda i\nProvenance.target.",
       "exampleBoolean" : false
     },
     {
@@ -1732,13 +1752,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-condition-diagnosis.html"
+        "valueUri" : "StructureDefinition-SEEHDSConditionDiagnosis.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-condition-diagnosis"
+        "reference" : "StructureDefinition/SEEHDSConditionDiagnosis"
       },
       "name" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-      "description" : "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0.",
+      "description" : "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Ärver HL7 Europe Core Condition (EURIDICE). Täcker NPÖ 2.0 och 1177 Journal 2.0.",
       "exampleBoolean" : false
     },
     {
@@ -1748,10 +1768,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-condition-functional.html"
+        "valueUri" : "StructureDefinition-SEEHDSConditionFunctional.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-condition-functional"
+        "reference" : "StructureDefinition/SEEHDSConditionFunctional"
       },
       "name" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
       "description" : "Profil för funktionstillstånd och ADL-bedömningar mappat från RIVTA-tjänstekontraktet\nGetFunctionalStatus (clinicalprocess:healthcond:description v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nTKBn har två bedömningskategorier: 'pad-pad' (PADL-bedömning) och 'fun-fun'\n(funktionsnedsättningsbedömning med ICF-kod). Condition.code mappas mot\nassessmentCategory (för PADL) eller disability.disabilityAssessment (ICF-kod).\nInget statusfält, tidperiod eller svårighetsgradfält finns i TKBn – dessa är härleddda.",
@@ -1764,13 +1784,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-device.html"
+        "valueUri" : "StructureDefinition-SEEHDSDevice.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-device"
+        "reference" : "StructureDefinition/SEEHDSDevice"
       },
       "name" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
-      "description" : "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från IneraEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)",
+      "description" : "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från SEEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)",
       "exampleBoolean" : false
     },
     {
@@ -1780,13 +1800,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-diagnostic-report-imaging.html"
+        "valueUri" : "StructureDefinition-SEEHDSDiagnosticReportImaging.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-diagnostic-report-imaging"
+        "reference" : "StructureDefinition/SEEHDSDiagnosticReportImaging"
       },
       "name" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
-      "description" : "Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med IneraEHDSImagingStudy för att representera både undersökning och svar.",
+      "description" : "Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med SEEHDSImagingStudy för att representera både undersökning och svar.",
       "exampleBoolean" : false
     },
     {
@@ -1796,13 +1816,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-diagnostic-report-referral.html"
+        "valueUri" : "StructureDefinition-SEEHDSDiagnosticReportReferral.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-diagnostic-report-referral"
+        "reference" : "StructureDefinition/SEEHDSDiagnosticReportReferral"
       },
       "name" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
-      "description" : "Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med IneraEHDSServiceRequestReferral.",
+      "description" : "Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med SEEHDSServiceRequestReferral.",
       "exampleBoolean" : false
     },
     {
@@ -1812,10 +1832,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-diagnostic-report-lab.html"
+        "valueUri" : "StructureDefinition-SEEHDSDiagnosticReportLab.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-diagnostic-report-lab"
+        "reference" : "StructureDefinition/SEEHDSDiagnosticReportLab"
       },
       "name" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
       "description" : "Profil för laboratorieresultat mappat från RIVTA-tjänstekontraktet GetLaboratoryOrderOutcome (clinicalprocess:healthcond:actoutcome v4.2). Täcker NPÖ v4.2 och 1177 Journal v4.2.",
@@ -1828,10 +1848,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-document-reference.html"
+        "valueUri" : "StructureDefinition-SEEHDSDocumentReference.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-document-reference"
+        "reference" : "StructureDefinition/SEEHDSDocumentReference"
       },
       "name" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
       "description" : "Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation\n(clinicalprocess:healthcond:description v3.0). Täcker NPÖ 3.0 och 1177 Journal 3.0.\n\nAnvänder JoL-header v2.2 (ej PatientSummaryHeader): accessControlHeader för PDL,\nrecord för journaluppgift-metadata, author för dokumentationsansvarig,\nsignature för signeringsinformation.",
@@ -1844,10 +1864,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-encounter.html"
+        "valueUri" : "StructureDefinition-SEEHDSEncounter.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-encounter"
+        "reference" : "StructureDefinition/SEEHDSEncounter"
       },
       "name" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
       "description" : "Profil för vårdkontakter mappat från RIVTA-tjänstekontraktet GetCareContacts (clinicalprocess:logistics:logistics v3.0). Täcker NPÖ 2.0, 3.0 och 1177 Journal 2.0, 3.0.",
@@ -1860,13 +1880,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-flag.html"
+        "valueUri" : "StructureDefinition-SEEHDSFlag.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-flag"
+        "reference" : "StructureDefinition/SEEHDSFlag"
       },
       "name" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
-      "description" : "Primär profil för ALL uppmärksamhetsinformation från GetAlertInformation\n(clinicalprocess:healthcond:description v2.0).\n\nVarje alertInformation-post ger alltid en Flag-resurs.\nOm typeOfAlertInformation anger allergi/överkänslighet (body = hypersensitivity)\nskapas dessutom en IneraEHDSAllergyIntolerance-resurs som pekas ut via\nextension[flag-detail] (standard R4-extension; kallas supportingInfo i R5).\n\nBody-strukturen är XOR: exakt en av hypersensitivity, seriousDisease, treatment,\ncommunicableDisease, restrictionOfCare, unstructuredAlertInformation anges per post.\n\nFlag.category[alertType]           = typeOfAlertInformation (obligatorisk).\nFlag.category[hypersensitivityType] = typeOfHypersensitivity (när body = hypersensitivity).\nFlag.code                           = den kliniska koden specifik för body-typen.\n\nTäcker NPÖ 2.0 och 1177 Journal 2.0.",
+      "description" : "Primär profil för ALL uppmärksamhetsinformation från GetAlertInformation\n(clinicalprocess:healthcond:description v2.0).\n\nVarje alertInformation-post ger alltid en Flag-resurs.\nOm typeOfAlertInformation anger allergi/överkänslighet (body = hypersensitivity)\nskapas dessutom en SEEHDSAllergyIntolerance-resurs som pekas ut via\nextension[flag-detail] (standard R4-extension; kallas supportingInfo i R5).\n\nBody-strukturen är XOR: exakt en av hypersensitivity, seriousDisease, treatment,\ncommunicableDisease, restrictionOfCare, unstructuredAlertInformation anges per post.\n\nFlag.category[alertType]           = typeOfAlertInformation (obligatorisk).\nFlag.category[hypersensitivityType] = typeOfHypersensitivity (när body = hypersensitivity).\nFlag.code                           = den kliniska koden specifik för body-typen.\n\nTäcker NPÖ 2.0 och 1177 Journal 2.0.",
       "exampleBoolean" : false
     },
     {
@@ -1876,10 +1896,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-imaging-study.html"
+        "valueUri" : "StructureDefinition-SEEHDSImagingStudy.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-imaging-study"
+        "reference" : "StructureDefinition/SEEHDSImagingStudy"
       },
       "name" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
       "description" : "Profil för bilddiagnostiska undersökningar mappat från RIVTA-tjänstekontraktet GetImagingOutcome (clinicalprocess:healthcond:actoutcome v1.0). Täcker NPÖ 1.0 och 1177 Journal 1.0.",
@@ -1892,10 +1912,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-immunization.html"
+        "valueUri" : "StructureDefinition-SEEHDSImmunization.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-immunization"
+        "reference" : "StructureDefinition/SEEHDSImmunization"
       },
       "name" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
       "description" : "Profil för vaccinationer mappat från RIVTA-tjänstekontraktet GetVaccinationHistory (clinicalprocess:activityprescription:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0.",
@@ -1908,10 +1928,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-medication-statement.html"
+        "valueUri" : "StructureDefinition-SEEHDSMedicationStatement.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-medication-statement"
+        "reference" : "StructureDefinition/SEEHDSMedicationStatement"
       },
       "name" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
       "description" : "Profil för läkemedelsordinationer, förskrivningar och administrerade läkemedel mappat från RIVTA-tjänstekontraktet GetMedicationHistory (clinicalprocess:activityprescription:actoutcome v2.2). Täcker NPÖ 2.2 och 1177 Journal 2.2.",
@@ -1924,13 +1944,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-observation-base.html"
+        "valueUri" : "StructureDefinition-SEEHDSObservationBase.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-observation-base"
+        "reference" : "StructureDefinition/SEEHDSObservationBase"
       },
       "name" : "SE EHDS Observation Base – GetObservations",
-      "description" : "Basprofil för alla observationer från GetObservations\n(clinicalprocess:healthcond:basic v2.0).\n\nProfilen fångar den generella TK-mappningen och används som förälder av\ndomänspecifika profiler (t.ex. IneraEHDSObservationGrowth för tillväxtkurva).\n\nNyckeldesignbeslut:\n- observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int).\n  Varje gren mappas till respektive FHIR value[x]-variant.\n- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.\n- observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.\n- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).\n  Välj FHIR-element per deltagartyp (se mappningssida).\n- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
+      "description" : "Basprofil för alla observationer från GetObservations\n(clinicalprocess:healthcond:basic v2.0).\n\nProfilen fångar den generella TK-mappningen och används som förälder av\ndomänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).\n\nNyckeldesignbeslut:\n- observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int).\n  Varje gren mappas till respektive FHIR value[x]-variant.\n- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.\n- observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.\n- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).\n  Välj FHIR-element per deltagartyp (se mappningssida).\n- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
       "exampleBoolean" : false
     },
     {
@@ -1940,13 +1960,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-observation-lab.html"
+        "valueUri" : "StructureDefinition-SEEHDSObservationLab.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-observation-lab"
+        "reference" : "StructureDefinition/SEEHDSObservationLab"
       },
       "name" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
-      "description" : "Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrderOutcome. Används i kombination med IneraEHDSDiagnosticReportLab.",
+      "description" : "Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrderOutcome. Används i kombination med SEEHDSDiagnosticReportLab.",
       "exampleBoolean" : false
     },
     {
@@ -1956,10 +1976,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-observation-maternity.html"
+        "valueUri" : "StructureDefinition-SEEHDSObservationMaternity.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-observation-maternity"
+        "reference" : "StructureDefinition/SEEHDSObservationMaternity"
       },
       "name" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
       "description" : "Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet\nGetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nOBS: TKBn har tre separata sektioner (registrationRecord, pregnancyCheckupRecord,\npostDeliveryRecord) med egna sektionsspecifika fält. En Observation skapas per sektion\nmed Observation.code som diskriminator (se MAT-001 i mapping-issues). Fältnamnen\ni ^short nedan refererar till sektionsspecifika element – implementatören väljer rätt\nsektionselement baserat på Observation.code.",
@@ -1972,13 +1992,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-observation-growth.html"
+        "valueUri" : "StructureDefinition-SEEHDSObservationGrowth.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-observation-growth"
+        "reference" : "StructureDefinition/SEEHDSObservationGrowth"
       },
       "name" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-      "description" : "Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad\ngraviditetslängd) för barn och ungdom, baserad på:\n- GetObservations (clinicalprocess:healthcond:basic v2.0)\n- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)\n\nÄrver IneraEHDSObservationBase och lägger till:\n- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)\n- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)\n- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)\n- LOINC-kod-slice på code.coding för EHDS/EPS-interoperabilitet\n- category = vital-signs\n\nKodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
+      "description" : "Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad\ngraviditetslängd) för barn och ungdom, baserad på:\n- GetObservations (clinicalprocess:healthcond:basic v2.0)\n- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)\n\nÄrver SEEHDSObservationBase och lägger till:\n- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)\n- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)\n- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)\n\nKodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
       "exampleBoolean" : false
     },
     {
@@ -1988,13 +2008,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-organization.html"
+        "valueUri" : "StructureDefinition-SEEHDSOrganization.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-organization"
+        "reference" : "StructureDefinition/SEEHDSOrganization"
       },
       "name" : "SE EHDS Organization – Organisationsenhet",
-      "description" : "Profil för organisationsenheter i EHDS-TK-mappningar (vårdenheter, juridiska vårdgivare m.fl.).\n\nIdentifier-slicen ger stöd för HSA-id och SMI-id (Folkhälsomyndighetens\nid för vaccinationsenheter i det nationella vaccinationsregistret).\nNamn, kontaktuppgifter och adress mappar fält som annars inte har plats\ni resurserna de refereras ifrån.",
+      "description" : "Profil för organisationsenheter i EHDS-TK-mappningar (vårdenheter, juridiska vårdgivare m.fl.).\nÄrver HL7 Europe Core Organization (EURIDICE). Identifier-slicen följer svenska basprofilernas\nkonvention (SEBaseOrganization: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN).\n\nIdentifier-slicen ger stöd för HSA-id och SMI-id (Folkhälsomyndighetens\nid för vaccinationsenheter i det nationella vaccinationsregistret).\nNamn, kontaktuppgifter och adress mappar fält som annars inte har plats\ni resurserna de refereras ifrån.",
       "exampleBoolean" : false
     },
     {
@@ -2004,13 +2024,13 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-patient.html"
+        "valueUri" : "StructureDefinition-SEEHDSPatient.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-patient"
+        "reference" : "StructureDefinition/SEEHDSPatient"
       },
       "name" : "SE EHDS Patient",
-      "description" : "Patientprofil för EHDS-TK IG. Ärver från IPS Patient och lägger till svenska identifierarslicar.",
+      "description" : "Patientprofil för EHDS-TK. Ärver HL7 Europe Core Patient (EURIDICE) och följer svenska basprofilernas\nidentifierarkonvention (SEBasePatient: slicarna personnummer, samordningsnummer, nationelltReservnummer).\nSkapas av API:et utifrån patientId i RIVTA-svaret, eftersom EU Core kräver subject.reference (GENERAL-006).",
       "exampleBoolean" : false
     },
     {
@@ -2020,10 +2040,26 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-provenance.html"
+        "valueUri" : "StructureDefinition-SEEHDSPractitionerRole.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-provenance"
+        "reference" : "StructureDefinition/SEEHDSPractitionerRole"
+      },
+      "name" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
+      "description" : "Profil för hälso- och sjukvårdspersonal i uppdrag (medarbetaruppdrag) som refereras från\nEHDS-TK-resurserna (t.ex. accountableHealthcareProfessional, legalAuthenticator, author).\nÄrver HL7 Europe Core PractitionerRole (EURIDICE). Identifier-slicen följer svenska basprofilernas\nkonvention (SEBasePractitionerRole: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN).\nAnvänds normalt som logisk referens via identifier.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSProvenance.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSProvenance"
       },
       "name" : "SE EHDS Provenance",
       "description" : "Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance\nmed två agenter som speglar spärr-hierarkin enligt PDL:\n- custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren\n- author (inre Sparr) — den informationsägande vårdenheten\n\nOBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering\nbaserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver\nProvenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte\ninkluderas i svaret — filtreringen sker då redan på servernivå.",
@@ -2032,14 +2068,30 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CapabilityStatement"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "CapabilityStatement-SEEHDSResourceAccessProvider.html"
+      }],
+      "reference" : {
+        "reference" : "CapabilityStatement/SEEHDSResourceAccessProvider"
+      },
+      "name" : "SE EHDS Resource Access Provider",
+      "description" : "Krav på ett FHIR-API som tillhandahåller data från RIVTA-tjänstekontrakten enligt denna IG.\nBygger på EURIDICE (EU Health Data API) Resource Access Provider och anger vilka profiler i\ndenna IG som resurserna ska följa.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-service-request-referral.html"
+        "valueUri" : "StructureDefinition-SEEHDSServiceRequestReferral.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-service-request-referral"
+        "reference" : "StructureDefinition/SEEHDSServiceRequestReferral"
       },
       "name" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
       "description" : "Profil för konsultationsremisser mappat från RIVTA-tjänstekontraktet GetReferralOutcome\n(clinicalprocess:healthcond:actoutcome v3.2). Täcker NPÖ 3.2 och 1177 Journal 3.2.\n\nNotera: GetReferralOutcome returnerar remissvaret, inte remissen i sig. Remissens\nmetadata finns under referralOutcomeBody.referral och är begränsad till id, orsak,\ntid och avsändare. Inget mottagarfält, prioritet, typ eller diagnos finns i TKBn\nför remissens del.",
@@ -2052,10 +2104,10 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-inera-ehds-task.html"
+        "valueUri" : "StructureDefinition-SEEHDSTask.html"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/inera-ehds-task"
+        "reference" : "StructureDefinition/SEEHDSTask"
       },
       "name" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
       "description" : "Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0.",

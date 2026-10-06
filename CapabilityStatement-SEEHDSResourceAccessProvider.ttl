@@ -1,0 +1,233 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider> a fhir:CapabilityStatement ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "SEEHDSResourceAccessProvider"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "extensions" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CapabilityStatement SEEHDSResourceAccessProvider</b></p><a name=\"SEEHDSResourceAccessProvider\"> </a><a name=\"hcSEEHDSResourceAccessProvider\"> </a><h2 id=\"title\">SE EHDS Resource Access Provider</h2><ul><li>Implementationsguidens version: 0.3.3 </li><li>FHIR-version: 4.0.1 </li><li>Format som stöds: <code>json</code>, <code>xml</code></li><li>Publicerad: 2026-10-05 </li><li>Publicerad av: Inera AB </li></ul><blockquote class=\"impl-note\"><p><strong>Notera till implementörer: FHIR-förmågor</strong></p><p>Vilken FHIR-förmåga som helst kan vara 'tillåten' av systemet om den inte uttryckligen är markerad som 'SHALL NOT'. Några objekt är markerade som MAY i implementationsguiden för att belysa deras potentiella relevans för användningsfallet.</p></blockquote><p>This CapabilityStatement instantiates the CapabilityStatement <code>http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-access-provider-eu-api</code></p><h2 id=\"rest\">FHIR RESTful-förmågor</h2><div class=\"panel panel-default\"><div class=\"panel-heading\"><h3 id=\"mode1\" class=\"panel-title\">Mode: <code>server</code></h3></div><div class=\"panel-body\"><div><p>Alla sökningar är patientavgränsade (patient-parameter krävs), enligt EURIDICE. Varje utlämning loggas enligt SEEHDSAuditEventPatientQuery/SEEHDSAuditEventPatientRead.</p>\n</div></div></div><h3 id=\"resourcesCap1\">Förmågor per resurs/profil</h3><h4 id=\"resourcesSummary1\">Sammanfattning</h4><p>Sammanfattningstabellen listar resurserna som ingår i denna konfiguration, och för varje resurs listar den:</p><ul><li>De relevanta profilerna (om några)</li><li>Interaktionerna som stöds av varje resurs (<b><span class=\"bg-info\">R</span></b>ead, <b><span class=\"bg-info\">S</span></b>earch, <b><span class=\"bg-info\">U</span></b>pdate, and <b><span class=\"bg-info\">C</span></b>reate, are always shown, while <b><span class=\"bg-info\">VR</span></b>ead, <b><span class=\"bg-info\">P</span></b>atch, <b><span class=\"bg-info\">D</span></b>elete, <b><span class=\"bg-info\">H</span></b>istory on <b><span class=\"bg-info\">I</span></b>nstance, or <b><span class=\"bg-info\">H</span></b>istory on <b><span class=\"bg-info\">T</span></b>yp är endast närvarande om minst en av resurserna har stöd för dem.</li><li><span>De obligatoriska, rekommenderade och vissa valfria sökparametrarna (om några). </span></li><li>De länkade resurserna aktiverade för <code>_include</code></li><li>De övriga resurserna aktiverade för <code>_revinclude</code></li><li>Operationerna på resursen (om några)</li></ul><div class=\"table-responsive\"><table class=\"table table-condensed table-hover\"><thead><tr><th><b>Resurstyp</b></th><th><b>Profil</b></th><th class=\"text-center\"><b title=\"GET en resurs (läs-interaktion)\">R</b></th><th class=\"text-center\"><b title=\"GET alla resurser av typen (sök-interaktion)\">S</b></th><th class=\"text-center\"><b title=\"PUT en ny resursversion (uppdatera-interaktion)\">U</b></th><th class=\"text-center\"><b title=\"POST en ny resurs (skapa-interaktion)\">C</b></th><th><b title=\"Obligatoriska och rekommenderade sökparametrar\">Sökningar</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operationer</b></th></tr></thead><tbody><tr><td><a href=\"#Patient1-1\">Patient</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSPatient.html\">SE EHDS Patient</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Condition1-2\">Condition</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSConditionDiagnosis.html\">SE EHDS Condition – Diagnos (GetDiagnosis)</a><br/>  <a href=\"StructureDefinition-SEEHDSConditionFunctional.html\">SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#AllergyIntolerance1-3\">AllergyIntolerance</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSAllergyIntolerance.html\">SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Flag1-4\">Flag</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSFlag.html\">SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#MedicationStatement1-5\">MedicationStatement</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSMedicationStatement.html\">SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Immunization1-6\">Immunization</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSImmunization.html\">SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Observation1-7\">Observation</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSObservationLab.html\">SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)</a><br/>  <a href=\"StructureDefinition-SEEHDSObservationGrowth.html\">SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)</a><br/>  <a href=\"StructureDefinition-SEEHDSObservationMaternity.html\">SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#DiagnosticReport1-8\">DiagnosticReport</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSDiagnosticReportLab.html\">SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)</a><br/>  <a href=\"StructureDefinition-SEEHDSDiagnosticReportImaging.html\">SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)</a><br/>  <a href=\"StructureDefinition-SEEHDSDiagnosticReportReferral.html\">SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Encounter1-9\">Encounter</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSEncounter.html\">SE EHDS Encounter – Vårdkontakter (GetCareContacts)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#DocumentReference1-10\">DocumentReference</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSDocumentReference.html\">SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Composition1-11\">Composition</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSCompositionCareDocumentation.html\">SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#CarePlan1-12\">CarePlan</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSCarePlan.html\">SE EHDS CarePlan – Vårdplan (GetCarePlans)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#ImagingStudy1-13\">ImagingStudy</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSImagingStudy.html\">SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#ServiceRequest1-14\">ServiceRequest</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSServiceRequestReferral.html\">SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Task1-15\">Task</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSTask.html\">SE EHDS Task – Remisstatus (GetRequestActivities)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#Provenance1-16\">Provenance</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSProvenance.html\">SE EHDS Provenance</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr><tr><td><a href=\"#AuditEvent1-17\">AuditEvent</a></td><td>Profiler som stöds<br/>  <a href=\"StructureDefinition-SEEHDSAuditEventReadAccessLog.html\">SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)</a><br/>  <a href=\"StructureDefinition-SEEHDSAuditEventPatientQuery.html\">SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)</a><br/>  <a href=\"StructureDefinition-SEEHDSAuditEventPatientRead.html\">SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)</a></td><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td class=\"text-center\"/><td/><td/><td/><td/></tr></tbody></table></div><hr/><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Patient1-1\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Patient</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/patient.html\">Patient</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSPatient.html\">SE EHDS Patient</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Condition1-2\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Condition</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/condition.html\">Condition</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSConditionDiagnosis.html\">SE EHDS Condition – Diagnos (GetDiagnosis)</a><br/><a href=\"StructureDefinition-SEEHDSConditionFunctional.html\">SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"AllergyIntolerance1-3\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>AllergyIntolerance</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/allergyintolerance.html\">AllergyIntolerance</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSAllergyIntolerance.html\">SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Flag1-4\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Flag</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/flag.html\">Flag</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSFlag.html\">SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"MedicationStatement1-5\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>MedicationStatement</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/medicationstatement.html\">MedicationStatement</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSMedicationStatement.html\">SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Immunization1-6\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Immunization</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/immunization.html\">Immunization</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSImmunization.html\">SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Observation1-7\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Observation</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/observation.html\">Observation</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSObservationLab.html\">SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)</a><br/><a href=\"StructureDefinition-SEEHDSObservationGrowth.html\">SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)</a><br/><a href=\"StructureDefinition-SEEHDSObservationMaternity.html\">SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"DiagnosticReport1-8\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>DiagnosticReport</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/diagnosticreport.html\">DiagnosticReport</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSDiagnosticReportLab.html\">SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)</a><br/><a href=\"StructureDefinition-SEEHDSDiagnosticReportImaging.html\">SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)</a><br/><a href=\"StructureDefinition-SEEHDSDiagnosticReportReferral.html\">SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Encounter1-9\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Encounter</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/encounter.html\">Encounter</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSEncounter.html\">SE EHDS Encounter – Vårdkontakter (GetCareContacts)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"DocumentReference1-10\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>DocumentReference</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/documentreference.html\">DocumentReference</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSDocumentReference.html\">SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Composition1-11\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Composition</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/composition.html\">Composition</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSCompositionCareDocumentation.html\">SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"CarePlan1-12\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>CarePlan</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/careplan.html\">CarePlan</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSCarePlan.html\">SE EHDS CarePlan – Vårdplan (GetCarePlans)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"ImagingStudy1-13\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>ImagingStudy</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/imagingstudy.html\">ImagingStudy</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSImagingStudy.html\">SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"ServiceRequest1-14\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>ServiceRequest</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/servicerequest.html\">ServiceRequest</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSServiceRequestReferral.html\">SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Task1-15\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Task</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/task.html\">Task</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSTask.html\">SE EHDS Task – Remisstatus (GetRequestActivities)</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Provenance1-16\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Provenance</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/provenance.html\">Provenance</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSProvenance.html\">SE EHDS Provenance</a></p></div></div><p/></div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"AuditEvent1-17\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>AuditEvent</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-4\"><span class=\"lead\">FHIR-kärnresurs</span><br/><a href=\"http://hl7.org/fhir/R4/auditevent.html\">AuditEvent</a></div><div class=\"col-lg-4\"><span class=\"lead\">Referenspolicy</span><br/></div><div class=\"col-lg-4\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul/></div></div><p/><div class=\"row\"><div class=\"col-6\"><span class=\"lead\">Profiler som stöds</span><p><a href=\"StructureDefinition-SEEHDSAuditEventReadAccessLog.html\">SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)</a><br/><a href=\"StructureDefinition-SEEHDSAuditEventPatientQuery.html\">SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)</a><br/><a href=\"StructureDefinition-SEEHDSAuditEventPatientRead.html\">SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)</a></p></div></div><p/></div></div></div></div>"
+  ] ;
+  fhir:CapabilityStatement.url [ fhir:value "https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider"] ;
+  fhir:CapabilityStatement.version [ fhir:value "0.3.3"] ;
+  fhir:CapabilityStatement.name [ fhir:value "SEEHDSResourceAccessProvider"] ;
+  fhir:CapabilityStatement.title [ fhir:value "SE EHDS Resource Access Provider"] ;
+  fhir:CapabilityStatement.status [ fhir:value "draft"] ;
+  fhir:CapabilityStatement.experimental [ fhir:value "false"^^xsd:boolean] ;
+  fhir:CapabilityStatement.date [ fhir:value "2026-10-05"^^xsd:date] ;
+  fhir:CapabilityStatement.publisher [ fhir:value "Inera AB"] ;
+  fhir:CapabilityStatement.contact [
+     fhir:index 0 ;
+     fhir:ContactDetail.name [ fhir:value "Inera AB" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index 0 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
+     ]
+  ] ;
+  fhir:CapabilityStatement.description [ fhir:value "Krav på ett FHIR-API som tillhandahåller data från RIVTA-tjänstekontrakten enligt denna IG.\nBygger på EURIDICE (EU Health Data API) Resource Access Provider och anger vilka profiler i\ndenna IG som resurserna ska följa."] ;
+  fhir:CapabilityStatement.jurisdiction [
+     fhir:index 0 ;
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "SE" ] ;
+       fhir:Coding.display [ fhir:value "Sweden" ]
+     ]
+  ] ;
+  fhir:CapabilityStatement.kind [ fhir:value "requirements"] ;
+  fhir:CapabilityStatement.instantiates [
+     fhir:value "http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-access-provider-eu-api" ;
+     fhir:index 0 ;
+     fhir:link <http://hl7.eu/fhir/health-data-api/CapabilityStatement/resource-access-provider-eu-api>
+  ] ;
+  fhir:CapabilityStatement.fhirVersion [ fhir:value "4.0.1"] ;
+  fhir:CapabilityStatement.format [
+     fhir:value "json" ;
+     fhir:index 0
+  ], [
+     fhir:value "xml" ;
+     fhir:index 1
+  ] ;
+  fhir:CapabilityStatement.rest [
+     fhir:index 0 ;
+     fhir:CapabilityStatement.rest.mode [ fhir:value "server" ] ;
+     fhir:CapabilityStatement.rest.documentation [ fhir:value "Alla sökningar är patientavgränsade (patient-parameter krävs), enligt EURIDICE. Varje utlämning loggas enligt SEEHDSAuditEventPatientQuery/SEEHDSAuditEventPatientRead." ] ;
+     fhir:CapabilityStatement.rest.resource [
+       fhir:index 0 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Patient" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient>
+       ]
+     ], [
+       fhir:index 1 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Condition" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis>
+       ], [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional" ;
+         fhir:index 1 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional>
+       ]
+     ], [
+       fhir:index 2 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "AllergyIntolerance" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance>
+       ]
+     ], [
+       fhir:index 3 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Flag" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSFlag" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSFlag>
+       ]
+     ], [
+       fhir:index 4 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "MedicationStatement" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement>
+       ]
+     ], [
+       fhir:index 5 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Immunization" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization>
+       ]
+     ], [
+       fhir:index 6 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Observation" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab>
+       ], [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth" ;
+         fhir:index 1 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth>
+       ], [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationMaternity" ;
+         fhir:index 2 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationMaternity>
+       ]
+     ], [
+       fhir:index 7 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "DiagnosticReport" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab>
+       ], [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging" ;
+         fhir:index 1 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging>
+       ], [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral" ;
+         fhir:index 2 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral>
+       ]
+     ], [
+       fhir:index 8 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Encounter" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSEncounter" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSEncounter>
+       ]
+     ], [
+       fhir:index 9 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "DocumentReference" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference>
+       ]
+     ], [
+       fhir:index 10 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Composition" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation>
+       ]
+     ], [
+       fhir:index 11 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "CarePlan" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan>
+       ]
+     ], [
+       fhir:index 12 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "ImagingStudy" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy>
+       ]
+     ], [
+       fhir:index 13 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "ServiceRequest" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral>
+       ]
+     ], [
+       fhir:index 14 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Task" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSTask" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSTask>
+       ]
+     ], [
+       fhir:index 15 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "Provenance" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance>
+       ]
+     ], [
+       fhir:index 16 ;
+       fhir:CapabilityStatement.rest.resource.type [ fhir:value "AuditEvent" ] ;
+       fhir:CapabilityStatement.rest.resource.supportedProfile [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog" ;
+         fhir:index 0 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog>
+       ], [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery" ;
+         fhir:index 1 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery>
+       ], [
+         fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead" ;
+         fhir:index 2 ;
+         fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead>
+       ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

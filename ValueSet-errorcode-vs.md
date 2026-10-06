@@ -9,15 +9,15 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/errorcode-vs | *Version*:0.3.3 |
-| Active as of 2026-10-02 | *Computable Name*:ErrorCodeVS |
+| Active as of 2026-10-06 | *Computable Name*:ErrorCodeVS |
 
  
 Tillåtna värden för errorCode i svar. 
 
  **References** 
 
-* [GetMedicationHistory](StructureDefinition-inera-ehds-lm-medication-history.md)
-* [GetVaccinationHistory](StructureDefinition-inera-ehds-lm-vaccination-history.md)
+* [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md)
+* [GetVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md)
 
 ### Logisk definition (CLD)
 
@@ -51,7 +51,7 @@ Tillåtna värden för errorCode i svar.
   "name" : "ErrorCodeVS",
   "title" : "ErrorCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

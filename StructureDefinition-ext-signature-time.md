@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time | *Version*:0.3.3 |
-| Draft as of 2026-10-02 | *Computable Name*:DocumentReferenceSignatureTime |
+| Draft as of 2026-10-06 | *Computable Name*:DocumentReferenceSignatureTime |
 
 Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003.
 
@@ -19,7 +19,7 @@ Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.
 
 **Användningar:**
 
-* Använd denna Extension: [SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)](StructureDefinition-inera-ehds-document-reference.md)
+* Använd denna Extension: [SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)](StructureDefinition-SEEHDSDocumentReference.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/ext-signature-time)
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-ext-signature-time.c
   "name" : "DocumentReferenceSignatureTime",
   "title" : "Signeringstidpunkt för journalanteckning",
   "status" : "draft",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

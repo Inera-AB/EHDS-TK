@@ -224,14 +224,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
         
           Draft
           
-            as of 2026-10-02
+            as of 2026-10-06
           
         
       </td>
 
 
 
-      <td><i>Computable Name</i>: <span style="font-family: monospace;">IneraEHDSTK</span></td>
+      <td><i>Computable Name</i>: <span style="font-family: monospace;">SEEHDSTK</span></td>
     </tr>
 
 
@@ -253,8 +253,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#introduktion" id="markdown-toc-introduktion">Introduktion</a>    <ul>
       <li><a href="#domän" id="markdown-toc-domän">Domän</a></li>
       <li><a href="#omfång" id="markdown-toc-omfång">Omfång</a></li>
+      <li><a href="#loften" id="markdown-toc-loften">Vad IG:n utlovar</a></li>
       <li><a href="#syfte" id="markdown-toc-syfte">Syfte</a></li>
-      <li><a href="#arkitektur-och-ehds-relation" id="markdown-toc-arkitektur-och-ehds-relation">Arkitektur och EHDS-relation</a></li>
+      <li><a href="#arkitektur" id="markdown-toc-arkitektur">Arkitektur</a></li>
       <li><a href="#terminologi" id="markdown-toc-terminologi">Terminologi</a></li>
       <li><a href="#beroenden" id="markdown-toc-beroenden">Beroenden</a></li>
       <li><a href="#dokumentation" id="markdown-toc-dokumentation">Dokumentation</a></li>
@@ -399,12 +400,56 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
+<h3 id="loften">Vad IG:n utlovar</h3>
+
+<p>IG:n utlovar att följande tre krav uppfylls <strong>samtidigt</strong>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Löfte</th>
+      <th>Hur det uppfylls</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><strong>Samma kliniska information som TKB:erna, som FHIR-resurser.</strong></td>
+      <td>Varje element i tjänstekontraktens logiska modeller är mappat till ett FHIR-element, eller uttryckligen markerat som ej mappat med motivering. Profilerna kräver det som TKB:n kräver och inget som TKB:n inte bär. Se <a href="mappings.html">Mappningar</a>.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><strong>En giltig profilering av EURIDICE-IG:n</strong> (<a href="https://build.fhir.org/ig/euridice-org/eu-health-data-api/">EU Health Data API</a>, <code class="language-plaintext highlighter-rouge">hl7.fhir.eu.health-data-api</code>).</td>
+      <td>EURIDICE anger att datamodellerna för resursåtkomst ärver från HL7 Europe Core (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.base</code>). Profilerna ärver därför EU Core-profilen där en sådan finns, och annars FHIR-basresursen. Kraven på API:et anges i <a href="CapabilityStatement-SEEHDSResourceAccessProvider.html">SEEHDSResourceAccessProvider</a>, som utgår från EURIDICE:s Resource Access Provider.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><strong>Svenska basprofilernas namngivnings- och slicingkonventioner</strong> (HL7 Sweden, <code class="language-plaintext highlighter-rouge">hl7se.fhir.base</code>).</td>
+      <td>Profilerna heter <code class="language-plaintext highlighter-rouge">SEEHDS…</code> med <code class="language-plaintext highlighter-rouge">Id</code> lika med namnet. Identifierare slicas med samma slice-namn och system som de svenska basprofilerna: <code class="language-plaintext highlighter-rouge">personnummer</code>, <code class="language-plaintext highlighter-rouge">samordningsnummer</code>, <code class="language-plaintext highlighter-rouge">nationelltReservnummer</code>, och <code class="language-plaintext highlighter-rouge">hsaid</code> (system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code>, typ <code class="language-plaintext highlighter-rouge">PRN</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Profilerna kan inte både ärva EU Core och de svenska basprofilerna, eftersom en profil bara kan ha en
+parent. Därför följs de svenska basprofilerna som konvention, medan EU Core är parent.</p>
+
+<h4 id="ips-och-eps--inspiration-inte-löfte">IPS och EPS – inspiration, inte löfte</h4>
+
+<p>IG:n utlovar <strong>inte</strong> följsamhet mot IPS (International Patient Summary) eller EPS (HL7 Europe
+Patient Summary). De har använts som inspiration, till exempel för vilka resurstyper som passar en
+informationsmängd. Krav och strukturer som bara fanns för att harmonisera med IPS eller EPS har tagits
+bort. Det gäller till exempel härledda statusvärden och kodningar utan stöd i TKB:n, och
+EPS-profiler i <code class="language-plaintext highlighter-rouge">meta.profile</code>.</p>
+
+<hr />
+
 <h3 id="syfte">Syfte</h3>
 
 <p>Syftet med IG:t är att:</p>
 
 <ol>
-  <li>Definiera FHIR-profiler (R4) som möjliggör EHDS-kompatibel representation av data från Ineras RIVTA-tjänstekontrakt</li>
+  <li>Definiera FHIR-profiler (R4) som uppfyller de tre löftena ovan för data från Ineras RIVTA-tjänstekontrakt</li>
   <li>Dokumentera mappningen från RIVTA-element till FHIR-element, inklusive OID→URI-översättning, Provenance-mönster och Sparr-hantering</li>
   <li>Stödja implementörer som transformerar RIVTA-svar till FHIR-resurser för NPÖ och 1177 Journal</li>
 </ol>
@@ -413,20 +458,47 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h3 id="arkitektur-och-ehds-relation">Arkitektur och EHDS-relation</h3>
+<h3 id="arkitektur">Arkitektur</h3>
 
-<p>Profilerna bygger på:</p>
-<ul>
-  <li><strong>IPS (International Patient Summary)</strong> – profiler ärvs där de finns</li>
-  <li><strong>EU EPS (European Patient Summary)</strong> – obligations-profilen sätts i <code class="language-plaintext highlighter-rouge">meta.profile</code> vid runtime</li>
-  <li><strong>HL7 Sweden basprofiler</strong> – SEBasePractitionerRole och SEBaseOrganization används för personreferenser</li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Lager</th>
+      <th>Källa</th>
+      <th>Roll</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>API och åtkomst</td>
+      <td>EURIDICE (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.health-data-api</code>)</td>
+      <td>Resource Access Provider, patientavgränsade sökningar, MHD för dokument</td>
+    </tr>
+    <tr>
+      <td>Datamodell</td>
+      <td>HL7 Europe Core (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.base</code>)</td>
+      <td>Parent för profilerna där EU Core-profil finns</td>
+    </tr>
+    <tr>
+      <td>Konventioner</td>
+      <td>HL7 Sweden basprofiler (<code class="language-plaintext highlighter-rouge">hl7se.fhir.base</code>)</td>
+      <td>Namngivning och identifier-slicing</td>
+    </tr>
+    <tr>
+      <td>Innehåll</td>
+      <td>Ineras TKB:er</td>
+      <td>Vilken klinisk information som bärs och vilka krav som gäller</td>
+    </tr>
+    <tr>
+      <td>Auditloggning</td>
+      <td>IHE BALP (<code class="language-plaintext highlighter-rouge">ihe.iti.balp</code>)</td>
+      <td>Loggposter vid utlämning, se <a href="mapping-getaccesslogforpatient.html">Åtkomstloggar</a></td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Varje producerad FHIR-resurs bär <strong>två profiler</strong> i <code class="language-plaintext highlighter-rouge">meta.profile</code>:</p>
-<ol>
-  <li>Aktuell EHDS-TK-profil (t.ex. <code class="language-plaintext highlighter-rouge">IneraEHDSConditionDiagnosis</code>)</li>
-  <li>Relevant EU EPS obligations-profil</li>
-</ol>
+<p>Varje producerad FHIR-resurs anger sin EHDS-TK-profil i <code class="language-plaintext highlighter-rouge">meta.profile</code> (t.ex. <code class="language-plaintext highlighter-rouge">SEEHDSConditionDiagnosis</code>).
+Genom arvet uppfyller resursen även EU Core-profilen.</p>
 
 <hr />
 
@@ -440,10 +512,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Denna IG har beroenden till:</p>
 <ul>
-  <li><strong>HL7 IPS:</strong> <code class="language-plaintext highlighter-rouge">hl7.fhir.uv.ips</code></li>
-  <li><strong>EU EPS:</strong> <code class="language-plaintext highlighter-rouge">hl7.fhir.eu.eps</code></li>
-  <li><strong>SE-core (HL7 Sweden):</strong> <code class="language-plaintext highlighter-rouge">hl7se.fhir.base</code></li>
+  <li><strong>EURIDICE – EU Health Data API:</strong> <code class="language-plaintext highlighter-rouge">hl7.fhir.eu.health-data-api</code> 1.0.0-ballot</li>
+  <li><strong>HL7 Europe Core:</strong> <code class="language-plaintext highlighter-rouge">hl7.fhir.eu.base</code> 2.0.0-ballot</li>
+  <li><strong>IHE BALP:</strong> <code class="language-plaintext highlighter-rouge">ihe.iti.balp</code> 1.1.4</li>
+  <li><strong>FHIR-extensions:</strong> <code class="language-plaintext highlighter-rouge">hl7.fhir.uv.extensions.r4</code> 5.3.0</li>
 </ul>
+
+<p>HL7 Sweden basprofiler (<code class="language-plaintext highlighter-rouge">hl7se.fhir.base</code>) används som konvention och är inget paketberoende.</p>
 
 <hr />
 
@@ -478,7 +553,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

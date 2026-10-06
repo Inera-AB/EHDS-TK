@@ -21,21 +21,21 @@ De logiska modellerna nedan representerar de informationskrav som definieras av 
 
 | | | |
 | :--- | :--- | :--- |
-| [IneraEHDSLMDiagnosis](StructureDefinition-inera-ehds-lm-diagnosis.md) | GetDiagnosis | Patientöversikt |
-| [IneraEHDSLMAlertInformation](StructureDefinition-inera-ehds-lm-alert-information.md) | GetAlertInformation | Patientöversikt |
-| [IneraEHDSLMMedicationHistory](StructureDefinition-inera-ehds-lm-medication-history.md) | GetMedicationHistory | Patientöversikt |
-| [IneraEHDSLMVaccinationHistory](StructureDefinition-inera-ehds-lm-vaccination-history.md) | GetVaccinationHistory | Patientöversikt |
-| [IneraEHDSLMFunctionalStatus](StructureDefinition-inera-ehds-lm-functional-status.md) | GetFunctionalStatus | Patientöversikt |
-| [IneraEHDSLMMaternityMedicalHistory](StructureDefinition-inera-ehds-lm-maternity-medical-history.md) | GetMaternityMedicalHistory | Patientöversikt |
-| [IneraEHDSLMCarePlans](StructureDefinition-inera-ehds-lm-care-plans.md) | GetCarePlans | Patientöversikt |
-| [IneraEHDSLMCareContacts](StructureDefinition-inera-ehds-lm-care-contacts.md) | GetCareContacts | Patientöversikt |
-| [IneraEHDSLMCareDocumentation](StructureDefinition-inera-ehds-lm-care-documentation.md) | GetCareDocumentation | Patientöversikt |
-| [IneraEHDSLMLaboratoryOrderOutcome](StructureDefinition-inera-ehds-lm-laboratory-order-outcome.md) | GetLaboratoryOrderOutcome | Laboratorie och diagnostik |
-| [IneraEHDSLMImagingOutcome](StructureDefinition-inera-ehds-lm-imaging-outcome.md) | GetImagingOutcome | Bilddiagnostik |
-| [IneraEHDSLMReferralOutcome](StructureDefinition-inera-ehds-lm-referral-outcome.md) | GetReferralOutcome | Remiss och process |
-| [IneraEHDSLMRequestActivities](StructureDefinition-inera-ehds-lm-request-activities.md) | GetRequestActivities | Remiss och process |
-| [IneraEHDSLMObservations](StructureDefinition-inera-ehds-lm-observations.md) | GetObservations | Tillväxtkurva barn |
-| [IneraEHDSLMAccessLog](StructureDefinition-inera-ehds-lm-access-log.md) | GetAccessLogForPatient | Logg |
+| [SEEHDSLMDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md) | GetDiagnosis | Patientöversikt |
+| [SEEHDSLMAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md) | GetAlertInformation | Patientöversikt |
+| [SEEHDSLMMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md) | GetMedicationHistory | Patientöversikt |
+| [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md) | GetVaccinationHistory | Patientöversikt |
+| [SEEHDSLMFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.md) | GetFunctionalStatus | Patientöversikt |
+| [SEEHDSLMMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.md) | GetMaternityMedicalHistory | Patientöversikt |
+| [SEEHDSLMCarePlans](StructureDefinition-SEEHDSLMCarePlans.md) | GetCarePlans | Patientöversikt |
+| [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.md) | GetCareContacts | Patientöversikt |
+| [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md) | GetCareDocumentation | Patientöversikt |
+| [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md) | GetLaboratoryOrderOutcome | Laboratorie och diagnostik |
+| [SEEHDSLMImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md) | GetImagingOutcome | Bilddiagnostik |
+| [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md) | GetReferralOutcome | Remiss och process |
+| [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md) | GetRequestActivities | Remiss och process |
+| [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.md) | GetObservations | Tillväxtkurva barn |
+| [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.md) | GetAccessLogForPatient | Logg |
 
 -------
 

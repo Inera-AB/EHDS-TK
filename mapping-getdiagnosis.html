@@ -220,7 +220,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
         </ul>
       </li>
       <li><a href="#healthcareprofessionaltype--practitionerrole" id="markdown-toc-healthcareprofessionaltype--practitionerrole">healthcareProfessionalType → PractitionerRole</a></li>
-      <li><a href="#eu-profiler-i-metaprofile" id="markdown-toc-eu-profiler-i-metaprofile">EU-profiler i meta.profile</a></li>
+      <li><a href="#profil-i-metaprofile" id="markdown-toc-profil-i-metaprofile">Profil i meta.profile</a></li>
       <li><a href="#oid-till-uri-mappningar" id="markdown-toc-oid-till-uri-mappningar">OID till URI-mappningar</a></li>
       <li><a href="#diagnosistype--kv_diagnostyp" id="markdown-toc-diagnosistype--kv_diagnostyp">diagnosisType – kv_diagnostyp</a></li>
       <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
@@ -240,8 +240,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getdiagnosis--diagnoser">GetDiagnosis – Diagnoser</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetDiagnosis v2.0<br />
-<strong>FHIR-profil:</strong> <a href="StructureDefinition-inera-ehds-condition-diagnosis.html">IneraEHDSConditionDiagnosis</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-diagnosis.html">IneraEHDSLMDiagnosis</a><br />
+<strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSConditionDiagnosis.html">SEEHDSConditionDiagnosis</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMDiagnosis.html">SEEHDSLMDiagnosis</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v2.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v2.0)<br />
 <strong>EHDS-koppling:</strong> Patient Summary – Problem/diagnoser</p>
 
@@ -275,7 +275,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.extension</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.subject.identifier.value</code></td>
-      <td>Personnummer eller samordningsnummer; logisk referens, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
+      <td>Personnummer eller samordningsnummer; <code class="language-plaintext highlighter-rouge">reference</code> till SEEHDSPatient + <code class="language-plaintext highlighter-rouge">identifier</code>, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.root</code></td>
@@ -486,22 +486,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="clinicalstatus">clinicalStatus</h3>
 
-<p>Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. LM innehåller <code class="language-plaintext highlighter-rouge">diagnosisBody.diagnosisTime</code> (single dateTime) men inget fält för avslutsdatum. Därför kan <code class="language-plaintext highlighter-rouge">clinicalStatus</code> inte härledas från ett slutdatum.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Regel</th>
-      <th><code class="language-plaintext highlighter-rouge">Condition.clinicalStatus</code></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Alltid</td>
-      <td><code class="language-plaintext highlighter-rouge">active</code></td>
-    </tr>
-  </tbody>
-</table>
+<p>Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. <code class="language-plaintext highlighter-rouge">Condition.clinicalStatus</code> sätts därför <strong>inte</strong>. Tidigare sattes det alltid till <code class="language-plaintext highlighter-rouge">active</code> för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver <code class="language-plaintext highlighter-rouge">clinicalStatus</code> för diagnoser som inte är problemlisteposter.</p>
 
 <p><code class="language-plaintext highlighter-rouge">Condition.verificationStatus</code> sätts alltid till <code class="language-plaintext highlighter-rouge">confirmed</code> (RIVTA-svar representerar bekräftade journaluppgifter).</p>
 
@@ -552,28 +537,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="eu-profiler-i-metaprofile">EU-profiler i meta.profile</h2>
+<h2 id="profil-i-metaprofile">Profil i meta.profile</h2>
 
-<p>Varje producerad Condition bär <strong>två profiler</strong> i <code class="language-plaintext highlighter-rouge">meta.profile</code>:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Profil</th>
-      <th>URL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>IneraEHDSConditionDiagnosis</td>
-      <td><code class="language-plaintext highlighter-rouge">https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis</code></td>
-    </tr>
-    <tr>
-      <td>condition-obl-eu-eps</td>
-      <td><code class="language-plaintext highlighter-rouge">http://hl7.eu/fhir/eps/StructureDefinition/condition-obl-eu-eps</code></td>
-    </tr>
-  </tbody>
-</table>
+<p>Varje producerad Condition anger profilen
+<code class="language-plaintext highlighter-rouge">https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis</code> i <code class="language-plaintext highlighter-rouge">meta.profile</code>.
+Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core genom arvet.</p>
 
 <hr />
 
@@ -600,7 +568,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
       <td>HSA-id (Inera NTjP)</td>
     </tr>
     <tr>
@@ -754,12 +722,10 @@ ska använda.</p>
   </span><span class="nl">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"http://hl7.eu/fhir/eps/StructureDefinition/condition-obl-eu-eps"</span><span class="w">
+      </span><span class="s2">"https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis"</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"doc-12345"</span><span class="w"> </span><span class="p">}],</span><span class="w">
-  </span><span class="nl">"clinicalStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/condition-clinical"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"verificationStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/condition-ver-status"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
     </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
@@ -770,7 +736,10 @@ ska använda.</p>
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.icd10.se/"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J18.9"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pneumoni, ospecificerad"</span><span class="w"> </span><span class="p">}]</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://electronichealth.se/identifier/personnummer"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191212121212"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/pat-191212121212"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://electronichealth.se/identifier/personnummer"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191212121212"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"onsetDateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-01T12:00:00+02:00"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recordedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-01T12:00:00+02:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -844,7 +813,7 @@ ska använda.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

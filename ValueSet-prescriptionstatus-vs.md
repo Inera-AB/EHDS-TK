@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/prescriptionstatus-vs | *Version*:0.3.3 |
-| Active as of 2026-10-02 | *Computable Name*:PrescriptionStatusVS |
+| Active as of 2026-10-06 | *Computable Name*:PrescriptionStatusVS |
 
  
 Tillåtna värden för prescriptionStatus i GetMedicationHistory. 
 
  **References** 
 
-* [GetMedicationHistory](StructureDefinition-inera-ehds-lm-medication-history.md)
+* [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md)
 
 ### Logisk definition (CLD)
 
@@ -50,7 +50,7 @@ Tillåtna värden för prescriptionStatus i GetMedicationHistory.
   "name" : "PrescriptionStatusVS",
   "title" : "PrescriptionStatus — ValueSet",
   "status" : "active",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -9,15 +9,15 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs | *Version*:0.3.3 |
-| Active as of 2026-10-02 | *Computable Name*:SEObservationStatusVS |
+| Active as of 2026-10-06 | *Computable Name*:SEObservationStatusVS |
 
  
 Tillåtna statusvärden för GetObservations observationStatus. Urvals-id 56431000052106, SNOMED CT SE (OID 1.2.752.116.2.1.1). Mappning till FHIR ObservationStatus via ConceptMap observation-status-map. 
 
  **References** 
 
-* [GetObservations](StructureDefinition-inera-ehds-lm-observations.md)
-* [SE EHDS Observation Base – GetObservations](StructureDefinition-inera-ehds-observation-base.md)
+* [GetObservations](StructureDefinition-SEEHDSLMObservations.md)
+* [SE EHDS Observation Base – GetObservations](StructureDefinition-SEEHDSObservationBase.md)
 
 ### Logisk definition (CLD)
 
@@ -52,7 +52,7 @@ Tillåtna statusvärden för GetObservations observationStatus. Urvals-id 564310
   "title" : "SE Observation Status (SNOMED CT urval 56431000052106)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

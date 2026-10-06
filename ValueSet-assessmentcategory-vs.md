@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs | *Version*:0.3.3 |
-| Active as of 2026-10-02 | *Computable Name*:AssessmentCategoryVS |
+| Active as of 2026-10-06 | *Computable Name*:AssessmentCategoryVS |
 
  
 Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus. 
 
  **References** 
 
-* [GetFunctionalStatus](StructureDefinition-inera-ehds-lm-functional-status.md)
+* [GetFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.md)
 
 ### Logisk definition (CLD)
 
@@ -50,7 +50,7 @@ Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus.
   "name" : "AssessmentCategoryVS",
   "title" : "AssessmentCategory — ValueSet",
   "status" : "active",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

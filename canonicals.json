@@ -104,6 +104,13 @@
   "name" : "AssessmentCategoryCS"
 },
 {
+  "id" : "SEEHDSResourceAccessProvider",
+  "type" : "CapabilityStatement",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider",
+  "version" : "0.3.3",
+  "name" : "SEEHDSResourceAccessProvider"
+},
+{
   "id" : "maternity-section",
   "type" : "CodeSystem",
   "url" : "https://fhir.inera.se/ig/ehds-tk/CodeSystem/maternity-section",
@@ -115,7 +122,308 @@
   "type" : "ImplementationGuide",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk",
   "version" : "0.3.3",
-  "name" : "IneraEHDSTK"
+  "name" : "SEEHDSTK"
+},
+{
+  "id" : "SEEHDSAllergyIntolerance",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance",
+  "version" : "0.3.3",
+  "name" : "SEEHDSAllergyIntolerance"
+},
+{
+  "id" : "SEEHDSAuditEventPatientQuery",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery",
+  "version" : "0.3.3",
+  "name" : "SEEHDSAuditEventPatientQuery"
+},
+{
+  "id" : "SEEHDSAuditEventPatientRead",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead",
+  "version" : "0.3.3",
+  "name" : "SEEHDSAuditEventPatientRead"
+},
+{
+  "id" : "SEEHDSAuditEventReadAccessLog",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog",
+  "version" : "0.3.3",
+  "name" : "SEEHDSAuditEventReadAccessLog"
+},
+{
+  "id" : "SEEHDSCarePlan",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan",
+  "version" : "0.3.3",
+  "name" : "SEEHDSCarePlan"
+},
+{
+  "id" : "SEEHDSCompositionCareDocumentation",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation",
+  "version" : "0.3.3",
+  "name" : "SEEHDSCompositionCareDocumentation"
+},
+{
+  "id" : "SEEHDSConditionDiagnosis",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis",
+  "version" : "0.3.3",
+  "name" : "SEEHDSConditionDiagnosis"
+},
+{
+  "id" : "SEEHDSConditionFunctional",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional",
+  "version" : "0.3.3",
+  "name" : "SEEHDSConditionFunctional"
+},
+{
+  "id" : "SEEHDSDevice",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDevice",
+  "version" : "0.3.3",
+  "name" : "SEEHDSDevice"
+},
+{
+  "id" : "SEEHDSDiagnosticReportImaging",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging",
+  "version" : "0.3.3",
+  "name" : "SEEHDSDiagnosticReportImaging"
+},
+{
+  "id" : "SEEHDSDiagnosticReportLab",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab",
+  "version" : "0.3.3",
+  "name" : "SEEHDSDiagnosticReportLab"
+},
+{
+  "id" : "SEEHDSDiagnosticReportReferral",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral",
+  "version" : "0.3.3",
+  "name" : "SEEHDSDiagnosticReportReferral"
+},
+{
+  "id" : "SEEHDSDocumentReference",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference",
+  "version" : "0.3.3",
+  "name" : "SEEHDSDocumentReference"
+},
+{
+  "id" : "SEEHDSEncounter",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSEncounter",
+  "version" : "0.3.3",
+  "name" : "SEEHDSEncounter"
+},
+{
+  "id" : "SEEHDSFlag",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSFlag",
+  "version" : "0.3.3",
+  "name" : "SEEHDSFlag"
+},
+{
+  "id" : "SEEHDSImagingStudy",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy",
+  "version" : "0.3.3",
+  "name" : "SEEHDSImagingStudy"
+},
+{
+  "id" : "SEEHDSImmunization",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization",
+  "version" : "0.3.3",
+  "name" : "SEEHDSImmunization"
+},
+{
+  "id" : "SEEHDSLMAccessLog",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLog",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMAccessLog"
+},
+{
+  "id" : "SEEHDSLMAlertInformation",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformation",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMAlertInformation"
+},
+{
+  "id" : "SEEHDSLMCareContacts",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareContacts",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMCareContacts"
+},
+{
+  "id" : "SEEHDSLMCareDocumentation",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMCareDocumentation"
+},
+{
+  "id" : "SEEHDSLMCarePlans",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCarePlans",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMCarePlans"
+},
+{
+  "id" : "SEEHDSLMDiagnosis",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMDiagnosis",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMDiagnosis"
+},
+{
+  "id" : "SEEHDSLMFunctionalStatus",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMFunctionalStatus",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMFunctionalStatus"
+},
+{
+  "id" : "SEEHDSLMImagingOutcome",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMImagingOutcome"
+},
+{
+  "id" : "SEEHDSLMLaboratoryOrderOutcome",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcome",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMLaboratoryOrderOutcome"
+},
+{
+  "id" : "SEEHDSLMMaternityMedicalHistory",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMaternityMedicalHistory",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMMaternityMedicalHistory"
+},
+{
+  "id" : "SEEHDSLMMedicationHistory",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMMedicationHistory"
+},
+{
+  "id" : "SEEHDSLMObservations",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMObservations"
+},
+{
+  "id" : "SEEHDSLMReferralOutcome",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcome",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMReferralOutcome"
+},
+{
+  "id" : "SEEHDSLMRequestActivities",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivities",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMRequestActivities"
+},
+{
+  "id" : "SEEHDSLMVaccinationHistory",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMVaccinationHistory",
+  "version" : "0.3.3",
+  "name" : "SEEHDSLMVaccinationHistory"
+},
+{
+  "id" : "SEEHDSMedicationStatement",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement",
+  "version" : "0.3.3",
+  "name" : "SEEHDSMedicationStatement"
+},
+{
+  "id" : "SEEHDSObservationBase",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase",
+  "version" : "0.3.3",
+  "name" : "SEEHDSObservationBase"
+},
+{
+  "id" : "SEEHDSObservationGrowth",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth",
+  "version" : "0.3.3",
+  "name" : "SEEHDSObservationGrowth"
+},
+{
+  "id" : "SEEHDSObservationLab",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab",
+  "version" : "0.3.3",
+  "name" : "SEEHDSObservationLab"
+},
+{
+  "id" : "SEEHDSObservationMaternity",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationMaternity",
+  "version" : "0.3.3",
+  "name" : "SEEHDSObservationMaternity"
+},
+{
+  "id" : "SEEHDSOrganization",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization",
+  "version" : "0.3.3",
+  "name" : "SEEHDSOrganization"
+},
+{
+  "id" : "SEEHDSPatient",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient",
+  "version" : "0.3.3",
+  "name" : "SEEHDSPatient"
+},
+{
+  "id" : "SEEHDSPractitionerRole",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
+  "version" : "0.3.3",
+  "name" : "SEEHDSPractitionerRole"
+},
+{
+  "id" : "SEEHDSProvenance",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance",
+  "version" : "0.3.3",
+  "name" : "SEEHDSProvenance"
+},
+{
+  "id" : "SEEHDSServiceRequestReferral",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral",
+  "version" : "0.3.3",
+  "name" : "SEEHDSServiceRequestReferral"
+},
+{
+  "id" : "SEEHDSTask",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSTask",
+  "version" : "0.3.3",
+  "name" : "SEEHDSTask"
 },
 {
   "id" : "alert-ascertained-date",
@@ -256,300 +564,6 @@
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-registration-device",
   "version" : "0.3.3",
   "name" : "ImmunizationRegistrationDevice"
-},
-{
-  "id" : "inera-ehds-allergy-intolerance",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-allergy-intolerance",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSAllergyIntolerance"
-},
-{
-  "id" : "inera-ehds-audit-event-patient-query",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-query",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSAuditEventPatientQuery"
-},
-{
-  "id" : "inera-ehds-audit-event-patient-read",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-read",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSAuditEventPatientRead"
-},
-{
-  "id" : "inera-ehds-audit-event-read-access-log",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-read-access-log",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSAuditEventReadAccessLog"
-},
-{
-  "id" : "inera-ehds-care-plan",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-care-plan",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSCarePlan"
-},
-{
-  "id" : "inera-ehds-composition-care-documentation",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-composition-care-documentation",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSCompositionCareDocumentation"
-},
-{
-  "id" : "inera-ehds-condition-diagnosis",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSConditionDiagnosis"
-},
-{
-  "id" : "inera-ehds-condition-functional",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-functional",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSConditionFunctional"
-},
-{
-  "id" : "inera-ehds-device",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-device",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSDevice"
-},
-{
-  "id" : "inera-ehds-diagnostic-report-imaging",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-imaging",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSDiagnosticReportImaging"
-},
-{
-  "id" : "inera-ehds-diagnostic-report-lab",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-lab",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSDiagnosticReportLab"
-},
-{
-  "id" : "inera-ehds-diagnostic-report-referral",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-referral",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSDiagnosticReportReferral"
-},
-{
-  "id" : "inera-ehds-document-reference",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-document-reference",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSDocumentReference"
-},
-{
-  "id" : "inera-ehds-encounter",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-encounter",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSEncounter"
-},
-{
-  "id" : "inera-ehds-flag",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-flag",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSFlag"
-},
-{
-  "id" : "inera-ehds-imaging-study",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-imaging-study",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSImagingStudy"
-},
-{
-  "id" : "inera-ehds-immunization",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-immunization",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSImmunization"
-},
-{
-  "id" : "inera-ehds-lm-access-log",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-access-log",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMAccessLog"
-},
-{
-  "id" : "inera-ehds-lm-alert-information",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-alert-information",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMAlertInformation"
-},
-{
-  "id" : "inera-ehds-lm-care-contacts",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-care-contacts",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMCareContacts"
-},
-{
-  "id" : "inera-ehds-lm-care-documentation",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-care-documentation",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMCareDocumentation"
-},
-{
-  "id" : "inera-ehds-lm-care-plans",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-care-plans",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMCarePlans"
-},
-{
-  "id" : "inera-ehds-lm-diagnosis",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-diagnosis",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMDiagnosis"
-},
-{
-  "id" : "inera-ehds-lm-functional-status",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-functional-status",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMFunctionalStatus"
-},
-{
-  "id" : "inera-ehds-lm-imaging-outcome",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-imaging-outcome",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMImagingOutcome"
-},
-{
-  "id" : "inera-ehds-lm-laboratory-order-outcome",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-laboratory-order-outcome",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMLaboratoryOrderOutcome"
-},
-{
-  "id" : "inera-ehds-lm-maternity-medical-history",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-maternity-medical-history",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMMaternityMedicalHistory"
-},
-{
-  "id" : "inera-ehds-lm-medication-history",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-medication-history",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMMedicationHistory"
-},
-{
-  "id" : "inera-ehds-lm-observations",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-observations",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMObservations"
-},
-{
-  "id" : "inera-ehds-lm-referral-outcome",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-referral-outcome",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMReferralOutcome"
-},
-{
-  "id" : "inera-ehds-lm-request-activities",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-request-activities",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMRequestActivities"
-},
-{
-  "id" : "inera-ehds-lm-vaccination-history",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-lm-vaccination-history",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSLMVaccinationHistory"
-},
-{
-  "id" : "inera-ehds-medication-statement",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-medication-statement",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSMedicationStatement"
-},
-{
-  "id" : "inera-ehds-observation-base",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-base",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSObservationBase"
-},
-{
-  "id" : "inera-ehds-observation-growth",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-growth",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSObservationGrowth"
-},
-{
-  "id" : "inera-ehds-observation-lab",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-lab",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSObservationLab"
-},
-{
-  "id" : "inera-ehds-observation-maternity",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-maternity",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSObservationMaternity"
-},
-{
-  "id" : "inera-ehds-organization",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-organization",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSOrganization"
-},
-{
-  "id" : "inera-ehds-patient",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-patient",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSPatient"
-},
-{
-  "id" : "inera-ehds-provenance",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-provenance",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSProvenance"
-},
-{
-  "id" : "inera-ehds-service-request-referral",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-service-request-referral",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSServiceRequestReferral"
-},
-{
-  "id" : "inera-ehds-task",
-  "type" : "StructureDefinition",
-  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-task",
-  "version" : "0.3.3",
-  "name" : "IneraEHDSTask"
 },
 {
   "id" : "related-alert-information",

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity | *Version*:0.3.3 |
-| Draft as of 2026-10-02 | *Computable Name*:AlertDegreeOfSeverity |
+| Draft as of 2026-10-06 | *Computable Name*:AlertDegreeOfSeverity |
 
 Bedömning av överkänslighetens allvarlighetsgrad (alertInformationBody.hypersensitivity.degreeOfSeverity). KV Allvarlighetsgrad 1.2.752.129.2.2.3.3.
 
@@ -19,7 +19,7 @@ Bedömning av överkänslighetens allvarlighetsgrad (alertInformationBody.hypers
 
 **Användningar:**
 
-* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-inera-ehds-flag.md)
+* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-degree-of-severity)
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-degree-of-seve
   "name" : "AlertDegreeOfSeverity",
   "title" : "Allvarlighetsgrad för överkänslighet",
   "status" : "draft",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -8,8 +8,8 @@
 # GetRequestActivities – Remisstatus
 
 **Tjänstekontrakt:** `crm:requeststatus` GetRequestActivities v2.0
- **FHIR-profil:** [IneraEHDSTask](StructureDefinition-inera-ehds-task.md)
- **Logisk modell:** [IneraEHDSLMRequestActivities](StructureDefinition-inera-ehds-lm-request-activities.md)
+ **FHIR-profil:** [SEEHDSTask](StructureDefinition-SEEHDSTask.md)
+ **Logisk modell:** [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md)
  **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v1.0, 2.0)
  **EHDS-koppling:** Stödjande processinformation (ej separat EHDS-huvudkategori)
 
@@ -34,7 +34,7 @@
 | :--- | :--- | :--- | :--- |
 | `requestId` | 1..1 | `Task.identifier[0].value` | Remissidentifierare; källsystemets id för denna remiss­aktivitet |
 | `requestStatus` | 1..1 | `Task.status` | kv_requestStatus → FHIR Task.status; se statusmappning nedan |
-| `requestReceiver` | 0..1 | `Task.owner` | Reference(SEBaseOrganization) med`identifier.value`= mottagarens HSA-id |
+| `requestReceiver` | 0..1 | `Task.owner` | Reference(SEEHDSOrganization) med`identifier.value`= mottagarens HSA-id |
 | `activityType` | 0..1 | `Task.code` | Aktivitetstyp; kodverk kv_activityType →`Task.code` |
 | `activityTime` | 0..1 | `Task.lastModified` | Senaste aktivitetstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `activityComment` | 0..1 | `Task.description` | Aktivitetsbeskrivning i fritext |
@@ -86,7 +86,7 @@ En `Provenance`-resurs skapas per Task och bär PDL/Sparr-information från requ
 | :--- | :--- | :--- |
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` | Personnummer |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` | Samordningsnummer |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` | HSA-id (Inera NTjP) |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
@@ -96,7 +96,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ### requestId → Task.identifier vs Task.focus
 
-`requestId` i LM är remissaktivitetens egen identifierare (ej remissen i sig). Den mappas därför till `Task.identifier[0].value` för att representera källsystemets id för detta aktivitetsobjekt. En referens till den underliggande remissen (om tillgänglig) kan läggas i `Task.focus` som `Reference(IneraEHDSServiceRequestReferral)`, men det kräver att remiss-id är separat tillgängligt vilket ej framgår av LM-strukturen.
+`requestId` i LM är remissaktivitetens egen identifierare (ej remissen i sig). Den mappas därför till `Task.identifier[0].value` för att representera källsystemets id för detta aktivitetsobjekt. En referens till den underliggande remissen (om tillgänglig) kan läggas i `Task.focus` som `Reference(SEEHDSServiceRequestReferral)`, men det kräver att remiss-id är separat tillgängligt vilket ej framgår av LM-strukturen.
 
 ### Task.requester
 

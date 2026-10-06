@@ -232,7 +232,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       </li>
       <li><a href="#härledda-fält-och-designbeslut" id="markdown-toc-härledda-fält-och-designbeslut">Härledda fält och designbeslut</a>        <ul>
           <li><a href="#observationstatus-obs-003" id="markdown-toc-observationstatus-obs-003">Observation.status (OBS-003)</a></li>
-          <li><a href="#observationcategory--statisk-kod" id="markdown-toc-observationcategory--statisk-kod">Observation.category – statisk kod</a></li>
+          <li><a href="#observationcategory" id="markdown-toc-observationcategory">Observation.category</a></li>
           <li><a href="#observationcode--fallback" id="markdown-toc-observationcode--fallback">Observation.code – fallback</a></li>
           <li><a href="#valuenegation-obs-002--beslut" id="markdown-toc-valuenegation-obs-002--beslut">valueNegation (OBS-002) – Beslut</a></li>
           <li><a href="#ts-fältet-obs-001--beslut" id="markdown-toc-ts-fältet-obs-001--beslut">ts-fältet (OBS-001) – Beslut</a></li>
@@ -259,8 +259,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getobservations--kliniska-observationer-och-mätvärden">GetObservations – Kliniska observationer och mätvärden</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:basic</code> GetObservations v2.0<br />
-<strong>FHIR-profiler:</strong> <a href="StructureDefinition-inera-ehds-observation-base.html">IneraEHDSObservationBase</a> (generell) | <a href="StructureDefinition-inera-ehds-observation-growth.html">IneraEHDSObservationGrowth</a> (tillväxtkurva)<br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-observations.html">IneraEHDSLMObservations</a><br />
+<strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSObservationBase.html">SEEHDSObservationBase</a> (generell) | <a href="StructureDefinition-SEEHDSObservationGrowth.html">SEEHDSObservationGrowth</a> (tillväxtkurva)<br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMObservations.html">SEEHDSLMObservations</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v1.2) | <strong>Krävs för 1177 Journal:</strong> Ja (v1.2)<br />
 <strong>EHDS-koppling:</strong> Kliniska mätresultat och tillväxtdata<br />
 <strong>IoÖ:</strong> Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)</p>
@@ -288,19 +288,19 @@ på toppnivå i headern. PDL- och Sparr-fält hanteras separat – se avsnitt
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">IneraEHDSObservationBase</code></td>
-      <td>IPS <code class="language-plaintext highlighter-rouge">Observation-results-uv-ips</code></td>
-      <td>Basprofil för ALL mappning från GetObservations TK; täcker alla fält i LM</td>
+      <td><code class="language-plaintext highlighter-rouge">SEEHDSObservationBase</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Observation</code></td>
+      <td>Basprofil för ALL mappning från GetObservations TK; täcker alla fält i LM. Tillväxtmätningar är inte medicinska testresultat, och tidpunkten kan saknas (EU Core MedicalTestResult kräver <code class="language-plaintext highlighter-rouge">effective[x]</code>), så basresursen används</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">IneraEHDSObservationGrowth</code></td>
-      <td><code class="language-plaintext highlighter-rouge">IneraEHDSObservationBase</code></td>
-      <td>Tillväxtkurva; lägger till IoÖ-constraints (SNOMED-koder, Quantity, LOINC)</td>
+      <td><code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SEEHDSObservationBase</code></td>
+      <td>Tillväxtkurva; lägger till IoÖ-constraints (SNOMED-koder, Quantity)</td>
     </tr>
   </tbody>
 </table>
 
-<p>Alla GetObservations-implementationer instansierar <code class="language-plaintext highlighter-rouge">IneraEHDSObservationBase</code> (eller en specialisering av den). För tillväxtkurvadata ska <code class="language-plaintext highlighter-rouge">IneraEHDSObservationGrowth</code> användas eftersom IoÖ v3 anger specifika krav på koder och enheter.</p>
+<p>Alla GetObservations-implementationer instansierar <code class="language-plaintext highlighter-rouge">SEEHDSObservationBase</code> (eller en specialisering av den). För tillväxtkurvadata ska <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code> användas eftersom IoÖ v3 anger specifika krav på koder och enheter.</p>
 
 <hr />
 
@@ -444,7 +444,7 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
 </table>
 
 <blockquote>
-  <p><strong>OBS:</strong> Alla Observation-resurser från GetObservations tilldelas statisk <code class="language-plaintext highlighter-rouge">Observation.category = exam</code> (se avsnitt Observation.category nedan). <code class="language-plaintext highlighter-rouge">observationType</code> styr <code class="language-plaintext highlighter-rouge">Observation.code</code>, inte <code class="language-plaintext highlighter-rouge">category</code>.</p>
+  <p><strong>OBS:</strong> <code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte (se avsnitt Observation.category nedan). <code class="language-plaintext highlighter-rouge">observationType</code> styr <code class="language-plaintext highlighter-rouge">Observation.code</code>, inte <code class="language-plaintext highlighter-rouge">category</code>.</p>
 </blockquote>
 
 <h3 id="observationvalue--xor-union-av-värdetyper">observationValue – XOR-union av värdetyper</h3>
@@ -1105,12 +1105,10 @@ med id <code class="language-plaintext highlighter-rouge">56431000052106</code>.
 
 <p>Saknad mappning: status sätts till <code class="language-plaintext highlighter-rouge">unknown</code> och en <code class="language-plaintext highlighter-rouge">OperationOutcome</code>-varning genereras.</p>
 
-<h3 id="observationcategory--statisk-kod">Observation.category – statisk kod</h3>
+<h3 id="observationcategory">Observation.category</h3>
 
-<p>Alla Observation-resurser producerade från GetObservations tilldelas
-<code class="language-plaintext highlighter-rouge">Observation.category</code> med kod <code class="language-plaintext highlighter-rouge">exam</code> från
-<code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/observation-category</code> för att markera att
-de härrör från kliniska undersökningar/mätningar.</p>
+<p><code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte. GetObservations bär ingen kategori, och den statiska kategorin
+<code class="language-plaintext highlighter-rouge">exam</code> fanns bara för att harmonisera med IPS (GENERAL-007).</p>
 
 <h3 id="observationcode--fallback">Observation.code – fallback</h3>
 
@@ -1354,7 +1352,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
       <td>HSA-id (Inera NTjP)</td>
     </tr>
     <tr>
@@ -1373,7 +1371,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <h2 id="ioö-tillväxtkurva-för-barn-och-ungdom-v3">IoÖ Tillväxtkurva för barn och ungdom v3</h2>
 
-<p>Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska användas för fyra tillväxtmätningar. Profilen <code class="language-plaintext highlighter-rouge">IneraEHDSObservationGrowth</code> implementerar dessa krav.</p>
+<p>Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska användas för fyra tillväxtmätningar. Profilen <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code> implementerar dessa krav.</p>
 
 <h3 id="kodtabell--ioö-snomed-ct-koder--fhir">Kodtabell – IoÖ SNOMED CT-koder → FHIR</h3>
 
@@ -1444,7 +1442,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <h3 id="ioö-fält--fhir-observation-mappning">IoÖ-fält → FHIR Observation mappning</h3>
 
-<p>Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR <code class="language-plaintext highlighter-rouge">IneraEHDSObservationGrowth</code>:</p>
+<p>Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code>:</p>
 
 <table>
   <thead>
@@ -1479,12 +1477,6 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
       <td><code class="language-plaintext highlighter-rouge">cm</code> / <code class="language-plaintext highlighter-rouge">kg</code> / <code class="language-plaintext highlighter-rouge">d</code></td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueQuantity.unit</code> + <code class="language-plaintext highlighter-rouge">valueQuantity.code</code></td>
       <td>UCUM-kod sätts parallellt med textenhet</td>
-    </tr>
-    <tr>
-      <td>(härledd)</td>
-      <td>LOINC per mättyp, se tabell</td>
-      <td><code class="language-plaintext highlighter-rouge">Observation.code.coding[loinc].code</code></td>
-      <td>Valfri; läggs till av bryggan för EHDS/EPS-konsumenter</td>
     </tr>
   </tbody>
 </table>
@@ -1594,7 +1586,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

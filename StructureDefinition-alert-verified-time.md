@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-verified-time | *Version*:0.3.3 |
-| Draft as of 2026-10-02 | *Computable Name*:AlertVerifiedTime |
+| Draft as of 2026-10-06 | *Computable Name*:AlertVerifiedTime |
 
 Tidpunkt då uppmärksamhetssignalen verifierades i det lokala systemet (alertInformationBody.verifiedTime).
 
@@ -19,7 +19,7 @@ Tidpunkt då uppmärksamhetssignalen verifierades i det lokala systemet (alertIn
 
 **Användningar:**
 
-* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-inera-ehds-flag.md)
+* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-verified-time)
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-verified-time.
   "name" : "AlertVerifiedTime",
   "title" : "Tidpunkt för verifiering",
   "status" : "draft",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

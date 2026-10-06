@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/fetalpositioncode | *Version*:0.3.3 |
-| Active as of 2026-10-02 | *Computable Name*:FetalPositionCodeCS |
+| Active as of 2026-10-06 | *Computable Name*:FetalPositionCodeCS |
 
  
 Kodverk för fosterläge (FetalPositionCodeEnum). Används i GetMaternityMedicalHistory. 
@@ -31,7 +31,7 @@ Kodverk för fosterläge (FetalPositionCodeEnum). Används i GetMaternityMedical
   "name" : "FetalPositionCodeCS",
   "title" : "FetalPositionCode",
   "status" : "active",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

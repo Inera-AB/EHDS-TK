@@ -1,0 +1,27 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)"
+"SEEHDSLMAccessLog","SEEHDSLMAccessLog","","","",0,*,"","","","null {[]} {[]}
+","GetAccessLogForPatient","Logisk modell för patientens åtkomstloggar hämtad via GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Krävs för 1177 Journal 1.1, 2.0 men ej för NPÖ.","","","","","","","","","",,,,,"",,,,"Base",0,*,"",""
+"SEEHDSLMAccessLog.accessLogId","SEEHDSLMAccessLog.accessLogId","","","",1,1,"","","","Identifier {[]} {[]}
+","Loggpostens identifierare","Loggpostens identifierare","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.accessLogId",1,1,"",""
+"SEEHDSLMAccessLog.patientId","SEEHDSLMAccessLog.patientId","","","",1,1,"","","","Identifier {[]} {[]}
+","Patientidentifierare","Patientidentifierare","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.patientId",1,1,"",""
+"SEEHDSLMAccessLog.accessTime","SEEHDSLMAccessLog.accessTime","","","",1,1,"","","","dateTime {[]} {[]}
+","Åtkomsttidpunkt (UTC)","Åtkomsttidpunkt (UTC)","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.accessTime",1,1,"",""
+"SEEHDSLMAccessLog.accessType","SEEHDSLMAccessLog.accessType","","","",1,1,"","","","CodeableConcept {[]} {[]}
+","Åtkomsttyp (Läsning/Sökning)","Åtkomsttyp (Läsning/Sökning)","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.accessType",1,1,"",""
+"SEEHDSLMAccessLog.accessSubType","SEEHDSLMAccessLog.accessSubType","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Åtkomstundertyp","Åtkomstundertyp","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.accessSubType",0,1,"",""
+"SEEHDSLMAccessLog.accessOutcome","SEEHDSLMAccessLog.accessOutcome","","","",1,1,"","","","CodeableConcept {[]} {[]}
+","Utfall (Beviljad/Nekad)","Utfall (Beviljad/Nekad)","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.accessOutcome",1,1,"",""
+"SEEHDSLMAccessLog.accessPurpose","SEEHDSLMAccessLog.accessPurpose","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Åtkomstsyfte (Vård/Administration)","Åtkomstsyfte (Vård/Administration)","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.accessPurpose",0,1,"",""
+"SEEHDSLMAccessLog.userId","SEEHDSLMAccessLog.userId","","","",1,1,"","","","Identifier {[]} {[]}
+","Användarens HSA-id","Användarens HSA-id","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.userId",1,1,"",""
+"SEEHDSLMAccessLog.userRole","SEEHDSLMAccessLog.userRole","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Användarroll","Användarroll","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.userRole",0,1,"",""
+"SEEHDSLMAccessLog.userOrganization","SEEHDSLMAccessLog.userOrganization","","","",0,1,"","","","Identifier {[]} {[]}
+","Användarens organisations HSA-id","Användarens organisations HSA-id","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.userOrganization",0,1,"",""
+"SEEHDSLMAccessLog.sourceSystemHSAId","SEEHDSLMAccessLog.sourceSystemHSAId","","","",1,1,"","","","string {[]} {[]}
+","Källsystem (loggkälla)","Källsystem (loggkälla)","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.sourceSystemHSAId",1,1,"",""
+"SEEHDSLMAccessLog.accessedResource","SEEHDSLMAccessLog.accessedResource","","","",0,1,"","","","string {[]} {[]}
+","Resurs/tjänst som åtkoms","Resurs/tjänst som åtkoms","","","","","","","","","",,,,,"",,,,"SEEHDSLMAccessLog.accessedResource",0,1,"",""

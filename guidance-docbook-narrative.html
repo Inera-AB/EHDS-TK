@@ -249,7 +249,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="docbook-mappning--clinicaldocumentnotetext-och-bilagor">DocBook-mappning – clinicalDocumentNoteText och bilagor</h1>
 
 <p><strong>Gäller:</strong> GetCareDocumentation v3.0 (<code class="language-plaintext highlighter-rouge">careDocumentation.body.clinicalDocumentNoteText</code> och <code class="language-plaintext highlighter-rouge">careDocumentation.body.multimediaEntry</code>)<br />
-<strong>FHIR-resurser:</strong> <a href="StructureDefinition-inera-ehds-document-reference.html">IneraEHDSDocumentReference</a> (obligatorisk), <a href="StructureDefinition-inera-ehds-composition-care-documentation.html">IneraEHDSCompositionCareDocumentation</a> (valfri)<br />
+<strong>FHIR-resurser:</strong> <a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a> (obligatorisk), <a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html">SEEHDSCompositionCareDocumentation</a> (valfri)<br />
 <strong>Designbeslut:</strong> DOC-004 i <a href="mapping-issues.html#designbeslut-fattade">Mappningsissues och Designbeslut</a><br />
 <strong>Mappningssida:</strong> <a href="mapping-getcaredocumentation.html">GetCareDocumentation – Anteckningar</a></p>
 
@@ -292,7 +292,7 @@ format som FHIR-konsumenter kan använda direkt:</p>
     </tr>
     <tr>
       <td><strong>B – Composition</strong></td>
-      <td>En fristående <code class="language-plaintext highlighter-rouge">Composition</code> enligt <a href="StructureDefinition-inera-ehds-composition-care-documentation.html">IneraEHDSCompositionCareDocumentation</a> med en <code class="language-plaintext highlighter-rouge">section</code> per DocBook-<code class="language-plaintext highlighter-rouge">&lt;section&gt;</code></td>
+      <td>En fristående <code class="language-plaintext highlighter-rouge">Composition</code> enligt <a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html">SEEHDSCompositionCareDocumentation</a> med en <code class="language-plaintext highlighter-rouge">section</code> per DocBook-<code class="language-plaintext highlighter-rouge">&lt;section&gt;</code></td>
       <td>Valfri – men om den skapas ska den följa profilen</td>
     </tr>
   </tbody>
@@ -582,7 +582,7 @@ dokumentets sektioner adresserbara var för sig, till exempel för navigering el
 enskilda avsnitt.</p>
 
 <p>Strategi B är valfri, men en <code class="language-plaintext highlighter-rouge">Composition</code> som skapas ska följa profilen
-<a href="StructureDefinition-inera-ehds-composition-care-documentation.html">IneraEHDSCompositionCareDocumentation</a>.
+<a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html">SEEHDSCompositionCareDocumentation</a>.
 Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.</p>
 
 <h3 id="sektionsmappning">Sektionsmappning</h3>
@@ -729,9 +729,9 @@ spärrkontroll gäller för båda resurserna. En konsument som hämtar <code cla
   </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Composition"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"final"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.752.129.2.2.2.11"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bes"</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://electronichealth.se/identifier/personnummer"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191212121212"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/pat-191212121212"</span><span class="p">,</span><span class="w"> </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://electronichealth.se/identifier/personnummer"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191212121212"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-06-01T12:00:00+02:00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.752.129.2.1.4.1"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SE2321000016-1234"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}],</span><span class="w">
+  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.752.29.4.19"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SE2321000016-1234"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}],</span><span class="w">
   </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Besöksanteckning"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"section"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -786,7 +786,7 @@ exakt visuell återgivning krävs.</li>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

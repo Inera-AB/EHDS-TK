@@ -474,8 +474,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Definiera en <code class="language-plaintext highlighter-rouge">SearchParameter</code>-resurs med kod <code class="language-plaintext highlighter-rouge">careUnit</code> som implementerar sökning via <code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code> med reverse chaining. En serverdefinierad sökparameter skapar en <strong>gemensam lösning för alla resurstyper</strong> (Encounter, DocumentReference, Observation, osv.) och undviker att varje resurstyp behöver en separat lösning.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Encounter?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
-GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Encounter?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
+GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 </code></pre></div></div>
 
 <p>Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per vård-event med korrekt <code class="language-plaintext highlighter-rouge">agent[author]</code>.</p>
@@ -484,7 +484,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.129.2
 
 <p>Knyt alla relevanta resurser till den Encounter där de uppstod (<code class="language-plaintext highlighter-rouge">DocumentReference.encounter</code>, <code class="language-plaintext highlighter-rouge">Observation.encounter</code>, m.fl.). Dokument som tillgängliggörs som FHIR-resurser för en patient bör alltid knytas till en Encounter. Filtrering på vårdenhet sker sedan via <code class="language-plaintext highlighter-rouge">Encounter.serviceProvider</code>:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /DocumentReference?patient.identifier=...&amp;encounter.service-provider.identifier=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /DocumentReference?patient.identifier=...&amp;encounter.service-provider.identifier=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 </code></pre></div></div>
 
 <p>Förutsätter att alla resurser konsekvent refererar till en Encounter och att Encounter har <code class="language-plaintext highlighter-rouge">serviceProvider</code> satt till vårdenheten.</p>
@@ -535,7 +535,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.129.2
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Observation?patient.identifier=...&amp;code=http://snomed.info/sct|1153637007
 </code></pre></div></div>
 
-<p>Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se <code class="language-plaintext highlighter-rouge">IneraEHDSObservationGrowth</code>) där specifika SNOMED CT-koder söks. <code class="language-plaintext highlighter-rouge">displayName</code> och <code class="language-plaintext highlighter-rouge">originalText</code> i CVType är presentationsdata och inte relevanta för filtrering.</p>
+<p>Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code>) där specifika SNOMED CT-koder söks. <code class="language-plaintext highlighter-rouge">displayName</code> och <code class="language-plaintext highlighter-rouge">originalText</code> i CVType är presentationsdata och inte relevanta för filtrering.</p>
 
 <hr />
 
@@ -566,7 +566,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.129.2
   </tbody>
 </table>
 
-<p><code class="language-plaintext highlighter-rouge">GetRequestActivities</code> returnerar remisstatus och aktiviteter. I FHIR-mappningen (profil <code class="language-plaintext highlighter-rouge">IneraEHDSTask</code>) är <code class="language-plaintext highlighter-rouge">authored</code> den närmaste tidssöksparametern. <code class="language-plaintext highlighter-rouge">Task</code> stöder även <code class="language-plaintext highlighter-rouge">modified</code> (senast ändrad) och <code class="language-plaintext highlighter-rouge">period</code> (period för aktiviteten) som alternativa filtreringspunkter beroende på vad <code class="language-plaintext highlighter-rouge">fromDate</code>/<code class="language-plaintext highlighter-rouge">toDate</code> faktiskt avser i TKB:n – detta bör verifieras.</p>
+<p><code class="language-plaintext highlighter-rouge">GetRequestActivities</code> returnerar remisstatus och aktiviteter. I FHIR-mappningen (profil <code class="language-plaintext highlighter-rouge">SEEHDSTask</code>) är <code class="language-plaintext highlighter-rouge">authored</code> den närmaste tidssöksparametern. <code class="language-plaintext highlighter-rouge">Task</code> stöder även <code class="language-plaintext highlighter-rouge">modified</code> (senast ändrad) och <code class="language-plaintext highlighter-rouge">period</code> (period för aktiviteten) som alternativa filtreringspunkter beroende på vad <code class="language-plaintext highlighter-rouge">fromDate</code>/<code class="language-plaintext highlighter-rouge">toDate</code> faktiskt avser i TKB:n – detta bör verifieras.</p>
 
 <hr />
 
@@ -617,7 +617,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.129.2
 
 <p>Precis som för <code class="language-plaintext highlighter-rouge">careUnitHSAId</code> (Strategi 1 ovan) definieras en <code class="language-plaintext highlighter-rouge">SearchParameter</code>-resurs med kod <code class="language-plaintext highlighter-rouge">careGiver</code> som söker via <code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code>. Detta ger en <strong>gemensam lösning för alla resurstyper</strong> — careGiverId behövs ändå för korrekt Sparr-tillämpning, vilket innebär att Provenance alltid ska skapas med <code class="language-plaintext highlighter-rouge">agent[custodian]</code> satt. En serverdefinierad sökparameter gör informationen sökbar utan att duplicera den.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /AuditEvent?patient.identifier=...&amp;date=ge2024-01-01&amp;careGiver=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /AuditEvent?patient.identifier=...&amp;date=ge2024-01-01&amp;careGiver=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 </code></pre></div></div>
 
 <p>Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per AuditEvent med korrekt <code class="language-plaintext highlighter-rouge">agent[custodian]</code>.</p>
@@ -766,7 +766,7 @@ GET /AuditEvent?patient.identifier=...&amp;_source:in={enhetslista}
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

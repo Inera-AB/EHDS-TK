@@ -360,163 +360,211 @@
   "profiles": {
     "AllergyIntolerance": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-allergy-intolerance",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance",
         "title": "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)"
       }
     ],
     "AuditEvent": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-query",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery",
         "title": "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-patient-read",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead",
         "title": "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-audit-event-read-access-log",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog",
         "title": "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)"
       }
     ],
     "CarePlan": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-care-plan",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan",
         "title": "SE EHDS CarePlan – Vårdplan (GetCarePlans)"
       }
     ],
     "Composition": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-composition-care-documentation",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation",
         "title": "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)"
       }
     ],
     "Condition": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-diagnosis",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis",
         "title": "SE EHDS Condition – Diagnos (GetDiagnosis)"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-condition-functional",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional",
         "title": "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
       }
     ],
     "Device": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-device",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDevice",
         "title": "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)"
       }
     ],
     "DiagnosticReport": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-imaging",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging",
         "title": "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-lab",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab",
         "title": "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-diagnostic-report-referral",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral",
         "title": "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)"
       }
     ],
     "DocumentReference": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-document-reference",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference",
         "title": "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)"
       }
     ],
     "Encounter": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-encounter",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSEncounter",
         "title": "SE EHDS Encounter – Vårdkontakter (GetCareContacts)"
       }
     ],
     "Flag": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-flag",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSFlag",
         "title": "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)"
       }
     ],
     "ImagingStudy": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-imaging-study",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy",
         "title": "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"
       }
     ],
     "Immunization": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-immunization",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization",
         "title": "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)"
       }
     ],
     "MedicationStatement": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-medication-statement",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement",
         "title": "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)"
       }
     ],
     "Observation": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-base",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase",
         "title": "SE EHDS Observation Base – GetObservations"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-growth",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth",
         "title": "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-lab",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab",
         "title": "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
       },
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-observation-maternity",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationMaternity",
         "title": "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"
       }
     ],
     "Organization": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-organization",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization",
         "title": "SE EHDS Organization – Organisationsenhet"
       }
     ],
     "Patient": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-patient",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient",
         "title": "SE EHDS Patient"
+      }
+    ],
+    "PractitionerRole": [
+      {
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
+        "title": "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag"
       }
     ],
     "Provenance": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-provenance",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance",
         "title": "SE EHDS Provenance"
       }
     ],
     "ServiceRequest": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-service-request-referral",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral",
         "title": "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)"
       }
     ],
     "Task": [
       {
-        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/inera-ehds-task",
+        "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSTask",
         "title": "SE EHDS Task – Remisstatus (GetRequestActivities)"
       }
     ]
   },
   "usage": {
-    "http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0-ballot-tc1": [
+    "http://hl7.eu/fhir/StructureDefinition/information-recipient": [
+      "Composition"
+    ],
+    "http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference": [
+      "Composition"
+    ],
+    "http://hl7.eu/fhir/extensions/StructureDefinition/periods-of-life": [
+      "Immunization.occurrence[x]"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version": [
+      "Composition"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition": [
+      "DiagnosticReport"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note": [
+      "DiagnosticReport"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-Immunization.administeredProduct": [
+      "Immunization"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-MedicationStatement.adherence": [
+      "MedicationStatement"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.bodyStructure": [
+      "Observation"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.triggeredBy": [
+      "Observation"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.value%5Bx%5D": [
+      "Observation"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/_datatype|5.2.0": [
+      "Immunization.extension"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement": [
       "AllergyIntolerance"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/annotationType": [
+      "DiagnosticReport.extension.value[x]"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact": [
+      "Condition"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/bodySite": [
+      "Condition.bodySite"
     ],
     "http://hl7.org/fhir/StructureDefinition/condition-assertedDate": [
       "Condition"
     ],
     "http://hl7.org/fhir/StructureDefinition/condition-related": [
       "Condition"
-    ],
-    "http://hl7.org/fhir/StructureDefinition/data-absent-reason": [
-      "Observation.effective[x]"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice": [
       "StructureDefinition.snapshot.element.constraint"
@@ -536,21 +584,52 @@
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
       "StructureDefinition.snapshot.element"
     ],
-    "http://hl7.org/fhir/StructureDefinition/elementdefinition-type-must-support": [
-      "StructureDefinition.differential.element.type",
-      "StructureDefinition.snapshot.element.type"
-    ],
     "http://hl7.org/fhir/StructureDefinition/flag-detail": [
       "Flag"
     ],
-    "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity|5.3.0-ballot-tc1": [
+    "http://hl7.org/fhir/StructureDefinition/flag-priority": [
+      "Flag"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/individual-pronouns|5.3.0-ballot-tc1": [
+    "http://hl7.org/fhir/StructureDefinition/individual-pronouns": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/obligation": [
-      "StructureDefinition.snapshot.element"
+    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber": [
+      "Organization.address.line"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox": [
+      "Organization.address.line"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName": [
+      "Organization.address.line"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/iso21090-codedString": [
+      "Organization.address.country"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty": [
+      "Observation.component.value[x]",
+      "Observation.value[x]"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/note": [
+      "Composition.section",
+      "Flag"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/patient-birthPlace": [
+      "Patient"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/patient-birthTime": [
+      "Patient"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/patient-citizenship": [
+      "Patient"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/patient-nationality": [
+      "Patient"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse": [
+      "Patient"
     ],
     "http://hl7.org/fhir/StructureDefinition/regex": [
       "StructureDefinition.snapshot.element.type"
@@ -564,16 +643,11 @@
     "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy": [
       "StructureDefinition.snapshot.element.type"
     ],
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics": [
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-imposeProfile": [
       "StructureDefinition"
     ],
-    "http://hl7.org/fhir/StructureDefinition/translation|5.3.0-ballot-tc1": [
-      "Condition.category.coding.display",
-      "Condition.category.text",
-      "Condition.code.coding.display",
-      "Condition.code.text",
-      "Observation.code.coding.display",
-      "Observation.code.text"
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics": [
+      "StructureDefinition"
     ],
     "http://hl7.org/fhir/tools/StructureDefinition/additional-binding": [
       "StructureDefinition.snapshot.element.binding"

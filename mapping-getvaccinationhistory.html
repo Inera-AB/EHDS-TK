@@ -215,7 +215,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#resurshierarki" id="markdown-toc-resurshierarki">Resurshierarki</a></li>
       <li><a href="#mappningstabell--vaccinationmedicalrecordheader" id="markdown-toc-mappningstabell--vaccinationmedicalrecordheader">Mappningstabell – vaccinationMedicalRecordHeader</a></li>
       <li><a href="#mappningstabell--registrationrecord" id="markdown-toc-mappningstabell--registrationrecord">Mappningstabell – registrationRecord</a></li>
-      <li><a href="#mappningstabell--ineraehdsdevice-sourcesystem-fält" id="markdown-toc-mappningstabell--ineraehdsdevice-sourcesystem-fält">Mappningstabell – IneraEHDSDevice (sourceSystem-fält)</a></li>
+      <li><a href="#mappningstabell--seehdsdevice-sourcesystem-fält" id="markdown-toc-mappningstabell--seehdsdevice-sourcesystem-fält">Mappningstabell – SEEHDSDevice (sourceSystem-fält)</a></li>
       <li><a href="#mappningstabell--administrationrecord-per-immunization-resurs" id="markdown-toc-mappningstabell--administrationrecord-per-immunization-resurs">Mappningstabell – administrationRecord (per Immunization-resurs)</a></li>
       <li><a href="#mappningstabell--additionalpatientinformation-om-present" id="markdown-toc-mappningstabell--additionalpatientinformation-om-present">Mappningstabell – additionalPatientInformation (om present)</a></li>
       <li><a href="#mappningstabell--result-tekniska-svarsfält" id="markdown-toc-mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</a></li>
@@ -223,9 +223,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><a href="#immunizationstatus-från-nullified" id="markdown-toc-immunizationstatus-från-nullified">Immunization.status (från nullified)</a></li>
           <li><a href="#en-immunization-per-administrationrecord-vac-001" id="markdown-toc-en-immunization-per-administrationrecord-vac-001">En Immunization per administrationRecord (VAC-001)</a></li>
           <li><a href="#immunizationoccurrencedatetime-vac-002" id="markdown-toc-immunizationoccurrencedatetime-vac-002">Immunization.occurrenceDateTime (VAC-002)</a></li>
-          <li><a href="#sourcesystem-fält--ineraehdsdevice-registrationdevice" id="markdown-toc-sourcesystem-fält--ineraehdsdevice-registrationdevice">sourceSystem-fält → IneraEHDSDevice (registrationDevice)</a></li>
+          <li><a href="#sourcesystem-fält--seehdsdevice-registrationdevice" id="markdown-toc-sourcesystem-fält--seehdsdevice-registrationdevice">sourceSystem-fält → SEEHDSDevice (registrationDevice)</a></li>
           <li><a href="#performer-slicing-functionapop" id="markdown-toc-performer-slicing-functionapop">performer-slicing (function=AP/OP)</a></li>
-          <li><a href="#careunitsmiid--ineraehdsorganizationidentifiersmiid" id="markdown-toc-careunitsmiid--ineraehdsorganizationidentifiersmiid">careUnitSmiId → IneraEHDSOrganization.identifier[smiId]</a></li>
+          <li><a href="#careunitsmiid--seehdsorganizationidentifiersmiid" id="markdown-toc-careunitsmiid--seehdsorganizationidentifiersmiid">careUnitSmiId → SEEHDSOrganization.identifier[smiId]</a></li>
           <li><a href="#riskcategory--programeligibility" id="markdown-toc-riskcategory--programeligibility">riskCategory → programEligibility</a></li>
           <li><a href="#sourcedescription--reportorigin" id="markdown-toc-sourcedescription--reportorigin">sourceDescription → reportOrigin</a></li>
         </ul>
@@ -243,8 +243,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getvaccinationhistory--vaccinationshistorik">GetVaccinationHistory – Vaccinationshistorik</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:activityprescription:actoutcome</code> GetVaccinationHistory v2.0<br />
-<strong>FHIR-profiler:</strong> <a href="StructureDefinition-inera-ehds-immunization.html">IneraEHDSImmunization</a> | <a href="StructureDefinition-inera-ehds-device.html">IneraEHDSDevice</a> | <a href="StructureDefinition-inera-ehds-organization.html">IneraEHDSOrganization</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-vaccination-history.html">IneraEHDSLMVaccinationHistory</a><br />
+<strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSImmunization.html">SEEHDSImmunization</a> | <a href="StructureDefinition-SEEHDSDevice.html">SEEHDSDevice</a> | <a href="StructureDefinition-SEEHDSOrganization.html">SEEHDSOrganization</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMVaccinationHistory.html">SEEHDSLMVaccinationHistory</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v2.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v1.0, 2.0)<br />
 <strong>EHDS-koppling:</strong> Patient Summary – Vaccinationer</p>
 
@@ -263,13 +263,13 @@ skiljer sig. Bryggkoden måste hantera detta explicit.</p>
 
 <h2 id="resurshierarki">Resurshierarki</h2>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IneraEHDSImmunization (1 per administrationRecord)
-  ├── extension[registrationDevice] → IneraEHDSDevice (registrationRecord.sourceSystem*)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEEHDSImmunization (1 per administrationRecord)
+  ├── extension[registrationDevice] → SEEHDSDevice (registrationRecord.sourceSystem*)
   ├── performer[administering].actor → PractitionerRole (administrationRecord.performer)
-  ├── performer[administering].actor → IneraEHDSOrganization (administrationRecord.performerOrg)
+  ├── performer[administering].actor → SEEHDSOrganization (administrationRecord.performerOrg)
   │     └── identifier[smiId] = registrationRecord.careUnitSmiId
-  ├── performer[administering].actor → IneraEHDSOrganization (registrationRecord.careGiverOrg)
-  ├── performer[ordering].actor   → PractitionerRole/IneraEHDSOrganization (administrationRecord.prescriber*)
+  ├── performer[administering].actor → SEEHDSOrganization (registrationRecord.careGiverOrg)
+  ├── performer[ordering].actor   → PractitionerRole/SEEHDSOrganization (administrationRecord.prescriber*)
   └── protocolApplied[0] (vaccineTargetDisease, doseOrdinalNumber, numberOfPrescribedDoses)
 </code></pre></div></div>
 
@@ -279,7 +279,7 @@ Fält från <code class="language-plaintext highlighter-rouge">registrationRecor
 av alla Immunization-resurser från samma post. Se <a href="#öppna-frågor">VAC-001</a>.</p>
 
 <p>Källsystemsmetadata (<code class="language-plaintext highlighter-rouge">sourceSystemName/productName/productVersion/sourceSystemContact</code>) samlas
-i en separat <code class="language-plaintext highlighter-rouge">IneraEHDSDevice</code>-resurs som refereras via <code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code>
+i en separat <code class="language-plaintext highlighter-rouge">SEEHDSDevice</code>-resurs som refereras via <code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code>
 i stället för enskilda extensions på Immunization.</p>
 
 <hr />
@@ -548,7 +548,7 @@ i stället för enskilda extensions på Immunization.</p>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemName</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Device.deviceName[systemName].name</code></td>
-      <td>Källsystemets klartextnamn; via <code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code> → IneraEHDSDevice</td>
+      <td>Källsystemets klartextnamn; via <code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code> → SEEHDSDevice</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductName</code></td>
@@ -577,7 +577,7 @@ i stället för enskilda extensions på Immunization.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careUnitSmiId</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">IneraEHDSOrganization.identifier[smiId]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SEEHDSOrganization.identifier[smiId]</code></td>
       <td>SMI-id läggs som identifierarslice på den utförande vårdenhetens Organization-resurs (<code class="language-plaintext highlighter-rouge">performer[administering].actor</code>) – se Designbeslut nedan</td>
     </tr>
   </tbody>
@@ -585,9 +585,9 @@ i stället för enskilda extensions på Immunization.</p>
 
 <hr />
 
-<h2 id="mappningstabell--ineraehdsdevice-sourcesystem-fält">Mappningstabell – IneraEHDSDevice (sourceSystem-fält)</h2>
+<h2 id="mappningstabell--seehdsdevice-sourcesystem-fält">Mappningstabell – SEEHDSDevice (sourceSystem-fält)</h2>
 
-<p><code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code> refererar en <code class="language-plaintext highlighter-rouge">IneraEHDSDevice</code>-resurs som samlar
+<p><code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code> refererar en <code class="language-plaintext highlighter-rouge">SEEHDSDevice</code>-resurs som samlar
 alla källsystemsmetadata från <code class="language-plaintext highlighter-rouge">registrationRecord</code>. Resursen skapas alltid (sourceSystemName är 1..1).</p>
 
 <table>
@@ -659,7 +659,7 @@ alla källsystemsmetadata från <code class="language-plaintext highlighter-roug
       <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberOrg.orgUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Immunization.performer[ordering].actor.identifier</code></td>
-      <td>Förskrivande vårdenhetens HSA-id; actor = IneraEHDSOrganization; <code class="language-plaintext highlighter-rouge">function = OP</code></td>
+      <td>Förskrivande vårdenhetens HSA-id; actor = SEEHDSOrganization; <code class="language-plaintext highlighter-rouge">function = OP</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberOrg.orgUnitName</code></td>
@@ -937,14 +937,14 @@ faktisk vaccinationstidpunkt. Om <code class="language-plaintext highlighter-rou
 <code class="language-plaintext highlighter-rouge">accountableHealthCareProfessional.authorTime</code> som fallback (dokumentationstidpunkt).
 <code class="language-plaintext highlighter-rouge">registrationRecord.date</code> (date, ej dateTime) används alltid som <code class="language-plaintext highlighter-rouge">Immunization.recorded</code>.</p>
 
-<h3 id="sourcesystem-fält--ineraehdsdevice-registrationdevice">sourceSystem-fält → IneraEHDSDevice (registrationDevice)</h3>
+<h3 id="sourcesystem-fält--seehdsdevice-registrationdevice">sourceSystem-fält → SEEHDSDevice (registrationDevice)</h3>
 
 <p><code class="language-plaintext highlighter-rouge">registrationRecord</code> innehåller fem källsystemsfält (<code class="language-plaintext highlighter-rouge">sourceSystemName</code>, <code class="language-plaintext highlighter-rouge">sourceSystemProductName</code>,
 <code class="language-plaintext highlighter-rouge">sourceSystemProductVersion</code>, <code class="language-plaintext highlighter-rouge">sourceSystemContact.actorId</code>, <code class="language-plaintext highlighter-rouge">sourceSystemContact.actorName</code>)
 som tillsammans beskriver det system varifrån vaccinationsregistreringen härstammar.</p>
 
 <p>I stället för att lägga dessa som enskilda extensions direkt på Immunization samlas de i en
-<code class="language-plaintext highlighter-rouge">IneraEHDSDevice</code>-resurs och refereras via <code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code>. Fördelar:</p>
+<code class="language-plaintext highlighter-rouge">SEEHDSDevice</code>-resurs och refereras via <code class="language-plaintext highlighter-rouge">Immunization.extension[registrationDevice]</code>. Fördelar:</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Device</code> är FHIR:s semantiskt korrekta resurs för IT-system som genererar klinisk data</li>
@@ -977,19 +977,19 @@ väldefinierade Device-element (<code class="language-plaintext highlighter-roug
       <td><code class="language-plaintext highlighter-rouge">performer[administering]</code></td>
       <td><code class="language-plaintext highlighter-rouge">AP</code></td>
       <td><code class="language-plaintext highlighter-rouge">administrationRecord.performerOrg</code></td>
-      <td>IneraEHDSOrganization (inkl. SMI-id)</td>
+      <td>SEEHDSOrganization (inkl. SMI-id)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">performer[administering]</code></td>
       <td><code class="language-plaintext highlighter-rouge">AP</code></td>
       <td><code class="language-plaintext highlighter-rouge">registrationRecord.careGiverOrg</code></td>
-      <td>IneraEHDSOrganization</td>
+      <td>SEEHDSOrganization</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">performer[ordering]</code></td>
       <td><code class="language-plaintext highlighter-rouge">OP</code> (Ordering Provider)</td>
       <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson/prescriberOrg</code></td>
-      <td>PractitionerRole / IneraEHDSOrganization</td>
+      <td>PractitionerRole / SEEHDSOrganization</td>
     </tr>
   </tbody>
 </table>
@@ -997,12 +997,12 @@ väldefinierade Device-element (<code class="language-plaintext highlighter-roug
 <p><code class="language-plaintext highlighter-rouge">performer[administering]</code> är 0..* och täcker alla AP-roller.
 <code class="language-plaintext highlighter-rouge">performer[ordering]</code> är 0..1 och representerar prescriber.</p>
 
-<h3 id="careunitsmiid--ineraehdsorganizationidentifiersmiid">careUnitSmiId → IneraEHDSOrganization.identifier[smiId]</h3>
+<h3 id="careunitsmiid--seehdsorganizationidentifiersmiid">careUnitSmiId → SEEHDSOrganization.identifier[smiId]</h3>
 
 <p><code class="language-plaintext highlighter-rouge">registrationRecord.careUnitSmiId</code> är SMI-id för den vårdenhet som administrerade vaccinet.
 I stället för en custom extension på Immunization läggs det som identifierarslice på
-<code class="language-plaintext highlighter-rouge">performer[administering].actor</code> (Organization) via <code class="language-plaintext highlighter-rouge">IneraEHDSOrganization.identifier[smiId]</code>.
-Samma Organization bär även HSA-id via <code class="language-plaintext highlighter-rouge">identifier[hsaId]</code>.</p>
+<code class="language-plaintext highlighter-rouge">performer[administering].actor</code> (Organization) via <code class="language-plaintext highlighter-rouge">SEEHDSOrganization.identifier[smiId]</code>.
+Samma Organization bär även HSA-id via <code class="language-plaintext highlighter-rouge">identifier[hsaid]</code>.</p>
 
 <blockquote>
   <p>OBS: SMI-id:ts OID (<code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.194.10.1.1</code>) behöver verifieras mot Folkhälsomyndighetens<br />
@@ -1107,7 +1107,7 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
     </tr>
   </tbody>
 </table>
@@ -1149,7 +1149,7 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
   <tbody>
     <tr>
       <td>VAC-006</td>
-      <td><strong>SMI-id OID behöver verifieras.</strong> <code class="language-plaintext highlighter-rouge">IneraEHDSOrganization.identifier[smiId].system</code> sätts preliminärt till <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.194.10.1.1</code>. Korrigera mot Folkhälsomyndighetens faktiska NamingSystem för vaccinationsregistret.</td>
+      <td><strong>SMI-id OID behöver verifieras.</strong> <code class="language-plaintext highlighter-rouge">SEEHDSOrganization.identifier[smiId].system</code> sätts preliminärt till <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.194.10.1.1</code>. Korrigera mot Folkhälsomyndighetens faktiska NamingSystem för vaccinationsregistret.</td>
     </tr>
   </tbody>
 </table>
@@ -1198,7 +1198,7 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

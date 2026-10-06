@@ -213,7 +213,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <ul id="markdown-toc">
   <li><a href="#getlaboratoryorderoutcome--provsvar" id="markdown-toc-getlaboratoryorderoutcome--provsvar">GetLaboratoryOrderOutcome – Provsvar</a>    <ul>
       <li><a href="#resurshierarki" id="markdown-toc-resurshierarki">Resurshierarki</a></li>
-      <li><a href="#mappningstabell--ineraehdsdiagnosticreportlab" id="markdown-toc-mappningstabell--ineraehdsdiagnosticreportlab">Mappningstabell – IneraEHDSDiagnosticReportLab</a>        <ul>
+      <li><a href="#mappningstabell--seehdsdiagnosticreportlab" id="markdown-toc-mappningstabell--seehdsdiagnosticreportlab">Mappningstabell – SEEHDSDiagnosticReportLab</a>        <ul>
           <li><a href="#header--accesscontrolheader-pdlsparr" id="markdown-toc-header--accesscontrolheader-pdlsparr">Header – accessControlHeader (PDL/Sparr)</a></li>
           <li><a href="#header--sourcesystemid-och-record" id="markdown-toc-header--sourcesystemid-och-record">Header – sourceSystemId och record</a></li>
           <li><a href="#header--author-vårdfacklig-information" id="markdown-toc-header--author-vårdfacklig-information">Header – author (vårdfacklig information)</a></li>
@@ -225,7 +225,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
         </ul>
       </li>
       <li><a href="#mappningstabell--groupofanalyses-metadata" id="markdown-toc-mappningstabell--groupofanalyses-metadata">Mappningstabell – groupOfAnalyses-metadata</a></li>
-      <li><a href="#mappningstabell--ineraehdsobservationlab-per-analysis" id="markdown-toc-mappningstabell--ineraehdsobservationlab-per-analysis">Mappningstabell – IneraEHDSObservationLab (per analysis)</a>        <ul>
+      <li><a href="#mappningstabell--seehdsobservationlab-per-analysis" id="markdown-toc-mappningstabell--seehdsobservationlab-per-analysis">Mappningstabell – SEEHDSObservationLab (per analysis)</a>        <ul>
           <li><a href="#resultat-analysisresult" id="markdown-toc-resultat-analysisresult">Resultat (analysis.result)</a></li>
           <li><a href="#mätinstrument-analysisdevice" id="markdown-toc-mätinstrument-analysisdevice">Mätinstrument (analysis.device)</a></li>
           <li><a href="#härledda-fält--observation" id="markdown-toc-härledda-fält--observation">Härledda fält – Observation</a></li>
@@ -254,8 +254,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h1 id="getlaboratoryorderoutcome--provsvar">GetLaboratoryOrderOutcome – Provsvar</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetLaboratoryOrderOutcome v4.2<br />
-<strong>FHIR-profiler:</strong> <a href="StructureDefinition-inera-ehds-diagnostic-report-lab.html">IneraEHDSDiagnosticReportLab</a> | <a href="StructureDefinition-inera-ehds-observation-lab.html">IneraEHDSObservationLab</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-inera-ehds-lm-laboratory-order-outcome.html">IneraEHDSLMLaboratoryOrderOutcome</a><br />
+<strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSDiagnosticReportLab.html">SEEHDSDiagnosticReportLab</a> | <a href="StructureDefinition-SEEHDSObservationLab.html">SEEHDSObservationLab</a><br />
+<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html">SEEHDSLMLaboratoryOrderOutcome</a><br />
 <strong>Krävs för NPÖ:</strong> Ja (v4.2) | <strong>Krävs för 1177 Journal:</strong> Ja (v4.2)<br />
 <strong>EHDS-koppling:</strong> Medical test results – laboratorie- och diagnostiska resultat</p>
 
@@ -273,16 +273,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>laboratoryOrderOutcome 0..*
 │
-IneraEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
-  └── IneraEHDSObservationLab (1 per groupOfAnalyses.analysis)
+SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
+  └── SEEHDSObservationLab (1 per groupOfAnalyses.analysis)
         └── Specimen        (0..* per analysis.specimen)
 </code></pre></div></div>
 
-<p>En <code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome</code> representerar en beställning (order) med tillhörande analysresultat. Varje analys inom <code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis</code> mappas till en separat <code class="language-plaintext highlighter-rouge">IneraEHDSObservationLab</code>. Provrör/specimen kopplas till respektive <code class="language-plaintext highlighter-rouge">Observation</code> och kan delas mellan analyser med samma specimen-identifierare.</p>
+<p>En <code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome</code> representerar en beställning (order) med tillhörande analysresultat. Varje analys inom <code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis</code> mappas till en separat <code class="language-plaintext highlighter-rouge">SEEHDSObservationLab</code>. Provrör/specimen kopplas till respektive <code class="language-plaintext highlighter-rouge">Observation</code> och kan delas mellan analyser med samma specimen-identifierare.</p>
 
 <hr />
 
-<h2 id="mappningstabell--ineraehdsdiagnosticreportlab">Mappningstabell – IneraEHDSDiagnosticReportLab</h2>
+<h2 id="mappningstabell--seehdsdiagnosticreportlab">Mappningstabell – SEEHDSDiagnosticReportLab</h2>
 
 <p>Rotelementet <code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome</code> (ett per svar) mappas till en DiagnosticReport-instans.</p>
 
@@ -678,7 +678,7 @@ IneraEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
     <tr>
       <td>(groupOfAnalyses.analysis → ObservationLab)</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.result</code></td>
-      <td>Reference(IneraEHDSObservationLab) per analys</td>
+      <td>Reference(SEEHDSObservationLab) per analys</td>
     </tr>
   </tbody>
 </table>
@@ -722,9 +722,9 @@ IneraEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
 
 <hr />
 
-<h2 id="mappningstabell--ineraehdsobservationlab-per-analysis">Mappningstabell – IneraEHDSObservationLab (per analysis)</h2>
+<h2 id="mappningstabell--seehdsobservationlab-per-analysis">Mappningstabell – SEEHDSObservationLab (per analysis)</h2>
 
-<p>Varje element i <code class="language-plaintext highlighter-rouge">body.groupOfAnalyses[*].analysis[*]</code> mappas till en separat <code class="language-plaintext highlighter-rouge">IneraEHDSObservationLab</code>-instans.</p>
+<p>Varje element i <code class="language-plaintext highlighter-rouge">body.groupOfAnalyses[*].analysis[*]</code> mappas till en separat <code class="language-plaintext highlighter-rouge">SEEHDSObservationLab</code>-instans.</p>
 
 <table>
   <thead>
@@ -1257,7 +1257,7 @@ IneraEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.4.1</code></td>
-      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.1.4.1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
       <td>HSA-id (Inera NTjP)</td>
     </tr>
   </tbody>
@@ -1336,7 +1336,7 @@ IneraEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 2, 2026 11:47+0000">2026-10-02</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

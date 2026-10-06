@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-pharmaceutical-hypersensitivity | *Version*:0.3.3 |
-| Draft as of 2026-10-02 | *Computable Name*:AlertPharmaceuticalHypersensitivity |
+| Draft as of 2026-10-06 | *Computable Name*:AlertPharmaceuticalHypersensitivity |
 
 Kompletterande substansdetaljer för läkemedelsöverkänslighet (alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity). Primär substans: atcSubstance → Flag.code.coding; nonATCSubstance → Flag.code.text. Denna extension bär kvarvarande detaljer: nonATCSubstanceComment och pharmaceuticalProductId.
 
@@ -19,7 +19,7 @@ Kompletterande substansdetaljer för läkemedelsöverkänslighet (alertInformati
 
 **Användningar:**
 
-* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-inera-ehds-flag.md)
+* Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-pharmaceutical-hypersensitivity)
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-pharmaceutical
   "name" : "AlertPharmaceuticalHypersensitivity",
   "title" : "Läkemedelsöverkänslighet – substansdetaljer",
   "status" : "draft",
-  "date" : "2026-10-02T11:47:48+00:00",
+  "date" : "2026-10-06T07:04:04+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
