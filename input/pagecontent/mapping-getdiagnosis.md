@@ -14,8 +14,8 @@
 |---|---|---|---|
 | `diagnosisHeader.documentId` | 1..1 | `Condition.identifier[0].value` | Källsystemets dokumentidentitet |
 | `diagnosisHeader.sourceSystemHSAId` | 1..1 | `Condition.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `diagnosisHeader.patientId.extension` | 1..1 | `Condition.subject.identifier.value` | Personnummer eller samordningsnummer; `reference` till SEEHDSPatient + `identifier`, se [GENERAL-006](mappings.html#patientreferens) |
-| `diagnosisHeader.patientId.root` | 1..1 | `Condition.subject.identifier.system` | OID→URI, se tabell nedan |
+| `diagnosisHeader.patientId.id` | 1..1 | `Condition.subject.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. `patientId` är av RIVTA-typen `PersonIdType {id, type}`; `reference` till SEEHDSPatient + `identifier`, se [GENERAL-006](mappings.html#patientreferens) |
+| `diagnosisHeader.patientId.type` | 1..1 | `Condition.subject.identifier.system` | OID för typ av identifierare (t.ex. `1.2.752.129.2.1.3.1` för personnummer); OID→URI, se tabell nedan |
 | `diagnosisHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Condition.recordedDate` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Valfritt komplement till HSA-id |
@@ -66,6 +66,10 @@
 ### clinicalStatus
 
 Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `Condition.clinicalStatus` sätts därför **inte**. Tidigare sattes det alltid till `active` för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver `clinicalStatus` för diagnoser som inte är problemlisteposter.
+
+### abatementDateTime
+
+`Condition.abatementDateTime` sätts **aldrig**. GetDiagnosis:2 har ingen slutpunkt eller period för diagnosen, bara tidpunkten `diagnosisBody.diagnosisTime` (→ `Condition.onsetDateTime`). Avsaknaden av slutdatum är ett känt gap i TKB:n.
 
 `Condition.verificationStatus` sätts alltid till `confirmed` (RIVTA-svar representerar bekräftade journaluppgifter).
 

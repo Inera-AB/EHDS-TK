@@ -61,8 +61,8 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `acti
 |---|---|---|---|
 | `alertInformationHeader.documentId` | 1..1 | `Flag.identifier.value` | Källsystemets dokumentidentifierare |
 | `alertInformationHeader.sourceSystemHSAId` | 1..1 | `Flag.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `alertInformationHeader.patientId.extension` | 1..1 | `Flag.subject.identifier.value` | Personnummer eller samordningsnummer |
-| `alertInformationHeader.patientId.root` | 1..1 | `Flag.subject.identifier.system` | OID→URI, se tabell nedan |
+| `alertInformationHeader.patientId.id` | 1..1 | `Flag.subject.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. `patientId` är av RIVTA-typen `PersonIdType {id, type}` |
+| `alertInformationHeader.patientId.type` | 1..1 | `Flag.subject.identifier.system` | OID för typ av identifierare (t.ex. `1.2.752.129.2.1.3.1` för personnummer); OID→URI, se tabell nedan |
 | `alertInformationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm); se [GENERAL-001](#öppna-frågor) |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Flag.author` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
@@ -129,8 +129,8 @@ AllergyIntolerance skapas enbart när body = hypersensitivity. Fält från heade
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `alertInformationHeader.documentId` | 1..1 | `AllergyIntolerance.identifier.value` | Samma dokumentid som Flag |
-| `alertInformationHeader.patientId.extension` | 1..1 | `AllergyIntolerance.patient.identifier.value` | Personnummer eller samordningsnummer |
-| `alertInformationHeader.patientId.root` | 1..1 | `AllergyIntolerance.patient.identifier.system` | OID→URI, se tabell nedan |
+| `alertInformationHeader.patientId.id` | 1..1 | `AllergyIntolerance.patient.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. `patientId` är av RIVTA-typen `PersonIdType {id, type}` |
+| `alertInformationHeader.patientId.type` | 1..1 | `AllergyIntolerance.patient.identifier.system` | OID för typ av identifierare (t.ex. `1.2.752.129.2.1.3.1` för personnummer); OID→URI, se tabell nedan |
 | `alertInformationHeader.sourceSystemHSAId` | 1..1 | `AllergyIntolerance.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `alertInformationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `AllergyIntolerance.recordedDate` | YYYYMMDDHHMMSS → ISO 8601 |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `AllergyIntolerance.recorder` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
