@@ -1,8 +1,8 @@
 # GetMedicationHistory – Läkemedelshistorik
 
 **Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetMedicationHistory v2.2  
-**FHIR-profil:** [IneraEHDSMedicationStatement](StructureDefinition-inera-ehds-medication-statement.html)  
-**Logisk modell:** [IneraEHDSLMMedicationHistory](StructureDefinition-inera-ehds-lm-medication-history.html)  
+**FHIR-profil:** [SEEHDSMedicationStatement](StructureDefinition-SEEHDSMedicationStatement.html)  
+**Logisk modell:** [SEEHDSLMMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.html)  
 **Krävs för NPÖ:** Ja (v2.2) | **Krävs för 1177 Journal:** Ja (v2.2)  
 **EHDS-koppling:** Patient Summary – Aktuella läkemedel. EHDS har även separata domäner för ePrescription och eDispensation.
 
@@ -20,7 +20,7 @@
 ## Resurshierarki
 
 ```
-IneraEHDSMedicationStatement (1 per medicationMedicalRecord)
+SEEHDSMedicationStatement (1 per medicationMedicalRecord)
   └── informationSource → PractitionerRole (accountableHealthcareProfessional)
   └── medicationCodeableConcept (drug, 5 XOR-varianter)
   └── basedOn → (logisk referens om koppling till recept/SIL finns)
@@ -234,7 +234,7 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 |---|---|
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 

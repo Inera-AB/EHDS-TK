@@ -1,8 +1,8 @@
 # GetCareDocumentation – Journalanteckningar
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetCareDocumentation v3.0  
-**FHIR-profil:** [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.html)  
-**Logisk modell:** [IneraEHDSLMCareDocumentation](StructureDefinition-inera-ehds-lm-care-documentation.html)  
+**FHIR-profil:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html)  
+**Logisk modell:** [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html)  
 **Krävs för NPÖ:** Ja (v3.0) | **Krävs för 1177 Journal:** Ja (v3.0)  
 **EHDS-koppling:** Journalanteckningar – kan bidra till discharge report eller dokumentationsunderlag; bredare än EHDS discharge reports
 
@@ -23,11 +23,11 @@
 ## Resurshierarki
 
 ```
-IneraEHDSDocumentReference (1 per careDocumentation)
+SEEHDSDocumentReference (1 per careDocumentation)
   └── author → PractitionerRole (header.author)
   └── authenticator → PractitionerRole (header.signature)
   └── content[0].attachment (XOR: clinicalDocumentNoteText eller multimediaEntry)
-IneraEHDSCompositionCareDocumentation (valfri, 0..1 per careDocumentation – endast när innehållet är DocBook, se DOC-004)
+SEEHDSCompositionCareDocumentation (valfri, 0..1 per careDocumentation – endast när innehållet är DocBook, se DOC-004)
   └── section[] (en per DocBook-<section>)
 ```
 
@@ -43,7 +43,7 @@ eller URL) – se Härledda fält nedan.
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `careDocumentation.header.accessControlHeader.patientId.extension` | 1..1 | `DocumentReference.subject.identifier.value` | Personnummer eller samordningsnummer; logisk referens, se [GENERAL-006](mappings.html#patientreferens) |
+| `careDocumentation.header.accessControlHeader.patientId.extension` | 1..1 | `DocumentReference.subject.identifier.value` | Personnummer eller samordningsnummer; `reference` till SEEHDSPatient + `identifier`, se [GENERAL-006](mappings.html#patientreferens) |
 | `careDocumentation.header.accessControlHeader.patientId.root` | 1..1 | `DocumentReference.subject.identifier.system` | OID→URI, se tabell nedan |
 | `careDocumentation.header.accessControlHeader.accountableHealthcareProvider` | 0..1 | `Provenance.agent[custodian].who.identifier` | **Yttre Sparr** – vårdgivarens HSA-id (direkt i accessControlHeader, inte under author-blocket) |
 | `careDocumentation.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr** – vårdenhetens HSA-id (direkt i accessControlHeader) |
@@ -206,7 +206,7 @@ DocBook förs **inte** över som DocBook till FHIR:
 |---|---|
 | Fritext | `content[0].attachment` med `contentType: text/plain; charset=utf-8` |
 | DocBook – Strategi A (obligatorisk) | Transformeras till XHTML i `content[0].attachment` med `contentType: text/html; charset=utf-8` |
-| DocBook – Strategi B (valfri) | Dessutom en `Composition` enligt [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) med en `section` per DocBook-`<section>`, kopplad via `Provenance.target` |
+| DocBook – Strategi B (valfri) | Dessutom en `Composition` enligt [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.html) med en `section` per DocBook-`<section>`, kopplad via `Provenance.target` |
 | Bilaga (`multimediaEntry`) med `mediaType` `application/docbook+xml` | Transformeras på samma sätt som DocBook i textfältet |
 
 Avkodning, identifiering av DocBook, elementmappning, exempel och begränsningar beskrivs på
@@ -246,7 +246,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):
 |---|---|
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 

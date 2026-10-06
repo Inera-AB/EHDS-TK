@@ -1,7 +1,7 @@
 # DocBook-mappning – clinicalDocumentNoteText och bilagor
 
 **Gäller:** GetCareDocumentation v3.0 (`careDocumentation.body.clinicalDocumentNoteText` och `careDocumentation.body.multimediaEntry`)  
-**FHIR-resurser:** [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.html) (obligatorisk), [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) (valfri)  
+**FHIR-resurser:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html) (obligatorisk), [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.html) (valfri)  
 **Designbeslut:** DOC-004 i [Mappningsissues och Designbeslut](mapping-issues.html#designbeslut-fattade)  
 **Mappningssida:** [GetCareDocumentation – Anteckningar](mapping-getcaredocumentation.html)
 
@@ -32,7 +32,7 @@ format som FHIR-konsumenter kan använda direkt:
 | Strategi | Resultat | Krav |
 |---|---|---|
 | **A – XHTML** | `DocumentReference.content[0].attachment` med XHTML och `contentType: text/html; charset=utf-8` | Obligatorisk |
-| **B – Composition** | En fristående `Composition` enligt [IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html) med en `section` per DocBook-`<section>` | Valfri – men om den skapas ska den följa profilen |
+| **B – Composition** | En fristående `Composition` enligt [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.html) med en `section` per DocBook-`<section>` | Valfri – men om den skapas ska den följa profilen |
 
 DocBook kan förekomma på två ställen, som identifieras på olika sätt (se [Steg 2](#steg-2--identifiering-av-docbook)):
 
@@ -193,7 +193,7 @@ dokumentets sektioner adresserbara var för sig, till exempel för navigering el
 enskilda avsnitt.
 
 Strategi B är valfri, men en `Composition` som skapas ska följa profilen
-[IneraEHDSCompositionCareDocumentation](StructureDefinition-inera-ehds-composition-care-documentation.html).
+[SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.html).
 Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.
 
 ### Sektionsmappning
@@ -295,9 +295,9 @@ spärrkontroll gäller för båda resurserna. En konsument som hämtar `Provenan
   "resourceType": "Composition",
   "status": "final",
   "type": { "coding": [{ "system": "urn:oid:1.2.752.129.2.2.2.11", "code": "bes" }] },
-  "subject": { "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" } },
+  "subject": { "reference": "Patient/pat-191212121212", "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" } },
   "date": "2023-06-01T12:00:00+02:00",
-  "author": [{ "identifier": { "system": "urn:oid:1.2.752.129.2.1.4.1", "value": "SE2321000016-1234" } }],
+  "author": [{ "identifier": { "system": "urn:oid:1.2.752.29.4.19", "value": "SE2321000016-1234" } }],
   "title": "Besöksanteckning",
   "section": [
     {

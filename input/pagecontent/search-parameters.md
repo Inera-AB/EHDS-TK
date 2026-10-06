@@ -96,8 +96,8 @@ Tre strategier för att hantera `careUnitHSAId`:
 Definiera en `SearchParameter`-resurs med kod `careUnit` som implementerar sökning via `Provenance.agent[author].who.identifier` med reverse chaining. En serverdefinierad sökparameter skapar en **gemensam lösning för alla resurstyper** (Encounter, DocumentReference, Observation, osv.) och undviker att varje resurstyp behöver en separat lösning.
 
 ```
-GET /Encounter?patient.identifier=...&careUnit=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
-GET /DocumentReference?patient.identifier=...&careUnit=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+GET /Encounter?patient.identifier=...&careUnit=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
+GET /DocumentReference?patient.identifier=...&careUnit=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 ```
 
 Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per vård-event med korrekt `agent[author]`.
@@ -107,7 +107,7 @@ Kräver att servern implementerar den anpassade sökparametern och att Provenanc
 Knyt alla relevanta resurser till den Encounter där de uppstod (`DocumentReference.encounter`, `Observation.encounter`, m.fl.). Dokument som tillgängliggörs som FHIR-resurser för en patient bör alltid knytas till en Encounter. Filtrering på vårdenhet sker sedan via `Encounter.serviceProvider`:
 
 ```
-GET /DocumentReference?patient.identifier=...&encounter.service-provider.identifier=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+GET /DocumentReference?patient.identifier=...&encounter.service-provider.identifier=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 ```
 
 Förutsätter att alla resurser konsekvent refererar till en Encounter och att Encounter har `serviceProvider` satt till vårdenheten.
@@ -141,7 +141,7 @@ Täcker inte alla resurstyper (t.ex. `Condition` saknar `performer`) och kräver
 GET /Observation?patient.identifier=...&code=http://snomed.info/sct|1153637007
 ```
 
-Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se `IneraEHDSObservationGrowth`) där specifika SNOMED CT-koder söks. `displayName` och `originalText` i CVType är presentationsdata och inte relevanta för filtrering.
+Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se `SEEHDSObservationGrowth`) där specifika SNOMED CT-koder söks. `displayName` och `originalText` i CVType är presentationsdata och inte relevanta för filtrering.
 
 ---
 
@@ -152,7 +152,7 @@ Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se `IneraEHDSO
 | `fromDate` | `authored=ge{datum}` | `Task` | `Task.authoredOn` (tidpunkt för skapande av aktivitetsbegäran) |
 | `toDate` | `authored=le{datum}` | `Task` | Kombineras med `fromDate` |
 
-`GetRequestActivities` returnerar remisstatus och aktiviteter. I FHIR-mappningen (profil `IneraEHDSTask`) är `authored` den närmaste tidssöksparametern. `Task` stöder även `modified` (senast ändrad) och `period` (period för aktiviteten) som alternativa filtreringspunkter beroende på vad `fromDate`/`toDate` faktiskt avser i TKB:n – detta bör verifieras.
+`GetRequestActivities` returnerar remisstatus och aktiviteter. I FHIR-mappningen (profil `SEEHDSTask`) är `authored` den närmaste tidssöksparametern. `Task` stöder även `modified` (senast ändrad) och `period` (period för aktiviteten) som alternativa filtreringspunkter beroende på vad `fromDate`/`toDate` faktiskt avser i TKB:n – detta bör verifieras.
 
 ---
 
@@ -175,7 +175,7 @@ Tre strategier för att filtrera på `careGiverId` diskuteras:
 Precis som för `careUnitHSAId` (Strategi 1 ovan) definieras en `SearchParameter`-resurs med kod `careGiver` som söker via `Provenance.agent[custodian].who.identifier`. Detta ger en **gemensam lösning för alla resurstyper** — careGiverId behövs ändå för korrekt Sparr-tillämpning, vilket innebär att Provenance alltid ska skapas med `agent[custodian]` satt. En serverdefinierad sökparameter gör informationen sökbar utan att duplicera den.
 
 ```
-GET /AuditEvent?patient.identifier=...&date=ge2024-01-01&careGiver=urn:oid:1.2.752.129.2.1.4.1|SE2321000016-AB1C
+GET /AuditEvent?patient.identifier=...&date=ge2024-01-01&careGiver=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 ```
 
 Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per AuditEvent med korrekt `agent[custodian]`.

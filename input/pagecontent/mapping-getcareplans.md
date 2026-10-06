@@ -1,8 +1,8 @@
 # GetCarePlans – Vårdplan
 
 **Tjänstekontrakt:** `clinicalprocess:logistics:logistics` GetCarePlans v2.0  
-**FHIR-profil:** [IneraEHDSCarePlan](StructureDefinition-inera-ehds-care-plan.html)  
-**Logisk modell:** [IneraEHDSLMCarePlans](StructureDefinition-inera-ehds-lm-care-plans.html)  
+**FHIR-profil:** [SEEHDSCarePlan](StructureDefinition-SEEHDSCarePlan.html)  
+**Logisk modell:** [SEEHDSLMCarePlans](StructureDefinition-SEEHDSLMCarePlans.html)  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v2.0)  
 
 ---
@@ -147,7 +147,7 @@ PDL-fälten `healthcareProfessionalCareUnitHSAId` och `healthcareProfessionalCar
 |---|---|---|
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` | Personnummer |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` | Samordningsnummer |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` | HSA-id (Inera NTjP) |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 

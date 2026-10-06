@@ -5,38 +5,49 @@
 Innan mappning påbörjas behöver du:
 - Logiska modeller och beskrivning från Ineras tjänstekatalog
 - Identifierad motsvarande FHIR R4-resurstyp
-- EU EPS obligations-profilen för resursen (paket `hl7.fhir.eu.eps`)
-- IPS-profilen för resursen (paket `hl7.fhir.uv.ips`)
-- HL7 Sweden basprofiler (paket `hl7se.fhir.base`, canonical `http://hl7.se/fhir/ig/base`)
+- HL7 Europe Core-profilen för resursen, om en finns (paket `hl7.fhir.eu.base`, version enligt EURIDICE)
+- EURIDICE – EU Health Data API (paket `hl7.fhir.eu.health-data-api`)
+- HL7 Sweden basprofiler som konvention (paket `hl7se.fhir.base`, canonical `http://hl7.se/fhir/ig/base`)
 
 ---
 
-## 2. EU EPS och IPS som grund
+## 2. De tre löftena
 
-- **Ärv från IPS-profilen** för resursen om en sådan finns (`Parent: Condition-uv-ips` etc.)
-- **EU EPS obligations-profilen** (`{resurs}-obl-eu-eps`) sätts i `meta.profile` vid runtime — den behöver inte vara `Parent` i FSH, men alla obligatoriska krav i den ska uppfyllas
-- **Frivilliga element** i EU EPS/IPS (rekommenderade kodverk, extensions, slicings) ska nyttjas om tjänstekontraktet har semantiskt motsvarande data
-- Varje producerad resurs bär **två profiler** i `meta.profile`: vår EHDS-TK-profil + EU EPS obligations-profilen
+IG:n utlovar att följande tre krav uppfylls samtidigt:
+
+1. **Samma kliniska information som TKB:erna, som FHIR-resurser.** Profilerna kräver det som TKB:n
+   kräver och inget som TKB:n inte bär.
+2. **En giltig profilering av EURIDICE-IG:n.** EURIDICE anger att datamodellerna ärver från HL7
+   Europe Core. Använd `Parent:` EU Core-profilen för resursen där en sådan finns (t.ex.
+   `$ConditionEuCore`), annars FHIR-basresursen.
+3. **Svenska basprofilernas namngivnings- och slicingkonventioner.** Se avsnitt 3 och 5.
+
+**IPS och EPS är inspiration, inte löfte.** Ärv inte från IPS-profiler och sätt inte EPS-profiler i
+`meta.profile`. Lägg inte till krav eller strukturer som bara finns för att harmonisera med IPS/EPS,
+till exempel härledda statusvärden eller extra kodningar som TKB:n inte bär.
 
 ---
 
-## 3. Patient, Practitioner, Organization
+## 3. Patient, PractitionerRole, Organization
 
 ### Patient
-- Skapa en **SEEHDSPatient-profil** med `Parent: Patient-uv-ips` (IPS Patient)
-- Lägg till svenska identifier-slicar manuellt i enlighet med SEBasePatient (HL7 Sweden basprofiler):
+- Använd **SEEHDSPatient** (`Parent: $PatientEuCore`).
+- Identifier-slicar enligt SEBasePatient (HL7 Sweden basprofiler):
   - `personnummer` — system `http://electronichealth.se/identifier/personnummer`
   - `samordningsnummer` — system `http://electronichealth.se/identifier/samordningsnummer`
   - `nationelltReservnummer` — system `http://electronichealth.se/identifier/nationelltReservnummer`
-- **Viktigt:** Använd **inte** `Reference(SEBasePatient)` direkt om resursen ärver från IPS — IPS låser subject till `Reference(Patient-uv-ips)` och SEBasePatient ärver från bas-Patient, inte IPS Patient
+- EU Core kräver `subject.reference`. API:et skapar därför en SEEHDSPatient-resurs utifrån `patientId`
+  och refererar den med både `reference` och `identifier` (GENERAL-006).
+- EU Core kräver `name` och `birthDate`. `birthDate` härleds ur personnumret/samordningsnumret.
+  `name` anges om det är känt, annars med `data-absent-reason`.
 
 ### PractitionerRole
-- Referera alltid `Reference(SEBasePractitionerRole)` från `hl7se.fhir.base`
-- SEBasePractitionerRole har en `hsaid`-slice med system `urn:oid:1.2.752.29.4.19`
-- Definiera **inga egna identifier-underregler** på PractitionerRole-referensen — slicingen ärvs från SEBasePractitionerRole
+- Använd **SEEHDSPractitionerRole** (`Parent: $PractitionerRoleEuCore`), normalt som logisk referens.
+- Identifier-slice `hsaid` enligt SEBasePractitionerRole: system `urn:oid:1.2.752.29.4.19`, typ `PRN`.
 
 ### Organization
-- Referera `Reference(SEBaseOrganization)` från `hl7se.fhir.base`
+- Använd **SEEHDSOrganization** (`Parent: $OrganizationEuCore`).
+- Identifier-slice `hsaid` enligt SEBaseOrganization: system `urn:oid:1.2.752.29.4.19`, typ `PRN`.
 
 ---
 
@@ -51,8 +62,7 @@ Använd alltid officiella URL:ar för kodverk — **aldrig** OID-form som `urn:o
 | SNOMED CT SE | `http://snomed.info/sct\|http://snomed.info/sct/45991000052106` |
 | Ineras kodverk (t.ex. kv_diagnostyp) | `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/{kodverksnamn}` |
 | LOINC | `http://loinc.org` |
-| HSA-id (HL7 Sweden basprofiler) | `urn:oid:1.2.752.29.4.19` |
-| HSA-id (Inera NTjP/RIVTA) | `urn:oid:1.2.752.129.2.1.4.1` |
+| HSA-id (HL7 Sweden basprofiler; även RIVTA-roten 1.2.752.129.2.1.4.1 översätts hit) | `urn:oid:1.2.752.29.4.19` |
 | Personnummer | `http://electronichealth.se/identifier/personnummer` |
 | Samordningsnummer | `http://electronichealth.se/identifier/samordningsnummer` |
 
@@ -70,11 +80,12 @@ Använd alltid officiella URL:ar för kodverk — **aldrig** OID-form som `urn:o
 
 ### Identifiering
 ```
-Profile: SEEHDS{Resurstyp}
-Parent: {IPS-profil eller FHIR-basresurs}
-Id: se-ehds-{resurstyp-kebab}
+Profile: SEEHDS{Resurstyp}{Precisering}
+Parent: {EU Core-profil eller FHIR-basresurs}
+Id: SEEHDS{Resurstyp}{Precisering}
 ```
-Canonical URL auto-genereras som `https://fhir.inera.se/StructureDefinition/se-ehds-{id}`.
+Namn och `Id` är lika, enligt de svenska basprofilernas konvention (t.ex. `SEBasePatient`).
+Canonical URL blir `https://fhir.inera.se/ig/ehds-tk/StructureDefinition/{Id}`.
 
 ### Must Support och beskrivning
 Varje element som mappas från tjänstekontraktet ska:
@@ -92,7 +103,7 @@ Tjänstekontrakt har ofta fältregler i fritext som ofta fångar fler obligatori
 
 
 ### Extensions
-- Använd **befintliga** IPS/EU EPS-extensions före Inera-egna
+- Använd **befintliga** extensions (FHIR-core, EU Core) före Inera-egna
 - Om en Inera-extension ändå behövs: definiera den med `Extension:`-syntax (caret-url auto-genereras korrekt för Extension, till skillnad från CodeSystem)
 
 ---
@@ -103,11 +114,11 @@ Alla tjänstekontrakt med `PatientSummaryHeader` (eller motsvarande header) mapp
 
 | Header-fält | FHIR-destination | Syfte |
 |---|---|---|
-| `patientId` | `{Resurs}.subject.identifier` | Personnummer/samordningsnummer via OID→URI. Logisk referens – medvetet avsteg från IPS krav på `subject.reference` (GENERAL-006) |
+| `patientId` | `{Resurs}.subject` (`reference` + `identifier`) | Referens till SEEHDSPatient som API:et skapar; identifier = personnummer/samordningsnummer via OID→URI (GENERAL-006) |
 | `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `documentTime` | `{Resurs}.recordedDate` (eller resursens primära tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601 med offset, tolkas som Europe/Stockholm med sommartid (GENERAL-001). **Gäller endast om `documentTime` faktiskt skickas (kardinalitet > 0..0) enligt tjänstekontraktets TKB** – t.ex. GetDiagnosis har `documentTime` 0..0 och använder istället `accountableHealthcareProfessional.authorTime`. Verifiera alltid mot tjänstekontraktets egen mappningssida. |
-| `accountableHealthcareProfessional` | `{Resurs}.recorder` eller `author` (Reference(SEBasePractitionerRole)) | Ansvarig hälso- och sjukvårdspersonal |
-| `legalAuthenticator` | `{Resurs}.asserter` eller `authenticator` (Reference(SEBasePractitionerRole)) | Rättslig äkthetsintygsgivare |
+| `accountableHealthcareProfessional` | `{Resurs}.recorder` eller `author` (Reference(SEEHDSPractitionerRole)) | Ansvarig hälso- och sjukvårdspersonal |
+| `legalAuthenticator` | `{Resurs}.asserter` eller `authenticator` (Reference(SEEHDSPractitionerRole)) | Rättslig äkthetsintygsgivare |
 | `legalAuthenticator` (datum) | `{Resurs}.extension[assertedDate]` | YYYYMMDD → YYYY-MM-DD |
 | `careProviderHSAId` | `Provenance.agent[custodian].who.identifier` | Juridiskt ansvarig vårdgivare — yttre Sparr |
 | `careUnitHSAId` | `Provenance.agent[author].who.identifier` | Informationsägare vårdenhet — inre Sparr |
@@ -229,12 +240,12 @@ Extension `additionalBodySite` är en övergångslösning för FHIR R4. I FHIR R
 ## 10. Checklista
 
 - [ ] SUSHI: 0 errors
-- [ ] `meta.profile` innehåller vår profil + EU EPS obligations-profil
+- [ ] `meta.profile` innehåller vår EHDS-TK-profil (EU Core uppfylls genom arvet)
 - [ ] Alla mappade fält har `MS` och `^short` med RIVTA-fältnamn
 - [ ] Inga `* ^url`-regler på `CodeSystem:`-syntax (använd Instance-syntax)
 - [ ] Alla kodverk-URL:ar är officiella (ej `urn:oid:` för kodsystem)
-- [ ] `subject only Reference(SEEHDSPatient)` — inte SEBasePatient eller bas-Patient
-- [ ] `recorder`/`asserter`/`author`/`authenticator only Reference(SEBasePractitionerRole)`
+- [ ] `subject only Reference(SEEHDSPatient)` och `subject.reference` satt (EU Core)
+- [ ] `recorder`/`asserter`/`author`/`authenticator only Reference(SEEHDSPractitionerRole)`
 - [ ] Provenance-mönstret med tre agenter är implementerat
 - [ ] Kardinalitet från RIVTA (1..1, 1..*) är överfört till profilen
 - [ ] `approvedForPatient = false` → `meta.security` kod `NOPATIENT` (se avsnitt 9)

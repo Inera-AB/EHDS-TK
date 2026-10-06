@@ -1,6 +1,6 @@
 id: inera.ehds.tk
 canonical: https://fhir.inera.se/ig/ehds-tk
-name: IneraEHDSTK
+name: SEEHDSTK
 title: Inera EHDS Tjänstekontrakt – FHIR Implementation Guide
 description: >-
   FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för
@@ -17,13 +17,14 @@ publisher:
 jurisdiction: urn:iso:std:iso:3166#SE "Sweden"
 dependencies:
   # Fasta versioner för reproducerbara byggen (inga "current").
-  # IPS hålls på 1.1.0: i IPS 2.x finns inte Observation-results-uv-ips (bas för tillväxt-/mödravårdsprofilerna)
-  # och Observation-results-laboratory-uv-ips har ersatts av Observation-results-laboratory-pathology-uv-ips.
-  hl7.fhir.uv.ips: 1.1.0
-  # Ingen stabil EPS-release finns ännu; 1.0.0-ballot är den senast publicerade versionen.
-  hl7.fhir.eu.eps: 1.0.0-ballot
-  # Explicit beroende: Obligation-extensionen som EPS obligations-profiler (t.ex. condition-obl-eu-eps) bygger på.
+  # EURIDICE – EU Health Data API (IHE Europe/HL7 Europe). IG:n utlovar att vara en giltig profilering av denna.
+  hl7.fhir.eu.health-data-api: 1.0.0-ballot
+  # HL7 Europe Core – EURIDICE anger att datamodeller för resursåtkomst ärver från EU Core.
+  # Samma version som health-data-api 1.0.0-ballot beror på.
+  hl7.fhir.eu.base: 2.0.0-ballot
+  # FHIR-extensions (t.ex. condition-related, flag-detail).
   hl7.fhir.uv.extensions.r4: 5.3.0
+  # IHE Basic Audit Log Patterns – grund för loggprofilerna (auditloggning).
   ihe.iti.balp: 1.1.4
 parameters:
   show-inherited-invariants: false

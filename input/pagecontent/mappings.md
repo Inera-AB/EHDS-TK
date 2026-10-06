@@ -14,21 +14,21 @@ Mappningarna spårar varje element i de logiska modellerna till det FHIR-profil-
 
 | Tjänstekontrakt | Logisk modell | FHIR-profil(er) | Mappningssida |
 |---|---|---|---|
-| GetDiagnosis | [IneraEHDSLMDiagnosis](StructureDefinition-inera-ehds-lm-diagnosis.html) | [IneraEHDSConditionDiagnosis](StructureDefinition-inera-ehds-condition-diagnosis.html) | [mapping-getdiagnosis](mapping-getdiagnosis.html) |
-| GetAlertInformation | [IneraEHDSLMAlertInformation](StructureDefinition-inera-ehds-lm-alert-information.html) | [IneraEHDSAllergyIntolerance](StructureDefinition-inera-ehds-allergy-intolerance.html) + [IneraEHDSFlag](StructureDefinition-inera-ehds-flag.html) | [mapping-getalertinformation](mapping-getalertinformation.html) |
-| GetMedicationHistory | [IneraEHDSLMMedicationHistory](StructureDefinition-inera-ehds-lm-medication-history.html) | [IneraEHDSMedicationStatement](StructureDefinition-inera-ehds-medication-statement.html) | [mapping-getmedicationhistory](mapping-getmedicationhistory.html) |
-| GetVaccinationHistory | [IneraEHDSLMVaccinationHistory](StructureDefinition-inera-ehds-lm-vaccination-history.html) | [IneraEHDSImmunization](StructureDefinition-inera-ehds-immunization.html) | [mapping-getvaccinationhistory](mapping-getvaccinationhistory.html) |
-| GetFunctionalStatus | [IneraEHDSLMFunctionalStatus](StructureDefinition-inera-ehds-lm-functional-status.html) | [IneraEHDSConditionFunctional](StructureDefinition-inera-ehds-condition-functional.html) | [mapping-getfunctionalstatus](mapping-getfunctionalstatus.html) |
-| GetMaternityMedicalHistory | [IneraEHDSLMMaternityMedicalHistory](StructureDefinition-inera-ehds-lm-maternity-medical-history.html) | [IneraEHDSObservationMaternity](StructureDefinition-inera-ehds-observation-maternity.html) | [mapping-getmaternitymedicalhistory](mapping-getmaternitymedicalhistory.html) |
-| GetCarePlans | [IneraEHDSLMCarePlans](StructureDefinition-inera-ehds-lm-care-plans.html) | [IneraEHDSCarePlan](StructureDefinition-inera-ehds-care-plan.html) | [mapping-getcareplans](mapping-getcareplans.html) |
-| GetCareContacts | [IneraEHDSLMCareContacts](StructureDefinition-inera-ehds-lm-care-contacts.html) | [IneraEHDSEncounter](StructureDefinition-inera-ehds-encounter.html) | [mapping-getcarecontacts](mapping-getcarecontacts.html) |
-| GetCareDocumentation | [IneraEHDSLMCareDocumentation](StructureDefinition-inera-ehds-lm-care-documentation.html) | [IneraEHDSDocumentReference](StructureDefinition-inera-ehds-document-reference.html) | [mapping-getcaredocumentation](mapping-getcaredocumentation.html) |
-| GetLaboratoryOrderOutcome | [IneraEHDSLMLaboratoryOrderOutcome](StructureDefinition-inera-ehds-lm-laboratory-order-outcome.html) | [IneraEHDSDiagnosticReportLab](StructureDefinition-inera-ehds-diagnostic-report-lab.html) + [IneraEHDSObservationLab](StructureDefinition-inera-ehds-observation-lab.html) | [mapping-getlaboratoryorderoutcome](mapping-getlaboratoryorderoutcome.html) |
-| GetImagingOutcome | [IneraEHDSLMImagingOutcome](StructureDefinition-inera-ehds-lm-imaging-outcome.html) | [IneraEHDSImagingStudy](StructureDefinition-inera-ehds-imaging-study.html) + [IneraEHDSDiagnosticReportImaging](StructureDefinition-inera-ehds-diagnostic-report-imaging.html) | [mapping-getimagingoutcome](mapping-getimagingoutcome.html) |
-| GetReferralOutcome | [IneraEHDSLMReferralOutcome](StructureDefinition-inera-ehds-lm-referral-outcome.html) | [IneraEHDSServiceRequestReferral](StructureDefinition-inera-ehds-service-request-referral.html) + [IneraEHDSDiagnosticReportReferral](StructureDefinition-inera-ehds-diagnostic-report-referral.html) | [mapping-getreferraloutcome](mapping-getreferraloutcome.html) |
-| GetRequestActivities | [IneraEHDSLMRequestActivities](StructureDefinition-inera-ehds-lm-request-activities.html) | [IneraEHDSTask](StructureDefinition-inera-ehds-task.html) | [mapping-getrequestactivities](mapping-getrequestactivities.html) |
-| GetObservations | [IneraEHDSLMObservations](StructureDefinition-inera-ehds-lm-observations.html) | [IneraEHDSObservationGrowth](StructureDefinition-inera-ehds-observation-growth.html) | [mapping-getobservations](mapping-getobservations.html) |
-| GetAccessLogForPatient | [IneraEHDSLMAccessLog](StructureDefinition-inera-ehds-lm-access-log.html) | [IneraEHDSAuditEventReadAccessLog](StructureDefinition-inera-ehds-audit-event-read-access-log.html) | [Åtkomstloggar – GetAccessLogForPatient](mapping-getaccesslogforpatient.html#getaccesslogforpatient) |
+| GetDiagnosis | [SEEHDSLMDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.html) | [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.html) | [mapping-getdiagnosis](mapping-getdiagnosis.html) |
+| GetAlertInformation | [SEEHDSLMAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.html) | [SEEHDSAllergyIntolerance](StructureDefinition-SEEHDSAllergyIntolerance.html) + [SEEHDSFlag](StructureDefinition-SEEHDSFlag.html) | [mapping-getalertinformation](mapping-getalertinformation.html) |
+| GetMedicationHistory | [SEEHDSLMMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.html) | [SEEHDSMedicationStatement](StructureDefinition-SEEHDSMedicationStatement.html) | [mapping-getmedicationhistory](mapping-getmedicationhistory.html) |
+| GetVaccinationHistory | [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html) | [SEEHDSImmunization](StructureDefinition-SEEHDSImmunization.html) | [mapping-getvaccinationhistory](mapping-getvaccinationhistory.html) |
+| GetFunctionalStatus | [SEEHDSLMFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.html) | [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html) | [mapping-getfunctionalstatus](mapping-getfunctionalstatus.html) |
+| GetMaternityMedicalHistory | [SEEHDSLMMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.html) | [SEEHDSObservationMaternity](StructureDefinition-SEEHDSObservationMaternity.html) | [mapping-getmaternitymedicalhistory](mapping-getmaternitymedicalhistory.html) |
+| GetCarePlans | [SEEHDSLMCarePlans](StructureDefinition-SEEHDSLMCarePlans.html) | [SEEHDSCarePlan](StructureDefinition-SEEHDSCarePlan.html) | [mapping-getcareplans](mapping-getcareplans.html) |
+| GetCareContacts | [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.html) | [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.html) | [mapping-getcarecontacts](mapping-getcarecontacts.html) |
+| GetCareDocumentation | [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html) | [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html) | [mapping-getcaredocumentation](mapping-getcaredocumentation.html) |
+| GetLaboratoryOrderOutcome | [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html) | [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.html) + [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.html) | [mapping-getlaboratoryorderoutcome](mapping-getlaboratoryorderoutcome.html) |
+| GetImagingOutcome | [SEEHDSLMImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.html) | [SEEHDSImagingStudy](StructureDefinition-SEEHDSImagingStudy.html) + [SEEHDSDiagnosticReportImaging](StructureDefinition-SEEHDSDiagnosticReportImaging.html) | [mapping-getimagingoutcome](mapping-getimagingoutcome.html) |
+| GetReferralOutcome | [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html) | [SEEHDSServiceRequestReferral](StructureDefinition-SEEHDSServiceRequestReferral.html) + [SEEHDSDiagnosticReportReferral](StructureDefinition-SEEHDSDiagnosticReportReferral.html) | [mapping-getreferraloutcome](mapping-getreferraloutcome.html) |
+| GetRequestActivities | [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.html) | [SEEHDSTask](StructureDefinition-SEEHDSTask.html) | [mapping-getrequestactivities](mapping-getrequestactivities.html) |
+| GetObservations | [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.html) | [mapping-getobservations](mapping-getobservations.html) |
+| GetAccessLogForPatient | [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) | [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.html) | [Åtkomstloggar – GetAccessLogForPatient](mapping-getaccesslogforpatient.html#getaccesslogforpatient) |
 
 ---
 
@@ -38,7 +38,7 @@ Alla tjänstekontrakt (utom GetAccessLogForPatient) delar ett headermönster som
 
 | Header-element | FHIR-destination | Notering |
 |---|---|---|
-| `patientId` | `{Resurs}.subject.identifier` | OID→URI-konvertering krävs; logisk referens, se [GENERAL-006](#patientreferens) |
+| `patientId` | `{Resurs}.subject` (`reference` + `identifier`) | Referens till SEEHDSPatient; OID→URI-konvertering krävs, se [GENERAL-006](#patientreferens) |
 | `sourceSystemHSAId` | `{Resurs}.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}`, se [GENERAL-005](#meta-source) |
 | `documentTime` | `{Resurs}.recordedDate` (eller primär tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm). **Gäller endast de TK:er där `documentTime` faktiskt skickas.** GetDiagnosis har `documentTime` 0..0 per TKB och använder istället `accountableHealthcareProfessional.authorTime` för `recordedDate` – se den tjänstekontraktsspecifika mappningssidan för auktoritativ källa per TK. |
 | `accountableHealthcareProfessional` | `{Resurs}.recorder` / `author` / `performer` | Logisk referens via HSA-id |
@@ -80,20 +80,29 @@ https://tjanstekatalogen.inera.se/Endpoint/{hsaId}
 där `{hsaId}` är källsystemets HSA-id (`sourceSystemHSAId`/`sourceSystemId`). Det tidigare formatet
 `urn:oid:1.2.752.129.2.1.4.1#{hsaId}` är inte en giltig OID-URN i FHIR och ska inte användas.
 
-### Patientreferens – logisk referens (GENERAL-006) {#patientreferens}
+### Patientreferens (GENERAL-006) {#patientreferens}
 
-Patienten anges i alla profiler som en **logisk referens** till
-[IneraEHDSPatient](StructureDefinition-inera-ehds-patient.html) via `identifier`
-(personnummer eller samordningsnummer, OID→URI enligt GENERAL-002):
+HL7 Europe Core kräver `subject.reference` (respektive `patient.reference`) och referens till en
+EU Core Patient. Eftersom IG:n utlovar att vara en giltig profilering av EURIDICE gäller följande:
+
+1. API:et skapar en [SEEHDSPatient](StructureDefinition-SEEHDSPatient.html)-resurs per patient,
+   utifrån `patientId` i RIVTA-svaret.
+2. Alla resurser refererar patienten med **både** `reference` och `identifier`:
 
 ```json
-"subject": { "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" } }
+"subject": {
+  "reference": "Patient/{id}",
+  "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" }
+}
 ```
+
+3. SEEHDSPatient fylls så här, eftersom EU Core Patient kräver `name` och `birthDate`:
+
+| Element | Källa |
+|---|---|
+| `identifier` | `patientId` (OID→URI enligt GENERAL-002), slice `personnummer`, `samordningsnummer` eller `nationelltReservnummer` |
+| `birthDate` | Härleds ur personnummer (`ÅÅÅÅMMDD`) eller samordningsnummer (dag − 60). För reservnummer: `data-absent-reason` |
+| `name` | Om namnet är känt (t.ex. från TKB:n eller personuppgiftstjänsten). Annars ett `HumanName` med extensionen `data-absent-reason` (`unknown`), vilket EU Core uttryckligen tillåter |
 
 Detta gäller `subject` respektive `patient` i samtliga resurser, t.ex. både `Condition.subject` och
 `DocumentReference.subject`.
-
-> **Medvetet avsteg från IPS:** IPS-profilerna (t.ex. Condition-uv-ips) kräver `subject.reference`.
-> RIVTA-svaren innehåller ingen Patient-resurs, och bryggan skapar ingen. En resurs med enbart
-> logisk referens uppfyller därför inte IPS-kravet på `subject.reference` vid validering. Om en
-> Patient-resurs finns tillgänglig (t.ex. i samma Bundle) kan `reference` anges utöver `identifier`.

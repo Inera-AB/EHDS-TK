@@ -1,8 +1,8 @@
 # GetFunctionalStatus – Funktionstillstånd och ADL
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetFunctionalStatus v2.0  
-**FHIR-profil:** [IneraEHDSConditionFunctional](StructureDefinition-inera-ehds-condition-functional.html)  
-**Logisk modell:** [IneraEHDSLMFunctionalStatus](StructureDefinition-inera-ehds-lm-functional-status.html)  
+**FHIR-profil:** [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html)  
+**Logisk modell:** [SEEHDSLMFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.html)  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v2.0)  
 **EHDS-koppling:** Patient Summary – Funktionstillstånd (ICF-baserad)
 
@@ -12,7 +12,7 @@
 
 ### En Condition per functionalStatusAssessment
 
-Varje `functionalStatusAssessment`-post mappas till en `Condition`-resurs med profilen `IneraEHDSConditionFunctional`. Roten för ett svar är `functionalStatusAssessment 0..*`.
+Varje `functionalStatusAssessment`-post mappas till en `Condition`-resurs med profilen `SEEHDSConditionFunctional`. Roten för ett svar är `functionalStatusAssessment 0..*`.
 
 ### assessmentCategory styr körningens innehåll
 
@@ -145,7 +145,7 @@ PDL-styrning i GetFunctionalStatus utgår från `accountableHealthcareProfession
 |---|---|
 | `1.2.752.129.2.1.3.1` | `http://electronichealth.se/identifier/personnummer` |
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` |
-| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.129.2.1.4.1` |
+| `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` |
 | `1.2.752.116.1.1.3` | `urn:oid:1.2.752.116.1.1.3` |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
