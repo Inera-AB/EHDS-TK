@@ -47,8 +47,8 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 | `vaccinationMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `Immunization.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `vaccinationMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Fritexttitel för dokument – ingen motsvarighet i Immunization |
 | `vaccinationMedicalRecordHeader.documentTime` | 0..1 | `Immunization.occurrenceDateTime` | Vaccinationstidpunkt (händelsetidpunkt); YYYYMMDDHHMMSS → ISO 8601. OBS: kan komma i konflikt med authorTime – se[VAC-002](#öppna-frågor) |
-| `vaccinationMedicalRecordHeader.patientId.extension` | 1..1 | `Immunization.patient.identifier.value` | Personnummer eller samordningsnummer |
-| `vaccinationMedicalRecordHeader.patientId.root` | 1..1 | `Immunization.patient.identifier.system` | OID→URI, se tabell nedan |
+| `vaccinationMedicalRecordHeader.patientId.id` | 1..1 | `Immunization.patient.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer.`patientId`är av RIVTA-typen`PersonIdType {id, type}` |
+| `vaccinationMedicalRecordHeader.patientId.type` | 1..1 | `Immunization.patient.identifier.system` | OID för typ av identifierare (t.ex.`1.2.752.129.2.1.3.1`för personnummer); OID→URI, se tabell nedan |
 | `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.authorTime` | 1..1 | `Immunization.occurrenceDateTime` | Dokumentationstidpunkt – används som fallback om documentTime saknas; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[VAC-002](#öppna-frågor) |
 | `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalHSAId` | 0..1 | `Immunization.performer[0].actor`(Reference(PractitionerRole)) | Ansvarig yrkesutövares HSA-id |
 | `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Ansvarig yrkesutövares visningsnamn |

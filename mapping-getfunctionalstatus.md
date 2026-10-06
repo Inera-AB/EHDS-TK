@@ -56,8 +56,8 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 | `functionalStatusAssessmentHeader.documentId` | 1..1 | `Condition.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `functionalStatusAssessmentHeader.sourceSystemHSAId` | 1..1 | `Condition.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `functionalStatusAssessmentHeader.documentTime` | 1..1 | `Condition.extension[assertedDate]` | Bedömningstidpunkt/händelsetidpunkt; YYYYMMDDHHMMSS → ISO 8601, se[GENERAL-001](#öppna-frågor) |
-| `functionalStatusAssessmentHeader.patientId.extension` | 1..1 | `Condition.subject.identifier.value` | Personnummer eller samordningsnummer |
-| `functionalStatusAssessmentHeader.patientId.root` | 1..1 | `Condition.subject.identifier.system` | OID→URI, se tabell nedan |
+| `functionalStatusAssessmentHeader.patientId.id` | 1..1 | `Condition.subject.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer.`patientId`är av RIVTA-typen`PersonIdType {id, type}` |
+| `functionalStatusAssessmentHeader.patientId.type` | 1..1 | `Condition.subject.identifier.system` | OID för typ av identifierare (t.ex.`1.2.752.129.2.1.3.1`för personnummer); OID→URI, se tabell nedan |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Condition.recordedDate` | Registreringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor) |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |

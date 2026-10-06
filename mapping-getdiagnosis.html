@@ -217,6 +217,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#mappningstabell--result" id="markdown-toc-mappningstabell--result">Mappningstabell – result</a></li>
       <li><a href="#härledda-fält" id="markdown-toc-härledda-fält">Härledda fält</a>        <ul>
           <li><a href="#clinicalstatus" id="markdown-toc-clinicalstatus">clinicalStatus</a></li>
+          <li><a href="#abatementdatetime" id="markdown-toc-abatementdatetime">abatementDateTime</a></li>
         </ul>
       </li>
       <li><a href="#healthcareprofessionaltype--practitionerrole" id="markdown-toc-healthcareprofessionaltype--practitionerrole">healthcareProfessionalType → PractitionerRole</a></li>
@@ -272,16 +273,16 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.id</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.subject.identifier.value</code></td>
-      <td>Personnummer eller samordningsnummer; <code class="language-plaintext highlighter-rouge">reference</code> till SEEHDSPatient + <code class="language-plaintext highlighter-rouge">identifier</code>, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
+      <td>Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. <code class="language-plaintext highlighter-rouge">patientId</code> är av RIVTA-typen <code class="language-plaintext highlighter-rouge">PersonIdType {id, type}</code>; <code class="language-plaintext highlighter-rouge">reference</code> till SEEHDSPatient + <code class="language-plaintext highlighter-rouge">identifier</code>, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.patientId.type</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.subject.identifier.system</code></td>
-      <td>OID→URI, se tabell nedan</td>
+      <td>OID för typ av identifierare (t.ex. <code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.3.1</code> för personnummer); OID→URI, se tabell nedan</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.accountableHealthcareProfessional.authorTime</code></td>
@@ -487,6 +488,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <h3 id="clinicalstatus">clinicalStatus</h3>
 
 <p>Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. <code class="language-plaintext highlighter-rouge">Condition.clinicalStatus</code> sätts därför <strong>inte</strong>. Tidigare sattes det alltid till <code class="language-plaintext highlighter-rouge">active</code> för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver <code class="language-plaintext highlighter-rouge">clinicalStatus</code> för diagnoser som inte är problemlisteposter.</p>
+
+<h3 id="abatementdatetime">abatementDateTime</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Condition.abatementDateTime</code> sätts <strong>aldrig</strong>. GetDiagnosis:2 har ingen slutpunkt eller period för diagnosen, bara tidpunkten <code class="language-plaintext highlighter-rouge">diagnosisBody.diagnosisTime</code> (→ <code class="language-plaintext highlighter-rouge">Condition.onsetDateTime</code>). Avsaknaden av slutdatum är ett känt gap i TKB:n.</p>
 
 <p><code class="language-plaintext highlighter-rouge">Condition.verificationStatus</code> sätts alltid till <code class="language-plaintext highlighter-rouge">confirmed</code> (RIVTA-svar representerar bekräftade journaluppgifter).</p>
 
@@ -813,7 +818,7 @@ ska använda.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:04+0000">2026-10-06</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Oct 6, 2026 07:20+0000">2026-10-06</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

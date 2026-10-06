@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-degree-of-cert
   "name" : "AlertDegreeOfCertainty",
   "title" : "Visshet för överkänslighet",
   "status" : "draft",
-  "date" : "2026-10-06T07:04:04+00:00",
+  "date" : "2026-10-06T07:20:43+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

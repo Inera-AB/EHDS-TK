@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-device-source-system
   "name" : "DeviceSourceSystemContact",
   "title" : "Källsystemskontakt",
   "status" : "draft",
-  "date" : "2026-10-06T07:04:04+00:00",
+  "date" : "2026-10-06T07:20:43+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

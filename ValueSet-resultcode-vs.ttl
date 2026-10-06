@@ -17,7 +17,7 @@
   fhir:ValueSet.name [ fhir:value "ResultCodeVS"] ;
   fhir:ValueSet.title [ fhir:value "ResultCode — ValueSet"] ;
   fhir:ValueSet.status [ fhir:value "active"] ;
-  fhir:ValueSet.date [ fhir:value "2026-10-06T07:04:04+00:00"^^xsd:dateTime] ;
+  fhir:ValueSet.date [ fhir:value "2026-10-06T07:20:43+00:00"^^xsd:dateTime] ;
   fhir:ValueSet.publisher [ fhir:value "Inera AB"] ;
   fhir:ValueSet.contact [
      fhir:index 0 ;
