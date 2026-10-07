@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMDiagnosis | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:SEEHDSLMDiagnosis |
+| Draft as of 2026-10-07 | *Computable Name*:SEEHDSLMDiagnosis |
 
  
 Logisk modell för tjänstekontraktet GetDiagnosis (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetDiagnosisResponder:2). Representerar responsens informationsstruktur: registrerade diagnoser för en patient inklusive diagnoskod per ursprungligt diagnosticeringstillfälle. 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMDiagnosis.cs
   "name" : "SEEHDSLMDiagnosis",
   "title" : "GetDiagnosis",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

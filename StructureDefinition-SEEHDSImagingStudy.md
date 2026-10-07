@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:SEEHDSImagingStudy |
+| Draft as of 2026-10-07 | *Computable Name*:SEEHDSImagingStudy |
 
  
 Profil för bilddiagnostiska undersökningar mappat från RIVTA-tjänstekontraktet GetImagingOutcome (clinicalprocess:healthcond:actoutcome v1.0). Täcker NPÖ 1.0 och 1177 Journal 1.0. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSImagingStudy.c
   "name" : "SEEHDSImagingStudy",
   "title" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

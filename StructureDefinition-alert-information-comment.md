@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:AlertInformationComment |
+| Draft as of 2026-10-07 | *Computable Name*:AlertInformationComment |
 
 Kommentar angående uppmärksamhetssignalen (alertInformationBody.alertInformationComment). Om obsoleteComment är angivet konkateneras det med prefix 'Inaktiveringskommentar: {obsoleteComment}'. För body = unstructuredAlertInformation: unstructuredAlertInformationContent läggs här.
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-information-co
   "name" : "AlertInformationComment",
   "title" : "Kommentar till uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

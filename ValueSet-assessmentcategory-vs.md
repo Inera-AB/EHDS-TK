@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs | *Version*:0.3.3 |
-| Active as of 2026-10-06 | *Computable Name*:AssessmentCategoryVS |
+| Active as of 2026-10-07 | *Computable Name*:AssessmentCategoryVS |
 
  
 Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus. 
@@ -50,7 +50,7 @@ Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus.
   "name" : "AssessmentCategoryVS",
   "title" : "AssessmentCategory — ValueSet",
   "status" : "active",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

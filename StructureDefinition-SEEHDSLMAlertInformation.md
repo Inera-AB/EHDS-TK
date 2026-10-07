@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformation | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:SEEHDSLMAlertInformation |
+| Draft as of 2026-10-07 | *Computable Name*:SEEHDSLMAlertInformation |
 
  
 Logisk modell för tjänstekontraktet GetAlertInformation (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:2). Representerar responsens informationsstruktur: uppmärksamhetsinformation för en patient, exempelvis överkänslighet mot läkemedel, allvarlig sjukdom, behandling, smittsam sjukdom, vårdbegränsning eller historisk varning. 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
   "name" : "SEEHDSLMAlertInformation",
   "title" : "GetAlertInformation",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcome | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcome |
+| Draft as of 2026-10-07 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcome |
 
  
 Logisk modell för tjänstekontraktet GetLaboratoryOrderOutcome (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcome:4). Representerar responsens informationsstruktur — multidisciplinära laboratoriesvar för en patient. 
@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMLaboratoryOr
   "name" : "SEEHDSLMLaboratoryOrderOutcome",
   "title" : "GetLaboratoryOrderOutcome",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

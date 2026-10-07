@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLog | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:SEEHDSLMAccessLog |
+| Draft as of 2026-10-07 | *Computable Name*:SEEHDSLMAccessLog |
 
  
 Logisk modell för patientens åtkomstloggar hämtad via GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Krävs för 1177 Journal 1.1, 2.0 men ej för NPÖ. 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAccessLog.cs
   "name" : "SEEHDSLMAccessLog",
   "title" : "GetAccessLogForPatient",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

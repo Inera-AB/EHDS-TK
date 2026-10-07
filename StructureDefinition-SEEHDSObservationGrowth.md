@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:SEEHDSObservationGrowth |
+| Draft as of 2026-10-07 | *Computable Name*:SEEHDSObservationGrowth |
 
  
 Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad graviditetslängd) för barn och ungdom, baserad på: 
@@ -52,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationGro
   "name" : "SEEHDSObservationGrowth",
   "title" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

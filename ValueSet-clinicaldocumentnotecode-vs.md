@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/clinicaldocumentnotecode-vs | *Version*:0.3.3 |
-| Active as of 2026-10-06 | *Computable Name*:ClinicalDocumentNoteCodeVS |
+| Active as of 2026-10-07 | *Computable Name*:ClinicalDocumentNoteCodeVS |
 
  
 Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation enligt KV Anteckningstyp (OID: 1.2.752.129.2.2.2.11). 
@@ -50,7 +50,7 @@ Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation e
   "name" : "ClinicalDocumentNoteCodeVS",
   "title" : "KV Anteckningstyp — ValueSet",
   "status" : "active",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

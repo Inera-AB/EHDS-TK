@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs | *Version*:0.3.3 |
-| Active as of 2026-10-06 | *Computable Name*:TypeOfCarePlanVS |
+| Active as of 2026-10-07 | *Computable Name*:TypeOfCarePlanVS |
 
  
 Tillåtna värden för typeOfCarePlan i GetCarePlans enligt clinicalprocess:logistics:logistics. 
@@ -51,7 +51,7 @@ Tillåtna värden för typeOfCarePlan i GetCarePlans enligt clinicalprocess:logi
   "name" : "TypeOfCarePlanVS",
   "title" : "TypeOfCarePlan — ValueSet",
   "status" : "active",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

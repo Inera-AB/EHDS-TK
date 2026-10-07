@@ -2,8 +2,8 @@ SEEHDSTK : Validation Results
 =========================================
 
 err = 41, warn = 200, info = 199
-IG Publisher Version: 2.3.4
-Generated Tue Oct 06 07:22:58 UTC 2026. FHIR version 4.0.1 for inera.ehds.tk#0.3.3 (canonical = https://fhir.inera.se/ig/ehds-tk)
+IG Publisher Version: 2.3.4 Out of date - current version is 2.3.5
+Generated Wed Oct 07 11:44:33 UTC 2026. FHIR version 4.0.1 for inera.ehds.tk#0.3.3 (canonical = https://fhir.inera.se/ig/ehds-tk)
  Build Errors : 2 / 0 / 0
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CapabilityStatement-SEEHDSResourceAccessProvider : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-assessmentcategory-cs : 2 / 3 / 3

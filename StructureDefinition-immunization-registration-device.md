@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-registration-device | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:ImmunizationRegistrationDevice |
+| Draft as of 2026-10-07 | *Computable Name*:ImmunizationRegistrationDevice |
 
 Referens till den Device-resurs som beskriver källsystemet varifrån vaccinationsregistreringen härstammar (registrationRecord.sourceSystemName/productName/productVersion/sourceSystemContact).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-immunization-registr
   "name" : "ImmunizationRegistrationDevice",
   "title" : "Källsystem för vaccinationsregistrering",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

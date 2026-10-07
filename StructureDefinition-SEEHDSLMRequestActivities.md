@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivities | *Version*:0.3.3 |
-| Draft as of 2026-10-06 | *Computable Name*:SEEHDSLMRequestActivities |
+| Draft as of 2026-10-07 | *Computable Name*:SEEHDSLMRequestActivities |
 
  
 Logisk modell för remisstatus och processaktiviteter hämtad via GetRequestActivities (crm:requeststatus v2.0). 
@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMRequestActiv
   "name" : "SEEHDSLMRequestActivities",
   "title" : "GetRequestActivities",
   "status" : "draft",
-  "date" : "2026-10-06T07:20:43+00:00",
+  "date" : "2026-10-07T11:41:58+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
