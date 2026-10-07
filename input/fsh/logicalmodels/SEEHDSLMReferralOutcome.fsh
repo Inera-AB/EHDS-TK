@@ -53,10 +53,16 @@ Characteristics: #can-be-target
 * referralOutcome.referralOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId 0..1 Identifier "HSA-id"
 * referralOutcome.referralOutcomeHeader.legalAuthenticator.legalAuthenticatorName 0..1 string "Namn"
 
+* referralOutcome.referralOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode 0..1 CodeableConcept "Befattning för signerande person"
+
 * referralOutcome.referralOutcomeHeader.approvedForPatient 1..1 boolean "Godkänd för patientvisning"
 * referralOutcome.referralOutcomeHeader.careContactId 0..1 string "Vårdkontaktid"
 
 // ── Body ─────────────────────────────────────────────
+
+* referralOutcome.referralOutcomeHeader.nullified 0..1 boolean "Makulerad"
+
+* referralOutcome.referralOutcomeHeader.nullifiedReason 0..1 string "Makuleringsorsak"
 * referralOutcome.referralOutcomeBody 1..1 BackboneElement "Remissvarsinformation"
 
 * referralOutcome.referralOutcomeBody.referralOutcomeTypeCode 1..1 CodeableConcept "Typ av remissvar"
@@ -95,4 +101,31 @@ Characteristics: #can-be-target
 * referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalName 0..1 string "Namn"
 * referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalRoleCode 0..1 CodeableConcept "Yrkesroll"
 * referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit 0..1 BackboneElement "Org-enhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit.orgUnitHSAId 0..1 Identifier "HSA-id för organisationsenhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit.orgUnitName 0..1 string "Namn på organisationsenhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit.orgUnitTelecom 0..1 string "Telefon till organisationsenhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit.orgUnitEmail 0..1 string "E-post till organisationsenhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit.orgUnitAddress 0..1 string "Postadress till organisationsenhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit.orgUnitLocation 0..1 string "Plats för organisationsenhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareUnitHSAId 0..1 Identifier "HSA-id för vårdenhet"
+
+* referralOutcome.referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareGiverHSAId 0..1 Identifier "HSA-id för vårdgivare"
 * referralOutcome.referralOutcomeBody.referral.careContactId 0..1 string "Vårdkontaktid"
+* result 1..1 BackboneElement "Resultat"
+
+* result.resultCode 1..1 code "Resultatkod (OK, INFO eller ERROR)"
+
+* result.errorCode 0..1 code "Felkod (sätts endast om resultCode är ERROR)"
+
+* result.logId 1..1 string "Log-id (UUID för felsökning)"
+
+* result.subCode 0..1 string "Subkod"
+
+* result.message 0..1 string "Beskrivande meddelande"

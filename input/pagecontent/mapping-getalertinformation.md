@@ -223,7 +223,7 @@ Gäller när `alertInformationBody.unstructuredAlertInformation` är angivet. Sk
 |---|---|---|---|
 | `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod – hanteras av transportlagret |
 | `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
-| `result.subcode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
+| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
 | `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
 | `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
 

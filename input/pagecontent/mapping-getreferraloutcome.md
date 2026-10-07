@@ -45,8 +45,11 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `DiagnosticReport.extension[attested].attestedTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.extension[attested].attestorHSAId` | HSA-id för signerare |
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
+| `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Signerande persons befattning; ingen plats i `extension[attested]` |
 | `referralOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `referralOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Logisk referens till vårdkontakt |
+| `referralOutcomeHeader.nullified` | 0..1 | (härledd till `DiagnosticReport.status`) | `true` → `status = entered-in-error`, prioriteras före `referralOutcomeTypeCode` |
+| `referralOutcomeHeader.nullifiedReason` | 0..1 | Ej mappad | Makuleringsorsak (fritext); samma fråga som för GetImagingOutcome (`extension[nullifiedReason]`) |
 
 ---
 
@@ -99,11 +102,25 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalName` | 0..1 | Ej mappad till DiagnosticReport | Remittentens namn tillhör ursprungsremissen |
 | `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalRoleCode` | 0..1 | Ej mappad till DiagnosticReport | Remittentens yrkesroll tillhör ursprungsremissen |
 | `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit` | 0..1 | Ej mappad till DiagnosticReport | Remittentens org-enhet tillhör ursprungsremissen; se [Referral → ServiceRequest](#referral--servicerequest) |
+| `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id – tillhör ursprungsremissen |
+| `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id – tillhör ursprungsremissen |
 | `referralOutcomeBody.referral.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Alternativ källa för vårdkontaktsreferens om header.careContactId saknas |
 
 > **Obs – DiagnosticReport.code:** Sätts alltid till LOINC `11488-4` ("Consult note") som fast kod för remissvar. Det finns inget valfritt kodningsfält i TKB för utlåtandetypen utöver `referralOutcomeTypeCode`.
 
 > Alla `referralOutcomeBody.referral.*`-fält utom `referralId` och `careContactId` är attribut till ursprungsremissen. En logisk referens via `DiagnosticReport.basedOn` → `ServiceRequest.identifier` är tillräcklig. Bryggan skapar en minimal stub-ServiceRequest om ingen matchning finns.
+
+---
+
+## Mappningstabell – result
+
+| RIVTA-element | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod – hanteras av transportlagret |
+| `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
+| `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
+| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
+| `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
 
 ---
 
@@ -115,6 +132,8 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 |---|---|---|
 | `SS` | Specialistutlåtande/svar (slutgiltig bedömning) | `final` |
 | `SR` | Specialistremissvar (preliminärt/delsvar) | `preliminary` |
+
+Om `referralOutcomeHeader.nullified = true` sätts `entered-in-error` oavsett `referralOutcomeTypeCode`.
 
 ### Titel-prioritering (DiagnosticReport.extension[title])
 
@@ -201,5 +220,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Fråga |
 |---|---|
 | REF-002 | **`referralOutcomeBody.attested.attesterName` vs. header-signatär.** Svaret har två potentiella signatärstrukturer: `referralOutcomeHeader.legalAuthenticator` och `referralOutcomeBody.attested`. Nuvarande beslut: båda mappas till samma `DiagnosticReport.extension[attested]`. Om de kan representera olika signatärer (t.ex. juridisk autentiserare vs. klinisk attestant) kan detta skapa konflikter. Behöver klargöras med TKB-förvaltningen om de är semantiskt ekvivalenta eller distinkta. |
-| REF-003 | **`referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit` – detaljnivå saknas.** Den logiska modellen specificerar `healthcareProfessionalOrgUnit` som ett BackboneElement men specificerar inte sub-fält (orgUnitHSAId, orgUnitName etc.) på denna nivå i FSH-filen. Bryggan bör behandla det som en enkel logisk referens till ursprungsremissens ServiceRequest.requester-org. Verifiera med TKB-förvaltningen om sub-fält finns i faktisk XSD. |
+| REF-003 | **Stängd – `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit`.** Den logiska modellen har nu alla OrgUnitType-fält (orgUnitHSAId, orgUnitName, orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation) enligt XSD:n. Fälten tillhör ursprungsremissen och mappas inte till DiagnosticReport. |
 | REF-004 | **`orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation` – ej mappade i PatientSummaryHeader-blocket.** Kontaktuppgifter för org-enheten finns på flera ställen i modellen (header och referral.accountableHealthcareProfessional) men har ingen standardiserad plats i DiagnosticReport-kontexten utan att skapa separata Organization-instanser. Behöver beslut om dessa ska inkluderas alls i bryggan. |

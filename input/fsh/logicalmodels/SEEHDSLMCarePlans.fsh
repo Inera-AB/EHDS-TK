@@ -49,6 +49,10 @@ Characteristics: #can-be-target
 * carePlan.legalAuthenticator.legalAuthenticatorHSAId 0..1 string "HSA-id för signerare"
 * carePlan.legalAuthenticator.legalAuthenticatorName 0..1 string "Namn på signerare"
 * carePlan.approvedForPatient 1..1 boolean "Informationen godkänd för patient (Regel 3)"
+
+* carePlan.nullified 0..1 boolean "Makulerad"
+
+* carePlan.nullifiedReason 0..1 string "Makuleringsorsak"
 * carePlan.careContactId 0..1 string "Refererad vårdkontakt-id"
 
 // -- carePlanBody (CarePlanBodyType) --
@@ -63,8 +67,8 @@ Characteristics: #can-be-target
     N/A — content.id är 0..0 per TKB för GetCarePlans.
   """
 * carePlan.participatingCareUnitHSAId 0..* Identifier "Deltagande vårdenheters HSA-id (IIType)"
-* carePlan.typeOfCarePlan 0..1 CodeableConcept "Typ av vård- och omsorgsplan"
-* carePlan.typeOfCarePlan from TypeOfCarePlanVS (required)
+* carePlan.typeOfCarePlanEnum 0..1 CodeableConcept "Typ av vård- och omsorgsplan"
+* carePlan.typeOfCarePlanEnum from TypeOfCarePlanVS (required)
 
 // ---- result (ResultType) ----
 * result 1..1 BackboneElement "Resultatkod för anropet"

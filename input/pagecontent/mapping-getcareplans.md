@@ -72,12 +72,14 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `carePlan.careContactId` | 0..1 | `CarePlan.encounter.identifier` | Logisk referens till Encounter |
+| `carePlan.nullified` | 0..1 | `CarePlan.status` | `true` → `entered-in-error` |
+| `carePlan.nullifiedReason` | 0..1 | Ej mappad | Makuleringsorsak (fritext); CarePlan har inget `statusReason` |
 
 ### Body – plantyp och deltagare
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `carePlan.typeOfCarePlan` | 0..1 | `CarePlan.category` | Bunden till TypeOfCarePlanVS (required) |
+| `carePlan.typeOfCarePlanEnum` | 0..1 | `CarePlan.category` | Bunden till TypeOfCarePlanVS (required) |
 | `carePlan.participatingCareUnitHSAId` | 0..* | `CarePlan.contributor` | Deltagande vårdenheters HSA-id (IIType); en referens per enhet |
 
 ### Body – innehåll (MultimediaType)

@@ -88,6 +88,14 @@ Characteristics: #can-be-target
     Kardinalitet: Obligatorisk (inom OrgUnitType).
   """
 
+* diagnosis.diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom 0..1 string "Telefon till organisationsenhet"
+
+* diagnosis.diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail 0..1 string "E-post till organisationsenhet"
+
+* diagnosis.diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress 0..1 string "Postadress till organisationsenhet"
+
+* diagnosis.diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation 0..1 string "Plats för organisationsenhet"
+
 * diagnosis.diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId 0..1 Identifier "HSA-id för vårdenhet" """
     HSA-id för vårdenhet. Se regel 1 i TKB.
     Kardinalitet: Valfri (villkorlig, se regel 1).
@@ -127,6 +135,10 @@ Characteristics: #can-be-target
     Identitet för den hälso- och sjukvårdskontakt som diagnosen dokumenterades vid.
     Kardinalitet: Valfri.
   """
+
+* diagnosis.diagnosisHeader.nullified 0..1 boolean "Makulerad"
+
+* diagnosis.diagnosisHeader.nullifiedReason 0..1 string "Makuleringsorsak"
 
 * diagnosis.diagnosisBody 1..1 BackboneElement "Diagnosens innehåll" """
     DiagnosisBodyType — diagnosens informationsinnehåll.
@@ -183,6 +195,8 @@ Characteristics: #can-be-target
     En UUID som kan användas vid felanmälan för att spåra felet.
     Kardinalitet: Obligatorisk.
   """
+
+* result.subCode 0..1 string "Subkod"
 
 * result.message 0..1 string "Meddelande" """
     En beskrivande text som kan visas för användaren.

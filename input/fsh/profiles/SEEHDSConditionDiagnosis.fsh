@@ -34,7 +34,7 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 
 
 * verificationStatus MS
-* verificationStatus ^short = "Alltid confirmed (RIVTA-svar representerar bekräftade journaluppgifter)"
+* verificationStatus ^short = "confirmed; entered-in-error om diagnosisHeader.nullified = true"
 
 * category ^slicing.discriminator.type = #value
 * category ^slicing.discriminator.path = "coding.system"

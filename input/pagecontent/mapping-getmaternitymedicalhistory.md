@@ -31,7 +31,7 @@ maternityMedicalRecord [0..*]
       healthcareProfessionalHSAId       [1..1]  (OBLIGATORISK i detta TK)
       healthcareProfessionalName        [0..1]
       healthcareProfessionalRoleCode    [0..1]
-      healthcareProfessionalOrgUnit     [0..1]
+      healthcareProfessionalOrgUnit     [1..1]
         orgUnitHSAId            [1..1]
         orgUnitName             [1..1]
         orgUnitTelecom          [0..1]
@@ -43,9 +43,10 @@ maternityMedicalRecord [0..*]
     legalAuthenticator          [0..1]
       signatureTime             [1..1]
       legalAuthenticatorHSAId   [0..1]
-      legalAuthenticatorName    [0..1]
     approvedForPatient          [1..1]  boolean
     careContactId               [0..1]
+    nullified                   [0..1]  boolean
+    nullifiedReason             [0..1]
   maternityMedicalRecordBody [1..1]
     registrationRecord          [0..1]          ← inskrivningsuppgifter
     pregnancyCheckupRecord      [0..1]          ← graviditetskontroll
@@ -114,7 +115,6 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 |---|---|---|---|
 | `maternityMedicalRecordHeader.legalAuthenticator.signatureTime` | 1..1 | `Observation.extension[assertedDate]` | Signeringstidpunkt; lokal extension (ingen standardekvivalent i R4 Observation) |
 | `maternityMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Observation.asserter.identifier.value` | HSA-id för juridiskt ansvarig signatär; via asserter-referens till Practitioner |
-| `maternityMedicalRecordHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens; namn hämtas från HSA-katalogen vid behov |
 
 ### PDL och övriga headerfält
 
@@ -122,6 +122,8 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 |---|---|---|---|
 | `maternityMedicalRecordHeader.approvedForPatient` | 1..1 | `Observation.meta.security` | Boolean; styr 1177-synlighet (se PDL-001); mappas till säkerhetsmärkning i `meta.security` |
 | `maternityMedicalRecordHeader.careContactId` | 0..1 | `Observation.encounter.identifier` | Logisk referens till Encounter via identifierare |
+| `maternityMedicalRecordHeader.nullified` | 0..1 | `Observation.status` | `true` → `entered-in-error`; se [Observation.status](#observationstatus) |
+| `maternityMedicalRecordHeader.nullifiedReason` | 0..1 | Ej mappad | Makuleringsorsak (fritext); Observation har inget `statusReason` |
 
 ---
 
@@ -311,8 +313,9 @@ separeras med ordningsnumret `ordinalNumber` i komponent-koden:
 ### Observation.status
 
 Inget explicit statusfält finns i GetMaternityMedicalHistory. `Observation.status`
-sätts statiskt till `final` för alla producerade Observation-resurser, eftersom
+sätts till `final` för alla producerade Observation-resurser, eftersom
 ett svarsmeddelande från tjänstekontraktet representerar en färdig journalpost.
+Undantag: om `maternityMedicalRecordHeader.nullified = true` sätts `entered-in-error`.
 
 ### Observation.category
 

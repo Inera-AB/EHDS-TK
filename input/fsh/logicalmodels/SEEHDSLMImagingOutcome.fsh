@@ -52,6 +52,8 @@ Characteristics: #can-be-target
 * imagingOutcome.imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId 0..1 Identifier "HSA-id"
 * imagingOutcome.imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorName 0..1 string "Namn"
 
+* imagingOutcome.imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode 0..1 CodeableConcept "Befattning för signerande person"
+
 * imagingOutcome.imagingOutcomeHeader.approvedForPatient 1..1 boolean "Godkänd för patientvisning"
 * imagingOutcome.imagingOutcomeHeader.careContactId 0..1 string "Vårdkontaktid"
 * imagingOutcome.imagingOutcomeHeader.nullified 0..1 boolean "Makulerad"
@@ -85,6 +87,22 @@ Characteristics: #can-be-target
 * imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalName 0..1 string "Namn"
 * imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalRoleCode 0..1 CodeableConcept "Yrkesroll"
 * imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit 0..1 BackboneElement "Org-enhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId 0..1 Identifier "HSA-id för organisationsenhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName 0..1 string "Namn på organisationsenhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom 0..1 string "Telefon till organisationsenhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail 0..1 string "E-post till organisationsenhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress 0..1 string "Postadress till organisationsenhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation 0..1 string "Plats för organisationsenhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId 0..1 Identifier "HSA-id för vårdenhet"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId 0..1 Identifier "HSA-id för vårdgivare"
 * imagingOutcome.imagingOutcomeBody.imageRecording.numberOfImages 0..1 integer "Antal bilder"
 * imagingOutcome.imagingOutcomeBody.imageRecording.modalityData 0..1 BackboneElement "Modalitetsdata"
 * imagingOutcome.imagingOutcomeBody.imageRecording.modalityData.typeOfModality 0..1 string "Modalitetstyp (t.ex. CT, MR)"
@@ -92,6 +110,8 @@ Characteristics: #can-be-target
 * imagingOutcome.imagingOutcomeBody.imageRecording.modalityData.modelName 0..1 string "Modellnamn"
 * imagingOutcome.imagingOutcomeBody.imageRecording.modalityData.equipmentId 0..1 string "Utrustningens id"
 * imagingOutcome.imagingOutcomeBody.imageRecording.modalityData.softwareVersion 0..1 string "Programvaruversion"
+
+* imagingOutcome.imagingOutcomeBody.imageRecording.modalityData.lineFilter 0..1 Quantity "Linjefilter"
 
 * imagingOutcome.imagingOutcomeBody.imageRecording.imageDicomData 0..* BackboneElement "DICOM-bilddata"
 * imagingOutcome.imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP 1..1 Identifier "DICOM SOP (UID)"
@@ -110,7 +130,7 @@ Characteristics: #can-be-target
 * imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData.mediaType 1..1 CodeableConcept "Medietyp"
 * imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData.value 0..1 base64Binary "Binär bild"
 * imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData.reference 0..1 url "Referens-URL"
-* imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData.burnedInAnnotations 0..1 boolean "Inbrända annotationer"
+* imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData.burnedInaAnnotations 0..1 boolean "Inbrända annotationer (elementnamnet stavas så i XSD:n)"
 
 * imagingOutcome.imagingOutcomeBody.referral 0..1 BackboneElement "Kopplad remiss"
 * imagingOutcome.imagingOutcomeBody.referral.referralId 1..1 string "Remissens id"
@@ -129,7 +149,24 @@ Characteristics: #can-be-target
 * imagingOutcome.imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail 0..1 string "E-post"
 * imagingOutcome.imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress 0..1 string "Adress"
 * imagingOutcome.imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation 0..1 string "Plats"
+
+* imagingOutcome.imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId 0..1 Identifier "HSA-id för vårdenhet"
+
+* imagingOutcome.imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId 0..1 Identifier "HSA-id för vårdgivare"
 * imagingOutcome.imagingOutcomeBody.referral.attested 0..1 BackboneElement "Attestering"
 * imagingOutcome.imagingOutcomeBody.referral.attested.signatureTime 1..1 instant "Attesttidpunkt"
 * imagingOutcome.imagingOutcomeBody.referral.attested.legalAuthenticatorHSAId 0..1 Identifier "HSA-id"
 * imagingOutcome.imagingOutcomeBody.referral.attested.legalAuthenticatorName 0..1 string "Namn"
+
+* imagingOutcome.imagingOutcomeBody.referral.attested.legalAuthenticatorRoleCode 0..1 CodeableConcept "Befattning för signerande person"
+* result 1..1 BackboneElement "Resultat"
+
+* result.resultCode 1..1 code "Resultatkod (OK, INFO eller ERROR)"
+
+* result.errorCode 0..1 code "Felkod (sätts endast om resultCode är ERROR)"
+
+* result.logId 1..1 string "Log-id (UUID för felsökning)"
+
+* result.subCode 0..1 string "Subkod"
+
+* result.message 0..1 string "Beskrivande meddelande"

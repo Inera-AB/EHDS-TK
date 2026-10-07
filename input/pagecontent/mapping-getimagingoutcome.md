@@ -50,6 +50,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `DiagnosticReport.extension[signatureTime]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.resultsInterpreter.identifier` | Medicinskt ansvarig för utlåtandet |
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
+| `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Signerande persons befattning; `resultsInterpreter` är en referens utan rollkod |
 | `imagingOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `imagingOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier` | Logisk referens till Encounter/vårdkontakt |
 | `imagingOutcomeHeader.nullified` | 0..1 | (härledd till `DiagnosticReport.status`) | `true` → `status = entered-in-error`; se [IMG-001](#öppna-frågor) |
@@ -77,7 +78,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeBody.referral.anamnesis` | 0..1 | Ej mappad till DiagnosticReport | Anamnes tillhör ursprungsremissen (ServiceRequest.note) |
 | `imagingOutcomeBody.referral.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier` | Alternativ källa för vårdkontaktsreferens om header.careContactId saknas |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.authorTime` | 1..1 | Ej mappad till DiagnosticReport | Remittentens tidpunkt tillhör ursprungsremissen |
-| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalHSAid` | 0..1 | Ej mappad till DiagnosticReport | Remittentens HSA-id tillhör ursprungsremissen (ServiceRequest.requester) |
+| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | Ej mappad till DiagnosticReport | Remittentens HSA-id tillhör ursprungsremissen (ServiceRequest.requester) |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | Ej mappad till DiagnosticReport | Remittentens namn tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | Ej mappad till DiagnosticReport | Remittentens yrkesroll tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | Ej mappad till DiagnosticReport | Remittentens org-enhets HSA-id tillhör ursprungsremissen |
@@ -86,9 +87,12 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post; tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress; tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats; tillhör ursprungsremissen |
+| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id – tillhör ursprungsremissen |
+| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id – tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.attested.signatureTime` | 1..1 (om attested) | Ej mappad till DiagnosticReport | Attesttidpunkt för remissen tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.attested.legalAuthenticatorHSAId` | 0..1 | Ej mappad till DiagnosticReport | Attesterarens HSA-id tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.attested.legalAuthenticatorName` | 0..1 | Ej mappad | Attesterarens namn i klartext; tillhör ursprungsremissen |
+| `imagingOutcomeBody.referral.attested.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Attesterarens befattning; tillhör ursprungsremissen |
 
 > Alla `imagingOutcomeBody.referral.*`-fält är attribut till ursprungsremissen. En logisk referens via `DiagnosticReport.basedOn` → `ServiceRequest.identifier` är tillräcklig. Se [Referral → ServiceRequest](#referral--servicerequest).
 
@@ -125,6 +129,8 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `ImagingStudy.interpreter.display` | Tolkande läkarens namn |
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | Ej mappad | Yrkesroll; ingen standardiserad plats på ImagingStudy; kan läggas i PractitionerRole om referensen expanderas |
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit` | 0..1 | Ej mappad | Org-enhet för bildtagningspersonal; ingen direkt plats på ImagingStudy; se [IMG-003](#öppna-frågor) |
+| `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id i bildtagningens kontext; ingen plats på ImagingStudy |
+| `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id i bildtagningens kontext; ingen plats på ImagingStudy |
 
 ### Modalitetsdata (imageRecording.modalityData)
 
@@ -135,6 +141,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.modalityData.modelName` | 0..1 | `ImagingStudy.extension[deviceModel]` | Utrustningens modell; kräver lokal extension |
 | `imageRecording.modalityData.equipmentId` | 0..1 | `ImagingStudy.extension[equipmentId]` | Utrustningens id (serienummer, HSA-id eller lokalt id); kräver lokal extension |
 | `imageRecording.modalityData.softwareVersion` | 0..1 | `ImagingStudy.extension[softwareVersion]` | Programversion i utrustningen; kräver lokal extension |
+| `imageRecording.modalityData.lineFilter` | 0..1 | Ej mappad | Linjefilter (PQType: värde och enhet); ingen standardiserad plats på ImagingStudy |
 
 ### DICOM-bilddata (imageRecording.imageDicomData)
 
@@ -158,7 +165,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.imageStructuredData[i].imageData.mediaType` | 1..1 | Ej mappad | MIME-typ för bildinnehåll; ImagingStudy hanterar inte inbäddad bilddata – hanteras via Binary-resurs eller extern lagring; se [IMG-002](#öppna-frågor) |
 | `imageRecording.imageStructuredData[i].imageData.value` | 0..1 | Ej mappad | Binär bild (base64); ingår ej direkt i FHIR-resursen; se [IMG-002](#öppna-frågor) |
 | `imageRecording.imageStructuredData[i].imageData.reference` | 0..1 | `ImagingStudy.series[i].instance[i].url` | Referens-URL till extern bild; kombineras med dicomReference vid mappning |
-| `imageRecording.imageStructuredData[i].imageData.burnedInAnnotations` | 0..1 | Ej mappad | Indikerar inbrända annotationer i bild; ingen standardiserad plats i ImagingStudy R4; kan lagras i extension |
+| `imageRecording.imageStructuredData[i].imageData.burnedInaAnnotations` | 0..1 | Ej mappad | Indikerar inbrända annotationer i bild; ingen standardiserad plats i ImagingStudy R4; kan lagras i extension |
 
 ### Härledda fält – ImagingStudy
 
@@ -176,6 +183,18 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | Slutförd | `available` |
 | Avbokad / makulerad | `cancelled` |
 | Okänd | `unknown` |
+
+---
+
+## Mappningstabell – result
+
+| RIVTA-element | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod – hanteras av transportlagret |
+| `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
+| `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
+| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
+| `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
 
 ---
 
@@ -290,5 +309,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Fråga |
 |---|---|
 | IMG-003 | **`imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit` saknar mappning.** Org-enheten för bildtagningspersonal på undersökningsnivå har ingen standardiserad plats i ImagingStudy R4. Alternativ: (1) skapa en PractitionerRole-resurs länkad via `ImagingStudy.interpreter`; (2) lokal extension på ImagingStudy. Behöver designbeslut. |
-| IMG-004 | **`imageStructuredData.imageData.burnedInAnnotations` saknar FHIR-motpart.** Boolean-flagga som indikerar inbrända annotationer i bilddata. Ingen standardiserad plats i ImagingStudy R4. Förslag: lokal extension på `ImagingStudy.series.instance`. |
+| IMG-004 | **`imageStructuredData.imageData.burnedInaAnnotations` saknar FHIR-motpart.** Boolean-flagga som indikerar inbrända annotationer i bilddata. Ingen standardiserad plats i ImagingStudy R4. Förslag: lokal extension på `ImagingStudy.series.instance`. |
 | IMG-005 | **`imageStructuredData.copyright` – hantering av upphovsrätt.** Ingen standardiserad plats för upphovsrättsinformation i ImagingStudy. Kan lagras som `ImagingStudy.note` men semantiken går förlorad. Behöver beslut om lokal extension. |

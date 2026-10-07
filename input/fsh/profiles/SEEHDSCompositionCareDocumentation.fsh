@@ -13,7 +13,7 @@ Description: """
   Provenance.target.
 """
 
-* identifier ^short = "Journaluppgiftens id (careDocumentation.header.record.recordId) – samma som DocumentReference.masterIdentifier"
+* identifier ^short = "Journaluppgiftens id (careDocumentation.header.record.id) – samma som DocumentReference.masterIdentifier"
 
 * status = #final
 * status ^short = "Alltid final"

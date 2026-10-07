@@ -41,6 +41,10 @@ Characteristics: #can-be-target
     Kardinalitet: Obligatorisk.
   """
 
+* alertInformation.alertInformationHeader.documentTitle 0..0 string "Titel"
+
+* alertInformation.alertInformationHeader.documentTime 0..0 dateTime "Tidpunkt för dokumentet"
+
 * alertInformation.alertInformationHeader.patientId 1..1 Identifier "Patientidentifierare" """
     Identifierare för patient. id = patientens identifierare (12 tecken).
     type = OID för typ av identifierare.
@@ -148,6 +152,10 @@ Characteristics: #can-be-target
   """
 
 // ─── Body ────────────────────────────────────────────────────────────────────
+
+* alertInformation.alertInformationHeader.nullified 0..0 boolean "Makulerad"
+
+* alertInformation.alertInformationHeader.nullifiedReason 0..0 string "Makuleringsorsak"
 
 * alertInformation.alertInformationBody 1..1 BackboneElement "Uppmärksamhetsinformationens innehåll (AlertInformationBodyType)" """
     AlertInformationBodyType — uppmärksamhetsinformationens informationsinnehåll.
@@ -404,7 +412,7 @@ Characteristics: #can-be-target
     Kardinalitet: Valfri.
   """
 
-* result.subcode 0..1 string "Subkod" """
+* result.subCode 0..1 string "Subkod" """
     Inga subkoder specificerade.
     Kardinalitet: Valfri.
   """

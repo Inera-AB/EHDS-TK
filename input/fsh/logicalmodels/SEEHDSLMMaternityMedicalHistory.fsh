@@ -30,7 +30,7 @@ Characteristics: #can-be-target
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId 1..1 Identifier "HSA-id (obligatorisk i mödrahälsovård)"
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalName 0..1 string "Namn"
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode 0..1 CodeableConcept "Yrkesroll"
-* maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit 0..1 BackboneElement "Organisationsenhet"
+* maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit 1..1 BackboneElement "Organisationsenhet"
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId 1..1 Identifier "OrgUnit HSA-id"
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName 1..1 string "OrgUnit namn"
 * maternityMedicalRecord.maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom 0..1 string "Telefon"
@@ -49,9 +49,11 @@ Characteristics: #can-be-target
 * maternityMedicalRecord.maternityMedicalRecordHeader.legalAuthenticator 0..1 BackboneElement "Juridiskt ansvarig"
 * maternityMedicalRecord.maternityMedicalRecordHeader.legalAuthenticator.signatureTime 1..1 instant "Signeringstidpunkt"
 * maternityMedicalRecord.maternityMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId 0..1 Identifier "HSA-id"
-* maternityMedicalRecord.maternityMedicalRecordHeader.legalAuthenticator.legalAuthenticatorName 0..1 string "Namn"
-
 * maternityMedicalRecord.maternityMedicalRecordHeader.approvedForPatient 1..1 boolean "Godkänd för patientvisning"
+
+* maternityMedicalRecord.maternityMedicalRecordHeader.nullified 0..1 boolean "Makulerad"
+
+* maternityMedicalRecord.maternityMedicalRecordHeader.nullifiedReason 0..1 string "Makuleringsorsak"
 * maternityMedicalRecord.maternityMedicalRecordHeader.careContactId 0..1 string "Vårdkontaktid"
 
 // ── Body ─────────────────────────────────────────────

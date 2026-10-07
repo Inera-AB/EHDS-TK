@@ -92,6 +92,14 @@ Characteristics: #can-be-target
     Kardinalitet: Obligatorisk (inom OrgUnitType).
   """
 
+* functionalStatusAssessment.functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom 0..1 string "Telefon till organisationsenhet"
+
+* functionalStatusAssessment.functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail 0..1 string "E-post till organisationsenhet"
+
+* functionalStatusAssessment.functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress 0..1 string "Postadress till organisationsenhet"
+
+* functionalStatusAssessment.functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation 0..1 string "Plats för organisationsenhet"
+
 * functionalStatusAssessment.functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId 0..1 Identifier "HSA-id för vårdenhet" """
     HSA-id för vårdenhet. Se regel 1 i TKB.
     Kardinalitet: Valfri (villkorlig, se regel 1).
@@ -119,11 +127,6 @@ Characteristics: #can-be-target
 
 * functionalStatusAssessment.functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorName 0..1 string "Namn på signerande person" """
     Namn i klartext för signerande person.
-    Kardinalitet: Valfri.
-  """
-
-* functionalStatusAssessment.functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorRoleCode 0..1 CodeableConcept "Signerande persons befattning" """
-    Signerande persons befattning. Om möjligt ska kodverk användas.
     Kardinalitet: Valfri.
   """
 
@@ -218,6 +221,8 @@ Characteristics: #can-be-target
     En UUID som kan användas vid felanmälan för att spåra felet.
     Kardinalitet: Obligatorisk.
   """
+
+* result.subCode 0..1 string "Subkod"
 
 * result.message 0..1 string "Meddelande" """
     En beskrivande text som kan visas för användaren.
