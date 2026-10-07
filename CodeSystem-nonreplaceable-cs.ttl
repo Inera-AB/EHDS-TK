@@ -17,7 +17,7 @@
   fhir:CodeSystem.name [ fhir:value "NonReplaceableCS"] ;
   fhir:CodeSystem.title [ fhir:value "NonReplaceable"] ;
   fhir:CodeSystem.status [ fhir:value "active"] ;
-  fhir:CodeSystem.date [ fhir:value "2026-10-07T11:41:58+00:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.date [ fhir:value "2026-10-07T11:49:57+00:00"^^xsd:dateTime] ;
   fhir:CodeSystem.publisher [ fhir:value "Inera AB"] ;
   fhir:CodeSystem.contact [
      fhir:index 0 ;

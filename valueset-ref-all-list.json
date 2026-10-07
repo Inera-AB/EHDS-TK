@@ -364,14 +364,14 @@
     "sources" : ["2.16.840.1.113883.4.642.3.141"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
     "StructureDefinition-SEEHDSImagingStudy.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/bodysite-laterality",
@@ -500,8 +500,8 @@
     },
     "StructureDefinition-SEEHDSDiagnosticReportReferral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
     "StructureDefinition-SEEHDSDiagnosticReportImaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
-    "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-SEEHDSDiagnosticReportLab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSDiagnosticReportLab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/common-tags",
@@ -516,22 +516,22 @@
     "uses" : {
     },
     "StructureDefinition-SEEHDSDiagnosticReportReferral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
+    "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
     "StructureDefinition-SEEHDSDiagnosticReportImaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
     "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
     "StructureDefinition-SEEHDSImmunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
-    "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-SEEHDSTask.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
     "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSImagingStudy.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
-    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSEncounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
-    "StructureDefinition-SEEHDSDiagnosticReportLab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
     "StructureDefinition-SEEHDSFlag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
     "StructureDefinition-SEEHDSAllergyIntolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSTask.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
+    "StructureDefinition-SEEHDSDiagnosticReportLab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSImagingStudy.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
+    "StructureDefinition-SEEHDSEncounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
     "StructureDefinition-SEEHDSMedicationStatement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)"
   },
   {
@@ -560,8 +560,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.241"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)"
+    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
+    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-category",
@@ -575,8 +575,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.162"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-clinical",
@@ -590,8 +590,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.164"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-code",
@@ -619,8 +619,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.168"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-stage",
@@ -634,8 +634,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.170"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-stage-type",
@@ -649,8 +649,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.171"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-ver-status",
@@ -664,8 +664,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.166"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/contactentity-type",
@@ -693,10 +693,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.5"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/days-of-week",
@@ -870,8 +870,8 @@
     "sources" : ["2.16.840.1.113883.3.88.12.80.46"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)"
+    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
+    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/document-reference-status",
@@ -899,8 +899,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.244"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)"
+    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
+    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/dose-rate-type",
@@ -1127,15 +1127,15 @@
     "uses" : {
     },
     "StructureDefinition-SEEHDSLMMaternityMedicalHistory.html" : "GetMaternityMedicalHistory",
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-    "StructureDefinition-SEEHDSOrganization.html" : "SE EHDS Organization – Organisationsenhet",
-    "StructureDefinition-SEEHDSPatient.html" : "SE EHDS Patient",
     "StructureDefinition-SEEHDSLMImagingOutcome.html" : "GetImagingOutcome",
-    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
     "StructureDefinition-SEEHDSPractitionerRole.html" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
+    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
+    "StructureDefinition-SEEHDSPatient.html" : "SE EHDS Patient",
     "StructureDefinition-SEEHDSLMReferralOutcome.html" : "GetReferralOutcome",
-    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"
+    "StructureDefinition-SEEHDSOrganization.html" : "SE EHDS Organization – Organisationsenhet"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/identifier-use",
@@ -1150,15 +1150,15 @@
     "uses" : {
     },
     "StructureDefinition-SEEHDSLMMaternityMedicalHistory.html" : "GetMaternityMedicalHistory",
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-    "StructureDefinition-SEEHDSOrganization.html" : "SE EHDS Organization – Organisationsenhet",
-    "StructureDefinition-SEEHDSPatient.html" : "SE EHDS Patient",
     "StructureDefinition-SEEHDSLMImagingOutcome.html" : "GetImagingOutcome",
-    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
     "StructureDefinition-SEEHDSPractitionerRole.html" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
+    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
+    "StructureDefinition-SEEHDSPatient.html" : "SE EHDS Patient",
     "StructureDefinition-SEEHDSLMReferralOutcome.html" : "GetReferralOutcome",
-    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"
+    "StructureDefinition-SEEHDSOrganization.html" : "SE EHDS Organization – Organisationsenhet"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/imagingstudy-status",
@@ -1339,34 +1339,34 @@
     "sources" : ["2.16.840.1.113883.4.642.3.20"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSDevice.html" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
+    "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
+    "StructureDefinition-SEEHDSTask.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
+    "StructureDefinition-SEEHDSFlag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
+    "StructureDefinition-SEEHDSAllergyIntolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
+    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
+    "StructureDefinition-SEEHDSPractitionerRole.html" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
+    "StructureDefinition-SEEHDSImagingStudy.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSMedicationStatement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
+    "StructureDefinition-SEEHDSAuditEventReadAccessLog.html" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
     "StructureDefinition-SEEHDSDiagnosticReportReferral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
+    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
     "StructureDefinition-SEEHDSDiagnosticReportImaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
+    "StructureDefinition-SEEHDSDevice.html" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
     "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
     "StructureDefinition-SEEHDSImmunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
-    "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-    "StructureDefinition-SEEHDSOrganization.html" : "SE EHDS Organization – Organisationsenhet",
-    "StructureDefinition-SEEHDSFlag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
-    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSPractitionerRole.html" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
-    "StructureDefinition-SEEHDSMedicationStatement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
-    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
-    "StructureDefinition-SEEHDSProvenance.html" : "SE EHDS Provenance",
     "StructureDefinition-SEEHDSPatient.html" : "SE EHDS Patient",
-    "StructureDefinition-SEEHDSImagingStudy.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
-    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSEncounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-SEEHDSOrganization.html" : "SE EHDS Organization – Organisationsenhet",
+    "StructureDefinition-SEEHDSProvenance.html" : "SE EHDS Provenance",
     "StructureDefinition-SEEHDSDiagnosticReportLab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSEncounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
-    "StructureDefinition-SEEHDSAuditEventReadAccessLog.html" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
-    "StructureDefinition-SEEHDSAllergyIntolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
-    "StructureDefinition-SEEHDSTask.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)"
+    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/link-type",
@@ -1450,8 +1450,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.169"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/marital-status",
@@ -1626,10 +1626,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.403"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-codes",
@@ -1643,9 +1643,9 @@
     "sources" : ["2.16.840.1.113883.4.642.3.396"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations"
+    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-interpretation",
@@ -1659,10 +1659,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.399"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-methods",
@@ -1676,10 +1676,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.395"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/observation-status",
@@ -1876,8 +1876,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.59"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/reaction-event-severity",
@@ -1920,10 +1920,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.407"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/referencerange-meaning",
@@ -1937,10 +1937,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.397"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
+    "StructureDefinition-SEEHDSObservationLab.html" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/report-codes",
@@ -2015,11 +2015,11 @@
     "uses" : {
     },
     "StructureDefinition-SEEHDSAllergyIntolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
     "StructureDefinition-SEEHDSEncounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
-    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"
+    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/route-codes",
@@ -2052,26 +2052,26 @@
     "sources" : ["2.16.840.1.113883.4.642.3.47"],
     "uses" : {
     },
+    "StructureDefinition-SEEHDSAuditEventReadAccessLog.html" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
     "StructureDefinition-SEEHDSDiagnosticReportReferral.html" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
+    "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
     "StructureDefinition-SEEHDSDiagnosticReportImaging.html" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
+    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
     "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
     "StructureDefinition-SEEHDSImmunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
-    "StructureDefinition-SEEHDSObservationMaternity.html" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
+    "StructureDefinition-SEEHDSTask.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
     "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSImagingStudy.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
-    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSEncounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
-    "StructureDefinition-SEEHDSDiagnosticReportLab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
-    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
-    "StructureDefinition-SEEHDSAuditEventReadAccessLog.html" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
     "StructureDefinition-SEEHDSFlag.html" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
     "StructureDefinition-SEEHDSAllergyIntolerance.html" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
-    "StructureDefinition-SEEHDSServiceRequestReferral.html" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
-    "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSTask.html" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
+    "StructureDefinition-SEEHDSDiagnosticReportLab.html" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
+    "StructureDefinition-SEEHDSImagingStudy.html" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
+    "StructureDefinition-SEEHDSEncounter.html" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
+    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
+    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
+    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
     "StructureDefinition-SEEHDSMedicationStatement.html" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)"
   },
   {
@@ -2092,10 +2092,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.978"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSProvenance.html" : "SE EHDS Provenance",
     "StructureDefinition-SEEHDSAuditEventReadAccessLog.html" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
     "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
-    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"
+    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
+    "StructureDefinition-SEEHDSProvenance.html" : "SE EHDS Provenance"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/series-performer-function",
@@ -2256,8 +2256,8 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://hl7.org/fhir/uv/ips/ValueSet/target-diseases-uv-ips",
@@ -2333,9 +2333,9 @@
     "sources" : ["1.3.6.1.4.1.12559.11.10.1.3.1.42.5"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
     "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-SEEHDSImmunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)"
+    "StructureDefinition-SEEHDSImmunization.html" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
   },
   {
     "url" : "http://terminology.ehdsi.eu/ValueSet/eHDSIReactionAllergy",
@@ -2405,8 +2405,8 @@
     "systems" : ["http://terminology.hl7.org/CodeSystem/v3-ActCode"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
-    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)"
+    "StructureDefinition-SEEHDSCompositionCareDocumentation.html" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
+    "StructureDefinition-SEEHDSDocumentReference.html" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)"
   },
   {
     "url" : "http://terminology.hl7.org/ValueSet/v3-ActEncounterCode",
@@ -2462,10 +2462,10 @@
     "sources" : ["2.16.840.1.113883.1.11.20448"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSProvenance.html" : "SE EHDS Provenance",
     "StructureDefinition-SEEHDSAuditEventReadAccessLog.html" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
     "StructureDefinition-SEEHDSAuditEventPatientQuery.html" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
-    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)"
+    "StructureDefinition-SEEHDSAuditEventPatientRead.html" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
+    "StructureDefinition-SEEHDSProvenance.html" : "SE EHDS Provenance"
   },
   {
     "url" : "http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType",
@@ -2614,8 +2614,8 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
+    "StructureDefinition-SEEHDSObservationGrowth.html" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
     "StructureDefinition-SEEHDSLMObservations.html" : "GetObservations"
   },
   {

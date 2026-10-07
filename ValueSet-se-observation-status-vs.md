@@ -52,7 +52,7 @@ Tillåtna statusvärden för GetObservations observationStatus. Urvals-id 564310
   "title" : "SE Observation Status (SNOMED CT urval 56431000052106)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-10-07T11:41:58+00:00",
+  "date" : "2026-10-07T11:49:57+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -17,7 +17,7 @@
   fhir:ImplementationGuide.name [ fhir:value "SEEHDSTK"] ;
   fhir:ImplementationGuide.title [ fhir:value "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"] ;
   fhir:ImplementationGuide.status [ fhir:value "draft"] ;
-  fhir:ImplementationGuide.date [ fhir:value "2026-10-07T11:41:58+00:00"^^xsd:dateTime] ;
+  fhir:ImplementationGuide.date [ fhir:value "2026-10-07T11:49:57+00:00"^^xsd:dateTime] ;
   fhir:ImplementationGuide.publisher [ fhir:value "Inera AB"] ;
   fhir:ImplementationGuide.contact [
      fhir:index 0 ;

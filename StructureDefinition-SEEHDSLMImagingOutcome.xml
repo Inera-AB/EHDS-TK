@@ -115,7 +115,7 @@ för en patient. Baseras på NPÖ RIV 2.2.0-specifikation.">SEEHDSLMImagingOutco
   <name value="SEEHDSLMImagingOutcome"/>
   <title value="GetImagingOutcome"/>
   <status value="draft"/>
-  <date value="2026-10-07T11:41:58+00:00"/>
+  <date value="2026-10-07T11:49:57+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

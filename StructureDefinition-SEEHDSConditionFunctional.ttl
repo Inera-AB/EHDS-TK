@@ -17,7 +17,7 @@
   fhir:StructureDefinition.name [ fhir:value "SEEHDSConditionFunctional"] ;
   fhir:StructureDefinition.title [ fhir:value "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"] ;
   fhir:StructureDefinition.status [ fhir:value "draft"] ;
-  fhir:StructureDefinition.date [ fhir:value "2026-10-07T11:41:58+00:00"^^xsd:dateTime] ;
+  fhir:StructureDefinition.date [ fhir:value "2026-10-07T11:49:57+00:00"^^xsd:dateTime] ;
   fhir:StructureDefinition.publisher [ fhir:value "Inera AB"] ;
   fhir:StructureDefinition.contact [
      fhir:index 0 ;

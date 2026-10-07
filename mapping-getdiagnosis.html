@@ -231,7 +231,6 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><a href="#resulterande-fhir-condition-json" id="markdown-toc-resulterande-fhir-condition-json">Resulterande FHIR Condition (JSON)</a></li>
         </ul>
       </li>
-      <li><a href="#must-support-element-som-inte-mappas" id="markdown-toc-must-support-element-som-inte-mappas">Must Support-element som inte mappas</a></li>
       <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
       <li><a href="#beslutade-issues" id="markdown-toc-beslutade-issues">Beslutade issues</a></li>
     </ul>
@@ -753,49 +752,6 @@ ska använda.</p>
 
 <hr />
 
-<h2 id="must-support-element-som-inte-mappas">Must Support-element som inte mappas</h2>
-
-<p><code class="language-plaintext highlighter-rouge">IneraEHDSConditionDiagnosis</code> ärver Must Support-flaggor från <code class="language-plaintext highlighter-rouge">$Condition-uv-ips</code> (IPS Condition,
-resursversion 1.1.0 – samma version som paketet <code class="language-plaintext highlighter-rouge">hl7.fhir.uv.ips</code> 1.1.0 är pinnat till). Två av
-dessa ärvda element fylls aldrig i av GetDiagnosis v2.0, eftersom tjänstekontraktets logiska
-modell (<code class="language-plaintext highlighter-rouge">IneraEHDSLMDiagnosis</code>) saknar motsvarande uppgift:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Element</th>
-      <th>Must Support-källa</th>
-      <th>Varför GetDiagnosis inte kan fylla i det</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Condition.severity</code></td>
-      <td>Ärvd från IPS Condition 1.1.0 (<code class="language-plaintext highlighter-rouge">0..1</code>)</td>
-      <td><code class="language-plaintext highlighter-rouge">diagnosisBody</code> har inget svårighetsgradsfält.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">Condition.subject.reference</code></td>
-      <td>Ärvd från IPS Condition 1.1.0, där elementet är <code class="language-plaintext highlighter-rouge">1..1</code> MS (obligatoriskt)</td>
-      <td>Medvetet avsteg, se <a href="mappings.html#patientreferens">GENERAL-006</a>: <code class="language-plaintext highlighter-rouge">subject</code> sätts alltid som logisk referens via <code class="language-plaintext highlighter-rouge">subject.identifier</code>; en <code class="language-plaintext highlighter-rouge">Patient</code>-resurs bundlas aldrig.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><code class="language-plaintext highlighter-rouge">Condition.bodySite</code>, <code class="language-plaintext highlighter-rouge">Condition.note</code> och <code class="language-plaintext highlighter-rouge">Condition.abatement[x]</code> är <strong>inte</strong> Must Support i den
-här profilen – varken IPS Condition eller <code class="language-plaintext highlighter-rouge">IneraEHDSConditionDiagnosis</code> sätter en MS-flagga på
-dem. (EHDS-bryggans <code class="language-plaintext highlighter-rouge">SEEHDSCondition</code>-profil lägger till egna MS-flaggor på <code class="language-plaintext highlighter-rouge">bodySite</code>, <code class="language-plaintext highlighter-rouge">note</code> och
-<code class="language-plaintext highlighter-rouge">abatement[x]</code>, så motsvarande avsnitt där listar fler element – se EHDS-bryggans
-<a href="https://oskthu2.github.io/EHDS-brygga/mapping-getdiagnosis.html#must-support-element-som-inte-kan-mappas">mapping-getdiagnosis</a>.)
-GetDiagnosis v2.0:s logiska modell har dessutom bara en enda bedömningstidpunkt
-(<code class="language-plaintext highlighter-rouge">diagnosisBody.diagnosisTime</code>), ingen diagnosperiod med start/slut, vilket är ytterligare ett
-skäl till att <code class="language-plaintext highlighter-rouge">abatement[x]</code> inte är aktuellt här.</p>
-
-<p><code class="language-plaintext highlighter-rouge">Condition.category.text</code> är inte ett Must Support-element i någon av profilerna – endast
-<code class="language-plaintext highlighter-rouge">category[diagnostyp].coding</code> är Must Support och obligatorisk.</p>
-
-<hr />
-
 <h2 id="öppna-frågor">Öppna frågor</h2>
 
 <table>
@@ -862,7 +818,7 @@ skäl till att <code class="language-plaintext highlighter-rouge">abatement[x]</
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:41+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

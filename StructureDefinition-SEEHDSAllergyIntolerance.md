@@ -52,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAllergyIntoler
   "name" : "SEEHDSAllergyIntolerance",
   "title" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
   "status" : "draft",
-  "date" : "2026-10-07T11:41:58+00:00",
+  "date" : "2026-10-07T11:49:57+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
