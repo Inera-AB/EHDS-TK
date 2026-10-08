@@ -80,7 +80,7 @@ eller URL) – se Härledda fält nedan.
 |---|---|---|---|
 | `careDocumentation.header.signature.id` | 0..1 | `DocumentReference.authenticator` (Reference(PractitionerRole)) | Signerarens HSA-id; logisk referens |
 | `careDocumentation.header.signature.name` | 0..1 | `PractitionerRole.practitioner.display` | Signerarens visningsnamn |
-| `careDocumentation.header.signature.timestamp` | 0..1 | `DocumentReference.extension[ext-signature-time].valueDateTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. Extensionen ([ext-signature-time](StructureDefinition-ext-signature-time.html)) sätts endast när värdet finns – ingen ersättning annars, se [DOC-003](#beslutade-issues) |
+| `careDocumentation.header.signature.timestamp` | 0..1 | `DocumentReference.extension[ext-signature-time].valueDateTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. Extensionen ([ext-signature-time](StructureDefinition-ext-signature-time.html)) sätts endast när värdet finns – ingen ersättning annars, se [DOC-003](#beslutade-issues) Obs: XSD:n kräver 1..1 när `signature` finns; TKB:n anger 0..1. |
 | `careDocumentation.header.signature.byRole` | 0..1 | `PractitionerRole.code` | Yrkesroll för signeraren |
 
 ---

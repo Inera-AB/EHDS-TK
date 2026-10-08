@@ -28,8 +28,8 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `referralOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.extension[title]` | Dokumenttitel; extension krävs då DiagnosticReport saknar title-fält i R4 |
 | `referralOutcomeHeader.documentTime` | 1..1 | `DiagnosticReport.issued` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
-| `referralOutcomeHeader.patientId.value` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
-| `referralOutcomeHeader.patientId.system` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
+| `referralOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
+| `referralOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
 | `referralOutcomeHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | Tidpunkt för ansvarig yrkesutövare; YYYYMMDDHHMMSS → ISO 8601 |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` | Logisk referens via HSA-id; DiagnosticReport.performer → Reference(PractitionerRole) |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn för ansvarig yrkesutövare |
@@ -45,11 +45,11 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `DiagnosticReport.extension[attested].attestedTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.extension[attested].attestorHSAId` | HSA-id för signerare |
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Signerande persons befattning; ingen plats i `extension[attested]` |
+| `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `referralOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `referralOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Logisk referens till vårdkontakt |
-| `referralOutcomeHeader.nullified` | 0..1 | (härledd till `DiagnosticReport.status`) | `true` → `status = entered-in-error`, prioriteras före `referralOutcomeTypeCode` |
-| `referralOutcomeHeader.nullifiedReason` | 0..1 | Ej mappad | Makuleringsorsak (fritext); samma fråga som för GetImagingOutcome (`extension[nullifiedReason]`) |
+| `referralOutcomeHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `referralOutcomeHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
 ---
 
@@ -102,8 +102,8 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalName` | 0..1 | Ej mappad till DiagnosticReport | Remittentens namn tillhör ursprungsremissen |
 | `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalRoleCode` | 0..1 | Ej mappad till DiagnosticReport | Remittentens yrkesroll tillhör ursprungsremissen |
 | `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit` | 0..1 | Ej mappad till DiagnosticReport | Remittentens org-enhet tillhör ursprungsremissen; se [Referral → ServiceRequest](#referral--servicerequest) |
-| `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id – tillhör ursprungsremissen |
-| `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id – tillhör ursprungsremissen |
+| `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareGiverHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `referralOutcomeBody.referral.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Alternativ källa för vårdkontaktsreferens om header.careContactId saknas |
 
 > **Obs – DiagnosticReport.code:** Sätts alltid till LOINC `11488-4` ("Consult note") som fast kod för remissvar. Det finns inget valfritt kodningsfält i TKB för utlåtandetypen utöver `referralOutcomeTypeCode`.
@@ -132,8 +132,6 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 |---|---|---|
 | `SS` | Specialistutlåtande/svar (slutgiltig bedömning) | `final` |
 | `SR` | Specialistremissvar (preliminärt/delsvar) | `preliminary` |
-
-Om `referralOutcomeHeader.nullified = true` sätts `entered-in-error` oavsett `referralOutcomeTypeCode`.
 
 ### Titel-prioritering (DiagnosticReport.extension[title])
 

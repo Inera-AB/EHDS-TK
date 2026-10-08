@@ -10,10 +10,10 @@ Description: """
   domänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).
 
   Nyckeldesignbeslut:
-  - observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int).
+  - observationBody.value är XOR-union av sju värdetyper (cv/pq/ivl_pq/ts/ivl_ts/st/int).
     Varje gren mappas till respektive FHIR value[x]-variant.
   - Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.
-  - observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.
+  - observationBody.time (ts/ivl_ts) → effective[x]; registrationTime → issued.
   - participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).
     Välj FHIR-element per deltagartyp (se mappningssida).
   - PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).
@@ -44,28 +44,28 @@ Description: """
 
 * status 1..1 MS
 * status from SEObservationStatusVS (required)
-* status ^short = "Observationsstatus (observationBody.observationStatus – SNOMED CT urvals-id 56431000052106 → FHIR ObservationStatus via ConceptMap, se OBS-003)"
+* status ^short = "Observationsstatus (observationBody.status – SNOMED CT urvals-id 56431000052106 → FHIR ObservationStatus via ConceptMap, se OBS-003)"
 
 // ─── Klassificering ────────────────────────────────────────────────────────
 
 
 * code 1..1 MS
-* code ^short = "Observationstyp (observationBody.observationType.type.code) – SNOMED CT SE OID 1.2.752.116.2.1.1; om saknas används platshållarkod"
+* code ^short = "Observationstyp (observationBody.type.code) – SNOMED CT SE OID 1.2.752.116.2.1.1; om saknas används platshållarkod"
 * code.coding MS
 * code.coding ^short = "Kodat observationstyps-värde; SNOMED CT SE-koder (http://snomed.info/sct)"
 * code.text MS
-* code.text ^short = "observationBody.observationType.type.displayName"
+* code.text ^short = "observationBody.type.displayName"
 
 // ─── Subjekt ──────────────────────────────────────────────────────────────
 
 * subject only Reference(SEEHDSPatient)
 * subject 1..1 MS
-* subject ^short = "Patient (observationBody.patient.person.personId om tillgängligt; annars observationBody.patient.patientId)"
+* subject ^short = "Patient (observationBody.patient.person.id om tillgängligt; annars observationBody.patient.id)"
 
 // ─── Tid ──────────────────────────────────────────────────────────────────
 
 * effective[x] MS
-* effective[x] ^short = "Observationstid (observationBody.time.ts → effectiveDateTime; observationBody.time.ivlts → effectivePeriod); se GENERAL-001 och OBS-001"
+* effective[x] ^short = "Observationstid (observationBody.time.ts → effectiveDateTime; observationBody.time.ivl_ts → effectivePeriod); se GENERAL-001 och OBS-001"
 
 * issued MS
 * issued ^short = "Dokumentationstidpunkt (observationBody.registrationTime) – när uppgiften registrerades i journalen"
@@ -86,14 +86,14 @@ Description: """
 
 * value[x] MS
 * value[x] ^short = """
-    Observationsvärde (observationBody.observationValue – XOR-union):
+    Observationsvärde (observationBody.value – XOR-union):
     cv       → valueCodeableConcept
     pq       → valueQuantity
-    ivlpq    → valueRange
+    ivl_pq   → valueRange
     ts       → valueDateTime (precision ≥ dag) eller valueString (precision < dag, se OBS-001)
-    ivlts    → valuePeriod
+    ivl_ts   → valuePeriod
     st       → valueString
-    intValue → valueInteger
+    int → valueInteger
     Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts (se OBS-002).
   """
 

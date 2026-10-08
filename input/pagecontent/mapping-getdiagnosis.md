@@ -20,8 +20,8 @@
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Valfritt komplement till HSA-id |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod |
-| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier` | HSA-id för organisationsenhet |
-| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier` | HSA-id för organisationsenhet |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i `PractitionerRole.organization`-referensen |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
@@ -33,8 +33,8 @@
 | `diagnosisHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
 | `diagnosisHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `diagnosisHeader.careContactId` | 0..1 | `Condition.encounter.identifier` | Logisk referens till Encounter |
-| `diagnosisHeader.nullified` | 0..1 | `Condition.verificationStatus` | `true` → `entered-in-error`; se [verificationStatus](#verificationstatus) |
-| `diagnosisHeader.nullifiedReason` | 0..1 | Ej mappad | Makuleringsorsak (fritext); ingen FHIR-målplats beslutad, se [DIAG-003](#öppna-frågor) |
+| `diagnosisHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `diagnosisHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
 > **OBS:** `diagnosisHeader.documentTime` har kardinalitet **0..0** i GetDiagnosis:2 och skickas aldrig av tjänstekontraktet. Detta avviker från det generella PatientSummaryHeader-mönstret (se README.md/mappings.md) där `documentTime` normalt är källan för `recordedDate`/`Provenance.recorded`. För GetDiagnosis är `accountableHealthcareProfessional.authorTime` den korrekta och enda källan för både `Condition.recordedDate` (ovan) och `Provenance.recorded` (se nedan).
 
@@ -78,9 +78,7 @@ Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `
 
 `Condition.abatementDateTime` sätts **aldrig**. GetDiagnosis:2 har ingen slutpunkt eller period för diagnosen, bara tidpunkten `diagnosisBody.diagnosisTime` (→ `Condition.onsetDateTime`). Avsaknaden av slutdatum är ett känt gap i TKB:n.
 
-### verificationStatus
-
-`Condition.verificationStatus` sätts till `confirmed` (RIVTA-svar representerar bekräftade journaluppgifter), utom när `diagnosisHeader.nullified = true`. Då sätts `entered-in-error`, samma mönster som för makulerade poster i GetImagingOutcome och GetVaccinationHistory.
+`Condition.verificationStatus` sätts alltid till `confirmed` (RIVTA-svar representerar bekräftade journaluppgifter). `diagnosisHeader.nullified` är N/A (0..0) enligt TKB:n, så makulerade diagnoser förekommer inte i svaret.
 
 ---
 
@@ -90,8 +88,7 @@ Både `accountableHealthcareProfessional` och `legalAuthenticator` är av RIVTA-
 
 | RIVTA-underelement | FHIR PractitionerRole-fält |
 |---|---|
-| `healthcareProfessionalHSAId` | `PractitionerRole.identifier.value` |
-| `healthcareProfessionalHSAId.root` | `PractitionerRole.identifier.system` (OID→URI) |
+| `healthcareProfessionalHSAId` | `PractitionerRole.identifier.value`; `system` = `urn:oid:1.2.752.29.4.19` (HSAIdType är en sträng utan eget OID-fält) |
 | `healthcareProfessionalName` | `PractitionerRole.practitioner.display` |
 | `healthcareProfessionalRoleCode` | `PractitionerRole.code` |
 | `healthcareProfessionalOrgUnit.orgUnitHSAId` | `PractitionerRole.organization.identifier` |
@@ -224,7 +221,6 @@ ska använda.
 | ID | Fråga |
 |---|---|
 | PDL-001 | **`approvedForPatient` (boolean) saknar direkt FHIR-motsvarighet.** Fältet finns i alla PatientSummaryHeader-kontrakt men `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Nuvarande lösning: enkoda som `meta.security`-tagg med lokalt kodsystem. Behöver gemensamt beslut för alla TK:er. |
-| DIAG-003 | **`diagnosisHeader.nullifiedReason` saknar FHIR-målplats.** Condition har inget `statusReason`. Alternativ: (a) `Condition.note.text`, (b) lokal extension, (c) utelämnas eftersom posten ändå markeras `entered-in-error`. Kräver designbeslut. |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ---

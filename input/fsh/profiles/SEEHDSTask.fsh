@@ -6,32 +6,35 @@ Description: "Profil för remisstatus och processaktiviteter mappat från RIVTA-
 
 * for only Reference(SEEHDSPatient)
 * for MS
-* for ^short = "Patient (requestHeader.patientId)"
+* for ^short = "Patient – den efterfrågade patienten (begärans patientId); svaret saknar patientidentitet"
 
 * meta.source MS
-* meta.source ^short = "Källsystem HSA-id (requestHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
+* meta.source ^short = "Källsystem (requestActivity.header.sourceSystemId.extension) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * owner only Reference(SEEHDSPractitionerRole or SEEHDSOrganization)
 * owner MS
-* owner ^short = "Mottagande enhet (requestReceiver)"
+* owner ^short = "Mottagande enhet (body.request.receivingOrganization)"
 
 * authoredOn MS
-* authoredOn ^short = "Registreringsdatum (requestHeader.documentTime)"
+* authoredOn ^short = "Skapad i källsystemet (header.record.timestamp)"
 
 * lastModified MS
-* lastModified ^short = "Senaste statusändring (activityTime)"
+* lastModified ^short = "Statusändring (body.eventTime)"
 
 * status 1..1 MS
-* status ^short = "Aktivitetsstatus (requestStatus – kv_requestStatus)"
+* status ^short = "Status härledd från body.statusCode (Kv status vårdbegäran)"
 
 * intent 1..1 MS
 
 * focus MS
 * focus only Reference(SEEHDSServiceRequestReferral)
-* focus ^short = "Koppling till remiss (requestId)"
+* focus ^short = "Koppling till remiss (body.request.id)"
 
-* code MS
-* code ^short = "Aktivitetstyp (activityType)"
+* identifier MS
+* identifier ^short = "Remisstatusens id (header.record.id)"
 
-* description MS
-* description ^short = "Aktivitetsbeskrivning (activityComment)"
+* businessStatus MS
+* businessStatus ^short = "Remisstatus enligt Kv status vårdbegäran (body.statusCode)"
+
+* requester MS
+* requester ^short = "Remittent (body.request.author)"

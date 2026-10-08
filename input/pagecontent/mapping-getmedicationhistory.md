@@ -39,9 +39,9 @@ representeras via extensions – se [MED-001](#öppna-frågor).
 | `medicationMedicalRecordHeader.documentId` | 1..1 | `MedicationStatement.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `medicationMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `MedicationStatement.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `medicationMedicalRecordHeader.documentTitle` | 0..0 | Ej mappad | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
-| `medicationMedicalRecordHeader.documentTime` | 0..1 | Ej mappad | Registreringstidpunkten tas från `accountableHealthcareProfessional.authorTime` |
-| `medicationMedicalRecordHeader.patientId.extension` | 1..1 | `MedicationStatement.subject.identifier.value` | Personnummer eller samordningsnummer |
-| `medicationMedicalRecordHeader.patientId.root` | 1..1 | `MedicationStatement.subject.identifier.system` | OID→URI, se tabell nedan |
+| `medicationMedicalRecordHeader.documentTime` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `medicationMedicalRecordHeader.patientId.id` | 1..1 | `MedicationStatement.subject.identifier.value` | Personnummer eller samordningsnummer |
+| `medicationMedicalRecordHeader.patientId.type` | 1..1 | `MedicationStatement.subject.identifier.system` | OID→URI, se tabell nedan |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `MedicationStatement.dateAsserted` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `MedicationStatement.informationSource` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn för ansvarig yrkesutövare |
@@ -91,8 +91,8 @@ representeras via extensions – se [MED-001](#öppna-frågor).
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Förskrivarens org-e-post – se orgUnitTelecom ovan |
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Förskrivarens org-postadress – se orgUnitTelecom ovan |
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Förskrivarens org-plats/ort – se orgUnitTelecom ovan |
-| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id för förskrivaren |
-| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id för förskrivaren |
+| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalCareGiverHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.authorTime` | 1..1 (om evaluator) | `MedicationStatement.extension[evaluator].authorTime` | Faktisk utvärderingstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalHSAId` | 0..1 | `MedicationStatement.extension[evaluator].hsaId` | Utvärderarens HSA-id |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalName` | 0..1 | `MedicationStatement.extension[evaluator].name` | Utvärderarens namn |
@@ -103,8 +103,8 @@ representeras via extensions – se [MED-001](#öppna-frågor).
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id för utvärderaren |
-| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id för utvärderaren |
+| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareGiverHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `medicationMedicalRecordBody.medicationPrescription.startOfFirstTreatment` | 0..1 | `MedicationStatement.extension[startOfFirstTreatment]` | Start för första behandlingsomgång; YYYYMMDDHHMMSS → ISO 8601 |
 | `medicationMedicalRecordBody.medicationPrescription.startOfTreatment` | 0..1 | `MedicationStatement.effectivePeriod.start` | Behandlingsstart; YYYYMMDDHHMMSS → ISO 8601 |
 | `medicationMedicalRecordBody.medicationPrescription.endOfTreatment` | 0..1 | `MedicationStatement.effectivePeriod.end` | Behandlingsslut; YYYYMMDDHHMMSS → ISO 8601 |

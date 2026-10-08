@@ -33,8 +33,8 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `imagingOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.extension[title]` | Dokumenttitel; kräver lokal extension då DiagnosticReport saknar title-fält i R4 |
 | `imagingOutcomeHeader.documentTime` | 0..1 | `DiagnosticReport.issued` | Tidpunkt för dokumentet; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
-| `imagingOutcomeHeader.patientId.value` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
-| `imagingOutcomeHeader.patientId.system` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
+| `imagingOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
+| `imagingOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | Ansvarig persons åtgärdstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` | Tolkande radiolog / ansvarig läkares HSA-id |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
@@ -50,7 +50,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `DiagnosticReport.extension[signatureTime]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.resultsInterpreter.identifier` | Medicinskt ansvarig för utlåtandet |
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Signerande persons befattning; `resultsInterpreter` är en referens utan rollkod |
+| `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `imagingOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `imagingOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier` | Logisk referens till Encounter/vårdkontakt |
 | `imagingOutcomeHeader.nullified` | 0..1 | (härledd till `DiagnosticReport.status`) | `true` → `status = entered-in-error`; se [IMG-001](#öppna-frågor) |
@@ -87,12 +87,12 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post; tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress; tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats; tillhör ursprungsremissen |
-| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id – tillhör ursprungsremissen |
-| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id – tillhör ursprungsremissen |
+| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `imagingOutcomeBody.referral.attested.signatureTime` | 1..1 (om attested) | Ej mappad till DiagnosticReport | Attesttidpunkt för remissen tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.attested.legalAuthenticatorHSAId` | 0..1 | Ej mappad till DiagnosticReport | Attesterarens HSA-id tillhör ursprungsremissen |
 | `imagingOutcomeBody.referral.attested.legalAuthenticatorName` | 0..1 | Ej mappad | Attesterarens namn i klartext; tillhör ursprungsremissen |
-| `imagingOutcomeBody.referral.attested.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Attesterarens befattning; tillhör ursprungsremissen |
+| `imagingOutcomeBody.referral.attested.legalAuthenticatorRoleCode` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
 > Alla `imagingOutcomeBody.referral.*`-fält är attribut till ursprungsremissen. En logisk referens via `DiagnosticReport.basedOn` → `ServiceRequest.identifier` är tillräcklig. Se [Referral → ServiceRequest](#referral--servicerequest).
 
@@ -129,8 +129,8 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `ImagingStudy.interpreter.display` | Tolkande läkarens namn |
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | Ej mappad | Yrkesroll; ingen standardiserad plats på ImagingStudy; kan läggas i PractitionerRole om referensen expanderas |
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalOrgUnit` | 0..1 | Ej mappad | Org-enhet för bildtagningspersonal; ingen direkt plats på ImagingStudy; se [IMG-003](#öppna-frågor) |
-| `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | Ej mappad | Vårdenhetens HSA-id i bildtagningens kontext; ingen plats på ImagingStudy |
-| `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | Ej mappad | Vårdgivarens HSA-id i bildtagningens kontext; ingen plats på ImagingStudy |
+| `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
 ### Modalitetsdata (imageRecording.modalityData)
 
@@ -141,7 +141,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.modalityData.modelName` | 0..1 | `ImagingStudy.extension[deviceModel]` | Utrustningens modell; kräver lokal extension |
 | `imageRecording.modalityData.equipmentId` | 0..1 | `ImagingStudy.extension[equipmentId]` | Utrustningens id (serienummer, HSA-id eller lokalt id); kräver lokal extension |
 | `imageRecording.modalityData.softwareVersion` | 0..1 | `ImagingStudy.extension[softwareVersion]` | Programversion i utrustningen; kräver lokal extension |
-| `imageRecording.modalityData.lineFilter` | 0..1 | Ej mappad | Linjefilter (PQType: värde och enhet); ingen standardiserad plats på ImagingStudy |
+| `imageRecording.modalityData.lineFilter` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
 ### DICOM-bilddata (imageRecording.imageDicomData)
 
