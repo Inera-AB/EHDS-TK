@@ -24,11 +24,11 @@ Description: """
 
 * author only Reference(SEEHDSPractitionerRole)
 * author MS
-* author ^short = "Dokumentationsansvarig (careDocumentation.header.author.authorId – JoL-header)"
+* author ^short = "Dokumentationsansvarig (careDocumentation.header.author.id – JoL-header)"
 
 * authenticator only Reference(SEEHDSPractitionerRole)
 * authenticator MS
-* authenticator ^short = "Signerande person (careDocumentation.header.signature.signatureId – JoL-header)"
+* authenticator ^short = "Signerande person (careDocumentation.header.signature.id – JoL-header)"
 
 * date MS
 * date ^short = "Journaluppgiftens skapandetidpunkt (careDocumentation.header.record.timestamp)"

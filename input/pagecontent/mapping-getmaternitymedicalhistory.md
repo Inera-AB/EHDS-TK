@@ -24,14 +24,14 @@ maternityMedicalRecord [0..*]
     documentTitle               [0..1]
     documentTime                [1..1]
     patientId                   [1..1]
-      patientId.value           [1..1]
-      patientId.system          [1..1]
+      patientId.id              [1..1]
+      patientId.type            [1..1]
     accountableHealthcareProfessional [1..1]
       authorTime                        [1..1]
       healthcareProfessionalHSAId       [1..1]  (OBLIGATORISK i detta TK)
       healthcareProfessionalName        [0..1]
       healthcareProfessionalRoleCode    [0..1]
-      healthcareProfessionalOrgUnit     [0..1]
+      healthcareProfessionalOrgUnit     [1..1]
         orgUnitHSAId            [1..1]
         orgUnitName             [1..1]
         orgUnitTelecom          [0..1]
@@ -43,9 +43,10 @@ maternityMedicalRecord [0..*]
     legalAuthenticator          [0..1]
       signatureTime             [1..1]
       legalAuthenticatorHSAId   [0..1]
-      legalAuthenticatorName    [0..1]
     approvedForPatient          [1..1]  boolean
     careContactId               [0..1]
+    nullified                   [0..0]  (N/A enligt TKB)
+    nullifiedReason             [0..0]  (N/A enligt TKB)
   maternityMedicalRecordBody [1..1]
     registrationRecord          [0..1]          ← inskrivningsuppgifter
     pregnancyCheckupRecord      [0..1]          ← graviditetskontroll
@@ -88,8 +89,8 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 | `maternityMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `Observation.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `maternityMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Dokumenttitel finns inte som strukturerat fält i Observation; kan eventuellt läggas i `Observation.note[0].text` men anses ej kliniskt relevant för FHIR-konsumtion (se MAT-002) |
 | `maternityMedicalRecordHeader.documentTime` | 1..1 | `Observation.issued` | Dokumentets registreringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. OBS: `authorTime` (se nedan) används för `effectiveDateTime` |
-| `maternityMedicalRecordHeader.patientId.value` | 1..1 | `Observation.subject.identifier.value` | Personnummer eller samordningsnummer |
-| `maternityMedicalRecordHeader.patientId.system` | 1..1 | `Observation.subject.identifier.system` | OID→URI-konvertering; se OID-tabell nedan |
+| `maternityMedicalRecordHeader.patientId.id` | 1..1 | `Observation.subject.identifier.value` | Personnummer eller samordningsnummer |
+| `maternityMedicalRecordHeader.patientId.type` | 1..1 | `Observation.subject.identifier.system` | OID→URI-konvertering; se OID-tabell nedan |
 
 ### Ansvarig hälso- och sjukvårdspersonal
 
@@ -114,7 +115,6 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 |---|---|---|---|
 | `maternityMedicalRecordHeader.legalAuthenticator.signatureTime` | 1..1 | `Observation.extension[assertedDate]` | Signeringstidpunkt; lokal extension (ingen standardekvivalent i R4 Observation) |
 | `maternityMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Observation.asserter.identifier.value` | HSA-id för juridiskt ansvarig signatär; via asserter-referens till Practitioner |
-| `maternityMedicalRecordHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens; namn hämtas från HSA-katalogen vid behov |
 
 ### PDL och övriga headerfält
 
@@ -122,19 +122,14 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 |---|---|---|---|
 | `maternityMedicalRecordHeader.approvedForPatient` | 1..1 | `Observation.meta.security` | Boolean; styr 1177-synlighet (se PDL-001); mappas till säkerhetsmärkning i `meta.security` |
 | `maternityMedicalRecordHeader.careContactId` | 0..1 | `Observation.encounter.identifier` | Logisk referens till Encounter via identifierare |
+| `maternityMedicalRecordHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `maternityMedicalRecordHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
 ---
 
-## Mappningstabell – tekniska responsfält (result.*)
+## Tekniska responsfält (result)
 
-Dessa fält är en del av RIVTA-transportlagrets standardsvar och bär ingen klinisk information. De hanteras av infrastrukturlagret och mappas inte till FHIR-resurser.
-
-| RIVTA-element | Kard. | FHIR-element | Kommentar |
-|---|---|---|---|
-| `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod (OK/ERROR) – hanteras av transportlagret |
-| `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
-| `result.logId` | 0..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
-| `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
+Svarsmeddelandet `GetMaternityMedicalHistoryResponse` i version 2.0 har inget `result`-element enligt XSD:n (GetMaternityMedicalHistoryResponder_2.0.xsd), till skillnad från flera andra tjänstekontrakt. Det finns därför inga tekniska responsfält att mappa.
 
 ---
 

@@ -13,7 +13,7 @@ Description: """
   - value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)
   - Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)
 
-  Kodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.
+  Kodsystem för observationBody.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.
 
   Täcker NPÖ 1.2 och 1177 Journal 1.2.
 """
@@ -25,7 +25,7 @@ Description: """
 * code from GrowthObservationTypeVS (required)
 * code MS
 * code ^short = """
-    IoÖ-kod (observationBody.observationType.type):
+    IoÖ-kod (observationBody.type):
     SNOMED CT SE OID 1.2.752.116.2.1.1, kräver en av:
     1153637007 (kroppslängd), 50373000 (mått på kroppslängd),
     248334005 (längd i liggande – ej för nyanslutning),
@@ -58,11 +58,11 @@ Description: """
 
 * value[x] 1..1 MS
 * value[x] only Quantity
-* value[x] ^short = "Mätvärde (observationBody.observationValue.pq); IoÖ anger alltid pq-grenen för tillväxtmätningar"
+* value[x] ^short = "Mätvärde (observationBody.value.pq); IoÖ anger alltid pq-grenen för tillväxtmätningar"
 
 * valueQuantity.value 1..1 MS
 * valueQuantity.value ^short = """
-    Mätetalet (observationBody.observationValue.pq.value):
+    Mätetalet (observationBody.value.pq.value):
     Längd: decimal cm, 0-1 decimal (t.ex. 49.5)
     Vikt:  decimal kg, 0-3 decimaler (t.ex. 5.830)
     Huvud: decimal cm, 1 decimal (t.ex. 38.5)

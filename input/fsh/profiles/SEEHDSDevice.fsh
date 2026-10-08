@@ -12,7 +12,7 @@ Description: """
   deviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)
   deviceName[productName] = sourceSystemProductName (0..1)
   version                 = sourceSystemProductVersion (0..1)
-  extension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)
+  extension[sourceSystemContact] = sourceSystemContact.hsaid/personName (0..1)
 """
 
 // ─── Källsystemskontakt ───────────────────────────────────────────────────────
@@ -46,11 +46,11 @@ Description: """
 Extension: DeviceSourceSystemContact
 Id: device-source-system-contact
 Title: "Källsystemskontakt"
-Description: "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName)."
+Description: "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName)."
 * extension contains
     actorId 0..1 and
     actorName 0..1
 * extension[actorId].value[x] only string
-* extension[actorId] ^short = "Kontaktpersonens identifierare (sourceSystemContact.actorId)"
+* extension[actorId] ^short = "Kontaktpersonens identifierare (sourceSystemContact.hsaid)"
 * extension[actorName].value[x] only string
-* extension[actorName] ^short = "Kontaktpersonens namn (sourceSystemContact.actorName)"
+* extension[actorName] ^short = "Kontaktpersonens namn (sourceSystemContact.personName)"

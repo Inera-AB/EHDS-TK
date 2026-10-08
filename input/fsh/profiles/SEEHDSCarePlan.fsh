@@ -27,7 +27,7 @@ Description: "Profil för vård- och omsorgsplaner mappat från RIVTA-tjänsteko
 
 * category MS
 * category from TypeOfCarePlanVS (required)
-* category ^short = "Typ av vård- och omsorgsplan (typeOfCarePlan)"
+* category ^short = "Typ av vård- och omsorgsplan (typeOfCarePlanEnum)"
 
 * title 1..1 MS
 * title ^short = "Rubrik för planen (documentTitle) – obligatorisk"

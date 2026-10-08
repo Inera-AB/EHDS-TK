@@ -51,18 +51,18 @@ i stället för enskilda extensions på Immunization.
 | `vaccinationMedicalRecordHeader.documentTime` | 0..1 | `Immunization.occurrenceDateTime` | Vaccinationstidpunkt (händelsetidpunkt); YYYYMMDDHHMMSS → ISO 8601. OBS: kan komma i konflikt med authorTime – se [VAC-002](#öppna-frågor) |
 | `vaccinationMedicalRecordHeader.patientId.id` | 1..1 | `Immunization.patient.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. `patientId` är av RIVTA-typen `PersonIdType {id, type}` |
 | `vaccinationMedicalRecordHeader.patientId.type` | 1..1 | `Immunization.patient.identifier.system` | OID för typ av identifierare (t.ex. `1.2.752.129.2.1.3.1` för personnummer); OID→URI, se tabell nedan |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.authorTime` | 1..1 | `Immunization.occurrenceDateTime` | Dokumentationstidpunkt – används som fallback om documentTime saknas; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [VAC-002](#öppna-frågor) |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalHSAId` | 0..1 | `Immunization.performer[0].actor` (Reference(PractitionerRole)) | Ansvarig yrkesutövares HSA-id |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Ansvarig yrkesutövares visningsnamn |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Ansvarig yrkesutövares befattningskod |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – Immunization saknar adressfält |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till organisationsenhet – se orgUnitTelecom ovan |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för organisationsenhet – se orgUnitTelecom ovan |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr** – versalt 'C' i 'Care' |
-| `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | **Yttre Sparr** – versalt 'C' i 'Care' |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Immunization.occurrenceDateTime` | Dokumentationstidpunkt – används som fallback om documentTime saknas; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [VAC-002](#öppna-frågor) |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Immunization.performer[0].actor` (Reference(PractitionerRole)) | Ansvarig yrkesutövares HSA-id |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Ansvarig yrkesutövares visningsnamn |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Ansvarig yrkesutövares befattningskod |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – Immunization saknar adressfält |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till organisationsenhet – se orgUnitTelecom ovan |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för organisationsenhet – se orgUnitTelecom ovan |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr** – versalt 'C' i 'Care' |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | **Yttre Sparr** – versalt 'C' i 'Care' |
 | `vaccinationMedicalRecordHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Immunization.extension[legalAuthenticator].signatureTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `vaccinationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Immunization.extension[legalAuthenticator].hsaId` | HSA-id för signerare |
 | `vaccinationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
@@ -91,13 +91,19 @@ i stället för enskilda extensions på Immunization.
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitEmail` | 0..1 | Ej mappad | E-post till juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitAddress` | 0..1 | Ej mappad | Postadress till juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för juridisk vårdgivare – se orgUnitTelecom ovan |
-| `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorId` | 0..1 | Ej mappad | Kontaktpersonens identifierare hos juridisk vårdgivare – inget FHIR-fält för kontaktperson på registreringsnivå |
-| `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorName` | 0..1 | Ej mappad | Kontaktpersonens namn hos juridisk vårdgivare – se actorId ovan |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.hsaid` | 0..1 | Ej mappad | Kontaktpersonens identifierare hos juridisk vårdgivare – inget FHIR-fält för kontaktperson på registreringsnivå |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personName` | 0..1 | Ej mappad | Kontaktpersonens namn hos juridisk vårdgivare – se actorId ovan |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personEmail` | 0..1 | Ej mappad | E-post – se VAC-003 |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personTelecom` | 0..1 | Ej mappad | Telefon – se VAC-003 |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personAddress` | 0..1 | Ej mappad | Adress – se VAC-003 |
 | `vaccinationMedicalRecordBody.registrationRecord.sourceSystemName` | 1..1 | `Device.deviceName[systemName].name` | Källsystemets klartextnamn; via `Immunization.extension[registrationDevice]` → SEEHDSDevice |
 | `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductName` | 0..1 | `Device.deviceName[productName].name` | Källsystemets produktnamn; se Device-tabell nedan |
 | `vaccinationMedicalRecordBody.registrationRecord.sourceSystemProductVersion` | 0..1 | `Device.version.value` | Källsystemets produktversion; se Device-tabell nedan |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorId` | 0..1 | `Device.extension[sourceSystemContact].actorId` | Identifierare för källsystemsansvarig kontakt; se Device-tabell nedan |
-| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorName` | 0..1 | `Device.extension[sourceSystemContact].actorName` | Namn på källsystemsansvarig kontakt; se Device-tabell nedan |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.hsaid` | 0..1 | `Device.extension[sourceSystemContact].actorId` | Identifierare för källsystemsansvarig kontakt; se Device-tabell nedan |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personName` | 0..1 | `Device.extension[sourceSystemContact].actorName` | Namn på källsystemsansvarig kontakt; se Device-tabell nedan |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personEmail` | 0..1 | Ej mappad | E-post till källsystemsansvarig; ingen plats i `Device.extension[sourceSystemContact]` |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personTelecom` | 0..1 | Ej mappad | Telefon till källsystemsansvarig; ingen plats i `Device.extension[sourceSystemContact]` |
+| `vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personAddress` | 0..1 | Ej mappad | Adress till källsystemsansvarig; ingen plats i `Device.extension[sourceSystemContact]` |
 | `vaccinationMedicalRecordBody.registrationRecord.careUnitSmiId` | 0..1 | `SEEHDSOrganization.identifier[smiId]` | SMI-id läggs som identifierarslice på den utförande vårdenhetens Organization-resurs (`performer[administering].actor`) – se Designbeslut nedan |
 
 ---
@@ -112,8 +118,8 @@ alla källsystemsmetadata från `registrationRecord`. Resursen skapas alltid (so
 | `registrationRecord.sourceSystemName` | 1..1 | `Device.deviceName[systemName].name` | type = `user-friendly-name` |
 | `registrationRecord.sourceSystemProductName` | 0..1 | `Device.deviceName[productName].name` | type = `model-name` |
 | `registrationRecord.sourceSystemProductVersion` | 0..1 | `Device.version.value` | Produktversion som fritext |
-| `registrationRecord.sourceSystemContact.actorId` | 0..1 | `Device.extension[sourceSystemContact].actorId` | Kontaktpersonens identifierare |
-| `registrationRecord.sourceSystemContact.actorName` | 0..1 | `Device.extension[sourceSystemContact].actorName` | Kontaktpersonens namn |
+| `registrationRecord.sourceSystemContact.hsaid` | 0..1 | `Device.extension[sourceSystemContact].actorId` | Kontaktpersonens identifierare |
+| `registrationRecord.sourceSystemContact.personName` | 0..1 | `Device.extension[sourceSystemContact].actorName` | Kontaktpersonens namn |
 
 ---
 
@@ -126,12 +132,26 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | `administrationRecord.vaccinationProgramName` | 0..1 | `Immunization.protocolApplied[0].series` | Vaccinationsprogrammets namn (t.ex. "Nationellt barnvaccinationsprogram") |
 | `administrationRecord.prescriberOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande vårdenhetens HSA-id; actor = SEEHDSOrganization; `function = OP` |
 | `administrationRecord.prescriberOrg.orgUnitName` | 0..1 | `Immunization.performer[ordering].actor.name` | Förskrivande vårdenhetens namn |
-| `administrationRecord.prescriberPerson.actorId` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande yrkesutövarens identifierare; actor = PractitionerRole; `function = OP` |
-| `administrationRecord.prescriberPerson.actorName` | 0..1 | `Immunization.performer[ordering].actor.display` | Förskrivande yrkesutövarens namn |
+| `administrationRecord.prescriberOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
+| `administrationRecord.prescriberOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.prescriberOrg.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.prescriberOrg.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.prescriberPerson.hsaid` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande yrkesutövarens identifierare; actor = PractitionerRole; `function = OP` |
+| `administrationRecord.prescriberPerson.personName` | 0..1 | `Immunization.performer[ordering].actor.display` | Förskrivande yrkesutövarens namn |
+| `administrationRecord.prescriberPerson.personEmail` | 0..1 | Ej mappad | E-post för förskrivaren |
+| `administrationRecord.prescriberPerson.personTelecom` | 0..1 | Ej mappad | Telefon för förskrivaren |
+| `administrationRecord.prescriberPerson.personAddress` | 0..1 | Ej mappad | Adress för förskrivaren |
 | `administrationRecord.performerOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[1].actor.identifier.value` | Administrerande vårdenhetens HSA-id |
 | `administrationRecord.performerOrg.orgUnitName` | 0..1 | `Immunization.performer[1].actor.display` | Administrerande vårdenhetens namn |
-| `administrationRecord.performer.actorId` | 0..1 | `Immunization.performer[0].actor.identifier.value` | Administrerande yrkesutövarens identifierare |
-| `administrationRecord.performer.actorName` | 0..1 | `Immunization.performer[0].actor.display` | Administrerande yrkesutövarens namn |
+| `administrationRecord.performerOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
+| `administrationRecord.performerOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.performerOrg.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.performerOrg.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.performer.hsaid` | 0..1 | `Immunization.performer[0].actor.identifier.value` | Administrerande yrkesutövarens identifierare |
+| `administrationRecord.performer.personName` | 0..1 | `Immunization.performer[0].actor.display` | Administrerande yrkesutövarens namn |
+| `administrationRecord.performer.personEmail` | 0..1 | Ej mappad | E-post för den som vaccinerat |
+| `administrationRecord.performer.personTelecom` | 0..1 | Ej mappad | Telefon för den som vaccinerat |
+| `administrationRecord.performer.personAddress` | 0..1 | Ej mappad | Adress för den som vaccinerat |
 | `administrationRecord.anatomicalSite` | 0..1 | `Immunization.site` | Anatomisk injektionsplats (CodeableConcept) |
 | `administrationRecord.route` | 0..1 | `Immunization.route` | Administreringssätt (CodeableConcept) |
 | `administrationRecord.dose.quantity` | 0..1 | `Immunization.doseQuantity` | Dos med mängd och enhet (Quantity) |
@@ -170,7 +190,7 @@ ingår i klinisk FHIR-data.
 |---|---|---|---|
 | `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod (OK/INFO/ERROR) – hanteras av transportlagret |
 | `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
-| `result.subcode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
+| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
 | `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
 | `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
 
@@ -202,13 +222,13 @@ vaccinationshändelserna. Designbeslut: en `Immunization` per `administrationRec
 
 Primär tidskälla är `vaccinationMedicalRecordHeader.documentTime` om den finns – den anger
 faktisk vaccinationstidpunkt. Om `documentTime` saknas används
-`accountableHealthCareProfessional.authorTime` som fallback (dokumentationstidpunkt).
+`accountableHealthcareProfessional.authorTime` som fallback (dokumentationstidpunkt).
 `registrationRecord.date` (date, ej dateTime) används alltid som `Immunization.recorded`.
 
 ### sourceSystem-fält → SEEHDSDevice (registrationDevice)
 
 `registrationRecord` innehåller fem källsystemsfält (`sourceSystemName`, `sourceSystemProductName`,
-`sourceSystemProductVersion`, `sourceSystemContact.actorId`, `sourceSystemContact.actorName`)
+`sourceSystemProductVersion`, `sourceSystemContact.hsaid`, `sourceSystemContact.personName`)
 som tillsammans beskriver det system varifrån vaccinationsregistreringen härstammar.
 
 I stället för att lägga dessa som enskilda extensions direkt på Immunization samlas de i en
@@ -260,13 +280,13 @@ Den mappar till `Immunization.reportOrigin.text` – reportOrigin är ett Codeab
 
 ## PDL och Sparr
 
-PDL-styrning utgår från `accountableHealthCareProfessional`-blocket i headern.
+PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 **OBS:** Elementnamnet har versalt 'C' i 'Care' (avvikelse från andra TK:ers stavning):
 
 | PDL-begrepp | RIVTA-källa | Hantering |
 |---|---|---|
-| Yttre Sparr (vårdgivare) | `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Yttre Sparr (vårdgivare) | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
+| Inre Sparr (vårdenhet) | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
 | Patientgodkännande | `vaccinationMedicalRecordHeader.approvedForPatient` (boolean) | `Immunization.meta.security`; se [PDL-001](#öppna-frågor) |
 
 ---
@@ -275,11 +295,11 @@ PDL-styrning utgår från `accountableHealthCareProfessional`-blocket i headern.
 
 | Agent | Roll | Källa |
 |---|---|---|
-| `agent[custodian]` | Juridiskt ansvarig vårdgivare | `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[custodian]` | Juridiskt ansvarig vårdgivare | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
+| `agent[author]` | Informationsägande vårdenhet | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
 
 `Provenance.target` refererar `Immunization` via `urn:uuid:{resurs.id}`.  
-`Provenance.recorded` = `vaccinationMedicalRecordHeader.accountableHealthCareProfessional.authorTime` (ISO 8601).
+`Provenance.recorded` = `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).
 
 ---
 
@@ -310,6 +330,6 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 | ID | Förslag |
 |---|---|
-| VAC-003 | **`careGiverContact` saknar FHIR-mappning.** Kontaktpersoninformation hos juridisk vårdgivare (`careGiverContact.actorId`, `careGiverContact.actorName`) har ingen naturlig plats i Immunization eller Provenance. Behöver beslut: ignorera eller lägga i extension. |
+| VAC-003 | **`careGiverContact` saknar FHIR-mappning.** Kontaktpersoninformation hos juridisk vårdgivare (`careGiverContact.hsaid`, `careGiverContact.personName`) har ingen naturlig plats i Immunization eller Provenance. Behöver beslut: ignorera eller lägga i extension. |
 | VAC-004 | **`documentTitle` saknar mappning.** Fritexttiteln för vaccinationsdokumentet har ingen standardmotpart i Immunization. Överväg `Immunization.note` eller ignorera som administrativ etikett. |
 | VAC-005 | **`legalAuthenticator` i Immunization-profil.** Immunization saknar ett standard `authenticator`-fält (till skillnad från DocumentReference). Custom extension behövs för att bevara legalAuthenticator-blocket. Beslut behövs om legalAuthenticator är relevant för vaccinationsdata eller kan utelämnas. |

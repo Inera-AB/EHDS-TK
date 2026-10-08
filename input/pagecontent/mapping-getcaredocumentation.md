@@ -56,27 +56,31 @@ eller URL) – se Härledda fält nedan.
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `careDocumentation.header.sourceSystemId` | 1..1 | `DocumentReference.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` (root = HSA-id för källsystemet) |
-| `careDocumentation.header.record.recordId` | 1..1 | `DocumentReference.masterIdentifier` | Källsystemets primärnyckel; unik och beständig identifierare |
+| `careDocumentation.header.record.id` | 1..1 | `DocumentReference.masterIdentifier` | Källsystemets primärnyckel; unik och beständig identifierare |
 | `careDocumentation.header.record.timestamp` | 1..1 | `DocumentReference.date`; även `Provenance.recorded` om `author.timestamp` saknas | Tidpunkt då journalposten skapades; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor). Fallback för `Provenance.recorded`, se [DOC-002](#beslutade-issues) |
 
 ### author (dokumentationsansvarig)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `careDocumentation.header.author.authorId` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) | Författarens HSA-id; logisk referens |
+| `careDocumentation.header.author.id` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) | Författarens HSA-id; logisk referens |
 | `careDocumentation.header.author.name` | 0..1 | `PractitionerRole.practitioner.display` | Författarens visningsnamn |
 | `careDocumentation.header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Tidpunkt då journalinformationen skapades av författaren; YYYYMMDDHHMMSS → ISO 8601. Saknas `author` används `record.timestamp`, se [DOC-002](#beslutade-issues) |
 | `careDocumentation.header.author.byRole` | 0..1 | `PractitionerRole.code` | Yrkesroll för författaren |
 | `careDocumentation.header.author.orgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | HSA-id för organisationsenhet som författaren är uppdragstagare i |
 | `careDocumentation.header.author.orgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet som författaren är uppdragstagare i |
+| `careDocumentation.header.author.orgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
+| `careDocumentation.header.author.orgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `careDocumentation.header.author.orgUnit.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `careDocumentation.header.author.orgUnit.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
 
 ### signature (signeringsinformation)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `careDocumentation.header.signature.signatureId` | 0..1 | `DocumentReference.authenticator` (Reference(PractitionerRole)) | Signerarens HSA-id; logisk referens |
+| `careDocumentation.header.signature.id` | 0..1 | `DocumentReference.authenticator` (Reference(PractitionerRole)) | Signerarens HSA-id; logisk referens |
 | `careDocumentation.header.signature.name` | 0..1 | `PractitionerRole.practitioner.display` | Signerarens visningsnamn |
-| `careDocumentation.header.signature.timestamp` | 0..1 | `DocumentReference.extension[ext-signature-time].valueDateTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. Extensionen ([ext-signature-time](StructureDefinition-ext-signature-time.html)) sätts endast när värdet finns – ingen ersättning annars, se [DOC-003](#beslutade-issues) |
+| `careDocumentation.header.signature.timestamp` | 0..1 | `DocumentReference.extension[ext-signature-time].valueDateTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. Extensionen ([ext-signature-time](StructureDefinition-ext-signature-time.html)) sätts endast när värdet finns – ingen ersättning annars, se [DOC-003](#beslutade-issues) Obs: XSD:n kräver 1..1 när `signature` finns; TKB:n anger 0..1. |
 | `careDocumentation.header.signature.byRole` | 0..1 | `PractitionerRole.code` | Yrkesroll för signeraren |
 
 ---

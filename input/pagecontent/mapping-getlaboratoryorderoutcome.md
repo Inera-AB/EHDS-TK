@@ -50,28 +50,30 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `header.sourceSystemId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `header.record.recordId` | 1..1 | `DiagnosticReport.identifier[record]` | Källsystemets postidentifierare |
+| `header.record.id` | 1..1 | `DiagnosticReport.identifier[record]` | Källsystemets postidentifierare |
 | `header.record.timestamp` | 1..1 | `DiagnosticReport.issued` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 
 ### Header – author (vårdfacklig information)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `header.author.authorId` | 0..1 | `PractitionerRole.identifier.value` | HSA-id för ansvarig person; via performer-referens |
+| `header.author.id` | 0..1 | `PractitionerRole.identifier.value` | HSA-id för ansvarig person; via performer-referens |
 | `header.author.name` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
 | `header.author.timestamp` | 1..1 | `Provenance.recorded` | Tidpunkt för författarens åtgärd; YYYYMMDDHHMMSS → ISO 8601 |
 | `header.author.byRole` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
-| `header.author.orgUnit.orgUnitId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
+| `header.author.orgUnit.id` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
 | `header.author.orgUnit.name` | 1..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
 
 ### Header – signature (signatär)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `header.signature.signatureId` | 0..1 | `DiagnosticReport.extension[signatureId]` | Signatärens HSA-id; kräver lokal extension om ej finns |
+| `header.signature.id` | 0..1 | `DiagnosticReport.extension[signatureId]` | Signatärens HSA-id; kräver lokal extension om ej finns |
 | `header.signature.name` | 0..1 | Ej mappad | Signatärens namn i klartext; HSA-id räcker för logisk referens |
 | `header.signature.timestamp` | 1..1 | `DiagnosticReport.extension[signatureTime]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `header.signature.byRole` | 0..1 | Ej mappad | Yrkesroll vid signering; ingen standardiserad motpart på DiagnosticReport; kan inkluderas i signatärens PractitionerRole om den skapas |
+| `header.signature.orgUnit.id` | 0..1 | Ej mappad | Signatärens organisationsenhet (HSA-id) |
+| `header.signature.orgUnit.name` | 1..1 (om orgUnit) | Ej mappad | Signatärens organisationsenhet (namn) |
 
 ### Body – beställningsinformation
 
@@ -91,10 +93,10 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `body.referral.version` | 0..1 | Ej mappad | Remissversion; inget standardiserat FHIR-fält; kan ev. lagras i ServiceRequest.extension |
 | `body.referral.question` | 0..1 | Ej mappad till DiagnosticReport | Frågeställning från remittenten tillhör ursprungsremissen (ServiceRequest.note) |
 | `body.referral.requestedCareService` | 0..* | Ej mappad till DiagnosticReport | Begärd tjänst tillhör ursprungsremissen (ServiceRequest.code) |
-| `body.referral.requester.requesterId` | 0..1 | Ej mappad till DiagnosticReport | Remittentens HSA-id tillhör ursprungsremissen (ServiceRequest.requester) |
+| `body.referral.requester.id` | 0..1 | Ej mappad till DiagnosticReport | Remittentens HSA-id tillhör ursprungsremissen (ServiceRequest.requester) |
 | `body.referral.requester.name` | 0..1 | Ej mappad till DiagnosticReport | Remittentens namn tillhör ursprungsremissen |
 | `body.referral.requester.byRole` | 0..1 | Ej mappad till DiagnosticReport | Remittentens yrkesroll tillhör ursprungsremissen |
-| `body.referral.requester.orgUnit.orgUnitId` | 0..1 | Ej mappad till DiagnosticReport | Remittentens org-enhets HSA-id tillhör ursprungsremissen |
+| `body.referral.requester.orgUnit.id` | 0..1 | Ej mappad till DiagnosticReport | Remittentens org-enhets HSA-id tillhör ursprungsremissen |
 | `body.referral.requester.orgUnit.name` | 1..1 | Ej mappad till DiagnosticReport | Remittentens org-enhets namn tillhör ursprungsremissen |
 | `body.referral.referralInformation.referralComment` | 0..1 | Ej mappad till DiagnosticReport | Remisskommentar tillhör ursprungsremissen (ServiceRequest.note) |
 | `body.referral.referralInformation.referralMedicalInformation` | 0..1 | Ej mappad till DiagnosticReport | Medicinsk remissinformation tillhör ursprungsremissen (ServiceRequest.note) |
@@ -105,9 +107,9 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `body.recipientUnit.unitId` | 0..1 | `DiagnosticReport.resultsInterpreter.identifier` | Mottagande vårdenhet (svarmottagare) via logisk referens |
+| `body.recipientUnit.id` | 0..1 | `DiagnosticReport.resultsInterpreter.identifier` | Mottagande vårdenhet (svarmottagare) via logisk referens |
 | `body.recipientUnit.name` | 1..1 | `DiagnosticReport.resultsInterpreter.display` | Svarmottagarens namn |
-| `body.recipientSignature.signatoryId` | 0..1 | Ej mappad | Kvittens av svaret; inget standardiserat FHIR-fält i DiagnosticReport |
+| `body.recipientSignature.id` | 0..1 | Ej mappad | Kvittens av svaret; inget standardiserat FHIR-fält i DiagnosticReport |
 | `body.recipientSignature.name` | 0..1 | Ej mappad | Kvittensnamn; inget standardiserat FHIR-fält |
 | `body.recipientSignature.timestamp` | 1..1 | Ej mappad | Kvittenstidpunkt; inget standardiserat FHIR-fält |
 | `body.recipientSignature.byRole` | 0..1 | Ej mappad | Yrkesroll vid kvittens; inget standardiserat FHIR-fält |
@@ -160,11 +162,11 @@ Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SE
 | `groupOfAnalyses.analysis.result.reference.description` | 0..1 | `Observation.referenceRange.text` | Beskrivning; kombineras med interval om båda finns |
 | `groupOfAnalyses.analysis.result.reference.population` | 0..1 | `Observation.referenceRange.appliesTo` | Population som referensintervallet gäller |
 | `groupOfAnalyses.analysis.result.reference.comment` | 0..1 | `Observation.referenceRange.text` | Kommentar om referensintervallet; kombineras i referenceRange.text |
-| `groupOfAnalyses.analysis.result.recipientSignature.signatoryId` | 0..1 | Ej mappad | Mottagarkvittens; inget standardiserat FHIR-fält i Observation |
+| `groupOfAnalyses.analysis.result.recipientSignature.id` | 0..1 | Ej mappad | Mottagarkvittens; inget standardiserat FHIR-fält i Observation |
 | `groupOfAnalyses.analysis.result.recipientSignature.name` | 0..1 | Ej mappad | Mottagarkvittens namn; inget standardiserat FHIR-fält |
 | `groupOfAnalyses.analysis.result.recipientSignature.timestamp` | 1..1 | Ej mappad | Mottagarkvittenstidpunkt; inget standardiserat FHIR-fält |
 | `groupOfAnalyses.analysis.result.recipientSignature.byRole` | 0..1 | Ej mappad | Yrkesroll vid mottagarkvittens; inget standardiserat FHIR-fält |
-| `groupOfAnalyses.analysis.result.performerSignature.signatoryId` | 0..1 | `Observation.performer.identifier` | Utförarens HSA-id; via Reference(PractitionerRole) |
+| `groupOfAnalyses.analysis.result.performerSignature.id` | 0..1 | `Observation.performer.identifier` | Utförarens HSA-id; via Reference(PractitionerRole) |
 | `groupOfAnalyses.analysis.result.performerSignature.name` | 0..1 | `Observation.performer.display` | Utförarens namn |
 | `groupOfAnalyses.analysis.result.performerSignature.timestamp` | 1..1 | Ej mappad | Signeringstidpunkt för utförarens signatur; inget dedikerat fält i Observation; kan lagras i Provenance om kritiskt |
 | `groupOfAnalyses.analysis.result.performerSignature.byRole` | 0..1 | Ej mappad | Utförarens yrkesroll; ingår via PractitionerRole.code om performer-referens skapas |
