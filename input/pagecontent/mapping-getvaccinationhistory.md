@@ -57,8 +57,8 @@ i stället för enskilda extensions på Immunization.
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Ansvarig yrkesutövares befattningskod |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
-| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – Immunization saknar adressfält |
-| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – Immunization saknar adressfält. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till organisationsenhet – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för organisationsenhet – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr** – versalt 'C' i 'Care' |
@@ -87,8 +87,8 @@ i stället för enskilda extensions på Immunization.
 | `vaccinationMedicalRecordBody.registrationRecord.patientAdverseEffect` | 0..* | `Immunization.reaction[].detail` | Patientens biverkningar kopplade till registreringen |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[2].actor.identifier.value` | Juridisk vårdgivares HSA-id |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitName` | 0..1 | `Immunization.performer[2].actor.display` | Juridisk vårdgivares namn |
-| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till juridisk vårdgivare – Immunization saknar adressfält |
-| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitEmail` | 0..1 | Ej mappad | E-post till juridisk vårdgivare – se orgUnitTelecom ovan |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till juridisk vårdgivare – Immunization saknar adressfält. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitEmail` | 0..1 | Ej mappad | E-post till juridisk vårdgivare – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitAddress` | 0..1 | Ej mappad | Postadress till juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.hsaid` | 0..1 | Ej mappad | Kontaktpersonens identifierare hos juridisk vårdgivare – inget FHIR-fält för kontaktperson på registreringsnivå |
@@ -132,10 +132,10 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | `administrationRecord.vaccinationProgramName` | 0..1 | `Immunization.protocolApplied[0].series` | Vaccinationsprogrammets namn (t.ex. "Nationellt barnvaccinationsprogram") |
 | `administrationRecord.prescriberOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande vårdenhetens HSA-id; actor = SEEHDSOrganization; `function = OP` |
 | `administrationRecord.prescriberOrg.orgUnitName` | 0..1 | `Immunization.performer[ordering].actor.name` | Förskrivande vårdenhetens namn |
-| `administrationRecord.prescriberOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
-| `administrationRecord.prescriberOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.prescriberOrg.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.prescriberOrg.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.prescriberOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.prescriberOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.prescriberOrg.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
+| `administrationRecord.prescriberOrg.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
 | `administrationRecord.prescriberPerson.hsaid` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande yrkesutövarens identifierare; actor = PractitionerRole; `function = OP` |
 | `administrationRecord.prescriberPerson.personName` | 0..1 | `Immunization.performer[ordering].actor.display` | Förskrivande yrkesutövarens namn |
 | `administrationRecord.prescriberPerson.personEmail` | 0..1 | Ej mappad | E-post för förskrivaren |
@@ -143,10 +143,10 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | `administrationRecord.prescriberPerson.personAddress` | 0..1 | Ej mappad | Adress för förskrivaren |
 | `administrationRecord.performerOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[1].actor.identifier.value` | Administrerande vårdenhetens HSA-id |
 | `administrationRecord.performerOrg.orgUnitName` | 0..1 | `Immunization.performer[1].actor.display` | Administrerande vårdenhetens namn |
-| `administrationRecord.performerOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
-| `administrationRecord.performerOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.performerOrg.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.performerOrg.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.performerOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.performerOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.performerOrg.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
+| `administrationRecord.performerOrg.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
 | `administrationRecord.performer.hsaid` | 0..1 | `Immunization.performer[0].actor.identifier.value` | Administrerande yrkesutövarens identifierare |
 | `administrationRecord.performer.personName` | 0..1 | `Immunization.performer[0].actor.display` | Administrerande yrkesutövarens namn |
 | `administrationRecord.performer.personEmail` | 0..1 | Ej mappad | E-post för den som vaccinerat |

@@ -39,8 +39,8 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 |---|---|---|---|
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier` | HSA-id för organisationsenhet |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet |
-| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas |
-| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org.enhet – se `orgUnitTelecom` ovan |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org.enhet – se `orgUnitTelecom` ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till org.enhet – ingår ej i PractitionerRole; kan lagras i Organization.address om Organization-resurs skapas |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Fritextplats för org.enhet – ingen standardiserad FHIR-plats i Encounter/PractitionerRole |
 
@@ -83,8 +83,8 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactBody.careContactOrgUnit` | 0..1 | — | Enhet för kontakten (Regel 5) |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitHSAId` | 0..1 | `Encounter.serviceProvider.identifier` | Logisk referens till Organization via HSA-id. Kan utelämnas (0..1, Regel 5) |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitName` | 0..1 | `Encounter.serviceProvider.display` | Visningsnamn för kontaktenhet. Kan utelämnas (0..1, Regel 5) |
-| `careContact.careContactBody.careContactOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till kontaktenhet – ingår ej i Encounter.serviceProvider; kan lagras i Organization.telecom om Organization-resurs skapas |
-| `careContact.careContactBody.careContactOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till kontaktenhet – se `orgUnitTelecom` ovan |
+| `careContact.careContactBody.careContactOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till kontaktenhet – ingår ej i Encounter.serviceProvider; kan lagras i Organization.telecom om Organization-resurs skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `careContact.careContactBody.careContactOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till kontaktenhet – se `orgUnitTelecom` ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress till kontaktenhet – ingår ej i Encounter; kan lagras i Organization.address om Organization-resurs skapas |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Fritextplats för kontaktenhet – ingen standardiserad FHIR-plats i Encounter |
 

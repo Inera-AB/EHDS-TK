@@ -69,10 +69,10 @@ eller URL) – se Härledda fält nedan.
 | `careDocumentation.header.author.byRole` | 0..1 | `PractitionerRole.code` | Yrkesroll för författaren |
 | `careDocumentation.header.author.orgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | HSA-id för organisationsenhet som författaren är uppdragstagare i |
 | `careDocumentation.header.author.orgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet som författaren är uppdragstagare i |
-| `careDocumentation.header.author.orgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
-| `careDocumentation.header.author.orgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `careDocumentation.header.author.orgUnit.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `careDocumentation.header.author.orgUnit.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `careDocumentation.header.author.orgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `careDocumentation.header.author.orgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `careDocumentation.header.author.orgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
+| `careDocumentation.header.author.orgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
 
 ### signature (signeringsinformation)
 

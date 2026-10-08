@@ -48,8 +48,8 @@ representeras via extensions.
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
-| `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – MedicationStatement saknar adressfält; inkluderas ej i FHIR-resursen |
-| `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan |
+| `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – MedicationStatement saknar adressfält; inkluderas ej i FHIR-resursen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress – se orgUnitTelecom ovan |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort – se orgUnitTelecom ovan |
 | `medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | **Yttre Sparr** – lowercase 'c' i 'care' (TK-specifik stavning) |
@@ -87,8 +87,8 @@ representeras via extensions.
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalRoleCode` | 0..1 | `MedicationStatement.extension[prescriber].roleCode` | Förskrivarens befattningskod |
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `MedicationStatement.extension[prescriber].orgUnitHSAId` | Förskrivarens organisationsenhet (HSA-id) |
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `MedicationStatement.extension[prescriber].orgUnitName` | Förskrivarens organisationsenhet (namn) |
-| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Förskrivarens org-telefon – kontaktuppgifter lagras ej i MedicationStatement |
-| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Förskrivarens org-e-post – se orgUnitTelecom ovan |
+| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Förskrivarens org-telefon – kontaktuppgifter lagras ej i MedicationStatement. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Förskrivarens org-e-post – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Förskrivarens org-postadress – se orgUnitTelecom ovan |
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Förskrivarens org-plats/ort – se orgUnitTelecom ovan |
 | `medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
@@ -99,10 +99,10 @@ representeras via extensions.
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalRoleCode` | 0..1 | `MedicationStatement.extension[evaluator].roleCode` | Utvärderarens befattningskod |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `MedicationStatement.extension[evaluator].orgUnitHSAId` | Utvärderarens organisationsenhet (HSA-id) |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `MedicationStatement.extension[evaluator].orgUnitName` | Utvärderarens organisationsenhet (namn) |
-| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
-| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
+| `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareGiverHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `medicationMedicalRecordBody.medicationPrescription.startOfFirstTreatment` | 0..1 | `MedicationStatement.extension[startOfFirstTreatment]` | Start för första behandlingsomgång; YYYYMMDDHHMMSS → ISO 8601 |
