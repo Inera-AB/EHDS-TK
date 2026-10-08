@@ -27,7 +27,7 @@ Description: "Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutc
 * category 1..* MS
 
 * code 1..1 MS
-* code ^short = "Undersökningsspecialitet (imagingOutcomeBody.examinationSpeciality)"
+* code ^short = "Undersökningsspecialitet (imagingOutcomeBody.examinationSpeciality); code.text = documentTitle i första hand"
 
 * imagingStudy MS
 * imagingStudy only Reference(SEEHDSImagingStudy)

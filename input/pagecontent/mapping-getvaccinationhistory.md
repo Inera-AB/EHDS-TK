@@ -47,7 +47,7 @@ i stället för enskilda extensions på Immunization.
 |---|---|---|---|
 | `vaccinationMedicalRecordHeader.documentId` | 1..1 | `Immunization.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `vaccinationMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `Immunization.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `vaccinationMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Fritexttitel för dokument – ingen motsvarighet i Immunization |
+| `vaccinationMedicalRecordHeader.documentTitle` | 0..1 | `Immunization.note.text` | Egen `note`-post med texten `Dokumenttitel: {documentTitle}`, så att den skiljs från övriga anteckningar (VAC-004) |
 | `vaccinationMedicalRecordHeader.documentTime` | 0..1 | `Immunization.occurrenceDateTime` | Vaccinationstidpunkt (händelsetidpunkt); YYYYMMDDHHMMSS → ISO 8601. OBS: kan komma i konflikt med authorTime – se [VAC-002](#öppna-frågor) |
 | `vaccinationMedicalRecordHeader.patientId.id` | 1..1 | `Immunization.patient.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. `patientId` är av RIVTA-typen `PersonIdType {id, type}` |
 | `vaccinationMedicalRecordHeader.patientId.type` | 1..1 | `Immunization.patient.identifier.system` | OID för typ av identifierare (t.ex. `1.2.752.129.2.1.3.1` för personnummer); OID→URI, se tabell nedan |
@@ -57,8 +57,8 @@ i stället för enskilda extensions på Immunization.
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Ansvarig yrkesutövares befattningskod |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
-| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – Immunization saknar adressfält |
-| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till organisationsenhet – Immunization saknar adressfält. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till organisationsenhet – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för organisationsenhet – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr** – versalt 'C' i 'Care' |
@@ -87,8 +87,8 @@ i stället för enskilda extensions på Immunization.
 | `vaccinationMedicalRecordBody.registrationRecord.patientAdverseEffect` | 0..* | `Immunization.reaction[].detail` | Patientens biverkningar kopplade till registreringen |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[2].actor.identifier.value` | Juridisk vårdgivares HSA-id |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitName` | 0..1 | `Immunization.performer[2].actor.display` | Juridisk vårdgivares namn |
-| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till juridisk vårdgivare – Immunization saknar adressfält |
-| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitEmail` | 0..1 | Ej mappad | E-post till juridisk vårdgivare – se orgUnitTelecom ovan |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till juridisk vårdgivare – Immunization saknar adressfält. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitEmail` | 0..1 | Ej mappad | E-post till juridisk vårdgivare – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitAddress` | 0..1 | Ej mappad | Postadress till juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för juridisk vårdgivare – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordBody.registrationRecord.careGiverContact.hsaid` | 0..1 | Ej mappad | Kontaktpersonens identifierare hos juridisk vårdgivare – inget FHIR-fält för kontaktperson på registreringsnivå |
@@ -132,10 +132,10 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | `administrationRecord.vaccinationProgramName` | 0..1 | `Immunization.protocolApplied[0].series` | Vaccinationsprogrammets namn (t.ex. "Nationellt barnvaccinationsprogram") |
 | `administrationRecord.prescriberOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande vårdenhetens HSA-id; actor = SEEHDSOrganization; `function = OP` |
 | `administrationRecord.prescriberOrg.orgUnitName` | 0..1 | `Immunization.performer[ordering].actor.name` | Förskrivande vårdenhetens namn |
-| `administrationRecord.prescriberOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
-| `administrationRecord.prescriberOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.prescriberOrg.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.prescriberOrg.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.prescriberOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.prescriberOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.prescriberOrg.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
+| `administrationRecord.prescriberOrg.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
 | `administrationRecord.prescriberPerson.hsaid` | 0..1 | `Immunization.performer[ordering].actor.identifier` | Förskrivande yrkesutövarens identifierare; actor = PractitionerRole; `function = OP` |
 | `administrationRecord.prescriberPerson.personName` | 0..1 | `Immunization.performer[ordering].actor.display` | Förskrivande yrkesutövarens namn |
 | `administrationRecord.prescriberPerson.personEmail` | 0..1 | Ej mappad | E-post för förskrivaren |
@@ -143,10 +143,10 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | `administrationRecord.prescriberPerson.personAddress` | 0..1 | Ej mappad | Adress för förskrivaren |
 | `administrationRecord.performerOrg.orgUnitHSAId` | 0..1 | `Immunization.performer[1].actor.identifier.value` | Administrerande vårdenhetens HSA-id |
 | `administrationRecord.performerOrg.orgUnitName` | 0..1 | `Immunization.performer[1].actor.display` | Administrerande vårdenhetens namn |
-| `administrationRecord.performerOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen |
-| `administrationRecord.performerOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.performerOrg.orgUnitAddress` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
-| `administrationRecord.performerOrg.orgUnitLocation` | 0..1 | Ej mappad | Se `orgUnitTelecom` |
+| `administrationRecord.performerOrg.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.performerOrg.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `administrationRecord.performerOrg.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
+| `administrationRecord.performerOrg.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
 | `administrationRecord.performer.hsaid` | 0..1 | `Immunization.performer[0].actor.identifier.value` | Administrerande yrkesutövarens identifierare |
 | `administrationRecord.performer.personName` | 0..1 | `Immunization.performer[0].actor.display` | Administrerande yrkesutövarens namn |
 | `administrationRecord.performer.personEmail` | 0..1 | Ej mappad | E-post för den som vaccinerat |
@@ -321,7 +321,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|
 | VAC-001 | **`registrationRecord` (1..1) + `administrationRecord` (0..*) – en Immunization per administrationRecord.** Om `administrationRecord` är tomt skapas en Immunization med enbart registreringsdata. Behöver verifieras om detta är önskat beteende eller om sådana poster ska filtreras bort. |
 | VAC-002 | **`documentTime` kontra `authorTime` som källa för `occurrenceDateTime`.** `documentTime 0..1` anger vaccinationshändelsens tidpunkt; `authorTime 1..1` anger dokumentationstidpunkten. Om båda är satta kan de skilja sig. Beslut: `documentTime` har prioritet; `authorTime` används som fallback. Behöver bekräftelse från domänexpert. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar standardiserat FHIR-kodsystem.** Fältet mappas tentativt till `meta.security` men inget standardiserat kodsystem för detta begrepp finns. Behöver gemensamt beslut; se central issue i [mapping-issues](mapping-issues.html). |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 | VAC-006 | **SMI-id OID behöver verifieras.** `SEEHDSOrganization.identifier[smiId].system` sätts preliminärt till `urn:oid:1.2.752.194.10.1.1`. Korrigera mot Folkhälsomyndighetens faktiska NamingSystem för vaccinationsregistret. |
@@ -331,5 +331,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Förslag |
 |---|---|
 | VAC-003 | **`careGiverContact` saknar FHIR-mappning.** Kontaktpersoninformation hos juridisk vårdgivare (`careGiverContact.hsaid`, `careGiverContact.personName`) har ingen naturlig plats i Immunization eller Provenance. Behöver beslut: ignorera eller lägga i extension. |
-| VAC-004 | **`documentTitle` saknar mappning.** Fritexttiteln för vaccinationsdokumentet har ingen standardmotpart i Immunization. Överväg `Immunization.note` eller ignorera som administrativ etikett. |
+| VAC-004 | **Beslutat:** `documentTitle` läggs i en egen `Immunization.note`-post med texten `Dokumenttitel: {documentTitle}`. |
 | VAC-005 | **`legalAuthenticator` i Immunization-profil.** Immunization saknar ett standard `authenticator`-fält (till skillnad från DocumentReference). Custom extension behövs för att bevara legalAuthenticator-blocket. Beslut behövs om legalAuthenticator är relevant för vaccinationsdata eller kan utelämnas. |

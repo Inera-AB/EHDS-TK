@@ -7,11 +7,10 @@ Description: """
   GetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).
   Täcker NPÖ 2.0 och 1177 Journal 2.0.
 
-  OBS: TKBn har tre separata sektioner (registrationRecord, pregnancyCheckupRecord,
-  postDeliveryRecord) med egna sektionsspecifika fält. En Observation skapas per sektion
-  med Observation.code som diskriminator (se MAT-001 i mapping-issues). Fältnamnen
-  i ^short nedan refererar till sektionsspecifika element – implementatören väljer rätt
-  sektionselement baserat på Observation.code.
+  TKB:n har tre avsnitt (registrationRecord, pregnancyCheckupRecord, postDeliveryRecord).
+  Profilen används både för den grupperande Observationen per avsnitt (code = avsnittskod,
+  code.text = documentTitle, hasMember = fälten) och för medlems-Observationerna, en per
+  fält (MAT-001).
 """
 
 * subject only Reference(SEEHDSPatient)
@@ -32,16 +31,19 @@ Description: """
 
 
 * code 1..1 MS
-* code ^short = "Sektionskod – diskriminator för vilken av de tre sektionerna som Observation representerar"
+* code ^short = "Grupperande: avsnittskod med code.text = documentTitle (MAT-003). Medlem: fältets kod"
 
 * effective[x] MS
 * effective[x] ^short = "Tidpunkt för dokumentation (maternityMedicalRecordHeader.accountableHealthcareProfessional.authorTime)"
 
 * value[x] MS
-* value[x] ^short = "Sektionsspecifikt mätvärde (t.ex. pregnancyCheckupRecord.bloodPressure, postDeliveryRecord.birthWeight)"
+* value[x] ^short = "Medlem: fältets värde (t.ex. pregnancyCheckupRecord.bloodPressureSystolic). Grupperande: inget värde"
+
+* hasMember MS
+* hasMember ^short = "Grupperande: avsnittets medlems-Observationer (MAT-001)"
 
 * component MS
-* component ^short = "Sektionsspecifika delfält kodas som component (se MAT-001)"
+* component ^short = "Medlem för upprepad post (t.ex. previousGravidityAndParity[i]): postens fält"
 
 * note MS
 * note ^short = "Sektionsspecifik kommentar"

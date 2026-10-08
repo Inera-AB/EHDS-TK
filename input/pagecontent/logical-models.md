@@ -65,13 +65,11 @@ Varje kardinalitet har jämförts mellan XSD, TKB och den tidigare modellen. TKB
 
 - **Bekräftade av TKB** (29 element): strängare än XSD:n och oförändrade, t.ex. `documentTitle`/`documentTime` 0..0 i GetDiagnosis, `result` 1..1 i GetDiagnosis och GetAlertInformation, `documentTime` 1..1 i GetFunctionalStatus, GetMaternityMedicalHistory och GetReferralOutcome.
 - **Nya begränsningar från TKB** (24 element), främst 0..0: `nullified`/`nullifiedReason` i GetDiagnosis, GetCarePlans, GetMaternityMedicalHistory och GetReferralOutcome; `legalAuthenticatorRoleCode` och vårdenhet/vårdgivare under bildtagning och remiss i GetImagingOutcome och GetReferralOutcome; `header.signature.orgUnit` i GetLaboratoryOrderOutcome; `documentTime` samt vårdenhet/vårdgivare för förskrivare och utvärderare i GetMedicationHistory.
-- **Behållna trots att TKB:n anger annat** (bör granskas):
+- **Behållna trots att TKB:n anger annat:**
 
 | Tjänstekontrakt | Element | Modell | TKB | XSD |
 |---|---|---|---|---|
-| GetCareContacts | `careContact.careContactBody.careContactOrgUnit.orgUnitHSAId` | 1..1 | 0..1 (Regel 5) | 0..1 |
-| GetCareContacts | `careContact.careContactBody.careContactOrgUnit.orgUnitName` | 1..1 | 0..1 (Regel 5) | 0..1 |
-| GetMedicationHistory | `medicationMedicalRecord.medicationMedicalRecordHeader.documentTitle` | 0..0 | 0..1 | 0..1 |
+| GetMedicationHistory | `medicationMedicalRecord.medicationMedicalRecordHeader.documentTitle` | 0..0 (avsiktligt undertryckt) | 0..1 | 0..1 |
 | GetCareContacts | `careContact.careContactHeader.nullified`, `nullifiedReason` | 0..0 | saknas i TKB | 0..1 |
 
 - **TKB lösare än XSD** – modellen följer XSD:n:

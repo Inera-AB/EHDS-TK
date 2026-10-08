@@ -46,8 +46,8 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 |---|---|---|---|
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier` | HSA-id för organisationsenhet |
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet |
-| `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas |
-| `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org.enhet – se `orgUnitTelecom` ovan |
+| `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org.enhet – se `orgUnitTelecom` ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till org.enhet – ingår ej i PractitionerRole; kan lagras i Organization.address om Organization-resurs skapas |
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Fritextplats för org.enhet – ingen standardiserad FHIR-plats i CarePlan/PractitionerRole |
 
@@ -161,4 +161,4 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|---|
 | CP-001 | `carePlan.carePlanBody.content` (MultimediaType) saknar standardiserat FHIR R4-uttryck i CarePlan. Bör en lokal extension definieras i profilen med fälten `mediaType`, `value` (base64Binary) och `reference` (url), eller ska `DocumentReference` användas som alternativ resurs? | Föreslagen |
 | CP-002 | `carePlan.carePlanBody.participatingCareUnitHSAId` mappas till `CarePlan.contributor` (Reference(CareTeam\|Organization\|Patient\|Practitioner\|RelatedPerson)). Organization är lämpligast för enhetsnivå. Bör logisk referens via identifier tillåtas utan att Organization-resurs skapas? | Föreslagen |
-| CP-003 | OrgUnit-kontaktdetaljer (`orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation`) under `accountableHealthcareProfessional.healthcareProfessionalOrgUnit` är ej mappade i FHIR CarePlan/PractitionerRole. Ska dessa fält ignoreras eller kräver de skapande av en fullständig Organization-resurs? | Föreslagen |
+| CP-003 | **Sammanslagen med GENERAL-008:** se [Organisationsenheter, kontaktuppgifter och historik](mappings.html#organisation). | Öppen |

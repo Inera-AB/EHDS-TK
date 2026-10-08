@@ -26,7 +26,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 |---|---|---|---|
 | `referralOutcomeHeader.documentId` | 1..1 | `DiagnosticReport.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `referralOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `referralOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.extension[title]` | Dokumenttitel; extension krävs då DiagnosticReport saknar title-fält i R4 |
+| `referralOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.code.text` | Används om `referralOutcomeBody.referralOutcomeTitle` saknas, se [Titel-prioritering](#titel) |
 | `referralOutcomeHeader.documentTime` | 1..1 | `DiagnosticReport.issued` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `referralOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `referralOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
@@ -36,8 +36,8 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
-| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefonnummer till org-enhet; ingen standardiserad plats på DiagnosticReport; kan läggas på Organization.telecom om Organization-instans skapas |
-| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org-enhet; kan läggas på Organization.telecom om Organization-instans skapas |
+| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefonnummer till org-enhet; ingen standardiserad plats på DiagnosticReport; kan läggas på Organization.telecom om Organization-instans skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
+| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org-enhet; kan läggas på Organization.telecom om Organization-instans skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress till org-enhet; kan läggas på Organization.address om Organization-instans skapas |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/lokation för org-enhet; kan läggas på Organization.address.city om Organization-instans skapas |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – informationsägande vårdenhet |
@@ -60,7 +60,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `referralOutcomeBody.referralOutcomeTypeCode` | 1..1 | `DiagnosticReport.status` | SS=`final`, SR=`preliminary`; se [Härledda fält](#diagnosticreportstatus-från-referraloutcometypecode) |
-| `referralOutcomeBody.referralOutcomeTitle` | 0..1 | `DiagnosticReport.extension[title]` | Titelprioritering: referralOutcomeTitle > documentTitle; se [Titel-prioritering](#titel-prioritering-diagnosticreportextensiontitle) |
+| `referralOutcomeBody.referralOutcomeTitle` | 0..1 | `DiagnosticReport.code.text` | Går före `documentTitle`, se [Titel-prioritering](#titel) |
 | `referralOutcomeBody.referralOutcomeText` | 1..1 | `DiagnosticReport.conclusion` | Fritext remissvar/utlåtande |
 
 ### Klinisk information (clinicalInformation)
@@ -133,13 +133,13 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `SS` | Specialistutlåtande/svar (slutgiltig bedömning) | `final` |
 | `SR` | Specialistremissvar (preliminärt/delsvar) | `preliminary` |
 
-### Titel-prioritering (DiagnosticReport.extension[title])
+### Titel-prioritering (DiagnosticReport.code.text) {#titel}
 
-Titeln sätts enligt följande prioriteringsordning:
+Titeln mappas till `DiagnosticReport.code.text`, rapportens namn i klartext. `code.coding` är fortfarande den fasta LOINC-koden `11488-4` ("Consult note"). Texten sätts enligt följande prioritet:
 
 1. `referralOutcomeBody.referralOutcomeTitle` (om satt)
 2. `referralOutcomeHeader.documentTitle` (om satt)
-3. (inget värde) – extension sätts inte
+3. Annars LOINC-kodens display, "Consult note"
 
 ### act-poster och multimedia (REF-001)
 
@@ -210,7 +210,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Fråga |
 |---|---|
 | REF-001 | **`act 0..*` saknar standard DiagnosticReport-element.** `referralOutcomeBody.act` innehåller kodad åtgärd (`actCode`), fritext (`actText`), tidpunkt (`actTime`) och eventuell multimedia (`actResult` med `mediaType`/`value`/`reference`). Nuvarande lösning: textinnehåll och bilagor → `presentedForm`, kodad åtgärd → custom extension. Alternativ: en `Procedure`-resurs per `act`-post länkad via `DiagnosticReport.result`. Kräver beslut. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar standardiserad FHIR-motsvarighet.** Fältet finns i headern men `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er; se central issue i [mapping-issues](mapping-issues.html). |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ## Föreslagna nya issues
@@ -219,4 +219,4 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|
 | REF-002 | **`referralOutcomeBody.attested.attesterName` vs. header-signatär.** Svaret har två potentiella signatärstrukturer: `referralOutcomeHeader.legalAuthenticator` och `referralOutcomeBody.attested`. Nuvarande beslut: båda mappas till samma `DiagnosticReport.extension[attested]`. Om de kan representera olika signatärer (t.ex. juridisk autentiserare vs. klinisk attestant) kan detta skapa konflikter. Behöver klargöras med TKB-förvaltningen om de är semantiskt ekvivalenta eller distinkta. |
 | REF-003 | **Stängd – `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit`.** Den logiska modellen har nu alla OrgUnitType-fält (orgUnitHSAId, orgUnitName, orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation) enligt XSD:n. Fälten tillhör ursprungsremissen och mappas inte till DiagnosticReport. |
-| REF-004 | **`orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation` – ej mappade i PatientSummaryHeader-blocket.** Kontaktuppgifter för org-enheten finns på flera ställen i modellen (header och referral.accountableHealthcareProfessional) men har ingen standardiserad plats i DiagnosticReport-kontexten utan att skapa separata Organization-instanser. Behöver beslut om dessa ska inkluderas alls i bryggan. |
+| REF-004 | **Sammanslagen med GENERAL-008:** se [Organisationsenheter, kontaktuppgifter och historik](mappings.html#organisation). |
