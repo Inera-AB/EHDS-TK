@@ -105,7 +105,7 @@ Denna sida dokumenterar öppna designfrågor och fattade beslut för mappningar 
 
 ## Kända begränsningar
 
-Följande begränsningar i FHIR R4 påverkar mappningarna i denna implementationsguide:
+Följande begränsningar i FHIR R4 påverkar mappningarna i denna implementationsguide. Vilka som löses i R5 framgår av [Val av FHIR-version](index.html#fhir-version).
 
 1. **`Observation.bodySite` är `0..1` (ej `0..*`)** — begränsar mappning av `targetSite` när flera anatomiska platser anges i källdata (se OBS-004). **Beslutat:** extension `additionalBodySite` används för ytterligare platser; tas bort vid R5-migration.
 2. **`DiagnosticReport` saknar inbyggt stöd för act-poster med multimedia** — fält som `actCode`, `actText` och `actResult` med multimediainnehåll från GetReferralOutcome har ingen direkt motsvarighet (se REF-001). Workaround: `DiagnosticReport.presentedForm` och extension.

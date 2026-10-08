@@ -98,6 +98,28 @@ Denna IG har beroenden till:
 
 HL7 Sweden basprofiler (`hl7se.fhir.base`) används som konvention och är inget paketberoende.
 
+### Val av FHIR-version {#fhir-version}
+
+IG:n bygger på **FHIR R4 (4.0.1)**. Det långsiktiga målet är en R5-IG, men det förutsätter att beroendena först finns i R5, och det avgörs i externa projekt:
+
+| Beroende | Läge | Krävs för R5 |
+|---|---|---|
+| EURIDICE (`hl7.fhir.eu.health-data-api`) | R4, bygger på EU Core 2.0.0-ballot | En R5-version av EURIDICE |
+| HL7 Europe Core (`hl7.fhir.eu.base`) | R4; R5 finns bara som opublicerat utkast | En publicerad R5-version |
+| HL7 Sweden basprofiler (`hl7se.fhir.base`) | R4 | En R5-version, eftersom IG:n följer dess namn- och slicingkonventioner |
+| IHE BALP (`ihe.iti.balp`) | 1.1.4 är R4; en R5-version (2.0.0) är under arbete | En publicerad R5-version |
+
+Så länge EURIDICE och EU Core bara finns i R4 kan IG:n inte vara en giltig EURIDICE-profilering i R5 (se [Vad IG:n utlovar](#loften)). Därför ligger IG:n kvar på R4 tills beroendena är lösta.
+
+Några mappningar blir bättre i R5:
+
+- **AuditEvent.patient** – R5 har ett eget patientelement. I R4 används BALP:s entity-mönster (LOG-001).
+- **DiagnosticReport.note** – R5 har anteckningar på rapportnivå, vilket R4 saknar.
+- **DocumentReference.attester** – R5 har intygare med tidpunkt och roll, som kan bära signatur och signeringstid (`header.signature` i GetCareDocumentation). I R4 krävs extensionen `ext-signature-time` (DOC-003).
+- **Observation.bodyStructure** – R5 kan referera en BodyStructure med flera anatomiska lokalisationer, vilket ersätter R4-extensionen `additionalBodySite` för `targetSite` (OBS-004).
+
+När bytet görs bör R4-övergångslösningarna ovan ses över.
+
 ---
 
 ### Dokumentation
