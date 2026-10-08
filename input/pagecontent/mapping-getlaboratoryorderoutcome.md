@@ -155,7 +155,7 @@ Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SE
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `groupOfAnalyses.analysis.result.type` | 0..1 | `Observation.extension[resultType]` | Typ av resultat (kvantitativt, kvalitativt etc.) |
-| `groupOfAnalyses.analysis.result.value` | 1..1 | `Observation.value[x]` | Se [LAB-001](#öppna-frågor) – AnyValueType; mappas primärt till `valueString` |
+| `groupOfAnalyses.analysis.result.value` | 1..1 | `Observation.value[x]` | Grenen (`cv`/`pq`/`intervalPQ`/`st`) styr typen, se [result.value](#lab-001) |
 | `groupOfAnalyses.analysis.result.comment` | 0..1 | `Observation.note[1].text` | Kommentar till enskilt resultat |
 | `groupOfAnalyses.analysis.result.interpretation` | 0..* | `Observation.interpretation` | H/L/A/N – tolkning av resultatet |
 | `groupOfAnalyses.analysis.result.reference.interval` | 0..1 | `Observation.referenceRange.text` | Referensintervall som fritext (PQIntervalType) |
@@ -234,19 +234,16 @@ Analysstatus från RIVTA mappas till FHIR `ObservationStatus` enligt:
 
 `body.text` är en fritext som antingen representerar en samlad kommentar eller ett sammandrag av beställningssvaret. Mappas till `DiagnosticReport.conclusion`. Om texten ska presenteras som XHTML-narrativ sätts även `DiagnosticReport.text.div` (med `text.status = generated`).
 
-### result.value – AnyValueType (LAB-001)
+### result.value – AnyValueType (LAB-001, beslutat) {#lab-001}
 
-`analysis.result.value` är av typen `AnyValueType` i TKB:n, vilket innebär att det kan bära kvantitativa, kvalitativa, textuella eller kodade värden. I FHIR representeras detta via polymorfin `Observation.value[x]`:
+`analysis.result.value` är av typen `AnyValueType`. I XSD:n har den fyra grenar, varav en används per resultat, och var och en mappas entydigt till `Observation.value[x]`:
 
-| AnyValueType-innehåll | FHIR value[x] |
-|---|---|
-| Numeriskt värde med enhet | `valueQuantity` |
-| Fri text | `valueString` |
-| Kodat svar (t.ex. pos/neg) | `valueCodeableConcept` |
-| Intervall (lågt–högt) | `valueRange` |
-| Ratio | `valueRatio` |
-
-Primär mappning är `valueString` när typen är okänd eller innehåller blandad information. Se [LAB-001](#öppna-frågor) för öppen designfråga.
+| Gren i `result.value` | RIV-TA-typ | FHIR value[x] |
+|---|---|---|
+| `cv` | CVType | `valueCodeableConcept` |
+| `pq` | PQType | `valueQuantity` |
+| `intervalPQ` | PQIntervalType | `valueRange` |
+| `st` | string | `valueString` |
 
 ### performerSignature → Observation.performer
 
@@ -311,8 +308,8 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 | ID | Fråga |
 |---|---|
-| LAB-001 | **`analysis.result.value` är av typen AnyValueType.** TKB:n modellerar värdet som en polymorf typ som kan bära kvantitativa, kvalitativa, textuella och kodade värden. FHIR:s `Observation.value[x]` har stöd för detta men kräver att bryggan tolkar innehållet och väljer rätt valuetype. Om innehållet är en sträng utan enhet och utan strukturerad information är `valueString` säkraste fallback. Behöver formella regler för typbestämning. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar standardiserad FHIR-motsvarighet.** Fältet finns i JoL-headern via `accessControlHeader.approvedForPatient`. Nuvarande approach: `DiagnosticReport.meta.security` med ett lokalt definierat kodsystem. Behöver gemensamt beslut för alla TK:er. |
+| LAB-001 | **Beslutat:** `cv` → `valueCodeableConcept`, `pq` → `valueQuantity`, `intervalPQ` → `valueRange`, `st` → `valueString`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ## Föreslagna nya issues

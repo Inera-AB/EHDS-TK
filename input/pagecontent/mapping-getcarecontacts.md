@@ -157,5 +157,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | Id | Fråga | Status |
 |---|---|---|
 | CC-001 | ConceptMap för SNOMED CT SE (OID 1.2.752.116.2.1.1, SCTID 53761000052103) → FHIR `Encounter.status` saknas. Vilka SNOMED-koder ingår i urvalet, och hur mappas de till FHIR-värdemängden (planned, arrived, triaged, in-progress, onleave, finished, cancelled)? | Föreslagen |
-| CC-002 | OrgUnit-kontaktdetaljer (`orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation`) förekommer på två ställen: under `accountableHealthcareProfessional.healthcareProfessionalOrgUnit` och under `careContactOrgUnit`. Inget av dessa fält mappas i FHIR Encounter. Ska de ignoreras, eller kräver de att en fullständig Organization-resurs skapas med `Organization.telecom` och `Organization.address`? | Föreslagen |
+| CC-002 | **Sammanslagen med GENERAL-008:** se [Organisationsenheter, kontaktuppgifter och historik](mappings.html#organisation). | Öppen |
 | CC-003 | `careContact.careContactBody.additionalPatientInformation.gender` (KV Kön OID 1.2.752.129.2.2.1.1, koder 0/1/2/9) behöver ConceptMap till FHIR AdministrativeGender (male/female/other/unknown). Bör denna ConceptMap delas med andra TK som använder samma kodverk? | Föreslagen |

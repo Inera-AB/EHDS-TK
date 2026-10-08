@@ -319,7 +319,7 @@ Svaret `GetAccessLogsForPatientResponse` innehåller ett `accessLogsResult` med 
 | `accessLogsResult.reportResult.queuedReportId` | 0..1 | Ej mappad | Id för köad rapport (asynkront svar); bryggan behöver anropa igen |
 | `accessLogsResult.reportResult.queueTime` | 0..1 | Ej mappad | Förväntad tid i sekunder tills den köade rapporten kan levereras |
 
-Öppna frågor: LOG-001 och LOG-002 i [Mappningsissues](mapping-issues.html).
+Öppen fråga: LOG-002 i [Mappningsissues](mapping-issues.html). LOG-001 är beslutad (BALP:s entity-mönster).
 
 ---
 

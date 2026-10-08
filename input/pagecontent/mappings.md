@@ -106,3 +106,40 @@ EU Core Patient. Eftersom IG:n utlovar att vara en giltig profilering av EURIDIC
 
 Detta gäller `subject` respektive `patient` i samtliga resurser, t.ex. både `Condition.subject` och
 `DocumentReference.subject`.
+
+### Organisationsenheter, kontaktuppgifter och historik (GENERAL-008) {#organisation}
+
+> **Status: öppen fråga.** Avsnittet beskriver problemet och de FHIR-mekanismer som finns. Något beslut är inte fattat. Frågan ersätter CC-002, CP-003, REF-004 och MAT-002.
+
+#### Problemet
+
+RIVTA-svaren innehåller organisationsenheter av typen `OrgUnitType` (t.ex. `healthcareProfessionalOrgUnit` och `careContactOrgUnit`) med HSA-id, namn och kontaktuppgifter: `orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress` och `orgUnitLocation`. Två förhållanden gör att de inte kan hanteras enbart som en logisk referens till HSA:
+
+1. **HSA saknar historik.** Ett uppslag på HSA-id ger dagens uppgifter, inte de som gällde när informationen dokumenterades. Därför skickar tjänsteproducenten med enhetens uppgifter i varje svar som en ögonblicksbild, och det är bara den som är korrekt för historiska data.
+2. **Olika mottagare har olika behov.** Kontaktuppgifterna (`orgUnitTelecom`, `orgUnitEmail`) är relevanta när vårdpersonal hämtar informationen, men ska inte nödvändigtvis lämnas ut när patienten själv hämtar den.
+
+Med bara en logisk referens (`identifier` = HSA-id, `display` = namn) försvinner ögonblicksbilden.
+
+#### FHIR-mekanismer för att skicka med Organization
+
+**A. Inkluderade resurser i sökresultatet (`_include`).** En sökning kan returnera refererade resurser i samma Bundle, markerade med `Bundle.entry.search.mode = include`. Exempel: `GET [base]/Encounter?patient=…&_include=Encounter:service-provider`. Organisationen blir en egen resurs som flera träffar kan referera till.
+
+- *Fördel:* standardmönstret för att skicka med "extra" resurser i ett svar; ingen dubblering inom svaret.
+- *Nackdel:* en Organization-resurs har en identitet (`Organization/[id]`) som ska gå att läsa igen. Eftersom samma HSA-id kan ha olika uppgifter i olika svar (historik), måste id:t representera ögonblicksbilden, inte enheten. Det kräver att API:et lagrar ögonblicksbilderna eller bildar id deterministiskt ur innehållet. Bryggan är i dag tillståndslös. `_include` måste också deklareras i CapabilityStatement.
+
+**B. Inbäddade resurser (`contained`).** Organisationen bäddas in i den resurs som refererar den (`"reference": "#org1"`), med HSA-id i `Organization.identifier` och producentens uppgifter i `name`, `telecom` och `address`. FHIR anger att inbäddade resurser används när innehållet saknar självständig existens, till exempel när källan bara har en ögonblicksbild. Det motsvarar situationen här.
+
+- *Fördel:* ögonblicksbilden följer alltid med den resurs den gäller; ingen lagring eller id-hantering i API:et; fungerar för både sökning och läsning.
+- *Nackdel:* uppgifterna upprepas i varje resurs; den inbäddade organisationen kan inte sökas eller refereras från andra resurser.
+
+**C. Endast logisk referens.** `identifier` och `display` utan kontaktuppgifter. Det är dagens mappning. Historiska kontaktuppgifter går förlorade.
+
+#### Olika mottagare
+
+API:et vet vem som anropar och i vilket syfte: användarens identitet, roll och syfte (se AUDIT-002), t.ex. `purposeOfUse = PATRQT` eller en patientscope vid patientens egen åtkomst. Utifrån det kan kontaktuppgifterna filtreras bort på serversidan när patienten hämtar informationen. En resurs där element har tagits bort märks enligt FHIR med `meta.tag` = `http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUBSETTED`, så att mottagaren vet att resursen inte är komplett.
+
+#### Förslag att ta ställning till
+
+- Alternativ B (`contained`) för producentens ögonblicksbild av organisationsenheten, eftersom den inte kräver lagring och är semantiskt korrekt för historiska uppgifter. HSA-id behålls i `Organization.identifier`, så att mottagaren kan slå upp dagens uppgifter vid behov.
+- Alternativ A blir aktuellt om API:et får en lagrande komponent eller om samma organisation behöver delas mellan många resurser i stora svar.
+- `orgUnitTelecom` och `orgUnitEmail` tas bort vid patientens egen åtkomst och resursen märks `SUBSETTED`. Om `orgUnitAddress` och `orgUnitLocation` också ska tas bort behöver beslutas.

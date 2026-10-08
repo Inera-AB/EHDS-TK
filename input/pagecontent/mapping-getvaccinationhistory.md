@@ -321,7 +321,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|
 | VAC-001 | **`registrationRecord` (1..1) + `administrationRecord` (0..*) – en Immunization per administrationRecord.** Om `administrationRecord` är tomt skapas en Immunization med enbart registreringsdata. Behöver verifieras om detta är önskat beteende eller om sådana poster ska filtreras bort. |
 | VAC-002 | **`documentTime` kontra `authorTime` som källa för `occurrenceDateTime`.** `documentTime 0..1` anger vaccinationshändelsens tidpunkt; `authorTime 1..1` anger dokumentationstidpunkten. Om båda är satta kan de skilja sig. Beslut: `documentTime` har prioritet; `authorTime` används som fallback. Behöver bekräftelse från domänexpert. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar standardiserat FHIR-kodsystem.** Fältet mappas tentativt till `meta.security` men inget standardiserat kodsystem för detta begrepp finns. Behöver gemensamt beslut; se central issue i [mapping-issues](mapping-issues.html). |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 | VAC-006 | **SMI-id OID behöver verifieras.** `SEEHDSOrganization.identifier[smiId].system` sätts preliminärt till `urn:oid:1.2.752.194.10.1.1`. Korrigera mot Folkhälsomyndighetens faktiska NamingSystem för vaccinationsregistret. |

@@ -28,7 +28,7 @@ SEEHDSMedicationStatement (1 per medicationMedicalRecord)
 
 Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. Relationer
 mellan ordinationer (`prescriptionChainId`, `precedingPrescriptionId`, `succeedingPrescriptionId`)
-representeras via extensions – se [MED-001](#öppna-frågor).
+representeras via extensions.
 
 ---
 
@@ -252,10 +252,10 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 | ID | Fråga |
 |---|---|
-| MED-001 | **`dispensationAuthorization`, `administration`, `relation` delvis extraherade.** Dessa element i TKB:n är markerade "SAKNAS I KÄLLDOKUMENT – endast delvis extraherat – kontrollera manuellt". Behöver verifieras mot XSD för `DispensationAuthorizationType`, `AdministrationType`, `RelationType`. `setDosage` och `maximumDosage` (komplex strukturerad dosering) ingår också i vad som behöver verifieras. Mappning läggs till när elementen är verifierade. |
+| MED-001 | **Löst:** hela strukturen för `dispensationAuthorization`, `administration` och `relation` finns i den logiska modellen (genererad från XSD:n). Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | MED-002 | **`typeOfPrescription` (I/U) mappar inte naturligt till `MedicationStatement.status`.** I=Insättning och U=Utsättning anger ordinationshändelsens karaktär, inte dess aktuella status. Nuvarande beslut: bevara i extension; status härleds primärt från `prescriptionStatus`. Alternativ: ignorera `prescriptionStatus` och sätt `status=active` för I, `status=stopped` för U. |
 | MED-003 | **`drug` XOR-villkor kan inte uttryckas i FSH-kardinalitet.** Fem varianter (unstructured/merchandise/drugArticle/drug/generics) är ömsesidigt uteslutande enligt TKB. FSH Invariant med FHIRPath implementeras som workaround. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar standardiserat FHIR-kodsystem.** Fältet mappas tentativt till `meta.security` men inget standardiserat kodsystem för detta begrepp finns. Behöver gemensamt beslut; se central issue i [mapping-issues](mapping-issues.html). |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ## Föreslagna nya issues
@@ -264,4 +264,4 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|
 | MED-004 | **`drug.drug.pharmaceuticalForm`, `drug.drug.strength`, `drug.drug.strengthUnit` saknar standard FHIR-element i MedicationStatement.** Dessa fält beskriver läkemedlets form och styrka på produktnivå. Överväg om de ska mappas till Medication-resurs istället för MedicationStatement-extension, i linje med FHIR-mönstret för Medication.form och Medication.ingredient.strength. |
 | MED-005 | **`prescriber`-blocket kontra FHIR `requester`.** MedicationStatement.basedOn → MedicationRequest skulle vara ett mer korrekt mönster för förskrivaren om en MedicationRequest-resurs genereras. Beslut behövs om MedicationRequest ska ingå i resurshierarkin. |
-| MED-006 | **`documentTitle` (header) saknar mappning.** Fritexttiteln för dokument har ingen standardmotpart i MedicationStatement. Överväg `MedicationStatement.note` eller ignorera som en rent administrativ etikett utan klinisk relevans. |
+| MED-006 | **Stängd:** `documentTitle` är avsiktligt undertryckt (0..0). Se [Mappningsissues](mapping-issues.html#stangda-fragor). |

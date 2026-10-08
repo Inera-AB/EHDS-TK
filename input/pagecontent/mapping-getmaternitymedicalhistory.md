@@ -87,7 +87,7 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 |---|---|---|---|
 | `maternityMedicalRecordHeader.documentId` | 1..1 | `Observation.identifier[0].value` | Unikt dokument-id; suffix `#{sektionskod}` läggs till för att skilja de tre Observation-resurserna |
 | `maternityMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `Observation.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `maternityMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Dokumenttitel finns inte som strukturerat fält i Observation; kan eventuellt läggas i `Observation.note[0].text` men anses ej kliniskt relevant för FHIR-konsumtion (se MAT-002) |
+| `maternityMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Dokumenttitel finns inte som strukturerat fält i Observation; kan eventuellt läggas i `Observation.note[0].text` men anses ej kliniskt relevant för FHIR-konsumtion (se MAT-003) |
 | `maternityMedicalRecordHeader.documentTime` | 1..1 | `Observation.issued` | Dokumentets registreringstidpunkt; YYYYMMDDHHMMSS → ISO 8601. OBS: `authorTime` (se nedan) används för `effectiveDateTime` |
 | `maternityMedicalRecordHeader.patientId.id` | 1..1 | `Observation.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `maternityMedicalRecordHeader.patientId.type` | 1..1 | `Observation.subject.identifier.system` | OID→URI-konvertering; se OID-tabell nedan |
@@ -102,10 +102,10 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod; via PractitionerRole-resurs refererad från `Observation.performer` |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | HSA-id för organisationsenhet |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet |
-| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Enhetens telefonnummer – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se MAT-002 |
-| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Enhetens e-post – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se MAT-002 |
-| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Enhetens adress – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se MAT-002 |
-| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Enhetens plats/lokalbeteckning – ej strukturerat fält i FHIR Observation; se MAT-002 |
+| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Enhetens telefonnummer – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se GENERAL-008 |
+| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Enhetens e-post – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se GENERAL-008 |
+| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Enhetens adress – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se GENERAL-008 |
+| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Enhetens plats/lokalbeteckning – ej strukturerat fält i FHIR Observation; se GENERAL-008 |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 1..1 | `Provenance.agent[author].who.identifier.value` | HSA-id för vårdenhet; Inre Sparr (OBLIGATORISK i detta TK) |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 1..1 | `Provenance.agent[custodian].who.identifier.value` | HSA-id för vårdgivare; Yttre Sparr (OBLIGATORISK i detta TK) |
 
@@ -344,7 +344,7 @@ Dessa fyra fält representerar enhetens kontaktinformation. De saknar en naturli
 plats i Observation-resursen och tillhör egentligen Organization-resursen i FHIR.
 I en fullständig implementation bör de mappas till `Organization.telecom`, 
 `Organization.address`, och `Organization.address.line` på den Organization som
-PractitionerRole refererar. Ingen mappning fastlagd i nuläget; se MAT-002.
+PractitionerRole refererar. Ingen mappning fastlagd i nuläget; se GENERAL-008.
 
 ---
 
@@ -398,7 +398,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | Id | Fråga | Status |
 |---|---|---|
 | MAT-001 | Flersektionsstrukturen (registrationRecord / pregnancyCheckupRecord / postDeliveryRecord) passar inte i en enda Observation. Bör en `List`-resurs eller `Composition` användas för att länka sektionerna? Bör `MedicationStatement` användas för läkemedelsdata istället för `valueString`-komponenter? | Öppen |
-| PDL-001 | `approvedForPatient` (boolean) styr synlighet i 1177 Journal. Hur ska detta mappas till FHIR på ett interoperabelt sätt? Extension på Observation? `meta.tag` med säkerhetsklassning? Kräver beslut från Inera/1177-förvaltning. | Öppen |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). | Beslutat |
 | GENERAL-001 | Gemensam hantering av RIVTA variabelprecisions-tidsstämplar (YYYYMMDDHHMMSS, YYYYMMDD, YYYYMM, YYYY) vid konvertering till ISO 8601 och tidszon Europe/Stockholm behöver dokumenteras i gemensam konverteringsspecifikation. | Öppen |
 
 ---
@@ -407,6 +407,6 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 | Id | Fråga | Prioritet |
 |---|---|---|
-| MAT-002 | `orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress` och `orgUnitLocation` saknar fastlagd FHIR-mappning. Dessa bör mappas till `Organization.telecom` och `Organization.address` på den Organization-resurs som PractitionerRole refererar. Kräver beslut om Organization-profil och om kontaktuppgifter ska inkluderas i svaret. | Medium |
+| MAT-002 | **Sammanslagen med GENERAL-008:** se [Organisationsenheter, kontaktuppgifter och historik](mappings.html#organisation). | Öppen |
 | MAT-003 | `documentTitle` (0..1 string i header) saknar naturligt mottagarfält i Observation. Behöver utredas om `Observation.note[0].text`, en lokal extension, eller `Composition.title` (om MAT-001 löses med Composition) ska användas. | Låg |
 | MAT-004 | `legalAuthenticator.signatureTime` saknar standardfält i FHIR R4 Observation. Nuvarande förslag är lokal extension `assertedDate`. Bör utredas om FHIR R5-mönstret (`Observation.note` med tidsstämpel) eller en Provenance-baserad lösning är att föredra för R4-kompatibilitet. | Medium |

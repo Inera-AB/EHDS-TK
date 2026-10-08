@@ -210,7 +210,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Fråga |
 |---|---|
 | REF-001 | **`act 0..*` saknar standard DiagnosticReport-element.** `referralOutcomeBody.act` innehåller kodad åtgärd (`actCode`), fritext (`actText`), tidpunkt (`actTime`) och eventuell multimedia (`actResult` med `mediaType`/`value`/`reference`). Nuvarande lösning: textinnehåll och bilagor → `presentedForm`, kodad åtgärd → custom extension. Alternativ: en `Procedure`-resurs per `act`-post länkad via `DiagnosticReport.result`. Kräver beslut. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar standardiserad FHIR-motsvarighet.** Fältet finns i headern men `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er; se central issue i [mapping-issues](mapping-issues.html). |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ## Föreslagna nya issues
@@ -219,4 +219,4 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|
 | REF-002 | **`referralOutcomeBody.attested.attesterName` vs. header-signatär.** Svaret har två potentiella signatärstrukturer: `referralOutcomeHeader.legalAuthenticator` och `referralOutcomeBody.attested`. Nuvarande beslut: båda mappas till samma `DiagnosticReport.extension[attested]`. Om de kan representera olika signatärer (t.ex. juridisk autentiserare vs. klinisk attestant) kan detta skapa konflikter. Behöver klargöras med TKB-förvaltningen om de är semantiskt ekvivalenta eller distinkta. |
 | REF-003 | **Stängd – `referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit`.** Den logiska modellen har nu alla OrgUnitType-fält (orgUnitHSAId, orgUnitName, orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation) enligt XSD:n. Fälten tillhör ursprungsremissen och mappas inte till DiagnosticReport. |
-| REF-004 | **`orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation` – ej mappade i PatientSummaryHeader-blocket.** Kontaktuppgifter för org-enheten finns på flera ställen i modellen (header och referral.accountableHealthcareProfessional) men har ingen standardiserad plats i DiagnosticReport-kontexten utan att skapa separata Organization-instanser. Behöver beslut om dessa ska inkluderas alls i bryggan. |
+| REF-004 | **Sammanslagen med GENERAL-008:** se [Organisationsenheter, kontaktuppgifter och historik](mappings.html#organisation). |

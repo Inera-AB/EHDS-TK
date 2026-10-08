@@ -161,4 +161,4 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|---|
 | CP-001 | `carePlan.carePlanBody.content` (MultimediaType) saknar standardiserat FHIR R4-uttryck i CarePlan. Bör en lokal extension definieras i profilen med fälten `mediaType`, `value` (base64Binary) och `reference` (url), eller ska `DocumentReference` användas som alternativ resurs? | Föreslagen |
 | CP-002 | `carePlan.carePlanBody.participatingCareUnitHSAId` mappas till `CarePlan.contributor` (Reference(CareTeam\|Organization\|Patient\|Practitioner\|RelatedPerson)). Organization är lämpligast för enhetsnivå. Bör logisk referens via identifier tillåtas utan att Organization-resurs skapas? | Föreslagen |
-| CP-003 | OrgUnit-kontaktdetaljer (`orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation`) under `accountableHealthcareProfessional.healthcareProfessionalOrgUnit` är ej mappade i FHIR CarePlan/PractitionerRole. Ska dessa fält ignoreras eller kräver de skapande av en fullständig Organization-resurs? | Föreslagen |
+| CP-003 | **Sammanslagen med GENERAL-008:** se [Organisationsenheter, kontaktuppgifter och historik](mappings.html#organisation). | Öppen |

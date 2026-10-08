@@ -273,5 +273,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 |---|---|
 | ALERT-002 | **Okänt kodsystem för `typeOfAlertInformation`.** OID och URI för kodsystemet är inte dokumenterat i TKB:n. Avgör vilka koder som styr om AllergyIntolerance skapas och hur de mappas till `AllergyIntolerance.category`. |
 | ALERT-004 | **ConceptMap saknas: degreeOfCertainty/degreeOfSeverity → FHIR.** `hypersensitivity.degreeOfCertainty` (KV Visshetsgrad 1.2.752.129.2.2.3.11) behöver ConceptMap till `AllergyIntolerance.verificationStatus`. `hypersensitivity.degreeOfSeverity` (KV Allvarlighetsgrad 1.2.752.129.2.2.3.3) behöver ConceptMap till `AllergyIntolerance.reaction.severity`. Sätt temporärt `confirmed` tills ConceptMap finns. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar FHIR-motsvarighet.** `meta.security` i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er. |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |

@@ -161,7 +161,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Fråga |
 |---|---|
 | FUNC-001 | **Beslutat:** PADL-poster kodas som `Condition.note` med format `[typeOfAssessment]: assessment`. Se avsnitt ovan. |
-| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` kod `NOPATIENT` (v3-ActCode). Se README avsnitt 9. |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ---
