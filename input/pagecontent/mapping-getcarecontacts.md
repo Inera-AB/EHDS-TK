@@ -81,8 +81,8 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `careContact.careContactBody.careContactOrgUnit` | 0..1 | — | Enhet för kontakten (Regel 5) |
-| `careContact.careContactBody.careContactOrgUnit.orgUnitHSAId` | 1..1 | `Encounter.serviceProvider.identifier` | Logisk referens till Organization via HSA-id – obligatorisk per Regel 4 |
-| `careContact.careContactBody.careContactOrgUnit.orgUnitName` | 1..1 | `Encounter.serviceProvider.display` | Visningsnamn för kontaktenhet – obligatorisk per Regel 4 |
+| `careContact.careContactBody.careContactOrgUnit.orgUnitHSAId` | 0..1 | `Encounter.serviceProvider.identifier` | Logisk referens till Organization via HSA-id. Kan utelämnas (0..1, Regel 5) |
+| `careContact.careContactBody.careContactOrgUnit.orgUnitName` | 0..1 | `Encounter.serviceProvider.display` | Visningsnamn för kontaktenhet. Kan utelämnas (0..1, Regel 5) |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Telefon till kontaktenhet – ingår ej i Encounter.serviceProvider; kan lagras i Organization.telecom om Organization-resurs skapas |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till kontaktenhet – se `orgUnitTelecom` ovan |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress till kontaktenhet – ingår ej i Encounter; kan lagras i Organization.address om Organization-resurs skapas |

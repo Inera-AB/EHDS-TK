@@ -100,15 +100,9 @@ Description: """
 * insert RivNs(careContact.careContactBody.careContactReason, urn:riv:clinicalprocess:logistics:logistics:3)
 * careContact.careContactBody.careContactOrgUnit 0..1 BackboneElement "Enhet för vårdkontakten (Regel 5: krävs för NPÖ)" """Den enhet som vårdkontakten utfördes vid eller planeras utföras vid. Regel: Regel 5"""
 * insert RivNs(careContact.careContactBody.careContactOrgUnit, urn:riv:clinicalprocess:logistics:logistics:3)
-* careContact.careContactBody.careContactOrgUnit.orgUnitHSAId 1..1 SEEHDSRivString "HSA-id för kontaktenhet (Regel 4: obligatorisk för NPÖ)" """
-    HSA-id för organisationsenhet. Regel: Regel 5
-    Kardinaliteten 1..1 kommer från tidigare modell; TKB anger 0..1.
-  """
+* careContact.careContactBody.careContactOrgUnit.orgUnitHSAId 0..1 SEEHDSRivString "HSA-id för kontaktenhet" """HSA-id för organisationsenhet. Regel: Regel 5"""
 * insert RivNs(careContact.careContactBody.careContactOrgUnit.orgUnitHSAId, urn:riv:clinicalprocess:logistics:logistics:3)
-* careContact.careContactBody.careContactOrgUnit.orgUnitName 1..1 SEEHDSRivString "Namn på kontaktenhet (Regel 4: obligatorisk för NPÖ)" """
-    Namn på organisationsenheten. Regel: Regel 5
-    Kardinaliteten 1..1 kommer från tidigare modell; TKB anger 0..1.
-  """
+* careContact.careContactBody.careContactOrgUnit.orgUnitName 0..1 SEEHDSRivString "Namn på kontaktenhet" """Namn på organisationsenheten. Regel: Regel 5"""
 * insert RivNs(careContact.careContactBody.careContactOrgUnit.orgUnitName, urn:riv:clinicalprocess:logistics:logistics:3)
 * careContact.careContactBody.careContactOrgUnit.orgUnitTelecom 0..1 SEEHDSRivString "Telefon till kontaktenhet" """Telefon till organisationsenheten."""
 * insert RivNs(careContact.careContactBody.careContactOrgUnit.orgUnitTelecom, urn:riv:clinicalprocess:logistics:logistics:3)
