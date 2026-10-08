@@ -44,7 +44,7 @@ Description: "Profil för vaccinationer mappat från RIVTA-tjänstekontraktet Ge
 * recorded ^short = "Registreringsdatum (vaccinationMedicalRecordBody.registrationRecord.date)"
 
 * note MS
-* note ^short = "Ostrukturerad anteckning (registrationRecord.vaccinationUnstructuredNote) / kommentar"
+* note ^short = "Anteckningar: vaccinationUnstructuredNote, kommentarer och dokumenttitel (\"Dokumenttitel: …\", VAC-004)"
 
 // riskCategory → programEligibility (standardelement för vaccinationsprogramsbehörighet/riskgrupper)
 * programEligibility MS

@@ -47,7 +47,7 @@ i stället för enskilda extensions på Immunization.
 |---|---|---|---|
 | `vaccinationMedicalRecordHeader.documentId` | 1..1 | `Immunization.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `vaccinationMedicalRecordHeader.sourceSystemHSAId` | 1..1 | `Immunization.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `vaccinationMedicalRecordHeader.documentTitle` | 0..1 | Ej mappad | Fritexttitel för dokument – ingen motsvarighet i Immunization |
+| `vaccinationMedicalRecordHeader.documentTitle` | 0..1 | `Immunization.note.text` | Egen `note`-post med texten `Dokumenttitel: {documentTitle}`, så att den skiljs från övriga anteckningar (VAC-004) |
 | `vaccinationMedicalRecordHeader.documentTime` | 0..1 | `Immunization.occurrenceDateTime` | Vaccinationstidpunkt (händelsetidpunkt); YYYYMMDDHHMMSS → ISO 8601. OBS: kan komma i konflikt med authorTime – se [VAC-002](#öppna-frågor) |
 | `vaccinationMedicalRecordHeader.patientId.id` | 1..1 | `Immunization.patient.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. `patientId` är av RIVTA-typen `PersonIdType {id, type}` |
 | `vaccinationMedicalRecordHeader.patientId.type` | 1..1 | `Immunization.patient.identifier.system` | OID för typ av identifierare (t.ex. `1.2.752.129.2.1.3.1` för personnummer); OID→URI, se tabell nedan |
@@ -331,5 +331,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Förslag |
 |---|---|
 | VAC-003 | **`careGiverContact` saknar FHIR-mappning.** Kontaktpersoninformation hos juridisk vårdgivare (`careGiverContact.hsaid`, `careGiverContact.personName`) har ingen naturlig plats i Immunization eller Provenance. Behöver beslut: ignorera eller lägga i extension. |
-| VAC-004 | **`documentTitle` saknar mappning.** Fritexttiteln för vaccinationsdokumentet har ingen standardmotpart i Immunization. Överväg `Immunization.note` eller ignorera som administrativ etikett. |
+| VAC-004 | **Beslutat:** `documentTitle` läggs i en egen `Immunization.note`-post med texten `Dokumenttitel: {documentTitle}`. |
 | VAC-005 | **`legalAuthenticator` i Immunization-profil.** Immunization saknar ett standard `authenticator`-fält (till skillnad från DocumentReference). Custom extension behövs för att bevara legalAuthenticator-blocket. Beslut behövs om legalAuthenticator är relevant för vaccinationsdata eller kan utelämnas. |

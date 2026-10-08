@@ -26,7 +26,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 |---|---|---|---|
 | `referralOutcomeHeader.documentId` | 1..1 | `DiagnosticReport.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `referralOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `referralOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.extension[title]` | Dokumenttitel; extension krävs då DiagnosticReport saknar title-fält i R4 |
+| `referralOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.code.text` | Används om `referralOutcomeBody.referralOutcomeTitle` saknas, se [Titel-prioritering](#titel) |
 | `referralOutcomeHeader.documentTime` | 1..1 | `DiagnosticReport.issued` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `referralOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `referralOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
@@ -60,7 +60,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `referralOutcomeBody.referralOutcomeTypeCode` | 1..1 | `DiagnosticReport.status` | SS=`final`, SR=`preliminary`; se [Härledda fält](#diagnosticreportstatus-från-referraloutcometypecode) |
-| `referralOutcomeBody.referralOutcomeTitle` | 0..1 | `DiagnosticReport.extension[title]` | Titelprioritering: referralOutcomeTitle > documentTitle; se [Titel-prioritering](#titel-prioritering-diagnosticreportextensiontitle) |
+| `referralOutcomeBody.referralOutcomeTitle` | 0..1 | `DiagnosticReport.code.text` | Går före `documentTitle`, se [Titel-prioritering](#titel) |
 | `referralOutcomeBody.referralOutcomeText` | 1..1 | `DiagnosticReport.conclusion` | Fritext remissvar/utlåtande |
 
 ### Klinisk information (clinicalInformation)
@@ -133,13 +133,13 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `SS` | Specialistutlåtande/svar (slutgiltig bedömning) | `final` |
 | `SR` | Specialistremissvar (preliminärt/delsvar) | `preliminary` |
 
-### Titel-prioritering (DiagnosticReport.extension[title])
+### Titel-prioritering (DiagnosticReport.code.text) {#titel}
 
-Titeln sätts enligt följande prioriteringsordning:
+Titeln mappas till `DiagnosticReport.code.text`, rapportens namn i klartext. `code.coding` är fortfarande den fasta LOINC-koden `11488-4` ("Consult note"). Texten sätts enligt följande prioritet:
 
 1. `referralOutcomeBody.referralOutcomeTitle` (om satt)
 2. `referralOutcomeHeader.documentTitle` (om satt)
-3. (inget värde) – extension sätts inte
+3. Annars LOINC-kodens display, "Consult note"
 
 ### act-poster och multimedia (REF-001)
 

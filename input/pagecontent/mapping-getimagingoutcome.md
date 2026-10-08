@@ -31,7 +31,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 |---|---|---|---|
 | `imagingOutcomeHeader.documentId` | 1..1 | `DiagnosticReport.identifier[0].value` | Källsystemets dokumentidentifierare |
 | `imagingOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `imagingOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.extension[title]` | Dokumenttitel; kräver lokal extension då DiagnosticReport saknar title-fält i R4 |
+| `imagingOutcomeHeader.documentTitle` | 0..1 | `DiagnosticReport.code.text` | Rapportens namn i klartext; går före `examinationSpeciality.originalText`, se [DiagnosticReport.code.text](#code-text) |
 | `imagingOutcomeHeader.documentTime` | 0..1 | `DiagnosticReport.issued` | Tidpunkt för dokumentet; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `imagingOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `imagingOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
@@ -234,9 +234,13 @@ code.coding.display = "Diagnostic imaging study"
 {resultComment}   ← läggs till med inledande radbrytning om fältet finns
 ```
 
-### documentTitle → extension
+### DiagnosticReport.code.text – titel {#code-text}
 
-`imagingOutcomeHeader.documentTitle` saknar direkt motpart i DiagnosticReport R4. Mappas till en lokal extension `https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-document-title` på DiagnosticReport-nivå.
+`DiagnosticReport.code.text` är rapportens namn i klartext. `code.coding` sätts oberoende av texten, från `examinationSpeciality` eller med fallback-koden ovan. Texten sätts enligt följande prioritet:
+
+1. `imagingOutcomeHeader.documentTitle` (om satt)
+2. `imagingOutcomeBody.examinationSpeciality.originalText` (om satt)
+3. `examinationSpeciality.displayName`, annars fallback-kodens display
 
 ### ImagingStudy.series-konstruktion från imageDicomData
 

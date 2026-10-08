@@ -26,7 +26,7 @@ Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. 
 * basedOn ^short = "Koppling till ursprungsremiss"
 
 * code 1..1 MS
-* code ^short = "Fast LOINC 11488-4 (Consult note) – referralOutcomeTypeCode avgör DiagnosticReport.status (se mappning)"
+* code ^short = "Fast LOINC 11488-4 (Consult note); code.text = referralOutcomeTitle, annars documentTitle"
 
 * conclusion MS
 * conclusion ^short = "Konsultationssvar/bedömning (referralOutcomeBody.referralOutcomeText)"
