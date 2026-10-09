@@ -1795,8 +1795,9 @@ Description: """
     Information kring den refererade informationsmängden som tjänstekonsument behöver för att avgöra om och hur den refererade informationen ska hämtas.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation, urn:riv:clinicalprocess:activityprescription:actoutcome:2.1)
-* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.id 1..1 SEEHDSRivIITypeActivityprescriptionActoutcome2 "Id till den aktivitet eller observation som refereras" """Id till den aktivitet eller observation som refereras."""
-* insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.id, urn:riv:clinicalprocess:activityprescription:actoutcome:2.1)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.rivId 1..1 SEEHDSRivIITypeActivityprescriptionActoutcome2 "Id till den aktivitet eller observation som refereras" """Id till den aktivitet eller observation som refereras."""
+* insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.rivId, urn:riv:clinicalprocess:activityprescription:actoutcome:2.1)
+* insert RivXmlName(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.rivId, id)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.type 1..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "Typ av interaktion som behöver nyttjas för att ta del av den refererade informationen" """
     Typ av interaktion som behöver nyttjas för att ta del av den refererade informationen. Motsvarar fältet categorization i engagemangsindex. I skrivande stund finns inget OID-satt kodverk över olika categorization-typer, vilket betyder att fältet originalText behöver användas. Från den dag ett OID-satt kodverk finns tillgängligt bör detta användas istället. type.originalText får enbart sättas till ett av följande caa-ga för att referera till aktiviteter som tjänstekonsument kan hämta mha GetActivities chb-go för att referera till observationer som tjänstekonsument kan hämta mha GetObservations
   """
@@ -1805,8 +1806,9 @@ Description: """
     Vårdgivare som är informationsägare av den refererade informationen. Används av tjänstekonsument för spärrhantering.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner, urn:riv:clinicalprocess:activityprescription:actoutcome:2.1)
-* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.id 1..1 SEEHDSRivIITypeActivityprescriptionActoutcome2 "Informationsägande vårdgivare"
-* insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.id, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.rivId 1..1 SEEHDSRivIITypeActivityprescriptionActoutcome2 "Informationsägande vårdgivare"
+* insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.rivId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* insert RivXmlName(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.rivId, id)
 * medicationMedicalRecord.medicationMedicalRecordBody.additionalPatientInformation 0..1 BackboneElement "Ytterligare patientinformation" """
     Ytterligare information om patienten som inte går att få tag på via en gemensam PU-slagning.
   """

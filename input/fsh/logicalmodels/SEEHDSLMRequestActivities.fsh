@@ -51,10 +51,11 @@ Description: "Logisk modell för remisstatus och processaktiviteter hämtad via 
 * insert RivNs(requestActivity.header.sourceSystemId, urn:riv:crm:requeststatus:2)
 * requestActivity.header.record 1..1 BackboneElement "Information avseende remisstatusen som tillgängliggörs" """Information avseende remisstatusen som tillgängliggörs."""
 * insert RivNs(requestActivity.header.record, urn:riv:crm:requeststatus:2)
-* requestActivity.header.record.id 1..1 SEEHDSRivIITypeCrmRequeststatus2 "Identifierare för remisstatus" """
+* requestActivity.header.record.rivId 1..1 SEEHDSRivIITypeCrmRequeststatus2 "Identifierare för remisstatus" """
     Identifierare för remisstatus. Identifieraren ska vara konsistent och beständig mellan olika majorversioner av ett tjänstekontrakt. Detta för att en tjänstekonsument ska kunna ta bort dubbletter från de tjänsteproducenter som producerar via flera majorversioner. Ett exempel på detta är att en vårdkontakt ska ha samma identifierare i majorversion 3 och 4 av ett tjänstekontrakt för att läsa vårdkontakter. Identifieraren ska även vara konsistent och beständig mellan olika tjänstekontrakt. Ett exempel på detta är att samma remiss-identitet ska användas i ett tjänstekontrakt för att läsa remisser, samt tjänstekontraktet som läser remissvar som refererar till den ursprungliga remissen. Root sätts till systemHSA-id Extension sätts till id för remissen
   """
-* insert RivNs(requestActivity.header.record.id, urn:riv:crm:requeststatus:2)
+* insert RivNs(requestActivity.header.record.rivId, urn:riv:crm:requeststatus:2)
+* insert RivXmlName(requestActivity.header.record.rivId, id)
 * requestActivity.header.record.timestamp 1..1 SEEHDSRivTimeStamp "Den tidpunkt då remisstatusen skapades i tjänsteproducentens källsystem" """
     Den tidpunkt då remisstatusen skapades i tjänsteproducentens källsystem.
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -64,10 +65,11 @@ Description: "Logisk modell för remisstatus och processaktiviteter hämtad via 
     Information avseende dokumentation av remisstatus som tillgängliggörs. Notera att den som registrerar uppgiften från annan källa, exempelvis en medicinsk sekreterare som transkriberar ett diktat, inte avses.
   """
 * insert RivNs(requestActivity.header.author, urn:riv:crm:requeststatus:2)
-* requestActivity.header.author.id 0..1 SEEHDSRivIITypeCrmRequeststatus2 "HSA-id för hälso- och sjukvårdspersonal som dokumenterat remisstatusen som tillgängliggörs" """
+* requestActivity.header.author.rivId 0..1 SEEHDSRivIITypeCrmRequeststatus2 "HSA-id för hälso- och sjukvårdspersonal som dokumenterat remisstatusen som tillgängliggörs" """
     HSA-id för hälso- och sjukvårdspersonal som dokumenterat remisstatusen som tillgängliggörs. root sätts till OID för HSA-id (1.2.752.129.2.1.4.1) extension sätts till HSA-id
   """
-* insert RivNs(requestActivity.header.author.id, urn:riv:crm:requeststatus:2)
+* insert RivNs(requestActivity.header.author.rivId, urn:riv:crm:requeststatus:2)
+* insert RivXmlName(requestActivity.header.author.rivId, id)
 * requestActivity.header.author.name 0..1 SEEHDSRivString "Namn på hälso- och sjukvårdspersonal" """Namn på hälso- och sjukvårdspersonal. Anges med tilltalsnamn och efternamn."""
 * insert RivNs(requestActivity.header.author.name, urn:riv:crm:requeststatus:2)
 * requestActivity.header.author.timestamp 1..1 SEEHDSRivTimeStamp "Tidpunkt då remisstatusen dokumenterades eller senast uppdaterades" """
@@ -92,10 +94,11 @@ Description: "Logisk modell för remisstatus och processaktiviteter hämtad via 
 * insert RivNs(requestActivity.body.eventTime, urn:riv:crm:requeststatus:2)
 * requestActivity.body.request 1..1 BackboneElement "Den utfärdade remissen" """Den utfärdade remissen."""
 * insert RivNs(requestActivity.body.request, urn:riv:crm:requeststatus:2)
-* requestActivity.body.request.id 1..1 SEEHDSRivString "Remiss-id" """
+* requestActivity.body.request.rivId 1..1 SEEHDSRivString "Remiss-id" """
     Remiss-id. Unik identifierare av remissen. Vid kännedom om remittentens id på remissen ska detta anges för att kunna koppla ihop flera status och följa remissens status-information över tid. I det fall kännedom om remittentens id på remissen saknas ska källsystemets unika id på remissen anges. I det fall remissens id (sträng) består av flera delar, t.ex. enligt formatet ”källsystem-Id(HSA-ID)#lokalt-id” så ska hela strängen anges.
   """
-* insert RivNs(requestActivity.body.request.id, urn:riv:crm:requeststatus:2)
+* insert RivNs(requestActivity.body.request.rivId, urn:riv:crm:requeststatus:2)
+* insert RivXmlName(requestActivity.body.request.rivId, id)
 * requestActivity.body.request.type 0..1 SEEHDSRivCVTypeCrmRequeststatus2 "Remisstyp" """
     Remisstyp. Kod och klartext som anger vilken typ av remiss som avses. Anges med Kv framställantyp [R5] OID: 1.2.752.129.2.2.2.24 Giltiga värden: 1 = röntgenremiss 2 = labbremiss 4 = allmänremiss Exempel: request.type.codesystem = 1.2.752.129.2.2.2.24 request.type.code = 4 request.type.displayName = allmänremiss
   """
@@ -110,15 +113,17 @@ Description: "Logisk modell för remisstatus och processaktiviteter hämtad via 
 * insert RivNs(requestActivity.body.request.author.name, urn:riv:crm:requeststatus:2)
 * requestActivity.body.request.author.organization 1..1 BackboneElement "Remitterande enhet"
 * insert RivNs(requestActivity.body.request.author.organization, urn:riv:crm:requeststatus:2)
-* requestActivity.body.request.author.organization.id 0..1 SEEHDSRivIITypeCrmRequeststatus2 "Remitterande enhetens id" """root sätts till OID för HSA-id (1.2.752.129.2.1.4.1) extension sätts till HSA-id"""
-* insert RivNs(requestActivity.body.request.author.organization.id, urn:riv:crm:requeststatus:2)
+* requestActivity.body.request.author.organization.rivId 0..1 SEEHDSRivIITypeCrmRequeststatus2 "Remitterande enhetens id" """root sätts till OID för HSA-id (1.2.752.129.2.1.4.1) extension sätts till HSA-id"""
+* insert RivNs(requestActivity.body.request.author.organization.rivId, urn:riv:crm:requeststatus:2)
+* insert RivXmlName(requestActivity.body.request.author.organization.rivId, id)
 * requestActivity.body.request.author.organization.name 1..1 SEEHDSRivString "Remitterande enhetens namn" """Remitterande enhetens namn."""
 * insert RivNs(requestActivity.body.request.author.organization.name, urn:riv:crm:requeststatus:2)
 * requestActivity.body.request.receivingOrganization 1..1 BackboneElement "Remissmottagande enhet" """Remissmottagande enhet."""
 * insert RivNs(requestActivity.body.request.receivingOrganization, urn:riv:crm:requeststatus:2)
-* requestActivity.body.request.receivingOrganization.id 0..1 SEEHDSRivIITypeCrmRequeststatus2 "Remissmottagande enhets id" """
+* requestActivity.body.request.receivingOrganization.rivId 0..1 SEEHDSRivIITypeCrmRequeststatus2 "Remissmottagande enhets id" """
     Identitetsbeteckning för den som är angiven mottagare till remissen eller den faktiska mottagaren om detta ändras (om remissen har skickats vidare). root sätts till OID för HSA-id (1.2.752.129.2.1.4.1) extension sätts till HSA-id
   """
-* insert RivNs(requestActivity.body.request.receivingOrganization.id, urn:riv:crm:requeststatus:2)
+* insert RivNs(requestActivity.body.request.receivingOrganization.rivId, urn:riv:crm:requeststatus:2)
+* insert RivXmlName(requestActivity.body.request.receivingOrganization.rivId, id)
 * requestActivity.body.request.receivingOrganization.name 1..1 SEEHDSRivString "Remissmottagande enhetens namn" """Remissmottagande enhetens namn."""
 * insert RivNs(requestActivity.body.request.receivingOrganization.name, urn:riv:crm:requeststatus:2)

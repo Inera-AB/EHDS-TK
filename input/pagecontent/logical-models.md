@@ -45,6 +45,7 @@ Modellerna är genererade från XSD:erna i respektive RIV-TA-domän (bitbucket.o
 | Enkelt innehåll (`xs:string`, `TimeStampType`, `xs:boolean` …) | En omslagstyp (`SEEHDSRivString`, `SEEHDSRivTimeStamp`, `SEEHDSRivBoolean`, `SEEHDSRivInteger`, `SEEHDSRivDecimal`, `SEEHDSRivDate`, `SEEHDSRivDateTime`, `SEEHDSRivBase64Binary`, `SEEHDSRivAnyURI`) vars `value` har `representation = xmlText`, eftersom RIV-TA lägger värdet som textinnehåll och inte i ett `value`-attribut |
 | Kodlista (`xs:enumeration`) | Omslagstyp med tillåtna värden i definitionen; där IG:n har en värdemängd binds den på `.value` |
 | Elementnamn med understreck, t.ex. `ivl_pq` | FHIR-namn i camelCase (`ivlPq`) och XML-namnet i `xml-name` |
+| Elementnamn som krockar med FHIR:s ärvda element: `id`, `extension`, `modifierExtension` | FHIR-namnen `rivId`, `rivExtension` och `rivModifierExtension`, med XML-namnet i `xml-name`. Mappningssidorna använder XSD-namnen, t.ex. `header.record.id` och `id.extension` |
 | Rekursion (`result.related` i GetLaboratoryOrderOutcome) | `contentReference` |
 | `xs:any` (utökningspunkter) | Utelämnas |
 

@@ -25,8 +25,9 @@ Description: """
 * insert RivNs(observations.header.accessControlHeader.accountableCareUnit, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.accessControlHeader.patient 1..1 BackboneElement "patient"
 * insert RivNs(observations.header.accessControlHeader.patient, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.accessControlHeader.patient.id 1..2 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.accessControlHeader.patient.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.accessControlHeader.patient.rivId 1..2 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.accessControlHeader.patient.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.accessControlHeader.patient.rivId, id)
 * observations.header.accessControlHeader.careProcessId 0..1 SEEHDSRivString "careProcessId"
 * insert RivNs(observations.header.accessControlHeader.careProcessId, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.accessControlHeader.lockTime 0..1 SEEHDSRivTimeStamp "lockTime" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
@@ -41,8 +42,9 @@ Description: """
 * insert RivNs(observations.header.source.systemId, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.record 0..1 BackboneElement "record"
 * insert RivNs(observations.header.record, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.record.id 1..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.record.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.record.rivId 1..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.record.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.record.rivId, id)
 * observations.header.record.timestamp 1..1 SEEHDSRivTimeStamp "timestamp" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(observations.header.record.timestamp, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.record.title 0..1 SEEHDSRivString "title"
@@ -57,14 +59,16 @@ Description: """
 * insert RivNs(observations.header.origin.by, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.origin.by.type 1..1 SEEHDSRivString "type" """Tillåtna värden enligt XSD: HCPROFESSIONAL, PATIENT, PROXY, DEVICE."""
 * insert RivNs(observations.header.origin.by.type, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.origin.by.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.origin.by.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.origin.by.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.origin.by.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.origin.by.rivId, id)
 * observations.header.origin.by.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.origin.by.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.origin.by.orgUnit 0..1 BackboneElement "orgUnit"
 * insert RivNs(observations.header.origin.by.orgUnit, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.origin.by.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.origin.by.orgUnit.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.origin.by.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.origin.by.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.origin.by.orgUnit.rivId, id)
 * observations.header.origin.by.orgUnit.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.origin.by.orgUnit.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.origin.byRole 0..1 SEEHDSRivCVTypeHealthcondBasic2 "byRole"
@@ -77,14 +81,16 @@ Description: """
 * insert RivNs(observations.header.originalAuthor.by, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.originalAuthor.by.type 1..1 SEEHDSRivString "type" """Tillåtna värden enligt XSD: HCPROFESSIONAL, PATIENT, PROXY, DEVICE."""
 * insert RivNs(observations.header.originalAuthor.by.type, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.originalAuthor.by.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.originalAuthor.by.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.originalAuthor.by.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.originalAuthor.by.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.originalAuthor.by.rivId, id)
 * observations.header.originalAuthor.by.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.originalAuthor.by.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.originalAuthor.by.orgUnit 0..1 BackboneElement "orgUnit"
 * insert RivNs(observations.header.originalAuthor.by.orgUnit, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.originalAuthor.by.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.originalAuthor.by.orgUnit.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.originalAuthor.by.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.originalAuthor.by.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.originalAuthor.by.orgUnit.rivId, id)
 * observations.header.originalAuthor.by.orgUnit.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.originalAuthor.by.orgUnit.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.originalAuthor.byRole 0..1 SEEHDSRivCVTypeHealthcondBasic2 "byRole"
@@ -97,14 +103,16 @@ Description: """
 * insert RivNs(observations.header.modified.by, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.modified.by.type 1..1 SEEHDSRivString "type" """Tillåtna värden enligt XSD: HCPROFESSIONAL, PATIENT, PROXY, DEVICE."""
 * insert RivNs(observations.header.modified.by.type, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.modified.by.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.modified.by.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.modified.by.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.modified.by.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.modified.by.rivId, id)
 * observations.header.modified.by.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.modified.by.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.modified.by.orgUnit 0..1 BackboneElement "orgUnit"
 * insert RivNs(observations.header.modified.by.orgUnit, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.modified.by.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.modified.by.orgUnit.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.modified.by.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.modified.by.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.modified.by.orgUnit.rivId, id)
 * observations.header.modified.by.orgUnit.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.modified.by.orgUnit.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.modified.byRole 0..1 SEEHDSRivCVTypeHealthcondBasic2 "byRole"
@@ -117,14 +125,16 @@ Description: """
 * insert RivNs(observations.header.signature.by, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.signature.by.type 1..1 SEEHDSRivString "type" """Tillåtna värden enligt XSD: HCPROFESSIONAL, PATIENT, PROXY, DEVICE."""
 * insert RivNs(observations.header.signature.by.type, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.signature.by.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.signature.by.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.signature.by.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.signature.by.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.signature.by.rivId, id)
 * observations.header.signature.by.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.signature.by.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.signature.by.orgUnit 0..1 BackboneElement "orgUnit"
 * insert RivNs(observations.header.signature.by.orgUnit, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.signature.by.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.signature.by.orgUnit.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.signature.by.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.signature.by.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.signature.by.orgUnit.rivId, id)
 * observations.header.signature.by.orgUnit.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.signature.by.orgUnit.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.signature.byRole 0..1 SEEHDSRivCVTypeHealthcondBasic2 "byRole"
@@ -137,14 +147,16 @@ Description: """
 * insert RivNs(observations.header.cancellation.by, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.cancellation.by.type 1..1 SEEHDSRivString "type" """Tillåtna värden enligt XSD: HCPROFESSIONAL, PATIENT, PROXY, DEVICE."""
 * insert RivNs(observations.header.cancellation.by.type, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.cancellation.by.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.cancellation.by.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.cancellation.by.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.cancellation.by.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.cancellation.by.rivId, id)
 * observations.header.cancellation.by.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.cancellation.by.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.cancellation.by.orgUnit 0..1 BackboneElement "orgUnit"
 * insert RivNs(observations.header.cancellation.by.orgUnit, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.header.cancellation.by.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.header.cancellation.by.orgUnit.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.header.cancellation.by.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.header.cancellation.by.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.header.cancellation.by.orgUnit.rivId, id)
 * observations.header.cancellation.by.orgUnit.name 0..1 SEEHDSRivString "name"
 * insert RivNs(observations.header.cancellation.by.orgUnit.name, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.header.cancellation.byRole 0..1 SEEHDSRivCVTypeHealthcondBasic2 "byRole"
@@ -152,8 +164,9 @@ Description: """
 * observations.header.cancellation.reason 0..1 SEEHDSRivCVTypeHealthcondBasic2 "reason"
 * insert RivNs(observations.header.cancellation.reason, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody 1..1 BackboneElement "Information om en observation (ObservationType)." """Motsvarar klasserna Observation och Uppgift i patientjournal i NI 2017."""
-* observations.observationBody.id 1..1 SEEHDSRivIITypeHealthcondBasic2 "Identitet för observationen" """Identitet för observationen. Identiteten ska garanterat vara unik inom vårdgivaren."""
-* insert RivNs(observations.observationBody.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.rivId 1..1 SEEHDSRivIITypeHealthcondBasic2 "Identitet för observationen" """Identitet för observationen. Identiteten ska garanterat vara unik inom vårdgivaren."""
+* insert RivNs(observations.observationBody.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.rivId, id)
 * observations.observationBody.registrationTime 1..1 SEEHDSRivTimeStamp "Dokumentationstidpunkt — när uppgiften registrerades i journalen." """
     Kan skilja sig från signeringstidpunkt (som återfinns i header).
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -244,19 +257,21 @@ Description: """
 * insert RivNs(observations.observationBody.valueNegation, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.patient 1..1 BackboneElement "Den patient som observationen avser (PatientInformationType)." """Motsvarar klassen Patient i NI 2017. Se PatientInformationType."""
 * insert RivNs(observations.observationBody.patient, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.patient.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Patient.id)" """
+* observations.observationBody.patient.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Patient.id)" """
     Angivelse av identitetsbeteckning för patientrollen. Denna identitet används då patienten inte kan eller bör identifieras med ett person-id (personnummer eller samordningsnummer). Identitetsbeteckningen på patient är vanligtvis ett reservnummer. En person kan ha flera instanser av klassen patient och dessa kan ha olika id. Observera att det är obligatoriskt att ange antingen person-id på person eller id på patient. Nationell reservidentitet är den enda typ av reservnummer som tillåts i denna tjänst. Denna ska anges med 12 tecken utan avskiljare. Se [R9] för mer information om nationell reservidentitet.
   """
-* insert RivNs(observations.observationBody.patient.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivNs(observations.observationBody.patient.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.patient.rivId, id)
 * observations.observationBody.patient.person 1..1 BackboneElement "Uppgifter om den person som har rollen som patient (PersonType)." """
     Se övrig regel 3 (avsnitt 6.1.3.3). Inkluderar id, givenName, surname, gender,
     dateOfBirth, confidentialityIndicator m.m.
   """
 * insert RivNs(observations.observationBody.patient.person, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.patient.person.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
+* observations.observationBody.patient.person.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
     Id för personen i form av personnummer eller samordningsnummer. Skall anges med 12 tecken utan avskiljare.
   """
-* insert RivNs(observations.observationBody.patient.person.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivNs(observations.observationBody.patient.person.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.patient.person.rivId, id)
 * observations.observationBody.patient.person.givenName 0..* SEEHDSRivString "NI 2017 (Person.förnamn)." """
     NI 2017 (Person.förnamn) Angivelse av förnamn, som är en persons givna namn och inkluderar tilltalsnamn.
   """
@@ -386,16 +401,18 @@ Description: """
     organisation (1..1), address (0..*), electronicAddress (0..*).
   """
 * insert RivNs(observations.observationBody.participation.healthcareProfessional, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.healthcareProfessional.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Hälso- och sjukvårdspersonalens HSA-id" """Hälso- och sjukvårdspersonalens HSA-id."""
-* insert RivNs(observations.observationBody.participation.healthcareProfessional.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.healthcareProfessional.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Hälso- och sjukvårdspersonalens HSA-id" """Hälso- och sjukvårdspersonalens HSA-id."""
+* insert RivNs(observations.observationBody.participation.healthcareProfessional.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.healthcareProfessional.rivId, id)
 * observations.observationBody.participation.healthcareProfessional.person 1..1 BackboneElement "Uppgifter om personen. Se PersonType." """
     Uppgifter om den person som har rollen som hälso- och sjukvårdspersonal. Se övrig regel 3, avsnitt 6.1.3.3. Se PersonType i avsnitt 6.1.2.2.8.
   """
 * insert RivNs(observations.observationBody.participation.healthcareProfessional.person, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.healthcareProfessional.person.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
+* observations.observationBody.participation.healthcareProfessional.person.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
     Id för personen i form av personnummer eller samordningsnummer. Skall anges med 12 tecken utan avskiljare.
   """
-* insert RivNs(observations.observationBody.participation.healthcareProfessional.person.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivNs(observations.observationBody.participation.healthcareProfessional.person.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.healthcareProfessional.person.rivId, id)
 * observations.observationBody.participation.healthcareProfessional.person.givenName 0..* SEEHDSRivString "NI 2017 (Person.förnamn)" """Angivelse av förnamn, som är en persons givna namn och inkluderar tilltalsnamn."""
 * insert RivNs(observations.observationBody.participation.healthcareProfessional.person.givenName, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.healthcareProfessional.person.middleSurname 0..1 SEEHDSRivString "NI 2017 (Person.mellannamn)" """
@@ -470,8 +487,9 @@ Description: """
     Organization som hälso- och sjukvårdspersonal har uppdrag för. Se OrganisationType i avsnitt 6.1.2.2.13.
   """
 * insert RivNs(observations.observationBody.participation.healthcareProfessional.organisation, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.healthcareProfessional.organisation.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för organisation" """Id för organisation. Vanligtvis HSA-id."""
-* insert RivNs(observations.observationBody.participation.healthcareProfessional.organisation.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.healthcareProfessional.organisation.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för organisation" """Id för organisation. Vanligtvis HSA-id."""
+* insert RivNs(observations.observationBody.participation.healthcareProfessional.organisation.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.healthcareProfessional.organisation.rivId, id)
 * observations.observationBody.participation.healthcareProfessional.organisation.type 0..1 SEEHDSRivCVTypeHealthcondBasic2 "N1 2017 (Organisation.typ)" """
     Kod för vilken typ av organisation som avses, exempelvis vårdgivare eller vårdenhet. Ger också möjlighet att ange exempelvis socialtjänst eller annan myndighet.
   """
@@ -548,18 +566,20 @@ Description: """
     Patienten i det fall då patienten deltar på andra sätt än som subjekt för observationen. Se PatientInformationType i avsnitt 6.1.2.2.4.
   """
 * insert RivNs(observations.observationBody.participation.patient, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.patient.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Patient.id)" """
+* observations.observationBody.participation.patient.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Patient.id)" """
     Angivelse av identitetsbeteckning för patientrollen. Denna identitet används då patienten inte kan eller bör identifieras med ett person-id (personnummer eller samordningsnummer). Identitetsbeteckningen på patient är vanligtvis ett reservnummer. En person kan ha flera instanser av klassen patient och dessa kan ha olika id. Observera att det är obligatoriskt att ange antingen person-id på person eller id på patient. Nationell reservidentitet är den enda typ av reservnummer som tillåts i denna tjänst. Denna ska anges med 12 tecken utan avskiljare. Se [R9] för mer information om nationell reservidentitet.
   """
-* insert RivNs(observations.observationBody.participation.patient.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivNs(observations.observationBody.participation.patient.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.patient.rivId, id)
 * observations.observationBody.participation.patient.person 1..1 BackboneElement "Uppgifter om den person som har rollen som patient" """
     Uppgifter om den person som har rollen som patient. Se övrig regel 3, avsnitt 6.1.3.3. Se PersonType i avsnitt 6.1.2.2.6.
   """
 * insert RivNs(observations.observationBody.participation.patient.person, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.patient.person.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
+* observations.observationBody.participation.patient.person.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
     Id för personen i form av personnummer eller samordningsnummer. Skall anges med 12 tecken utan avskiljare.
   """
-* insert RivNs(observations.observationBody.participation.patient.person.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivNs(observations.observationBody.participation.patient.person.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.patient.person.rivId, id)
 * observations.observationBody.participation.patient.person.givenName 0..* SEEHDSRivString "NI 2017 (Person.förnamn)" """Angivelse av förnamn, som är en persons givna namn och inkluderar tilltalsnamn."""
 * insert RivNs(observations.observationBody.participation.patient.person.givenName, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.patient.person.middleSurname 0..1 SEEHDSRivString "NI 2017 (Person.mellannamn)" """
@@ -661,10 +681,11 @@ Description: """
     Uppgifter om den person som har rollen som annan person. Se övrig regel 3, avsnitt 6.1.3.3. Se PersonType i avsnitt 6.1.2.2.8.
   """
 * insert RivNs(observations.observationBody.participation.otherPerson.person, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.otherPerson.person.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
+* observations.observationBody.participation.otherPerson.person.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för personen i form av personnummer eller samordningsnummer" """
     Id för personen i form av personnummer eller samordningsnummer. Skall anges med 12 tecken utan avskiljare.
   """
-* insert RivNs(observations.observationBody.participation.otherPerson.person.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivNs(observations.observationBody.participation.otherPerson.person.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.otherPerson.person.rivId, id)
 * observations.observationBody.participation.otherPerson.person.givenName 0..* SEEHDSRivString "NI 2017 (Person.förnamn)" """Angivelse av förnamn, som är en persons givna namn och inkluderar tilltalsnamn."""
 * insert RivNs(observations.observationBody.participation.otherPerson.person.givenName, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.otherPerson.person.middleSurname 0..1 SEEHDSRivString "NI 2017 (Person.mellannamn)" """
@@ -725,8 +746,9 @@ Description: """
 * insert RivNs(observations.observationBody.participation.otherPerson.person.electronicAddress.use, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.otherPerson.organisation 0..1 BackboneElement "Den organisation som personen har uppdrag för" """Den organisation som personen har uppdrag för. Se OrganisationType i avsnitt 6.1.2.2.13."""
 * insert RivNs(observations.observationBody.participation.otherPerson.organisation, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.otherPerson.organisation.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för organisation" """Id för organisation. Vanligtvis HSA-id."""
-* insert RivNs(observations.observationBody.participation.otherPerson.organisation.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.otherPerson.organisation.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för organisation" """Id för organisation. Vanligtvis HSA-id."""
+* insert RivNs(observations.observationBody.participation.otherPerson.organisation.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.otherPerson.organisation.rivId, id)
 * observations.observationBody.participation.otherPerson.organisation.type 0..1 SEEHDSRivCVTypeHealthcondBasic2 "N1 2017 (Organisation.typ)" """
     Kod för vilken typ av organisation som avses, exempelvis vårdgivare eller vårdenhet. Ger också möjlighet att ange exempelvis socialtjänst eller annan myndighet.
   """
@@ -777,8 +799,9 @@ Description: """
     Fysisk eller virtuell plats som är samma oavsett vilken verksamhet som bedrivs på platsen.
   """
 * insert RivNs(observations.observationBody.participation.locationRole.location, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.locationRole.location.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.observationBody.participation.locationRole.location.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.locationRole.location.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.observationBody.participation.locationRole.location.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.locationRole.location.rivId, id)
 * observations.observationBody.participation.locationRole.location.type 0..1 SEEHDSRivCVTypeHealthcondBasic2 "type"
 * insert RivNs(observations.observationBody.participation.locationRole.location.type, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.locationRole.location.name 0..1 SEEHDSRivString "name"
@@ -809,10 +832,11 @@ Description: """
     amount (0..1, AmountType), resourceProperty (0..*, typ + value).
   """
 * insert RivNs(observations.observationBody.participation.resource, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.resource.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Resurs.id)" """
+* observations.observationBody.participation.resource.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Resurs.id)" """
     Angivelse av identitetsbeteckning på en viss verklig instans av resurs, exempelvis MR-maskinen på avdelning R23, rum 3.
   """
-* insert RivNs(observations.observationBody.participation.resource.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivNs(observations.observationBody.participation.resource.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.resource.rivId, id)
 * observations.observationBody.participation.resource.type 0..1 SEEHDSRivCVTypeHealthcondBasic2 "NI 2017 (Resurs.typ)" """
     Kod för typ av resurs, exempelvis skalpell eller typ av läkemedel (som till exempel kan anges med NPL-id).
   """
@@ -872,8 +896,9 @@ Description: """
 * insert RivNs(observations.observationBody.participation.resource.resourceProperty.value.int, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.organisation 0..1 BackboneElement "Organisation som deltar i observationen (OrganisationType)." """Organisation som deltar i observationen. Se OrganisationType i avsnitt 6.1.2.2.13."""
 * insert RivNs(observations.observationBody.participation.organisation, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.participation.organisation.id 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för organisation" """Id för organisation. Vanligtvis HSA-id."""
-* insert RivNs(observations.observationBody.participation.organisation.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.organisation.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "Id för organisation" """Id för organisation. Vanligtvis HSA-id."""
+* insert RivNs(observations.observationBody.participation.organisation.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.participation.organisation.rivId, id)
 * observations.observationBody.participation.organisation.type 0..1 SEEHDSRivCVTypeHealthcondBasic2 "N1 2017 (Organisation.typ)" """
     Kod för vilken typ av organisation som avses, exempelvis vårdgivare eller vårdenhet. Ger också möjlighet att ange exempelvis socialtjänst eller annan myndighet.
   """
@@ -924,13 +949,15 @@ Description: """
 * insert RivNs(observations.observationBody.relation.type, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.relation.referredInformation 1..1 BackboneElement "Referens till en uppgift i patientjournal som observationen har samband till." """Referens till en uppgift i patientjournal som denna observation har ett samband till."""
 * insert RivNs(observations.observationBody.relation.referredInformation, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.relation.referredInformation.id 1..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.observationBody.relation.referredInformation.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.relation.referredInformation.rivId 1..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.observationBody.relation.referredInformation.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.relation.referredInformation.rivId, id)
 * observations.observationBody.relation.referredInformation.time 1..1 SEEHDSRivPartialTimeStampTypeHealthcondBasic2 "Starttid för refererad information. Format: ÅÅÅÅMMDDttmmss (varierande precision). Se övrig regel 4." """YYYY, YYYYMM, YYYYMMDD, YYYYMMDDhh, YYYYMMDDhhmm, YYYYMMDDhhmmss"""
 * insert RivNs(observations.observationBody.relation.referredInformation.time, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.relation.referredInformation.categorization 1..1 SEEHDSRivString "Typ av information som sambandet pekar ut (kod från Categorization i engagemangsindexposten)."
 * insert RivNs(observations.observationBody.relation.referredInformation.categorization, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.relation.referredInformation.informationOwner 1..1 BackboneElement "Vårdgivare som är informationsägare av den refererade informationen."
 * insert RivNs(observations.observationBody.relation.referredInformation.informationOwner, urn:riv:clinicalprocess:healthcond:basic:2)
-* observations.observationBody.relation.referredInformation.informationOwner.id 1..1 SEEHDSRivIITypeHealthcondBasic2 "id"
-* insert RivNs(observations.observationBody.relation.referredInformation.informationOwner.id, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.relation.referredInformation.informationOwner.rivId 1..1 SEEHDSRivIITypeHealthcondBasic2 "id"
+* insert RivNs(observations.observationBody.relation.referredInformation.informationOwner.rivId, urn:riv:clinicalprocess:healthcond:basic:2)
+* insert RivXmlName(observations.observationBody.relation.referredInformation.informationOwner.rivId, id)

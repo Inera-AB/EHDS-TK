@@ -86,8 +86,8 @@ def generate(cfg, models_dir, report):
     header, old, rules = old_parse(os.path.join(models_dir, cfg['model'] + '.fsh'))
     oldl = {k.lower(): (k, v) for k, v in old.items()}
     used_old = set()
-    def find_old(p):
-        cands = [p]
+    def find_old(p, xp=None):
+        cands = [p] + ([xp] if xp and xp != p else [])
         for a, b in cfg.get('alias', []):
             if p.startswith(b + '.') or p == b:
                 cands.append(a + p[len(b):])
@@ -103,10 +103,10 @@ def generate(cfg, models_dir, report):
     rule_map = {}
     for rp, kind, val in rules:
         rule_map.setdefault(rp.lower(), []).append((kind, val))
-    def emit(n, path, parent):
-        xpath = '.'.join(path.split('.')[:-1] + [n.xml_name or n.name])
+    def emit(n, path, parent, pxpath=''):
+        xpath = (pxpath + '.' if pxpath else '') + (n.xml_name or n.name)
         tk = tkb.lookup(xpath, parent.tname if parent else None, n.xml_name or n.name) or tkb.lookup(path, parent.tname if parent else None, n.name)
-        o = find_old(path)
+        o = find_old(path, xpath)
         xsd = n.card; final = xsd; note = None
         tc = tk['card'] if tk and tk.get('card') else None
         oc = o['card'] if o else None
@@ -189,7 +189,7 @@ def generate(cfg, models_dir, report):
         out.extend(out_bind); out_bind.clear()
         if n.children and not is_datatype(n) and n.recursive_to is None:
             for c in n.children:
-                emit(c, path + '.' + c.name, n)
+                emit(c, path + '.' + c.name, n, xpath)
     out_bind = []
     rec_paths = {}
     for p, n in walk(root): rec_paths[id(n)] = p

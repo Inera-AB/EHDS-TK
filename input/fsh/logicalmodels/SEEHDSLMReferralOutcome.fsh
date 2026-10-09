@@ -144,8 +144,9 @@ Description: """
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actTime, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * referralOutcome.referralOutcomeBody.act.actResult 0..* BackboneElement "Resultat (multimedia)" """Resultat av åtgärd. Data i form av bifogade bilder eller liknande."""
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actResult, urn:riv:clinicalprocess:healthcond:actoutcome:3)
-* referralOutcome.referralOutcomeBody.act.actResult.id 0..0 SEEHDSRivString "Ska ej anges" """Ska ej anges."""
-* insert RivNs(referralOutcome.referralOutcomeBody.act.actResult.id, urn:riv:clinicalprocess:healthcond:actoutcome:3)
+* referralOutcome.referralOutcomeBody.act.actResult.rivId 0..0 SEEHDSRivString "Ska ej anges" """Ska ej anges."""
+* insert RivNs(referralOutcome.referralOutcomeBody.act.actResult.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:3)
+* insert RivXmlName(referralOutcome.referralOutcomeBody.act.actResult.rivId, id)
 * referralOutcome.referralOutcomeBody.act.actResult.mediaType 1..1 SEEHDSRivString "Medietyp" """
     Typ av multimedia
     Tillåtna värden enligt XSD: application/dicom, application/msword, application/pdf, audio/basic, audio/k32adpcm, audio/mpeg, image/g3fax, image/gif, image/jpeg, image/png, image/tiff, model/vrml, multipart/x-hl7-cda-level1, text/html, text/plain, text/rtf, text/sgml, text/x-hl7-ft, text/xml, video/mpeg, video/x-avi.

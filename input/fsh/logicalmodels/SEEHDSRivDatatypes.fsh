@@ -196,7 +196,8 @@ Title: "RIV-TA IIType (clinicalprocess:activityprescription:actoutcome:2)"
 Description: "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."
 * insert RivTypeNs(urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * root 1..1 SEEHDSRivString "OID eller UUID för identifierarens namnrymd"
-* extension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* rivExtension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* insert RivXmlName(rivExtension, extension)
 
 Logical: SEEHDSRivIITypeHealthcondActoutcome3
 Id: SEEHDSRivIITypeHealthcondActoutcome3
@@ -204,7 +205,8 @@ Title: "RIV-TA IIType (clinicalprocess:healthcond:actoutcome:3)"
 Description: "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3."
 * insert RivTypeNs(urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * root 1..1 SEEHDSRivString "OID eller UUID för identifierarens namnrymd"
-* extension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* rivExtension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* insert RivXmlName(rivExtension, extension)
 
 Logical: SEEHDSRivIITypeHealthcondActoutcome4
 Id: SEEHDSRivIITypeHealthcondActoutcome4
@@ -212,7 +214,8 @@ Title: "RIV-TA IIType (clinicalprocess:healthcond:actoutcome:4)"
 Description: "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4."
 * insert RivTypeNs(urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * root 1..1 SEEHDSRivString "OID eller UUID för identifierarens namnrymd"
-* extension 1..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* rivExtension 1..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* insert RivXmlName(rivExtension, extension)
 
 Logical: SEEHDSRivIITypeHealthcondBasic2
 Id: SEEHDSRivIITypeHealthcondBasic2
@@ -220,7 +223,8 @@ Title: "RIV-TA IIType (clinicalprocess:healthcond:basic:2)"
 Description: "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2."
 * insert RivTypeNs(urn:riv:clinicalprocess:healthcond:basic:2)
 * root 1..1 SEEHDSRivString "OID eller UUID för identifierarens namnrymd"
-* extension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* rivExtension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* insert RivXmlName(rivExtension, extension)
 
 Logical: SEEHDSRivIITypeHealthcondDescription3
 Id: SEEHDSRivIITypeHealthcondDescription3
@@ -228,7 +232,8 @@ Title: "RIV-TA IIType (clinicalprocess:healthcond:description:3)"
 Description: "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:description:3."
 * insert RivTypeNs(urn:riv:clinicalprocess:healthcond:description:3)
 * root 1..1 SEEHDSRivString "OID eller UUID för identifierarens namnrymd"
-* extension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* rivExtension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* insert RivXmlName(rivExtension, extension)
 
 Logical: SEEHDSRivIITypeLogisticsLogistics3
 Id: SEEHDSRivIITypeLogisticsLogistics3
@@ -236,7 +241,8 @@ Title: "RIV-TA IIType (clinicalprocess:logistics:logistics:3)"
 Description: "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3."
 * insert RivTypeNs(urn:riv:clinicalprocess:logistics:logistics:3)
 * root 1..1 SEEHDSRivString "OID eller UUID för identifierarens namnrymd"
-* extension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* rivExtension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* insert RivXmlName(rivExtension, extension)
 
 Logical: SEEHDSRivIITypeCrmRequeststatus2
 Id: SEEHDSRivIITypeCrmRequeststatus2
@@ -244,7 +250,8 @@ Title: "RIV-TA IIType (crm:requeststatus:2)"
 Description: "RIV-TA-datatypen IIType i namnrymden urn:riv:crm:requeststatus:2."
 * insert RivTypeNs(urn:riv:crm:requeststatus:2)
 * root 1..1 SEEHDSRivString "OID eller UUID för identifierarens namnrymd"
-* extension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* rivExtension 0..1 SEEHDSRivString "Identifierarens värde inom namnrymden"
+* insert RivXmlName(rivExtension, extension)
 
 Logical: SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2
 Id: SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2
@@ -336,7 +343,8 @@ Id: SEEHDSRivPersonIdTypeActivityprescriptionActoutcome2
 Title: "RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:2)"
 Description: "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."
 * insert RivTypeNs(urn:riv:clinicalprocess:activityprescription:actoutcome:2)
-* id 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* rivId 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* insert RivXmlName(rivId, id)
 * type 1..1 SEEHDSRivString "OID för typ av personidentitet"
 
 Logical: SEEHDSRivPersonIdTypeHealthcondActoutcome2
@@ -344,7 +352,8 @@ Id: SEEHDSRivPersonIdTypeHealthcondActoutcome2
 Title: "RIV-TA PersonIdType (clinicalprocess:healthcond:actoutcome:2)"
 Description: "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:2."
 * insert RivTypeNs(urn:riv:clinicalprocess:healthcond:actoutcome:2)
-* id 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* rivId 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* insert RivXmlName(rivId, id)
 * type 1..1 SEEHDSRivString "OID för typ av personidentitet"
 
 Logical: SEEHDSRivPersonIdTypeHealthcondActoutcome3
@@ -352,7 +361,8 @@ Id: SEEHDSRivPersonIdTypeHealthcondActoutcome3
 Title: "RIV-TA PersonIdType (clinicalprocess:healthcond:actoutcome:3)"
 Description: "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3."
 * insert RivTypeNs(urn:riv:clinicalprocess:healthcond:actoutcome:3)
-* id 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* rivId 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* insert RivXmlName(rivId, id)
 * type 1..1 SEEHDSRivString "OID för typ av personidentitet"
 
 Logical: SEEHDSRivPersonIdTypeHealthcondDescription2
@@ -360,7 +370,8 @@ Id: SEEHDSRivPersonIdTypeHealthcondDescription2
 Title: "RIV-TA PersonIdType (clinicalprocess:healthcond:description:2)"
 Description: "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:description:2."
 * insert RivTypeNs(urn:riv:clinicalprocess:healthcond:description:2)
-* id 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* rivId 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* insert RivXmlName(rivId, id)
 * type 1..1 SEEHDSRivString "OID för typ av personidentitet"
 
 Logical: SEEHDSRivPersonIdTypeLogisticsLogistics3
@@ -368,7 +379,8 @@ Id: SEEHDSRivPersonIdTypeLogisticsLogistics3
 Title: "RIV-TA PersonIdType (clinicalprocess:logistics:logistics:3)"
 Description: "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3."
 * insert RivTypeNs(urn:riv:clinicalprocess:logistics:logistics:3)
-* id 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* rivId 1..1 SEEHDSRivString "Personidentitet (12 tecken utan avskiljare)"
+* insert RivXmlName(rivId, id)
 * type 1..1 SEEHDSRivString "OID för typ av personidentitet"
 
 Logical: SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2
