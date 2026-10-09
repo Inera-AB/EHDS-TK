@@ -15,46 +15,54 @@
 
 -------
 
-## Mappningstabell – requestHeader (metadata)
+## Meddelandestruktur
 
-| | | | |
-| :--- | :--- | :--- | :--- |
-| `requestHeader.patientId.extension` | 1..1 | `Task.for.identifier.value` | Personnummer eller samordningsnummer |
-| `requestHeader.patientId.root` | 1..1 | `Task.for.identifier.system` | OID→URI-konvertering; se OID-tabell nedan |
-| `requestHeader.sourceSystemHSAId` | 1..1 | `Task.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
-| `requestHeader.documentTime` | 1..1 | `Task.authoredOn` | YYYYMMDDHHMMSS → ISO 8601 |
-| `requestHeader.careProviderHSAId` | 1..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
-| `requestHeader.careUnitHSAId` | 1..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |
+Svaret `GetRequestActivitiesResponse` innehåller noll eller flera `requestActivity`, var och en med `header` (åtkomstkontroll, källsystem, post och dokumentationsansvarig) och `body` (status, händelsetidpunkt och den remiss som statusen gäller). Svaret har ingen patientidentitet och inget `result`-element. Patienten är den som efterfrågades i begäran (`patientId`). Strukturen följer den logiska modellen [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md), som är genererad från XSD:n och verifierad mot TKB:n.
 
 -------
 
-## Mappningstabell – remissaktivitetsfält
+## Mappningstabell – header
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `requestId` | 1..1 | `Task.identifier[0].value` | Remissidentifierare; källsystemets id för denna remiss­aktivitet |
-| `requestStatus` | 1..1 | `Task.status` | kv_requestStatus → FHIR Task.status; se statusmappning nedan |
-| `requestReceiver` | 0..1 | `Task.owner` | Reference(SEEHDSOrganization) med`identifier.value`= mottagarens HSA-id |
-| `activityType` | 0..1 | `Task.code` | Aktivitetstyp; kodverk kv_activityType →`Task.code` |
-| `activityTime` | 0..1 | `Task.lastModified` | Senaste aktivitetstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
-| `activityComment` | 0..1 | `Task.description` | Aktivitetsbeskrivning i fritext |
+| (begärans`patientId`) | 1..1 | `Task.for` | Svaret saknar patientidentitet;`Task.for`sätts till SEEHDSPatient för den efterfrågade patienten (GENERAL-006) |
+| `requestActivity.header.accessControlHeader.accountableHealthcareProvider` | 1..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – uppgiftsägande vårdgivare. IIType:`extension`= HSA-id |
+| `requestActivity.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet. IIType:`extension`= HSA-id |
+| `requestActivity.header.accessControlHeader.originalPatientId` | 0..1 | Ej mappad | Personidentitet vid lagringstillfället, om den skiljer sig från den efterfrågade |
+| `requestActivity.header.accessControlHeader.careProcessId` | 0..1 | Ej mappad | Id för individanpassad vårdprocess |
+| `requestActivity.header.accessControlHeader.lockTime` | 0..0 | N/A | Ska inte användas enligt TKB |
+| `requestActivity.header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används för spärrkontroll i bryggan |
+| `requestActivity.header.accessControlHeader.approvedForPatient` | 1..1 | `Task.meta.security` | PDL-kontroll – se PDL-001 |
+| `requestActivity.header.sourceSystemId` | 1..1 | `Task.meta.source` | IIType;`extension`= källsystemets HSA-id →`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}`(GENERAL-005) |
+| `requestActivity.header.record.id` | 1..1 | `Task.identifier[0]` | Remisstatusens id.`root`→`system`(OID→URI),`extension`→`value` |
+| `requestActivity.header.record.timestamp` | 1..1 | `Task.authoredOn` | När remisstatusen skapades i källsystemet; ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001) |
+| `requestActivity.header.author.id` | 0..1 | Ej mappad | HSA-id för den som dokumenterat statusen |
+| `requestActivity.header.author.name` | 0..1 | Ej mappad | Namn på den som dokumenterat statusen |
+| `requestActivity.header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Används om`author`finns, annars`record.timestamp` |
+| `requestActivity.header.author.byRole` | 0..1 | Ej mappad | Befattning (CVType) |
 
 -------
 
-## Mappningstabell – tekniska responsfält (result.*)
-
-Dessa fält är en del av RIVTA-transportlagrets standardsvar och bär ingen klinisk information. De hanteras av infrastrukturlagret och mappas inte till FHIR-resurser.
+## Mappningstabell – body
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod (OK/ERROR) – hanteras av transportlagret |
-| `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
-| `result.logId` | 0..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
-| `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
+| `requestActivity.body.statusCode` | 1..1 | `Task.businessStatus`och`Task.status` | Kv status vårdbegäran (OID 1.2.752.129.2.2.2.43). Koden bevaras i`businessStatus`;`status`härleds enligt tabellen nedan |
+| `requestActivity.body.eventTime` | 1..1 | `Task.lastModified` | Tidpunkt för statusändringen; ÅÅÅÅMMDDttmmss → ISO 8601 |
+| `requestActivity.body.request.id` | 1..1 | `Task.focus.identifier.value` | Remiss-id; logisk referens till SEEHDSServiceRequestReferral |
+| `requestActivity.body.request.type` | 0..1 | Ej mappad | Remisstyp (Kv framställantyp, OID 1.2.752.129.2.2.2.24) – attribut till remissen, som bara refereras logiskt |
+| `requestActivity.body.request.medium` | 0..1 | Ej mappad | Form av framställan (OID 1.2.752.129.2.2.2.7) – attribut till remissen |
+| `requestActivity.body.request.author.name` | 1..1 (om author) | `Task.requester.display` | Remittentens namn |
+| `requestActivity.body.request.author.organization.id` | 0..1 | `Task.requester.identifier` | Remitterande enhets HSA-id (IIType`extension`) |
+| `requestActivity.body.request.author.organization.name` | 1..1 | `Task.requester.display` | Läggs efter remittentens namn |
+| `requestActivity.body.request.receivingOrganization.id` | 0..1 | `Task.owner.identifier` | Mottagande enhets HSA-id (IIType`extension`) |
+| `requestActivity.body.request.receivingOrganization.name` | 1..1 | `Task.owner.display` | Mottagande enhets namn |
 
 -------
 
-## Statusmappning (kv_requestStatus → Task.status)
+## Statusmappning (Kv status vårdbegäran → Task.status)
+
+Mappningen görs på koden i `statusCode`. Tabellen anger klartexterna; koderna i kodverket 1.2.752.129.2.2.2.43 behöver verifieras mot Ineras kodverkstjänst.
 
 | | |
 | :--- | :--- |
@@ -68,15 +76,15 @@ Dessa fält är en del av RIVTA-transportlagrets standardsvar och bär ingen kli
 
 ## Provenance
 
-En `Provenance`-resurs skapas per Task och bär PDL/Sparr-information från requestHeader.
+En `Provenance`-resurs skapas per Task och bär PDL/Sparr-information från `header.accessControlHeader`.
 
 | | | |
 | :--- | :--- | :--- |
-| `agent[custodian]` | Juridiskt ansvarig vårdgivare (Yttre Sparr) | `requestHeader.careProviderHSAId` |
-| `agent[author]` | Informationsägande vårdenhet (Inre Sparr) | `requestHeader.careUnitHSAId` |
+| `agent[custodian]` | Juridiskt ansvarig vårdgivare (Yttre Sparr) | `requestActivity.header.accessControlHeader.accountableHealthcareProvider` |
+| `agent[author]` | Informationsägande vårdenhet (Inre Sparr) | `requestActivity.header.accessControlHeader.accountableCareUnit` |
 
 `Provenance.target` refererar Task-resursen.
- `Provenance.recorded` = `requestHeader.documentTime` (konverterat till ISO 8601).
+ `Provenance.recorded` = `header.author.timestamp` om den finns, annars `header.record.timestamp` (konverterat till ISO 8601).
 
 -------
 
@@ -94,20 +102,11 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ## Designbeslut
 
-### requestId → Task.identifier vs Task.focus
+### Task.identifier och Task.focus (tidigare REQ-001)
 
-`requestId` i LM är remissaktivitetens egen identifierare (ej remissen i sig). Den mappas därför till `Task.identifier[0].value` för att representera källsystemets id för detta aktivitetsobjekt. En referens till den underliggande remissen (om tillgänglig) kan läggas i `Task.focus` som `Reference(SEEHDSServiceRequestReferral)`, men det kräver att remiss-id är separat tillgängligt vilket ej framgår av LM-strukturen.
+Meddelandet har två skilda identiteter: `header.record.id` identifierar remisstatusen och mappas till `Task.identifier`, medan `body.request.id` identifierar remissen och mappas till `Task.focus.identifier`.
 
-### Task.requester
+### Task.requester (tidigare REQ-002)
 
-LM saknar ett explicit fält för den som skapat/initierat remissen. `Task.requester` lämnas utan mappning tills RIVTA-kontraktet klargör om avsändarinformation finns i requestHeader eller requestId-strukturen.
-
--------
-
-## Föreslagna nya issues
-
-| | | |
-| :--- | :--- | :--- |
-| REQ-001 | `requestId`i LM kan avse antingen aktivitetens eget id eller referens till remissen. Behöver klargöras: ska`Task.identifier`och`Task.focus`båda populeras? Kräver analys av TKB. | Medium |
-| REQ-002 | `Task.requester`saknar källfält i LM. Behöver utredas om avsändaren finns i requestHeader (t.ex. via ett`senderHSAId`-fält i fullständigt RIVTA-schema). | Låg |
+Remittenten finns i `body.request.author` (namn och remitterande enhet) och mappas till `Task.requester` som logisk referens.
 

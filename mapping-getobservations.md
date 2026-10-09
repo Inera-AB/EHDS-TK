@@ -33,64 +33,52 @@ Alla GetObservations-implementationer instansierar `SEEHDSObservationBase` (elle
 
 ## Datamodell – översikt
 
-Tjänstekontraktet returnerar en lista med `observations 0..*`. Varje observation består av ett `header`-element och ett `observationBody`-element:
+Tjänstekontraktet returnerar en lista med `observations 0..*`. Varje observation består av ett `header`-element och ett `observationBody`-element. Trädet visar svarsmeddelandet enligt XSD:n (GetObservationsResponder_2.0.xsd):
 
 ```
-observations [0..*]
-  header [1..1]
-  observationBody [1..1]
-    observationId          [1..1]  Identifier
-    registrationTime       [1..1]  instant
-    observationType        [0..1]  CodeableConcept
-    observationValue       [1..1]  (XOR-union, se nedan)
-      cv                   [0..1]  CodeableConcept
-      pq                   [0..1]  Quantity
-      ivlpq                [0..1]  Range
-      ts                   [0..1]  string  (variabelprecisions-tidsstämpel)
-      ivlts                [0..1]  Period
+observations [0..*]  ObservationResponseType
+  header                   [1..1]  HeaderType
+  observationBody          [1..1]  ObservationType
+    id                     [1..1]  IIType
+    registrationTime       [1..1]  TimeStampType
+    type                   [0..1]  CVType
+    value                  [1..1]  ValueANYType
+      cv                   [0..1]  CVType
+      pq                   [0..1]  PQType
+      ivl_pq               [0..1]  PQIntervalType
+      ts                   [0..1]  PartialTimeStampType
+      ivl_ts               [0..1]  PartialTimePeriodType
       st                   [0..1]  string
-      intValue             [0..1]  integer
-    scale                  [0..1]  CodeableConcept
-    observationStatus      [1..1]  CodeableConcept  (SNOMED CT urvals-id 56431000052106)
-    targetSite             [0..*]  CodeableConcept
+      int                  [0..1]  int
+    scale                  [0..1]  CVType
+    status                 [1..1]  CVType
+    targetSite             [0..*]  CVType
     description            [0..1]  string
-    time                   [0..1]  (TimeType: ts 0..1 string | ivlts 0..1 Period)
+    time                   [0..1]  TimeType
+      ts                   [0..1]  PartialTimeStampType
+      ivl_ts               [0..1]  PartialTimePeriodType
     valueNegation          [1..1]  boolean
     patient                [1..1]  PatientInformationType
-      patientId            [0..1]  Identifier
-      person               [1..1]  (personId, givenName, middleSurname, surname,
-                                    givenNameMarker, gender, dateOfBirth,
-                                    confidentialityIndicator, maritalStatus,
-                                    address[0..*], electronicAddress[0..*])
+      id                   [0..1]  IIType
+      person               [1..1]  PersonType
       address              [0..*]  AddressType
       electronicAddress    [0..*]  TelType
-    participation          [0..*]  BackboneElement
-      participantType      [1..1]  CodeableConcept
+    participation          [0..*]  ParticipationType
+      type                 [1..1]  CVType
       time                 [0..1]  TimeType
-      healthcareProfessional [0..1]
-        performerId        [0..1]  Identifier
-        person             [1..1]  PersonType
-        jobCode            [0..1]  CodeableConcept
-        license            [0..*]  CodeableConcept
-        specialistQualification [0..*] CodeableConcept
-        organisation       [1..1]  BackboneElement
-        address            [0..*]  BackboneElement
-        electronicAddress  [0..*]  BackboneElement
+      healthcareProfessional [0..1]  HealthcareProfessionalType
       patient              [0..1]  PatientInformationType
-      otherPerson          [0..1]  BackboneElement
-      locationRole         [0..1]  BackboneElement
-      resource             [0..1]  BackboneElement
-      organisation         [0..1]  BackboneElement
-    relation               [0..*]  BackboneElement
-      relationType         [1..1]  CodeableConcept
-      referredInformation  [1..1]  BackboneElement
-        referenceId        [1..1]  Identifier
-        time               [1..1]  string
-        categorization     [1..1]  string
-        informationOwner   [1..1]  BackboneElement
-          careGiverId      [1..1]  Identifier
+      otherPerson          [0..1]  OtherPersonType
+      locationRole         [0..1]  LocationRoleType
+      resource             [0..1]  ResourceType
+      organisation         [0..1]  OrganisationType
+    relation               [0..*]  RelationType
+      type                 [1..1]  CVType
+      referredInformation  [1..1]  ReferredInformationType
 
 ```
+
+Typnamnen är RIV-TA-typerna i XSD:n. `ivl_pq` och `ivl_ts` heter `ivlPq` och `ivlTs` i den logiska modellen (FHIR tillåter inte understreck i elementnamn) och bär XML-namnet i tillägget `xml-name`.
 
 -------
 
@@ -106,31 +94,31 @@ observations [0..*]
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.observationId.extension` | 1..1 | `Observation.identifier.value` | Unikt id satt av källsystemet |
-| `observationBody.observationId.root` | 1..1 | `Observation.identifier.system` | OID för vårdgivarens HSA-id; format`urn:oid:{root}` |
+| `observationBody.id.extension` | 1..1 | `Observation.identifier.value` | Unikt id satt av källsystemet |
+| `observationBody.id.root` | 1..1 | `Observation.identifier.system` | OID för vårdgivarens HSA-id; format`urn:oid:{root}` |
 | `observationBody.registrationTime` | 1..1 | `Observation.issued` | Dokumentationstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (se GENERAL-001) |
 
-### observationType – klassificering och kod
+### type – klassificering och kod
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.observationType` | 0..1 | `Observation.code` | Typ av observation; om saknas används platshållarkod – se avsnitt Observation.code nedan |
+| `observationBody.type` | 0..1 | `Observation.code` | Typ av observation; om saknas används platshållarkod – se avsnitt Observation.code nedan |
 
-> **OBS:** `Observation.category` sätts inte (se avsnitt Observation.category nedan). `observationType` styr `Observation.code`, inte `category`.
+> **OBS:** `Observation.category` sätts inte (se avsnitt Observation.category nedan). `observationBody.type` styr `Observation.code`, inte `category`.
 
-### observationValue – XOR-union av värdetyper
+### value – XOR-union av värdetyper
 
 Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet väljs baserat på vilken gren som är populerad i källdata.
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.observationValue.cv` | 0..1 | `Observation.valueCodeableConcept` | Kodad observation |
-| `observationBody.observationValue.pq` | 0..1 | `Observation.valueQuantity` | Numeriskt värde med enhet (UCUM) |
-| `observationBody.observationValue.ivlpq` | 0..1 | `Observation.valueRange` | Intervall av Quantity-värden. Villkor: Minst ett av`low`och`high`måste anges. |
-| `observationBody.observationValue.ts` | 0..1 | `Observation.valueDateTime`/`Observation.valueString` | Precision ≥ dag →`valueDateTime`; precision`YYYY`/`YYYYMM`→`valueString`(se OBS-001) |
-| `observationBody.observationValue.ivlts` | 0..1 | `Observation.valuePeriod` | Tidsintervall. Villkor: Minst ett av`start`och`end`måste anges. |
-| `observationBody.observationValue.st` | 0..1 | `Observation.valueString` | Fritextsvar |
-| `observationBody.observationValue.intValue` | 0..1 | `Observation.valueInteger` | Heltalsvärde. Ska ENBART användas för skalvärden (t.ex. AUDIT-poäng). Får INTE användas för fysiskt uppmätta värden (längd, vikt etc.) – använd`pq`för dessa. |
+| `observationBody.value.cv` | 0..1 | `Observation.valueCodeableConcept` | Kodad observation |
+| `observationBody.value.pq` | 0..1 | `Observation.valueQuantity` | Numeriskt värde med enhet (UCUM) |
+| `observationBody.value.ivlPq` | 0..1 | `Observation.valueRange` | Intervall av Quantity-värden. Villkor: Minst ett av`low`och`high`måste anges. |
+| `observationBody.value.ts` | 0..1 | `Observation.valueDateTime`/`Observation.valueString` | Precision ≥ dag →`valueDateTime`; precision`YYYY`/`YYYYMM`→`valueString`(se OBS-001) |
+| `observationBody.value.ivlTs` | 0..1 | `Observation.valuePeriod` | Tidsintervall. Villkor: Minst ett av`start`och`end`måste anges. |
+| `observationBody.value.st` | 0..1 | `Observation.valueString` | Fritextsvar |
+| `observationBody.value.int` | 0..1 | `Observation.valueInteger` | Heltalsvärde. Ska ENBART användas för skalvärden (t.ex. AUDIT-poäng). Får INTE användas för fysiskt uppmätta värden (längd, vikt etc.) – använd`pq`för dessa. |
 
 ### Negation och frånvaro av värde
 
@@ -142,7 +130,7 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.observationStatus` | 1..1 | `Observation.status` | SNOMED CT (urvals-id 56431000052106) → FHIR ObservationStatus; kräver ConceptMap, se OBS-003 |
+| `observationBody.status` | 1..1 | `Observation.status` | SNOMED CT (urvals-id 56431000052106) → FHIR ObservationStatus; kräver ConceptMap, se OBS-003 |
 | `observationBody.scale` | 0..1 | `Observation.method` | Mätskala eller mätmetod (t.ex. AUDIT-skalan, AB0-systemet) |
 
 ### Anatomisk lokalisation
@@ -162,9 +150,9 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.time` | 0..1 | — | XOR: antingen`ts`eller`ivlts`populeras |
+| `observationBody.time` | 0..1 | — | XOR: antingen`ts`eller`ivl_ts`populeras |
 | `observationBody.time.ts` | 0..1 | `Observation.effectiveDateTime` | Variabelprecisions-sträng; konverteras om precision ≥ dag (se OBS-001 och GENERAL-001) |
-| `observationBody.time.ivlts` | 0..1 | `Observation.effectivePeriod` | Tidsintervall för observationen; XOR med`time.ts`. Villkor: Minst ett av start och end måste anges. |
+| `observationBody.time.ivlTs` | 0..1 | `Observation.effectivePeriod` | Tidsintervall för observationen; XOR med`time.ts`. Villkor: Minst ett av start och end måste anges. |
 
 ### Patient (observationBody.patient)
 
@@ -172,10 +160,10 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.patient.person.personId.extension` | 0..1 | `Observation.subject.identifier.value` | Personnummer eller samordningsnummer (föredragen källa) |
-| `observationBody.patient.person.personId.root` | 0..1 | `Observation.subject.identifier.system` | OID→URI-konvertering, se OID-tabell nedan |
-| `observationBody.patient.patientId.extension` | 0..1 | `Observation.subject.identifier.value` | Alternativ om`person.personId`saknas (nationell reservidentitet, OID 1.2.752.74.9.1) |
-| `observationBody.patient.patientId.root` | 0..1 | `Observation.subject.identifier.system` | OID→URI |
+| `observationBody.patient.person.id.extension` | 0..1 | `Observation.subject.identifier.value` | Personnummer eller samordningsnummer (föredragen källa) |
+| `observationBody.patient.person.id.root` | 0..1 | `Observation.subject.identifier.system` | OID→URI-konvertering, se OID-tabell nedan |
+| `observationBody.patient.id.extension` | 0..1 | `Observation.subject.identifier.value` | Alternativ om`person.id`saknas (nationell reservidentitet, OID 1.2.752.74.9.1) |
+| `observationBody.patient.id.root` | 0..1 | `Observation.subject.identifier.system` | OID→URI |
 | `observationBody.patient.person.givenName` | 0..* | Ej mappad i Observation | Förnamn – lagras ej i Observation; kan bifogas i Patient-resurs om en skapas |
 | `observationBody.patient.person.middleSurname` | 0..1 | Ej mappad i Observation | Mellannamn – se givenName ovan |
 | `observationBody.patient.person.surname` | 0..1 | Ej mappad i Observation | Efternamn – se givenName ovan |
@@ -197,14 +185,14 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.participation[*].participantType` | 1..1 | `Observation.performer.extension[participationType]` | Deltagarroll (utförare, vittne, ansvarig etc.); SNOMED CT urvals-id 53351000052100 |
+| `observationBody.participation[*].type` | 1..1 | `Observation.performer.extension[participationType]` | Deltagarroll (utförare, vittne, ansvarig etc.); SNOMED CT urvals-id 53351000052100 |
 | `observationBody.participation[*].time` | 0..1 | Ej mappad | Tidpunkt för deltagandet – FHIR Observation har inget per-performer-tidsfält; kan noteras i extension om nödvändigt (se OBS-006) |
 
 #### participation – hälso- och sjukvårdspersonal (healthcareProfessional)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.participation[*].healthcareProfessional.performerId` | 0..1 | `Observation.performer`(Reference(PractitionerRole)) | Logisk referens via HSA-id (OID 1.2.752.129.2.1.4.1) |
+| `observationBody.participation[*].healthcareProfessional.id` | 0..1 | `Observation.performer`(Reference(PractitionerRole)) | Logisk referens via HSA-id (OID 1.2.752.129.2.1.4.1) |
 | `observationBody.participation[*].healthcareProfessional.person` | 1..1 | `PractitionerRole.practitioner`(via referens) | PersonType – namn och id mappas till Practitioner-resurs om en skapas |
 | `observationBody.participation[*].healthcareProfessional.jobCode` | 0..1 | `PractitionerRole.code` | Befattningskod (NI 2017 Hälso- och sjukvårdspersonal.befattning) |
 | `observationBody.participation[*].healthcareProfessional.license` | 0..* | `PractitionerRole.practitioner`→`Practitioner.qualification` | Legitimation – lagras i Practitioner om resurs skapas |
@@ -245,27 +233,21 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 
 ### Relationer (relation)
 
-`observationBody.relation` innehåller typade samband till andra informationsmängder. Val av FHIR-element beror på `relationType`-koden – se OBS-005.
+`observationBody.relation` innehåller typade samband till andra informationsmängder. Val av FHIR-element beror på koden i `type` – se OBS-005.
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationBody.relation[*]` | 0..* | `Observation.derivedFrom`eller`Observation.hasMember` | Val beror på`relationType`; se OBS-005 och avsnitt nedan |
-| `observationBody.relation[*].relationType` | 1..1 | **(styr val av FHIR-element)** | SNOMED CT-kod (urvals-id 53371000052106) som avgör om det är derivedFrom, hasMember eller extension |
-| `observationBody.relation[*].referredInformation.referenceId.extension` | 1..1 | `Observation.derivedFrom.identifier.value`/`Observation.hasMember.identifier.value` | Id på den refererade informationen |
-| `observationBody.relation[*].referredInformation.referenceId.root` | 1..1 | `Observation.derivedFrom.identifier.system`/`Observation.hasMember.identifier.system` | OID→URI-konvertering |
+| `observationBody.relation[*]` | 0..* | `Observation.derivedFrom`eller`Observation.hasMember` | Val beror på`type`; se OBS-005 och avsnitt nedan |
+| `observationBody.relation[*].type` | 1..1 | **(styr val av FHIR-element)** | SNOMED CT-kod (urvals-id 53371000052106) som avgör om det är derivedFrom, hasMember eller extension |
+| `observationBody.relation[*].referredInformation.id.extension` | 1..1 | `Observation.derivedFrom.identifier.value`/`Observation.hasMember.identifier.value` | Id på den refererade informationen |
+| `observationBody.relation[*].referredInformation.id.root` | 1..1 | `Observation.derivedFrom.identifier.system`/`Observation.hasMember.identifier.system` | OID→URI-konvertering |
 | `observationBody.relation[*].referredInformation.time` | 1..1 | Ej mappad | Starttid för refererad information – FHIR-referenser har inget tidsfält; information förloras om ej hanteras i extension (se OBS-005) |
 | `observationBody.relation[*].referredInformation.categorization` | 1..1 | Ej mappad | Typ av information från engagemangsindexet – ingen standardmotpart i FHIR Observation.derivedFrom; kan lagras i extension (se OBS-005) |
-| `observationBody.relation[*].referredInformation.informationOwner.careGiverId` | 1..1 | Ej mappad | Informationsägande vårdgivare – ingen per-referens ägarinformation i FHIR; kan lagras i Provenance om nödvändigt (se OBS-005) |
+| `observationBody.relation[*].referredInformation.informationOwner.id` | 1..1 | Ej mappad | Informationsägande vårdgivare – ingen per-referens ägarinformation i FHIR; kan lagras i Provenance om nödvändigt (se OBS-005) |
 
 ### Tekniska responsfält (result)
 
-| | | | |
-| :--- | :--- | :--- | :--- |
-| `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod – hanteras av transportlagret |
-| `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
-| `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
-| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
-| `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
+Svarsmeddelandet `GetObservationsResponse` har inget `result`-element enligt XSD:n (GetObservationsResponder_2.0.xsd). Det finns därför inga tekniska responsfält att mappa.
 
 -------
 
@@ -273,7 +255,7 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 
 ### Observation.status (OBS-003)
 
-`observationBody.observationStatus` använder SNOMED CT-koder ur urvalsuppsättningen med id `56431000052106`. En ConceptMap krävs för att översätta dessa till FHIR `ObservationStatus`-värden:
+`observationBody.status` använder SNOMED CT-koder ur urvalsuppsättningen med id `56431000052106`. En ConceptMap krävs för att översätta dessa till FHIR `ObservationStatus`-värden:
 
 | | | |
 | :--- | :--- | :--- |
@@ -291,7 +273,7 @@ Saknad mappning: status sätts till `unknown` och en `OperationOutcome`-varning 
 
 ### Observation.code – fallback
 
-Om `observationBody.observationType` saknas och ingen annan kod kan härledas sätts `Observation.code` till en lokal platshållarkod `https://fhir.inera.se/ig/ehds-tk/CodeSystem/observation-placeholder#unspecified` med display **"Okänd observationstyp"** för att uppfylla FHIR-profilens krav på minst en kod.
+Om `observationBody.type` saknas och ingen annan kod kan härledas sätts `Observation.code` till en lokal platshållarkod `https://fhir.inera.se/ig/ehds-tk/CodeSystem/observation-placeholder#unspecified` med display **"Okänd observationstyp"** för att uppfylla FHIR-profilens krav på minst en kod.
 
 ### valueNegation (OBS-002) – Beslut
 
@@ -306,7 +288,7 @@ Koden `not-detected` hämtas från `http://terminology.hl7.org/CodeSystem/data-a
 
 ### ts-fältet (OBS-001) – Beslut
 
-`observationBody.observationValue.ts` och `observationBody.time.ts` är RIVTA `TimeType/ts`-strängar med variabel precision, t.ex. `202306`, `20230601`, `20230601120000`. Beslutad hantering:
+`observationBody.value.ts` och `observationBody.time.ts` är RIVTA `TimeType/ts`-strängar med variabel precision, t.ex. `202306`, `20230601`, `20230601120000`. Beslutad hantering:
 
 | | | |
 | :--- | :--- | :--- |
@@ -329,7 +311,7 @@ För `time.ts`: om precision ≥ dag mappas till `Observation.effectiveDateTime`
 
 ### relation – relationstyper (OBS-005)
 
-`observationBody.relation` innehåller referenser till andra observationer med en `relationType`-kod. Mapping:
+`observationBody.relation` innehåller referenser till andra observationer med en koden i `relation.type`. Mapping:
 
 | | | |
 | :--- | :--- | :--- |
@@ -337,7 +319,7 @@ För `time.ts`: om precision ≥ dag mappas till `Observation.effectiveDateTime`
 | Ingår i grupp / komponent | `Observation.hasMember` | Deltagande observation i panel |
 | Övriga typer | `Observation.extension[observationRelation]` | Lokal extension – se OBS-005 |
 
-Notera att `referredInformation.time`, `referredInformation.categorization` och `referredInformation.informationOwner.careGiverId` saknar standardmotpart i FHIR-referensen och kräver extension eller Provenance-resurs om de ska bevaras.
+Notera att `referredInformation.time`, `referredInformation.categorization` och `referredInformation.informationOwner.id` saknar standardmotpart i FHIR-referensen och kräver extension eller Provenance-resurs om de ska bevaras.
 
 -------
 
@@ -349,8 +331,8 @@ PDL- och Sparr-information hämtas istället ur följande källor när de är ti
 
 | | | |
 | :--- | :--- | :--- |
-| Vårdgivare (yttre Sparr) | `observationBody.participation[*]`där`participantType`avser ansvarig vårdgivare | `Provenance.agent[custodian].who.identifier` |
-| Vårdenhet (inre Sparr) | `observationBody.participation[*]`där`participantType`avser vårdenhet | `Provenance.agent[author].who.identifier` |
+| Vårdgivare (yttre Sparr) | `observationBody.participation[*]`där`participation.type`avser ansvarig vårdgivare | `Provenance.agent[custodian].who.identifier` |
+| Vårdenhet (inre Sparr) | `observationBody.participation[*]`där`participation.type`avser vårdenhet | `Provenance.agent[author].who.identifier` |
 | Skyddad identitet | `observationBody.patient.person.confidentialityIndicator` | `Observation.meta.security` |
 
 Implementationer **måste** hantera avsaknaden av standard-Sparr-fält och antingen vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med `meta.security` och dokumentera beslutet i implementationsguiden.
@@ -393,7 +375,7 @@ Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska använ
 
 ### Kodtabell – IoÖ SNOMED CT-koder → FHIR
 
-Kodsystem för `observationBody.observationType.type.codeSystem`: `1.2.752.116.2.1.1` (SNOMED CT SE) → URI `http://snomed.info/sct`.
+Kodsystem för `observationBody.type.codeSystem`: `1.2.752.116.2.1.1` (SNOMED CT SE) → URI `http://snomed.info/sct`.
 
 | | | | | | |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -406,14 +388,14 @@ Kodsystem för `observationBody.observationType.type.codeSystem`: `1.2.752.116.2
 
 ### IoÖ-fält → FHIR Observation mappning
 
-Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR `SEEHDSObservationGrowth`:
+Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR `SEEHDSObservationGrowth` (sökvägar enligt den logiska modellen):
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `observationType.type.code` | SNOMED CT-kod, se tabell ovan | `Observation.code.coding[snomedSE].code` | Obligatorisk per IoÖ; ska vara en av de 6 koderna |
-| `observationType.type.codeSystem` | `1.2.752.116.2.1.1`(SNOMED CT SE) | `Observation.code.coding[snomedSE].system` | URI:`http://snomed.info/sct` |
-| `observationType.value.value` | Decimal (enhet beror på mättyp) | `Observation.valueQuantity.value` | Längd: 0–1 dec.; Vikt: 0–3 dec.; HuC: 1 dec.; Gest: heltal |
-| `observationType.value.unit` | `cm`/`kg`/`d` | `Observation.valueQuantity.unit`+`valueQuantity.code` | UCUM-kod sätts parallellt med textenhet |
+| `observationBody.type.code` | SNOMED CT-kod, se tabell ovan | `Observation.code.coding[snomedSE].code` | Obligatorisk per IoÖ; ska vara en av de 6 koderna |
+| `observationBody.type.codeSystem` | `1.2.752.116.2.1.1`(SNOMED CT SE) | `Observation.code.coding[snomedSE].system` | URI:`http://snomed.info/sct` |
+| `observationBody.value.pq.value` | Decimal (enhet beror på mättyp) | `Observation.valueQuantity.value` | Längd: 0–1 dec.; Vikt: 0–3 dec.; HuC: 1 dec.; Gest: heltal |
+| `observationBody.value.pq.unit` | `cm`/`kg`/`d` | `Observation.valueQuantity.unit`+`valueQuantity.code` | UCUM-kod sätts parallellt med textenhet |
 
 ### IoÖ-kommentarer
 
@@ -432,7 +414,7 @@ Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObserva
 | OBS-002 | `dataAbsentReason`-kod för`valueNegation=true`. | **Beslutat**–`not-detected` |
 | OBS-003 | ConceptMap för SNOMED CT-urval`56431000052106`→ FHIR ObservationStatus. | **Beslutat**– se`ObservationStatusMap.fsh` |
 | OBS-004 | `targetSite`kardinalitetskollision. | **Beslutat**– extension[additionalBodySite] + R5-migrationsnotering |
-| OBS-005 | `relation`med`relationType`– lokal extension behövs för otypade relationer. | Öppen |
+| OBS-005 | `relation`med`relation.type`– lokal extension behövs för otypade relationer. | Öppen |
 | GENERAL-001 | Gemensam hantering av RIVTA variabelprecisions-tidsstämplar. | Öppen |
 
 -------

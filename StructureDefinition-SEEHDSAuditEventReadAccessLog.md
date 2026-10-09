@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSAuditEventReadAccessLog |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSAuditEventReadAccessLog |
 
  
 Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till patienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ. 
@@ -43,7 +43,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
   "name" : "SEEHDSAuditEventReadAccessLog",
   "title" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -104,13 +104,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
     {
       "id" : "AuditEvent.type",
       "path" : "AuditEvent.type",
-      "short" : "Händelsetyp (accessType)",
-      "mustSupport" : true
-    },
-    {
-      "id" : "AuditEvent.subtype",
-      "path" : "AuditEvent.subtype",
-      "short" : "Händelseundertyp (accessSubType)",
+      "short" : "Händelsetyp – fast värde, meddelandet saknar åtkomsttyp (LOG-002)",
       "mustSupport" : true
     },
     {
@@ -122,13 +116,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
     {
       "id" : "AuditEvent.recorded",
       "path" : "AuditEvent.recorded",
-      "short" : "Loggtidpunkt (accessTime)",
+      "short" : "Tidpunkt för åtkomst (accessLog.accessDate)",
       "mustSupport" : true
     },
     {
       "id" : "AuditEvent.outcome",
       "path" : "AuditEvent.outcome",
-      "short" : "Utfall (accessOutcome)",
+      "short" : "Utfall – 0 (Success): loggposten avser en genomförd åtkomst",
       "mustSupport" : true
     },
     {
@@ -140,10 +134,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
     {
       "id" : "AuditEvent.agent.who",
       "path" : "AuditEvent.agent.who",
-      "short" : "Användare/system (userId)",
+      "short" : "Användare (accessLog.userId), vårdenhet (careUnitId) eller vårdgivare (careProviderId)",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
+        "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization",
         "http://hl7.org/fhir/StructureDefinition/Device"]
       }],
       "mustSupport" : true
@@ -157,7 +152,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
     {
       "id" : "AuditEvent.agent.purposeOfUse",
       "path" : "AuditEvent.agent.purposeOfUse",
-      "short" : "Åtkomstsyfte (accessPurpose)",
+      "short" : "Åtkomstsyfte (accessLog.purpose)",
       "mustSupport" : true
     },
     {
@@ -168,7 +163,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
     {
       "id" : "AuditEvent.source.observer",
       "path" : "AuditEvent.source.observer",
-      "short" : "Loggkälla/system (sourceSystemHSAId)",
+      "short" : "Det källsystem (logisk adress) som bryggan anropade",
       "mustSupport" : true
     },
     {
@@ -181,7 +176,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
     {
       "id" : "AuditEvent.entity.what",
       "path" : "AuditEvent.entity.what",
-      "short" : "Patientidentifierare (patientId)",
+      "short" : "Patient – den efterfrågade patienten (begärans patientId)",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient"]

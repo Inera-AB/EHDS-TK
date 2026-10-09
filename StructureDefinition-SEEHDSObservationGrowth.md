@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSObservationGrowth |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSObservationGrowth |
 
  
 Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad graviditetslängd) för barn och ungdom, baserad på: 
@@ -21,7 +21,7 @@ Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad gravid
 * value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)
 * Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)
  
-Kodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1. 
+Kodsystem för observationBody.type: SNOMED CT SE, OID 1.2.752.116.2.1.1. 
 Täcker NPÖ 1.2 och 1177 Journal 1.2. 
 
 **Användningar:**
@@ -52,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationGro
   "name" : "SEEHDSObservationGrowth",
   "title" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -61,7 +61,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationGro
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad\ngraviditetslängd) för barn och ungdom, baserad på:\n- GetObservations (clinicalprocess:healthcond:basic v2.0)\n- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)\n\nÄrver SEEHDSObservationBase och lägger till:\n- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)\n- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)\n- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)\n\nKodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
+  "description" : "Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad\ngraviditetslängd) för barn och ungdom, baserad på:\n- GetObservations (clinicalprocess:healthcond:basic v2.0)\n- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)\n\nÄrver SEEHDSObservationBase och lägger till:\n- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)\n- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)\n- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)\n\nKodsystem för observationBody.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -113,7 +113,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationGro
     {
       "id" : "Observation.code",
       "path" : "Observation.code",
-      "short" : "IoÖ-kod (observationBody.observationType.type):\nSNOMED CT SE OID 1.2.752.116.2.1.1, kräver en av:\n1153637007 (kroppslängd), 50373000 (mått på kroppslängd),\n248334005 (längd i liggande – ej för nyanslutning),\n27113001 (kroppsvikt), 363812007 (huvudomfång),\n412726003 (graviditetslängd vid födelse).",
+      "short" : "IoÖ-kod (observationBody.type):\nSNOMED CT SE OID 1.2.752.116.2.1.1, kräver en av:\n1153637007 (kroppslängd), 50373000 (mått på kroppslängd),\n248334005 (längd i liggande – ej för nyanslutning),\n27113001 (kroppsvikt), 363812007 (huvudomfång),\n412726003 (graviditetslängd vid födelse).",
       "binding" : {
         "strength" : "required",
         "valueSet" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/growth-observation-type-vs"
@@ -150,7 +150,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationGro
     {
       "id" : "Observation.value[x]",
       "path" : "Observation.value[x]",
-      "short" : "Mätvärde (observationBody.observationValue.pq); IoÖ anger alltid pq-grenen för tillväxtmätningar",
+      "short" : "Mätvärde (observationBody.value.pq); IoÖ anger alltid pq-grenen för tillväxtmätningar",
       "min" : 1,
       "type" : [{
         "code" : "Quantity"
@@ -159,7 +159,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationGro
     {
       "id" : "Observation.value[x].value",
       "path" : "Observation.value[x].value",
-      "short" : "Mätetalet (observationBody.observationValue.pq.value):\nLängd: decimal cm, 0-1 decimal (t.ex. 49.5)\nVikt:  decimal kg, 0-3 decimaler (t.ex. 5.830)\nHuvud: decimal cm, 1 decimal (t.ex. 38.5)\nGest:  heltal dagar (t.ex. 280)",
+      "short" : "Mätetalet (observationBody.value.pq.value):\nLängd: decimal cm, 0-1 decimal (t.ex. 49.5)\nVikt:  decimal kg, 0-3 decimaler (t.ex. 5.830)\nHuvud: decimal cm, 1 decimal (t.ex. 38.5)\nGest:  heltal dagar (t.ex. 280)",
       "min" : 1,
       "mustSupport" : true
     },

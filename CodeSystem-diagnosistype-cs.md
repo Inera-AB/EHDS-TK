@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp | *Version*:0.3.3 |
-| Active as of 2026-10-07 | *Computable Name*:DiagnosisTypeCS |
+| Active as of 2026-10-09 | *Computable Name*:DiagnosisTypeCS |
 
  
 Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n. 
@@ -31,7 +31,7 @@ Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av d
   "name" : "DiagnosisTypeCS",
   "title" : "KV Diagnostyp (fragment)",
   "status" : "active",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

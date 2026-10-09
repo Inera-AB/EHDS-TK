@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSDocumentReference |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSDocumentReference |
 
  
 Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation (clinicalprocess:healthcond:description v3.0). Täcker NPÖ 3.0 och 1177 Journal 3.0. 
@@ -43,7 +43,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDocumentRefere
   "name" : "SEEHDSDocumentReference",
   "title" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -174,7 +174,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDocumentRefere
     {
       "id" : "DocumentReference.author",
       "path" : "DocumentReference.author",
-      "short" : "Dokumentationsansvarig (careDocumentation.header.author.authorId – JoL-header)",
+      "short" : "Dokumentationsansvarig (careDocumentation.header.author.id – JoL-header)",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole"]
@@ -184,7 +184,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDocumentRefere
     {
       "id" : "DocumentReference.authenticator",
       "path" : "DocumentReference.authenticator",
-      "short" : "Signerande person (careDocumentation.header.signature.signatureId – JoL-header)",
+      "short" : "Signerande person (careDocumentation.header.signature.id – JoL-header)",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole"]

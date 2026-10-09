@@ -266,25 +266,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.documentId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.documentId</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.identifier[0].value</code></td>
       <td>Källsystemets dokumentidentitet; unik inom källsystemet</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.sourceSystemHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.sourceSystemHSAId</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.meta.source</code></td>
       <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.patientId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.patientId.id</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.subject.identifier.value</code></td>
       <td>Personnummer eller samordningsnummer</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.patientId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.patientId.type</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.subject.identifier.system</code></td>
       <td>OID→URI-konvertering (se OID-tabell nedan)</td>
@@ -305,25 +305,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.authorTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.authorTime</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.meta.lastUpdated</code></td>
       <td>Registreringstidpunkt; YYYYMMDDHHMMSS → ISO 8601</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.identifier.value</code></td>
       <td>Via <code class="language-plaintext highlighter-rouge">Encounter.participant.individual</code>-referens</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
       <td>Valfritt komplement till HSA-id</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
       <td>Befattningskod (KV Befattning OID 1.2.752.129.2.2.1.4)</td>
@@ -344,37 +344,37 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier</code></td>
       <td>HSA-id för organisationsenhet</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.display</code></td>
       <td>Namn på organisationsenhet</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas</td>
+      <td>Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till org.enhet – se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> ovan</td>
+      <td>E-post till org.enhet – se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Postadress till org.enhet – ingår ej i PractitionerRole; kan lagras i Organization.address om Organization-resurs skapas</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Fritextplats för org.enhet – ingen standardiserad FHIR-plats i Encounter/PractitionerRole</td>
@@ -395,55 +395,55 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
       <td>Inre Sparr – vårdenhet (Regel 1)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
       <td>Yttre Sparr – vårdgivare (Regel 1)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.approvedForPatient</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.approvedForPatient</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.meta.security</code></td>
       <td>PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.documentTitle</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.documentTitle</code></td>
       <td>0..0</td>
       <td>N/A</td>
       <td>Ej tillämpligt för detta TK</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.documentTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.documentTime</code></td>
       <td>0..0</td>
       <td>N/A</td>
       <td>Ej tillämpligt för detta TK</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.legalAuthenticator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.legalAuthenticator</code></td>
       <td>0..0</td>
       <td>N/A</td>
       <td>Ej tillämpligt för detta TK</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.nullified</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.nullified</code></td>
       <td>0..0</td>
       <td>N/A</td>
       <td>Ej tillämpligt för detta TK</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.nullifiedReason</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.nullifiedReason</code></td>
       <td>0..0</td>
       <td>N/A</td>
       <td>Ej tillämpligt för detta TK</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.careContactId</code></td>
       <td>0..0</td>
       <td>N/A</td>
       <td>Ej tillämpligt för detta TK (careContactId är en korsreferens som inte gäller för kontakter i sin egen lista)</td>
@@ -464,19 +464,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactCode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactCode</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.class</code></td>
       <td>KV Vårdkontakttyp (OID 1.2.752.129.2.2.2.x)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactReason</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactReason</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.reasonCode.text</code></td>
       <td>Fri text från patient eller företrädare</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactStatus</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactStatus</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.status</code></td>
       <td>SNOMED CT SE (OID 1.2.752.116.2.1.1, SCTID 53761000052103); kräver ConceptMap – se CC-001</td>
@@ -497,19 +497,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactTimePeriod</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactTimePeriod</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.period</code></td>
       <td>Om angiven måste minst ett av start/end vara satt</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactTimePeriod.start</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactTimePeriod.start</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.period.start</code></td>
       <td>YYYYMMDDHHMMSS → ISO 8601</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactTimePeriod.end</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactTimePeriod.end</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.period.end</code></td>
       <td>YYYYMMDDHHMMSS → ISO 8601</td>
@@ -534,43 +534,43 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactOrgUnit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactOrgUnit</code></td>
       <td>0..1</td>
       <td>—</td>
       <td>Enhet för kontakten (Regel 5)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactOrgUnit.orgUnitHSAId</code></td>
-      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactOrgUnit.orgUnitHSAId</code></td>
+      <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.serviceProvider.identifier</code></td>
-      <td>Logisk referens till Organization via HSA-id – obligatorisk per Regel 4</td>
+      <td>Logisk referens till Organization via HSA-id. Kan utelämnas (0..1, Regel 5)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactOrgUnit.orgUnitName</code></td>
-      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactOrgUnit.orgUnitName</code></td>
+      <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Encounter.serviceProvider.display</code></td>
-      <td>Visningsnamn för kontaktenhet – obligatorisk per Regel 4</td>
+      <td>Visningsnamn för kontaktenhet. Kan utelämnas (0..1, Regel 5)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactOrgUnit.orgUnitTelecom</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefon till kontaktenhet – ingår ej i Encounter.serviceProvider; kan lagras i Organization.telecom om Organization-resurs skapas</td>
+      <td>Telefon till kontaktenhet – ingår ej i Encounter.serviceProvider; kan lagras i Organization.telecom om Organization-resurs skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactOrgUnit.orgUnitEmail</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till kontaktenhet – se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> ovan</td>
+      <td>E-post till kontaktenhet – se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactOrgUnit.orgUnitAddress</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactOrgUnit.orgUnitAddress</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Adress till kontaktenhet – ingår ej i Encounter; kan lagras i Organization.address om Organization-resurs skapas</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.careContactOrgUnit.orgUnitLocation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.careContactOrgUnit.orgUnitLocation</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Fritextplats för kontaktenhet – ingen standardiserad FHIR-plats i Encounter</td>
@@ -591,19 +591,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.additionalPatientInformation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.additionalPatientInformation</code></td>
       <td>0..1</td>
       <td>—</td>
       <td>Ytterligare patientuppgifter – komplement när PU-tjänsten ej används</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.additionalPatientInformation.dateOfBirth</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.additionalPatientInformation.dateOfBirth</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Patient.birthDate</code> (via <code class="language-plaintext highlighter-rouge">Encounter.subject</code>)</td>
       <td>Lagras på Patient-resursen om en skapas; YYYY / YYYYMM / YYYYMMDD → ISO 8601-datum</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.additionalPatientInformation.gender</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.additionalPatientInformation.gender</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Patient.gender</code> (via <code class="language-plaintext highlighter-rouge">Encounter.subject</code>)</td>
       <td>KV Kön (OID 1.2.752.129.2.2.1.1) → FHIR AdministrativeGender; kräver ConceptMap</td>
@@ -660,7 +660,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h2 id="pdl-och-sparr">PDL och Sparr</h2>
 
-<p>PDL-fälten finns under <code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional</code> (inte på toppnivå).</p>
+<p>PDL-fälten finns under <code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional</code> (inte på toppnivå).</p>
 
 <table>
   <thead>
@@ -672,12 +672,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
       <td>Yttre Sparr</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careContact.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
       <td>Inre Sparr</td>
     </tr>
@@ -775,12 +775,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td>CC-002</td>
-      <td>OrgUnit-kontaktdetaljer (<code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>, <code class="language-plaintext highlighter-rouge">orgUnitEmail</code>, <code class="language-plaintext highlighter-rouge">orgUnitAddress</code>, <code class="language-plaintext highlighter-rouge">orgUnitLocation</code>) förekommer på två ställen: under <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional.healthcareProfessionalOrgUnit</code> och under <code class="language-plaintext highlighter-rouge">careContactOrgUnit</code>. Inget av dessa fält mappas i FHIR Encounter. Ska de ignoreras, eller kräver de att en fullständig Organization-resurs skapas med <code class="language-plaintext highlighter-rouge">Organization.telecom</code> och <code class="language-plaintext highlighter-rouge">Organization.address</code>?</td>
-      <td>Föreslagen</td>
+      <td><strong>Sammanslagen med GENERAL-008:</strong> se <a href="mappings.html#organisation">Organisationsenheter, kontaktuppgifter och historik</a>.</td>
+      <td>Öppen</td>
     </tr>
     <tr>
       <td>CC-003</td>
-      <td><code class="language-plaintext highlighter-rouge">careContact.additionalPatientInformation.gender</code> (KV Kön OID 1.2.752.129.2.2.1.1, koder 0/1/2/9) behöver ConceptMap till FHIR AdministrativeGender (male/female/other/unknown). Bör denna ConceptMap delas med andra TK som använder samma kodverk?</td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactBody.additionalPatientInformation.gender</code> (KV Kön OID 1.2.752.129.2.2.1.1, koder 0/1/2/9) behöver ConceptMap till FHIR AdministrativeGender (male/female/other/unknown). Bör denna ConceptMap delas med andra TK som använder samma kodverk?</td>
       <td>Föreslagen</td>
     </tr>
   </tbody>
@@ -805,7 +805,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

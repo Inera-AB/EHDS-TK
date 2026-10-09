@@ -17,7 +17,7 @@
   fhir:StructureDefinition.name [ fhir:value "SEEHDSDevice"] ;
   fhir:StructureDefinition.title [ fhir:value "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)"] ;
   fhir:StructureDefinition.status [ fhir:value "draft"] ;
-  fhir:StructureDefinition.date [ fhir:value "2026-10-07T11:49:57+00:00"^^xsd:dateTime] ;
+  fhir:StructureDefinition.date [ fhir:value "2026-10-09T07:52:45+00:00"^^xsd:dateTime] ;
   fhir:StructureDefinition.publisher [ fhir:value "Inera AB"] ;
   fhir:StructureDefinition.contact [
      fhir:index 0 ;
@@ -28,7 +28,7 @@
        fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
      ]
   ] ;
-  fhir:StructureDefinition.description [ fhir:value "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från SEEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)"] ;
+  fhir:StructureDefinition.description [ fhir:value "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från SEEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.hsaid/personName (0..1)"] ;
   fhir:StructureDefinition.jurisdiction [
      fhir:index 0 ;
      fhir:CodeableConcept.coding [
@@ -441,7 +441,7 @@
        fhir:ElementDefinition.path [ fhir:value "Device.extension" ] ;
        fhir:ElementDefinition.sliceName [ fhir:value "sourceSystemContact" ] ;
        fhir:ElementDefinition.short [ fhir:value "Kontaktperson för källsystemet (registrationRecord.sourceSystemContact)" ] ;
-       fhir:ElementDefinition.definition [ fhir:value "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName)." ] ;
+       fhir:ElementDefinition.definition [ fhir:value "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName)." ] ;
        fhir:ElementDefinition.min [ fhir:value "0"^^xsd:nonNegativeInteger ] ;
        fhir:ElementDefinition.max [ fhir:value "1" ] ;
        fhir:ElementDefinition.base [

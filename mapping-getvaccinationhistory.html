@@ -311,8 +311,8 @@ i stället för enskilda extensions på Immunization.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.documentTitle</code></td>
       <td>0..1</td>
-      <td>Ej mappad</td>
-      <td>Fritexttitel för dokument – ingen motsvarighet i Immunization</td>
+      <td><code class="language-plaintext highlighter-rouge">Immunization.note.text</code></td>
+      <td>Egen <code class="language-plaintext highlighter-rouge">note</code>-post med texten <code class="language-plaintext highlighter-rouge">Dokumenttitel: {documentTitle}</code>, så att den skiljs från övriga anteckningar (VAC-004)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.documentTime</code></td>
@@ -333,73 +333,73 @@ i stället för enskilda extensions på Immunization.</p>
       <td>OID för typ av identifierare (t.ex. <code class="language-plaintext highlighter-rouge">1.2.752.129.2.1.3.1</code> för personnummer); OID→URI, se tabell nedan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.authorTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Immunization.occurrenceDateTime</code></td>
       <td>Dokumentationstidpunkt – används som fallback om documentTime saknas; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se <a href="#öppna-frågor">VAC-002</a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Immunization.performer[0].actor</code> (Reference(PractitionerRole))</td>
       <td>Ansvarig yrkesutövares HSA-id</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
       <td>Ansvarig yrkesutövares visningsnamn</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalRoleCode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
       <td>Ansvarig yrkesutövares befattningskod</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier.value</code></td>
       <td>Organisationsenhetens HSA-id</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.display</code></td>
       <td>Organisationsenhetens namn</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefon till organisationsenhet – Immunization saknar adressfält</td>
+      <td>Telefon till organisationsenhet – Immunization saknar adressfält. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till organisationsenhet – se orgUnitTelecom ovan</td>
+      <td>E-post till organisationsenhet – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Postadress till organisationsenhet – se orgUnitTelecom ovan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Plats/ort för organisationsenhet – se orgUnitTelecom ovan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
       <td><strong>Inre Sparr</strong> – versalt 'C' i 'Care'</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
       <td><strong>Yttre Sparr</strong> – versalt 'C' i 'Care'</td>
@@ -512,13 +512,13 @@ i stället för enskilda extensions på Immunization.</p>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefon till juridisk vårdgivare – Immunization saknar adressfält</td>
+      <td>Telefon till juridisk vårdgivare – Immunization saknar adressfält. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till juridisk vårdgivare – se orgUnitTelecom ovan</td>
+      <td>E-post till juridisk vårdgivare – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitAddress</code></td>
@@ -533,16 +533,34 @@ i stället för enskilda extensions på Immunization.</p>
       <td>Plats/ort för juridisk vårdgivare – se orgUnitTelecom ovan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverContact.hsaid</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Kontaktpersonens identifierare hos juridisk vårdgivare – inget FHIR-fält för kontaktperson på registreringsnivå</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverContact.actorName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personName</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Kontaktpersonens namn hos juridisk vårdgivare – se actorId ovan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>E-post – se VAC-003</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Telefon – se VAC-003</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careGiverContact.personAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Adress – se VAC-003</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemName</code></td>
@@ -563,16 +581,34 @@ i stället för enskilda extensions på Immunization.</p>
       <td>Källsystemets produktversion; se Device-tabell nedan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.hsaid</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Device.extension[sourceSystemContact].actorId</code></td>
       <td>Identifierare för källsystemsansvarig kontakt; se Device-tabell nedan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.actorName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Device.extension[sourceSystemContact].actorName</code></td>
       <td>Namn på källsystemsansvarig kontakt; se Device-tabell nedan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>E-post till källsystemsansvarig; ingen plats i <code class="language-plaintext highlighter-rouge">Device.extension[sourceSystemContact]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Telefon till källsystemsansvarig; ingen plats i <code class="language-plaintext highlighter-rouge">Device.extension[sourceSystemContact]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.sourceSystemContact.personAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Adress till källsystemsansvarig; ingen plats i <code class="language-plaintext highlighter-rouge">Device.extension[sourceSystemContact]</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordBody.registrationRecord.careUnitSmiId</code></td>
@@ -619,13 +655,13 @@ alla källsystemsmetadata från <code class="language-plaintext highlighter-roug
       <td>Produktversion som fritext</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">registrationRecord.sourceSystemContact.actorId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">registrationRecord.sourceSystemContact.hsaid</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Device.extension[sourceSystemContact].actorId</code></td>
       <td>Kontaktpersonens identifierare</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">registrationRecord.sourceSystemContact.actorName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">registrationRecord.sourceSystemContact.personName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Device.extension[sourceSystemContact].actorName</code></td>
       <td>Kontaktpersonens namn</td>
@@ -668,16 +704,58 @@ alla källsystemsmetadata från <code class="language-plaintext highlighter-roug
       <td>Förskrivande vårdenhetens namn</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson.actorId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberOrg.orgUnitTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberOrg.orgUnitEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberOrg.orgUnitAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberOrg.orgUnitLocation</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson.hsaid</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Immunization.performer[ordering].actor.identifier</code></td>
       <td>Förskrivande yrkesutövarens identifierare; actor = PractitionerRole; <code class="language-plaintext highlighter-rouge">function = OP</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson.actorName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson.personName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Immunization.performer[ordering].actor.display</code></td>
       <td>Förskrivande yrkesutövarens namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson.personEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>E-post för förskrivaren</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson.personTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Telefon för förskrivaren</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.prescriberPerson.personAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Adress för förskrivaren</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">administrationRecord.performerOrg.orgUnitHSAId</code></td>
@@ -692,16 +770,58 @@ alla källsystemsmetadata från <code class="language-plaintext highlighter-roug
       <td>Administrerande vårdenhetens namn</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performer.actorId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performerOrg.orgUnitTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performerOrg.orgUnitEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performerOrg.orgUnitAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performerOrg.orgUnitLocation</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performer.hsaid</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Immunization.performer[0].actor.identifier.value</code></td>
       <td>Administrerande yrkesutövarens identifierare</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performer.actorName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performer.personName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Immunization.performer[0].actor.display</code></td>
       <td>Administrerande yrkesutövarens namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performer.personEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>E-post för den som vaccinerat</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performer.personTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Telefon för den som vaccinerat</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">administrationRecord.performer.personAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Adress för den som vaccinerat</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">administrationRecord.anatomicalSite</code></td>
@@ -867,7 +987,7 @@ ingår i klinisk FHIR-data.</p>
       <td>Teknisk felkod – hanteras av transportlagret</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.subcode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Teknisk subkod – hanteras av transportlagret</td>
@@ -934,13 +1054,13 @@ till alla Immunization-resurser från samma <code class="language-plaintext high
 
 <p>Primär tidskälla är <code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.documentTime</code> om den finns – den anger
 faktisk vaccinationstidpunkt. Om <code class="language-plaintext highlighter-rouge">documentTime</code> saknas används
-<code class="language-plaintext highlighter-rouge">accountableHealthCareProfessional.authorTime</code> som fallback (dokumentationstidpunkt).
+<code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional.authorTime</code> som fallback (dokumentationstidpunkt).
 <code class="language-plaintext highlighter-rouge">registrationRecord.date</code> (date, ej dateTime) används alltid som <code class="language-plaintext highlighter-rouge">Immunization.recorded</code>.</p>
 
 <h3 id="sourcesystem-fält--seehdsdevice-registrationdevice">sourceSystem-fält → SEEHDSDevice (registrationDevice)</h3>
 
 <p><code class="language-plaintext highlighter-rouge">registrationRecord</code> innehåller fem källsystemsfält (<code class="language-plaintext highlighter-rouge">sourceSystemName</code>, <code class="language-plaintext highlighter-rouge">sourceSystemProductName</code>,
-<code class="language-plaintext highlighter-rouge">sourceSystemProductVersion</code>, <code class="language-plaintext highlighter-rouge">sourceSystemContact.actorId</code>, <code class="language-plaintext highlighter-rouge">sourceSystemContact.actorName</code>)
+<code class="language-plaintext highlighter-rouge">sourceSystemProductVersion</code>, <code class="language-plaintext highlighter-rouge">sourceSystemContact.hsaid</code>, <code class="language-plaintext highlighter-rouge">sourceSystemContact.personName</code>)
 som tillsammans beskriver det system varifrån vaccinationsregistreringen härstammar.</p>
 
 <p>I stället för att lägga dessa som enskilda extensions direkt på Immunization samlas de i en
@@ -1026,7 +1146,7 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
 
 <h2 id="pdl-och-sparr">PDL och Sparr</h2>
 
-<p>PDL-styrning utgår från <code class="language-plaintext highlighter-rouge">accountableHealthCareProfessional</code>-blocket i headern.
+<p>PDL-styrning utgår från <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code>-blocket i headern.
 <strong>OBS:</strong> Elementnamnet har versalt 'C' i 'Care' (avvikelse från andra TK:ers stavning):</p>
 
 <table>
@@ -1040,12 +1160,12 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
   <tbody>
     <tr>
       <td>Yttre Sparr (vårdgivare)</td>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
     </tr>
     <tr>
       <td>Inre Sparr (vårdenhet)</td>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
     </tr>
     <tr>
@@ -1072,18 +1192,18 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
     <tr>
       <td><code class="language-plaintext highlighter-rouge">agent[custodian]</code></td>
       <td>Juridiskt ansvarig vårdgivare</td>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">agent[author]</code></td>
       <td>Informationsägande vårdenhet</td>
-      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
     </tr>
   </tbody>
 </table>
 
 <p><code class="language-plaintext highlighter-rouge">Provenance.target</code> refererar <code class="language-plaintext highlighter-rouge">Immunization</code> via <code class="language-plaintext highlighter-rouge">urn:uuid:{resurs.id}</code>.<br />
-<code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthCareProfessional.authorTime</code> (ISO 8601).</p>
+<code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime</code> (ISO 8601).</p>
 
 <hr />
 
@@ -1136,7 +1256,7 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
     </tr>
     <tr>
       <td>PDL-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">approvedForPatient</code> (boolean) saknar standardiserat FHIR-kodsystem.</strong> Fältet mappas tentativt till <code class="language-plaintext highlighter-rouge">meta.security</code> men inget standardiserat kodsystem för detta begrepp finns. Behöver gemensamt beslut; se central issue i <a href="mapping-issues.html">mapping-issues</a>.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPATIENT</code>. Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>GENERAL-001</td>
@@ -1166,11 +1286,11 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
   <tbody>
     <tr>
       <td>VAC-003</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">careGiverContact</code> saknar FHIR-mappning.</strong> Kontaktpersoninformation hos juridisk vårdgivare (<code class="language-plaintext highlighter-rouge">careGiverContact.actorId</code>, <code class="language-plaintext highlighter-rouge">careGiverContact.actorName</code>) har ingen naturlig plats i Immunization eller Provenance. Behöver beslut: ignorera eller lägga i extension.</td>
+      <td><strong><code class="language-plaintext highlighter-rouge">careGiverContact</code> saknar FHIR-mappning.</strong> Kontaktpersoninformation hos juridisk vårdgivare (<code class="language-plaintext highlighter-rouge">careGiverContact.hsaid</code>, <code class="language-plaintext highlighter-rouge">careGiverContact.personName</code>) har ingen naturlig plats i Immunization eller Provenance. Behöver beslut: ignorera eller lägga i extension.</td>
     </tr>
     <tr>
       <td>VAC-004</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">documentTitle</code> saknar mappning.</strong> Fritexttiteln för vaccinationsdokumentet har ingen standardmotpart i Immunization. Överväg <code class="language-plaintext highlighter-rouge">Immunization.note</code> eller ignorera som administrativ etikett.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">documentTitle</code> läggs i en egen <code class="language-plaintext highlighter-rouge">Immunization.note</code>-post med texten <code class="language-plaintext highlighter-rouge">Dokumenttitel: {documentTitle}</code>.</td>
     </tr>
     <tr>
       <td>VAC-005</td>
@@ -1198,7 +1318,7 @@ Den mappar till <code class="language-plaintext highlighter-rouge">Immunization.
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

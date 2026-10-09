@@ -386,15 +386,39 @@ PADL-typ krävs.</p>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier.value</code></td>
       <td>Organisationsenhetens HSA-id</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.display</code></td>
       <td>Organisationsenhetens namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
@@ -425,12 +449,6 @@ PADL-typ krävs.</p>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Namn i klartext – HSA-id räcker för logisk referens</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorRoleCode</code></td>
-      <td>0..1</td>
-      <td>Ej mappad</td>
-      <td>Signerande persons befattning – ingen direkt FHIR-mappning utanför PractitionerRole; Condition.asserter är en Reference utan rollkod</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.approvedForPatient</code></td>
@@ -609,6 +627,12 @@ PADL-typ krävs.</p>
       <td>Teknisk spårnings-UUID – hanteras av transportlagret</td>
     </tr>
     <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk subkod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">result.message</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
@@ -730,7 +754,7 @@ PADL-typ krävs.</p>
     </tr>
     <tr>
       <td>PDL-001</td>
-      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> kod <code class="language-plaintext highlighter-rouge">NOPATIENT</code> (v3-ActCode). Se README avsnitt 9.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPATIENT</code>. Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>GENERAL-001</td>
@@ -755,7 +779,7 @@ PADL-typ krävs.</p>
     <tr>
       <td>FUNC-002</td>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorRoleCode</code></td>
-      <td>Signerande persons befattning (CodeableConcept). Det finns inget standardelement i Condition för detta. <code class="language-plaintext highlighter-rouge">Condition.asserter</code> är en enkel Reference utan plats för rollkod. Alternativ: (a) enkoda i den refererade PractitionerRole-resursen om en sådan skapas, eller (b) ignorera då det är samma person som legalAuthenticatorHSAId och rollkoden hämtas via HSA-katalogen. Kräver designbeslut.</td>
+      <td><strong>Stängd.</strong> Elementet finns inte i <code class="language-plaintext highlighter-rouge">LegalAuthenticatorType</code> i schemat (clinicalprocess_healthcond_description_2.1.xsd) och har tagits bort ur den logiska modellen.</td>
     </tr>
   </tbody>
 </table>
@@ -779,7 +803,7 @@ PADL-typ krävs.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

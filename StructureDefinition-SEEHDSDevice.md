@@ -9,12 +9,12 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDevice | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSDevice |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSDevice |
 
  
 Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0. 
 Representerar vaccinationMedicalRecordBody.registrationRecord.sourceSystem* och sourceSystemContact. Refereras från SEEHDSImmunization via extension[registrationDevice]. 
-deviceName[systemName] = sourceSystemName (1..1, obligatorisk) deviceName[productName] = sourceSystemProductName (0..1) version = sourceSystemProductVersion (0..1) extension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1) 
+deviceName[systemName] = sourceSystemName (1..1, obligatorisk) deviceName[productName] = sourceSystemProductName (0..1) version = sourceSystemProductVersion (0..1) extension[sourceSystemContact] = sourceSystemContact.hsaid/personName (0..1) 
 
 **Användningar:**
 
@@ -43,7 +43,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDevice.csv), [
   "name" : "SEEHDSDevice",
   "title" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -52,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDevice.csv), [
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från SEEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)",
+  "description" : "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från SEEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.hsaid/personName (0..1)",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",

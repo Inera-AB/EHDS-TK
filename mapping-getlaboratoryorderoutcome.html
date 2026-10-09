@@ -235,7 +235,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a>        <ul>
           <li><a href="#diagnosticreportstatus" id="markdown-toc-diagnosticreportstatus">DiagnosticReport.status</a></li>
           <li><a href="#bodytext--conclusion-kontra-narrative" id="markdown-toc-bodytext--conclusion-kontra-narrative">body.text – conclusion kontra narrative</a></li>
-          <li><a href="#resultvalue--anyvaluetype-lab-001" id="markdown-toc-resultvalue--anyvaluetype-lab-001">result.value – AnyValueType (LAB-001)</a></li>
+          <li><a href="#lab-001" id="markdown-toc-lab-001">result.value – AnyValueType (LAB-001, beslutat)</a></li>
           <li><a href="#performersignature--observationperformer" id="markdown-toc-performersignature--observationperformer">performerSignature → Observation.performer</a></li>
           <li><a href="#referral--servicerequest" id="markdown-toc-referral--servicerequest">Referral → ServiceRequest</a></li>
           <li><a href="#resultrelated--observation-relation" id="markdown-toc-resultrelated--observation-relation">result.related → Observation-relation</a></li>
@@ -368,7 +368,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">header.record.recordId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">header.record.id</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.identifier[record]</code></td>
       <td>Källsystemets postidentifierare</td>
@@ -395,7 +395,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">header.author.authorId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">header.author.id</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.identifier.value</code></td>
       <td>HSA-id för ansvarig person; via performer-referens</td>
@@ -419,7 +419,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>Yrkesrollskod</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">header.author.orgUnit.orgUnitId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">header.author.orgUnit.id</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier.value</code></td>
       <td>Organisationsenhetens HSA-id</td>
@@ -446,7 +446,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">header.signature.signatureId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">header.signature.id</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.extension[signatureId]</code></td>
       <td>Signatärens HSA-id; kräver lokal extension om ej finns</td>
@@ -468,6 +468,18 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Yrkesroll vid signering; ingen standardiserad motpart på DiagnosticReport; kan inkluderas i signatärens PractitionerRole om den skapas</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.signature.orgUnit.id</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Signatärens organisationsenhet (HSA-id)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.signature.orgUnit.name</code></td>
+      <td>1..1 (om orgUnit)</td>
+      <td>Ej mappad</td>
+      <td>Signatärens organisationsenhet (namn)</td>
     </tr>
   </tbody>
 </table>
@@ -554,7 +566,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>Begärd tjänst tillhör ursprungsremissen (ServiceRequest.code)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">body.referral.requester.requesterId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">body.referral.requester.id</code></td>
       <td>0..1</td>
       <td>Ej mappad till DiagnosticReport</td>
       <td>Remittentens HSA-id tillhör ursprungsremissen (ServiceRequest.requester)</td>
@@ -572,7 +584,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>Remittentens yrkesroll tillhör ursprungsremissen</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">body.referral.requester.orgUnit.orgUnitId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">body.referral.requester.orgUnit.id</code></td>
       <td>0..1</td>
       <td>Ej mappad till DiagnosticReport</td>
       <td>Remittentens org-enhets HSA-id tillhör ursprungsremissen</td>
@@ -615,7 +627,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">body.recipientUnit.unitId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">body.recipientUnit.id</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.resultsInterpreter.identifier</code></td>
       <td>Mottagande vårdenhet (svarmottagare) via logisk referens</td>
@@ -627,7 +639,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>Svarmottagarens namn</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">body.recipientSignature.signatoryId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">body.recipientSignature.id</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Kvittens av svaret; inget standardiserat FHIR-fält i DiagnosticReport</td>
@@ -803,7 +815,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td><code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis.result.value</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.value[x]</code></td>
-      <td>Se <a href="#öppna-frågor">LAB-001</a> – AnyValueType; mappas primärt till <code class="language-plaintext highlighter-rouge">valueString</code></td>
+      <td>Grenen (<code class="language-plaintext highlighter-rouge">cv</code>/<code class="language-plaintext highlighter-rouge">pq</code>/<code class="language-plaintext highlighter-rouge">intervalPQ</code>/<code class="language-plaintext highlighter-rouge">st</code>) styr typen, se <a href="#lab-001">result.value</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis.result.comment</code></td>
@@ -842,7 +854,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>Kommentar om referensintervallet; kombineras i referenceRange.text</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis.result.recipientSignature.signatoryId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis.result.recipientSignature.id</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Mottagarkvittens; inget standardiserat FHIR-fält i Observation</td>
@@ -866,7 +878,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
       <td>Yrkesroll vid mottagarkvittens; inget standardiserat FHIR-fält</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis.result.performerSignature.signatoryId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">groupOfAnalyses.analysis.result.performerSignature.id</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.performer.identifier</code></td>
       <td>Utförarens HSA-id; via Reference(PractitionerRole)</td>
@@ -1106,42 +1118,41 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
 
 <p><code class="language-plaintext highlighter-rouge">body.text</code> är en fritext som antingen representerar en samlad kommentar eller ett sammandrag av beställningssvaret. Mappas till <code class="language-plaintext highlighter-rouge">DiagnosticReport.conclusion</code>. Om texten ska presenteras som XHTML-narrativ sätts även <code class="language-plaintext highlighter-rouge">DiagnosticReport.text.div</code> (med <code class="language-plaintext highlighter-rouge">text.status = generated</code>).</p>
 
-<h3 id="resultvalue--anyvaluetype-lab-001">result.value – AnyValueType (LAB-001)</h3>
+<h3 id="lab-001">result.value – AnyValueType (LAB-001, beslutat)</h3>
 
-<p><code class="language-plaintext highlighter-rouge">analysis.result.value</code> är av typen <code class="language-plaintext highlighter-rouge">AnyValueType</code> i TKB:n, vilket innebär att det kan bära kvantitativa, kvalitativa, textuella eller kodade värden. I FHIR representeras detta via polymorfin <code class="language-plaintext highlighter-rouge">Observation.value[x]</code>:</p>
+<p><code class="language-plaintext highlighter-rouge">analysis.result.value</code> är av typen <code class="language-plaintext highlighter-rouge">AnyValueType</code>. I XSD:n har den fyra grenar, varav en används per resultat, och var och en mappas entydigt till <code class="language-plaintext highlighter-rouge">Observation.value[x]</code>:</p>
 
 <table>
   <thead>
     <tr>
-      <th>AnyValueType-innehåll</th>
+      <th>Gren i <code class="language-plaintext highlighter-rouge">result.value</code></th>
+      <th>RIV-TA-typ</th>
       <th>FHIR value[x]</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Numeriskt värde med enhet</td>
-      <td><code class="language-plaintext highlighter-rouge">valueQuantity</code></td>
-    </tr>
-    <tr>
-      <td>Fri text</td>
-      <td><code class="language-plaintext highlighter-rouge">valueString</code></td>
-    </tr>
-    <tr>
-      <td>Kodat svar (t.ex. pos/neg)</td>
+      <td><code class="language-plaintext highlighter-rouge">cv</code></td>
+      <td>CVType</td>
       <td><code class="language-plaintext highlighter-rouge">valueCodeableConcept</code></td>
     </tr>
     <tr>
-      <td>Intervall (lågt–högt)</td>
+      <td><code class="language-plaintext highlighter-rouge">pq</code></td>
+      <td>PQType</td>
+      <td><code class="language-plaintext highlighter-rouge">valueQuantity</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">intervalPQ</code></td>
+      <td>PQIntervalType</td>
       <td><code class="language-plaintext highlighter-rouge">valueRange</code></td>
     </tr>
     <tr>
-      <td>Ratio</td>
-      <td><code class="language-plaintext highlighter-rouge">valueRatio</code></td>
+      <td><code class="language-plaintext highlighter-rouge">st</code></td>
+      <td>string</td>
+      <td><code class="language-plaintext highlighter-rouge">valueString</code></td>
     </tr>
   </tbody>
 </table>
-
-<p>Primär mappning är <code class="language-plaintext highlighter-rouge">valueString</code> när typen är okänd eller innehåller blandad information. Se <a href="#öppna-frågor">LAB-001</a> för öppen designfråga.</p>
 
 <h3 id="performersignature--observationperformer">performerSignature → Observation.performer</h3>
 
@@ -1279,11 +1290,11 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
   <tbody>
     <tr>
       <td>LAB-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">analysis.result.value</code> är av typen AnyValueType.</strong> TKB:n modellerar värdet som en polymorf typ som kan bära kvantitativa, kvalitativa, textuella och kodade värden. FHIR:s <code class="language-plaintext highlighter-rouge">Observation.value[x]</code> har stöd för detta men kräver att bryggan tolkar innehållet och väljer rätt valuetype. Om innehållet är en sträng utan enhet och utan strukturerad information är <code class="language-plaintext highlighter-rouge">valueString</code> säkraste fallback. Behöver formella regler för typbestämning.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">cv</code> → <code class="language-plaintext highlighter-rouge">valueCodeableConcept</code>, <code class="language-plaintext highlighter-rouge">pq</code> → <code class="language-plaintext highlighter-rouge">valueQuantity</code>, <code class="language-plaintext highlighter-rouge">intervalPQ</code> → <code class="language-plaintext highlighter-rouge">valueRange</code>, <code class="language-plaintext highlighter-rouge">st</code> → <code class="language-plaintext highlighter-rouge">valueString</code>. Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>PDL-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">approvedForPatient</code> (boolean) saknar standardiserad FHIR-motsvarighet.</strong> Fältet finns i JoL-headern via <code class="language-plaintext highlighter-rouge">accessControlHeader.approvedForPatient</code>. Nuvarande approach: <code class="language-plaintext highlighter-rouge">DiagnosticReport.meta.security</code> med ett lokalt definierat kodsystem. Behöver gemensamt beslut för alla TK:er.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPATIENT</code>. Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>GENERAL-001</td>
@@ -1336,7 +1347,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

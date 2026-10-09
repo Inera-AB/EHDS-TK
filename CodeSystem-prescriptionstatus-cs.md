@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/prescriptionstatus | *Version*:0.3.3 |
-| Active as of 2026-10-07 | *Computable Name*:PrescriptionStatusCS |
+| Active as of 2026-10-09 | *Computable Name*:PrescriptionStatusCS |
 
  
 Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination är aktiv eller inaktiv. 
@@ -31,7 +31,7 @@ Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination ä
   "name" : "PrescriptionStatusCS",
   "title" : "PrescriptionStatus",
   "status" : "active",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

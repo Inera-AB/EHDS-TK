@@ -9,9 +9,9 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:DeviceSourceSystemContact |
+| Draft as of 2026-10-09 | *Computable Name*:DeviceSourceSystemContact |
 
-Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName).
+Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName).
 
 **Context of Use**
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-device-source-system
   "name" : "DeviceSourceSystemContact",
   "title" : "Källsystemskontakt",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -55,7 +55,7 @@ Other representations of profile: [CSV](StructureDefinition-device-source-system
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName).",
+  "description" : "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName).",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -83,13 +83,13 @@ Other representations of profile: [CSV](StructureDefinition-device-source-system
       "id" : "Extension",
       "path" : "Extension",
       "short" : "Källsystemskontakt",
-      "definition" : "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName)."
+      "definition" : "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName)."
     },
     {
       "id" : "Extension.extension:actorId",
       "path" : "Extension.extension",
       "sliceName" : "actorId",
-      "short" : "Kontaktpersonens identifierare (sourceSystemContact.actorId)",
+      "short" : "Kontaktpersonens identifierare (sourceSystemContact.hsaid)",
       "min" : 0,
       "max" : "1"
     },
@@ -114,7 +114,7 @@ Other representations of profile: [CSV](StructureDefinition-device-source-system
       "id" : "Extension.extension:actorName",
       "path" : "Extension.extension",
       "sliceName" : "actorName",
-      "short" : "Kontaktpersonens namn (sourceSystemContact.actorName)",
+      "short" : "Kontaktpersonens namn (sourceSystemContact.personName)",
       "min" : 0,
       "max" : "1"
     },

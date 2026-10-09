@@ -122,7 +122,7 @@
     "status" : "active",
     "name" : "TypeOfCarePlanVS",
     "title" : "TypeOfCarePlan — ValueSet",
-    "description" : "Tillåtna värden för typeOfCarePlan i GetCarePlans enligt clinicalprocess:logistics:logistics.",
+    "description" : "Tillåtna värden för typeOfCarePlanEnum i GetCarePlans enligt clinicalprocess:logistics:logistics.",
     "systems" : ["https://fhir.inera.se/CodeSystem/typeofcareplan-cs"]
   },
   {

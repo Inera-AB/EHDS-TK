@@ -228,11 +228,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><a href="#statusmappning--imagerecordingexaminationstatus--imagingstudystatus" id="markdown-toc-statusmappning--imagerecordingexaminationstatus--imagingstudystatus">Statusmappning – imageRecording.examinationStatus → ImagingStudy.status</a></li>
         </ul>
       </li>
+      <li><a href="#mappningstabell--result" id="markdown-toc-mappningstabell--result">Mappningstabell – result</a></li>
       <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a>        <ul>
           <li><a href="#diagnosticreportstatus-härledd-från-typeofresult-och-nullified" id="markdown-toc-diagnosticreportstatus-härledd-från-typeofresult-och-nullified">DiagnosticReport.status (härledd från typeOfResult och nullified)</a></li>
           <li><a href="#diagnosticreportcode--fallback-om-examinationspeciality-saknas" id="markdown-toc-diagnosticreportcode--fallback-om-examinationspeciality-saknas">DiagnosticReport.code – fallback om examinationSpeciality saknas</a></li>
           <li><a href="#diagnosticreportconclusion--sammanslagning" id="markdown-toc-diagnosticreportconclusion--sammanslagning">DiagnosticReport.conclusion – sammanslagning</a></li>
-          <li><a href="#documenttitle--extension" id="markdown-toc-documenttitle--extension">documentTitle → extension</a></li>
+          <li><a href="#code-text" id="markdown-toc-code-text">DiagnosticReport.code.text – titel</a></li>
           <li><a href="#imagingstudyseries-konstruktion-från-imagedicomdata" id="markdown-toc-imagingstudyseries-konstruktion-från-imagedicomdata">ImagingStudy.series-konstruktion från imageDicomData</a></li>
           <li><a href="#imagerecordingexaminationunit--string-vs-reference" id="markdown-toc-imagerecordingexaminationunit--string-vs-reference">imageRecording.examinationUnit – string vs. Reference</a></li>
           <li><a href="#referral--servicerequest" id="markdown-toc-referral--servicerequest">Referral → ServiceRequest</a></li>
@@ -301,8 +302,8 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.documentTitle</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.extension[title]</code></td>
-      <td>Dokumenttitel; kräver lokal extension då DiagnosticReport saknar title-fält i R4</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.code.text</code></td>
+      <td>Rapportens namn i klartext; går före <code class="language-plaintext highlighter-rouge">examinationSpeciality.originalText</code>, se <a href="#code-text">DiagnosticReport.code.text</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.documentTime</code></td>
@@ -311,13 +312,13 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>Tidpunkt för dokumentet; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se <a href="#öppna-frågor">GENERAL-001</a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.patientId.value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.patientId.id</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.subject.identifier.value</code></td>
       <td>Personnummer eller samordningsnummer</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.patientId.system</code></td>
+      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.patientId.type</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.subject.identifier.system</code></td>
       <td>OID→URI, se tabell nedan</td>
@@ -362,13 +363,13 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefonnummer till org-enhet; ingen standardiserad plats på PractitionerRole/Organization i DiagnosticReport-kontexten</td>
+      <td>Telefonnummer till org-enhet; ingen standardiserad plats på PractitionerRole/Organization i DiagnosticReport-kontexten. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till org-enhet; ingen standardiserad plats; kan läggas på Organization.telecom om Organization-instans skapas</td>
+      <td>E-post till org-enhet; ingen standardiserad plats; kan läggas på Organization.telecom om Organization-instans skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
@@ -411,6 +412,12 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Namn i klartext – HSA-id räcker för logisk referens</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.approvedForPatient</code></td>
@@ -545,7 +552,7 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>Remittentens tidpunkt tillhör ursprungsremissen</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalHSAid</code></td>
+      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
       <td>0..1</td>
       <td>Ej mappad till DiagnosticReport</td>
       <td>Remittentens HSA-id tillhör ursprungsremissen (ServiceRequest.requester)</td>
@@ -578,13 +585,13 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefon; tillhör ursprungsremissen</td>
+      <td>Telefon; tillhör ursprungsremissen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post; tillhör ursprungsremissen</td>
+      <td>E-post; tillhör ursprungsremissen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
@@ -597,6 +604,18 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Plats; tillhör ursprungsremissen</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.attested.signatureTime</code></td>
@@ -615,6 +634,12 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Attesterarens namn i klartext; tillhör ursprungsremissen</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.referral.attested.legalAuthenticatorRoleCode</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
   </tbody>
 </table>
@@ -747,6 +772,18 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>Ej mappad</td>
       <td>Org-enhet för bildtagningspersonal; ingen direkt plats på ImagingStudy; se <a href="#öppna-frågor">IMG-003</a></td>
     </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
   </tbody>
 </table>
 
@@ -791,6 +828,12 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">ImagingStudy.extension[softwareVersion]</code></td>
       <td>Programversion i utrustningen; kräver lokal extension</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">imageRecording.modalityData.lineFilter</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
   </tbody>
 </table>
@@ -901,7 +944,7 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
       <td>Referens-URL till extern bild; kombineras med dicomReference vid mappning</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">imageRecording.imageStructuredData[i].imageData.burnedInAnnotations</code></td>
+      <td><code class="language-plaintext highlighter-rouge">imageRecording.imageStructuredData[i].imageData.burnedInaAnnotations</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Indikerar inbrända annotationer i bild; ingen standardiserad plats i ImagingStudy R4; kan lagras i extension</td>
@@ -968,6 +1011,53 @@ SEEHDSDiagnosticReportImaging  (1 per imagingOutcome – utlåtandet)
 
 <hr />
 
+<h2 id="mappningstabell--result">Mappningstabell – result</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.resultCode</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk responskod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.errorCode</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk felkod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.logId</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk spårnings-UUID – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk subkod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.message</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk felbeskrivning – hanteras av transportlagret</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
 <h2 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h2>
 
 <h3 id="diagnosticreportstatus-härledd-från-typeofresult-och-nullified">DiagnosticReport.status (härledd från typeOfResult och nullified)</h3>
@@ -1025,9 +1115,15 @@ code.coding.display = "Diagnostic imaging study"
 {resultComment}   ← läggs till med inledande radbrytning om fältet finns
 </code></pre></div></div>
 
-<h3 id="documenttitle--extension">documentTitle → extension</h3>
+<h3 id="code-text">DiagnosticReport.code.text – titel</h3>
 
-<p><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.documentTitle</code> saknar direkt motpart i DiagnosticReport R4. Mappas till en lokal extension <code class="language-plaintext highlighter-rouge">https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-document-title</code> på DiagnosticReport-nivå.</p>
+<p><code class="language-plaintext highlighter-rouge">DiagnosticReport.code.text</code> är rapportens namn i klartext. <code class="language-plaintext highlighter-rouge">code.coding</code> sätts oberoende av texten, från <code class="language-plaintext highlighter-rouge">examinationSpeciality</code> eller med fallback-koden ovan. Texten sätts enligt följande prioritet:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">imagingOutcomeHeader.documentTitle</code> (om satt)</li>
+  <li><code class="language-plaintext highlighter-rouge">imagingOutcomeBody.examinationSpeciality.originalText</code> (om satt)</li>
+  <li><code class="language-plaintext highlighter-rouge">examinationSpeciality.displayName</code>, annars fallback-kodens display</li>
+</ol>
 
 <h3 id="imagingstudyseries-konstruktion-från-imagedicomdata">ImagingStudy.series-konstruktion från imageDicomData</h3>
 
@@ -1167,7 +1263,7 @@ code.coding.display = "Diagnostic imaging study"
     </tr>
     <tr>
       <td>PDL-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">approvedForPatient</code> (boolean) saknar standardiserad FHIR-motsvarighet.</strong> Fältet finns i PatientSummaryHeader-mönstret men <code class="language-plaintext highlighter-rouge">meta.security</code> i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPATIENT</code>. Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>GENERAL-001</td>
@@ -1192,7 +1288,7 @@ code.coding.display = "Diagnostic imaging study"
     </tr>
     <tr>
       <td>IMG-004</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">imageStructuredData.imageData.burnedInAnnotations</code> saknar FHIR-motpart.</strong> Boolean-flagga som indikerar inbrända annotationer i bilddata. Ingen standardiserad plats i ImagingStudy R4. Förslag: lokal extension på <code class="language-plaintext highlighter-rouge">ImagingStudy.series.instance</code>.</td>
+      <td><strong><code class="language-plaintext highlighter-rouge">imageStructuredData.imageData.burnedInaAnnotations</code> saknar FHIR-motpart.</strong> Boolean-flagga som indikerar inbrända annotationer i bilddata. Ingen standardiserad plats i ImagingStudy R4. Förslag: lokal extension på <code class="language-plaintext highlighter-rouge">ImagingStudy.series.instance</code>.</td>
     </tr>
     <tr>
       <td>IMG-005</td>
@@ -1220,7 +1316,7 @@ code.coding.display = "Diagnostic imaging study"
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

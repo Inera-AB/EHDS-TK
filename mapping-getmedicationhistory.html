@@ -266,7 +266,7 @@ Detta är en känd avvikelse i TKB:n och måste hanteras explicit i bryggkoden.<
 
 <p>Varje <code class="language-plaintext highlighter-rouge">medicationMedicalRecord</code>-post ger upphov till en <code class="language-plaintext highlighter-rouge">MedicationStatement</code>. Relationer
 mellan ordinationer (<code class="language-plaintext highlighter-rouge">prescriptionChainId</code>, <code class="language-plaintext highlighter-rouge">precedingPrescriptionId</code>, <code class="language-plaintext highlighter-rouge">succeedingPrescriptionId</code>)
-representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
+representeras via extensions.</p>
 
 <hr />
 
@@ -301,13 +301,19 @@ representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
       <td>Ej tillämpligt för detta TK (markerat 0..0 i logisk modell)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.patientId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.documentTime</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.patientId.id</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">MedicationStatement.subject.identifier.value</code></td>
       <td>Personnummer eller samordningsnummer</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.patientId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.patientId.type</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">MedicationStatement.subject.identifier.system</code></td>
       <td>OID→URI, se tabell nedan</td>
@@ -352,13 +358,13 @@ representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefon till organisationsenhet – MedicationStatement saknar adressfält; inkluderas ej i FHIR-resursen</td>
+      <td>Telefon till organisationsenhet – MedicationStatement saknar adressfält; inkluderas ej i FHIR-resursen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till organisationsenhet – se orgUnitTelecom ovan</td>
+      <td>E-post till organisationsenhet – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
@@ -373,13 +379,13 @@ representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
       <td>Plats/ort – se orgUnitTelecom ovan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalcareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
       <td><strong>Yttre Sparr</strong> – lowercase 'c' i 'care' (TK-specifik stavning)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalcareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
       <td><strong>Inre Sparr</strong> – lowercase 'c' i 'care' (TK-specifik stavning)</td>
@@ -401,12 +407,6 @@ representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Namn i klartext – HSA-id räcker för logisk referens</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorRoleCode</code></td>
-      <td>0..0</td>
-      <td>N/A</td>
-      <td>Ej tillämpligt för detta TK (markerat 0..0 i logisk modell)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.nullified</code></td>
@@ -567,13 +567,13 @@ representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Förskrivarens org-telefon – kontaktuppgifter lagras ej i MedicationStatement</td>
+      <td>Förskrivarens org-telefon – kontaktuppgifter lagras ej i MedicationStatement. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Förskrivarens org-e-post – se orgUnitTelecom ovan</td>
+      <td>Förskrivarens org-e-post – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
@@ -586,6 +586,18 @@ representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Förskrivarens org-plats/ort – se orgUnitTelecom ovan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalCareUnitHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.prescriber.healthcareProfessionalCareGiverHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.evaluator.authorTime</code></td>
@@ -622,6 +634,42 @@ representeras via extensions – se <a href="#öppna-frågor">MED-001</a>.</p>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">MedicationStatement.extension[evaluator].orgUnitName</code></td>
       <td>Utvärderarens organisationsenhet (namn)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgift på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareUnitHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.evaluator.healthcareProfessionalCareGiverHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordBody.medicationPrescription.startOfFirstTreatment</code></td>
@@ -904,7 +952,7 @@ ingår i klinisk FHIR-data.</p>
       <td>Teknisk felkod – hanteras av transportlagret</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.subcode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Teknisk subkod – hanteras av transportlagret</td>
@@ -999,12 +1047,12 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
   <tbody>
     <tr>
       <td>Yttre Sparr (vårdgivare)</td>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalcareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
     </tr>
     <tr>
       <td>Inre Sparr (vårdenhet)</td>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalcareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
     </tr>
     <tr>
@@ -1031,12 +1079,12 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
     <tr>
       <td><code class="language-plaintext highlighter-rouge">agent[custodian]</code></td>
       <td>Juridiskt ansvarig vårdgivare</td>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalcareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">agent[author]</code></td>
       <td>Informationsägande vårdenhet</td>
-      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalcareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
     </tr>
   </tbody>
 </table>
@@ -1087,7 +1135,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
   <tbody>
     <tr>
       <td>MED-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">dispensationAuthorization</code>, <code class="language-plaintext highlighter-rouge">administration</code>, <code class="language-plaintext highlighter-rouge">relation</code> delvis extraherade.</strong> Dessa element i TKB:n är markerade "SAKNAS I KÄLLDOKUMENT – endast delvis extraherat – kontrollera manuellt". Behöver verifieras mot XSD för <code class="language-plaintext highlighter-rouge">DispensationAuthorizationType</code>, <code class="language-plaintext highlighter-rouge">AdministrationType</code>, <code class="language-plaintext highlighter-rouge">RelationType</code>. <code class="language-plaintext highlighter-rouge">setDosage</code> och <code class="language-plaintext highlighter-rouge">maximumDosage</code> (komplex strukturerad dosering) ingår också i vad som behöver verifieras. Mappning läggs till när elementen är verifierade.</td>
+      <td><strong>Löst:</strong> hela strukturen för <code class="language-plaintext highlighter-rouge">dispensationAuthorization</code>, <code class="language-plaintext highlighter-rouge">administration</code> och <code class="language-plaintext highlighter-rouge">relation</code> finns i den logiska modellen (genererad från XSD:n). Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>MED-002</td>
@@ -1099,7 +1147,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
     </tr>
     <tr>
       <td>PDL-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">approvedForPatient</code> (boolean) saknar standardiserat FHIR-kodsystem.</strong> Fältet mappas tentativt till <code class="language-plaintext highlighter-rouge">meta.security</code> men inget standardiserat kodsystem för detta begrepp finns. Behöver gemensamt beslut; se central issue i <a href="mapping-issues.html">mapping-issues</a>.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPATIENT</code>. Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>GENERAL-001</td>
@@ -1128,7 +1176,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
     </tr>
     <tr>
       <td>MED-006</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">documentTitle</code> (header) saknar mappning.</strong> Fritexttiteln för dokument har ingen standardmotpart i MedicationStatement. Överväg <code class="language-plaintext highlighter-rouge">MedicationStatement.note</code> eller ignorera som en rent administrativ etikett utan klinisk relevans.</td>
+      <td><strong>Stängd:</strong> <code class="language-plaintext highlighter-rouge">documentTitle</code> är avsiktligt undertryckt (0..0). Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -1152,7 +1200,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

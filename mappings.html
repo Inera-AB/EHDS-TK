@@ -218,6 +218,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#tidszon" id="markdown-toc-tidszon">Tidsstämplar och tidszon (GENERAL-001)</a></li>
       <li><a href="#meta-source" id="markdown-toc-meta-source">meta.source – källsystem (GENERAL-005)</a></li>
       <li><a href="#patientreferens" id="markdown-toc-patientreferens">Patientreferens (GENERAL-006)</a></li>
+      <li><a href="#organisation" id="markdown-toc-organisation">Organisationsenheter, kontaktuppgifter och historik (GENERAL-008)</a></li>
     </ul>
   </li>
 </ul>
@@ -477,6 +478,64 @@ utifrån <code class="language-plaintext highlighter-rouge">patientId</code> i R
 <p>Detta gäller <code class="language-plaintext highlighter-rouge">subject</code> respektive <code class="language-plaintext highlighter-rouge">patient</code> i samtliga resurser, t.ex. både <code class="language-plaintext highlighter-rouge">Condition.subject</code> och
 <code class="language-plaintext highlighter-rouge">DocumentReference.subject</code>.</p>
 
+<h3 id="organisation">Organisationsenheter, kontaktuppgifter och historik (GENERAL-008)</h3>
+
+<blockquote>
+  <p><strong>Status: föreslagen lösning.</strong> Avsnittet föreslår <code class="language-plaintext highlighter-rouge">contained</code> Organization. Profilerna är ännu inte ändrade, och dagens mappning (logisk referens med HSA-id och namn) gäller tills vidare. Frågan ersätter CC-002, CP-003, REF-004 och MAT-002.</p>
+</blockquote>
+
+<h4 id="problemet">Problemet</h4>
+
+<p>RIVTA-svaren innehåller organisationsenheter av typen <code class="language-plaintext highlighter-rouge">OrgUnitType</code> (t.ex. <code class="language-plaintext highlighter-rouge">healthcareProfessionalOrgUnit</code> och <code class="language-plaintext highlighter-rouge">careContactOrgUnit</code>) med HSA-id, namn och kontaktuppgifter: <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>, <code class="language-plaintext highlighter-rouge">orgUnitEmail</code>, <code class="language-plaintext highlighter-rouge">orgUnitAddress</code> och <code class="language-plaintext highlighter-rouge">orgUnitLocation</code>. HSA saknar historik, så ett uppslag på HSA-id ger dagens uppgifter, inte de som gällde när informationen dokumenterades. Därför skickar tjänsteproducenten med enhetens uppgifter i varje svar som en ögonblicksbild, och det är bara den som är korrekt för historiska data. Med enbart en logisk referens (<code class="language-plaintext highlighter-rouge">identifier</code> = HSA-id, <code class="language-plaintext highlighter-rouge">display</code> = namn) försvinner ögonblicksbilden.</p>
+
+<h4 id="fhir-mekanismer-för-att-skicka-med-organization">FHIR-mekanismer för att skicka med Organization</h4>
+
+<p><strong>A. Inkluderade resurser i sökresultatet (<code class="language-plaintext highlighter-rouge">_include</code>).</strong> En sökning kan returnera refererade resurser i samma Bundle, markerade med <code class="language-plaintext highlighter-rouge">Bundle.entry.search.mode = include</code>, t.ex. <code class="language-plaintext highlighter-rouge">GET [base]/Encounter?patient=…&amp;_include=Encounter:service-provider</code>.</p>
+
+<ul>
+  <li><em>Fördel:</em> standardmönstret för att skicka med extra resurser i ett svar; ingen dubblering inom svaret.</li>
+  <li><em>Nackdel:</em> en Organization-resurs har en identitet (<code class="language-plaintext highlighter-rouge">Organization/[id]</code>) som ska gå att läsa igen. Eftersom samma HSA-id kan ha olika uppgifter i olika svar måste id:t representera ögonblicksbilden, inte enheten. Det kräver att API:et lagrar ögonblicksbilderna eller bildar id deterministiskt ur innehållet. Bryggan är i dag tillståndslös. <code class="language-plaintext highlighter-rouge">_include</code> måste också deklareras i CapabilityStatement.</li>
+</ul>
+
+<p><strong>B. Inbäddade resurser (<code class="language-plaintext highlighter-rouge">contained</code>).</strong> Organisationen bäddas in i den resurs som refererar den (<code class="language-plaintext highlighter-rouge">"reference": "#org1"</code>), med HSA-id i <code class="language-plaintext highlighter-rouge">Organization.identifier</code> och producentens uppgifter i <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">telecom</code> och <code class="language-plaintext highlighter-rouge">address</code>. FHIR anger att inbäddade resurser används när innehållet saknar självständig existens, till exempel när källan bara har en ögonblicksbild. Det motsvarar situationen här.</p>
+
+<ul>
+  <li><em>Fördel:</em> ögonblicksbilden följer alltid med den resurs den gäller; ingen lagring eller id-hantering i API:et; fungerar för både sökning och läsning.</li>
+  <li><em>Nackdel:</em> uppgifterna upprepas i varje resurs; den inbäddade organisationen kan inte sökas eller refereras från andra resurser.</li>
+</ul>
+
+<p><strong>C. Endast logisk referens.</strong> <code class="language-plaintext highlighter-rouge">identifier</code> och <code class="language-plaintext highlighter-rouge">display</code> utan kontaktuppgifter. Det är dagens mappning. Historiska kontaktuppgifter går förlorade.</p>
+
+<h4 id="förslag-inbäddad-organization-contained">Förslag: inbäddad Organization (<code class="language-plaintext highlighter-rouge">contained</code>)</h4>
+
+<p>Producentens organisationsenhet bäddas in som en <code class="language-plaintext highlighter-rouge">contained</code> Organization i den resurs som refererar den (direkt eller via en inbäddad PractitionerRole):</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"contained"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"org1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:oid:1.2.752.29.4.19"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SE2321000016-ABCD"</span><span class="w"> </span><span class="p">}],</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vårdcentralen Exempel"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"telecom"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+46-8-123 45 67"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exempel@region.se"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Exempelgatan 1, 123 45 Exempelstad"</span><span class="w"> </span><span class="p">}]</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">orgUnitHSAId</code> → <code class="language-plaintext highlighter-rouge">Organization.identifier</code> (HSA-id), så att mottagaren kan slå upp dagens uppgifter vid behov.</li>
+  <li><code class="language-plaintext highlighter-rouge">orgUnitName</code> → <code class="language-plaintext highlighter-rouge">Organization.name</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> → <code class="language-plaintext highlighter-rouge">Organization.telecom</code> (<code class="language-plaintext highlighter-rouge">system = phone</code>); <code class="language-plaintext highlighter-rouge">orgUnitEmail</code> → <code class="language-plaintext highlighter-rouge">Organization.telecom</code> (<code class="language-plaintext highlighter-rouge">system = email</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">orgUnitAddress</code> → <code class="language-plaintext highlighter-rouge">Organization.address.text</code>; <code class="language-plaintext highlighter-rouge">orgUnitLocation</code> → <code class="language-plaintext highlighter-rouge">Organization.address.city</code> eller <code class="language-plaintext highlighter-rouge">text</code>, beroende på innehåll.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">_include</code> (alternativ A) blir aktuellt först om API:et får en lagrande komponent eller om samma organisation behöver delas mellan många resurser i stora svar.</p>
+
+<h4 id="kontaktuppgifter-vid-patientens-egen-åtkomst">Kontaktuppgifter vid patientens egen åtkomst</h4>
+
+<p><code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> och <code class="language-plaintext highlighter-rouge">orgUnitEmail</code> brukar utelämnas när det är patienten som gör anropet, eftersom de främst är avsedda för kontakt mellan vårdgivare. Det kan komma att ändras av krav i EHDS. Om API:et tar bort element ur en resurs märks den med <code class="language-plaintext highlighter-rouge">meta.tag</code> = <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/v3-ObservationValue#SUBSETTED</code>.</p>
+
 
 
 
@@ -496,7 +555,7 @@ utifrån <code class="language-plaintext highlighter-rouge">patientId</code> i R
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

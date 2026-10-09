@@ -271,23 +271,31 @@ En användare i vården söker aktiva diagnoser för en patient via QEDm. Två `
 
 GetAccessLogForPatient används för att lämna ut källsystemens befintliga åtkomstloggar till patienten. Varje loggpost mappas till en `AuditEvent` enligt SEEHDSAuditEventReadAccessLog. Profilen används bara för att **läsa** loggar. Den används inte för de loggposter API:et själv skapar (se [Loggar som måste skapas](#loggar-som-maste-skapas)).
 
+Svaret `GetAccessLogsForPatientResponse` innehåller ett `accessLogsResult` med rapportstatus (`reportResult`) och en lista med loggposter (`accesssLogs.accessLog`). Elementnamnet `accesssLogs` stavas med tre s i XSD:n och måste användas så i XML:en. Loggposten har ingen patientidentitet, ingen åtkomsttyp och inget utfall: patienten är den som efterfrågades i begäran, och övriga AuditEvent-fält får fasta värden enligt profilen. Strukturen följer [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.md), som är genererad från XSD:n och verifierad mot TKB:n.
+
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `accessLogId` | 1..1 | `AuditEvent.entity[loggpost].what.identifier.value` | Loggpostens unika identifierare |
-| `patientId` | 1..1 | `AuditEvent.entity[patient].what` | Patientens identitet, entity-mönstret (`entity.role = 1`) |
-| `accessTime` | 1..1 | `AuditEvent.recorded` | Åtkomsttidpunkt; ISO 8601 |
-| `accessType` | 1..1 | `AuditEvent.type` | Åtkomsttyp (Läsning/Sökning), se LOG-002 |
-| `accessSubType` | 0..1 | `AuditEvent.subtype` | Mer specifik klassificering av händelsen |
-| `accessOutcome` | 1..1 | `AuditEvent.outcome` | `0`= beviljad,`4`= nekad |
-| `accessPurpose` | 0..1 | `AuditEvent.purposeOfEvent` | Åtkomstsyfte (Vård/Administration);`v3-ActReason` |
-| `userId` | 1..1 | `AuditEvent.agent[accessor].who.identifier.value` | Användarens HSA-id; system`urn:oid:1.2.752.29.4.19` |
-| `userRole` | 0..1 | `AuditEvent.agent[accessor].role` | Användarroll vid åtkomsttillfället |
-| `userOrganization` | 0..1 | `AuditEvent.agent[accessor].who` | Organisationens HSA-id |
-| `sourceSystemHSAId` | 1..1 | `AuditEvent.source.observer.identifier.value` | Källsystemet som registrerade händelsen |
-| `accessedResource` | 0..1 | `AuditEvent.entity[resurs].description` | Resurs eller tjänst som åtkoms |
-| `result.*` | – | Ej mappad | Tekniska svarsfält – hanteras av transportlagret |
+| (begärans`patientId`) | 1..1 | `AuditEvent.entity[patient].what` | SEEHDSPatient för den efterfrågade patienten, entity-mönstret (`entity.role = 1`), se LOG-001 |
+| `accessLogsResult.accesssLogs.accessLog.accessDate` | 1..1 | `AuditEvent.recorded` | Tidpunkt för åtkomst (xs:dateTime); tidszon Europe/Stockholm om den saknas (GENERAL-001) |
+| `accessLogsResult.accesssLogs.accessLog.userId` | 1..1 | `AuditEvent.agent[user].who.identifier.value` | Vårdaktörens id; HSA-id med system`urn:oid:1.2.752.29.4.19`.`agent.requestor = true` |
+| `accessLogsResult.accesssLogs.accessLog.userName` | 0..1 | `AuditEvent.agent[user].who.display` | Vårdaktörens namn |
+| `accessLogsResult.accesssLogs.accessLog.userTitle` | 0..1 | `AuditEvent.agent[user].role.text` | Vårdaktörens titel |
+| `accessLogsResult.accesssLogs.accessLog.purpose` | 1..1 | `AuditEvent.agent[user].purposeOfUse` | Syftet i klartext i`text`; "Vård och behandling" kodas även som`v3-ActReason#TREAT` |
+| `accessLogsResult.accesssLogs.accessLog.careUnitId` | 1..1 | `AuditEvent.agent[vårdenhet].who.identifier.value` | Vårdenhet som haft åtkomst; logisk referens till SEEHDSOrganization.`agent.requestor = false` |
+| `accessLogsResult.accesssLogs.accessLog.careUnitName` | 0..1 | `AuditEvent.agent[vårdenhet].who.display` | Vårdenhetens namn |
+| `accessLogsResult.accesssLogs.accessLog.careProviderId` | 1..1 | `AuditEvent.agent[vårdgivare].who.identifier.value` | Vårdgivare som haft åtkomst; logisk referens till SEEHDSOrganization.`agent.requestor = false` |
+| `accessLogsResult.accesssLogs.accessLog.careProviderName` | 0..1 | `AuditEvent.agent[vårdgivare].who.display` | Vårdgivarens namn |
+| `accessLogsResult.accesssLogs.accessLog.resourceType` | 1..1 | `AuditEvent.entity[resurs].description` | Typ av resurs som åtkomsten avsåg |
+| (saknas i meddelandet) | – | `AuditEvent.type`,`action`,`outcome` | Fasta värden enligt profilen:`action = R`,`outcome = 0`(loggposten avser en genomförd åtkomst);`type`se LOG-002 |
+| (saknas i meddelandet) | – | `AuditEvent.source.observer` | Det källsystem (logisk adress) som bryggan anropade |
+| `accessLogsResult.reportResult.result.resultCode` | 1..1 | Ej mappad | Teknisk statuskod – hanteras av transportlagret |
+| `accessLogsResult.reportResult.result.resultText` | 0..1 | Ej mappad | Teknisk statustext |
+| `accessLogsResult.reportResult.startInterval` | 0..1 | Ej mappad | Datum för första loggposten som finns för uppföljning när rapporten skapades |
+| `accessLogsResult.reportResult.endInterval` | 0..1 | Ej mappad | Datum för sista loggposten som finns för uppföljning när rapporten skapades |
+| `accessLogsResult.reportResult.queuedReportId` | 0..1 | Ej mappad | Id för köad rapport (asynkront svar); bryggan behöver anropa igen |
+| `accessLogsResult.reportResult.queueTime` | 0..1 | Ej mappad | Förväntad tid i sekunder tills den köade rapporten kan levereras |
 
-Öppna frågor: LOG-001 och LOG-002 i [Mappningsissues](mapping-issues.md).
+Öppen fråga: LOG-002 i [Mappningsissues](mapping-issues.md). LOG-001 är beslutad (BALP:s entity-mönster).
 
 -------
 

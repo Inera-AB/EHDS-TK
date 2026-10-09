@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSPatient |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSPatient |
 
  
 Patientprofil för EHDS-TK. Ärver HL7 Europe Core Patient (EURIDICE) och följer svenska basprofilernas identifierarkonvention (SEBasePatient: slicarna personnummer, samordningsnummer, nationelltReservnummer). Skapas av API:et utifrån patientId i RIVTA-svaret, eftersom EU Core kräver subject.reference (GENERAL-006). 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSPatient.csv), 
   "name" : "SEEHDSPatient",
   "title" : "SE EHDS Patient",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

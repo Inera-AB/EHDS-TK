@@ -74,10 +74,10 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `acti
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Flag.author`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
-| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
-| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
-| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen |
-| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen |
+| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
+| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
+| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
+| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |
@@ -230,7 +230,7 @@ Gäller när `alertInformationBody.unstructuredAlertInformation` är angivet. Sk
 | :--- | :--- | :--- | :--- |
 | `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod – hanteras av transportlagret |
 | `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
-| `result.subcode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
+| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
 | `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
 | `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
 
@@ -280,6 +280,6 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | :--- | :--- |
 | ALERT-002 | **Okänt kodsystem för `typeOfAlertInformation`.**OID och URI för kodsystemet är inte dokumenterat i TKB:n. Avgör vilka koder som styr om AllergyIntolerance skapas och hur de mappas till`AllergyIntolerance.category`. |
 | ALERT-004 | **ConceptMap saknas: degreeOfCertainty/degreeOfSeverity → FHIR.**`hypersensitivity.degreeOfCertainty`(KV Visshetsgrad 1.2.752.129.2.2.3.11) behöver ConceptMap till`AllergyIntolerance.verificationStatus`.`hypersensitivity.degreeOfSeverity`(KV Allvarlighetsgrad 1.2.752.129.2.2.3.3) behöver ConceptMap till`AllergyIntolerance.reaction.severity`. Sätt temporärt`confirmed`tills ConceptMap finns. |
-| PDL-001 | **`approvedForPatient` (boolean) saknar FHIR-motsvarighet.**`meta.security`i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er. |
+| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPATIENT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 

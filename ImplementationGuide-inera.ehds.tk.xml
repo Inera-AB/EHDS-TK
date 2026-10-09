@@ -11,7 +11,7 @@
   <name value="SEEHDSTK"/>
   <title value="Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-10-07T11:49:57+00:00"/>
+  <date value="2026-10-09T07:52:45+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -954,7 +954,7 @@
         <reference value="StructureDefinition/device-source-system-contact"/>
       </reference>
       <name value="Källsystemskontakt"/>
-      <description value="Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName)."/>
+      <description value="Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName)."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1091,6 +1091,501 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome2"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:healthcond:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome3"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:healthcond:actoutcome:3)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeHealthcondBasic2"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:healthcond:basic:2)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeHealthcondDescription2"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:healthcond:description:2)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:description:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeHealthcondDescription3"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:healthcond:description:3)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:description:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeLogisticsLogistics3"/>
+      </reference>
+      <name value="RIV-TA CVType (clinicalprocess:logistics:logistics:3)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivCVTypeCrmRequeststatus2"/>
+      </reference>
+      <name value="RIV-TA CVType (crm:requeststatus:2)"/>
+      <description value="RIV-TA-datatypen CVType i namnrymden urn:riv:crm:requeststatus:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivDate"/>
+      </reference>
+      <name value="RIV-TA DateType"/>
+      <description value="Datum i formatet ÅÅÅÅMMDD. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivDecimal"/>
+      </reference>
+      <name value="RIV-TA decimaltal"/>
+      <description value="Decimaltal (xs:double/xs:decimal). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivInteger"/>
+      </reference>
+      <name value="RIV-TA heltal"/>
+      <description value="Heltal (xs:int/xs:integer). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivIITypeActivityprescriptionActoutcome2"/>
+      </reference>
+      <name value="RIV-TA IIType (clinicalprocess:activityprescription:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivIITypeHealthcondActoutcome3"/>
+      </reference>
+      <name value="RIV-TA IIType (clinicalprocess:healthcond:actoutcome:3)"/>
+      <description value="RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivIITypeHealthcondActoutcome4"/>
+      </reference>
+      <name value="RIV-TA IIType (clinicalprocess:healthcond:actoutcome:4)"/>
+      <description value="RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivIITypeHealthcondBasic2"/>
+      </reference>
+      <name value="RIV-TA IIType (clinicalprocess:healthcond:basic:2)"/>
+      <description value="RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivIITypeHealthcondDescription3"/>
+      </reference>
+      <name value="RIV-TA IIType (clinicalprocess:healthcond:description:3)"/>
+      <description value="RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:description:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivIITypeLogisticsLogistics3"/>
+      </reference>
+      <name value="RIV-TA IIType (clinicalprocess:logistics:logistics:3)"/>
+      <description value="RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivIITypeCrmRequeststatus2"/>
+      </reference>
+      <name value="RIV-TA IIType (crm:requeststatus:2)"/>
+      <description value="RIV-TA-datatypen IIType i namnrymden urn:riv:crm:requeststatus:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPartialDateTypeLogisticsLogistics3"/>
+      </reference>
+      <name value="RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3)"/>
+      <description value="RIV-TA-datatypen PartialDateType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic2"/>
+      </reference>
+      <name value="RIV-TA PartialTimeStampType (clinicalprocess:healthcond:basic:2)"/>
+      <description value="RIV-TA-datatypen PartialTimeStampType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPersonIdTypeActivityprescriptionActoutcome2"/>
+      </reference>
+      <name value="RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPersonIdTypeHealthcondActoutcome2"/>
+      </reference>
+      <name value="RIV-TA PersonIdType (clinicalprocess:healthcond:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPersonIdTypeHealthcondActoutcome3"/>
+      </reference>
+      <name value="RIV-TA PersonIdType (clinicalprocess:healthcond:actoutcome:3)"/>
+      <description value="RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2"/>
+      </reference>
+      <name value="RIV-TA PersonIdType (clinicalprocess:healthcond:description:2)"/>
+      <description value="RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:description:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPersonIdTypeLogisticsLogistics3"/>
+      </reference>
+      <name value="RIV-TA PersonIdType (clinicalprocess:logistics:logistics:3)"/>
+      <description value="RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"/>
+      </reference>
+      <name value="RIV-TA PQIntervalType (clinicalprocess:activityprescription:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondActoutcome4"/>
+      </reference>
+      <name value="RIV-TA PQIntervalType (clinicalprocess:healthcond:actoutcome:4)"/>
+      <description value="RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic2"/>
+      </reference>
+      <name value="RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:2)"/>
+      <description value="RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQTypeActivityprescriptionActoutcome2"/>
+      </reference>
+      <name value="RIV-TA PQType (clinicalprocess:activityprescription:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome2"/>
+      </reference>
+      <name value="RIV-TA PQType (clinicalprocess:healthcond:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome3"/>
+      </reference>
+      <name value="RIV-TA PQType (clinicalprocess:healthcond:actoutcome:3)"/>
+      <description value="RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome4"/>
+      </reference>
+      <name value="RIV-TA PQType (clinicalprocess:healthcond:actoutcome:4)"/>
+      <description value="RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivPQTypeHealthcondBasic2"/>
+      </reference>
+      <name value="RIV-TA PQType (clinicalprocess:healthcond:basic:2)"/>
+      <description value="RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivString"/>
+      </reference>
+      <name value="RIV-TA text"/>
+      <description value="Textinnehåll i ett RIV-TA-element av typen xs:string eller en strängbaserad typ (t.ex. HSAIdType, kodlistor). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2"/>
+      </reference>
+      <name value="RIV-TA TimePeriodType (clinicalprocess:activityprescription:actoutcome:2)"/>
+      <description value="RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondActoutcome3"/>
+      </reference>
+      <name value="RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:3)"/>
+      <description value="RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondActoutcome4"/>
+      </reference>
+      <name value="RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:4)"/>
+      <description value="RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondDescription2"/>
+      </reference>
+      <name value="RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2)"/>
+      <description value="RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:description:2."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivTimePeriodTypeLogisticsLogistics3"/>
+      </reference>
+      <name value="RIV-TA TimePeriodType (clinicalprocess:logistics:logistics:3)"/>
+      <description value="RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivTimeStamp"/>
+      </reference>
+      <name value="RIV-TA TimeStampType"/>
+      <description value="Tidpunkt i formatet ÅÅÅÅMMDDttmmss (lokal svensk tid utan tidszon). Konverteras till FHIR dateTime/instant med Europe/Stockholm, se GENERAL-001. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivAnyURI"/>
+      </reference>
+      <name value="RIV-TA xs:anyURI"/>
+      <description value="URI. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivBase64Binary"/>
+      </reference>
+      <name value="RIV-TA xs:base64Binary"/>
+      <description value="Base64-kodat innehåll. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivBoolean"/>
+      </reference>
+      <name value="RIV-TA xs:boolean"/>
+      <description value="Sanningsvärde (true/false). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:logical"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/SEEHDSRivDateTime"/>
+      </reference>
+      <name value="RIV-TA xs:dateTime"/>
+      <description value="Tidpunkt enligt xs:dateTime. Lagras som text eftersom xs:dateTime tillåter tidpunkt utan tidszon. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -1185,7 +1680,7 @@
         <reference value="StructureDefinition/SEEHDSDevice"/>
       </reference>
       <name value="SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)"/>
-      <description value="Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.&#xA;&#xA;Representerar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*&#xA;och sourceSystemContact. Refereras från SEEHDSImmunization via&#xA;extension[registrationDevice].&#xA;&#xA;deviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)&#xA;deviceName[productName] = sourceSystemProductName (0..1)&#xA;version                 = sourceSystemProductVersion (0..1)&#xA;extension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)"/>
+      <description value="Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.&#xA;&#xA;Representerar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*&#xA;och sourceSystemContact. Refereras från SEEHDSImmunization via&#xA;extension[registrationDevice].&#xA;&#xA;deviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)&#xA;deviceName[productName] = sourceSystemProductName (0..1)&#xA;version                 = sourceSystemProductVersion (0..1)&#xA;extension[sourceSystemContact] = sourceSystemContact.hsaid/personName (0..1)"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1295,7 +1790,7 @@
         <reference value="StructureDefinition/SEEHDSObservationBase"/>
       </reference>
       <name value="SE EHDS Observation Base – GetObservations"/>
-      <description value="Basprofil för alla observationer från GetObservations&#xA;(clinicalprocess:healthcond:basic v2.0).&#xA;&#xA;Profilen fångar den generella TK-mappningen och används som förälder av&#xA;domänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).&#xA;&#xA;Nyckeldesignbeslut:&#xA;- observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int).&#xA;  Varje gren mappas till respektive FHIR value[x]-variant.&#xA;- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.&#xA;- observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.&#xA;- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).&#xA;  Välj FHIR-element per deltagartyp (se mappningssida).&#xA;- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).&#xA;&#xA;Täcker NPÖ 1.2 och 1177 Journal 1.2."/>
+      <description value="Basprofil för alla observationer från GetObservations&#xA;(clinicalprocess:healthcond:basic v2.0).&#xA;&#xA;Profilen fångar den generella TK-mappningen och används som förälder av&#xA;domänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).&#xA;&#xA;Nyckeldesignbeslut:&#xA;- observationBody.value är XOR-union av sju värdetyper (cv/pq/ivl_pq/ts/ivl_ts/st/int).&#xA;  Varje gren mappas till respektive FHIR value[x]-variant.&#xA;- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.&#xA;- observationBody.time (ts/ivl_ts) → effective[x]; registrationTime → issued.&#xA;- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).&#xA;  Välj FHIR-element per deltagartyp (se mappningssida).&#xA;- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).&#xA;&#xA;Täcker NPÖ 1.2 och 1177 Journal 1.2."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1317,7 +1812,7 @@
         <reference value="StructureDefinition/SEEHDSObservationMaternity"/>
       </reference>
       <name value="SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)"/>
-      <description value="Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet&#xA;GetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).&#xA;Täcker NPÖ 2.0 och 1177 Journal 2.0.&#xA;&#xA;OBS: TKBn har tre separata sektioner (registrationRecord, pregnancyCheckupRecord,&#xA;postDeliveryRecord) med egna sektionsspecifika fält. En Observation skapas per sektion&#xA;med Observation.code som diskriminator (se MAT-001 i mapping-issues). Fältnamnen&#xA;i ^short nedan refererar till sektionsspecifika element – implementatören väljer rätt&#xA;sektionselement baserat på Observation.code."/>
+      <description value="Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet&#xA;GetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).&#xA;Täcker NPÖ 2.0 och 1177 Journal 2.0.&#xA;&#xA;TKB:n har tre avsnitt (registrationRecord, pregnancyCheckupRecord, postDeliveryRecord).&#xA;Profilen används både för den grupperande Observationen per avsnitt (code = avsnittskod,&#xA;code.text = documentTitle, hasMember = fälten) och för medlems-Observationerna, en per&#xA;fält (MAT-001)."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1328,7 +1823,7 @@
         <reference value="StructureDefinition/SEEHDSObservationGrowth"/>
       </reference>
       <name value="SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)"/>
-      <description value="Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad&#xA;graviditetslängd) för barn och ungdom, baserad på:&#xA;- GetObservations (clinicalprocess:healthcond:basic v2.0)&#xA;- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)&#xA;&#xA;Ärver SEEHDSObservationBase och lägger till:&#xA;- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)&#xA;- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)&#xA;- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)&#xA;&#xA;Kodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.&#xA;&#xA;Täcker NPÖ 1.2 och 1177 Journal 1.2."/>
+      <description value="Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad&#xA;graviditetslängd) för barn och ungdom, baserad på:&#xA;- GetObservations (clinicalprocess:healthcond:basic v2.0)&#xA;- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)&#xA;&#xA;Ärver SEEHDSObservationBase och lägger till:&#xA;- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)&#xA;- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)&#xA;- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)&#xA;&#xA;Kodsystem för observationBody.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.&#xA;&#xA;Täcker NPÖ 1.2 och 1177 Journal 1.2."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1515,7 +2010,7 @@
         <reference value="ValueSet/typeofcareplan-vs"/>
       </reference>
       <name value="TypeOfCarePlan — ValueSet"/>
-      <description value="Tillåtna värden för typeOfCarePlan i GetCarePlans enligt clinicalprocess:logistics:logistics."/>
+      <description value="Tillåtna värden för typeOfCarePlanEnum i GetCarePlans enligt clinicalprocess:logistics:logistics."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

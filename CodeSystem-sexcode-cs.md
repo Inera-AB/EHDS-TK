@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/sexcode | *Version*:0.3.3 |
-| Active as of 2026-10-07 | *Computable Name*:SexCodeCS |
+| Active as of 2026-10-09 | *Computable Name*:SexCodeCS |
 
  
 Kodverk för kön (SexCodeEnum). Används i GetMaternityMedicalHistory för barnets kön. OBS: Överväg att använda HL7 AdministrativeGender istället. 
@@ -31,7 +31,7 @@ Kodverk för kön (SexCodeEnum). Används i GetMaternityMedicalHistory för barn
   "name" : "SexCodeCS",
   "title" : "SexCode",
   "status" : "active",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

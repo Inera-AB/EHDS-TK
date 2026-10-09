@@ -412,6 +412,321 @@
   "name" : "SEEHDSProvenance"
 },
 {
+  "id" : "SEEHDSRivAnyURI",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivAnyURI",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivAnyURI"
+},
+{
+  "id" : "SEEHDSRivBase64Binary",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivBase64Binary"
+},
+{
+  "id" : "SEEHDSRivBoolean",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivBoolean"
+},
+{
+  "id" : "SEEHDSRivCVTypeActivityprescriptionActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+},
+{
+  "id" : "SEEHDSRivCVTypeCrmRequeststatus2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeCrmRequeststatus2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeCrmRequeststatus2"
+},
+{
+  "id" : "SEEHDSRivCVTypeHealthcondActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeHealthcondActoutcome2"
+},
+{
+  "id" : "SEEHDSRivCVTypeHealthcondActoutcome3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeHealthcondActoutcome3"
+},
+{
+  "id" : "SEEHDSRivCVTypeHealthcondActoutcome4",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeHealthcondActoutcome4"
+},
+{
+  "id" : "SEEHDSRivCVTypeHealthcondBasic2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondBasic2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeHealthcondBasic2"
+},
+{
+  "id" : "SEEHDSRivCVTypeHealthcondDescription2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondDescription2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeHealthcondDescription2"
+},
+{
+  "id" : "SEEHDSRivCVTypeHealthcondDescription3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondDescription3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeHealthcondDescription3"
+},
+{
+  "id" : "SEEHDSRivCVTypeLogisticsLogistics3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeLogisticsLogistics3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivCVTypeLogisticsLogistics3"
+},
+{
+  "id" : "SEEHDSRivDate",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDate",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivDate"
+},
+{
+  "id" : "SEEHDSRivDateTime",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDateTime",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivDateTime"
+},
+{
+  "id" : "SEEHDSRivDecimal",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDecimal",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivDecimal"
+},
+{
+  "id" : "SEEHDSRivIITypeActivityprescriptionActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeActivityprescriptionActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivIITypeActivityprescriptionActoutcome2"
+},
+{
+  "id" : "SEEHDSRivIITypeCrmRequeststatus2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeCrmRequeststatus2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivIITypeCrmRequeststatus2"
+},
+{
+  "id" : "SEEHDSRivIITypeHealthcondActoutcome3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeHealthcondActoutcome3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivIITypeHealthcondActoutcome3"
+},
+{
+  "id" : "SEEHDSRivIITypeHealthcondActoutcome4",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeHealthcondActoutcome4",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivIITypeHealthcondActoutcome4"
+},
+{
+  "id" : "SEEHDSRivIITypeHealthcondBasic2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeHealthcondBasic2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivIITypeHealthcondBasic2"
+},
+{
+  "id" : "SEEHDSRivIITypeHealthcondDescription3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeHealthcondDescription3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivIITypeHealthcondDescription3"
+},
+{
+  "id" : "SEEHDSRivIITypeLogisticsLogistics3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeLogisticsLogistics3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivIITypeLogisticsLogistics3"
+},
+{
+  "id" : "SEEHDSRivInteger",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivInteger",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivInteger"
+},
+{
+  "id" : "SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+},
+{
+  "id" : "SEEHDSRivPQIntervalTypeHealthcondActoutcome4",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondActoutcome4",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQIntervalTypeHealthcondActoutcome4"
+},
+{
+  "id" : "SEEHDSRivPQIntervalTypeHealthcondBasic2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQIntervalTypeHealthcondBasic2"
+},
+{
+  "id" : "SEEHDSRivPQTypeActivityprescriptionActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQTypeActivityprescriptionActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQTypeActivityprescriptionActoutcome2"
+},
+{
+  "id" : "SEEHDSRivPQTypeHealthcondActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQTypeHealthcondActoutcome2"
+},
+{
+  "id" : "SEEHDSRivPQTypeHealthcondActoutcome3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQTypeHealthcondActoutcome3"
+},
+{
+  "id" : "SEEHDSRivPQTypeHealthcondActoutcome4",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome4",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQTypeHealthcondActoutcome4"
+},
+{
+  "id" : "SEEHDSRivPQTypeHealthcondBasic2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQTypeHealthcondBasic2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPQTypeHealthcondBasic2"
+},
+{
+  "id" : "SEEHDSRivPartialDateTypeLogisticsLogistics3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPartialDateTypeLogisticsLogistics3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPartialDateTypeLogisticsLogistics3"
+},
+{
+  "id" : "SEEHDSRivPartialTimeStampTypeHealthcondBasic2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPartialTimeStampTypeHealthcondBasic2"
+},
+{
+  "id" : "SEEHDSRivPersonIdTypeActivityprescriptionActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeActivityprescriptionActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPersonIdTypeActivityprescriptionActoutcome2"
+},
+{
+  "id" : "SEEHDSRivPersonIdTypeHealthcondActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPersonIdTypeHealthcondActoutcome2"
+},
+{
+  "id" : "SEEHDSRivPersonIdTypeHealthcondActoutcome3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondActoutcome3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPersonIdTypeHealthcondActoutcome3"
+},
+{
+  "id" : "SEEHDSRivPersonIdTypeHealthcondDescription2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPersonIdTypeHealthcondDescription2"
+},
+{
+  "id" : "SEEHDSRivPersonIdTypeLogisticsLogistics3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeLogisticsLogistics3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivPersonIdTypeLogisticsLogistics3"
+},
+{
+  "id" : "SEEHDSRivString",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivString"
+},
+{
+  "id" : "SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2"
+},
+{
+  "id" : "SEEHDSRivTimePeriodTypeHealthcondActoutcome3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondActoutcome3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivTimePeriodTypeHealthcondActoutcome3"
+},
+{
+  "id" : "SEEHDSRivTimePeriodTypeHealthcondActoutcome4",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondActoutcome4",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivTimePeriodTypeHealthcondActoutcome4"
+},
+{
+  "id" : "SEEHDSRivTimePeriodTypeHealthcondDescription2",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondDescription2",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivTimePeriodTypeHealthcondDescription2"
+},
+{
+  "id" : "SEEHDSRivTimePeriodTypeLogisticsLogistics3",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeLogisticsLogistics3",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivTimePeriodTypeLogisticsLogistics3"
+},
+{
+  "id" : "SEEHDSRivTimeStamp",
+  "type" : "StructureDefinition",
+  "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp",
+  "version" : "0.3.3",
+  "name" : "SEEHDSRivTimeStamp"
+},
+{
   "id" : "SEEHDSServiceRequestReferral",
   "type" : "StructureDefinition",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral",

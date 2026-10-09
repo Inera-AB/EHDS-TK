@@ -18,10 +18,7 @@
     "name" : "ClinicalDocumentNoteCodeVS",
     "title" : "KV Anteckningstyp — ValueSet",
     "description" : "Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation enligt KV Anteckningstyp (OID: 1.2.752.129.2.2.2.11).",
-    "systems" : ["urn:oid:1.2.752.129.2.2.2.11"],
-    "uses" : {
-    },
-    "StructureDefinition-SEEHDSLMCareDocumentation.html" : "GetCareDocumentation"
+    "systems" : ["urn:oid:1.2.752.129.2.2.2.11"]
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/deliverycode-vs",
@@ -132,8 +129,7 @@
     "systems" : ["http://snomed.info/sct"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations",
-    "StructureDefinition-SEEHDSLMObservations.html" : "GetObservations"
+    "StructureDefinition-SEEHDSObservationBase.html" : "SE EHDS Observation Base – GetObservations"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",
@@ -150,12 +146,12 @@
     "status" : "active",
     "name" : "TypeOfCarePlanVS",
     "title" : "TypeOfCarePlan — ValueSet",
-    "description" : "Tillåtna värden för typeOfCarePlan i GetCarePlans enligt clinicalprocess:logistics:logistics.",
+    "description" : "Tillåtna värden för typeOfCarePlanEnum i GetCarePlans enligt clinicalprocess:logistics:logistics.",
     "systems" : ["https://fhir.inera.se/CodeSystem/typeofcareplan-cs"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)",
-    "StructureDefinition-SEEHDSLMCarePlans.html" : "GetCarePlans"
+    "StructureDefinition-SEEHDSLMCarePlans.html" : "GetCarePlans",
+    "StructureDefinition-SEEHDSCarePlan.html" : "SE EHDS CarePlan – Vårdplan (GetCarePlans)"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofleavecode-vs",

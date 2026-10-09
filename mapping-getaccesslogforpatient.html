@@ -816,6 +816,8 @@ patienten. Varje loggpost mappas till en <code class="language-plaintext highlig
 SEEHDSAuditEventReadAccessLog. Profilen används bara för att <strong>läsa</strong> loggar. Den används
 inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skapas">Loggar som måste skapas</a>).</p>
 
+<p>Svaret <code class="language-plaintext highlighter-rouge">GetAccessLogsForPatientResponse</code> innehåller ett <code class="language-plaintext highlighter-rouge">accessLogsResult</code> med rapportstatus (<code class="language-plaintext highlighter-rouge">reportResult</code>) och en lista med loggposter (<code class="language-plaintext highlighter-rouge">accesssLogs.accessLog</code>). Elementnamnet <code class="language-plaintext highlighter-rouge">accesssLogs</code> stavas med tre s i XSD:n och måste användas så i XML:en. Loggposten har ingen patientidentitet, ingen åtkomsttyp och inget utfall: patienten är den som efterfrågades i begäran, och övriga AuditEvent-fält får fasta värden enligt profilen. Strukturen följer <a href="StructureDefinition-SEEHDSLMAccessLog.html">SEEHDSLMAccessLog</a>, som är genererad från XSD:n och verifierad mot TKB:n.</p>
+
 <table>
   <thead>
     <tr>
@@ -827,87 +829,123 @@ inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skap
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accessLogId</code></td>
-      <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.entity[loggpost].what.identifier.value</code></td>
-      <td>Loggpostens unika identifierare</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">patientId</code></td>
+      <td>(begärans <code class="language-plaintext highlighter-rouge">patientId</code>)</td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">AuditEvent.entity[patient].what</code></td>
-      <td>Patientens identitet, entity-mönstret (<code class="language-plaintext highlighter-rouge">entity.role = 1</code>)</td>
+      <td>SEEHDSPatient för den efterfrågade patienten, entity-mönstret (<code class="language-plaintext highlighter-rouge">entity.role = 1</code>), se LOG-001</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accessTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.accessDate</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">AuditEvent.recorded</code></td>
-      <td>Åtkomsttidpunkt; ISO 8601</td>
+      <td>Tidpunkt för åtkomst (xs:dateTime); tidszon Europe/Stockholm om den saknas (GENERAL-001)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accessType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.userId</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.type</code></td>
-      <td>Åtkomsttyp (Läsning/Sökning), se LOG-002</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[user].who.identifier.value</code></td>
+      <td>Vårdaktörens id; HSA-id med system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code>. <code class="language-plaintext highlighter-rouge">agent.requestor = true</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accessSubType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.userName</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.subtype</code></td>
-      <td>Mer specifik klassificering av händelsen</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[user].who.display</code></td>
+      <td>Vårdaktörens namn</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accessOutcome</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.userTitle</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[user].role.text</code></td>
+      <td>Vårdaktörens titel</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.purpose</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.outcome</code></td>
-      <td><code class="language-plaintext highlighter-rouge">0</code> = beviljad, <code class="language-plaintext highlighter-rouge">4</code> = nekad</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[user].purposeOfUse</code></td>
+      <td>Syftet i klartext i <code class="language-plaintext highlighter-rouge">text</code>; "Vård och behandling" kodas även som <code class="language-plaintext highlighter-rouge">v3-ActReason#TREAT</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accessPurpose</code></td>
-      <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.purposeOfEvent</code></td>
-      <td>Åtkomstsyfte (Vård/Administration); <code class="language-plaintext highlighter-rouge">v3-ActReason</code></td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">userId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.careUnitId</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[accessor].who.identifier.value</code></td>
-      <td>Användarens HSA-id; system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[vårdenhet].who.identifier.value</code></td>
+      <td>Vårdenhet som haft åtkomst; logisk referens till SEEHDSOrganization. <code class="language-plaintext highlighter-rouge">agent.requestor = false</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">userRole</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.careUnitName</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[accessor].role</code></td>
-      <td>Användarroll vid åtkomsttillfället</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[vårdenhet].who.display</code></td>
+      <td>Vårdenhetens namn</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">userOrganization</code></td>
-      <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[accessor].who</code></td>
-      <td>Organisationens HSA-id</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">sourceSystemHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.careProviderId</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">AuditEvent.source.observer.identifier.value</code></td>
-      <td>Källsystemet som registrerade händelsen</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[vårdgivare].who.identifier.value</code></td>
+      <td>Vårdgivare som haft åtkomst; logisk referens till SEEHDSOrganization. <code class="language-plaintext highlighter-rouge">agent.requestor = false</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accessedResource</code></td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.careProviderName</code></td>
       <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.agent[vårdgivare].who.display</code></td>
+      <td>Vårdgivarens namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.accesssLogs.accessLog.resourceType</code></td>
+      <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">AuditEvent.entity[resurs].description</code></td>
-      <td>Resurs eller tjänst som åtkoms</td>
+      <td>Typ av resurs som åtkomsten avsåg</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.*</code></td>
+      <td>(saknas i meddelandet)</td>
       <td>–</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.type</code>, <code class="language-plaintext highlighter-rouge">action</code>, <code class="language-plaintext highlighter-rouge">outcome</code></td>
+      <td>Fasta värden enligt profilen: <code class="language-plaintext highlighter-rouge">action = R</code>, <code class="language-plaintext highlighter-rouge">outcome = 0</code> (loggposten avser en genomförd åtkomst); <code class="language-plaintext highlighter-rouge">type</code> se LOG-002</td>
+    </tr>
+    <tr>
+      <td>(saknas i meddelandet)</td>
+      <td>–</td>
+      <td><code class="language-plaintext highlighter-rouge">AuditEvent.source.observer</code></td>
+      <td>Det källsystem (logisk adress) som bryggan anropade</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult.result.resultCode</code></td>
+      <td>1..1</td>
       <td>Ej mappad</td>
-      <td>Tekniska svarsfält – hanteras av transportlagret</td>
+      <td>Teknisk statuskod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult.result.resultText</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk statustext</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult.startInterval</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Datum för första loggposten som finns för uppföljning när rapporten skapades</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult.endInterval</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Datum för sista loggposten som finns för uppföljning när rapporten skapades</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult.queuedReportId</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Id för köad rapport (asynkront svar); bryggan behöver anropa igen</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult.queueTime</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Förväntad tid i sekunder tills den köade rapporten kan levereras</td>
     </tr>
   </tbody>
 </table>
 
-<p>Öppna frågor: LOG-001 och LOG-002 i <a href="mapping-issues.html">Mappningsissues</a>.</p>
+<p>Öppen fråga: LOG-002 i <a href="mapping-issues.html">Mappningsissues</a>. LOG-001 är beslutad (BALP:s entity-mönster).</p>
 
 <hr />
 
@@ -963,7 +1001,7 @@ inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skap
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

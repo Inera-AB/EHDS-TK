@@ -142,7 +142,7 @@ Sub-departmentServiceDiscipline","",0,1,"","","Y","CodeableConcept {[]} {[]}
 ","OBR-24","inboundRelationship[typeCode=COMP].source[classCode=LIST, moodCode=EVN, code < LabService].code","FiveWs.class"
 "DiagnosticReport.code","DiagnosticReport.code","","Type
 ","",1,1,"Y","","Y","CodeableConcept {[]} {[]}
-","Fast LOINC 11488-4 (Consult note) – referralOutcomeTypeCode avgör DiagnosticReport.status (se mappning)","Defines the document type, it is recommended to take this from the suggested LOINC set.","","","","","","","","","",,"preferred","Codes that describe Diagnostic Reports.","http://hl7.org/fhir/ValueSet/report-codes|4.0.1","",,,,"DiagnosticReport.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Fast LOINC 11488-4 (Consult note); code.text = referralOutcomeTitle, annars documentTitle","Defines the document type, it is recommended to take this from the suggested LOINC set.","","","","","","","","","",,"preferred","Codes that describe Diagnostic Reports.","http://hl7.org/fhir/ValueSet/report-codes|4.0.1","",,,,"DiagnosticReport.code",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","Event.code","OBR-4 (HL7 v2 doesn't provide an easy way to indicate both the ordered test and the performed panel)","code","FiveWs.what[x]"
 "DiagnosticReport.subject","DiagnosticReport.subject","","Patient
 ","",1,1,"Y","","Y","Reference {[]} {[CanonicalType[https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient]]}

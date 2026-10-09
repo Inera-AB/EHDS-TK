@@ -9,15 +9,15 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSObservationBase |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSObservationBase |
 
  
 Basprofil för alla observationer från GetObservations (clinicalprocess:healthcond:basic v2.0). 
 Profilen fångar den generella TK-mappningen och används som förälder av domänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva). 
 Nyckeldesignbeslut: 
-* observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int). Varje gren mappas till respektive FHIR value[x]-variant.
+* observationBody.value är XOR-union av sju värdetyper (cv/pq/ivl_pq/ts/ivl_ts/st/int). Varje gren mappas till respektive FHIR value[x]-variant.
 * Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.
-* observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.
+* observationBody.time (ts/ivl_ts) → effective[x]; registrationTime → issued.
 * participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation). Välj FHIR-element per deltagartyp (se mappningssida).
 * PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).
  
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
   "name" : "SEEHDSObservationBase",
   "title" : "SE EHDS Observation Base – GetObservations",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -59,7 +59,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Basprofil för alla observationer från GetObservations\n(clinicalprocess:healthcond:basic v2.0).\n\nProfilen fångar den generella TK-mappningen och används som förälder av\ndomänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).\n\nNyckeldesignbeslut:\n- observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int).\n  Varje gren mappas till respektive FHIR value[x]-variant.\n- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.\n- observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.\n- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).\n  Välj FHIR-element per deltagartyp (se mappningssida).\n- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
+  "description" : "Basprofil för alla observationer från GetObservations\n(clinicalprocess:healthcond:basic v2.0).\n\nProfilen fångar den generella TK-mappningen och används som förälder av\ndomänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).\n\nNyckeldesignbeslut:\n- observationBody.value är XOR-union av sju värdetyper (cv/pq/ivl_pq/ts/ivl_ts/st/int).\n  Varje gren mappas till respektive FHIR value[x]-variant.\n- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.\n- observationBody.time (ts/ivl_ts) → effective[x]; registrationTime → issued.\n- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).\n  Välj FHIR-element per deltagartyp (se mappningssida).\n- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -141,7 +141,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
     {
       "id" : "Observation.status",
       "path" : "Observation.status",
-      "short" : "Observationsstatus (observationBody.observationStatus – SNOMED CT urvals-id 56431000052106 → FHIR ObservationStatus via ConceptMap, se OBS-003)",
+      "short" : "Observationsstatus (observationBody.status – SNOMED CT urvals-id 56431000052106 → FHIR ObservationStatus via ConceptMap, se OBS-003)",
       "mustSupport" : true,
       "binding" : {
         "strength" : "required",
@@ -151,7 +151,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
     {
       "id" : "Observation.code",
       "path" : "Observation.code",
-      "short" : "Observationstyp (observationBody.observationType.type.code) – SNOMED CT SE OID 1.2.752.116.2.1.1; om saknas används platshållarkod",
+      "short" : "Observationstyp (observationBody.type.code) – SNOMED CT SE OID 1.2.752.116.2.1.1; om saknas används platshållarkod",
       "mustSupport" : true
     },
     {
@@ -163,13 +163,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
     {
       "id" : "Observation.code.text",
       "path" : "Observation.code.text",
-      "short" : "observationBody.observationType.type.displayName",
+      "short" : "observationBody.type.displayName",
       "mustSupport" : true
     },
     {
       "id" : "Observation.subject",
       "path" : "Observation.subject",
-      "short" : "Patient (observationBody.patient.person.personId om tillgängligt; annars observationBody.patient.patientId)",
+      "short" : "Patient (observationBody.patient.person.id om tillgängligt; annars observationBody.patient.id)",
       "min" : 1,
       "type" : [{
         "code" : "Reference",
@@ -180,7 +180,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
     {
       "id" : "Observation.effective[x]",
       "path" : "Observation.effective[x]",
-      "short" : "Observationstid (observationBody.time.ts → effectiveDateTime; observationBody.time.ivlts → effectivePeriod); se GENERAL-001 och OBS-001",
+      "short" : "Observationstid (observationBody.time.ts → effectiveDateTime; observationBody.time.ivl_ts → effectivePeriod); se GENERAL-001 och OBS-001",
       "mustSupport" : true
     },
     {
@@ -198,7 +198,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
     {
       "id" : "Observation.value[x]",
       "path" : "Observation.value[x]",
-      "short" : "Observationsvärde (observationBody.observationValue – XOR-union):\ncv       → valueCodeableConcept\npq       → valueQuantity\nivlpq    → valueRange\nts       → valueDateTime (precision ≥ dag) eller valueString (precision < dag, se OBS-001)\nivlts    → valuePeriod\nst       → valueString\nintValue → valueInteger\nOm valueNegation=true utelämnas value[x] och dataAbsentReason sätts (se OBS-002).",
+      "short" : "Observationsvärde (observationBody.value – XOR-union):\ncv       → valueCodeableConcept\npq       → valueQuantity\nivl_pq   → valueRange\nts       → valueDateTime (precision ≥ dag) eller valueString (precision < dag, se OBS-001)\nivl_ts   → valuePeriod\nst       → valueString\nint → valueInteger\nOm valueNegation=true utelämnas value[x] och dataAbsentReason sätts (se OBS-002).",
       "mustSupport" : true
     },
     {

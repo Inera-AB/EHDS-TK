@@ -214,7 +214,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#logical-models" id="markdown-toc-logical-models">Logical Models</a>    <ul>
       <li><a href="#syfte" id="markdown-toc-syfte">Syfte</a></li>
       <li><a href="#modeller" id="markdown-toc-modeller">Modeller</a></li>
-      <li><a href="#gemensamma-headerelement" id="markdown-toc-gemensamma-headerelement">Gemensamma headerelement</a></li>
+      <li><a href="#uppbyggnad" id="markdown-toc-uppbyggnad">Hur modellerna är byggda</a></li>
+      <li><a href="#fml" id="markdown-toc-fml">Användning med FML</a></li>
+      <li><a href="#verifiering" id="markdown-toc-verifiering">Verifiering mot TKB</a></li>
     </ul>
   </li>
 </ul>
@@ -222,7 +224,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="logical-models">Logical Models</h1>
 
-<p>Denna sida dokumenterar de logiska informationsmodeller som utgör grunden för profilerna i denna IG. De logiska modellerna fångar informationskraven från Ineras RIVTA-tjänstekontrakt oberoende av teknisk representation.</p>
+<p>Denna sida dokumenterar de logiska informationsmodeller som utgör grunden för profilerna i denna IG. De logiska modellerna är en exakt avbildning av svarsmeddelandena i Ineras RIVTA-tjänstekontrakt: samma elementnamn, nästling, ordning, XML-namnrymder och datatyper som i XSD:erna, med kardinaliteter verifierade mot respektive TKB. De kan därför användas både som dokumentation och som källstruktur när en FML-motor (StructureMap) läser RIV-TA-XML direkt.</p>
 
 <hr />
 
@@ -323,56 +325,147 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h3 id="gemensamma-headerelement">Gemensamma headerelement</h3>
+<h3 id="uppbyggnad">Hur modellerna är byggda</h3>
 
-<p>Alla tjänstekontrakt med klinisk information delar ett headermönster (<code class="language-plaintext highlighter-rouge">PatientSummaryHeader</code> eller liknande) med dessa obligatoriska element:</p>
+<p>Modellerna är genererade från XSD:erna i respektive RIV-TA-domän (bitbucket.org/rivta-domains) och slås ihop med beskrivningar från TKB:n och den tidigare handskrivna dokumentationen.</p>
 
 <table>
   <thead>
     <tr>
-      <th>Element</th>
-      <th>Typ</th>
-      <th>Beskrivning</th>
+      <th>Egenskap i XSD:n</th>
+      <th>Representation i den logiska modellen</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">patientId</code></td>
-      <td>Identifier</td>
-      <td>Personnummer, samordningsnummer eller reservnummer</td>
+      <td>Rotelementet, t.ex. <code class="language-plaintext highlighter-rouge">GetDiagnosisResponse</code></td>
+      <td>Modellens rot. Tillägget <code class="language-plaintext highlighter-rouge">http://hl7.org/fhir/tools/StructureDefinition/xml-name</code> anger XML-namnet och <code class="language-plaintext highlighter-rouge">elementdefinition-namespace</code> responder-namnrymden</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">sourceSystemHSAId</code></td>
-      <td>string</td>
-      <td>Källsystemets HSA-id</td>
+      <td>Elementets namnrymd</td>
+      <td><code class="language-plaintext highlighter-rouge">elementdefinition-namespace</code> på varje element vars namnrymd skiljer sig från rotens. Rotens direkta barn ligger i responder-namnrymden; allt därunder i domänens kärnnamnrymd (eller en <code class="language-plaintext highlighter-rouge">_ext</code>-namnrymd)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">documentTime</code></td>
-      <td>dateTime</td>
-      <td>Registreringstidpunkt (YYYYMMDDHHMMSS, Europe/Stockholm)</td>
+      <td>Komplex typ, t.ex. <code class="language-plaintext highlighter-rouge">PatientSummaryHeaderType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BackboneElement</code> med samma barn i samma ordning</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code></td>
-      <td>Identifier</td>
-      <td>Ansvarig hälso- och sjukvårdspersonals HSA-id</td>
+      <td>RIV-TA-datatyp: <code class="language-plaintext highlighter-rouge">IIType</code>, <code class="language-plaintext highlighter-rouge">CVType</code>, <code class="language-plaintext highlighter-rouge">PersonIdType</code>, <code class="language-plaintext highlighter-rouge">PQType</code>, <code class="language-plaintext highlighter-rouge">PQIntervalType</code>, <code class="language-plaintext highlighter-rouge">TimePeriodType</code>, <code class="language-plaintext highlighter-rouge">PartialDateType</code>, <code class="language-plaintext highlighter-rouge">PartialTimeStampType</code></td>
+      <td>Egen logisk modell per namnrymd, t.ex. <code class="language-plaintext highlighter-rouge">SEEHDSRivCVTypeHealthcondDescription2</code>, eftersom datatypens underelement ärver datatypens namnrymd och fälten skiljer sig mellan domänerna</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careProviderHSAId</code></td>
-      <td>string</td>
-      <td>Vårdgivarens HSA-id (yttre Sparr)</td>
+      <td>Enkelt innehåll (<code class="language-plaintext highlighter-rouge">xs:string</code>, <code class="language-plaintext highlighter-rouge">TimeStampType</code>, <code class="language-plaintext highlighter-rouge">xs:boolean</code> …)</td>
+      <td>En omslagstyp (<code class="language-plaintext highlighter-rouge">SEEHDSRivString</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivTimeStamp</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivBoolean</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivInteger</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivDecimal</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivDate</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivDateTime</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivBase64Binary</code>, <code class="language-plaintext highlighter-rouge">SEEHDSRivAnyURI</code>) vars <code class="language-plaintext highlighter-rouge">value</code> har <code class="language-plaintext highlighter-rouge">representation = xmlText</code>, eftersom RIV-TA lägger värdet som textinnehåll och inte i ett <code class="language-plaintext highlighter-rouge">value</code>-attribut</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">careUnitHSAId</code></td>
-      <td>string</td>
-      <td>Vårdenhetens HSA-id (inre Sparr)</td>
+      <td>Kodlista (<code class="language-plaintext highlighter-rouge">xs:enumeration</code>)</td>
+      <td>Omslagstyp med tillåtna värden i definitionen; där IG:n har en värdemängd binds den på <code class="language-plaintext highlighter-rouge">.value</code></td>
+    </tr>
+    <tr>
+      <td>Elementnamn med understreck, t.ex. <code class="language-plaintext highlighter-rouge">ivl_pq</code></td>
+      <td>FHIR-namn i camelCase (<code class="language-plaintext highlighter-rouge">ivlPq</code>) och XML-namnet i <code class="language-plaintext highlighter-rouge">xml-name</code></td>
+    </tr>
+    <tr>
+      <td>Elementnamn som krockar med FHIR:s ärvda element: <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">extension</code>, <code class="language-plaintext highlighter-rouge">modifierExtension</code></td>
+      <td>FHIR-namnen <code class="language-plaintext highlighter-rouge">rivId</code>, <code class="language-plaintext highlighter-rouge">rivExtension</code> och <code class="language-plaintext highlighter-rouge">rivModifierExtension</code>, med XML-namnet i <code class="language-plaintext highlighter-rouge">xml-name</code>. Mappningssidorna använder XSD-namnen, t.ex. <code class="language-plaintext highlighter-rouge">header.record.id</code> och <code class="language-plaintext highlighter-rouge">id.extension</code></td>
+    </tr>
+    <tr>
+      <td>Rekursion (<code class="language-plaintext highlighter-rouge">result.related</code> i GetLaboratoryOrderOutcome)</td>
+      <td><code class="language-plaintext highlighter-rouge">contentReference</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">xs:any</code> (utökningspunkter)</td>
+      <td>Utelämnas</td>
     </tr>
   </tbody>
 </table>
 
-<p>Se <a href="mappings.html">Mappings</a> för hur dessa headerElement mappas till FHIR.</p>
+<p>Typer som <code class="language-plaintext highlighter-rouge">PatientSummaryHeaderType</code>, <code class="language-plaintext highlighter-rouge">HealthcareProfessionalType</code>, <code class="language-plaintext highlighter-rouge">OrgUnitType</code>, <code class="language-plaintext highlighter-rouge">LegalAuthenticatorType</code> och <code class="language-plaintext highlighter-rouge">ResultType</code> skrivs ut i varje modell, så att mappningssidornas sökvägar (t.ex. <code class="language-plaintext highlighter-rouge">diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code>) gäller i modellen.</p>
+
+<h3 id="fml">Användning med FML</h3>
+
+<p>En FML-motor baserad på HL7:s Java-verktyg (t.ex. Matchbox eller validatorn) kan läsa svarsmeddelandet som källa när modellen och datatypmodellerna är laddade:</p>
+
+<ul>
+  <li>Källan är själva svarselementet, t.ex. <code class="language-plaintext highlighter-rouge">&lt;GetDiagnosisResponse&gt;</code>. SOAP-kuvertet måste skalas av först.</li>
+  <li>Rotelementet matchas mot modellen via <code class="language-plaintext highlighter-rouge">xml-name</code> och namnrymd.</li>
+  <li>Textinnehåll nås via <code class="language-plaintext highlighter-rouge">.value</code>, t.ex. <code class="language-plaintext highlighter-rouge">src.diagnosis.diagnosisHeader.documentId.value</code>.</li>
+  <li>Tidsstämplar (<code class="language-plaintext highlighter-rouge">SEEHDSRivTimeStamp</code>) är text i formatet ÅÅÅÅMMDDttmmss och konverteras i FML till <code class="language-plaintext highlighter-rouge">dateTime</code> med tidszon enligt <a href="mappings.html#tidszon">GENERAL-001</a>. OID:er och <code class="language-plaintext highlighter-rouge">PersonIdType {id, type}</code> konverteras enligt <a href="mapping-issues.html">GENERAL-002</a> och <a href="mappings.html#patientreferens">GENERAL-006</a>.</li>
+</ul>
+
+<h3 id="verifiering">Verifiering mot TKB</h3>
+
+<p>Varje kardinalitet har jämförts mellan XSD, TKB och den tidigare modellen. TKB:ns tabell "Fältregler" (svar) är källan för begränsningar som är strängare än XSD:n, inklusive N/A (0..0).</p>
+
+<ul>
+  <li><strong>Bekräftade av TKB</strong> (29 element): strängare än XSD:n och oförändrade, t.ex. <code class="language-plaintext highlighter-rouge">documentTitle</code>/<code class="language-plaintext highlighter-rouge">documentTime</code> 0..0 i GetDiagnosis, <code class="language-plaintext highlighter-rouge">result</code> 1..1 i GetDiagnosis och GetAlertInformation, <code class="language-plaintext highlighter-rouge">documentTime</code> 1..1 i GetFunctionalStatus, GetMaternityMedicalHistory och GetReferralOutcome.</li>
+  <li><strong>Nya begränsningar från TKB</strong> (24 element), främst 0..0: <code class="language-plaintext highlighter-rouge">nullified</code>/<code class="language-plaintext highlighter-rouge">nullifiedReason</code> i GetDiagnosis, GetCarePlans, GetMaternityMedicalHistory och GetReferralOutcome; <code class="language-plaintext highlighter-rouge">legalAuthenticatorRoleCode</code> och vårdenhet/vårdgivare under bildtagning och remiss i GetImagingOutcome och GetReferralOutcome; <code class="language-plaintext highlighter-rouge">header.signature.orgUnit</code> i GetLaboratoryOrderOutcome; <code class="language-plaintext highlighter-rouge">documentTime</code> samt vårdenhet/vårdgivare för förskrivare och utvärderare i GetMedicationHistory.</li>
+  <li><strong>Behållna trots att TKB:n anger annat:</strong></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tjänstekontrakt</th>
+      <th>Element</th>
+      <th>Modell</th>
+      <th>TKB</th>
+      <th>XSD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GetMedicationHistory</td>
+      <td><code class="language-plaintext highlighter-rouge">medicationMedicalRecord.medicationMedicalRecordHeader.documentTitle</code></td>
+      <td>0..0 (avsiktligt undertryckt)</td>
+      <td>0..1</td>
+      <td>0..1</td>
+    </tr>
+    <tr>
+      <td>GetCareContacts</td>
+      <td><code class="language-plaintext highlighter-rouge">careContact.careContactHeader.nullified</code>, <code class="language-plaintext highlighter-rouge">nullifiedReason</code></td>
+      <td>0..0</td>
+      <td>saknas i TKB</td>
+      <td>0..1</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>TKB lösare än XSD</strong> – modellen följer XSD:n:</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tjänstekontrakt</th>
+      <th>Element</th>
+      <th>TKB</th>
+      <th>XSD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GetCareDocumentation</td>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.signature.timestamp</code></td>
+      <td>0..1</td>
+      <td>1..1</td>
+    </tr>
+    <tr>
+      <td>GetMedicationHistory</td>
+      <td><code class="language-plaintext highlighter-rouge">…drug.dosage.conditionalDosage.conditionDescription</code> (två ställen)</td>
+      <td>0..1</td>
+      <td>1..1 (TKB:n hänvisar själv till ett arkitekturbeslut om diskrepansen)</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li><strong>Stavning:</strong> TKB:n för GetMedicationHistory och GetCarePlans skriver <code class="language-plaintext highlighter-rouge">healthcareProfessionalcareUnitHSAId</code>/<code class="language-plaintext highlighter-rouge">…careGiverHSAId</code> med litet c; XSD:n och modellerna har <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareUnitHSAId</code>. XSD:n stavar <code class="language-plaintext highlighter-rouge">accesssLogs</code> (GetAccessLogsForPatient) och <code class="language-plaintext highlighter-rouge">burnedInaAnnotations</code> (GetImagingOutcome) på det sättet, och modellerna följer XSD:n.</li>
+</ul>
 
 <blockquote>
-  <p><strong>Vägledning för författare:</strong> Logiska modeller definieras som FHIR <code class="language-plaintext highlighter-rouge">StructureDefinition</code>-resurser med <code class="language-plaintext highlighter-rouge">kind = logical</code> i FSH. De finns i <code class="language-plaintext highlighter-rouge">input/fsh/logicalmodels/</code>.</p>
+  <p><strong>Vägledning för författare:</strong> Modellerna i <code class="language-plaintext highlighter-rouge">input/fsh/logicalmodels/</code> är genererade. Ändringar i struktur görs genom att generera om från XSD:n; beskrivningar kan redigeras direkt.</p>
 </blockquote>
 
 
@@ -394,7 +487,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

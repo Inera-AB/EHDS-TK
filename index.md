@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSTK |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSTK |
 
 # Introduktion
 
@@ -105,6 +105,28 @@ Denna IG har beroenden till:
 
 HL7 Sweden basprofiler (`hl7se.fhir.base`) används som konvention och är inget paketberoende.
 
+### Val av FHIR-version
+
+IG:n bygger på **FHIR R4 (4.0.1)**. Det långsiktiga målet är en R5-IG, men det förutsätter att beroendena först finns i R5, och det avgörs i externa projekt:
+
+| | | |
+| :--- | :--- | :--- |
+| EURIDICE (`hl7.fhir.eu.health-data-api`) | R4, bygger på EU Core 2.0.0-ballot | En R5-version av EURIDICE |
+| HL7 Europe Core (`hl7.fhir.eu.base`) | R4; R5 finns bara som opublicerat utkast | En publicerad R5-version |
+| HL7 Sweden basprofiler (`hl7se.fhir.base`) | R4 | En R5-version, eftersom IG:n följer dess namn- och slicingkonventioner |
+| IHE BALP (`ihe.iti.balp`) | 1.1.4 är R4; en R5-version (2.0.0) är under arbete | En publicerad R5-version |
+
+Så länge EURIDICE och EU Core bara finns i R4 kan IG:n inte vara en giltig EURIDICE-profilering i R5 (se [Vad IG:n utlovar](#loften)). Därför ligger IG:n kvar på R4 tills beroendena är lösta.
+
+Några mappningar blir bättre i R5:
+
+* **AuditEvent.patient** – R5 har ett eget patientelement. I R4 används BALP:s entity-mönster (LOG-001).
+* **DiagnosticReport.note** – R5 har anteckningar på rapportnivå, vilket R4 saknar.
+* **DocumentReference.attester** – R5 har intygare med tidpunkt och roll, som kan bära signatur och signeringstid (`header.signature` i GetCareDocumentation). I R4 krävs extensionen `ext-signature-time` (DOC-003).
+* **Observation.bodyStructure** – R5 kan referera en BodyStructure med flera anatomiska lokalisationer, vilket ersätter R4-extensionen `additionalBodySite` för `targetSite` (OBS-004).
+
+När bytet görs bör R4-övergångslösningarna ovan ses över.
+
 -------
 
 ### Dokumentation
@@ -132,7 +154,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "name" : "SEEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -1454,7 +1476,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
         "reference" : "StructureDefinition/device-source-system-contact"
       },
       "name" : "Källsystemskontakt",
-      "description" : "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName).",
+      "description" : "Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName).",
       "exampleBoolean" : false
     },
     {
@@ -1652,6 +1674,726 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeActivityprescriptionActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:2)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome2"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:healthcond:actoutcome:2)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondActoutcome3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome3"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:healthcond:actoutcome:3)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondActoutcome4.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondBasic2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeHealthcondBasic2"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:healthcond:basic:2)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondDescription2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeHealthcondDescription2"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:healthcond:description:2)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:description:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondDescription3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeHealthcondDescription3"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:healthcond:description:3)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:description:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeLogisticsLogistics3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeLogisticsLogistics3"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:logistics:logistics:3)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeCrmRequeststatus2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeCrmRequeststatus2"
+      },
+      "name" : "RIV-TA CVType (crm:requeststatus:2)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:crm:requeststatus:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivDate.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivDate"
+      },
+      "name" : "RIV-TA DateType",
+      "description" : "Datum i formatet ÅÅÅÅMMDD. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivDecimal.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivDecimal"
+      },
+      "name" : "RIV-TA decimaltal",
+      "description" : "Decimaltal (xs:double/xs:decimal). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivInteger.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivInteger"
+      },
+      "name" : "RIV-TA heltal",
+      "description" : "Heltal (xs:int/xs:integer). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeActivityprescriptionActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeActivityprescriptionActoutcome2"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:activityprescription:actoutcome:2)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeHealthcondActoutcome3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeHealthcondActoutcome3"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:healthcond:actoutcome:3)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeHealthcondActoutcome4.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeHealthcondActoutcome4"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:healthcond:actoutcome:4)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeHealthcondBasic2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeHealthcondBasic2"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:healthcond:basic:2)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeHealthcondDescription3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeHealthcondDescription3"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:healthcond:description:3)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:description:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeLogisticsLogistics3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeLogisticsLogistics3"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:logistics:logistics:3)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeCrmRequeststatus2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeCrmRequeststatus2"
+      },
+      "name" : "RIV-TA IIType (crm:requeststatus:2)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:crm:requeststatus:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPartialDateTypeLogisticsLogistics3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPartialDateTypeLogisticsLogistics3"
+      },
+      "name" : "RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3)",
+      "description" : "RIV-TA-datatypen PartialDateType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPartialTimeStampTypeHealthcondBasic2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic2"
+      },
+      "name" : "RIV-TA PartialTimeStampType (clinicalprocess:healthcond:basic:2)",
+      "description" : "RIV-TA-datatypen PartialTimeStampType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeActivityprescriptionActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPersonIdTypeActivityprescriptionActoutcome2"
+      },
+      "name" : "RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:2)",
+      "description" : "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeHealthcondActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPersonIdTypeHealthcondActoutcome2"
+      },
+      "name" : "RIV-TA PersonIdType (clinicalprocess:healthcond:actoutcome:2)",
+      "description" : "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeHealthcondActoutcome3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPersonIdTypeHealthcondActoutcome3"
+      },
+      "name" : "RIV-TA PersonIdType (clinicalprocess:healthcond:actoutcome:3)",
+      "description" : "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeHealthcondDescription2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2"
+      },
+      "name" : "RIV-TA PersonIdType (clinicalprocess:healthcond:description:2)",
+      "description" : "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:description:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeLogisticsLogistics3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPersonIdTypeLogisticsLogistics3"
+      },
+      "name" : "RIV-TA PersonIdType (clinicalprocess:logistics:logistics:3)",
+      "description" : "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      },
+      "name" : "RIV-TA PQIntervalType (clinicalprocess:activityprescription:actoutcome:2)",
+      "description" : "RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQIntervalTypeHealthcondActoutcome4.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondActoutcome4"
+      },
+      "name" : "RIV-TA PQIntervalType (clinicalprocess:healthcond:actoutcome:4)",
+      "description" : "RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQIntervalTypeHealthcondBasic2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic2"
+      },
+      "name" : "RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:2)",
+      "description" : "RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQTypeActivityprescriptionActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQTypeActivityprescriptionActoutcome2"
+      },
+      "name" : "RIV-TA PQType (clinicalprocess:activityprescription:actoutcome:2)",
+      "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQTypeHealthcondActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome2"
+      },
+      "name" : "RIV-TA PQType (clinicalprocess:healthcond:actoutcome:2)",
+      "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQTypeHealthcondActoutcome3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome3"
+      },
+      "name" : "RIV-TA PQType (clinicalprocess:healthcond:actoutcome:3)",
+      "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQTypeHealthcondActoutcome4.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome4"
+      },
+      "name" : "RIV-TA PQType (clinicalprocess:healthcond:actoutcome:4)",
+      "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQTypeHealthcondBasic2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQTypeHealthcondBasic2"
+      },
+      "name" : "RIV-TA PQType (clinicalprocess:healthcond:basic:2)",
+      "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivString.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivString"
+      },
+      "name" : "RIV-TA text",
+      "description" : "Textinnehåll i ett RIV-TA-element av typen xs:string eller en strängbaserad typ (t.ex. HSAIdType, kodlistor). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:activityprescription:actoutcome:2)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondActoutcome3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondActoutcome3"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:3)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondActoutcome4.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondActoutcome4"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:4)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondDescription2"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:description:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeLogisticsLogistics3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeLogisticsLogistics3"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:logistics:logistics:3)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimeStamp.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimeStamp"
+      },
+      "name" : "RIV-TA TimeStampType",
+      "description" : "Tidpunkt i formatet ÅÅÅÅMMDDttmmss (lokal svensk tid utan tidszon). Konverteras till FHIR dateTime/instant med Europe/Stockholm, se GENERAL-001. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivAnyURI.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivAnyURI"
+      },
+      "name" : "RIV-TA xs:anyURI",
+      "description" : "URI. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivBase64Binary.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivBase64Binary"
+      },
+      "name" : "RIV-TA xs:base64Binary",
+      "description" : "Base64-kodat innehåll. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivBoolean.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivBoolean"
+      },
+      "name" : "RIV-TA xs:boolean",
+      "description" : "Sanningsvärde (true/false). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivDateTime.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivDateTime"
+      },
+      "name" : "RIV-TA xs:dateTime",
+      "description" : "Tidpunkt enligt xs:dateTime. Lagras som text eftersom xs:dateTime tillåter tidpunkt utan tidszon. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText).",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       },
       {
@@ -1790,7 +2532,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
         "reference" : "StructureDefinition/SEEHDSDevice"
       },
       "name" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
-      "description" : "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från SEEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)",
+      "description" : "Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.\n\nRepresenterar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*\noch sourceSystemContact. Refereras från SEEHDSImmunization via\nextension[registrationDevice].\n\ndeviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)\ndeviceName[productName] = sourceSystemProductName (0..1)\nversion                 = sourceSystemProductVersion (0..1)\nextension[sourceSystemContact] = sourceSystemContact.hsaid/personName (0..1)",
       "exampleBoolean" : false
     },
     {
@@ -1950,7 +2692,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
         "reference" : "StructureDefinition/SEEHDSObservationBase"
       },
       "name" : "SE EHDS Observation Base – GetObservations",
-      "description" : "Basprofil för alla observationer från GetObservations\n(clinicalprocess:healthcond:basic v2.0).\n\nProfilen fångar den generella TK-mappningen och används som förälder av\ndomänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).\n\nNyckeldesignbeslut:\n- observationBody.observationValue är XOR-union av sju värdetyper (cv/pq/ivlpq/ts/ivlts/st/int).\n  Varje gren mappas till respektive FHIR value[x]-variant.\n- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.\n- observationBody.time (ts/ivlts) → effective[x]; registrationTime → issued.\n- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).\n  Välj FHIR-element per deltagartyp (se mappningssida).\n- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
+      "description" : "Basprofil för alla observationer från GetObservations\n(clinicalprocess:healthcond:basic v2.0).\n\nProfilen fångar den generella TK-mappningen och används som förälder av\ndomänspecifika profiler (t.ex. SEEHDSObservationGrowth för tillväxtkurva).\n\nNyckeldesignbeslut:\n- observationBody.value är XOR-union av sju värdetyper (cv/pq/ivl_pq/ts/ivl_ts/st/int).\n  Varje gren mappas till respektive FHIR value[x]-variant.\n- Om valueNegation=true utelämnas value[x] och dataAbsentReason sätts.\n- observationBody.time (ts/ivl_ts) → effective[x]; registrationTime → issued.\n- participation är polymorf (healthcareProfessional/patient/otherPerson/locationRole/resource/organisation).\n  Välj FHIR-element per deltagartyp (se mappningssida).\n- PDL-fält (Sparr) hanteras via Provenance och meta.security (se mappningssida).\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
       "exampleBoolean" : false
     },
     {
@@ -1982,7 +2724,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
         "reference" : "StructureDefinition/SEEHDSObservationMaternity"
       },
       "name" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
-      "description" : "Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet\nGetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nOBS: TKBn har tre separata sektioner (registrationRecord, pregnancyCheckupRecord,\npostDeliveryRecord) med egna sektionsspecifika fält. En Observation skapas per sektion\nmed Observation.code som diskriminator (se MAT-001 i mapping-issues). Fältnamnen\ni ^short nedan refererar till sektionsspecifika element – implementatören väljer rätt\nsektionselement baserat på Observation.code.",
+      "description" : "Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet\nGetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nTKB:n har tre avsnitt (registrationRecord, pregnancyCheckupRecord, postDeliveryRecord).\nProfilen används både för den grupperande Observationen per avsnitt (code = avsnittskod,\ncode.text = documentTitle, hasMember = fälten) och för medlems-Observationerna, en per\nfält (MAT-001).",
       "exampleBoolean" : false
     },
     {
@@ -1998,7 +2740,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
         "reference" : "StructureDefinition/SEEHDSObservationGrowth"
       },
       "name" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
-      "description" : "Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad\ngraviditetslängd) för barn och ungdom, baserad på:\n- GetObservations (clinicalprocess:healthcond:basic v2.0)\n- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)\n\nÄrver SEEHDSObservationBase och lägger till:\n- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)\n- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)\n- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)\n\nKodsystem för observationType.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
+      "description" : "Profil för tillväxtobservationer (längd, vikt, huvudomfång, beräknad\ngraviditetslängd) för barn och ungdom, baserad på:\n- GetObservations (clinicalprocess:healthcond:basic v2.0)\n- Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)\n\nÄrver SEEHDSObservationBase och lägger till:\n- code bunden till GrowthObservationTypeVS (IoÖ-specificerade SNOMED CT-koder)\n- value[x] begränsad till Quantity (pq-grenen; IoÖ anger alltid PQ-värden)\n- Enhet (UCUM) per mättyp: cm (längd/hC), kg (vikt), d (gestationslängd)\n\nKodsystem för observationBody.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.\n\nTäcker NPÖ 1.2 och 1177 Journal 1.2.",
       "exampleBoolean" : false
     },
     {
@@ -2270,7 +3012,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
         "reference" : "ValueSet/typeofcareplan-vs"
       },
       "name" : "TypeOfCarePlan — ValueSet",
-      "description" : "Tillåtna värden för typeOfCarePlan i GetCarePlans enligt clinicalprocess:logistics:logistics.",
+      "description" : "Tillåtna värden för typeOfCarePlanEnum i GetCarePlans enligt clinicalprocess:logistics:logistics.",
       "exampleBoolean" : false
     },
     {

@@ -22,7 +22,7 @@
   <name value="SEEHDSDevice"/>
   <title value="SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)"/>
   <status value="draft"/>
-  <date value="2026-10-07T11:49:57+00:00"/>
+  <date value="2026-10-09T07:52:45+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -31,7 +31,7 @@
       <value value="https://www.inera.se"/>
     </telecom>
   </contact>
-  <description value="Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.&#xA;&#xA;Representerar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*&#xA;och sourceSystemContact. Refereras från SEEHDSImmunization via&#xA;extension[registrationDevice].&#xA;&#xA;deviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)&#xA;deviceName[productName] = sourceSystemProductName (0..1)&#xA;version                 = sourceSystemProductVersion (0..1)&#xA;extension[sourceSystemContact] = sourceSystemContact.actorId/actorName (0..1)"/>
+  <description value="Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0.&#xA;&#xA;Representerar vaccinationMedicalRecordBody.registrationRecord.sourceSystem*&#xA;och sourceSystemContact. Refereras från SEEHDSImmunization via&#xA;extension[registrationDevice].&#xA;&#xA;deviceName[systemName]  = sourceSystemName     (1..1, obligatorisk)&#xA;deviceName[productName] = sourceSystemProductName (0..1)&#xA;version                 = sourceSystemProductVersion (0..1)&#xA;extension[sourceSystemContact] = sourceSystemContact.hsaid/personName (0..1)"/>
   <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>
@@ -346,7 +346,7 @@
       <path value="Device.extension"/>
       <sliceName value="sourceSystemContact"/>
       <short value="Kontaktperson för källsystemet (registrationRecord.sourceSystemContact)"/>
-      <definition value="Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.actorId/actorName)."/>
+      <definition value="Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName)."/>
       <min value="0"/>
       <max value="1"/>
       <base>

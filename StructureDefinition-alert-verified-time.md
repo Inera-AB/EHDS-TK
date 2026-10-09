@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-verified-time | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:AlertVerifiedTime |
+| Draft as of 2026-10-09 | *Computable Name*:AlertVerifiedTime |
 
 Tidpunkt då uppmärksamhetssignalen verifierades i det lokala systemet (alertInformationBody.verifiedTime).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-verified-time.
   "name" : "AlertVerifiedTime",
   "title" : "Tidpunkt för verifiering",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

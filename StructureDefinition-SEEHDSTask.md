@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSTask | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSTask |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSTask |
 
  
 Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSTask.csv), [Ex
   "name" : "SEEHDSTask",
   "title" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -93,13 +93,25 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSTask.csv), [Ex
     {
       "id" : "Task.meta.source",
       "path" : "Task.meta.source",
-      "short" : "Källsystem HSA-id (requestHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
+      "short" : "Källsystem (requestActivity.header.sourceSystemId.extension) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Task.identifier",
+      "path" : "Task.identifier",
+      "short" : "Remisstatusens id (header.record.id)",
       "mustSupport" : true
     },
     {
       "id" : "Task.status",
       "path" : "Task.status",
-      "short" : "Aktivitetsstatus (requestStatus – kv_requestStatus)",
+      "short" : "Status härledd från body.statusCode (Kv status vårdbegäran)",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Task.businessStatus",
+      "path" : "Task.businessStatus",
+      "short" : "Remisstatus enligt Kv status vårdbegäran (body.statusCode)",
       "mustSupport" : true
     },
     {
@@ -108,21 +120,9 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSTask.csv), [Ex
       "mustSupport" : true
     },
     {
-      "id" : "Task.code",
-      "path" : "Task.code",
-      "short" : "Aktivitetstyp (activityType)",
-      "mustSupport" : true
-    },
-    {
-      "id" : "Task.description",
-      "path" : "Task.description",
-      "short" : "Aktivitetsbeskrivning (activityComment)",
-      "mustSupport" : true
-    },
-    {
       "id" : "Task.focus",
       "path" : "Task.focus",
-      "short" : "Koppling till remiss (requestId)",
+      "short" : "Koppling till remiss (body.request.id)",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral"]
@@ -132,7 +132,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSTask.csv), [Ex
     {
       "id" : "Task.for",
       "path" : "Task.for",
-      "short" : "Patient (requestHeader.patientId)",
+      "short" : "Patient – den efterfrågade patienten (begärans patientId); svaret saknar patientidentitet",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient"]
@@ -142,19 +142,25 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSTask.csv), [Ex
     {
       "id" : "Task.authoredOn",
       "path" : "Task.authoredOn",
-      "short" : "Registreringsdatum (requestHeader.documentTime)",
+      "short" : "Skapad i källsystemet (header.record.timestamp)",
       "mustSupport" : true
     },
     {
       "id" : "Task.lastModified",
       "path" : "Task.lastModified",
-      "short" : "Senaste statusändring (activityTime)",
+      "short" : "Statusändring (body.eventTime)",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Task.requester",
+      "path" : "Task.requester",
+      "short" : "Remittent (body.request.author)",
       "mustSupport" : true
     },
     {
       "id" : "Task.owner",
       "path" : "Task.owner",
-      "short" : "Mottagande enhet (requestReceiver)",
+      "short" : "Mottagande enhet (body.request.receivingOrganization)",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",

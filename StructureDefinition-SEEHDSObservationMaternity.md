@@ -9,11 +9,11 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationMaternity | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSObservationMaternity |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSObservationMaternity |
 
  
 Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet GetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
-OBS: TKBn har tre separata sektioner (registrationRecord, pregnancyCheckupRecord, postDeliveryRecord) med egna sektionsspecifika fält. En Observation skapas per sektion med Observation.code som diskriminator (se MAT-001 i mapping-issues). Fältnamnen i ^short nedan refererar till sektionsspecifika element – implementatören väljer rätt sektionselement baserat på Observation.code. 
+TKB:n har tre avsnitt (registrationRecord, pregnancyCheckupRecord, postDeliveryRecord). Profilen används både för den grupperande Observationen per avsnitt (code = avsnittskod, code.text = documentTitle, hasMember = fälten) och för medlems-Observationerna, en per fält (MAT-001). 
 
 **Användningar:**
 
@@ -43,7 +43,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationMat
   "name" : "SEEHDSObservationMaternity",
   "title" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -52,7 +52,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationMat
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet\nGetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nOBS: TKBn har tre separata sektioner (registrationRecord, pregnancyCheckupRecord,\npostDeliveryRecord) med egna sektionsspecifika fält. En Observation skapas per sektion\nmed Observation.code som diskriminator (se MAT-001 i mapping-issues). Fältnamnen\ni ^short nedan refererar till sektionsspecifika element – implementatören väljer rätt\nsektionselement baserat på Observation.code.",
+  "description" : "Generisk profil för medicinsk historik inom mödravård mappat från RIVTA-tjänstekontraktet\nGetMaternityMedicalHistory (clinicalprocess:healthcond:actoutcome v2.0).\nTäcker NPÖ 2.0 och 1177 Journal 2.0.\n\nTKB:n har tre avsnitt (registrationRecord, pregnancyCheckupRecord, postDeliveryRecord).\nProfilen används både för den grupperande Observationen per avsnitt (code = avsnittskod,\ncode.text = documentTitle, hasMember = fälten) och för medlems-Observationerna, en per\nfält (MAT-001).",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -116,7 +116,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationMat
     {
       "id" : "Observation.code",
       "path" : "Observation.code",
-      "short" : "Sektionskod – diskriminator för vilken av de tre sektionerna som Observation representerar",
+      "short" : "Grupperande: avsnittskod med code.text = documentTitle (MAT-003). Medlem: fältets kod",
       "mustSupport" : true
     },
     {
@@ -150,7 +150,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationMat
     {
       "id" : "Observation.value[x]",
       "path" : "Observation.value[x]",
-      "short" : "Sektionsspecifikt mätvärde (t.ex. pregnancyCheckupRecord.bloodPressure, postDeliveryRecord.birthWeight)",
+      "short" : "Medlem: fältets värde (t.ex. pregnancyCheckupRecord.bloodPressureSystolic). Grupperande: inget värde",
       "mustSupport" : true
     },
     {
@@ -160,9 +160,15 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationMat
       "mustSupport" : true
     },
     {
+      "id" : "Observation.hasMember",
+      "path" : "Observation.hasMember",
+      "short" : "Grupperande: avsnittets medlems-Observationer (MAT-001)",
+      "mustSupport" : true
+    },
+    {
       "id" : "Observation.component",
       "path" : "Observation.component",
-      "short" : "Sektionsspecifika delfält kodas som component (se MAT-001)",
+      "short" : "Medlem för upprepad post (t.ex. previousGravidityAndParity[i]): postens fält",
       "mustSupport" : true
     }]
   }

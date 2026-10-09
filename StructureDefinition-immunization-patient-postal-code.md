@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-patient-postal-code | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:ImmunizationPatientPostalCode |
+| Draft as of 2026-10-09 | *Computable Name*:ImmunizationPatientPostalCode |
 
 Patientens postnummer vid vaccinationstillfället (registrationRecord.patientPostalCode).
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-immunization-patient
   "name" : "ImmunizationPatientPostalCode",
   "title" : "Patientens postnummer vid vaccination",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

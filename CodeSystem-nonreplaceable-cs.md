@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome | *Version*:0.3.3 |
-| Active as of 2026-10-07 | *Computable Name*:NonReplaceableCS |
+| Active as of 2026-10-09 | *Computable Name*:NonReplaceableCS |
 
  
 Kodverk för aktör som har angett att ett läkemedel inte är utbytbart i GetMedicationHistory (DispensationAuthorizationType). 
@@ -31,7 +31,7 @@ Kodverk för aktör som har angett att ett läkemedel inte är utbytbart i GetMe
   "name" : "NonReplaceableCS",
   "title" : "NonReplaceable",
   "status" : "active",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

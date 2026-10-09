@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/errorcode-vs | *Version*:0.3.3 |
-| Active as of 2026-10-07 | *Computable Name*:ErrorCodeVS |
+| Active as of 2026-10-09 | *Computable Name*:ErrorCodeVS |
 
  
 Tillåtna värden för errorCode i svar. 
@@ -51,7 +51,7 @@ Tillåtna värden för errorCode i svar.
   "name" : "ErrorCodeVS",
   "title" : "ErrorCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

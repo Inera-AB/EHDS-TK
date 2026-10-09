@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/CodeSystem/maternity-section | *Version*:0.3.3 |
-| Active as of 2026-10-07 | *Computable Name*:MaternityMedicalSectionCS |
+| Active as of 2026-10-09 | *Computable Name*:MaternityMedicalSectionCS |
 
  
 Diskriminatorkoder för de tre sektionerna i mödravårdsjournalen (GetMaternityMedicalHistory v2.0). Varje Observation-resurs som skapas ur ett maternityMedicalRecord sätter Observation.code till en av dessa koder. 
@@ -31,7 +31,7 @@ Diskriminatorkoder för de tre sektionerna i mödravårdsjournalen (GetMaternity
   "name" : "MaternityMedicalSectionCS",
   "title" : "MaternityMedicalSection",
   "status" : "active",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

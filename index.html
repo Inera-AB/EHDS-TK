@@ -224,7 +224,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
         
           Draft
           
-            as of 2026-10-07
+            as of 2026-10-09
           
         
       </td>
@@ -258,6 +258,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#arkitektur" id="markdown-toc-arkitektur">Arkitektur</a></li>
       <li><a href="#terminologi" id="markdown-toc-terminologi">Terminologi</a></li>
       <li><a href="#beroenden" id="markdown-toc-beroenden">Beroenden</a></li>
+      <li><a href="#fhir-version" id="markdown-toc-fhir-version">Val av FHIR-version</a></li>
       <li><a href="#dokumentation" id="markdown-toc-dokumentation">Dokumentation</a></li>
       <li><a href="#förvaltning-och-vägledning" id="markdown-toc-förvaltning-och-vägledning">Förvaltning och vägledning</a></li>
     </ul>
@@ -520,6 +521,55 @@ Genom arvet uppfyller resursen även EU Core-profilen.</p>
 
 <p>HL7 Sweden basprofiler (<code class="language-plaintext highlighter-rouge">hl7se.fhir.base</code>) används som konvention och är inget paketberoende.</p>
 
+<h3 id="fhir-version">Val av FHIR-version</h3>
+
+<p>IG:n bygger på <strong>FHIR R4 (4.0.1)</strong>. Det långsiktiga målet är en R5-IG, men det förutsätter att beroendena först finns i R5, och det avgörs i externa projekt:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Beroende</th>
+      <th>Läge</th>
+      <th>Krävs för R5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EURIDICE (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.health-data-api</code>)</td>
+      <td>R4, bygger på EU Core 2.0.0-ballot</td>
+      <td>En R5-version av EURIDICE</td>
+    </tr>
+    <tr>
+      <td>HL7 Europe Core (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.base</code>)</td>
+      <td>R4; R5 finns bara som opublicerat utkast</td>
+      <td>En publicerad R5-version</td>
+    </tr>
+    <tr>
+      <td>HL7 Sweden basprofiler (<code class="language-plaintext highlighter-rouge">hl7se.fhir.base</code>)</td>
+      <td>R4</td>
+      <td>En R5-version, eftersom IG:n följer dess namn- och slicingkonventioner</td>
+    </tr>
+    <tr>
+      <td>IHE BALP (<code class="language-plaintext highlighter-rouge">ihe.iti.balp</code>)</td>
+      <td>1.1.4 är R4; en R5-version (2.0.0) är under arbete</td>
+      <td>En publicerad R5-version</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Så länge EURIDICE och EU Core bara finns i R4 kan IG:n inte vara en giltig EURIDICE-profilering i R5 (se <a href="#loften">Vad IG:n utlovar</a>). Därför ligger IG:n kvar på R4 tills beroendena är lösta.</p>
+
+<p>Några mappningar blir bättre i R5:</p>
+
+<ul>
+  <li><strong>AuditEvent.patient</strong> – R5 har ett eget patientelement. I R4 används BALP:s entity-mönster (LOG-001).</li>
+  <li><strong>DiagnosticReport.note</strong> – R5 har anteckningar på rapportnivå, vilket R4 saknar.</li>
+  <li><strong>DocumentReference.attester</strong> – R5 har intygare med tidpunkt och roll, som kan bära signatur och signeringstid (<code class="language-plaintext highlighter-rouge">header.signature</code> i GetCareDocumentation). I R4 krävs extensionen <code class="language-plaintext highlighter-rouge">ext-signature-time</code> (DOC-003).</li>
+  <li><strong>Observation.bodyStructure</strong> – R5 kan referera en BodyStructure med flera anatomiska lokalisationer, vilket ersätter R4-extensionen <code class="language-plaintext highlighter-rouge">additionalBodySite</code> för <code class="language-plaintext highlighter-rouge">targetSite</code> (OBS-004).</li>
+</ul>
+
+<p>När bytet görs bör R4-övergångslösningarna ovan ses över.</p>
+
 <hr />
 
 <h3 id="dokumentation">Dokumentation</h3>
@@ -553,7 +603,7 @@ Genom arvet uppfyller resursen även EU Core-profilen.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

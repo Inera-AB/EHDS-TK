@@ -27,8 +27,12 @@
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Valfritt komplement till HSA-id |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod |
-| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier` | HSA-id för organisationsenhet |
-| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier` | HSA-id för organisationsenhet |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | Namn på organisationsenhet |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i`PractitionerRole.organization`-referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se`orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
 | `diagnosisHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
@@ -36,6 +40,8 @@
 | `diagnosisHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
 | `diagnosisHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | PDL-kontroll – se[PDL-001](#öppna-frågor) |
 | `diagnosisHeader.careContactId` | 0..1 | `Condition.encounter.identifier` | Logisk referens till Encounter |
+| `diagnosisHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
+| `diagnosisHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
 > **OBS:** `diagnosisHeader.documentTime` har kardinalitet **0..0** i GetDiagnosis:2 och skickas aldrig av tjänstekontraktet. Detta avviker från det generella PatientSummaryHeader-mönstret (se README.md/mappings.md) där `documentTime` normalt är källan för `recordedDate`/`Provenance.recorded`. För GetDiagnosis är `accountableHealthcareProfessional.authorTime` den korrekta och enda källan för både `Condition.recordedDate` (ovan) och `Provenance.recorded` (se nedan).
 
@@ -64,6 +70,7 @@
 | `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod – hanteras av transportlagret |
 | `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
 | `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
+| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
 | `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
 
 -------
@@ -78,7 +85,7 @@ Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `
 
 `Condition.abatementDateTime` sätts **aldrig**. GetDiagnosis:2 har ingen slutpunkt eller period för diagnosen, bara tidpunkten `diagnosisBody.diagnosisTime` (→ `Condition.onsetDateTime`). Avsaknaden av slutdatum är ett känt gap i TKB:n.
 
-`Condition.verificationStatus` sätts alltid till `confirmed` (RIVTA-svar representerar bekräftade journaluppgifter).
+`Condition.verificationStatus` sätts alltid till `confirmed` (RIVTA-svar representerar bekräftade journaluppgifter). `diagnosisHeader.nullified` är N/A (0..0) enligt TKB:n, så makulerade diagnoser förekommer inte i svaret.
 
 -------
 
@@ -88,8 +95,7 @@ Både `accountableHealthcareProfessional` och `legalAuthenticator` är av RIVTA-
 
 | | |
 | :--- | :--- |
-| `healthcareProfessionalHSAId` | `PractitionerRole.identifier.value` |
-| `healthcareProfessionalHSAId.root` | `PractitionerRole.identifier.system`(OID→URI) |
+| `healthcareProfessionalHSAId` | `PractitionerRole.identifier.value`;`system`=`urn:oid:1.2.752.29.4.19`(HSAIdType är en sträng utan eget OID-fält) |
 | `healthcareProfessionalName` | `PractitionerRole.practitioner.display` |
 | `healthcareProfessionalRoleCode` | `PractitionerRole.code` |
 | `healthcareProfessionalOrgUnit.orgUnitHSAId` | `PractitionerRole.organization.identifier` |
@@ -218,7 +224,7 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 
 | | |
 | :--- | :--- |
-| PDL-001 | **`approvedForPatient` (boolean) saknar direkt FHIR-motsvarighet.**Fältet finns i alla PatientSummaryHeader-kontrakt men`meta.security`i FHIR har inget standardkodsystem för detta begrepp. Nuvarande lösning: enkoda som`meta.security`-tagg med lokalt kodsystem. Behöver gemensamt beslut för alla TK:er. |
+| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPATIENT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
 -------

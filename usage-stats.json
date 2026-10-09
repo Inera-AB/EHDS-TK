@@ -575,11 +575,13 @@
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName": [
       "StructureDefinition.snapshot.element.binding"
     ],
-    "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding": [
-      "StructureDefinition.snapshot.element.binding"
-    ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet": [
       "StructureDefinition.snapshot.element.binding"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace": [
+      "StructureDefinition",
+      "StructureDefinition.differential.element",
+      "StructureDefinition.snapshot.element"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
       "StructureDefinition.snapshot.element"
@@ -670,6 +672,11 @@
     ],
     "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version": [
       "StructureDefinition.snapshot"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/xml-name": [
+      "StructureDefinition",
+      "StructureDefinition.differential.element",
+      "StructureDefinition.snapshot.element"
     ],
     "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-ascertained-date": [
       "Flag"

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCarePlans | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSLMCarePlans |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSLMCarePlans |
 
  
 Logisk modell för tjänstekontraktet GetCarePlans (RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCarePlans:2). Representerar responsens informationsstruktur (GetCarePlansResponseType). En lista med CarePlanType returneras, var och en med header- och body-element. 
@@ -39,13 +39,21 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
   "extension" : [{
     "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
     "valueCode" : "can-be-target"
+  },
+  {
+    "url" : "http://hl7.org/fhir/tools/StructureDefinition/xml-name",
+    "valueString" : "GetCarePlansResponse"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+    "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:GetCarePlansResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCarePlans",
   "version" : "0.3.3",
   "name" : "SEEHDSLMCarePlans",
   "title" : "GetCarePlans",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -87,65 +95,104 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.documentId",
-      "path" : "SEEHDSLMCarePlans.carePlan.documentId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader",
+      "short" : "Innehåller basinformation om dokumentet",
+      "definition" : "Innehåller basinformation om dokumentet.",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "BackboneElement"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.documentId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.documentId",
       "short" : "Planens identitet, unik inom källsystemet",
-      "definition" : "Planens identitet, unik inom källsystemet",
+      "definition" : "Vård- och omsorgsplanens identitet som är unik inom källsystemet. Identifieraren ska vara konsistent och beständigt mellan olika majorversioner av ett kontrakt. Ett exempel på detta är att en vårdkontakt ska ha samma identifierare i majorversion 3 och 4 av ett tjänstekontrakt för att läsa vårdkontakter. Identifieraren ska vara konsistent och beständigt mellan olika kontrakt. Ett exempel på detta är att samma remiss-identitet ska användas i ett tjänstekontrakt för att läsa remisser, samt tjänstekontraktet som läser remissvar som refererar till den ursprungliga remissen.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.sourceSystemHSAId",
-      "path" : "SEEHDSLMCarePlans.carePlan.sourceSystemHSAId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.sourceSystemHSAId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.sourceSystemHSAId",
       "short" : "HSA-id för källsystemet",
-      "definition" : "HSA-id för källsystemet",
+      "definition" : "HSA-id för det system som dokumentet är skapat i.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.documentTitle",
-      "path" : "SEEHDSLMCarePlans.carePlan.documentTitle",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.documentTitle",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.documentTitle",
       "short" : "Rubrik för vård- och omsorgsplanen",
-      "definition" : "Rubrik för vård- och omsorgsplanen",
+      "definition" : "Text som innehåller en rubrik som beskriver innehållet i vård- och omsorgsplanen. För att underlätta för användaren att orientera sig i gränssnittet är det viktigt att ange en deskriptiv text i attributet rubrik. Inga krav finns dock på struktur för detta. Exempel: Samordnad vårdplanering Rehabiliteringsplan.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.documentTime",
-      "path" : "SEEHDSLMCarePlans.carePlan.documentTime",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.documentTime",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.documentTime",
       "short" : "Tidpunkt då planen upprättades (YYYYMMDDhhmmss)",
-      "definition" : "Tidpunkt då planen upprättades (YYYYMMDDhhmmss)",
+      "definition" : "Tidpunkt då vård- och omsorgsplanen upprättats.\nFormat enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "dateTime"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.patientId",
-      "path" : "SEEHDSLMCarePlans.carePlan.patientId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.patientId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.patientId",
       "short" : "Patientens identifierare (personnummer/samordningsnummer)",
-      "definition" : "Patientens identifierare (personnummer/samordningsnummer)",
+      "definition" : "Id för patienten.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "Identifier"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeLogisticsLogistics3"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional",
       "short" : "Ansvarig hälso- och sjukvårdspersonal",
-      "definition" : "Ansvarig hälso- och sjukvårdspersonal",
+      "definition" : "Hälso- och sjukvårdspersonal som ansvarar för vård- och omsorgsplanen.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -153,54 +200,74 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.authorTime",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.authorTime",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.authorTime",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.authorTime",
       "short" : "Tidpunkt då informationen registrerades (YYYYMMDDhhmmss)",
-      "definition" : "Tidpunkt då informationen registrerades (YYYYMMDDhhmmss)",
+      "definition" : "Tidpunkt då informationen registrerades. Regel: Regel 2\nFormat enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "dateTime"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalHSAId",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalHSAId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId",
       "short" : "HSA-id för ansvarig personal",
-      "definition" : "HSA-id för ansvarig personal",
+      "definition" : "HSA-id för hälso- och sjukvårdspersonal som ansvar för vårdplanen.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalName",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalName",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalName",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalName",
       "short" : "Namn på ansvarig personal",
-      "definition" : "Namn på ansvarig personal",
+      "definition" : "Namn på hälso- och sjukvårdspersonal.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalRoleCode",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalRoleCode",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode",
       "short" : "Befattning (KV Befattning OID 1.2.752.129.2.2.1.4)",
-      "definition" : "Befattning (KV Befattning OID 1.2.752.129.2.2.1.4)",
+      "definition" : "Information om hälso- och sjukvårdspersonalens befattning. Om möjligt ska KV Befattning (OID 1.2.752.129.2.2.1.4) användas. Se referens [R6].",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "CodeableConcept"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeLogisticsLogistics3"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit",
       "short" : "Organisationsenhet för ansvarig personal",
-      "definition" : "Organisationsenhet för ansvarig personal",
+      "definition" : "Den organisation som hälso- och sjukvårdspersonalen är uppdragstagare på. Regel: Regel 4",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -208,98 +275,134 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId",
       "short" : "HSA-id för org.enhet",
-      "definition" : "HSA-id för org.enhet",
+      "definition" : "HSA-id för organisationsenhet. Regel: Regel 4",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName",
       "short" : "Namn på org.enhet",
-      "definition" : "Namn på org.enhet",
+      "definition" : "Namnet på den organisation som den ansvariga hälso- och sjukvårdspersonalen är uppdragstagare på. Regel: Regel 4",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom",
       "short" : "Telefon till org.enhet",
-      "definition" : "Telefon till org.enhet",
+      "definition" : "Telefon till organisationsenhet.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail",
       "short" : "E-post till org.enhet",
-      "definition" : "E-post till org.enhet",
+      "definition" : "Epost till enhet.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress",
       "short" : "Postadress för org.enhet",
-      "definition" : "Postadress för org.enhet",
+      "definition" : "Postadress för den organisation som hälso- och sjukvårdspersonal en är uppdragstagare på. Skrivs på ett så naturligt sätt som möjligt, exempelvis: ”Storgatan 12 468 91 Lilleby”",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation",
       "short" : "Plats för org.enhet",
-      "definition" : "Plats för org.enhet",
+      "definition" : "Text som anger namnet på plats eller ort för organisationens fysiska placering.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId",
       "short" : "HSA-id för vårdenhet (Regel 1: PDL/Sparr)",
-      "definition" : "HSA-id för vårdenhet (Regel 1: PDL/Sparr)",
+      "definition" : "HSA-id för vårdenhet. Regel: Regel 1",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId",
-      "path" : "SEEHDSLMCarePlans.carePlan.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId",
       "short" : "HSA-id för vårdgivare (Regel 1: PDL/Sparr)",
-      "definition" : "HSA-id för vårdgivare (Regel 1: PDL/Sparr)",
+      "definition" : "HSA-id för vårdgivaren, som är vårdgivare för den enhet som hälso- och sjukvårdspersonalalen är uppdragstagare för. Regel: Regel 1",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator",
-      "path" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator",
       "short" : "Signeringsinformation",
-      "definition" : "Signeringsinformation",
+      "definition" : "Information om vem som signerat informationen i dokumentet.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -307,63 +410,132 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator.signatureTime",
-      "path" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator.signatureTime",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator.signatureTime",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator.signatureTime",
       "short" : "Tidpunkt för signering (YYYYMMDDhhmmss)",
-      "definition" : "Tidpunkt för signering (YYYYMMDDhhmmss)",
+      "definition" : "Tidpunkt för signering\nFormat enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "dateTime"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator.legalAuthenticatorHSAId",
-      "path" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator.legalAuthenticatorHSAId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorHSAId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorHSAId",
       "short" : "HSA-id för signerare",
-      "definition" : "HSA-id för signerare",
+      "definition" : "HSA-id för person som signerat dokumentet",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator.legalAuthenticatorName",
-      "path" : "SEEHDSLMCarePlans.carePlan.legalAuthenticator.legalAuthenticatorName",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorName",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorName",
       "short" : "Namn på signerare",
-      "definition" : "Namn på signerare",
+      "definition" : "Namnen i klartext för signerande person.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.approvedForPatient",
-      "path" : "SEEHDSLMCarePlans.carePlan.approvedForPatient",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.approvedForPatient",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.approvedForPatient",
       "short" : "Informationen godkänd för patient (Regel 3)",
-      "definition" : "Informationen godkänd för patient (Regel 3)",
+      "definition" : "Anger om information får delas till patient. Värdet sätts i sådant fall till true, i annat fall till false. Regel: Regel 3",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "boolean"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.careContactId",
-      "path" : "SEEHDSLMCarePlans.carePlan.careContactId",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.nullified",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.nullified",
+      "short" : "Makulerad",
+      "definition" : "Ska ej anges",
+      "min" : 0,
+      "max" : "0",
+      "type" : [{
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.nullifiedReason",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.nullifiedReason",
+      "short" : "Makuleringsorsak",
+      "definition" : "Ska ej anges",
+      "min" : 0,
+      "max" : "0",
+      "type" : [{
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.careContactId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanHeader.careContactId",
       "short" : "Refererad vårdkontakt-id",
-      "definition" : "Refererad vårdkontakt-id",
+      "definition" : "Identitetet för den vårdkontakt som föranlett den information som omfattas av dokumentet. Identiteten är unik inom källsystemet",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.content",
-      "path" : "SEEHDSLMCarePlans.carePlan.content",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody",
+      "short" : "carePlanBody",
+      "definition" : "carePlanBody",
+      "min" : 1,
+      "max" : "1",
+      "type" : [{
+        "code" : "BackboneElement"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content",
       "short" : "Innehåll i vård- och omsorgsplanen (MultimediaType)",
       "definition" : "MultimediaType-element med planens innehåll. Binärdata max 100 KB per TKB.",
       "min" : 0,
@@ -380,70 +552,102 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.content.mediaType",
-      "path" : "SEEHDSLMCarePlans.carePlan.content.mediaType",
-      "short" : "Mediatyp (MIME-typ): text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf",
-      "definition" : "Mediatyp (MIME-typ): text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf",
-      "min" : 1,
-      "max" : "1",
-      "type" : [{
-        "code" : "code"
-      }]
-    },
-    {
-      "id" : "SEEHDSLMCarePlans.carePlan.content.value",
-      "path" : "SEEHDSLMCarePlans.carePlan.content.value",
-      "short" : "Binärdata (base64) – XOR med reference",
-      "definition" : "Binärdata (base64) – XOR med reference",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "base64Binary"
-      }]
-    },
-    {
-      "id" : "SEEHDSLMCarePlans.carePlan.content.reference",
-      "path" : "SEEHDSLMCarePlans.carePlan.content.reference",
-      "short" : "Referens till extern fil (URL) – XOR med value",
-      "definition" : "Referens till extern fil (URL) – XOR med value",
-      "min" : 0,
-      "max" : "1",
-      "type" : [{
-        "code" : "url"
-      }]
-    },
-    {
-      "id" : "SEEHDSLMCarePlans.carePlan.content.id",
-      "path" : "SEEHDSLMCarePlans.carePlan.content.id",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.rivId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      },
+      {
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/xml-name",
+        "valueString" : "id"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.rivId",
       "short" : "id (ej tillämpligt)",
       "definition" : "N/A — content.id är 0..0 per TKB för GetCarePlans.",
       "min" : 0,
       "max" : "0",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.participatingCareUnitHSAId",
-      "path" : "SEEHDSLMCarePlans.carePlan.participatingCareUnitHSAId",
-      "short" : "Deltagande vårdenheters HSA-id (IIType)",
-      "definition" : "Deltagande vårdenheters HSA-id (IIType)",
-      "min" : 0,
-      "max" : "*",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.mediaType",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.mediaType",
+      "short" : "Mediatyp (MIME-typ): text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf",
+      "definition" : "Typ av multimedia (enligt HL7). Följande format för mediatype kan tillämpas i denna version: text/plain text/html image/png image/jpeg image/tiff application/pdf\nTillåtna värden enligt XSD: application/dicom, application/msword, application/pdf, audio/basic, audio/k32adpcm, audio/mpeg, image/g3fax, image/gif, image/jpeg, image/png, image/tiff, model/vrml, multipart/x-hl7-cda-level1, text/html, text/plain, text/rtf, text/sgml, text/x-hl7-ft, text/xml, video/mpeg, video/x-avi.",
+      "min" : 1,
+      "max" : "1",
       "type" : [{
-        "code" : "Identifier"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
-      "id" : "SEEHDSLMCarePlans.carePlan.typeOfCarePlan",
-      "path" : "SEEHDSLMCarePlans.carePlan.typeOfCarePlan",
-      "short" : "Typ av vård- och omsorgsplan",
-      "definition" : "Typ av vård- och omsorgsplan",
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.value",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.value",
+      "short" : "Binärdata (base64) – XOR med reference",
+      "definition" : "Value är binärdata som representerar objektet. Ett och endast ett av attributen value och reference ska anges.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "CodeableConcept"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.reference",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
       }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.content.reference",
+      "short" : "Referens till extern fil (URL) – XOR med value",
+      "definition" : "Referens till extern binär fil i form av en URL. Ett och endast ett av attributen value och reference ska anges.",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivAnyURI"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.participatingCareUnitHSAId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.participatingCareUnitHSAId",
+      "short" : "Deltagande vårdenheters HSA-id (IIType)",
+      "definition" : "En Vård- och omsorgsplan har noll eller flera deltagande enheter.",
+      "min" : 0,
+      "max" : "*",
+      "type" : [{
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeLogisticsLogistics3"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.typeOfCarePlanEnum",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.typeOfCarePlanEnum",
+      "short" : "Typ av vård- och omsorgsplan",
+      "definition" : "Tillåtna värden enligt XSD: SIP, SPLPTLRV, SPU, VP, HP, RP, GP, SVP.",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
+      }]
+    },
+    {
+      "id" : "SEEHDSLMCarePlans.carePlan.carePlanBody.typeOfCarePlanEnum.value",
+      "path" : "SEEHDSLMCarePlans.carePlan.carePlanBody.typeOfCarePlanEnum.value",
       "binding" : {
         "strength" : "required",
         "valueSet" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs"
@@ -453,7 +657,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
       "id" : "SEEHDSLMCarePlans.result",
       "path" : "SEEHDSLMCarePlans.result",
       "short" : "Resultatkod för anropet",
-      "definition" : "Resultatkod för anropet",
+      "definition" : "Innehåller information om begäran gick bra eller ej.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -462,57 +666,77 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCarePlans.cs
     },
     {
       "id" : "SEEHDSLMCarePlans.result.resultCode",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
       "path" : "SEEHDSLMCarePlans.result.resultCode",
       "short" : "Resultatkod: OK, INFO eller ERROR",
-      "definition" : "Resultatkod: OK, INFO eller ERROR",
+      "definition" : "Kan endast vara OK, INFO eller ERROR\nTillåtna värden enligt XSD: OK, ERROR, INFO.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "code"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
       "id" : "SEEHDSLMCarePlans.result.errorCode",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
       "path" : "SEEHDSLMCarePlans.result.errorCode",
       "short" : "Felkod vid ERROR (INVALID_REQUEST)",
-      "definition" : "Felkod vid ERROR (INVALID_REQUEST)",
+      "definition" : "Sätts endast om resultCode är ERROR, se kapitel 4.4 för mer information.\nTillåtna värden enligt XSD: INVALID_REQUEST.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "code"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
       "id" : "SEEHDSLMCarePlans.result.logId",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
       "path" : "SEEHDSLMCarePlans.result.logId",
       "short" : "UUID för felsökning",
-      "definition" : "UUID för felsökning",
+      "definition" : "En UUID som kan användas vid felanmälan för att användas vid felsökning av producent.",
       "min" : 1,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
       "id" : "SEEHDSLMCarePlans.result.subCode",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
       "path" : "SEEHDSLMCarePlans.result.subCode",
       "short" : "Subkod",
-      "definition" : "Subkod",
+      "definition" : "Inga subkoder är specificerade.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     },
     {
       "id" : "SEEHDSLMCarePlans.result.message",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-namespace",
+        "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
+      }],
       "path" : "SEEHDSLMCarePlans.result.message",
       "short" : "Beskrivande meddelande (svenska)",
-      "definition" : "Beskrivande meddelande (svenska)",
+      "definition" : "En beskrivande text som kan visas för användaren.",
       "min" : 0,
       "max" : "1",
       "type" : [{
-        "code" : "string"
+        "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString"
       }]
     }]
   }

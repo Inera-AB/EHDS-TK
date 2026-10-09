@@ -62,14 +62,17 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
-| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
-| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 0..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå – ingår inte i referensen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se`orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
 | `functionalStatusAssessmentHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (om legalAuthenticator finns, prioriteras framför documentTime) |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Condition.asserter`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..1 | Ej mappad | Signerande persons befattning – ingen direkt FHIR-mappning utanför PractitionerRole; Condition.asserter är en Reference utan rollkod |
 | `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | `false`→ kod`NOPATIENT`från`http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
 | `functionalStatusAssessmentHeader.careContactId` | 0..1 | `Condition.encounter.identifier.value` | Logisk referens till vårdkontakt |
 | `functionalStatusAssessmentHeader.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
@@ -114,6 +117,7 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 | `result.resultCode` | 1..1 | Ej mappad | Teknisk responskod – hanteras av transportlagret |
 | `result.errorCode` | 0..1 | Ej mappad | Teknisk felkod – hanteras av transportlagret |
 | `result.logId` | 1..1 | Ej mappad | Teknisk spårnings-UUID – hanteras av transportlagret |
+| `result.subCode` | 0..1 | Ej mappad | Teknisk subkod – hanteras av transportlagret |
 | `result.message` | 0..1 | Ej mappad | Teknisk felbeskrivning – hanteras av transportlagret |
 
 -------
@@ -160,7 +164,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | | |
 | :--- | :--- |
 | FUNC-001 | **Beslutat:**PADL-poster kodas som`Condition.note`med format`[typeOfAssessment]: assessment`. Se avsnitt ovan. |
-| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security`kod`NOPATIENT`(v3-ActCode). Se README avsnitt 9. |
+| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPATIENT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
 -------
@@ -169,5 +173,5 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 | | | |
 | :--- | :--- | :--- |
-| FUNC-002 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorRoleCode` | Signerande persons befattning (CodeableConcept). Det finns inget standardelement i Condition för detta.`Condition.asserter`är en enkel Reference utan plats för rollkod. Alternativ: (a) enkoda i den refererade PractitionerRole-resursen om en sådan skapas, eller (b) ignorera då det är samma person som legalAuthenticatorHSAId och rollkoden hämtas via HSA-katalogen. Kräver designbeslut. |
+| FUNC-002 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorRoleCode` | **Stängd.**Elementet finns inte i`LegalAuthenticatorType`i schemat (clinicalprocess_healthcond_description_2.1.xsd) och har tagits bort ur den logiska modellen. |
 

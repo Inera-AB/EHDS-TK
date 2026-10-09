@@ -217,8 +217,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#mappningstabell" id="markdown-toc-mappningstabell">Mappningstabell</a>        <ul>
           <li><a href="#header" id="markdown-toc-header">Header</a></li>
           <li><a href="#observationbody--identitet-och-tidpunkt" id="markdown-toc-observationbody--identitet-och-tidpunkt">observationBody – identitet och tidpunkt</a></li>
-          <li><a href="#observationtype--klassificering-och-kod" id="markdown-toc-observationtype--klassificering-och-kod">observationType – klassificering och kod</a></li>
-          <li><a href="#observationvalue--xor-union-av-värdetyper" id="markdown-toc-observationvalue--xor-union-av-värdetyper">observationValue – XOR-union av värdetyper</a></li>
+          <li><a href="#type--klassificering-och-kod" id="markdown-toc-type--klassificering-och-kod">type – klassificering och kod</a></li>
+          <li><a href="#value--xor-union-av-värdetyper" id="markdown-toc-value--xor-union-av-värdetyper">value – XOR-union av värdetyper</a></li>
           <li><a href="#negation-och-frånvaro-av-värde" id="markdown-toc-negation-och-frånvaro-av-värde">Negation och frånvaro av värde</a></li>
           <li><a href="#status-och-skala" id="markdown-toc-status-och-skala">Status och skala</a></li>
           <li><a href="#anatomisk-lokalisation" id="markdown-toc-anatomisk-lokalisation">Anatomisk lokalisation</a></li>
@@ -307,62 +307,50 @@ på toppnivå i headern. PDL- och Sparr-fält hanteras separat – se avsnitt
 <h2 id="datamodell--översikt">Datamodell – översikt</h2>
 
 <p>Tjänstekontraktet returnerar en lista med <code class="language-plaintext highlighter-rouge">observations 0..*</code>. Varje observation
-består av ett <code class="language-plaintext highlighter-rouge">header</code>-element och ett <code class="language-plaintext highlighter-rouge">observationBody</code>-element:</p>
+består av ett <code class="language-plaintext highlighter-rouge">header</code>-element och ett <code class="language-plaintext highlighter-rouge">observationBody</code>-element. Trädet visar svarsmeddelandet enligt XSD:n (GetObservationsResponder_2.0.xsd):</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>observations [0..*]
-  header [1..1]
-  observationBody [1..1]
-    observationId          [1..1]  Identifier
-    registrationTime       [1..1]  instant
-    observationType        [0..1]  CodeableConcept
-    observationValue       [1..1]  (XOR-union, se nedan)
-      cv                   [0..1]  CodeableConcept
-      pq                   [0..1]  Quantity
-      ivlpq                [0..1]  Range
-      ts                   [0..1]  string  (variabelprecisions-tidsstämpel)
-      ivlts                [0..1]  Period
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>observations [0..*]  ObservationResponseType
+  header                   [1..1]  HeaderType
+  observationBody          [1..1]  ObservationType
+    id                     [1..1]  IIType
+    registrationTime       [1..1]  TimeStampType
+    type                   [0..1]  CVType
+    value                  [1..1]  ValueANYType
+      cv                   [0..1]  CVType
+      pq                   [0..1]  PQType
+      ivl_pq               [0..1]  PQIntervalType
+      ts                   [0..1]  PartialTimeStampType
+      ivl_ts               [0..1]  PartialTimePeriodType
       st                   [0..1]  string
-      intValue             [0..1]  integer
-    scale                  [0..1]  CodeableConcept
-    observationStatus      [1..1]  CodeableConcept  (SNOMED CT urvals-id 56431000052106)
-    targetSite             [0..*]  CodeableConcept
+      int                  [0..1]  int
+    scale                  [0..1]  CVType
+    status                 [1..1]  CVType
+    targetSite             [0..*]  CVType
     description            [0..1]  string
-    time                   [0..1]  (TimeType: ts 0..1 string | ivlts 0..1 Period)
+    time                   [0..1]  TimeType
+      ts                   [0..1]  PartialTimeStampType
+      ivl_ts               [0..1]  PartialTimePeriodType
     valueNegation          [1..1]  boolean
     patient                [1..1]  PatientInformationType
-      patientId            [0..1]  Identifier
-      person               [1..1]  (personId, givenName, middleSurname, surname,
-                                    givenNameMarker, gender, dateOfBirth,
-                                    confidentialityIndicator, maritalStatus,
-                                    address[0..*], electronicAddress[0..*])
+      id                   [0..1]  IIType
+      person               [1..1]  PersonType
       address              [0..*]  AddressType
       electronicAddress    [0..*]  TelType
-    participation          [0..*]  BackboneElement
-      participantType      [1..1]  CodeableConcept
+    participation          [0..*]  ParticipationType
+      type                 [1..1]  CVType
       time                 [0..1]  TimeType
-      healthcareProfessional [0..1]
-        performerId        [0..1]  Identifier
-        person             [1..1]  PersonType
-        jobCode            [0..1]  CodeableConcept
-        license            [0..*]  CodeableConcept
-        specialistQualification [0..*] CodeableConcept
-        organisation       [1..1]  BackboneElement
-        address            [0..*]  BackboneElement
-        electronicAddress  [0..*]  BackboneElement
+      healthcareProfessional [0..1]  HealthcareProfessionalType
       patient              [0..1]  PatientInformationType
-      otherPerson          [0..1]  BackboneElement
-      locationRole         [0..1]  BackboneElement
-      resource             [0..1]  BackboneElement
-      organisation         [0..1]  BackboneElement
-    relation               [0..*]  BackboneElement
-      relationType         [1..1]  CodeableConcept
-      referredInformation  [1..1]  BackboneElement
-        referenceId        [1..1]  Identifier
-        time               [1..1]  string
-        categorization     [1..1]  string
-        informationOwner   [1..1]  BackboneElement
-          careGiverId      [1..1]  Identifier
+      otherPerson          [0..1]  OtherPersonType
+      locationRole         [0..1]  LocationRoleType
+      resource             [0..1]  ResourceType
+      organisation         [0..1]  OrganisationType
+    relation               [0..*]  RelationType
+      type                 [1..1]  CVType
+      referredInformation  [1..1]  ReferredInformationType
 </code></pre></div></div>
+
+<p>Typnamnen är RIV-TA-typerna i XSD:n. <code class="language-plaintext highlighter-rouge">ivl_pq</code> och <code class="language-plaintext highlighter-rouge">ivl_ts</code> heter <code class="language-plaintext highlighter-rouge">ivlPq</code> och <code class="language-plaintext highlighter-rouge">ivlTs</code> i den logiska modellen (FHIR tillåter inte understreck i elementnamn) och bär XML-namnet i tillägget <code class="language-plaintext highlighter-rouge">xml-name</code>.</p>
 
 <hr />
 
@@ -402,13 +390,13 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.id.extension</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.identifier.value</code></td>
       <td>Unikt id satt av källsystemet</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.id.root</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.identifier.system</code></td>
       <td>OID för vårdgivarens HSA-id; format <code class="language-plaintext highlighter-rouge">urn:oid:{root}</code></td>
@@ -422,7 +410,7 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
   </tbody>
 </table>
 
-<h3 id="observationtype--klassificering-och-kod">observationType – klassificering och kod</h3>
+<h3 id="type--klassificering-och-kod">type – klassificering och kod</h3>
 
 <table>
   <thead>
@@ -435,7 +423,7 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.type</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.code</code></td>
       <td>Typ av observation; om saknas används platshållarkod – se avsnitt Observation.code nedan</td>
@@ -444,10 +432,10 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
 </table>
 
 <blockquote>
-  <p><strong>OBS:</strong> <code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte (se avsnitt Observation.category nedan). <code class="language-plaintext highlighter-rouge">observationType</code> styr <code class="language-plaintext highlighter-rouge">Observation.code</code>, inte <code class="language-plaintext highlighter-rouge">category</code>.</p>
+  <p><strong>OBS:</strong> <code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte (se avsnitt Observation.category nedan). <code class="language-plaintext highlighter-rouge">observationBody.type</code> styr <code class="language-plaintext highlighter-rouge">Observation.code</code>, inte <code class="language-plaintext highlighter-rouge">category</code>.</p>
 </blockquote>
 
-<h3 id="observationvalue--xor-union-av-värdetyper">observationValue – XOR-union av värdetyper</h3>
+<h3 id="value--xor-union-av-värdetyper">value – XOR-union av värdetyper</h3>
 
 <p>Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet väljs
 baserat på vilken gren som är populerad i källdata.</p>
@@ -463,43 +451,43 @@ baserat på vilken gren som är populerad i källdata.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationValue.cv</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.cv</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueCodeableConcept</code></td>
       <td>Kodad observation</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationValue.pq</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.pq</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueQuantity</code></td>
       <td>Numeriskt värde med enhet (UCUM)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationValue.ivlpq</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.ivlPq</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueRange</code></td>
       <td>Intervall av Quantity-värden. Villkor: Minst ett av <code class="language-plaintext highlighter-rouge">low</code> och <code class="language-plaintext highlighter-rouge">high</code> måste anges.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationValue.ts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.ts</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueDateTime</code> / <code class="language-plaintext highlighter-rouge">Observation.valueString</code></td>
       <td>Precision ≥ dag → <code class="language-plaintext highlighter-rouge">valueDateTime</code>; precision <code class="language-plaintext highlighter-rouge">YYYY</code>/<code class="language-plaintext highlighter-rouge">YYYYMM</code> → <code class="language-plaintext highlighter-rouge">valueString</code> (se OBS-001)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationValue.ivlts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.ivlTs</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valuePeriod</code></td>
       <td>Tidsintervall. Villkor: Minst ett av <code class="language-plaintext highlighter-rouge">start</code> och <code class="language-plaintext highlighter-rouge">end</code> måste anges.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationValue.st</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.st</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueString</code></td>
       <td>Fritextsvar</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationValue.intValue</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.int</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueInteger</code></td>
       <td>Heltalsvärde. Ska ENBART användas för skalvärden (t.ex. AUDIT-poäng). Får INTE användas för fysiskt uppmätta värden (längd, vikt etc.) – använd <code class="language-plaintext highlighter-rouge">pq</code> för dessa.</td>
@@ -541,7 +529,7 @@ baserat på vilken gren som är populerad i källdata.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.observationStatus</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.status</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.status</code></td>
       <td>SNOMED CT (urvals-id 56431000052106) → FHIR ObservationStatus; kräver ConceptMap, se OBS-003</td>
@@ -619,7 +607,7 @@ baserat på vilken gren som är populerad i källdata.</p>
       <td><code class="language-plaintext highlighter-rouge">observationBody.time</code></td>
       <td>0..1</td>
       <td>—</td>
-      <td>XOR: antingen <code class="language-plaintext highlighter-rouge">ts</code> eller <code class="language-plaintext highlighter-rouge">ivlts</code> populeras</td>
+      <td>XOR: antingen <code class="language-plaintext highlighter-rouge">ts</code> eller <code class="language-plaintext highlighter-rouge">ivl_ts</code> populeras</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">observationBody.time.ts</code></td>
@@ -628,7 +616,7 @@ baserat på vilken gren som är populerad i källdata.</p>
       <td>Variabelprecisions-sträng; konverteras om precision ≥ dag (se OBS-001 och GENERAL-001)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.time.ivlts</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.time.ivlTs</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.effectivePeriod</code></td>
       <td>Tidsintervall för observationen; XOR med <code class="language-plaintext highlighter-rouge">time.ts</code>. Villkor: Minst ett av start och end måste anges.</td>
@@ -652,25 +640,25 @@ används primärt för att sätta <code class="language-plaintext highlighter-ro
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.person.personId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.person.id.extension</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.subject.identifier.value</code></td>
       <td>Personnummer eller samordningsnummer (föredragen källa)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.person.personId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.person.id.root</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.subject.identifier.system</code></td>
       <td>OID→URI-konvertering, se OID-tabell nedan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.patientId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.id.extension</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.subject.identifier.value</code></td>
-      <td>Alternativ om <code class="language-plaintext highlighter-rouge">person.personId</code> saknas (nationell reservidentitet, OID 1.2.752.74.9.1)</td>
+      <td>Alternativ om <code class="language-plaintext highlighter-rouge">person.id</code> saknas (nationell reservidentitet, OID 1.2.752.74.9.1)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.patientId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.patient.id.root</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.subject.identifier.system</code></td>
       <td>OID→URI</td>
@@ -769,7 +757,7 @@ Mappningen nedan täcker alla grenar.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*].participantType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*].type</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.performer.extension[participationType]</code></td>
       <td>Deltagarroll (utförare, vittne, ansvarig etc.); SNOMED CT urvals-id 53351000052100</td>
@@ -796,7 +784,7 @@ Mappningen nedan täcker alla grenar.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*].healthcareProfessional.performerId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*].healthcareProfessional.id</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.performer</code> (Reference(PractitionerRole))</td>
       <td>Logisk referens via HSA-id (OID 1.2.752.129.2.1.4.1)</td>
@@ -954,7 +942,7 @@ Mappningen nedan täcker alla grenar.</p>
 <h3 id="relationer-relation">Relationer (relation)</h3>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.relation</code> innehåller typade samband till andra informationsmängder.
-Val av FHIR-element beror på <code class="language-plaintext highlighter-rouge">relationType</code>-koden – se OBS-005.</p>
+Val av FHIR-element beror på koden i <code class="language-plaintext highlighter-rouge">type</code> – se OBS-005.</p>
 
 <table>
   <thead>
@@ -970,22 +958,22 @@ Val av FHIR-element beror på <code class="language-plaintext highlighter-rouge"
       <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*]</code></td>
       <td>0..*</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.derivedFrom</code> eller <code class="language-plaintext highlighter-rouge">Observation.hasMember</code></td>
-      <td>Val beror på <code class="language-plaintext highlighter-rouge">relationType</code>; se OBS-005 och avsnitt nedan</td>
+      <td>Val beror på <code class="language-plaintext highlighter-rouge">type</code>; se OBS-005 och avsnitt nedan</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].relationType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].type</code></td>
       <td>1..1</td>
       <td><em>(styr val av FHIR-element)</em></td>
       <td>SNOMED CT-kod (urvals-id 53371000052106) som avgör om det är derivedFrom, hasMember eller extension</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].referredInformation.referenceId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].referredInformation.id.extension</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.derivedFrom.identifier.value</code> / <code class="language-plaintext highlighter-rouge">Observation.hasMember.identifier.value</code></td>
       <td>Id på den refererade informationen</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].referredInformation.referenceId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].referredInformation.id.root</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.derivedFrom.identifier.system</code> / <code class="language-plaintext highlighter-rouge">Observation.hasMember.identifier.system</code></td>
       <td>OID→URI-konvertering</td>
@@ -1003,7 +991,7 @@ Val av FHIR-element beror på <code class="language-plaintext highlighter-rouge"
       <td>Typ av information från engagemangsindexet – ingen standardmotpart i FHIR Observation.derivedFrom; kan lagras i extension (se OBS-005)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].referredInformation.informationOwner.careGiverId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.relation[*].referredInformation.informationOwner.id</code></td>
       <td>1..1</td>
       <td>Ej mappad</td>
       <td>Informationsägande vårdgivare – ingen per-referens ägarinformation i FHIR; kan lagras i Provenance om nödvändigt (se OBS-005)</td>
@@ -1013,48 +1001,7 @@ Val av FHIR-element beror på <code class="language-plaintext highlighter-rouge"
 
 <h3 id="tekniska-responsfält-result">Tekniska responsfält (result)</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>RIVTA-element</th>
-      <th>Kard.</th>
-      <th>FHIR-element</th>
-      <th>Kommentar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.resultCode</code></td>
-      <td>1..1</td>
-      <td>Ej mappad</td>
-      <td>Teknisk responskod – hanteras av transportlagret</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.errorCode</code></td>
-      <td>0..1</td>
-      <td>Ej mappad</td>
-      <td>Teknisk felkod – hanteras av transportlagret</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.logId</code></td>
-      <td>1..1</td>
-      <td>Ej mappad</td>
-      <td>Teknisk spårnings-UUID – hanteras av transportlagret</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
-      <td>0..1</td>
-      <td>Ej mappad</td>
-      <td>Teknisk subkod – hanteras av transportlagret</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">result.message</code></td>
-      <td>0..1</td>
-      <td>Ej mappad</td>
-      <td>Teknisk felbeskrivning – hanteras av transportlagret</td>
-    </tr>
-  </tbody>
-</table>
+<p>Svarsmeddelandet <code class="language-plaintext highlighter-rouge">GetObservationsResponse</code> har inget <code class="language-plaintext highlighter-rouge">result</code>-element enligt XSD:n (GetObservationsResponder_2.0.xsd). Det finns därför inga tekniska responsfält att mappa.</p>
 
 <hr />
 
@@ -1062,7 +1009,7 @@ Val av FHIR-element beror på <code class="language-plaintext highlighter-rouge"
 
 <h3 id="observationstatus-obs-003">Observation.status (OBS-003)</h3>
 
-<p><code class="language-plaintext highlighter-rouge">observationBody.observationStatus</code> använder SNOMED CT-koder ur urvalsuppsättningen
+<p><code class="language-plaintext highlighter-rouge">observationBody.status</code> använder SNOMED CT-koder ur urvalsuppsättningen
 med id <code class="language-plaintext highlighter-rouge">56431000052106</code>. En ConceptMap krävs för att översätta dessa till FHIR
 <code class="language-plaintext highlighter-rouge">ObservationStatus</code>-värden:</p>
 
@@ -1112,7 +1059,7 @@ med id <code class="language-plaintext highlighter-rouge">56431000052106</code>.
 
 <h3 id="observationcode--fallback">Observation.code – fallback</h3>
 
-<p>Om <code class="language-plaintext highlighter-rouge">observationBody.observationType</code> saknas och ingen annan kod kan härledas sätts
+<p>Om <code class="language-plaintext highlighter-rouge">observationBody.type</code> saknas och ingen annan kod kan härledas sätts
 <code class="language-plaintext highlighter-rouge">Observation.code</code> till en lokal platshållarkod
 <code class="language-plaintext highlighter-rouge">https://fhir.inera.se/ig/ehds-tk/CodeSystem/observation-placeholder#unspecified</code>
 med display <em>"Okänd observationstyp"</em> för att uppfylla FHIR-profilens krav på minst
@@ -1147,7 +1094,7 @@ explicit förnekats eller är frånvarande av klinisk orsak. Mappning:</p>
 
 <h3 id="ts-fältet-obs-001--beslut">ts-fältet (OBS-001) – Beslut</h3>
 
-<p><code class="language-plaintext highlighter-rouge">observationBody.observationValue.ts</code> och <code class="language-plaintext highlighter-rouge">observationBody.time.ts</code> är RIVTA
+<p><code class="language-plaintext highlighter-rouge">observationBody.value.ts</code> och <code class="language-plaintext highlighter-rouge">observationBody.time.ts</code> är RIVTA
 <code class="language-plaintext highlighter-rouge">TimeType/ts</code>-strängar med variabel precision, t.ex. <code class="language-plaintext highlighter-rouge">202306</code>, <code class="language-plaintext highlighter-rouge">20230601</code>,
 <code class="language-plaintext highlighter-rouge">20230601120000</code>. Beslutad hantering:</p>
 
@@ -1214,12 +1161,12 @@ element mappas direkt till <code class="language-plaintext highlighter-rouge">bo
 <h3 id="relation--relationstyper-obs-005">relation – relationstyper (OBS-005)</h3>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.relation</code> innehåller referenser till andra observationer med en
-<code class="language-plaintext highlighter-rouge">relationType</code>-kod. Mapping:</p>
+koden i <code class="language-plaintext highlighter-rouge">relation.type</code>. Mapping:</p>
 
 <table>
   <thead>
     <tr>
-      <th><code class="language-plaintext highlighter-rouge">relationType</code> (RIVTA)</th>
+      <th><code class="language-plaintext highlighter-rouge">relation.type</code> (RIVTA)</th>
       <th>FHIR-element</th>
       <th>Motivering</th>
     </tr>
@@ -1244,7 +1191,7 @@ element mappas direkt till <code class="language-plaintext highlighter-rouge">bo
 </table>
 
 <p>Notera att <code class="language-plaintext highlighter-rouge">referredInformation.time</code>, <code class="language-plaintext highlighter-rouge">referredInformation.categorization</code> och
-<code class="language-plaintext highlighter-rouge">referredInformation.informationOwner.careGiverId</code> saknar standardmotpart i FHIR-referensen
+<code class="language-plaintext highlighter-rouge">referredInformation.informationOwner.id</code> saknar standardmotpart i FHIR-referensen
 och kräver extension eller Provenance-resurs om de ska bevaras.</p>
 
 <hr />
@@ -1271,12 +1218,12 @@ tillgängliga:</p>
   <tbody>
     <tr>
       <td>Vårdgivare (yttre Sparr)</td>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*]</code> där <code class="language-plaintext highlighter-rouge">participantType</code> avser ansvarig vårdgivare</td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*]</code> där <code class="language-plaintext highlighter-rouge">participation.type</code> avser ansvarig vårdgivare</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
     </tr>
     <tr>
       <td>Vårdenhet (inre Sparr)</td>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*]</code> där <code class="language-plaintext highlighter-rouge">participantType</code> avser vårdenhet</td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*]</code> där <code class="language-plaintext highlighter-rouge">participation.type</code> avser vårdenhet</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
     </tr>
     <tr>
@@ -1375,7 +1322,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <h3 id="kodtabell--ioö-snomed-ct-koder--fhir">Kodtabell – IoÖ SNOMED CT-koder → FHIR</h3>
 
-<p>Kodsystem för <code class="language-plaintext highlighter-rouge">observationBody.observationType.type.codeSystem</code>: <code class="language-plaintext highlighter-rouge">1.2.752.116.2.1.1</code> (SNOMED CT SE) → URI <code class="language-plaintext highlighter-rouge">http://snomed.info/sct</code>.</p>
+<p>Kodsystem för <code class="language-plaintext highlighter-rouge">observationBody.type.codeSystem</code>: <code class="language-plaintext highlighter-rouge">1.2.752.116.2.1.1</code> (SNOMED CT SE) → URI <code class="language-plaintext highlighter-rouge">http://snomed.info/sct</code>.</p>
 
 <table>
   <thead>
@@ -1442,7 +1389,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <h3 id="ioö-fält--fhir-observation-mappning">IoÖ-fält → FHIR Observation mappning</h3>
 
-<p>Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code>:</p>
+<p>Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code> (sökvägar enligt den logiska modellen):</p>
 
 <table>
   <thead>
@@ -1455,25 +1402,25 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationType.type.code</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.type.code</code></td>
       <td>SNOMED CT-kod, se tabell ovan</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.code.coding[snomedSE].code</code></td>
       <td>Obligatorisk per IoÖ; ska vara en av de 6 koderna</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationType.type.codeSystem</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.type.codeSystem</code></td>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.116.2.1.1</code> (SNOMED CT SE)</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.code.coding[snomedSE].system</code></td>
       <td>URI: <code class="language-plaintext highlighter-rouge">http://snomed.info/sct</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationType.value.value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.pq.value</code></td>
       <td>Decimal (enhet beror på mättyp)</td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueQuantity.value</code></td>
       <td>Längd: 0–1 dec.; Vikt: 0–3 dec.; HuC: 1 dec.; Gest: heltal</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">observationType.value.unit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">observationBody.value.pq.unit</code></td>
       <td><code class="language-plaintext highlighter-rouge">cm</code> / <code class="language-plaintext highlighter-rouge">kg</code> / <code class="language-plaintext highlighter-rouge">d</code></td>
       <td><code class="language-plaintext highlighter-rouge">Observation.valueQuantity.unit</code> + <code class="language-plaintext highlighter-rouge">valueQuantity.code</code></td>
       <td>UCUM-kod sätts parallellt med textenhet</td>
@@ -1525,7 +1472,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
     </tr>
     <tr>
       <td>OBS-005</td>
-      <td><code class="language-plaintext highlighter-rouge">relation</code> med <code class="language-plaintext highlighter-rouge">relationType</code> – lokal extension behövs för otypade relationer.</td>
+      <td><code class="language-plaintext highlighter-rouge">relation</code> med <code class="language-plaintext highlighter-rouge">relation.type</code> – lokal extension behövs för otypade relationer.</td>
       <td>Öppen</td>
     </tr>
     <tr>
@@ -1586,7 +1533,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

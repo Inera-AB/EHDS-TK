@@ -266,25 +266,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.documentId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.documentId</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.identifier[0].value</code></td>
       <td>Källsystemets dokumentidentitet; unik inom källsystemet</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.sourceSystemHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.sourceSystemHSAId</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.meta.source</code></td>
       <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.patientId.extension</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.patientId.id</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.subject.identifier.value</code></td>
       <td>Personnummer eller samordningsnummer</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.patientId.root</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.patientId.type</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.subject.identifier.system</code></td>
       <td>OID→URI-konvertering (se OID-tabell nedan)</td>
@@ -305,13 +305,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.documentTitle</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.documentTitle</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.title</code></td>
       <td>Obligatorisk (1..1 i profilen)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.documentTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.documentTime</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.created</code></td>
       <td>YYYYMMDDHHMMSS → ISO 8601</td>
@@ -332,25 +332,25 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.authorTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.authorTime</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.meta.lastUpdated</code></td>
       <td>Tidpunkt för registrering; YYYYMMDDHHMMSS → ISO 8601</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.identifier.value</code></td>
       <td>Via <code class="language-plaintext highlighter-rouge">CarePlan.author</code>-referens</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
       <td>Valfritt komplement till HSA-id</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
       <td>Befattningskod (KV Befattning OID 1.2.752.129.2.2.1.4)</td>
@@ -371,37 +371,37 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier</code></td>
       <td>HSA-id för organisationsenhet</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.display</code></td>
       <td>Namn på organisationsenhet</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas</td>
+      <td>Telefonnummer till org.enhet – ingår ej i PractitionerRole.organization; kan lagras i Organization.telecom om Organization-resurs skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till org.enhet – se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> ovan</td>
+      <td>E-post till org.enhet – se <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Postadress till org.enhet – ingår ej i PractitionerRole; kan lagras i Organization.address om Organization-resurs skapas</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Fritextplats för org.enhet – ingen standardiserad FHIR-plats i CarePlan/PractitionerRole</td>
@@ -422,19 +422,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
       <td>Inre Sparr – vårdenhet (Regel 1)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
       <td>Yttre Sparr – vårdgivare (Regel 1)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.approvedForPatient</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.approvedForPatient</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.meta.security</code></td>
       <td>PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues</td>
@@ -455,19 +455,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.legalAuthenticator.signatureTime</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.legalAuthenticator.signatureTime</code></td>
       <td>1..1 (om legalAuthenticator anges)</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.extension[assertedDate]</code></td>
       <td>Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.legalAuthenticator.legalAuthenticatorHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorHSAId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.asserter.identifier</code></td>
       <td>Via asserter-referens</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.legalAuthenticator.legalAuthenticatorName</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorName</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
       <td>Namn i klartext – HSA-id räcker för logisk referens</td>
@@ -488,10 +488,22 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.careContactId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.careContactId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.encounter.identifier</code></td>
       <td>Logisk referens till Encounter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.nullified</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.nullifiedReason</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
   </tbody>
 </table>
@@ -509,13 +521,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.typeOfCarePlan</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.typeOfCarePlanEnum</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.category</code></td>
       <td>Bunden till TypeOfCarePlanVS (required)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.participatingCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.participatingCareUnitHSAId</code></td>
       <td>0..*</td>
       <td><code class="language-plaintext highlighter-rouge">CarePlan.contributor</code></td>
       <td>Deltagande vårdenheters HSA-id (IIType); en referens per enhet</td>
@@ -536,31 +548,31 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.content</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content</code></td>
       <td>0..*</td>
       <td>Extension (MultimediaType)</td>
       <td>FHIR R4 CarePlan har inget inbyggt multimedia-fält; kräver extension vid implementering</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.content.mediaType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content.mediaType</code></td>
       <td>1..1</td>
       <td>Extension.mediaType</td>
       <td>MIME-typ: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.content.id</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content.id</code></td>
       <td>0..0</td>
       <td>N/A</td>
       <td>Ej tillämpligt för detta TK per TKB (markerat 0..0 i logisk modell)</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.content.value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content.value</code></td>
       <td>0..1</td>
       <td>Extension.value (base64Binary)</td>
       <td>Binärdata (base64) – XOR med reference; max 100 KB per post</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.content.reference</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content.reference</code></td>
       <td>0..1</td>
       <td>Extension.reference (url)</td>
       <td>Referens till extern fil (URL) – XOR med value</td>
@@ -573,7 +585,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </blockquote>
 
 <blockquote>
-  <p><strong>Invariant:</strong> <code class="language-plaintext highlighter-rouge">carePlan.content</code> – antingen <code class="language-plaintext highlighter-rouge">value</code> eller <code class="language-plaintext highlighter-rouge">reference</code> måste anges, ej båda (<code class="language-plaintext highlighter-rouge">getcareplans-content-xor</code> i logisk modell).</p>
+  <p><strong>Invariant:</strong> <code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content</code> – antingen <code class="language-plaintext highlighter-rouge">value</code> eller <code class="language-plaintext highlighter-rouge">reference</code> måste anges, ej båda (<code class="language-plaintext highlighter-rouge">getcareplans-content-xor</code> i logisk modell).</p>
 </blockquote>
 
 <h3 id="tekniska-responsfält-result">Tekniska responsfält (result)</h3>
@@ -625,7 +637,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h2 id="pdl-och-sparr">PDL och Sparr</h2>
 
-<p>PDL-fälten <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareUnitHSAId</code> och <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareGiverHSAId</code> är <strong>inte</strong> toppnivå-header-fält utan finns under <code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional</code>. De är valfria i kontraktet men krävs av Regel 1 för korrekt Sparr-hantering.</p>
+<p>PDL-fälten <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareUnitHSAId</code> och <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareGiverHSAId</code> är <strong>inte</strong> toppnivå-header-fält utan finns under <code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional</code>. De är valfria i kontraktet men krävs av Regel 1 för korrekt Sparr-hantering.</p>
 
 <table>
   <thead>
@@ -637,12 +649,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
       <td>Yttre Sparr</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
       <td>Inre Sparr</td>
     </tr>
@@ -779,18 +791,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <tbody>
     <tr>
       <td>CP-001</td>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.content</code> (MultimediaType) saknar standardiserat FHIR R4-uttryck i CarePlan. Bör en lokal extension definieras i profilen med fälten <code class="language-plaintext highlighter-rouge">mediaType</code>, <code class="language-plaintext highlighter-rouge">value</code> (base64Binary) och <code class="language-plaintext highlighter-rouge">reference</code> (url), eller ska <code class="language-plaintext highlighter-rouge">DocumentReference</code> användas som alternativ resurs?</td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content</code> (MultimediaType) saknar standardiserat FHIR R4-uttryck i CarePlan. Bör en lokal extension definieras i profilen med fälten <code class="language-plaintext highlighter-rouge">mediaType</code>, <code class="language-plaintext highlighter-rouge">value</code> (base64Binary) och <code class="language-plaintext highlighter-rouge">reference</code> (url), eller ska <code class="language-plaintext highlighter-rouge">DocumentReference</code> användas som alternativ resurs?</td>
       <td>Föreslagen</td>
     </tr>
     <tr>
       <td>CP-002</td>
-      <td><code class="language-plaintext highlighter-rouge">carePlan.participatingCareUnitHSAId</code> mappas till <code class="language-plaintext highlighter-rouge">CarePlan.contributor</code> (Reference(CareTeam|Organization|Patient|Practitioner|RelatedPerson)). Organization är lämpligast för enhetsnivå. Bör logisk referens via identifier tillåtas utan att Organization-resurs skapas?</td>
+      <td><code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.participatingCareUnitHSAId</code> mappas till <code class="language-plaintext highlighter-rouge">CarePlan.contributor</code> (Reference(CareTeam|Organization|Patient|Practitioner|RelatedPerson)). Organization är lämpligast för enhetsnivå. Bör logisk referens via identifier tillåtas utan att Organization-resurs skapas?</td>
       <td>Föreslagen</td>
     </tr>
     <tr>
       <td>CP-003</td>
-      <td>OrgUnit-kontaktdetaljer (<code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>, <code class="language-plaintext highlighter-rouge">orgUnitEmail</code>, <code class="language-plaintext highlighter-rouge">orgUnitAddress</code>, <code class="language-plaintext highlighter-rouge">orgUnitLocation</code>) under <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional.healthcareProfessionalOrgUnit</code> är ej mappade i FHIR CarePlan/PractitionerRole. Ska dessa fält ignoreras eller kräver de skapande av en fullständig Organization-resurs?</td>
-      <td>Föreslagen</td>
+      <td><strong>Sammanslagen med GENERAL-008:</strong> se <a href="mappings.html#organisation">Organisationsenheter, kontaktuppgifter och historik</a>.</td>
+      <td>Öppen</td>
     </tr>
   </tbody>
 </table>
@@ -814,7 +826,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

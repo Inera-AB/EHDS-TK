@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSConditionDiagnosis |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSConditionDiagnosis |
 
  
 Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Ärver HL7 Europe Core Condition (EURIDICE). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSConditionDiagn
   "name" : "SEEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

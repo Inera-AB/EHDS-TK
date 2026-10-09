@@ -222,9 +222,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><a href="#kopplad-remiss-referral" id="markdown-toc-kopplad-remiss-referral">Kopplad remiss (referral)</a></li>
         </ul>
       </li>
+      <li><a href="#mappningstabell--result" id="markdown-toc-mappningstabell--result">Mappningstabell – result</a></li>
       <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a>        <ul>
           <li><a href="#diagnosticreportstatus-från-referraloutcometypecode" id="markdown-toc-diagnosticreportstatus-från-referraloutcometypecode">DiagnosticReport.status (från referralOutcomeTypeCode)</a></li>
-          <li><a href="#titel-prioritering-diagnosticreportextensiontitle" id="markdown-toc-titel-prioritering-diagnosticreportextensiontitle">Titel-prioritering (DiagnosticReport.extension[title])</a></li>
+          <li><a href="#titel" id="markdown-toc-titel">Titel-prioritering (DiagnosticReport.code.text)</a></li>
           <li><a href="#act-poster-och-multimedia-ref-001" id="markdown-toc-act-poster-och-multimedia-ref-001">act-poster och multimedia (REF-001)</a></li>
           <li><a href="#clinicalinformation-sammanslagning" id="markdown-toc-clinicalinformation-sammanslagning">clinicalInformation-sammanslagning</a></li>
           <li><a href="#referral--servicerequest" id="markdown-toc-referral--servicerequest">Referral → ServiceRequest</a></li>
@@ -288,8 +289,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.documentTitle</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.extension[title]</code></td>
-      <td>Dokumenttitel; extension krävs då DiagnosticReport saknar title-fält i R4</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.code.text</code></td>
+      <td>Används om <code class="language-plaintext highlighter-rouge">referralOutcomeBody.referralOutcomeTitle</code> saknas, se <a href="#titel">Titel-prioritering</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.documentTime</code></td>
@@ -298,13 +299,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se <a href="#öppna-frågor">GENERAL-001</a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.patientId.value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.patientId.id</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.subject.identifier.value</code></td>
       <td>Personnummer eller samordningsnummer</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.patientId.system</code></td>
+      <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.patientId.type</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.subject.identifier.system</code></td>
       <td>OID→URI, se tabell nedan</td>
@@ -349,13 +350,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>Telefonnummer till org-enhet; ingen standardiserad plats på DiagnosticReport; kan läggas på Organization.telecom om Organization-instans skapas</td>
+      <td>Telefonnummer till org-enhet; ingen standardiserad plats på DiagnosticReport; kan läggas på Organization.telecom om Organization-instans skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail</code></td>
       <td>0..1</td>
       <td>Ej mappad</td>
-      <td>E-post till org-enhet; kan läggas på Organization.telecom om Organization-instans skapas</td>
+      <td>E-post till org-enhet; kan läggas på Organization.telecom om Organization-instans skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se <a href="mappings.html#organisation">GENERAL-008</a>.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress</code></td>
@@ -400,6 +401,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Namn i klartext – HSA-id räcker för logisk referens</td>
     </tr>
     <tr>
+      <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.approvedForPatient</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.meta.security</code></td>
@@ -410,6 +417,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.encounter.identifier.value</code></td>
       <td>Logisk referens till vårdkontakt</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.nullified</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.nullifiedReason</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
     </tr>
   </tbody>
 </table>
@@ -439,8 +458,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeBody.referralOutcomeTitle</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.extension[title]</code></td>
-      <td>Titelprioritering: referralOutcomeTitle &gt; documentTitle; se <a href="#titel-prioritering-diagnosticreportextensiontitle">Titel-prioritering</a></td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.code.text</code></td>
+      <td>Går före <code class="language-plaintext highlighter-rouge">documentTitle</code>, se <a href="#titel">Titel-prioritering</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeBody.referralOutcomeText</code></td>
@@ -629,6 +648,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Remittentens org-enhet tillhör ursprungsremissen; se <a href="#referral--servicerequest">Referral → ServiceRequest</a></td>
     </tr>
     <tr>
+      <td><code class="language-plaintext highlighter-rouge">referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareUnitHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">referralOutcomeBody.referral.referralAuthor.healthcareProfessionalCareGiverHSAId</code></td>
+      <td>0..0</td>
+      <td>N/A</td>
+      <td>Ej tillämpligt enligt TKB (0..0)</td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">referralOutcomeBody.referral.careContactId</code></td>
       <td>0..1</td>
       <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.encounter.identifier.value</code></td>
@@ -644,6 +675,53 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <blockquote>
   <p>Alla <code class="language-plaintext highlighter-rouge">referralOutcomeBody.referral.*</code>-fält utom <code class="language-plaintext highlighter-rouge">referralId</code> och <code class="language-plaintext highlighter-rouge">careContactId</code> är attribut till ursprungsremissen. En logisk referens via <code class="language-plaintext highlighter-rouge">DiagnosticReport.basedOn</code> → <code class="language-plaintext highlighter-rouge">ServiceRequest.identifier</code> är tillräcklig. Bryggan skapar en minimal stub-ServiceRequest om ingen matchning finns.</p>
 </blockquote>
+
+<hr />
+
+<h2 id="mappningstabell--result">Mappningstabell – result</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.resultCode</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk responskod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.errorCode</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk felkod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.logId</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk spårnings-UUID – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk subkod – hanteras av transportlagret</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.message</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Teknisk felbeskrivning – hanteras av transportlagret</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 
@@ -673,14 +751,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="titel-prioritering-diagnosticreportextensiontitle">Titel-prioritering (DiagnosticReport.extension[title])</h3>
+<h3 id="titel">Titel-prioritering (DiagnosticReport.code.text)</h3>
 
-<p>Titeln sätts enligt följande prioriteringsordning:</p>
+<p>Titeln mappas till <code class="language-plaintext highlighter-rouge">DiagnosticReport.code.text</code>, rapportens namn i klartext. <code class="language-plaintext highlighter-rouge">code.coding</code> är fortfarande den fasta LOINC-koden <code class="language-plaintext highlighter-rouge">11488-4</code> ("Consult note"). Texten sätts enligt följande prioritet:</p>
 
 <ol>
   <li><code class="language-plaintext highlighter-rouge">referralOutcomeBody.referralOutcomeTitle</code> (om satt)</li>
   <li><code class="language-plaintext highlighter-rouge">referralOutcomeHeader.documentTitle</code> (om satt)</li>
-  <li>(inget värde) – extension sätts inte</li>
+  <li>Annars LOINC-kodens display, "Consult note"</li>
 </ol>
 
 <h3 id="act-poster-och-multimedia-ref-001">act-poster och multimedia (REF-001)</h3>
@@ -823,7 +901,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td>PDL-001</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">approvedForPatient</code> (boolean) saknar standardiserad FHIR-motsvarighet.</strong> Fältet finns i headern men <code class="language-plaintext highlighter-rouge">meta.security</code> i FHIR har inget standardkodsystem för detta begrepp. Behöver gemensamt beslut för alla TK:er; se central issue i <a href="mapping-issues.html">mapping-issues</a>.</td>
+      <td><strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPATIENT</code>. Se <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>GENERAL-001</td>
@@ -848,11 +926,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td>REF-003</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit</code> – detaljnivå saknas.</strong> Den logiska modellen specificerar <code class="language-plaintext highlighter-rouge">healthcareProfessionalOrgUnit</code> som ett BackboneElement men specificerar inte sub-fält (orgUnitHSAId, orgUnitName etc.) på denna nivå i FSH-filen. Bryggan bör behandla det som en enkel logisk referens till ursprungsremissens ServiceRequest.requester-org. Verifiera med TKB-förvaltningen om sub-fält finns i faktisk XSD.</td>
+      <td><strong>Stängd – <code class="language-plaintext highlighter-rouge">referralOutcomeBody.referral.referralAuthor.healthcareProfessionalOrgUnit</code>.</strong> Den logiska modellen har nu alla OrgUnitType-fält (orgUnitHSAId, orgUnitName, orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation) enligt XSD:n. Fälten tillhör ursprungsremissen och mappas inte till DiagnosticReport.</td>
     </tr>
     <tr>
       <td>REF-004</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">orgUnitTelecom</code>, <code class="language-plaintext highlighter-rouge">orgUnitEmail</code>, <code class="language-plaintext highlighter-rouge">orgUnitAddress</code>, <code class="language-plaintext highlighter-rouge">orgUnitLocation</code> – ej mappade i PatientSummaryHeader-blocket.</strong> Kontaktuppgifter för org-enheten finns på flera ställen i modellen (header och referral.accountableHealthcareProfessional) men har ingen standardiserad plats i DiagnosticReport-kontexten utan att skapa separata Organization-instanser. Behöver beslut om dessa ska inkluderas alls i bryggan.</td>
+      <td><strong>Sammanslagen med GENERAL-008:</strong> se <a href="mappings.html#organisation">Organisationsenheter, kontaktuppgifter och historik</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -876,7 +954,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Oct 7, 2026 11:49+0000">2026-10-07</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

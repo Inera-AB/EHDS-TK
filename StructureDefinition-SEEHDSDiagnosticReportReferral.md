@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral | *Version*:0.3.3 |
-| Draft as of 2026-10-07 | *Computable Name*:SEEHDSDiagnosticReportReferral |
+| Draft as of 2026-10-09 | *Computable Name*:SEEHDSDiagnosticReportReferral |
 
  
 Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med SEEHDSServiceRequestReferral. 
@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDiagnosticRepo
   "name" : "SEEHDSDiagnosticReportReferral",
   "title" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
   "status" : "draft",
-  "date" : "2026-10-07T11:49:57+00:00",
+  "date" : "2026-10-09T07:52:45+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -115,7 +115,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDiagnosticRepo
     {
       "id" : "DiagnosticReport.code",
       "path" : "DiagnosticReport.code",
-      "short" : "Fast LOINC 11488-4 (Consult note) – referralOutcomeTypeCode avgör DiagnosticReport.status (se mappning)",
+      "short" : "Fast LOINC 11488-4 (Consult note); code.text = referralOutcomeTitle, annars documentTitle",
       "mustSupport" : true
     },
     {
