@@ -30,9 +30,15 @@ class Schemas:
         return (nsmap.get('', tns), qname)
 
 import re as _re
+# Namn som krockar med ärvda element i FHIR (Element.id, Element.extension,
+# BackboneElement.modifierExtension) får prefixet riv; XML-namnet bärs i xml-name.
+RESERVED = {'id', 'extension', 'modifierExtension'}
 def fhir_name(name):
     parts = _re.split(r'[^A-Za-z0-9]+', name)
-    return parts[0] + ''.join(p[:1].upper() + p[1:] for p in parts[1:])
+    n = parts[0] + ''.join(p[:1].upper() + p[1:] for p in parts[1:])
+    if n in RESERVED:
+        n = 'riv' + n[:1].upper() + n[1:]
+    return n
 
 class Node:
     def __init__(self, name, ns, mn, mx, tname, tns_of_type=None):

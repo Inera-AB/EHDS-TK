@@ -108,8 +108,9 @@ Description: """
 * carePlan.carePlanBody.content 0..* BackboneElement "Innehåll i vård- och omsorgsplanen (MultimediaType)" """MultimediaType-element med planens innehåll. Binärdata max 100 KB per TKB."""
 * insert RivNs(carePlan.carePlanBody.content, urn:riv:clinicalprocess:logistics:logistics:3)
 * carePlan.carePlanBody.content obeys getcareplans-content-xor
-* carePlan.carePlanBody.content.id 0..0 SEEHDSRivString "id (ej tillämpligt)" """N/A — content.id är 0..0 per TKB för GetCarePlans."""
-* insert RivNs(carePlan.carePlanBody.content.id, urn:riv:clinicalprocess:logistics:logistics:3)
+* carePlan.carePlanBody.content.rivId 0..0 SEEHDSRivString "id (ej tillämpligt)" """N/A — content.id är 0..0 per TKB för GetCarePlans."""
+* insert RivNs(carePlan.carePlanBody.content.rivId, urn:riv:clinicalprocess:logistics:logistics:3)
+* insert RivXmlName(carePlan.carePlanBody.content.rivId, id)
 * carePlan.carePlanBody.content.mediaType 1..1 SEEHDSRivString "Mediatyp (MIME-typ): text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf" """
     Typ av multimedia (enligt HL7). Följande format för mediatype kan tillämpas i denna version: text/plain text/html image/png image/jpeg image/tiff application/pdf
     Tillåtna värden enligt XSD: application/dicom, application/msword, application/pdf, audio/basic, audio/k32adpcm, audio/mpeg, image/g3fax, image/gif, image/jpeg, image/png, image/tiff, model/vrml, multipart/x-hl7-cda-level1, text/html, text/plain, text/rtf, text/sgml, text/x-hl7-ft, text/xml, video/mpeg, video/x-avi.

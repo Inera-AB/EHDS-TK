@@ -60,11 +60,12 @@ Description: """
 * insert RivNs(careDocumentation.header.sourceSystemId, urn:riv:clinicalprocess:healthcond:description:3)
 * careDocumentation.header.record 1..1 BackboneElement "Uppgift i patientjournal" """Metainformation avseende journaluppgiften (recorden)."""
 * insert RivNs(careDocumentation.header.record, urn:riv:clinicalprocess:healthcond:description:3)
-* careDocumentation.header.record.id 1..1 SEEHDSRivIITypeHealthcondDescription3 "Journaluppgiftens unika identifierare" """
+* careDocumentation.header.record.rivId 1..1 SEEHDSRivIITypeHealthcondDescription3 "Journaluppgiftens unika identifierare" """
     Unik och beständig identifierare för uppgift i patientjournal.
     Ska vara unik — samma id får inte förekomma flera gånger (XSD-regel).
   """
-* insert RivNs(careDocumentation.header.record.id, urn:riv:clinicalprocess:healthcond:description:3)
+* insert RivNs(careDocumentation.header.record.rivId, urn:riv:clinicalprocess:healthcond:description:3)
+* insert RivXmlName(careDocumentation.header.record.rivId, id)
 * careDocumentation.header.record.timestamp 1..1 SEEHDSRivTimeStamp "Skapandetidpunkt" """
     Första tidpunkten då denna journalinformation skapades.
     Format: YYYYMMDDhhmmss. Kardinalitet: Obligatorisk.
@@ -73,8 +74,9 @@ Description: """
 * insert RivNs(careDocumentation.header.record.timestamp, urn:riv:clinicalprocess:healthcond:description:3)
 * careDocumentation.header.author 0..1 BackboneElement "Dokumentationsansvarig" """Hälso- och sjukvårdspersonal som ansvarar för informationen i journaluppgiften."""
 * insert RivNs(careDocumentation.header.author, urn:riv:clinicalprocess:healthcond:description:3)
-* careDocumentation.header.author.id 0..1 SEEHDSRivIITypeHealthcondDescription3 "HSA-id för dokumentationsansvarig" """HSA-id för hälso- och sjukvårdspersonal. Fältet root sätts till OID för HSA-id."""
-* insert RivNs(careDocumentation.header.author.id, urn:riv:clinicalprocess:healthcond:description:3)
+* careDocumentation.header.author.rivId 0..1 SEEHDSRivIITypeHealthcondDescription3 "HSA-id för dokumentationsansvarig" """HSA-id för hälso- och sjukvårdspersonal. Fältet root sätts till OID för HSA-id."""
+* insert RivNs(careDocumentation.header.author.rivId, urn:riv:clinicalprocess:healthcond:description:3)
+* insert RivXmlName(careDocumentation.header.author.rivId, id)
 * careDocumentation.header.author.name 0..1 SEEHDSRivString "Namn på dokumentationsansvarig" """Namn på hälso- och sjukvårdspersonal."""
 * insert RivNs(careDocumentation.header.author.name, urn:riv:clinicalprocess:healthcond:description:3)
 * careDocumentation.header.author.timestamp 1..1 SEEHDSRivTimeStamp "Tidpunkt för informationsskapande" """
@@ -105,8 +107,9 @@ Description: """
 * insert RivNs(careDocumentation.header.author.orgUnit.orgUnitLocation, urn:riv:clinicalprocess:healthcond:description:3)
 * careDocumentation.header.signature 0..1 BackboneElement "Signeringsinformation" """Signeringsinformation för journaluppgiften."""
 * insert RivNs(careDocumentation.header.signature, urn:riv:clinicalprocess:healthcond:description:3)
-* careDocumentation.header.signature.id 0..1 SEEHDSRivIITypeHealthcondDescription3 "HSA-id för signerande person" """HSA-id för hälso- och sjukvårdspersonal som signerat journaluppgiften."""
-* insert RivNs(careDocumentation.header.signature.id, urn:riv:clinicalprocess:healthcond:description:3)
+* careDocumentation.header.signature.rivId 0..1 SEEHDSRivIITypeHealthcondDescription3 "HSA-id för signerande person" """HSA-id för hälso- och sjukvårdspersonal som signerat journaluppgiften."""
+* insert RivNs(careDocumentation.header.signature.rivId, urn:riv:clinicalprocess:healthcond:description:3)
+* insert RivXmlName(careDocumentation.header.signature.rivId, id)
 * careDocumentation.header.signature.name 0..1 SEEHDSRivString "Namn på signerande person" """Namn på hälso- och sjukvårdspersonal som signerat journaluppgiften."""
 * insert RivNs(careDocumentation.header.signature.name, urn:riv:clinicalprocess:healthcond:description:3)
 * careDocumentation.header.signature.timestamp 1..1 SEEHDSRivTimeStamp "Tidpunkt för signering" """

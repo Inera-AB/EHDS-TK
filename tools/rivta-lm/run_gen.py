@@ -78,7 +78,10 @@ for (tname, ns), n in sorted(all_dt.items()):
     dl += [f'Logical: {nm}', f'Id: {nm}', f'Title: "RIV-TA {tname} ({ns.replace("urn:riv:", "")})"',
            f'Description: "RIV-TA-datatypen {tname} i namnrymden {ns}."', f'* insert RivTypeNs({ns})']
     for c in n.children:
-        dl.append(f'* {c.name} {c.card} {gen.leaf_type(c)} "{fsh_str(DTSHORT.get(c.name, c.name))}"')
+        xn = c.xml_name or c.name
+        dl.append(f'* {c.name} {c.card} {gen.leaf_type(c)} "{fsh_str(DTSHORT.get(xn, xn))}"')
+        if c.xml_name:
+            dl.append(f'* insert RivXmlName({c.name}, {c.xml_name})')
     dl.append('')
 open(os.path.join(OUT, 'SEEHDSRivDatatypes.fsh'), 'w', encoding='utf-8').write('\n'.join(dl))
 for k, v in report.items():

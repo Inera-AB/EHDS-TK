@@ -53,10 +53,11 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.header.sourceSystemId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.header.record 1..1 BackboneElement "Poststatus och tidpunkt" """Information avseende uppgiften som tillgängliggörs."""
 * insert RivNs(laboratoryOrderOutcome.header.record, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.header.record.id 1..1 SEEHDSRivIITypeHealthcondActoutcome4 "Postens unika id" """
+* laboratoryOrderOutcome.header.record.rivId 1..1 SEEHDSRivIITypeHealthcondActoutcome4 "Postens unika id" """
     Identifierare för uppgift i patientjournal. Identifieraren ska vara konsistent och beständig mellan olika majorversioner av ett tjänstekontrakt. Detta för att en tjänstekonsument ska kunna ta bort dubbletter från de tjänsteproducenter som producerar via flera majorversioner. Ett exempel på detta är att en vårdkontakt ska ha samma identifierare i majorversion 3 och 4 av ett tjänstekontrakt för att läsa vårdkontakter. Identifieraren ska även vara konsistent och beständig mellan olika tjänstekontrakt. Ett exempel på detta är att samma remiss-identitet ska användas i ett tjänstekontrakt för att läsa remisser, samt tjänstekontraktet som läser remissvar som refererar till den ursprungliga remissen. Motsvarar Laboratoriesvar.id i informationsspecifikationen [R6]
   """
-* insert RivNs(laboratoryOrderOutcome.header.record.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.header.record.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.header.record.rivId, id)
 * laboratoryOrderOutcome.header.record.timestamp 1..1 SEEHDSRivTimeStamp "Tidpunkt för posten" """
     Den tidpunkt då uppgiften skapades i tjänsteproducentens källsystem. Denna information ska vara beständig även om tjänsteproducenten migrerat uppgiften från ett källsystem till en annat. Motsvarar Laboratoriesvar.svarstidpunkt i informationsspecifikationen [R6]
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -66,10 +67,11 @@ Description: """
     Information avseende dokumentation av uppgiften som tillgängliggörs. Notera att den som registrerar uppgiften från annan källa, exempelvis en medicinsk sekreterare som transkriberar ett diktat, inte avses.
   """
 * insert RivNs(laboratoryOrderOutcome.header.author, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.header.author.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Författarens HSA-id" """
+* laboratoryOrderOutcome.header.author.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Författarens HSA-id" """
     HSA-id för hälso- och sjukvårdspersonal som dokumenterat uppgiften som tillgängliggörs. root sätts till OID för HSA-id (1.2.752.129.2.1.4.1) extension sätts till HSA-id
   """
-* insert RivNs(laboratoryOrderOutcome.header.author.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.header.author.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.header.author.rivId, id)
 * laboratoryOrderOutcome.header.author.name 0..1 SEEHDSRivString "Författarens namn" """Namn på hälso- och sjukvårdspersonal. Anges med tilltalsnamn och efternamn."""
 * insert RivNs(laboratoryOrderOutcome.header.author.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.header.author.timestamp 1..1 SEEHDSRivTimeStamp "Tidpunkt för dokumentation" """
@@ -83,20 +85,22 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.header.author.byRole, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.header.author.orgUnit 0..1 BackboneElement "Organisationsenhet" """Den organisation som hälso- och sjukvårdspersonalen är uppdragstagare på."""
 * insert RivNs(laboratoryOrderOutcome.header.author.orgUnit, urn:riv:clinicalprocess:healthcond:actoutcome:4.1)
-* laboratoryOrderOutcome.header.author.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "OrgUnit HSA-id" """
+* laboratoryOrderOutcome.header.author.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "OrgUnit HSA-id" """
     Id för organisationsenheten där vårdpersonen verkat på uppdrag av. Om tillgängligt skall HSAid anges. Notera att det är den verksamhet där utrustningen använts som avses, inte utrustningens ägare. I de fall HSAid saknas kan ett för källsystemet unikt id användas varvid fältet root sätts till källsystemets HSAid och fältet extions sätts till lokalt id i källsystemet. Om HSAid används sätts fältet root till OID för HSA-katalogen (1.2.752.129.2.1.4.1) och fältet extension sätts till HSAid. Om organisationsnummer används skall fältet root sättas till OID för Skatteverkets organisationsnummer (2.5.4.97) och fältet extension sättas till organisationsnumret.
   """
-* insert RivNs(laboratoryOrderOutcome.header.author.orgUnit.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.header.author.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.header.author.orgUnit.rivId, id)
 * laboratoryOrderOutcome.header.author.orgUnit.name 1..1 SEEHDSRivString "OrgUnit namn" """Namn på organisationsenhet. Om tillgängligt skall detta anges."""
 * insert RivNs(laboratoryOrderOutcome.header.author.orgUnit.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.header.signature 0..1 BackboneElement "Signatär" """
     Information avseende signering av laboratoriesvaret. Laboratoriesvaret signeras av en medicinskt ansvarig hälso- och sjukvårdspersonal på den ansvariga enheten. Den ansvariga enheten kan vara den remissmottagande enheten eller den utförande enheten (exempelvis vid patientnära analyser).
   """
 * insert RivNs(laboratoryOrderOutcome.header.signature, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.header.signature.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens HSA-id" """
+* laboratoryOrderOutcome.header.signature.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens HSA-id" """
     HSA-id för hälso- och sjukvårdspersonal som signerat uppgiften som tillgängliggörs. root sätts till OID för HSA-id (1.2.752.129.2.1.4.1) extension sätts till HSA-id
   """
-* insert RivNs(laboratoryOrderOutcome.header.signature.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.header.signature.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.header.signature.rivId, id)
 * laboratoryOrderOutcome.header.signature.name 0..1 SEEHDSRivString "Signatärens namn" """Namn på hälso- och sjukvårdspersonal. Anges med tilltalsnamn och efternamn."""
 * insert RivNs(laboratoryOrderOutcome.header.signature.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.header.signature.timestamp 1..1 SEEHDSRivTimeStamp "Signeringstidpunkt" """
@@ -110,10 +114,11 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.header.signature.byRole, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.header.signature.orgUnit 0..0 BackboneElement "Signatärens organisationsenhet" """Anges ej för Signature"""
 * insert RivNs(laboratoryOrderOutcome.header.signature.orgUnit, urn:riv:clinicalprocess:healthcond:actoutcome:4.1)
-* laboratoryOrderOutcome.header.signature.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "OrgUnit HSA-id" """
+* laboratoryOrderOutcome.header.signature.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "OrgUnit HSA-id" """
     Id för organisationsenheten där vårdpersonen verkat på uppdrag av. Om tillgängligt skall HSAid anges. Notera att det är den verksamhet där utrustningen använts som avses, inte utrustningens ägare. I de fall HSAid saknas kan ett för källsystemet unikt id användas varvid fältet root sätts till källsystemets HSAid och fältet extions sätts till lokalt id i källsystemet. Om HSAid används sätts fältet root till OID för HSA-katalogen (1.2.752.129.2.1.4.1) och fältet extension sätts till HSAid. Om organisationsnummer används skall fältet root sättas till OID för Skatteverkets organisationsnummer (2.5.4.97) och fältet extension sättas till organisationsnumret.
   """
-* insert RivNs(laboratoryOrderOutcome.header.signature.orgUnit.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.header.signature.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.header.signature.orgUnit.rivId, id)
 * laboratoryOrderOutcome.header.signature.orgUnit.name 1..1 SEEHDSRivString "OrgUnit namn" """Namn på organisationsenhet. Om tillgängligt skall detta anges."""
 * insert RivNs(laboratoryOrderOutcome.header.signature.orgUnit.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body 1..1 BackboneElement "Beställnings- och svarsinformation" """Information om laboratoriesvaret."""
@@ -149,10 +154,11 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.body.referral.requestedCareService, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.referral.requester 0..1 BackboneElement "Remittent" """Hälso- och sjukvårdspersonal som skrivit remiss."""
 * insert RivNs(laboratoryOrderOutcome.body.referral.requester, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.body.referral.requester.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Remittentens HSA-id" """
+* laboratoryOrderOutcome.body.referral.requester.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Remittentens HSA-id" """
     HSA-id för hälso- och sjukvårdspersonal. root sätts till OID för HSA-id (1.2.752.129.2.1.4.1) extension sätts till HSA-id
   """
-* insert RivNs(laboratoryOrderOutcome.body.referral.requester.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.body.referral.requester.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.body.referral.requester.rivId, id)
 * laboratoryOrderOutcome.body.referral.requester.name 0..1 SEEHDSRivString "Remittentens namn" """Namn på hälso- och sjukvårdspersonal"""
 * insert RivNs(laboratoryOrderOutcome.body.referral.requester.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.referral.requester.byRole 0..1 SEEHDSRivCVTypeHealthcondActoutcome4 "Remittentens yrkesroll" """
@@ -163,10 +169,11 @@ Description: """
     Den organisation som remittenten är uppdragstagare på. För detta fält är det obligatoriskt att ange både orgUnitType.id samt orgUnitType.name.
   """
 * insert RivNs(laboratoryOrderOutcome.body.referral.requester.orgUnit, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.body.referral.requester.orgUnit.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "OrgUnit HSA-id" """
+* laboratoryOrderOutcome.body.referral.requester.orgUnit.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "OrgUnit HSA-id" """
     Id för organisationsenheten där vårdpersonen verkat på uppdrag av. Om tillgängligt skall HSAid anges. Notera att det är den verksamhet där utrustningen använts som avses, inte utrustningens ägare. I de fall HSAid saknas kan ett för källsystemet unikt id användas varvid fältet root sätts till källsystemets HSAid och fältet extions sätts till lokalt id i källsystemet. Om HSAid används sätts fältet root till OID för HSA-katalogen (1.2.752.129.2.1.4.1) och fältet extension sätts till HSAid. Om organisationsnummer används skall fältet root sättas till OID för Skatteverkets organisationsnummer (2.5.4.97) och fältet extension sättas till organisationsnumret.
   """
-* insert RivNs(laboratoryOrderOutcome.body.referral.requester.orgUnit.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.body.referral.requester.orgUnit.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.body.referral.requester.orgUnit.rivId, id)
 * laboratoryOrderOutcome.body.referral.requester.orgUnit.name 1..1 SEEHDSRivString "OrgUnit namn" """Namn på organisationsenhet. Om tillgängligt skall detta anges."""
 * insert RivNs(laboratoryOrderOutcome.body.referral.requester.orgUnit.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.referral.referralInformation 0..1 BackboneElement "Remissinformation" """Ytterligare information från beställaren."""
@@ -306,10 +313,11 @@ Description: """
     Information avseende signering av en enskild analys. Analysen signeras av hälso- och sjukvårdspersonal på den remissvarsmottagande enheten när den förs in i patientjournalen.
   """
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens id" """
+* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens id" """
     Root sätts till OID för HSA (1.2.752.129.2.1.4.1) Extension sätts till HSA-id för hälso- och sjukvårdspersonal
   """
-* insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.rivId, id)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.name 0..1 SEEHDSRivString "Signatärens namn" """Namn på hälso- och sjukvårdspersonal."""
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.recipientSignature.timestamp 1..1 SEEHDSRivTimeStamp "Signeringstidpunkt" """
@@ -325,10 +333,11 @@ Description: """
     Information avseende signering av en enskild analys. Analysen signeras av den hälso- och sjukvårdspersonal som utför analysen.
   """
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens id" """
+* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens id" """
     Root sätts till OID för HSA (1.2.752.129.2.1.4.1) Extension sätts till HSA-id för hälso- och sjukvårdspersonal
   """
-* insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.rivId, id)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.name 0..1 SEEHDSRivString "Signatärens namn" """Namn på hälso- och sjukvårdspersonal."""
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.performerSignature.timestamp 1..1 SEEHDSRivTimeStamp "Signeringstidpunkt" """
@@ -344,18 +353,20 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.related, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.recipientUnit 1..1 BackboneElement "Mottagande enhet" """Mottagande enhet."""
 * insert RivNs(laboratoryOrderOutcome.body.recipientUnit, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.body.recipientUnit.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Enhetens HSA-id" """Identitet för mottagande enhet."""
-* insert RivNs(laboratoryOrderOutcome.body.recipientUnit.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* laboratoryOrderOutcome.body.recipientUnit.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Enhetens HSA-id" """Identitet för mottagande enhet."""
+* insert RivNs(laboratoryOrderOutcome.body.recipientUnit.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.body.recipientUnit.rivId, id)
 * laboratoryOrderOutcome.body.recipientUnit.name 1..1 SEEHDSRivString "Enhetens namn" """Namn på mottagande enhet."""
 * insert RivNs(laboratoryOrderOutcome.body.recipientUnit.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.recipientSignature 0..1 BackboneElement "Beställarens signatur" """
     Information avseende signering av laboratoriesvaret. Laboratoriesvaret signeras av hälso- och sjukvårdspersonal på den remissvarsmottagande enheten när det förs in i patientjournalen.
   """
 * insert RivNs(laboratoryOrderOutcome.body.recipientSignature, urn:riv:clinicalprocess:healthcond:actoutcome:4)
-* laboratoryOrderOutcome.body.recipientSignature.id 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens id" """
+* laboratoryOrderOutcome.body.recipientSignature.rivId 0..1 SEEHDSRivIITypeHealthcondActoutcome4 "Signatärens id" """
     Root sätts till OID för HSA (1.2.752.129.2.1.4.1) Extension sätts till HSA-id för hälso- och sjukvårdspersonal
   """
-* insert RivNs(laboratoryOrderOutcome.body.recipientSignature.id, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivNs(laboratoryOrderOutcome.body.recipientSignature.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* insert RivXmlName(laboratoryOrderOutcome.body.recipientSignature.rivId, id)
 * laboratoryOrderOutcome.body.recipientSignature.name 0..1 SEEHDSRivString "Signatärens namn" """Namn på hälso- och sjukvårdspersonal"""
 * insert RivNs(laboratoryOrderOutcome.body.recipientSignature.name, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.recipientSignature.timestamp 1..1 SEEHDSRivTimeStamp "Signeringstidpunkt" """
