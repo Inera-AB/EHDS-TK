@@ -30,6 +30,23 @@ De logiska modellerna nedan representerar de informationskrav som definieras av 
 | [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html) | GetObservations | Tillväxtkurva barn |
 | [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) | GetAccessLogForPatient | Logg |
 
+#### Övriga aktiva versioner {#versioner}
+
+Modellerna ovan avser den version som mappningstabellerna utgår från. Övriga aktiva versioner har egna modeller med versionen som suffix, se [Tjänstekontraktsversioner](contract-versions.html).
+
+| Logisk modell | Tjänstekontrakt och version |
+|---|---|
+| [SEEHDSLMAlertInformationV30](StructureDefinition-SEEHDSLMAlertInformationV30.html) | GetAlertInformation 3.0 (beta) |
+| [SEEHDSLMVaccinationHistoryV10](StructureDefinition-SEEHDSLMVaccinationHistoryV10.html) | GetVaccinationHistory 1.0 |
+| [SEEHDSLMCareContactsV20](StructureDefinition-SEEHDSLMCareContactsV20.html) | GetCareContacts 2.0 |
+| [SEEHDSLMCareDocumentationV21](StructureDefinition-SEEHDSLMCareDocumentationV21.html) | GetCareDocumentation 2.1 |
+| [SEEHDSLMLaboratoryOrderOutcomeV41](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.html) | GetLaboratoryOrderOutcome 4.1 |
+| [SEEHDSLMLaboratoryOrderOutcomeV31](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.html) | GetLaboratoryOrderOutcome 3.1 |
+| [SEEHDSLMReferralOutcomeV31](StructureDefinition-SEEHDSLMReferralOutcomeV31.html) | GetReferralOutcome 3.1 |
+| [SEEHDSLMRequestActivitiesV10](StructureDefinition-SEEHDSLMRequestActivitiesV10.html) | GetRequestActivities 1.0 |
+| [SEEHDSLMObservationsV12](StructureDefinition-SEEHDSLMObservationsV12.html) | GetObservations 1.2 |
+| [SEEHDSLMAccessLogV11](StructureDefinition-SEEHDSLMAccessLogV11.html) | GetAccessLogsForPatient 1.1 (ehr:log:querying) |
+
 ---
 
 ### Hur modellerna är byggda {#uppbyggnad}
@@ -44,7 +61,7 @@ Modellerna är genererade från XSD:erna i respektive RIV-TA-domän (bitbucket.o
 | RIV-TA-datatyp: `IIType`, `CVType`, `PersonIdType`, `PQType`, `PQIntervalType`, `TimePeriodType`, `PartialDateType`, `PartialTimeStampType` | Egen logisk modell per namnrymd, t.ex. `SEEHDSRivCVTypeHealthcondDescription2`, eftersom datatypens underelement ärver datatypens namnrymd och fälten skiljer sig mellan domänerna |
 | Enkelt innehåll (`xs:string`, `TimeStampType`, `xs:boolean` …) | En omslagstyp (`SEEHDSRivString`, `SEEHDSRivTimeStamp`, `SEEHDSRivBoolean`, `SEEHDSRivInteger`, `SEEHDSRivDecimal`, `SEEHDSRivDate`, `SEEHDSRivDateTime`, `SEEHDSRivBase64Binary`, `SEEHDSRivAnyURI`) vars `value` har `representation = xmlText`, eftersom RIV-TA lägger värdet som textinnehåll och inte i ett `value`-attribut |
 | Kodlista (`xs:enumeration`) | Omslagstyp med tillåtna värden i definitionen; där IG:n har en värdemängd binds den på `.value` |
-| Elementnamn med understreck, t.ex. `ivl_pq` | FHIR-namn i camelCase (`ivlPq`) och XML-namnet i `xml-name` |
+| Elementnamn med understreck eller inledande versal, t.ex. `ivl_pq` och `ResultCode` | FHIR-namn i camelCase (`ivlPq`, `resultCode`) och XML-namnet i `xml-name` |
 | Elementnamn som krockar med FHIR:s ärvda element: `id`, `extension`, `modifierExtension` | FHIR-namnen `rivId`, `rivExtension` och `rivModifierExtension`, med XML-namnet i `xml-name`. Mappningssidorna använder XSD-namnen, t.ex. `header.record.id` och `id.extension` |
 | Rekursion (`result.related` i GetLaboratoryOrderOutcome) | `contentReference` |
 | `xs:any` (utökningspunkter) | Utelämnas |

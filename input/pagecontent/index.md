@@ -28,6 +28,8 @@ IG:n täcker följande FHIR-grupper och tjänstekontrakt:
 | Tillväxtkurva barn | Tillväxtkurva | GetObservations | Ja (1.2) | Ja (1.2) |
 | Logg | Åtkomstloggar | GetAccessLogForPatient | Nej | Ja (1.1, 2.0) |
 
+Versionerna inom parentes är de aktiva versionerna av tjänstekontraktet. Alla aktiva versioner har logiska modeller och mappning i IG:n. Mappningstabellerna utgår från en version per tjänstekontrakt, och övriga versioner beskrivs som skillnader mot den, se [Tjänstekontraktsversioner](contract-versions.html).
+
 IG:n täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser inte att ersätta källsystemen eller specificera gränssnittet mot NPÖ/1177 Journal på transaktionsnivå.
 
 ---

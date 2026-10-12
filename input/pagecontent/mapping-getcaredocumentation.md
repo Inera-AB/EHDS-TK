@@ -1,9 +1,9 @@
 # GetCareDocumentation – Journalanteckningar
 
-**Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetCareDocumentation v3.0  
+**Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetCareDocumentation v3.0 och v2.1  
 **FHIR-profil:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html)  
-**Logisk modell:** [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html)  
-**Krävs för NPÖ:** Ja (v3.0) | **Krävs för 1177 Journal:** Ja (v3.0)  
+**Logiska modeller:** [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html) (v3.0) | [SEEHDSLMCareDocumentationV21](StructureDefinition-SEEHDSLMCareDocumentationV21.html) (v2.1, se [Övriga aktiva versioner](#version-2-1))  
+**Krävs för NPÖ:** Ja (v2.1, 3.0) | **Krävs för 1177 Journal:** Ja (v2.1, 3.0)  
 **EHDS-koppling:** Journalanteckningar – kan bidra till discharge report eller dokumentationsunderlag; bredare än EHDS discharge reports
 
 ---
@@ -241,6 +241,57 @@ PatientSummaryHeader-baserade TK:er (DES-005):
 
 `Provenance.target` refererar `DocumentReference` via `urn:uuid:{resurs.id}`, och även `Composition` när en sådan skapas (DOC-004, Strategi B).  
 `Provenance.recorded` = `careDocumentation.header.author.timestamp` (ISO 8601). Om `author` saknas används `careDocumentation.header.record.timestamp` som fallback (DOC-002).
+
+---
+
+## Övriga aktiva versioner – GetCareDocumentation 2.1 {#version-2-1}
+
+Mappningstabellerna ovan utgår från GetCareDocumentation 3.0. Version 2.1 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMCareDocumentationV21](StructureDefinition-SEEHDSLMCareDocumentationV21.html) (genererad från `GetCareDocumentationResponder_2.1.xsd` i `riv.clinicalprocess.healthcond.description` 2.1.19 och TKB:n för samma version). Samma profil, [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html), används.
+
+Den största skillnaden är headern: 2.1 har PatientSummaryHeader (`careDocumentationHeader`) i stället för JoL-headern, och anteckningen ligger i ett mellanliggande `clinicalDocumentNote`-element. 2.1 saknar dessutom paginering (`hasMore`).
+
+{% include vdiff-SEEHDSLMCareDocumentationV21.md %}
+
+### Header (careDocumentationHeader) → DocumentReference
+
+| RIVTA-element (2.1) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `careDocumentationHeader.documentId` | 1..1 | `DocumentReference.masterIdentifier` | Motsvarar `header.record.id` i 3.0 |
+| `careDocumentationHeader.sourceSystemHSAid` | 1..1 | `DocumentReference.meta.source` | Observera stavningen `HSAid` i XSD:n. Format: `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
+| `careDocumentationHeader.documentTitle` | 0..1 | `DocumentReference.description` | Används om `clinicalDocumentNoteTitle` saknas |
+| `careDocumentationHeader.documentTime` | 0..1 | `DocumentReference.context.period.start` | Händelsetidpunkten som anteckningen gäller; ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001) |
+| `careDocumentationHeader.patientId.id` | 1..1 | `DocumentReference.subject.identifier.value` | PersonIdType; se [GENERAL-006](mappings.html#patientreferens) |
+| `careDocumentationHeader.patientId.type` | 1..1 | `DocumentReference.subject.identifier.system` | OID→URI enligt tabellen nedan |
+| `careDocumentationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `DocumentReference.date` och `Provenance.recorded` | Motsvarar `header.record.timestamp` och `header.author.timestamp` i 3.0 |
+| `….accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `….accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | |
+| `….accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | |
+| `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | |
+| `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | |
+| `….healthcareProfessionalOrgUnit.orgUnitTelecom/orgUnitEmail/orgUnitAddress/orgUnitLocation` | 0..1 | Ej mappad | Se [GENERAL-008](mappings.html#organisation) |
+| `….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr; motsvarar `accessControlHeader.accountableCareUnit` |
+| `….accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr; motsvarar `accessControlHeader.accountableHealthcareProvider` |
+| `careDocumentationHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DocumentReference.extension[ext-signature-time].valueDateTime` | Motsvarar `header.signature.timestamp` |
+| `careDocumentationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DocumentReference.authenticator` (Reference(PractitionerRole)) | Motsvarar `header.signature.id` |
+| `careDocumentationHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | `PractitionerRole.practitioner.display` | |
+| `careDocumentationHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security` | PDL-kontroll – se PDL-001 |
+| `careDocumentationHeader.careContactId` | 0..1 | `DocumentReference.context.encounter.identifier.value` | Logisk referens till vårdkontakten |
+
+JoL-headerns `blockComparisonTime` och `careProcessId` finns inte i 2.1. Spärrkontrollen görs då mot `authorTime`.
+
+### Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference
+
+| RIVTA-element (2.1) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `clinicalDocumentNote.clinicalDocumentNoteCode` | 0..1 | `DocumentReference.type` | Sträng med samma koder som i 3.0 (`utr`, `atb`, `sam`, `sao`, `ins`, `slu`, `auf`, `sva`, `bes`), kodsystem KV Anteckningstyp. 0..1 i XSD:n eftersom `clinicalDocumentTypeCode` är alternativet, men det är 0..0 för GetCareDocumentation, så koden finns i praktiken alltid |
+| `clinicalDocumentNote.clinicalDocumentNoteTitle` | 0..1 | `DocumentReference.description` | Går före `documentTitle` |
+| `clinicalDocumentNote.clinicalDocumentNoteText` | 0..1 | `DocumentReference.content[0].attachment.data` | Som i 3.0, inklusive DocBook |
+| `clinicalDocumentNote.multimediaEntry.mediaType/value/reference` | – | `DocumentReference.content[0].attachment` | Som i 3.0 |
+| `clinicalDocumentNote.dissentintOpinion` | 0..* | `DocumentReference.extension[dissentingOpinion]` | Heter `dissentintOpinion` i XSD:n för 2.1 (stavfel som måste användas i XML:en). Delfälten mappas som `dissentingOpinion` i 3.0 |
+
+### result
+
+I 2.1 har `result` fälten `resultCode`, `errorCode`, `logId`, `subCode` och `message`, mot `resultCode` och `resultText` i 3.0. Inga av dem mappas.
 
 ---
 

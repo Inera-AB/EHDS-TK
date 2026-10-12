@@ -21,15 +21,28 @@ for cfg in CFG:
     root, lines, dts, header = generate(cfg, MODELS, report)
     all_dt.update({k: v for k, v in dts.items() if k not in all_dt})
     # header: keep invariants and Logical/Id/Title/Description, drop Characteristics and old comment lines
+    if header is None:
+        # Första generering av en annan aktiv kontraktsversion: skapa huvudet.
+        tk = cfg['element'][:-len('Response')]
+        header = [f'Logical: {cfg["model"]}', f'Id: {cfg["model"]}', f'Title: "{tk} {cfg["version"]}"',
+                  'Description: """',
+                  f'  Logisk modell för version {cfg["version"]} av tjänstekontraktet {tk}',
+                  f'  ({root.ns}).',
+                  f'  Mappningen utgår från versionen i {cfg["base"]}. Skillnaderna mot den och hur de',
+                  '  påverkar mappningen beskrivs på tjänstekontraktets mappningssida.',
+                  '"""']
     htxt = '\n'.join(header)
     htxt = re.sub(r'^Characteristics:.*\n?', '', htxt, flags=re.M)
     htxt = re.sub(r'^//.*\n?', '', htxt, flags=re.M).strip('\n')
-    xsdrel = os.path.relpath(cfg['xsd'], X).replace(os.sep, '/').replace('/schemas/interactions/', '/schemas/interactions/')
-    tkbrel = os.path.basename(cfg['tkb'])
+    xsdrel = os.path.relpath(cfg['xsd'], X).replace(os.sep, '/')
+    if '@' in xsdrel.split('/')[0]:  # riv.x@ref/... -> riv.x/... @ ref
+        repo, rest = xsdrel.split('/', 1); r, ref = repo.split('@'); xsdrel = f'{r}/{rest} @ {ref}'
+    tkbrel = os.path.basename(cfg['tkb']) if cfg.get('tkb') else None
     comment = (f'// RIV-TA {cfg["contract"]} – svarsmeddelandet {cfg["element"]}.\n'
                f'// Struktur, namn, ordning, namnrymder och XSD-kardinaliteter är genererade från\n'
                f'// {xsdrel} (bitbucket.org/rivta-domains).\n'
-               f'// Kardinaliteter är verifierade mot {tkbrel}; texter är sammanslagna från tidigare modell och TKB.\n')
+               + (f'// Kardinaliteter är verifierade mot {tkbrel}; texter är sammanslagna från tidigare modell och TKB.\n' if tkbrel else
+                  '// Versionen saknar TKB med fältregler; kardinaliteter enligt XSD, texter från senaste versionens modell.\n'))
     body = '\n'.join(lines)
     txt = comment + '\n' + htxt + f'\n* insert RivRoot({cfg["element"]}, {root.ns})\n' + body + '\n'
     open(os.path.join(OUT, cfg['model'] + '.fsh'), 'w', encoding='utf-8').write(txt)

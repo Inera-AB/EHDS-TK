@@ -30,6 +30,8 @@ Mappningarna spårar varje element i de logiska modellerna till det FHIR-profil-
 | GetObservations | [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.html) | [mapping-getobservations](mapping-getobservations.html) |
 | GetAccessLogForPatient | [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) | [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.html) | [Åtkomstloggar – GetAccessLogForPatient](mapping-getaccesslogforpatient.html#getaccesslogforpatient) |
 
+Tabellen visar modellen för den version som mappningstabellerna utgår från. Övriga aktiva versioner har egna logiska modeller och mappas på samma sidor under "Övriga aktiva versioner", se [Tjänstekontraktsversioner](contract-versions.html).
+
 ---
 
 ### Gemensamt headermönster

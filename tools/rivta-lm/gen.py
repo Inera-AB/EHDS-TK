@@ -19,7 +19,8 @@ def domain_code(ns):
     parts = [p for p in parts if p != 'clinicalprocess']
     out = ''
     for p in parts:
-        out += p.replace('.', '_')[:1].upper() + p.replace('.', '_')[1:]
+        p = p.replace('.', '')  # namnrymdsversion 1.2 -> 12 (FHIR-id tillåter inte understreck)
+        out += p[:1].upper() + p[1:]
     return out
 
 def dt_name(tname, ns): return f'SEEHDSRiv{tname}{domain_code(ns)}'
@@ -83,7 +84,12 @@ def generate(cfg, models_dir, report):
     root, S = xsd_parse(cfg['xsd'], cfg['element'])
     top = root.children[0].name
     tkb = TKBIndex(cfg.get('tkb'), top)
-    header, old, rules = old_parse(os.path.join(models_dir, cfg['model'] + '.fsh'))
+    own = os.path.join(models_dir, cfg['model'] + '.fsh')
+    if os.path.exists(own):
+        header, old, rules = old_parse(own)
+    else:
+        # Första generering av en versionsmodell: texter enbart från versionens egen TKB och XSD.
+        header, old, rules = None, {}, []
     oldl = {k.lower(): (k, v) for k, v in old.items()}
     used_old = set()
     def find_old(p, xp=None):

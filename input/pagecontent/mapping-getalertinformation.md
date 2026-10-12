@@ -1,9 +1,9 @@
 # GetAlertInformation – Uppmärksamhetsinformation
 
-**Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetAlertInformation v2.0  
+**Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetAlertInformation v2.0 och v3.0  
 **FHIR-profiler:** [SEEHDSFlag](StructureDefinition-SEEHDSFlag.html) | [SEEHDSAllergyIntolerance](StructureDefinition-SEEHDSAllergyIntolerance.html)  
-**Logisk modell:** [SEEHDSLMAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.html)  
-**Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v2.0)  
+**Logiska modeller:** [SEEHDSLMAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.html) (v2.0) | [SEEHDSLMAlertInformationV30](StructureDefinition-SEEHDSLMAlertInformationV30.html) (v3.0, se [Övriga aktiva versioner](#version-3-0))  
+**Krävs för NPÖ:** Ja (v2.0, 3.0) | **Krävs för 1177 Journal:** Ja (v2.0, 3.0)  
 **EHDS-koppling:** Patient Summary – Allergier, överkänslighet och varningsinformation
 
 ---
@@ -250,6 +250,84 @@ PDL-styrning i GetAlertInformation utgår från `accountableHealthcareProfession
 
 `Provenance.target` refererar Flag (och eventuell AllergyIntolerance) via `urn:uuid:{resurs.id}`.  
 `Provenance.recorded` = `alertInformationHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).
+
+---
+
+## Övriga aktiva versioner – GetAlertInformation 3.0 {#version-3-0}
+
+Mappningstabellerna ovan utgår från GetAlertInformation 2.0. [Startsidan](index.html) anger även 3.0 för både NPÖ och 1177 Journal. Version 3.0 finns ännu inte som släppt domänversion i `riv.clinicalprocess.healthcond.description`; den finns på grenen `feature-GAI_3.0` (taggarna `GAI3.0_BETA1`–`GAI3.0_BETA3`). Den logiska modellen [SEEHDSLMAlertInformationV30](StructureDefinition-SEEHDSLMAlertInformationV30.html) är genererad från grenens senaste `GetAlertInformationResponder_3.0.xsd` och TKB:n för GetAlertInformation på samma gren. Se VER-001 i [Mappningsissues](mapping-issues.html).
+
+Version 3.0 är en ny meddelandemodell. Den har JoL-header (som GetCareDocumentation 3.0 och GetLaboratoryOrderOutcome 4.2) och en body som följer Socialstyrelsens informationsspecifikation för uppmärksamhetsinformation, med sju typer i stället för sex. Samma profiler används: en [SEEHDSFlag](StructureDefinition-SEEHDSFlag.html) per post och dessutom en [SEEHDSAllergyIntolerance](StructureDefinition-SEEHDSAllergyIntolerance.html) vid överkänslighet.
+
+{% include vdiff-SEEHDSLMAlertInformationV30.md %}
+
+### Typer i 3.0 och motsvarighet i 2.0
+
+`Flag.category[alertType]` härleds i 3.0 från vilket body-element som finns, eftersom `typeOfAlertInformation` inte finns.
+
+| Body-element (3.0) | Motsvarighet i 2.0 | Resurser | `Flag.code` |
+|---|---|---|---|
+| `hypersensitivity` | `hypersensitivity` | Flag + AllergyIntolerance | `hypersensitivity.resource.type` (substans), annars `hypersensitivity.value` |
+| `condition` | `seriousDisease` | Flag | `condition.value` |
+| `activity` | `treatment` | Flag | `activity.code` |
+| `contagion` | `communicableDisease` | Flag | `contagion.value` |
+| `decisionNonstandardCareProcedure` | `restrictionOfCare` | Flag | `decisionNonstandardCareProcedure.code` |
+| `informationNonstandardCareProcedure` | – (ny) | Flag | `informationNonstandardCareProcedure.value` |
+| `unstructuredAlertInformation` | `unstructuredAlertInformation` | Flag | `unstructuredAlertInformation.title` som `code.text` |
+
+### Header (JoL-header) → Flag
+
+| RIVTA-element (3.0) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `header.accessControlHeader.patientId` | 1..1 | `Flag.subject.identifier` | IIType: `root` → `system` (OID→URI), `extension` → `value` |
+| `header.accessControlHeader.accountableHealthcareProvider` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr |
+| `header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr |
+| `header.accessControlHeader.careProcessId` | 0..1 | Ej mappad | Som i GetCareDocumentation 3.0 |
+| `header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används för spärrkontroll |
+| `header.accessControlHeader.approvedForPatient` | 1..1 | `Flag.meta.security` | PDL-kontroll – se PDL-001 |
+| `header.sourceSystemId` | 1..1 | `Flag.meta.source` | IIType; `extension` = källsystemets HSA-id (GENERAL-005) |
+| `header.record.rivId` | 1..1 | `Flag.identifier` | Motsvarar `documentId` i 2.0 |
+| `header.record.timestamp` | 1..1 | `Provenance.recorded` om `author` saknas | |
+| `header.author.rivId` | 0..1 | `Flag.author` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `header.author.name` | 0..1 | `PractitionerRole.practitioner.display` | |
+| `header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Motsvarar `authorTime` i 2.0 |
+| `header.author.byRole` | 0..1 | `PractitionerRole.code` | |
+| `header.author.orgUnit.orgUnitHSAId` / `orgUnitName` | 0..1 | `PractitionerRole.organization` | Övriga kontaktuppgifter mappas inte, se [GENERAL-008](mappings.html#organisation) |
+| `header.signature.timestamp` | 1..1 (om signature) | `Flag.extension[alertAssertedDate]` | Motsvarar `legalAuthenticator.signatureTime` |
+| `header.signature.rivId` | 0..1 | `Flag.extension[alertAsserter].identifier` | Även `AllergyIntolerance.asserter` vid överkänslighet |
+| `header.signature.name`, `header.signature.byRole` | 0..1 | Ej mappad | |
+
+### Body → Flag och AllergyIntolerance
+
+| RIVTA-element (3.0) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `body.specificationVersion` | 1..1 | Ej mappad | Version av Socialstyrelsens informationsspecifikation, t.ex. "5.1" |
+| `*.time.timestamp` / `*.time.timePeriod` | 1..1 | `Flag.period` | Tiden då det observerade förekom eller förväntas förekomma; vid överkänslighet även `AllergyIntolerance.onset[x]` |
+| `*.status` | 1..1 | Ej mappad på Flag; vid överkänslighet `AllergyIntolerance.verificationStatus` | Observationens status enligt informationsspecifikationen (till exempel observerat eller potentiellt). Kräver ConceptMap, se VER-001 |
+| `*.negation` | 1..1 | `Flag.status` och `AllergyIntolerance.verificationStatus` | `true` betyder att förekomsten är utesluten: `Flag.status = inactive` och `verificationStatus = refuted` |
+| `hypersensitivity.value` | 1..1 | `Flag.category[hypersensitivityType]` och `AllergyIntolerance.category` | Motsvarar `typeOfHypersensitivity` |
+| `hypersensitivity.resource.type` | 0..1 | `Flag.code.coding` och `AllergyIntolerance.code.coding` | Substans (t.ex. ATC eller NSL-id för aktiv substans) |
+| `hypersensitivity.resource.productId` | 0..1 | `AllergyIntolerance.reaction.substance.coding` | Produkt, t.ex. NPL-id; motsvarar `pharmaceuticalProductId` |
+| `hypersensitivity.resource.rivId`, `resource.resourceProperty` | – | Ej mappad | |
+| `hypersensitivity.degreeOfSeverity` | 1..1 | `Flag.extension[degreeOfSeverity]` och `AllergyIntolerance.reaction.severity` | Obligatorisk i 3.0 |
+| `hypersensitivity.degreeOfCertainty` | 0..1 | `Flag.extension[degreeOfCertainty]` och `AllergyIntolerance.verificationStatus` | Se ALERT-004 |
+| `hypersensitivity.verificationMethod` | 0..1 | Ej mappad | Verifieringsmetod (t.ex. pricktest); ingen motsvarighet i AllergyIntolerance R4 |
+| `condition.value` | 1..1 | `Flag.code` | Motsvarar `seriousDisease.disease` |
+| `condition.bodyStructure`, `condition.resource` | – | Ej mappad | Lokalisation och resurs (t.ex. implantat) |
+| `activity.code` | 1..1 | `Flag.code` | Motsvarar `treatment.treatmentCode` |
+| `activity.resource.type` | 0..* | `Flag.extension[pharmaceuticalTreatment]` | Motsvarar `pharmaceuticalTreatment` |
+| `activity.bodyStructure` | 0..1 | Ej mappad | |
+| `contagion.value` | 1..1 | `Flag.code` | Motsvarar `communicableDiseaseCode`; smittväg finns inte i 3.0 |
+| `decisionNonstandardCareProcedure.code` | 1..1 | `Flag.code` | Beslut om avvikelse från behandlingsrutin |
+| `decisionNonstandardCareProcedure.description` | 0..1 | `Flag.extension[restrictionOfCareComment]` | Motsvarar `restrictionOfCareComment` |
+| `decisionNonstandardCareProcedure.approval` | 1..1 | `Flag.status` | `false` (beslutet bifalls inte) ger `inactive` |
+| `decisionNonstandardCareProcedure.timestamp` | 1..1 | `Flag.period.start` | Tidpunkt för beslutet |
+| `informationNonstandardCareProcedure.value` | 1..1 | `Flag.code` | Information som kan leda till särskild vårdrutin |
+| `unstructuredAlertInformation.title` | 0..1 | `Flag.code.text` | Motsvarar `unstructuredAlertInformationHeading` |
+| `unstructuredAlertInformation.description` | 0..1 | `Flag.extension[alertInformationComment]` | Motsvarar `unstructuredAlertInformationContent` |
+| `result.resultCode`, `result.resultText` | 1..1 | Ej mappad | Tekniska svarsfält |
+
+Element i 2.0 som saknar motsvarighet i 3.0: `validityTimePeriod`, `obsoleteTime`, `obsoleteComment`, `ascertainedDate`, `verifiedTime`, `alertInformationComment` och `relatedAlertInformation`.
 
 ---
 

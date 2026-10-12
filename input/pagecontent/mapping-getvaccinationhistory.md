@@ -1,8 +1,8 @@
 # GetVaccinationHistory – Vaccinationshistorik
 
-**Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0  
+**Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0 och v1.0  
 **FHIR-profiler:** [SEEHDSImmunization](StructureDefinition-SEEHDSImmunization.html) | [SEEHDSDevice](StructureDefinition-SEEHDSDevice.html) | [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.html)  
-**Logisk modell:** [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html)  
+**Logiska modeller:** [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html) (v2.0) | [SEEHDSLMVaccinationHistoryV10](StructureDefinition-SEEHDSLMVaccinationHistoryV10.html) (v1.0, se [Övriga aktiva versioner](#version-1-0))  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v1.0, 2.0)  
 **EHDS-koppling:** Patient Summary – Vaccinationer
 
@@ -300,6 +300,27 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 
 `Provenance.target` refererar `Immunization` via `urn:uuid:{resurs.id}`.  
 `Provenance.recorded` = `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).
+
+---
+
+## Övriga aktiva versioner – GetVaccinationHistory 1.0 {#version-1-0}
+
+Mappningstabellerna ovan utgår från GetVaccinationHistory 2.0. Version 1.0 är också aktiv för 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMVaccinationHistoryV10](StructureDefinition-SEEHDSLMVaccinationHistoryV10.html) (genererad från `GetVaccinationHistoryResponder_1.0.xsd` i `riv.clinicalprocess.activityprescription.actoutcome` 1.0.2 och tjänstekontraktsbeskrivningen för samma version). Strukturen är i stort sett densamma, så samma profiler används och element som är lika mappas enligt tabellerna ovan.
+
+### Skillnader mot 2.0
+
+{% include vdiff-SEEHDSLMVaccinationHistoryV10.md %}
+
+### Mappning av det som skiljer i 1.0
+
+| RIVTA-element (1.0) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `administrationRecord.dosage.quantity` | 0..1 | `Immunization.doseQuantity` | Motsvarar `dose.quantity` i 2.0 |
+| `administrationRecord.dosage.displayName` | 1..1 (om dosage) | `Immunization.doseQuantity.unit` | Motsvarar `dose.displayName` i 2.0. Fritexten kan innehålla preparat och dosnummer ("Twinrix 1 ml, 1 av 3"); om den inte är en enhet läggs den i stället i `Immunization.note.text` |
+| `administrationRecord.vaccineType` | 0..1 | `Immunization.vaccineCode.coding` | Motsvarar `typeOfVaccine` i 2.0 |
+| `vaccinationMedicalRecordHeader.nullified` | 1..1 | `Immunization.status` | Som i 2.0 (`true` → `entered-in-error`, annars `completed`). XSD:n har 0..1 men TKB:n kräver elementet |
+| `vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 | Ej mappad | XSD:n i 1.0 typar elementet som `xs:boolean`, så ingen orsakstext kan bäras. Se VER-006 i [Mappningsissues](mapping-issues.html) |
+| `additionalPatientInformation`, `result` | – | – | Finns inte i 1.0. Svaret har inget `result`; fel signaleras med SOAP-fel |
 
 ---
 
