@@ -31,7 +31,7 @@ Kodverk för resultatkod i svar från tjänstekontrakten i domänen clinicalproc
   "name" : "ResultCodeCS",
   "title" : "ResultCode",
   "status" : "active",
-  "date" : "2026-10-12T12:51:47+00:00",
+  "date" : "2026-10-12T13:38:08+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -216,6 +216,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#arbetssätt" id="markdown-toc-arbetssätt">Arbetssätt</a></li>
       <li><a href="#oversikt" id="markdown-toc-oversikt">Versioner per tjänstekontrakt</a></li>
       <li><a href="#avvikelser" id="markdown-toc-avvikelser">Avvikelser mellan startsidan och modellerna</a></li>
+      <li><a href="#verifiering" id="markdown-toc-verifiering">Verifiering</a></li>
       <li><a href="#uppdatera" id="markdown-toc-uppdatera">Uppdatera modellerna</a></li>
     </ul>
   </li>
@@ -376,6 +377,67 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
+<h3 id="verifiering">Verifiering</h3>
+
+<p>Modellerna är kontrollerade mot källorna på tre sätt:</p>
+
+<ul>
+  <li><strong>XSD:</strong> Strukturen, namnen och XML-namnrymderna läses direkt ur XSD:n för domänversionen. En omgenerering ger identiska filer.</li>
+  <li><strong>TKB:</strong> Kardinaliteterna är skärpta där TKB:n för samma version är strängare än XSD:n. TKB:n för GetObservations 1.2 har ingen tabell för svaret, så den modellen bygger enbart på XSD:n.</li>
+  <li><strong>tkb-converter:</strong> Sex av modellerna har en motsvarighet i tkb-converter, som tolkar TKB och XSD oberoende av IG:ns skript. Jämförelsen görs med <code class="language-plaintext highlighter-rouge">tools/rivta-lm/tkbcmp.py</code>.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Modell</th>
+      <th>Element som stämmer med tkb-converter</th>
+      <th>Avvikelser</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SEEHDSLMVaccinationHistoryV10</td>
+      <td>105</td>
+      <td><code class="language-plaintext highlighter-rouge">nullified</code> är 1..1 enligt TKB:n, 0..1 i tkb-converter</td>
+    </tr>
+    <tr>
+      <td>SEEHDSLMLaboratoryOrderOutcomeV31</td>
+      <td>76</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>SEEHDSLMCareDocumentationV21</td>
+      <td>48</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>SEEHDSLMCareContactsV20</td>
+      <td>34</td>
+      <td><code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code> är 1..1 enligt TKB:n, 0..1 i tkb-converter</td>
+    </tr>
+    <tr>
+      <td>SEEHDSLMObservationsV12</td>
+      <td>81</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>SEEHDSLMAccessLogV11</td>
+      <td>19</td>
+      <td><code class="language-plaintext highlighter-rouge">result.resultText</code> är 1..1 enligt XSD:n, 0..1 i tkb-converter</td>
+    </tr>
+    <tr>
+      <td>SEEHDSLMLaboratoryOrderOutcomeV41, SEEHDSLMReferralOutcomeV31, SEEHDSLMAlertInformationV30, SEEHDSLMRequestActivitiesV10</td>
+      <td>Finns inte i tkb-converter</td>
+      <td>Kontrollerade mot XSD och TKB</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Mappningarna för de övriga versionerna täcker alla element i modellerna, antingen per element eller per grupp ("mappas som i 3.0", "Ej mappad"). Till skillnad från mappningarna för huvudversionerna är de ännu inte prövade mot riktiga svar.</p>
+
+<hr />
+
 <h3 id="uppdatera">Uppdatera modellerna</h3>
 
 <p>Versionerna och deras domänversioner anges i <code class="language-plaintext highlighter-rouge">tools/rivta-lm/cfg.py</code>. Domänerna checkas ut per tagg eller gren med <code class="language-plaintext highlighter-rouge">git worktree</code> (<code class="language-plaintext highlighter-rouge">&lt;domains&gt;/riv.&lt;domän&gt;@&lt;tagg&gt;</code>), och modellerna och jämförelserna genereras med <code class="language-plaintext highlighter-rouge">run_gen.py</code> och <code class="language-plaintext highlighter-rouge">vdiff.py</code>. Se <code class="language-plaintext highlighter-rouge">tools/rivta-lm/README.md</code>.</p>
@@ -399,7 +461,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 13:38+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -50,7 +50,7 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "name" : "SexCodeVS",
   "title" : "SexCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-12T12:51:47+00:00",
+  "date" : "2026-10-12T13:38:08+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

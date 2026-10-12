@@ -43,7 +43,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationMat
   "name" : "SEEHDSObservationMaternity",
   "title" : "SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)",
   "status" : "draft",
-  "date" : "2026-10-12T12:51:47+00:00",
+  "date" : "2026-10-12T13:38:08+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

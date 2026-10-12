@@ -53,7 +53,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareDocument
   "name" : "SEEHDSLMCareDocumentationV21",
   "title" : "GetCareDocumentation 2.1",
   "status" : "draft",
-  "date" : "2026-10-12T12:51:47+00:00",
+  "date" : "2026-10-12T13:38:08+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -542,6 +542,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareDocument
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getcaredocumentation-body-xor",
+        "severity" : "error",
+        "human" : "Antingen clinicalDocumentNoteText eller multimediaEntry ska anges, ej båda",
+        "expression" : "clinicalDocumentNoteText.exists() xor multimediaEntry.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentationV21"
       }]
     },
     {
@@ -617,6 +624,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareDocument
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getcaredocumentation-multimedia-xor",
+        "severity" : "error",
+        "human" : "Antingen value eller reference ska anges i multimediaEntry, ej båda",
+        "expression" : "value.exists() xor reference.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentationV21"
       }]
     },
     {
