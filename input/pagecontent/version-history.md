@@ -1,26 +1,84 @@
-# Version history
+# Versionshistorik
 
-This page records changes between published versions of this Implementation Guide.
-
----
-
-| Version | Date | Status | Description |
-|---------|------|--------|-------------|
-| 0.3.3 | 2026-06-25 | Draft | Add ig_slug to fhir-portal dispatch payload to fix canonical URL links. |
-| 0.3.2 | 2026-06-25 | Draft | Re-release to correct deployment pipeline and publishing paths. |
-| 0.3.1 | 2026-06-24 | Draft | First published release. |
-| 0.1.0 | 2026-06-16 | Draft | Initial template version. |
+Sidan beskriver ändringarna mellan publicerade versioner av denna Implementation Guide.
 
 ---
 
-### Change log
-
-#### 0.1.0 — *YYYY-MM-DD* (Draft)
-
-- Initial structure established.
-- IneraPatient template profile added.
-- Placeholder pages for workflow, logical models, mappings, and downloads added.
+| Version | Datum | Status | Beskrivning |
+|---------|-------|--------|-------------|
+| 0.4.0 | 2026-10-12 | Draft | Ny konformitetsansats (EURIDICE och EU Core i stället för IPS/EPS), profiler omdöpta till SEEHDS, logiska modeller genererade från RIV-TA-XSD och verifierade mot TKB, och ett antal mappningsbeslut. |
+| 0.3.3 | 2026-06-25 | Draft | `ig_slug` tillagd i dispatch-anropet till fhir-portal, så att länkarna till kanonisk URL blir rätt. |
+| 0.3.2 | 2026-06-25 | Draft | Ompublicering som rättar publiceringsflödet och publiceringssökvägarna. |
+| 0.3.1 | 2026-06-24 | Draft | Första publicerade versionen. |
+| 0.1.0 | 2026-06-16 | Draft | Första mallversionen. |
 
 ---
 
-> **Guidance for authors:** Add a new row to the table and a new section to the change log for each published version. Follow [semantic versioning](https://semver.org/): increment the patch version for corrections, the minor version for backwards-compatible additions, and the major version for breaking changes. Record the publication date, the ballot/release status (Draft, STU, Normative), and a brief summary of what changed.
+### Ändringslogg
+
+#### 0.4.0 — 2026-10-12 (Draft)
+
+Versionen bryter bakåtkompatibiliteten: profiler och logiska modeller har nya namn och kanoniska URL:er, och beroendena är utbytta.
+
+**Konformitetsansats och beroenden**
+
+- IG:n utlovar nu tre saker: TKB-innehåll, en giltig profilering av EURIDICE (`hl7.fhir.eu.health-data-api` 1.0.0-ballot) och svenska konventioner enligt HL7 Sweden. Se [Startsida](index.html).
+- HL7 Europe Core (`hl7.fhir.eu.base` 2.0.0-ballot) är nu ett beroende. Beroendena till IPS (`hl7.fhir.uv.ips`) och EPS (`hl7.fhir.eu.eps`) är borttagna, liksom IPS-spåren i profilerna och i mappningen av GetDiagnosis.
+- Ett nytt avsnitt motiverar valet av FHIR R4: målet är R5, men först behöver de externa beroendena finnas för R5 ([Val av FHIR-version](index.html#fhir-version)).
+
+**Profiler**
+
+- Alla profiler, extensioner och logiska modeller har bytt prefix från `IneraEHDS` till `SEEHDS`.
+- `SEEHDSPractitionerRole` och CapabilityStatement-profilen `SEEHDSResourceAccessProvider` är nya.
+- Auditloggningen följer IHE BALP och mXDE. `SEEHDSAuditEventReadAccessLog` ersätter den tidigare loggprofilen.
+- `SEEHDSCompositionCareDocumentation` och `SEEHDSDocumentReference` har utökats för vårddokumentation.
+- GetDiagnosis: `patientId` mappas som PersonIdType `{id, type}`, och `abatementDateTime` har lagts till.
+
+**Logiska modeller**
+
+- Alla 15 logiska modeller genereras nu från tjänstekontraktens XSD med verktyget `tools/rivta-lm`. Modellerna använder RIV-TA-datatyper, XML-namnrymder och XML-namn, så att de kan användas som källa i FHIR Mapping Language. Se [Logiska modeller](logical-models.html).
+- GetLaboratoryOrderOutcome och GetMedicationHistory är kompletta.
+- GetObservations, GetRequestActivities och GetAccessLogForPatient följer TKB:ns logiska meddelandemodell i stället för en platt struktur.
+- Kardinaliteterna är verifierade mot TKB:ns fältregler. Där TKB är strängare än XSD gäller TKB.
+- XSD-element som heter `id` eller `extension` heter `rivId` respektive `rivExtension` i modellerna, eftersom namnen annars krockar med FHIR:s ärvda element.
+
+**Mappningar och mappningsbeslut**
+
+- Ny undersida om DocBook-narrativ i vårddokumentation.
+- Valideringsfixar från EHDS-bryggan är införda i mappningsspecifikationerna.
+- documentTime-undantaget för `recordedDate` och `Provenance.recorded` är förtydligat, och spärrtiden för GetDiagnosis är beskriven.
+- GENERAL-008, organisationsuppgifter: föreslagen lösning med en contained `Organization` som ögonblicksbild. Uppgifterna `orgUnitTelecom` och `orgUnitEmail` utelämnas normalt när det är en patient som anropar.
+- `documentTitle`:
+  - Imaging och Referral mappar den till `DiagnosticReport.code.text`.
+  - Vaccination mappar den till `Immunization.note`.
+  - Medication undertrycker den (0..0).
+- Mödravård: varje sektion blir en grupperande `Observation`.
+- CareContacts: `careContactOrgUnit.orgUnitHSAId` och `orgUnitName` är 0..1.
+- Lösta mappningsissues är stängda och sammanfogade på [Mappningsissues](mapping-issues.html).
+
+**Bygge och kvalitetssäkring**
+
+- PR-kontrollen (IG Publisher QA) misslyckas nu om IG Publisher avbryter publiceringen. Tidigare kunde en krasch se ut som ett lyckat bygge.
+- Notifieringen till fhir-portal stoppar inte längre publiceringen om den misslyckas.
+
+#### 0.3.3 — 2026-06-25 (Draft)
+
+- `ig_slug` tillagd i dispatch-anropet till fhir-portal.
+
+#### 0.3.2 — 2026-06-25 (Draft)
+
+- Ompublicering med rättat publiceringsflöde och rättade publiceringssökvägar.
+
+#### 0.3.1 — 2026-06-24 (Draft)
+
+- Första publicerade versionen, med profiler, logiska modeller och mappningar för 16 tjänstekontrakt.
+
+#### 0.1.0 — 2026-06-16 (Draft)
+
+- Grundstrukturen etablerad.
+- Mallprofilen IneraPatient tillagd.
+- Platshållarsidor för arbetsflöde, logiska modeller, mappningar och nedladdningar tillagda.
+
+---
+
+> **Vägledning för författare:** Lägg till en rad i tabellen och ett avsnitt i ändringsloggen för varje publicerad version. Följ [semantisk versionshantering](https://semver.org/). Före 1.0.0 räknas minor-versionen upp även för ändringar som bryter bakåtkompatibiliteten. Ange publiceringsdatum, status (Draft, STU eller Normative) och en kort sammanfattning av vad som har ändrats.
