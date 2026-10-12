@@ -61,6 +61,20 @@ Bygg modellerna med SUSHI och läs sedan ett exempelsvar per kontrakt enligt reg
 python3 tools/rivta-lm/xmlsim.py --domains ../rivta-domains --sd fsh-generated/resources
 ```
 
+Modellerna för övriga aktiva versioner kan dessutom jämföras med [tkb-converter](https://github.com/oskthu2/tkb-converter), som tolkar samma domänversioner oberoende av dessa skript:
+
+```sh
+python3 tools/rivta-lm/tkbcmp.py --tkbconv ../tkb-converter
+```
+
+tkb-converter har inte LaboratoryOrderOutcome 4.1, ReferralOutcome 3.1, AlertInformation 3.0 eller RequestActivities 1.0, så de jämförs inte. Tre kardinaliteter skiljer och är förväntade:
+
+| Element | IG:n | tkb-converter | Förklaring |
+|---|---|---|---|
+| `SEEHDSLMVaccinationHistoryV10` `vaccinationMedicalRecordHeader.nullified` | 1..1 | 0..1 | TKB:n skärper XSD:ns 0..1; tkb-converter följer XSD:n |
+| `SEEHDSLMCareContactsV20` `careContactHeader.accountableHealthcareProfessional` | 1..1 | 0..1 | Som ovan (TKB 2.0, Regel 4) |
+| `SEEHDSLMAccessLogV11` `result.resultText` | 1..1 | 0..1 | XSD:n saknar `minOccurs="0"`; tkb-converter avviker |
+
 ## Filer
 
 | Fil | Innehåll |
@@ -70,5 +84,6 @@ python3 tools/rivta-lm/xmlsim.py --domains ../rivta-domains --sd fsh-generated/r
 | `docxtables.py`, `tkb.py` | Läser TKB:ns tabeller "Fältregler" (`../`-, XPath- och typtabeller) |
 | `oldfsh.py` | Läser befintliga FSH-modeller |
 | `gen.py`, `run_gen.py` | Slår ihop och skriver modellerna samt `SEEHDSRivDatatypes.fsh` |
+| `tkbcmp.py` | Oberoende kontroll av versionsmodellerna mot tkb-converter |
 | `vdiff.py` | Jämför versionsmodeller med modellen som mappningen utgår från och skriver tabellerna i `input/includes/vdiff-*.md` |
 | `xmlsim.py` | Läskontroll av exempelsvar mot byggda StructureDefinitions |

@@ -47,6 +47,28 @@ Kartläggningen visade tre fall där versionen som mappningen utgår från inte 
 
 ---
 
+### Verifiering {#verifiering}
+
+Modellerna är kontrollerade mot källorna på tre sätt:
+
+- **XSD:** Strukturen, namnen och XML-namnrymderna läses direkt ur XSD:n för domänversionen. En omgenerering ger identiska filer.
+- **TKB:** Kardinaliteterna är skärpta där TKB:n för samma version är strängare än XSD:n. TKB:n för GetObservations 1.2 har ingen tabell för svaret, så den modellen bygger enbart på XSD:n.
+- **tkb-converter:** Sex av modellerna har en motsvarighet i tkb-converter, som tolkar TKB och XSD oberoende av IG:ns skript. Jämförelsen görs med `tools/rivta-lm/tkbcmp.py`.
+
+| Modell | Element som stämmer med tkb-converter | Avvikelser |
+|---|---|---|
+| SEEHDSLMVaccinationHistoryV10 | 105 | `nullified` är 1..1 enligt TKB:n, 0..1 i tkb-converter |
+| SEEHDSLMLaboratoryOrderOutcomeV31 | 76 | – |
+| SEEHDSLMCareDocumentationV21 | 48 | – |
+| SEEHDSLMCareContactsV20 | 34 | `accountableHealthcareProfessional` är 1..1 enligt TKB:n, 0..1 i tkb-converter |
+| SEEHDSLMObservationsV12 | 81 | – |
+| SEEHDSLMAccessLogV11 | 19 | `result.resultText` är 1..1 enligt XSD:n, 0..1 i tkb-converter |
+| SEEHDSLMLaboratoryOrderOutcomeV41, SEEHDSLMReferralOutcomeV31, SEEHDSLMAlertInformationV30, SEEHDSLMRequestActivitiesV10 | Finns inte i tkb-converter | Kontrollerade mot XSD och TKB |
+
+Mappningarna för de övriga versionerna täcker alla element i modellerna, antingen per element eller per grupp ("mappas som i 3.0", "Ej mappad"). Till skillnad från mappningarna för huvudversionerna är de ännu inte prövade mot riktiga svar.
+
+---
+
 ### Uppdatera modellerna {#uppdatera}
 
 Versionerna och deras domänversioner anges i `tools/rivta-lm/cfg.py`. Domänerna checkas ut per tagg eller gren med `git worktree` (`<domains>/riv.<domän>@<tagg>`), och modellerna och jämförelserna genereras med `run_gen.py` och `vdiff.py`. Se `tools/rivta-lm/README.md`.
