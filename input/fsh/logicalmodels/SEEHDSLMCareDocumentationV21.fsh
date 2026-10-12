@@ -100,6 +100,7 @@ Description: """
 * insert RivNs(careDocumentation.careDocumentationBody, urn:riv:clinicalprocess:healthcond:description:2)
 * careDocumentation.careDocumentationBody.clinicalDocumentNote 1..1 BackboneElement "Dokument/anteckning" """Dokument/anteckning."""
 * insert RivNs(careDocumentation.careDocumentationBody.clinicalDocumentNote, urn:riv:clinicalprocess:healthcond:description:2)
+* careDocumentation.careDocumentationBody.clinicalDocumentNote obeys getcaredocumentation-body-xor
 * careDocumentation.careDocumentationBody.clinicalDocumentNote.clinicalDocumentNoteCode 0..1 SEEHDSRivString "Obligatoriskt om clinicalDocumentTypeCode saknas" """
     Obligatoriskt om clinicalDocumentTypeCode saknas. Får annars inte anges samtidigt med clinicalDocumentTypeCode. Typ av hälso- och sjukvårdsdokument. Kod tas från KV Anteckningstyp (1.2.752.129.2.2.2.11).Tillåtna värden är: utr = Utredning, atb = åtgärd/Behandling, sam = Sammanfattning, sao = Samordning, ins = Inskrivning, slu = Slutanteckning, auf = Anteckning utan fysiskt möte, sva = Slutenvårdsanteckning, bes = Besöksanteckning.
     Tillåtna värden enligt XSD: utr, atb, sam, sao, ins, slu, auf, sva, bes.
@@ -120,6 +121,7 @@ Description: """
     Dokumentets innehåll i form av en multimediaobjekt, i form av antingen ett inbäddat objekt eller en länk till objektet. Obs Man kan välja att skicka dokumentets innehåll i elementet clinicalDocumentNoteText eller i multimediaEntry enligt respektive elements regler, man får inte skicka med båda elementen. Regeln finns med i constraints.xml(schematron) under katalogen test-suites och kan valideras med testsviten.
   """
 * insert RivNs(careDocumentation.careDocumentationBody.clinicalDocumentNote.multimediaEntry, urn:riv:clinicalprocess:healthcond:description:2)
+* careDocumentation.careDocumentationBody.clinicalDocumentNote.multimediaEntry obeys getcaredocumentation-multimedia-xor
 * careDocumentation.careDocumentationBody.clinicalDocumentNote.multimediaEntry.mediaType 1..1 SEEHDSRivString "Typ av multimedia (enligt HL7)" """
     Typ av multimedia (enligt HL7).
     Tillåtna värden enligt XSD: application/dicom, application/msword, application/pdf, audio/basic, audio/k32adpcm, audio/mpeg, image/g3fax, image/gif, image/jpeg, image/png, image/tiff, model/vrml, multipart/x-hl7-cda-level1, text/html, text/plain, text/rtf, text/sgml, text/x-hl7-ft, text/xml, video/mpeg, video/x-avi.
