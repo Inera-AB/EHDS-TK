@@ -2,13 +2,13 @@
 
 ### Domän
 
-Denna Implementation Guide (IG) beskriver den FHIR-funktionalitet som krävs för att informationsförsörja **NPÖ** (Nationell patientöversikt) och **1177 Journal** via Ineras RIVTA-tjänstekontrakt. IG:t definierar FHIR-profiler, logiska modeller och mappningar för 16 tjänstekontrakt fördelade på 6 FHIR-grupper.
+Denna Implementation Guide (IG) beskriver den FHIR-funktionalitet som krävs för att informationsförsörja **NPÖ** (Nationell patientöversikt) och **1177 Journal** via Ineras RIVTA-tjänstekontrakt. IG:n definierar FHIR-profiler, logiska modeller och mappningar för 16 tjänstekontrakt fördelade på 6 FHIR-grupper.
 
 ---
 
 ### Omfång
 
-IG:t täcker följande FHIR-grupper och tjänstekontrakt:
+IG:n täcker följande FHIR-grupper och tjänstekontrakt:
 
 | FHIR-grupp | Informationsmängd | Tjänstekontrakt | NPÖ | 1177 Journal |
 |---|---|---|---|---|
@@ -28,7 +28,7 @@ IG:t täcker följande FHIR-grupper och tjänstekontrakt:
 | Tillväxtkurva barn | Tillväxtkurva | GetObservations | Ja (1.2) | Ja (1.2) |
 | Logg | Åtkomstloggar | GetAccessLogForPatient | Nej | Ja (1.1, 2.0) |
 
-IG:t täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser inte att ersätta källsystemen eller specificera gränssnittet mot NPÖ/1177 Journal på transaktionsnivå.
+IG:n täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser inte att ersätta källsystemen eller specificera gränssnittet mot NPÖ/1177 Journal på transaktionsnivå.
 
 ---
 
@@ -57,13 +57,13 @@ EPS-profiler i `meta.profile`.
 
 ### Syfte
 
-Syftet med IG:t är att:
+Syftet med IG:n är att:
 
 1. Definiera FHIR-profiler (R4) som uppfyller de tre löftena ovan för data från Ineras RIVTA-tjänstekontrakt
 2. Dokumentera mappningen från RIVTA-element till FHIR-element, inklusive OID→URI-översättning, Provenance-mönster och Sparr-hantering
 3. Stödja implementörer som transformerar RIVTA-svar till FHIR-resurser för NPÖ och 1177 Journal
 
-IG:t riktar sig till systemleverantörer, arkitekter och integrationsspecialister inom svensk e-hälsa.
+IG:n riktar sig till systemleverantörer, arkitekter och integrationsspecialister inom svensk e-hälsa.
 
 ---
 
