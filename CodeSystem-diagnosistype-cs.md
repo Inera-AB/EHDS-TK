@@ -1,4 +1,4 @@
-# KV Diagnostyp (fragment) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# KV Diagnostyp (fragment) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp | *Version*:0.3.3 |
-| Active as of 2026-10-09 | *Computable Name*:DiagnosisTypeCS |
+| *Official URL*:https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp | *Version*:0.5.0 |
+| Active as of 2026-10-12 | *Computable Name*:DiagnosisTypeCS |
 
  
 Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n. 
@@ -27,11 +27,11 @@ Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av d
   "resourceType" : "CodeSystem",
   "id" : "diagnosistype-cs",
   "url" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "DiagnosisTypeCS",
   "title" : "KV Diagnostyp (fragment)",
   "status" : "active",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# RIV-TA xs:dateTime - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# RIV-TA xs:dateTime - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,15 +8,15 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDateTime | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSRivDateTime |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDateTime | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivDateTime |
 
  
 Tidpunkt enligt xs:dateTime. Lagras som text eftersom xs:dateTime tillåter tidpunkt utan tidszon. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
 
 **Användningar:**
 
-* Använd denna Logisk modell: [GetAccessLogForPatient](StructureDefinition-SEEHDSLMAccessLog.md)
+* Använd denna Logisk modell: [GetAccessLogForPatient](StructureDefinition-SEEHDSLMAccessLog.md) and [GetAccessLogsForPatient 1.1](StructureDefinition-SEEHDSLMAccessLogV11.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivDateTime)
 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivDateTime.cs
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivDateTime",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDateTime",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivDateTime",
   "title" : "RIV-TA xs:dateTime",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,15 +8,15 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4 | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSRivCVTypeHealthcondActoutcome4 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4 | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivCVTypeHealthcondActoutcome4 |
 
  
 RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4. 
 
 **Användningar:**
 
-* Använd denna Logisk modell: [GetLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md)
+* Använd denna Logisk modell: [GetLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md) and [GetLaboratoryOrderOutcome 4.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4)
 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivCVTypeHealt
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivCVTypeHealthcondActoutcome4",
   "title" : "RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

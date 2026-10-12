@@ -1,4 +1,4 @@
-# GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSLMObservations |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMObservations |
 
  
 Logisk modell för tjänstekontraktet GetObservations (RIV-TA urn:riv:clinicalprocess:healthcond:basic:GetObservationsInteraction:2). Representerar responsens informationsstruktur — en samling observationer som matchar sökkriterier i begäran, inklusive header-information. Meddelandemodellen från avsnitt 5.1 V-MIM — Observationer i TKB motsvarar en observation i svarsmeddelandet. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:GetObservationsResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSLMObservations",
   "title" : "GetObservations",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

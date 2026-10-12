@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3</title>
+    <title>GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"18"}
-    h3,h4,h5,h6{--heading-prefix:"18"}</style>
+    <style type="text/css">h2{--heading-prefix:"19"}
+    h3,h4,h5,h6{--heading-prefix:"19"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.3.3 - ci-build
+            <span style="display:inline-block;">0.5.0 - ci-build
 
 
 
@@ -112,6 +112,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">Mappningar<b class="caret"> </b></a>
               <ul class="dropdown-menu">
                 <li><a href="mappings.html">Översikt</a></li>
+                <li><a href="contract-versions.html">Tjänstekontraktsversioner</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Patientöversikt</li>
                 <li><a href="mapping-getdiagnosis.html">GetDiagnosis – Diagnoser</a></li>
@@ -154,7 +155,7 @@
             <li><a href="search-parameters.html">Sökparametrar</a></li>
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="mapping-issues.html">Issues &amp; Beslut</a></li>
-            <li><a href="version-history.html">Version History</a></li>
+            <li><a href="version-history.html">Versionshistorik</a></li>
           </ul>
         </div>
       </div>
@@ -193,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.3.3) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetRequestActivities – Remisstatus</h2>
   
 
@@ -217,6 +218,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#mappningstabell--body" id="markdown-toc-mappningstabell--body">Mappningstabell – body</a></li>
       <li><a href="#statusmappning-kv-status-vårdbegäran--taskstatus" id="markdown-toc-statusmappning-kv-status-vårdbegäran--taskstatus">Statusmappning (Kv status vårdbegäran → Task.status)</a></li>
       <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+      <li><a href="#version-1-0" id="markdown-toc-version-1-0">Övriga aktiva versioner – GetRequestActivities 1.0</a>        <ul>
+          <li><a href="#mappningstabell--requestactivity-10" id="markdown-toc-mappningstabell--requestactivity-10">Mappningstabell – requestActivity (1.0)</a></li>
+          <li><a href="#statuscode-10--taskstatus" id="markdown-toc-statuscode-10--taskstatus">statusCode 1.0 → Task.status</a></li>
+        </ul>
+      </li>
       <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
       <li><a href="#designbeslut" id="markdown-toc-designbeslut">Designbeslut</a>        <ul>
           <li><a href="#taskidentifier-och-taskfocus-tidigare-req-001" id="markdown-toc-taskidentifier-och-taskfocus-tidigare-req-001">Task.identifier och Task.focus (tidigare REQ-001)</a></li>
@@ -230,9 +236,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="getrequestactivities--remisstatus">GetRequestActivities – Remisstatus</h1>
 
-<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">crm:requeststatus</code> GetRequestActivities v2.0<br />
+<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">crm:requeststatus</code> GetRequestActivities v2.0 och v1.0<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSTask.html">SEEHDSTask</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMRequestActivities.html">SEEHDSLMRequestActivities</a><br />
+<strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMRequestActivities.html">SEEHDSLMRequestActivities</a> (v2.0) | <a href="StructureDefinition-SEEHDSLMRequestActivitiesV10.html">SEEHDSLMRequestActivitiesV10</a> (v1.0, se <a href="#version-1-0">Övriga aktiva versioner</a>)<br />
 <strong>Krävs för NPÖ:</strong> Ja (v2.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v1.0, 2.0)<br />
 <strong>EHDS-koppling:</strong> Stödjande processinformation (ej separat EHDS-huvudkategori)</p>
 
@@ -496,6 +502,289 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
+<h2 id="version-1-0">Övriga aktiva versioner – GetRequestActivities 1.0</h2>
+
+<p>Mappningstabellerna ovan utgår från GetRequestActivities 2.0. Version 1.0 är också aktiv för 1177 Journal och beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMRequestActivitiesV10.html">SEEHDSLMRequestActivitiesV10</a> (genererad från <code class="language-plaintext highlighter-rouge">GetRequestActivitiesResponder_1.0.xsd</code> i <code class="language-plaintext highlighter-rouge">riv.crm.requeststatus</code> 1.0.7 och TKB:n för samma version). Samma profil, <a href="StructureDefinition-SEEHDSTask.html">SEEHDSTask</a>, används.</p>
+
+<p>Version 1.0 har en platt struktur utan header och body. Den saknar åtkomstkontrollfälten i 2.0: det finns ingen vårdgivare, inget <code class="language-plaintext highlighter-rouge">approvedForPatient</code> och ingen identitet för själva statusposten.</p>
+
+<!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMRequestActivitiesV10 mot SEEHDSLMRequestActivities. Redigera inte för hand. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>1.0</th>
+      <th>2.0</th>
+      <th>Skillnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.subjectOfCareId</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.senderRequestId</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receiverRequestId</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.typeOfRequest</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestMedium</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestIssuedByPersonName</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestIssuedByOrganizationalUnitId</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestIssuedByOrganizationalUnitDescription</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receivingPersonName</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receivingOrganizationalUnitId</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receivingOrganizationalUnitDescription</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.careUnit</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.logicalSystemId</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.statusCode</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.eventTime</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.header</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.body</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="mappningstabell--requestactivity-10">Mappningstabell – requestActivity (1.0)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (1.0)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.subjectOfCareId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.for.identifier.value</code></td>
+      <td>Person- eller samordningsnummer (12 tecken). <code class="language-plaintext highlighter-rouge">system</code> sätts från numrets form, se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.senderRequestId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.focus.identifier.value</code></td>
+      <td>Remiss-id hos framställaren; motsvarar <code class="language-plaintext highlighter-rouge">body.request.rivId</code> i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receiverRequestId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.focus.identifier.value</code> om <code class="language-plaintext highlighter-rouge">senderRequestId</code> saknas</td>
+      <td>Remiss-id hos mottagaren. Minst ett av de två id:na finns alltid</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.typeOfRequest</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Lokal kod för framställantyp (1 röntgen, 2 lab, 4 allmän, 10 fysiologi); attribut till remissen, som i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestMedium</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>KV Form av framställan; attribut till remissen, som i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestIssuedByPersonName</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.requester.display</code></td>
+      <td>Remittentens namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestIssuedByOrganizationalUnitId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.requester.identifier</code></td>
+      <td>Remitterande enhets HSA-id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.requestIssuedByOrganizationalUnitDescription</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.requester.display</code></td>
+      <td>Läggs efter remittentens namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receivingPersonName</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Mottagande person; finns inte i 2.0 och Task.owner är enheten</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receivingOrganizationalUnitId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.owner.identifier</code></td>
+      <td>Mottagande enhets HSA-id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.receivingOrganizationalUnitDescription</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.owner.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.careUnit</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td>Inre Sparr – informationsägande vårdenhet. Ingen vårdgivare (Yttre Sparr) finns i 1.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.logicalSystemId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.meta.source</code></td>
+      <td>Källsystemets HSA-id (GENERAL-005)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.statusCode</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.businessStatus</code> och <code class="language-plaintext highlighter-rouge">Task.status</code></td>
+      <td>Lokalt kodverk utan nationell förankring, se tabellen nedan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestActivity.eventTime</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Task.lastModified</code></td>
+      <td>ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001). Används även som <code class="language-plaintext highlighter-rouge">Task.authoredOn</code> och <code class="language-plaintext highlighter-rouge">Provenance.recorded</code>, eftersom 1.0 saknar <code class="language-plaintext highlighter-rouge">record.timestamp</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">Task.identifier</code> sätts inte, eftersom 1.0 saknar identitet för statusposten. Utan <code class="language-plaintext highlighter-rouge">approvedForPatient</code> sätts ingen <code class="language-plaintext highlighter-rouge">meta.security</code>.</p>
+
+<h3 id="statuscode-10--taskstatus">statusCode 1.0 → Task.status</h3>
+
+<p>TKB 1.0 anger klartext för sju av de tillåtna koderna. Övriga koder (10, 40–80, 100–120, 150–170) saknar beskrivning och ger <code class="language-plaintext highlighter-rouge">Task.status = unknown</code>, med koden kvar i <code class="language-plaintext highlighter-rouge">businessStatus</code>. Se VER-005 i <a href="mapping-issues.html">Mappningsissues</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>statusCode</th>
+      <th>Klartext enligt TKB 1.0</th>
+      <th><code class="language-plaintext highlighter-rouge">Task.status</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>20</td>
+      <td>Skickad</td>
+      <td><code class="language-plaintext highlighter-rouge">requested</code></td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>Mottagen</td>
+      <td><code class="language-plaintext highlighter-rouge">received</code></td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>Bedömd</td>
+      <td><code class="language-plaintext highlighter-rouge">accepted</code></td>
+    </tr>
+    <tr>
+      <td>126</td>
+      <td>Preliminärsvar skickat</td>
+      <td><code class="language-plaintext highlighter-rouge">in-progress</code></td>
+    </tr>
+    <tr>
+      <td>130</td>
+      <td>Svar skickat</td>
+      <td><code class="language-plaintext highlighter-rouge">completed</code></td>
+    </tr>
+    <tr>
+      <td>136</td>
+      <td>Preliminärsvar mottaget</td>
+      <td><code class="language-plaintext highlighter-rouge">in-progress</code></td>
+    </tr>
+    <tr>
+      <td>140</td>
+      <td>Svar mottaget</td>
+      <td><code class="language-plaintext highlighter-rouge">completed</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
 <h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
 
 <table>
@@ -558,7 +847,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

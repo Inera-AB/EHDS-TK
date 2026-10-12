@@ -1,4 +1,4 @@
-# RIV-TA DateType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# RIV-TA DateType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,15 +8,15 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDate | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSRivDate |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDate | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivDate |
 
  
 Datum i formatet ÅÅÅÅMMDD. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
 
 **Användningar:**
 
-* Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md), [GetMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.md), [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md), [GetObservations](StructureDefinition-SEEHDSLMObservations.md) and [GetVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md)
+* Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md), [GetMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.md), [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md), [GetObservations](StructureDefinition-SEEHDSLMObservations.md)... Show 3 more, [GetObservations 1.2](StructureDefinition-SEEHDSLMObservationsV12.md), [GetVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md) and [GetVaccinationHistory 1.0](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivDate)
 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivDate.csv), 
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivDate",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDate",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivDate",
   "title" : "RIV-TA DateType",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

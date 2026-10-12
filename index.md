@@ -1,4 +1,4 @@
-# Introduction - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Introduction - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * **Introduction**
@@ -7,20 +7,20 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSTK |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSTK |
 
 # Introduktion
 
 ### Domän
 
-Denna Implementation Guide (IG) beskriver den FHIR-funktionalitet som krävs för att informationsförsörja **NPÖ** (Nationell patientöversikt) och **1177 Journal** via Ineras RIVTA-tjänstekontrakt. IG:t definierar FHIR-profiler, logiska modeller och mappningar för 16 tjänstekontrakt fördelade på 6 FHIR-grupper.
+Denna Implementation Guide (IG) beskriver den FHIR-funktionalitet som krävs för att informationsförsörja **NPÖ** (Nationell patientöversikt) och **1177 Journal** via Ineras RIVTA-tjänstekontrakt. IG:n definierar FHIR-profiler, logiska modeller och mappningar för 16 tjänstekontrakt fördelade på 6 FHIR-grupper.
 
 -------
 
 ### Omfång
 
-IG:t täcker följande FHIR-grupper och tjänstekontrakt:
+IG:n täcker följande FHIR-grupper och tjänstekontrakt:
 
 | | | | | |
 | :--- | :--- | :--- | :--- | :--- |
@@ -40,7 +40,9 @@ IG:t täcker följande FHIR-grupper och tjänstekontrakt:
 | Tillväxtkurva barn | Tillväxtkurva | GetObservations | Ja (1.2) | Ja (1.2) |
 | Logg | Åtkomstloggar | GetAccessLogForPatient | Nej | Ja (1.1, 2.0) |
 
-IG:t täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser inte att ersätta källsystemen eller specificera gränssnittet mot NPÖ/1177 Journal på transaktionsnivå.
+Versionerna inom parentes är de aktiva versionerna av tjänstekontraktet. Alla aktiva versioner har logiska modeller och mappning i IG:n. Mappningstabellerna utgår från en version per tjänstekontrakt, och övriga versioner beskrivs som skillnader mot den, se [Tjänstekontraktsversioner](contract-versions.md).
+
+IG:n täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser inte att ersätta källsystemen eller specificera gränssnittet mot NPÖ/1177 Journal på transaktionsnivå.
 
 -------
 
@@ -64,13 +66,13 @@ IG:n utlovar **inte** följsamhet mot IPS (International Patient Summary) eller 
 
 ### Syfte
 
-Syftet med IG:t är att:
+Syftet med IG:n är att:
 
 1. Definiera FHIR-profiler (R4) som uppfyller de tre löftena ovan för data från Ineras RIVTA-tjänstekontrakt
 1. Dokumentera mappningen från RIVTA-element till FHIR-element, inklusive OID→URI-översättning, Provenance-mönster och Sparr-hantering
 1. Stödja implementörer som transformerar RIVTA-svar till FHIR-resurser för NPÖ och 1177 Journal
 
-IG:t riktar sig till systemleverantörer, arkitekter och integrationsspecialister inom svensk e-hälsa.
+IG:n riktar sig till systemleverantörer, arkitekter och integrationsspecialister inom svensk e-hälsa.
 
 -------
 
@@ -150,11 +152,11 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
   "resourceType" : "ImplementationGuide",
   "id" : "inera.ehds.tk",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.tk",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -1070,6 +1072,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMAccessLogV11.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMAccessLogV11"
+      },
+      "name" : "GetAccessLogsForPatient 1.1",
+      "description" : "Logisk modell för version 1.1 av tjänstekontraktet GetAccessLogsForPatient\n(urn:riv:ehr:log:querying:GetAccessLogsForPatientResponder:1).\nMappningen utgår från versionen i SEEHDSLMAccessLog. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSLMAlertInformation.html"
       }],
       "reference" : {
@@ -1077,6 +1095,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "GetAlertInformation",
       "description" : "Logisk modell för tjänstekontraktet GetAlertInformation\n(RIV-TA urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:2).\nRepresenterar responsens informationsstruktur: uppmärksamhetsinformation för en patient,\nexempelvis överkänslighet mot läkemedel, allvarlig sjukdom, behandling, smittsam sjukdom,\nvårdbegränsning eller historisk varning.\n\nBody-strukturen är XOR – exakt en av hypersensitivity, seriousDisease, treatment,\ncommunicableDisease, restrictionOfCare, unstructuredAlertInformation ska anges per post.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMAlertInformationV30.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMAlertInformationV30"
+      },
+      "name" : "GetAlertInformation 3.0",
+      "description" : "Logisk modell för version 3.0 av tjänstekontraktet GetAlertInformation\n(urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:3).\nMappningen utgår från versionen i SEEHDSLMAlertInformation. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
       "exampleBoolean" : false
     },
     {
@@ -1102,6 +1136,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMCareContactsV20.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMCareContactsV20"
+      },
+      "name" : "GetCareContacts 2.0",
+      "description" : "Logisk modell för version 2.0 av tjänstekontraktet GetCareContacts\n(urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2).\nMappningen utgår från versionen i SEEHDSLMCareContacts. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSLMCareDocumentation.html"
       }],
       "reference" : {
@@ -1109,6 +1159,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "GetCareDocumentation",
       "description" : "Logisk modell för tjänstekontraktet GetCareDocumentation\n(RIV-TA urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3).\nRepresenterar responsens informationsstruktur: journalanteckningar för en patient.\nAnteckningstyper: utredning, åtgärd/behandling, sammanfattning, samordning, inskrivning,\nslutanteckning, anteckning utan fysiskt möte, slutenvårdsanteckning och besöksanteckning.\nMeddelandeformatet är kompatibelt med HL7 v3 CDA v2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMCareDocumentationV21.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMCareDocumentationV21"
+      },
+      "name" : "GetCareDocumentation 2.1",
+      "description" : "Logisk modell för version 2.1 av tjänstekontraktet GetCareDocumentation\n(urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:2).\nMappningen utgår från versionen i SEEHDSLMCareDocumentation. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
       "exampleBoolean" : false
     },
     {
@@ -1198,6 +1264,38 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV31"
+      },
+      "name" : "GetLaboratoryOrderOutcome 3.1",
+      "description" : "Logisk modell för version 3.1 av tjänstekontraktet GetLaboratoryOrderOutcome\n(urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3).\nMappningen utgår från versionen i SEEHDSLMLaboratoryOrderOutcome. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41"
+      },
+      "name" : "GetLaboratoryOrderOutcome 4.1",
+      "description" : "Logisk modell för version 4.1 av tjänstekontraktet GetLaboratoryOrderOutcome\n(urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4).\nMappningen utgår från versionen i SEEHDSLMLaboratoryOrderOutcome. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSLMMaternityMedicalHistory.html"
       }],
       "reference" : {
@@ -1242,6 +1340,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMObservationsV12.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMObservationsV12"
+      },
+      "name" : "GetObservations 1.2",
+      "description" : "Logisk modell för version 1.2 av tjänstekontraktet GetObservations\n(urn:riv:clinicalprocess:healthcond:basic:GetObservationsResponder:1).\nMappningen utgår från versionen i SEEHDSLMObservations. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ConceptMap"
       },
       {
@@ -1278,6 +1392,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMReferralOutcomeV31.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMReferralOutcomeV31"
+      },
+      "name" : "GetReferralOutcome 3.1",
+      "description" : "Logisk modell för version 3.1 av tjänstekontraktet GetReferralOutcome\n(urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcomeResponder:3).\nMappningen utgår från versionen i SEEHDSLMReferralOutcome. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSLMRequestActivities.html"
       }],
       "reference" : {
@@ -1294,6 +1424,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMRequestActivitiesV10.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMRequestActivitiesV10"
+      },
+      "name" : "GetRequestActivities 1.0",
+      "description" : "Logisk modell för version 1.0 av tjänstekontraktet GetRequestActivities\n(urn:riv:crm:requeststatus:GetRequestActivitiesResponder:1).\nMappningen utgår från versionen i SEEHDSLMRequestActivities. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSLMVaccinationHistory.html"
       }],
       "reference" : {
@@ -1301,6 +1447,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "GetVaccinationHistory",
       "description" : "Logisk modell för tjänstekontraktet GetVaccinationHistory\n(RIV-TA urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2).\nRepresenterar responsens informationsstruktur — vaccinationsjournal per patient.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSLMVaccinationHistoryV10.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSLMVaccinationHistoryV10"
+      },
+      "name" : "GetVaccinationHistory 1.0",
+      "description" : "Logisk modell för version 1.0 av tjänstekontraktet GetVaccinationHistory\n(urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1).\nMappningen utgår från versionen i SEEHDSLMVaccinationHistory. Skillnaderna mot den och hur de\npåverkar mappningen beskrivs på tjänstekontraktets mappningssida.",
       "exampleBoolean" : false
     },
     {
@@ -1678,6 +1840,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeActivityprescriptionActoutcome1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome1"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:1)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:1.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivCVTypeActivityprescriptionActoutcome2.html"
       }],
       "reference" : {
@@ -1742,6 +1920,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondBasic1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeHealthcondBasic1"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:healthcond:basic:1)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivCVTypeHealthcondBasic2.html"
       }],
       "reference" : {
@@ -1781,6 +1975,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "RIV-TA CVType (clinicalprocess:healthcond:description:3)",
       "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:description:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivCVTypeLogisticsLogistics2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivCVTypeLogisticsLogistics2"
+      },
+      "name" : "RIV-TA CVType (clinicalprocess:logistics:logistics:2)",
+      "description" : "RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:logistics:logistics:2.",
       "exampleBoolean" : false
     },
     {
@@ -1870,6 +2080,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeActivityprescriptionActoutcome1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeActivityprescriptionActoutcome1"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:activityprescription:actoutcome:1)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:1.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivIITypeActivityprescriptionActoutcome2.html"
       }],
       "reference" : {
@@ -1918,6 +2144,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeHealthcondBasic1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeHealthcondBasic1"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:healthcond:basic:1)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivIITypeHealthcondBasic2.html"
       }],
       "reference" : {
@@ -1925,6 +2167,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "RIV-TA IIType (clinicalprocess:healthcond:basic:2)",
       "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivIITypeHealthcondDescription2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivIITypeHealthcondDescription2"
+      },
+      "name" : "RIV-TA IIType (clinicalprocess:healthcond:description:2)",
+      "description" : "RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:healthcond:description:2.",
       "exampleBoolean" : false
     },
     {
@@ -1998,6 +2256,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPartialTimeStampTypeHealthcondBasic1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic1"
+      },
+      "name" : "RIV-TA PartialTimeStampType (clinicalprocess:healthcond:basic:1)",
+      "description" : "RIV-TA-datatypen PartialTimeStampType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivPartialTimeStampTypeHealthcondBasic2.html"
       }],
       "reference" : {
@@ -2005,6 +2279,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "RIV-TA PartialTimeStampType (clinicalprocess:healthcond:basic:2)",
       "description" : "RIV-TA-datatypen PartialTimeStampType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeActivityprescriptionActoutcome1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPersonIdTypeActivityprescriptionActoutcome1"
+      },
+      "name" : "RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:1)",
+      "description" : "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:1.",
       "exampleBoolean" : false
     },
     {
@@ -2078,6 +2368,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeLogisticsLogistics2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPersonIdTypeLogisticsLogistics2"
+      },
+      "name" : "RIV-TA PersonIdType (clinicalprocess:logistics:logistics:2)",
+      "description" : "RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:logistics:logistics:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivPersonIdTypeLogisticsLogistics3.html"
       }],
       "reference" : {
@@ -2126,6 +2432,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQIntervalTypeHealthcondBasic12.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic12"
+      },
+      "name" : "RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:1.2)",
+      "description" : "RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1.2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivPQIntervalTypeHealthcondBasic2.html"
       }],
       "reference" : {
@@ -2133,6 +2455,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:2)",
       "description" : "RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:basic:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQTypeActivityprescriptionActoutcome1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQTypeActivityprescriptionActoutcome1"
+      },
+      "name" : "RIV-TA PQType (clinicalprocess:activityprescription:actoutcome:1)",
+      "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:activityprescription:actoutcome:1.",
       "exampleBoolean" : false
     },
     {
@@ -2197,6 +2535,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "RIV-TA PQType (clinicalprocess:healthcond:actoutcome:4)",
       "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:actoutcome:4.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivPQTypeHealthcondBasic1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivPQTypeHealthcondBasic1"
+      },
+      "name" : "RIV-TA PQType (clinicalprocess:healthcond:basic:1)",
+      "description" : "RIV-TA-datatypen PQType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1.",
       "exampleBoolean" : false
     },
     {
@@ -2286,6 +2640,22 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       {
         "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondBasic1.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondBasic1"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:healthcond:basic:1)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
         "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription2.html"
       }],
       "reference" : {
@@ -2293,6 +2663,38 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       },
       "name" : "RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2)",
       "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:description:2.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription3.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondDescription3"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:healthcond:description:3)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:healthcond:description:3.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:logical"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "StructureDefinition-SEEHDSRivTimePeriodTypeLogisticsLogistics2.html"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/SEEHDSRivTimePeriodTypeLogisticsLogistics2"
+      },
+      "name" : "RIV-TA TimePeriodType (clinicalprocess:logistics:logistics:2)",
+      "description" : "RIV-TA-datatypen TimePeriodType i namnrymden urn:riv:clinicalprocess:logistics:logistics:2.",
       "exampleBoolean" : false
     },
     {
@@ -3174,6 +3576,15 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "contract-versions.html"
+        }],
+        "nameUrl" : "contract-versions.html",
+        "title" : "Tjänstekontraktsversioner",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
           "valueUrl" : "mapping-getdiagnosis.html"
         }],
         "nameUrl" : "mapping-getdiagnosis.html",
@@ -3375,7 +3786,7 @@ Beskrivning av krav på konformans och vägledning för Ineras FHIR-IGs finns p�
           "valueUrl" : "version-history.html"
         }],
         "nameUrl" : "version-history.html",
-        "title" : "Version History",
+        "title" : "Versionshistorik",
         "generation" : "markdown"
       }]
     },

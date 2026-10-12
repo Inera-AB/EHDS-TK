@@ -10,11 +10,11 @@
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivCVTypeActivityprescriptionActoutcome2",
   "title" : "RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:2)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

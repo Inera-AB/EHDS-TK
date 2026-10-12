@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3</title>
+    <title>GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"19"}
-    h3,h4,h5,h6{--heading-prefix:"19"}</style>
+    <style type="text/css">h2{--heading-prefix:"20"}
+    h3,h4,h5,h6{--heading-prefix:"20"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.3.3 - ci-build
+            <span style="display:inline-block;">0.5.0 - ci-build
 
 
 
@@ -112,6 +112,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">Mappningar<b class="caret"> </b></a>
               <ul class="dropdown-menu">
                 <li><a href="mappings.html">Översikt</a></li>
+                <li><a href="contract-versions.html">Tjänstekontraktsversioner</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Patientöversikt</li>
                 <li><a href="mapping-getdiagnosis.html">GetDiagnosis – Diagnoser</a></li>
@@ -154,7 +155,7 @@
             <li><a href="search-parameters.html">Sökparametrar</a></li>
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="mapping-issues.html">Issues &amp; Beslut</a></li>
-            <li><a href="version-history.html">Version History</a></li>
+            <li><a href="version-history.html">Versionshistorik</a></li>
           </ul>
         </div>
       </div>
@@ -193,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.3.3) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetObservations – Tillväxtkurva</h2>
   
 
@@ -242,6 +243,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       </li>
       <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
       <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+      <li><a href="#version-1-2" id="markdown-toc-version-1-2">Övriga aktiva versioner – GetObservations 1.2</a>        <ul>
+          <li><a href="#gruppnivå-observationgroup--varje-observation-i-gruppen" id="markdown-toc-gruppnivå-observationgroup--varje-observation-i-gruppen">Gruppnivå (observationGroup) → varje Observation i gruppen</a></li>
+          <li><a href="#observationsnivå-observationgroupobservation--observation" id="markdown-toc-observationsnivå-observationgroupobservation--observation">Observationsnivå (observationGroup.observation) → Observation</a></li>
+        </ul>
+      </li>
       <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
       <li><a href="#ioö-tillväxtkurva-för-barn-och-ungdom-v3" id="markdown-toc-ioö-tillväxtkurva-för-barn-och-ungdom-v3">IoÖ Tillväxtkurva för barn och ungdom v3</a>        <ul>
           <li><a href="#kodtabell--ioö-snomed-ct-koder--fhir" id="markdown-toc-kodtabell--ioö-snomed-ct-koder--fhir">Kodtabell – IoÖ SNOMED CT-koder → FHIR</a></li>
@@ -258,9 +264,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="getobservations--kliniska-observationer-och-mätvärden">GetObservations – Kliniska observationer och mätvärden</h1>
 
-<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:basic</code> GetObservations v2.0<br />
+<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:basic</code> GetObservations v2.0 och v1.2<br />
 <strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSObservationBase.html">SEEHDSObservationBase</a> (generell) | <a href="StructureDefinition-SEEHDSObservationGrowth.html">SEEHDSObservationGrowth</a> (tillväxtkurva)<br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMObservations.html">SEEHDSLMObservations</a><br />
+<strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMObservations.html">SEEHDSLMObservations</a> (v2.0) | <a href="StructureDefinition-SEEHDSLMObservationsV12.html">SEEHDSLMObservationsV12</a> (v1.2, se <a href="#version-1-2">Övriga aktiva versioner</a>)<br />
 <strong>Krävs för NPÖ:</strong> Ja (v1.2) | <strong>Krävs för 1177 Journal:</strong> Ja (v1.2)<br />
 <strong>EHDS-koppling:</strong> Kliniska mätresultat och tillväxtdata<br />
 <strong>IoÖ:</strong> Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)</p>
@@ -1271,6 +1277,265 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <hr />
 
+<h2 id="version-1-2">Övriga aktiva versioner – GetObservations 1.2</h2>
+
+<p>Mappningstabellerna ovan utgår från GetObservations 2.0, som <a href="StructureDefinition-SEEHDSLMObservations.html">SEEHDSLMObservations</a> bygger på. <a href="index.html">Startsidan</a> anger 1.2 som aktiv version för både NPÖ och 1177 Journal, och 2.0 finns hittills bara som release candidate (<code class="language-plaintext highlighter-rouge">2.0_RC1</code>–<code class="language-plaintext highlighter-rouge">2.0_RC4</code>) i <code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.basic</code>. Version 1.2 beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMObservationsV12.html">SEEHDSLMObservationsV12</a> (genererad från <code class="language-plaintext highlighter-rouge">GetObservationsResponder_1.2.xsd</code> i domänversion 1.2.3). Se VER-003 i <a href="mapping-issues.html">Mappningsissues</a>.</p>
+
+<p>Version 1.2 har en annan meddelandemodell: observationerna ligger i grupper (<code class="language-plaintext highlighter-rouge">observationGroup</code>) som delar patient, utförare, signering och källsystem, och varje grupp innehåller en eller flera <code class="language-plaintext highlighter-rouge">observation</code>. Det finns ingen JoL-header. Samma profiler används: <a href="StructureDefinition-SEEHDSObservationBase.html">SEEHDSObservationBase</a> och, för tillväxtmätningar enligt IoÖ, <a href="StructureDefinition-SEEHDSObservationGrowth.html">SEEHDSObservationGrowth</a>. Det blir en Observation per <code class="language-plaintext highlighter-rouge">observation</code>; gruppens fält kopieras till varje Observation i gruppen.</p>
+
+<!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMObservationsV12 mot SEEHDSLMObservations. Redigera inte för hand. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>1.2</th>
+      <th>2.0</th>
+      <th>Skillnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup</code></td>
+      <td>0..* Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 1.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observations</code></td>
+      <td>–</td>
+      <td>0..* Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="gruppnivå-observationgroup--varje-observation-i-gruppen">Gruppnivå (observationGroup) → varje Observation i gruppen</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (1.2)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.patient.rivId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.subject.identifier</code></td>
+      <td>IIType: <code class="language-plaintext highlighter-rouge">root</code> → <code class="language-plaintext highlighter-rouge">system</code> (OID→URI), <code class="language-plaintext highlighter-rouge">extension</code> → <code class="language-plaintext highlighter-rouge">value</code>; se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.patient.name</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.subject.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.patient.dateOfBirth</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Patient.birthDate</code> (via <code class="language-plaintext highlighter-rouge">Observation.subject</code>)</td>
+      <td>Om en Patient-resurs skapas</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.patient.gender</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Patient.gender</code> (via <code class="language-plaintext highlighter-rouge">Observation.subject</code>)</td>
+      <td>KV Kön → AdministrativeGender, samma ConceptMap som CC-003</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.rivId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.performer</code> (Reference(PractitionerRole)).identifier</td>
+      <td>Utförarens befattnings-id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.code</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
+      <td>Befattning</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.person.rivId</code> / <code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.identifier</code> / <code class="language-plaintext highlighter-rouge">.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.careUnit.rivId</code></td>
+      <td>1..1 (om careUnit)</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code> och <code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier</code></td>
+      <td>Inre Sparr – vårdenhet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.careUnit.name</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.careUnit.careGiver.rivId</code></td>
+      <td>1..1 (om careUnit)</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
+      <td>Yttre Sparr – vårdgivare</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.legalAuthenticator.time</code></td>
+      <td>1..1 (om legalAuthenticator)</td>
+      <td>Ej mappad</td>
+      <td>Signeringstid; samma hantering som <code class="language-plaintext highlighter-rouge">header.signature</code> i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.legalAuthenticator.rivId</code> / <code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Som <code class="language-plaintext highlighter-rouge">header.signature</code> i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.additionalParticipant</code></td>
+      <td>0..*</td>
+      <td>Ej mappad</td>
+      <td>Övriga deltagare (person, organisation, enhet, plats); samma fråga som OBS-006 för <code class="language-plaintext highlighter-rouge">participation</code> i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observationGroup.sourceSystem.rivId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.meta.source</code></td>
+      <td>Källsystemets HSA-id (GENERAL-005)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="observationsnivå-observationgroupobservation--observation">Observationsnivå (observationGroup.observation) → Observation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (1.2)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.rivId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.identifier</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">observationBody.rivId</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.type</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.code</code></td>
+      <td>Obligatorisk i 1.2. IoÖ:s SNOMED CT-koder och kodtabellen ovan gäller på samma sätt</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.status</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.status</code></td>
+      <td>Samma kodverk och ConceptMap som i 2.0 (OBS-003); saknas värdet blir det <code class="language-plaintext highlighter-rouge">unknown</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.time.start</code> / <code class="language-plaintext highlighter-rouge">time.end</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.effectivePeriod</code>, eller <code class="language-plaintext highlighter-rouge">effectiveDateTime</code> när start och end är lika</td>
+      <td>Variabel precision som <code class="language-plaintext highlighter-rouge">time.ts</code> i 2.0 (OBS-001)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.method</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.method</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">scale</code> i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.value.pq</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.valueQuantity</code></td>
+      <td>Tillväxtmätningar enligt IoÖ</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.value.ts</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.valueDateTime</code> / <code class="language-plaintext highlighter-rouge">valueString</code></td>
+      <td>Som i 2.0 (OBS-001)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.value.ivlTs</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.valuePeriod</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.value.cv</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.valueCodeableConcept</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.value.ivlPq</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.valueRange</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.targetSite</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.bodySite</code></td>
+      <td>Bara en plats i 1.2, så OBS-004 uppstår inte</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.valueNegation</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.dataAbsentReason</code></td>
+      <td>Som i 2.0 (OBS-002)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.description</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.note.text</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.approvedForPatient</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.meta.security</code></td>
+      <td>Per observation i 1.2; PDL-kontroll – se PDL-001</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.registrationTime</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.issued</code></td>
+      <td>Valfri i 1.2 (obligatorisk i 2.0)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.relation.code</code></td>
+      <td>1..1 (om relation)</td>
+      <td>Som <code class="language-plaintext highlighter-rouge">relation.type</code> i 2.0</td>
+      <td>Se OBS-005</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.relation.referredInformation.rivId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.hasMember</code> / <code class="language-plaintext highlighter-rouge">derivedFrom</code> (identifier)</td>
+      <td>Beroende på relationstyp, OBS-005</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">observation.relation.referredInformation.time</code>, <code class="language-plaintext highlighter-rouge">type</code>, <code class="language-plaintext highlighter-rouge">informationOwner</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Element i 2.0 som saknar motsvarighet i 1.2 är bland annat <code class="language-plaintext highlighter-rouge">observationBody.value.st</code>, <code class="language-plaintext highlighter-rouge">value.int</code>, <code class="language-plaintext highlighter-rouge">targetSite</code> med flera värden, <code class="language-plaintext highlighter-rouge">participation</code> och JoL-headerns <code class="language-plaintext highlighter-rouge">origin</code>, <code class="language-plaintext highlighter-rouge">originalAuthor</code>, <code class="language-plaintext highlighter-rouge">modified</code> och <code class="language-plaintext highlighter-rouge">cancellation</code>.</p>
+
+<hr />
+
 <h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
 
 <table>
@@ -1533,7 +1798,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

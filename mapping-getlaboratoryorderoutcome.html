@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetLaboratoryOrderOutcome – Provsvar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3</title>
+    <title>GetLaboratoryOrderOutcome – Provsvar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"15"}
-    h3,h4,h5,h6{--heading-prefix:"15"}</style>
+    <style type="text/css">h2{--heading-prefix:"16"}
+    h3,h4,h5,h6{--heading-prefix:"16"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.3.3 - ci-build
+            <span style="display:inline-block;">0.5.0 - ci-build
 
 
 
@@ -112,6 +112,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">Mappningar<b class="caret"> </b></a>
               <ul class="dropdown-menu">
                 <li><a href="mappings.html">Översikt</a></li>
+                <li><a href="contract-versions.html">Tjänstekontraktsversioner</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Patientöversikt</li>
                 <li><a href="mapping-getdiagnosis.html">GetDiagnosis – Diagnoser</a></li>
@@ -154,7 +155,7 @@
             <li><a href="search-parameters.html">Sökparametrar</a></li>
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="mapping-issues.html">Issues &amp; Beslut</a></li>
-            <li><a href="version-history.html">Version History</a></li>
+            <li><a href="version-history.html">Versionshistorik</a></li>
           </ul>
         </div>
       </div>
@@ -193,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.3.3) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetLaboratoryOrderOutcome – Provsvar</h2>
   
 
@@ -243,6 +244,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       </li>
       <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
       <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+      <li><a href="#versioner" id="markdown-toc-versioner">Övriga aktiva versioner</a>        <ul>
+          <li><a href="#version-4-1" id="markdown-toc-version-4-1">GetLaboratoryOrderOutcome 4.1</a></li>
+          <li><a href="#version-3-1" id="markdown-toc-version-3-1">GetLaboratoryOrderOutcome 3.1</a></li>
+        </ul>
+      </li>
       <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
       <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
       <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
@@ -253,10 +259,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="getlaboratoryorderoutcome--provsvar">GetLaboratoryOrderOutcome – Provsvar</h1>
 
-<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetLaboratoryOrderOutcome v4.2<br />
+<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetLaboratoryOrderOutcome v4.2, v4.1 och v3.1<br />
 <strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSDiagnosticReportLab.html">SEEHDSDiagnosticReportLab</a> | <a href="StructureDefinition-SEEHDSObservationLab.html">SEEHDSObservationLab</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html">SEEHDSLMLaboratoryOrderOutcome</a><br />
-<strong>Krävs för NPÖ:</strong> Ja (v4.2) | <strong>Krävs för 1177 Journal:</strong> Ja (v4.2)<br />
+<strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html">SEEHDSLMLaboratoryOrderOutcome</a> (v4.2) | <a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.html">SEEHDSLMLaboratoryOrderOutcomeV41</a> (v4.1, se <a href="#version-4-1">Övriga aktiva versioner</a>) | <a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.html">SEEHDSLMLaboratoryOrderOutcomeV31</a> (v3.1, se <a href="#version-3-1">Övriga aktiva versioner</a>)<br />
+<strong>Krävs för NPÖ:</strong> Ja (v3.1, 4.1) | <strong>Krävs för 1177 Journal:</strong> Ja (v3.1, 4.2)<br />
 <strong>EHDS-koppling:</strong> Medical test results – laboratorie- och diagnostiska resultat</p>
 
 <hr />
@@ -1245,6 +1251,671 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
 
 <hr />
 
+<h2 id="versioner">Övriga aktiva versioner</h2>
+
+<p>Mappningstabellerna ovan utgår från GetLaboratoryOrderOutcome 4.2. Enligt <a href="index.html">startsidan</a> är även 4.1 (NPÖ) och 3.1 (NPÖ och 1177 Journal) aktiva. Båda har egna logiska modeller och mappas till samma profiler, <a href="StructureDefinition-SEEHDSDiagnosticReportLab.html">SEEHDSDiagnosticReportLab</a> och <a href="StructureDefinition-SEEHDSObservationLab.html">SEEHDSObservationLab</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Logisk modell</th>
+      <th>Källa</th>
+      <th>Skillnad mot 4.2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4.1</td>
+      <td><a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.html">SEEHDSLMLaboratoryOrderOutcomeV41</a></td>
+      <td><code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.actoutcome</code> 4.1.3</td>
+      <td>Samma struktur; några kardinaliteter och <code class="language-plaintext highlighter-rouge">referralInformation</code> skiljer</td>
+    </tr>
+    <tr>
+      <td>3.1</td>
+      <td><a href="StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.html">SEEHDSLMLaboratoryOrderOutcomeV31</a></td>
+      <td><code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.actoutcome</code> 3.1.10</td>
+      <td>Annan meddelandemodell (PatientSummaryHeader och platt analyslista)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="version-4-1">GetLaboratoryOrderOutcome 4.1</h3>
+
+<!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMLaboratoryOrderOutcomeV41 mot SEEHDSLMLaboratoryOrderOutcome. Redigera inte för hand. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>4.1</th>
+      <th>4.2</th>
+      <th>Skillnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.referral.referralInformation</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header.author.orgUnit.rivId</code></td>
+      <td>1..1 IIType</td>
+      <td>0..1 IIType</td>
+      <td>Ändrad kardinalitet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header.signature.orgUnit.rivId</code></td>
+      <td>1..1 IIType</td>
+      <td>0..1 IIType</td>
+      <td>Ändrad kardinalitet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.referral.requester</code></td>
+      <td>1..1 Backbone</td>
+      <td>0..1 Backbone</td>
+      <td>Ändrad kardinalitet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.referral.requester.name</code></td>
+      <td>1..1 String</td>
+      <td>0..1 String</td>
+      <td>Ändrad kardinalitet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.referral.requester.orgUnit.rivId</code></td>
+      <td>1..1 IIType</td>
+      <td>0..1 IIType</td>
+      <td>Ändrad kardinalitet</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Alla element i 4.1 finns i 4.2 med samma namn och mappas enligt tabellerna ovan. Skillnaderna påverkar inte mappningen:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">header.author.orgUnit.id</code>, <code class="language-plaintext highlighter-rouge">header.signature.orgUnit.id</code>, <code class="language-plaintext highlighter-rouge">body.referral.requester</code> med <code class="language-plaintext highlighter-rouge">name</code> och <code class="language-plaintext highlighter-rouge">orgUnit.id</code> är obligatoriska i 4.1. Målelementen är desamma.</li>
+  <li><code class="language-plaintext highlighter-rouge">body.referral.referralInformation</code> finns inte i 4.1. De element som då saknas är ändå inte mappade till DiagnosticReport.</li>
+</ul>
+
+<h3 id="version-3-1">GetLaboratoryOrderOutcome 3.1</h3>
+
+<p>Version 3.1 har PatientSummaryHeader (<code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader</code>), en body med svarets typ, disciplin, utlåtande och ansvarig labbläkare, och en platt lista <code class="language-plaintext highlighter-rouge">analysis</code> med ett resultat per analys. Det finns ingen gruppering i <code class="language-plaintext highlighter-rouge">groupOfAnalyses</code>, inget strukturerat provmaterial och inget kodat resultatvärde.</p>
+
+<!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMLaboratoryOrderOutcomeV31 mot SEEHDSLMLaboratoryOrderOutcome. Redigera inte för hand. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>3.1</th>
+      <th>4.2</th>
+      <th>Skillnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.documentId</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.sourceSystemHSAId</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.documentTime</code></td>
+      <td>1..1 TimeStamp</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.patientId</code></td>
+      <td>1..1 PersonIdType</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.accountableHealthcareProfessional</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.legalAuthenticator</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.approvedForPatient</code></td>
+      <td>1..1 Boolean</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader.careContactId</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.resultType</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.registrationTime</code></td>
+      <td>1..1 TimeStamp</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.discipline</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.resultReport</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.resultComment</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.accountableHealthcareProfessional</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.analysis</code></td>
+      <td>0..* Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody.order</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header.accessControlHeader</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header.sourceSystemId</code></td>
+      <td>–</td>
+      <td>1..1 IIType</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header.record</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header.author</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header.signature</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.identifier</code></td>
+      <td>–</td>
+      <td>1..1 IIType</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.laboratoryIdentifier</code></td>
+      <td>–</td>
+      <td>0..1 IIType</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.type</code></td>
+      <td>–</td>
+      <td>1..1 CVType</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.text</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.referral</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.groupOfAnalyses</code></td>
+      <td>–</td>
+      <td>0..* Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.recipientUnit</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.recipientSignature</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body.contactInformation</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeHeader</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.header</code></td>
+      <td>Bytt namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.laboratoryOrderOutcomeBody</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome.body</code></td>
+      <td>Bytt namn</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Resurshierarkin är densamma som för 4.2: en <code class="language-plaintext highlighter-rouge">SEEHDSDiagnosticReportLab</code> per <code class="language-plaintext highlighter-rouge">laboratoryOrderOutcome</code> och en <code class="language-plaintext highlighter-rouge">SEEHDSObservationLab</code> per <code class="language-plaintext highlighter-rouge">analysis</code>.</p>
+
+<h4 id="header-laboratoryorderoutcomeheader--diagnosticreport">Header (laboratoryOrderOutcomeHeader) → DiagnosticReport</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (3.1)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.documentId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.identifier[record]</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.record.id</code> i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.sourceSystemHSAId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.meta.source</code></td>
+      <td>Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code> (GENERAL-005)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.documentTime</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.issued</code></td>
+      <td>Tidpunkt då svaret kom till beställarens system; ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.patientId.id</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.subject.identifier.value</code></td>
+      <td>PersonIdType; se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.patientId.type</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.subject.identifier.system</code></td>
+      <td>OID→URI enligt tabellen nedan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.accountableHealthcareProfessional.authorTime</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.recorded</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.author.timestamp</code> i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.identifier.value</code></td>
+      <td>Den som framställt vårdbegäran; via <code class="language-plaintext highlighter-rouge">DiagnosticReport.performer</code> som i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalName</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier.value</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….healthcareProfessionalOrgUnit.orgUnitTelecom/orgUnitEmail/orgUnitAddress/orgUnitLocation</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Kontaktuppgifter på enhetsnivå, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td>Inre Sparr; motsvarar <code class="language-plaintext highlighter-rouge">accessControlHeader.accountableCareUnit</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
+      <td>Yttre Sparr; motsvarar <code class="language-plaintext highlighter-rouge">accessControlHeader.accountableCareGiver</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.legalAuthenticator.signatureTime</code></td>
+      <td>1..1 (om legalAuthenticator)</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.extension[signatureTime]</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.signature.timestamp</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.extension[signatureId]</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.signature.id</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorName</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Som <code class="language-plaintext highlighter-rouge">header.signature.name</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.approvedForPatient</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.meta.security</code></td>
+      <td>PDL-kontroll – se PDL-001</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeHeader.careContactId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.encounter.identifier.value</code></td>
+      <td>Logisk referens till vårdkontakten</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="body-laboratoryorderoutcomebody--diagnosticreport">Body (laboratoryOrderOutcomeBody) → DiagnosticReport</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (3.1)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.resultType</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DEF</code> → <code class="language-plaintext highlighter-rouge">final</code>, <code class="language-plaintext highlighter-rouge">TILL</code> → <code class="language-plaintext highlighter-rouge">amended</code>. Används i stället för härledningen från analysstatus i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.registrationTime</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.meta.lastUpdated</code></td>
+      <td>Senaste tidpunkten då svaret uppdaterades i källsystemet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.discipline</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.category.text</code></td>
+      <td>Enda tillåtna värde är "Klinisk kemi"; <code class="language-plaintext highlighter-rouge">category</code> sätts även till <code class="language-plaintext highlighter-rouge">v2-0074#CH</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.resultReport</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.conclusion</code></td>
+      <td>Sammanfattande utlåtande; motsvarar <code class="language-plaintext highlighter-rouge">body.text</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.resultComment</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.note.text</code></td>
+      <td>Kommentar till hela svaret; samma hantering som <code class="language-plaintext highlighter-rouge">groupOfAnalyses.comment</code> i 4.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.resultsInterpreter</code> (Reference(PractitionerRole))</td>
+      <td>Ansvarig labbläkare; logisk referens via HSA-id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalName</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId/orgUnitName</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization</code></td>
+      <td>Laboratoriets enhet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.authorTime</code></td>
+      <td>1..1 (om elementet finns)</td>
+      <td>Ej mappad</td>
+      <td>Tidpunkt då svaret skickades från laboratoriet; täcks av <code class="language-plaintext highlighter-rouge">issued</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.order.orderId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.identifier[order]</code></td>
+      <td>Remissens id; tom sträng när remiss saknas, och då skapas ingen identifierare</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">laboratoryOrderOutcomeBody.order.orderReason</code></td>
+      <td>0..1</td>
+      <td>Ej mappad till DiagnosticReport</td>
+      <td>Frågeställningen tillhör remissen (ServiceRequest.reasonCode.text), som i 4.2</td>
+    </tr>
+    <tr>
+      <td>(härledd från <code class="language-plaintext highlighter-rouge">analysis</code>)</td>
+      <td>–</td>
+      <td><code class="language-plaintext highlighter-rouge">DiagnosticReport.result</code></td>
+      <td>Reference(SEEHDSObservationLab) per analys</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="analysis--observation">analysis → Observation</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (3.1)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.identifier</code></td>
+      <td>IIType: <code class="language-plaintext highlighter-rouge">root</code> → <code class="language-plaintext highlighter-rouge">system</code> (OID→URI), <code class="language-plaintext highlighter-rouge">extension</code> → <code class="language-plaintext highlighter-rouge">value</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisTime</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.effectivePeriod</code></td>
+      <td>Provtagningstiden; saknas <code class="language-plaintext highlighter-rouge">start</code> eller <code class="language-plaintext highlighter-rouge">end</code> tolkas båda som samma tidpunkt, och då används <code class="language-plaintext highlighter-rouge">effectiveDateTime</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisCode</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.code.coding</code></td>
+      <td>NPU-kod</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisText</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.code.text</code></td>
+      <td>Analysnamn när NPU-kod saknas</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisStatus</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.status</code></td>
+      <td>Fritext, helst enligt KV åtgärdsstatus: "Avklarad" → <code class="language-plaintext highlighter-rouge">final</code>, "Pågående" → <code class="language-plaintext highlighter-rouge">preliminary</code>, "Planerad" → <code class="language-plaintext highlighter-rouge">registered</code>, annat eller saknat värde → <code class="language-plaintext highlighter-rouge">unknown</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisComment</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.note[0].text</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.specimen</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.specimen</code> → <code class="language-plaintext highlighter-rouge">Specimen.type.text</code></td>
+      <td>Provmaterial i klartext; en enkel Specimen per analys</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.method</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.method.text</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.relationToAnalysis.analysisId</code></td>
+      <td>1..1 (per relation)</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.hasMember</code> eller <code class="language-plaintext highlighter-rouge">Observation.derivedFrom</code></td>
+      <td>Relationstypen anges inte, samma fråga som <a href="mapping-issues.html">LAB-002</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisOutcome.outcomeValue</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.valueQuantity.value</code> eller <code class="language-plaintext highlighter-rouge">Observation.valueString</code></td>
+      <td>Text i 3.1. Numeriskt värde med <code class="language-plaintext highlighter-rouge">outcomeUnit</code> → <code class="language-plaintext highlighter-rouge">valueQuantity</code>, annars <code class="language-plaintext highlighter-rouge">valueString</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisOutcome.outcomeUnit</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.valueQuantity.unit</code></td>
+      <td>UCUM-kod sätts om enheten är en giltig UCUM-enhet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisOutcome.observationTime</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.issued</code></td>
+      <td>Tidpunkt då resultatet iakttogs</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisOutcome.pathologicalFlag</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.interpretation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> → <code class="language-plaintext highlighter-rouge">v3-ObservationInterpretation#A</code> (avvikande); <code class="language-plaintext highlighter-rouge">false</code> → <code class="language-plaintext highlighter-rouge">N</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisOutcome.outcomeDescription</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.note[1].text</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisOutcome.referenceInterval</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.referenceRange.text</code></td>
+      <td>Fritext i 3.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.analysisOutcome.referencePopulation</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.referenceRange.appliesTo.text</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.attested.attestedTime</code></td>
+      <td>1..1 (om attested)</td>
+      <td>Ej mappad</td>
+      <td>Vidimering; motsvarar <code class="language-plaintext highlighter-rouge">result.performerSignature.timestamp</code> som inte heller mappas</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.attested.attesterHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.performer.identifier</code></td>
+      <td>Logisk referens till PractitionerRole</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">analysis.attested.attesterName</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.performer.display</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="result">result</h4>
+
+<p><code class="language-plaintext highlighter-rouge">result.resultCode</code>, <code class="language-plaintext highlighter-rouge">errorCode</code>, <code class="language-plaintext highlighter-rouge">logId</code>, <code class="language-plaintext highlighter-rouge">subCode</code> och <code class="language-plaintext highlighter-rouge">message</code> är tekniska svarsfält och mappas inte, som i 4.2.</p>
+
+<hr />
+
 <h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
 
 <table>
@@ -1347,7 +2018,7 @@ SEEHDSDiagnosticReportLab  (1 per laboratoryOrderOutcome)
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

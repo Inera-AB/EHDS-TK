@@ -1,4 +1,4 @@
-# RIV-TA xs:base64Binary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# RIV-TA xs:base64Binary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,15 +8,15 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSRivBase64Binary |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivBase64Binary |
 
  
 Base64-kodat innehåll. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
 
 **Användningar:**
 
-* Använd denna Logisk modell: [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md), [GetCarePlans](StructureDefinition-SEEHDSLMCarePlans.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md) and [GetReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md)
+* Använd denna Logisk modell: [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md), [GetCareDocumentation 2.1](StructureDefinition-SEEHDSLMCareDocumentationV21.md), [GetCarePlans](StructureDefinition-SEEHDSLMCarePlans.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md)... Show 2 more, [GetReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md) and [GetReferralOutcome 3.1](StructureDefinition-SEEHDSLMReferralOutcomeV31.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivBase64Binary)
 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivBase64Binar
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivBase64Binary",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivBase64Binary",
   "title" : "RIV-TA xs:base64Binary",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

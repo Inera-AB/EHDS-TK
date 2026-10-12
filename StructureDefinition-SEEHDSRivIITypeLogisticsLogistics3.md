@@ -1,4 +1,4 @@
-# RIV-TA IIType (clinicalprocess:logistics:logistics:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# RIV-TA IIType (clinicalprocess:logistics:logistics:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeLogisticsLogistics3 | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSRivIITypeLogisticsLogistics3 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeLogisticsLogistics3 | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivIITypeLogisticsLogistics3 |
 
  
 RIV-TA-datatypen IIType i namnrymden urn:riv:clinicalprocess:logistics:logistics:3. 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivIITypeLogis
     "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeLogisticsLogistics3",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivIITypeLogisticsLogistics3",
   "title" : "RIV-TA IIType (clinicalprocess:logistics:logistics:3)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# Källsystemskontakt - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Källsystemskontakt - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:DeviceSourceSystemContact |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:DeviceSourceSystemContact |
 
 Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName).
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-device-source-system
   "resourceType" : "StructureDefinition",
   "id" : "device-source-system-contact",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "DeviceSourceSystemContact",
   "title" : "Källsystemskontakt",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * **GetVaccinationHistory – Vaccinationer**
@@ -7,9 +7,9 @@
 
 # GetVaccinationHistory – Vaccinationshistorik
 
-**Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0
+**Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0 och v1.0
  **FHIR-profiler:** [SEEHDSImmunization](StructureDefinition-SEEHDSImmunization.md) | [SEEHDSDevice](StructureDefinition-SEEHDSDevice.md) | [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.md)
- **Logisk modell:** [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md)
+ **Logiska modeller:** [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md) (v2.0) | [SEEHDSLMVaccinationHistoryV10](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md) (v1.0, se [Övriga aktiva versioner](#version-1-0))
  **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v1.0, 2.0)
  **EHDS-koppling:** Patient Summary – Vaccinationer
 
@@ -275,6 +275,35 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 
 `Provenance.target` refererar `Immunization` via `urn:uuid:{resurs.id}`.
  `Provenance.recorded` = `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).
+
+-------
+
+## Övriga aktiva versioner – GetVaccinationHistory 1.0
+
+Mappningstabellerna ovan utgår från GetVaccinationHistory 2.0. Version 1.0 är också aktiv för 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMVaccinationHistoryV10](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md) (genererad från `GetVaccinationHistoryResponder_1.0.xsd` i `riv.clinicalprocess.activityprescription.actoutcome` 1.0.2 och tjänstekontraktsbeskrivningen för samma version). Strukturen är i stort sett densamma, så samma profiler används och element som är lika mappas enligt tabellerna ovan.
+
+### Skillnader mot 2.0
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.dosage` | 0..1 Backbone | – | Finns bara i 1.0 |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.vaccineType` | 0..1 CVType | – | Finns bara i 1.0 |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.dose` | – | 0..1 Backbone | Finns bara i 2.0 |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.typeOfVaccine` | – | 0..1 CVType | Finns bara i 2.0 |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.additionalPatientInformation` | – | 0..1 Backbone | Finns bara i 2.0 |
+| `result` | – | 1..1 Backbone | Finns bara i 2.0 |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 Boolean | 0..1 String | Ändrad datatyp |
+
+### Mappning av det som skiljer i 1.0
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `administrationRecord.dosage.quantity` | 0..1 | `Immunization.doseQuantity` | Motsvarar`dose.quantity`i 2.0 |
+| `administrationRecord.dosage.displayName` | 1..1 (om dosage) | `Immunization.doseQuantity.unit` | Motsvarar`dose.displayName`i 2.0. Fritexten kan innehålla preparat och dosnummer ("Twinrix 1 ml, 1 av 3"); om den inte är en enhet läggs den i stället i`Immunization.note.text` |
+| `administrationRecord.vaccineType` | 0..1 | `Immunization.vaccineCode.coding` | Motsvarar`typeOfVaccine`i 2.0 |
+| `vaccinationMedicalRecordHeader.nullified` | 1..1 | `Immunization.status` | Som i 2.0 (`true`→`entered-in-error`, annars`completed`). XSD:n har 0..1 men TKB:n kräver elementet |
+| `vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 | Ej mappad | XSD:n i 1.0 typar elementet som`xs:boolean`, så ingen orsakstext kan bäras. Se VER-006 i[Mappningsissues](mapping-issues.md) |
+| `additionalPatientInformation`,`result` | – | – | Finns inte i 1.0. Svaret har inget`result`; fel signaleras med SOAP-fel |
 
 -------
 

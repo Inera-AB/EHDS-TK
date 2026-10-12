@@ -1,4 +1,4 @@
-# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * **Mappings**
@@ -36,6 +36,8 @@ Mappningarna spårar varje element i de logiska modellerna till det FHIR-profil-
 | GetRequestActivities | [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md) | [SEEHDSTask](StructureDefinition-SEEHDSTask.md) | [mapping-getrequestactivities](mapping-getrequestactivities.md) |
 | GetObservations | [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.md) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.md) | [mapping-getobservations](mapping-getobservations.md) |
 | GetAccessLogForPatient | [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.md) | [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.md) | [Åtkomstloggar – GetAccessLogForPatient](mapping-getaccesslogforpatient.md#getaccesslogforpatient) |
+
+Tabellen visar modellen för den version som mappningstabellerna utgår från. Övriga aktiva versioner har egna logiska modeller och mappas på samma sidor under "Övriga aktiva versioner", se [Tjänstekontraktsversioner](contract-versions.md).
 
 -------
 

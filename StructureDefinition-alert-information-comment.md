@@ -1,4 +1,4 @@
-# Kommentar till uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Kommentar till uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:AlertInformationComment |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:AlertInformationComment |
 
 Kommentar angående uppmärksamhetssignalen (alertInformationBody.alertInformationComment). Om obsoleteComment är angivet konkateneras det med prefix 'Inaktiveringskommentar: {obsoleteComment}'. För body = unstructuredAlertInformation: unstructuredAlertInformationContent läggs här.
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-information-co
   "resourceType" : "StructureDefinition",
   "id" : "alert-information-comment",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "AlertInformationComment",
   "title" : "Kommentar till uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

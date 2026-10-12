@@ -1,4 +1,4 @@
-# SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSAuditEventPatientRead |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSAuditEventPatientRead |
 
  
 Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) lämnar ut en enskild resurs eller ett dokuments innehåll för en patient, t.ex. läsning av en resurs eller (framtida) MHD ITI-68 Retrieve Document. Loggposterna behövs för att patienten ska kunna få veta vem som har tagit del av patientens uppgifter. 
@@ -43,11 +43,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventPati
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSAuditEventPatientRead",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSAuditEventPatientRead",
   "title" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

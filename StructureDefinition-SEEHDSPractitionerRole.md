@@ -1,4 +1,4 @@
-# SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSPractitionerRole |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSPractitionerRole |
 
  
 Profil för hälso- och sjukvårdspersonal i uppdrag (medarbetaruppdrag) som refereras från EHDS-TK-resurserna (t.ex. accountableHealthcareProfessional, legalAuthenticator, author). Ärver HL7 Europe Core PractitionerRole (EURIDICE). Identifier-slicen följer svenska basprofilernas konvention (SEBasePractitionerRole: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN). Används normalt som logisk referens via identifier. 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSPractitionerRo
     "valueCanonical" : "http://hl7.org/fhir/uv/ips/StructureDefinition/PractitionerRole-uv-ips"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSPractitionerRole",
   "title" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

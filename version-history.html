@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Version History - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3</title>
+    <title>Versionshistorik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"27"}
-    h3,h4,h5,h6{--heading-prefix:"27"}</style>
+    <style type="text/css">h2{--heading-prefix:"28"}
+    h3,h4,h5,h6{--heading-prefix:"28"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.3.3 - ci-build
+            <span style="display:inline-block;">0.5.0 - ci-build
 
 
 
@@ -112,6 +112,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">Mappningar<b class="caret"> </b></a>
               <ul class="dropdown-menu">
                 <li><a href="mappings.html">Översikt</a></li>
+                <li><a href="contract-versions.html">Tjänstekontraktsversioner</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Patientöversikt</li>
                 <li><a href="mapping-getdiagnosis.html">GetDiagnosis – Diagnoser</a></li>
@@ -154,7 +155,7 @@
             <li><a href="search-parameters.html">Sökparametrar</a></li>
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="mapping-issues.html">Issues &amp; Beslut</a></li>
-            <li><a href="version-history.html">Version History</a></li>
+            <li><a href="version-history.html">Versionshistorik</a></li>
           </ul>
         </div>
       </div>
@@ -173,7 +174,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Version History</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Versionshistorik</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -193,8 +194,8 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.3.3) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
-  <h2>Version History</h2>
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <h2>Versionshistorik</h2>
   
 
 
@@ -212,9 +213,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="version-history">Version history</h1>
+<h1 id="versionshistorik">Versionshistorik</h1>
 
-<p>This page records changes between published versions of this Implementation Guide.</p>
+<p>Sidan beskriver ändringarna mellan publicerade versioner av denna Implementation Guide.</p>
 
 <hr />
 
@@ -222,55 +223,163 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <thead>
     <tr>
       <th>Version</th>
-      <th>Date</th>
+      <th>Datum</th>
       <th>Status</th>
-      <th>Description</th>
+      <th>Beskrivning</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td>0.5.0</td>
+      <td>2026-10-12</td>
+      <td>Draft</td>
+      <td>Alla aktiva tjänstekontraktsversioner enligt startsidan har nu logiska modeller och mappning, inte bara den senaste versionen.</td>
+    </tr>
+    <tr>
+      <td>0.4.0</td>
+      <td>2026-10-12</td>
+      <td>Draft</td>
+      <td>Ny konformitetsansats (EURIDICE och EU Core i stället för IPS/EPS), profiler omdöpta till SEEHDS, logiska modeller genererade från RIV-TA-XSD och verifierade mot TKB, och ett antal mappningsbeslut.</td>
+    </tr>
+    <tr>
       <td>0.3.3</td>
       <td>2026-06-25</td>
       <td>Draft</td>
-      <td>Add ig_slug to fhir-portal dispatch payload to fix canonical URL links.</td>
+      <td><code class="language-plaintext highlighter-rouge">ig_slug</code> tillagd i dispatch-anropet till fhir-portal, så att länkarna till kanonisk URL blir rätt.</td>
     </tr>
     <tr>
       <td>0.3.2</td>
       <td>2026-06-25</td>
       <td>Draft</td>
-      <td>Re-release to correct deployment pipeline and publishing paths.</td>
+      <td>Ompublicering som rättar publiceringsflödet och publiceringssökvägarna.</td>
     </tr>
     <tr>
       <td>0.3.1</td>
       <td>2026-06-24</td>
       <td>Draft</td>
-      <td>First published release.</td>
+      <td>Första publicerade versionen.</td>
     </tr>
     <tr>
       <td>0.1.0</td>
       <td>2026-06-16</td>
       <td>Draft</td>
-      <td>Initial template version.</td>
+      <td>Första mallversionen.</td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<h3 id="change-log">Change log</h3>
+<h3 id="ändringslogg">Ändringslogg</h3>
 
-<h4 id="010--yyyy-mm-dd-draft">0.1.0 — <em>YYYY-MM-DD</em> (Draft)</h4>
+<h4 id="050--2026-10-12-draft">0.5.0 — 2026-10-12 (Draft)</h4>
+
+<p>Startsidan anger flera aktiva versioner för en del tjänstekontrakt, men mappningarna byggde bara på en version per kontrakt. Nu är alla aktiva versioner med. Se <a href="contract-versions.html">Tjänstekontraktsversioner</a>.</p>
+
+<p><strong>Logiska modeller</strong></p>
 
 <ul>
-  <li>Initial structure established.</li>
-  <li>IneraPatient template profile added.</li>
-  <li>Placeholder pages for workflow, logical models, mappings, and downloads added.</li>
+  <li>Tio nya modeller för övriga aktiva versioner: GetAlertInformation 3.0, GetCareContacts 2.0, GetCareDocumentation 2.1, GetLaboratoryOrderOutcome 4.1 och 3.1, GetReferralOutcome 3.1, GetVaccinationHistory 1.0, GetRequestActivities 1.0, GetObservations 1.2 och GetAccessLogsForPatient 1.1. Modellerna har versionen som suffix, t.ex. <code class="language-plaintext highlighter-rouge">SEEHDSLMCareContactsV20</code>.</li>
+  <li>Modellerna är genererade från XSD:n och TKB:n i den domänversion där kontraktsversionen senast ingick, och jämförda med motsvarande modeller i tkb-converter.</li>
+  <li><code class="language-plaintext highlighter-rouge">tools/rivta-lm</code> läser domäner vid en viss tagg eller gren, och det nya skriptet <code class="language-plaintext highlighter-rouge">vdiff.py</code> beräknar skillnaderna mot modellen som mappningen utgår från.</li>
+</ul>
+
+<p><strong>Mappningar</strong></p>
+
+<ul>
+  <li>Varje berörd mappningssida har ett nytt avsnitt "Övriga aktiva versioner" med en genererad tabell över skillnaderna och en mappning av det som skiljer. För GetLaboratoryOrderOutcome 3.1, GetCareDocumentation 2.1, GetAlertInformation 3.0, GetRequestActivities 1.0 och GetObservations 1.2, som har andra meddelandemodeller, finns fullständiga mappningstabeller.</li>
+  <li>Sidhuvudena på mappningssidorna anger nu samma aktiva versioner som startsidan.</li>
+  <li>Nya öppna frågor VER-001–VER-006 på <a href="mapping-issues.html">Mappningsissues</a>, bland annat att GetAlertInformation 3.0 bara finns som beta, att huvudmodellen för GetObservations bygger på en release candidate medan 1.2 är aktiv, och att GetReferralOutcome mappas från 3.2 medan startsidan anger 3.1.</li>
+</ul>
+
+<h4 id="040--2026-10-12-draft">0.4.0 — 2026-10-12 (Draft)</h4>
+
+<p>Versionen bryter bakåtkompatibiliteten: profiler och logiska modeller har nya namn och kanoniska URL:er, och beroendena är utbytta.</p>
+
+<p><strong>Konformitetsansats och beroenden</strong></p>
+
+<ul>
+  <li>IG:n utlovar nu tre saker: TKB-innehåll, en giltig profilering av EURIDICE (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.health-data-api</code> 1.0.0-ballot) och svenska konventioner enligt HL7 Sweden. Se <a href="index.html">Startsida</a>.</li>
+  <li>HL7 Europe Core (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.base</code> 2.0.0-ballot) är nu ett beroende. Beroendena till IPS (<code class="language-plaintext highlighter-rouge">hl7.fhir.uv.ips</code>) och EPS (<code class="language-plaintext highlighter-rouge">hl7.fhir.eu.eps</code>) är borttagna, liksom IPS-spåren i profilerna och i mappningen av GetDiagnosis.</li>
+  <li>Ett nytt avsnitt motiverar valet av FHIR R4: målet är R5, men först behöver de externa beroendena finnas för R5 (<a href="index.html#fhir-version">Val av FHIR-version</a>).</li>
+</ul>
+
+<p><strong>Profiler</strong></p>
+
+<ul>
+  <li>Alla profiler, extensioner och logiska modeller har bytt prefix från <code class="language-plaintext highlighter-rouge">IneraEHDS</code> till <code class="language-plaintext highlighter-rouge">SEEHDS</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">SEEHDSPractitionerRole</code> och CapabilityStatement-profilen <code class="language-plaintext highlighter-rouge">SEEHDSResourceAccessProvider</code> är nya.</li>
+  <li>Auditloggningen följer IHE BALP och mXDE. <code class="language-plaintext highlighter-rouge">SEEHDSAuditEventReadAccessLog</code> ersätter den tidigare loggprofilen.</li>
+  <li><code class="language-plaintext highlighter-rouge">SEEHDSCompositionCareDocumentation</code> och <code class="language-plaintext highlighter-rouge">SEEHDSDocumentReference</code> har utökats för vårddokumentation.</li>
+  <li>GetDiagnosis: <code class="language-plaintext highlighter-rouge">patientId</code> mappas som PersonIdType <code class="language-plaintext highlighter-rouge">{id, type}</code>, och <code class="language-plaintext highlighter-rouge">abatementDateTime</code> har lagts till.</li>
+</ul>
+
+<p><strong>Logiska modeller</strong></p>
+
+<ul>
+  <li>Alla 15 logiska modeller genereras nu från tjänstekontraktens XSD med verktyget <code class="language-plaintext highlighter-rouge">tools/rivta-lm</code>. Modellerna använder RIV-TA-datatyper, XML-namnrymder och XML-namn, så att de kan användas som källa i FHIR Mapping Language. Se <a href="logical-models.html">Logiska modeller</a>.</li>
+  <li>GetLaboratoryOrderOutcome och GetMedicationHistory är kompletta.</li>
+  <li>GetObservations, GetRequestActivities och GetAccessLogForPatient följer TKB:ns logiska meddelandemodell i stället för en platt struktur.</li>
+  <li>Kardinaliteterna är verifierade mot TKB:ns fältregler. Där TKB är strängare än XSD gäller TKB.</li>
+  <li>XSD-element som heter <code class="language-plaintext highlighter-rouge">id</code> eller <code class="language-plaintext highlighter-rouge">extension</code> heter <code class="language-plaintext highlighter-rouge">rivId</code> respektive <code class="language-plaintext highlighter-rouge">rivExtension</code> i modellerna, eftersom namnen annars krockar med FHIR:s ärvda element.</li>
+</ul>
+
+<p><strong>Mappningar och mappningsbeslut</strong></p>
+
+<ul>
+  <li>Ny undersida om DocBook-narrativ i vårddokumentation.</li>
+  <li>Valideringsfixar från EHDS-bryggan är införda i mappningsspecifikationerna.</li>
+  <li>documentTime-undantaget för <code class="language-plaintext highlighter-rouge">recordedDate</code> och <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> är förtydligat, och spärrtiden för GetDiagnosis är beskriven.</li>
+  <li>GENERAL-008, organisationsuppgifter: föreslagen lösning med en contained <code class="language-plaintext highlighter-rouge">Organization</code> som ögonblicksbild. Uppgifterna <code class="language-plaintext highlighter-rouge">orgUnitTelecom</code> och <code class="language-plaintext highlighter-rouge">orgUnitEmail</code> utelämnas normalt när det är en patient som anropar.</li>
+  <li><code class="language-plaintext highlighter-rouge">documentTitle</code>:
+    <ul>
+      <li>Imaging och Referral mappar den till <code class="language-plaintext highlighter-rouge">DiagnosticReport.code.text</code>.</li>
+      <li>Vaccination mappar den till <code class="language-plaintext highlighter-rouge">Immunization.note</code>.</li>
+      <li>Medication undertrycker den (0..0).</li>
+    </ul>
+  </li>
+  <li>Mödravård: varje sektion blir en grupperande <code class="language-plaintext highlighter-rouge">Observation</code>.</li>
+  <li>CareContacts: <code class="language-plaintext highlighter-rouge">careContactOrgUnit.orgUnitHSAId</code> och <code class="language-plaintext highlighter-rouge">orgUnitName</code> är 0..1.</li>
+  <li>Lösta mappningsissues är stängda och sammanfogade på <a href="mapping-issues.html">Mappningsissues</a>.</li>
+</ul>
+
+<p><strong>Bygge och kvalitetssäkring</strong></p>
+
+<ul>
+  <li>PR-kontrollen (IG Publisher QA) misslyckas nu om IG Publisher avbryter publiceringen. Tidigare kunde en krasch se ut som ett lyckat bygge.</li>
+  <li>Notifieringen till fhir-portal stoppar inte längre publiceringen om den misslyckas.</li>
+</ul>
+
+<h4 id="033--2026-06-25-draft">0.3.3 — 2026-06-25 (Draft)</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ig_slug</code> tillagd i dispatch-anropet till fhir-portal.</li>
+</ul>
+
+<h4 id="032--2026-06-25-draft">0.3.2 — 2026-06-25 (Draft)</h4>
+
+<ul>
+  <li>Ompublicering med rättat publiceringsflöde och rättade publiceringssökvägar.</li>
+</ul>
+
+<h4 id="031--2026-06-24-draft">0.3.1 — 2026-06-24 (Draft)</h4>
+
+<ul>
+  <li>Första publicerade versionen, med profiler, logiska modeller och mappningar för 16 tjänstekontrakt.</li>
+</ul>
+
+<h4 id="010--2026-06-16-draft">0.1.0 — 2026-06-16 (Draft)</h4>
+
+<ul>
+  <li>Grundstrukturen etablerad.</li>
+  <li>Mallprofilen IneraPatient tillagd.</li>
+  <li>Platshållarsidor för arbetsflöde, logiska modeller, mappningar och nedladdningar tillagda.</li>
 </ul>
 
 <hr />
 
 <blockquote>
-  <p><strong>Guidance for authors:</strong> Add a new row to the table and a new section to the change log for each published version. Follow <a href="https://semver.org/">semantic versioning</a>: increment the patch version for corrections, the minor version for backwards-compatible additions, and the major version for breaking changes. Record the publication date, the ballot/release status (Draft, STU, Normative), and a brief summary of what changed.</p>
+  <p><strong>Vägledning för författare:</strong> Lägg till en rad i tabellen och ett avsnitt i ändringsloggen för varje publicerad version. Följ <a href="https://semver.org/">semantisk versionshantering</a>. Före 1.0.0 räknas minor-versionen upp även för ändringar som bryter bakåtkompatibiliteten. Ange publiceringsdatum, status (Draft, STU eller Normative) och en kort sammanfattning av vad som har ändrats.</p>
 </blockquote>
 
 
@@ -292,7 +401,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

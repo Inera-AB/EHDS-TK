@@ -1,4 +1,4 @@
-# SE EHDS Immunization – Vaccinationer (GetVaccinationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# SE EHDS Immunization – Vaccinationer (GetVaccinationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSImmunization |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSImmunization |
 
  
 Profil för vaccinationer mappat från RIVTA-tjänstekontraktet GetVaccinationHistory (clinicalprocess:activityprescription:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0. 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSImmunization.c
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSImmunization",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSImmunization",
   "title" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

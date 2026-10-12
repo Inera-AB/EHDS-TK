@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3</title>
+    <title>Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"20"}
-    h3,h4,h5,h6{--heading-prefix:"20"}</style>
+    <style type="text/css">h2{--heading-prefix:"21"}
+    h3,h4,h5,h6{--heading-prefix:"21"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.3.3 - ci-build
+            <span style="display:inline-block;">0.5.0 - ci-build
 
 
 
@@ -112,6 +112,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">Mappningar<b class="caret"> </b></a>
               <ul class="dropdown-menu">
                 <li><a href="mappings.html">Översikt</a></li>
+                <li><a href="contract-versions.html">Tjänstekontraktsversioner</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Patientöversikt</li>
                 <li><a href="mapping-getdiagnosis.html">GetDiagnosis – Diagnoser</a></li>
@@ -154,7 +155,7 @@
             <li><a href="search-parameters.html">Sökparametrar</a></li>
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="mapping-issues.html">Issues &amp; Beslut</a></li>
-            <li><a href="version-history.html">Version History</a></li>
+            <li><a href="version-history.html">Versionshistorik</a></li>
           </ul>
         </div>
       </div>
@@ -193,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.3.3) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Åtkomstloggar – patientåtkomst och auditloggning</h2>
   
 
@@ -228,7 +229,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           <li><a href="#exempel--sökning-efter-diagnoser" id="markdown-toc-exempel--sökning-efter-diagnoser">Exempel – sökning efter diagnoser</a></li>
         </ul>
       </li>
-      <li><a href="#getaccesslogforpatient" id="markdown-toc-getaccesslogforpatient">Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient</a></li>
+      <li><a href="#getaccesslogforpatient" id="markdown-toc-getaccesslogforpatient">Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient</a>        <ul>
+          <li><a href="#getaccesslogforpatient-1-1" id="markdown-toc-getaccesslogforpatient-1-1">Övriga aktiva versioner – GetAccessLogsForPatient 1.1</a></li>
+        </ul>
+      </li>
       <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
     </ul>
   </li>
@@ -806,9 +810,9 @@ från ett källsystem.</p>
 
 <h2 id="getaccesslogforpatient">Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient</h2>
 
-<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">informationsecurity:auditing:log</code> GetAccessLogForPatient v1.1, 2.0<br />
+<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">informationsecurity:auditing:log</code> GetAccessLogsForPatient v2.0 och <code class="language-plaintext highlighter-rouge">ehr:log:querying</code> GetAccessLogsForPatient v1.1<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSAuditEventReadAccessLog.html">SEEHDSAuditEventReadAccessLog</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMAccessLog.html">SEEHDSLMAccessLog</a><br />
+<strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMAccessLog.html">SEEHDSLMAccessLog</a> (v2.0) | <a href="StructureDefinition-SEEHDSLMAccessLogV11.html">SEEHDSLMAccessLogV11</a> (v1.1, se <a href="#getaccesslogforpatient-1-1">Övriga aktiva versioner</a>)<br />
 <strong>Krävs för NPÖ:</strong> Nej | <strong>Krävs för 1177 Journal:</strong> Ja (v1.1, 2.0)</p>
 
 <p>GetAccessLogForPatient används för att lämna ut källsystemens befintliga åtkomstloggar till
@@ -945,6 +949,57 @@ inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skap
   </tbody>
 </table>
 
+<h3 id="getaccesslogforpatient-1-1">Övriga aktiva versioner – GetAccessLogsForPatient 1.1</h3>
+
+<p>Tabellen ovan utgår från GetAccessLogsForPatient 2.0 i <code class="language-plaintext highlighter-rouge">informationsecurity:auditing:log</code>. Version 1.1 är också aktiv för 1177 Journal. Den ligger i en annan domän, <code class="language-plaintext highlighter-rouge">ehr:log:querying</code> (<code class="language-plaintext highlighter-rouge">riv.ehr.log</code> 1.2.4), och beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMAccessLogV11.html">SEEHDSLMAccessLogV11</a>.</p>
+
+<!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMAccessLogV11 mot SEEHDSLMAccessLog. Redigera inte för hand. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>1.1</th>
+      <th>2.0</th>
+      <th>Skillnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult.result</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResultType</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult</code></td>
+      <td>Bytt namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResultType.result</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResult.reportResult</code></td>
+      <td>Bytt namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">accessLogsResultType.result.resultText</code></td>
+      <td>1..1 String</td>
+      <td>0..1 String</td>
+      <td>Ändrad kardinalitet</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Innehållet i loggposterna är detsamma; skillnaderna gäller namn och nästling:</p>
+
+<ul>
+  <li>XML-namnen i 1.1 börjar med versal (<code class="language-plaintext highlighter-rouge">AccessLogsResultType/AccesssLogs/AccessLog/UserId</code>) och namnrymden är <code class="language-plaintext highlighter-rouge">urn:riv:ehr:log:querying:1</code>. I den logiska modellen börjar elementnamnen med gemen (<code class="language-plaintext highlighter-rouge">accessLogsResultType.accesssLogs.accessLog.userId</code>) och XML-namnet bärs i <code class="language-plaintext highlighter-rouge">xml-name</code>, som för <code class="language-plaintext highlighter-rouge">id</code> i andra modeller. Varje <code class="language-plaintext highlighter-rouge">accessLog</code>-element mappas till samma <code class="language-plaintext highlighter-rouge">AuditEvent</code>-element som motsvarande element i 2.0.</li>
+  <li>Rapportstatusen ligger direkt i <code class="language-plaintext highlighter-rouge">accessLogsResultType.result</code> (<code class="language-plaintext highlighter-rouge">resultCode</code>, <code class="language-plaintext highlighter-rouge">resultText</code>, <code class="language-plaintext highlighter-rouge">startInterval</code>, <code class="language-plaintext highlighter-rouge">endInterval</code>, <code class="language-plaintext highlighter-rouge">queuedReportId</code>, <code class="language-plaintext highlighter-rouge">queueTime</code>) i stället för i <code class="language-plaintext highlighter-rouge">reportResult</code> med ett inre <code class="language-plaintext highlighter-rouge">result</code>. Fälten mappas inte, som i 2.0.</li>
+  <li><code class="language-plaintext highlighter-rouge">result.resultText</code> är obligatorisk i 1.1. Det påverkar inte mappningen.</li>
+</ul>
+
 <p>Öppen fråga: LOG-002 i <a href="mapping-issues.html">Mappningsissues</a>. LOG-001 är beslutad (BALP:s entity-mönster).</p>
 
 <hr />
@@ -1001,7 +1056,7 @@ inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skap
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

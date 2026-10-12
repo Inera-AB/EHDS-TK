@@ -1,4 +1,4 @@
-# SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSConditionFunctional |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSConditionFunctional |
 
  
 Profil för funktionstillstånd och ADL-bedömningar mappat från RIVTA-tjänstekontraktet GetFunctionalStatus (clinicalprocess:healthcond:description v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -39,11 +39,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSConditionFunct
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSConditionFunctional",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSConditionFunctional",
   "title" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

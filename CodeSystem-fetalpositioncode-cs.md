@@ -1,4 +1,4 @@
-# FetalPositionCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# FetalPositionCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/fetalpositioncode | *Version*:0.3.3 |
-| Active as of 2026-10-09 | *Computable Name*:FetalPositionCodeCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/fetalpositioncode | *Version*:0.5.0 |
+| Active as of 2026-10-12 | *Computable Name*:FetalPositionCodeCS |
 
  
 Kodverk för fosterläge (FetalPositionCodeEnum). Används i GetMaternityMedicalHistory. 
@@ -27,11 +27,11 @@ Kodverk för fosterläge (FetalPositionCodeEnum). Används i GetMaternityMedical
   "resourceType" : "CodeSystem",
   "id" : "fetalpositioncode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/fetalpositioncode",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "FetalPositionCodeCS",
   "title" : "FetalPositionCode",
   "status" : "active",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSObservationBase |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSObservationBase |
 
  
 Basprofil för alla observationer från GetObservations (clinicalprocess:healthcond:basic v2.0). 
@@ -46,11 +46,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSObservationBase",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSObservationBase",
   "title" : "SE EHDS Observation Base – GetObservations",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

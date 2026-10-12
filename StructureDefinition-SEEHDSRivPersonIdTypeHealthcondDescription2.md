@@ -1,4 +1,4 @@
-# RIV-TA PersonIdType (clinicalprocess:healthcond:description:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# RIV-TA PersonIdType (clinicalprocess:healthcond:description:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,15 +8,15 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2 | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSRivPersonIdTypeHealthcondDescription2 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2 | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivPersonIdTypeHealthcondDescription2 |
 
  
 RIV-TA-datatypen PersonIdType i namnrymden urn:riv:clinicalprocess:healthcond:description:2. 
 
 **Användningar:**
 
-* Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md), [GetDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md) and [GetFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.md)
+* Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md), [GetCareDocumentation 2.1](StructureDefinition-SEEHDSLMCareDocumentationV21.md), [GetDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md) and [GetFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2)
 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivPersonIdTyp
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivPersonIdTypeHealthcondDescription2",
   "title" : "RIV-TA PersonIdType (clinicalprocess:healthcond:description:2)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

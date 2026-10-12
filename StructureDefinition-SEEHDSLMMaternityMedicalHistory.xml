@@ -124,11 +124,11 @@ Tillåtna värden enligt XSD: 0, 1, 2.">typeOfLeave</a><a name="SEEHDSLMMaternit
     <valueUri value="urn:riv:clinicalprocess:healthcond:actoutcome:GetMaternityMedicalHistoryResponder:2"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMaternityMedicalHistory"/>
-  <version value="0.3.3"/>
+  <version value="0.5.0"/>
   <name value="SEEHDSLMMaternityMedicalHistory"/>
   <title value="GetMaternityMedicalHistory"/>
   <status value="draft"/>
-  <date value="2026-10-09T07:52:45+00:00"/>
+  <date value="2026-10-12T12:51:47+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

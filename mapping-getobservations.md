@@ -1,4 +1,4 @@
-# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * **GetObservations – Tillväxtkurva**
@@ -7,9 +7,9 @@
 
 # GetObservations – Kliniska observationer och mätvärden
 
-**Tjänstekontrakt:** `clinicalprocess:healthcond:basic` GetObservations v2.0
+**Tjänstekontrakt:** `clinicalprocess:healthcond:basic` GetObservations v2.0 och v1.2
  **FHIR-profiler:** [SEEHDSObservationBase](StructureDefinition-SEEHDSObservationBase.md) (generell) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.md) (tillväxtkurva)
- **Logisk modell:** [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.md)
+ **Logiska modeller:** [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.md) (v2.0) | [SEEHDSLMObservationsV12](StructureDefinition-SEEHDSLMObservationsV12.md) (v1.2, se [Övriga aktiva versioner](#version-1-2))
  **Krävs för NPÖ:** Ja (v1.2) | **Krävs för 1177 Journal:** Ja (v1.2)
  **EHDS-koppling:** Kliniska mätresultat och tillväxtdata
  **IoÖ:** Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)
@@ -350,6 +350,63 @@ En `Provenance`-resurs skapas per `Observation`-resurs.
 
 `Provenance.target` refererar `Observation` via `urn:uuid:{Observation.id}`.
  `Provenance.recorded` = `observationBody.registrationTime` (konverterat till ISO 8601).
+
+-------
+
+## Övriga aktiva versioner – GetObservations 1.2
+
+Mappningstabellerna ovan utgår från GetObservations 2.0, som [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.md) bygger på. [Startsidan](index.md) anger 1.2 som aktiv version för både NPÖ och 1177 Journal, och 2.0 finns hittills bara som release candidate (`2.0_RC1`–`2.0_RC4`) i `riv.clinicalprocess.healthcond.basic`. Version 1.2 beskrivs av den logiska modellen [SEEHDSLMObservationsV12](StructureDefinition-SEEHDSLMObservationsV12.md) (genererad från `GetObservationsResponder_1.2.xsd` i domänversion 1.2.3). Se VER-003 i [Mappningsissues](mapping-issues.md).
+
+Version 1.2 har en annan meddelandemodell: observationerna ligger i grupper (`observationGroup`) som delar patient, utförare, signering och källsystem, och varje grupp innehåller en eller flera `observation`. Det finns ingen JoL-header. Samma profiler används: [SEEHDSObservationBase](StructureDefinition-SEEHDSObservationBase.md) och, för tillväxtmätningar enligt IoÖ, [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.md). Det blir en Observation per `observation`; gruppens fält kopieras till varje Observation i gruppen.
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `observationGroup` | 0..* Backbone | – | Finns bara i 1.2 |
+| `observations` | – | 0..* Backbone | Finns bara i 2.0 |
+
+### Gruppnivå (observationGroup) → varje Observation i gruppen
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `observationGroup.patient.rivId` | 1..1 | `Observation.subject.identifier` | IIType:`root`→`system`(OID→URI),`extension`→`value`; se[GENERAL-006](mappings.md#patientreferens) |
+| `observationGroup.patient.name` | 0..1 | `Observation.subject.display` |   |
+| `observationGroup.patient.dateOfBirth` | 1..1 | `Patient.birthDate`(via`Observation.subject`) | Om en Patient-resurs skapas |
+| `observationGroup.patient.gender` | 0..1 | `Patient.gender`(via`Observation.subject`) | KV Kön → AdministrativeGender, samma ConceptMap som CC-003 |
+| `observationGroup.performerRole.rivId` | 0..1 | `Observation.performer`(Reference(PractitionerRole)).identifier | Utförarens befattnings-id |
+| `observationGroup.performerRole.code` | 1..1 | `PractitionerRole.code` | Befattning |
+| `observationGroup.performerRole.person.rivId`/`name` | 0..1 | `PractitionerRole.practitioner.identifier`/`.display` |   |
+| `observationGroup.performerRole.careUnit.rivId` | 1..1 (om careUnit) | `Provenance.agent[author].who.identifier`och`PractitionerRole.organization.identifier` | Inre Sparr – vårdenhet |
+| `observationGroup.performerRole.careUnit.name` | 0..1 | `PractitionerRole.organization.display` |   |
+| `observationGroup.performerRole.careUnit.careGiver.rivId` | 1..1 (om careUnit) | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
+| `observationGroup.legalAuthenticator.time` | 1..1 (om legalAuthenticator) | Ej mappad | Signeringstid; samma hantering som`header.signature`i 2.0 |
+| `observationGroup.legalAuthenticator.rivId`/`name` | 0..1 | Ej mappad | Som`header.signature`i 2.0 |
+| `observationGroup.additionalParticipant` | 0..* | Ej mappad | Övriga deltagare (person, organisation, enhet, plats); samma fråga som OBS-006 för`participation`i 2.0 |
+| `observationGroup.sourceSystem.rivId` | 1..1 | `Observation.meta.source` | Källsystemets HSA-id (GENERAL-005) |
+
+### Observationsnivå (observationGroup.observation) → Observation
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `observation.rivId` | 1..1 | `Observation.identifier` | Motsvarar`observationBody.rivId` |
+| `observation.type` | 1..1 | `Observation.code` | Obligatorisk i 1.2. IoÖ:s SNOMED CT-koder och kodtabellen ovan gäller på samma sätt |
+| `observation.status` | 0..1 | `Observation.status` | Samma kodverk och ConceptMap som i 2.0 (OBS-003); saknas värdet blir det`unknown` |
+| `observation.time.start`/`time.end` | 0..1 | `Observation.effectivePeriod`, eller`effectiveDateTime`när start och end är lika | Variabel precision som`time.ts`i 2.0 (OBS-001) |
+| `observation.method` | 0..1 | `Observation.method` | Motsvarar`scale`i 2.0 |
+| `observation.value.pq` | 0..1 | `Observation.valueQuantity` | Tillväxtmätningar enligt IoÖ |
+| `observation.value.ts` | 0..1 | `Observation.valueDateTime`/`valueString` | Som i 2.0 (OBS-001) |
+| `observation.value.ivlTs` | 0..1 | `Observation.valuePeriod` |   |
+| `observation.value.cv` | 0..1 | `Observation.valueCodeableConcept` |   |
+| `observation.value.ivlPq` | 0..1 | `Observation.valueRange` |   |
+| `observation.targetSite` | 0..1 | `Observation.bodySite` | Bara en plats i 1.2, så OBS-004 uppstår inte |
+| `observation.valueNegation` | 1..1 | `Observation.dataAbsentReason` | Som i 2.0 (OBS-002) |
+| `observation.description` | 0..1 | `Observation.note.text` |   |
+| `observation.approvedForPatient` | 1..1 | `Observation.meta.security` | Per observation i 1.2; PDL-kontroll – se PDL-001 |
+| `observation.registrationTime` | 0..1 | `Observation.issued` | Valfri i 1.2 (obligatorisk i 2.0) |
+| `observation.relation.code` | 1..1 (om relation) | Som`relation.type`i 2.0 | Se OBS-005 |
+| `observation.relation.referredInformation.rivId` | 1..1 | `Observation.hasMember`/`derivedFrom`(identifier) | Beroende på relationstyp, OBS-005 |
+| `observation.relation.referredInformation.time`,`type`,`informationOwner` | 1..1 | Ej mappad |   |
+
+Element i 2.0 som saknar motsvarighet i 1.2 är bland annat `observationBody.value.st`, `value.int`, `targetSite` med flera värden, `participation` och JoL-headerns `origin`, `originalAuthor`, `modified` och `cancellation`.
 
 -------
 

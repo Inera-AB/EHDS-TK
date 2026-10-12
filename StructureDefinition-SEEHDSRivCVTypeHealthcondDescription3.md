@@ -1,4 +1,4 @@
-# RIV-TA CVType (clinicalprocess:healthcond:description:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# RIV-TA CVType (clinicalprocess:healthcond:description:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,15 +8,15 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondDescription3 | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSRivCVTypeHealthcondDescription3 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondDescription3 | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivCVTypeHealthcondDescription3 |
 
  
 RIV-TA-datatypen CVType i namnrymden urn:riv:clinicalprocess:healthcond:description:3. 
 
 **Användningar:**
 
-* Använd denna Logisk modell: [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md)
+* Använd denna Logisk modell: [GetAlertInformation 3.0](StructureDefinition-SEEHDSLMAlertInformationV30.md) and [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md)
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivCVTypeHealthcondDescription3)
 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivCVTypeHealt
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondDescription3",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSRivCVTypeHealthcondDescription3",
   "title" : "RIV-TA CVType (clinicalprocess:healthcond:description:3)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

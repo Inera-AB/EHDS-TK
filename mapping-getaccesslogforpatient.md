@@ -1,4 +1,4 @@
-# Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * **Åtkomstloggar – patientåtkomst och auditloggning**
@@ -264,9 +264,9 @@ En användare i vården söker aktiva diagnoser för en patient via QEDm. Två `
 
 ## Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient
 
-**Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogForPatient v1.1, 2.0
+**Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogsForPatient v2.0 och `ehr:log:querying` GetAccessLogsForPatient v1.1
  **FHIR-profil:** [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.md)
- **Logisk modell:** [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.md)
+ **Logiska modeller:** [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.md) (v2.0) | [SEEHDSLMAccessLogV11](StructureDefinition-SEEHDSLMAccessLogV11.md) (v1.1, se [Övriga aktiva versioner](#getaccesslogforpatient-1-1))
  **Krävs för NPÖ:** Nej | **Krävs för 1177 Journal:** Ja (v1.1, 2.0)
 
 GetAccessLogForPatient används för att lämna ut källsystemens befintliga åtkomstloggar till patienten. Varje loggpost mappas till en `AuditEvent` enligt SEEHDSAuditEventReadAccessLog. Profilen används bara för att **läsa** loggar. Den används inte för de loggposter API:et själv skapar (se [Loggar som måste skapas](#loggar-som-maste-skapas)).
@@ -294,6 +294,23 @@ Svaret `GetAccessLogsForPatientResponse` innehåller ett `accessLogsResult` med 
 | `accessLogsResult.reportResult.endInterval` | 0..1 | Ej mappad | Datum för sista loggposten som finns för uppföljning när rapporten skapades |
 | `accessLogsResult.reportResult.queuedReportId` | 0..1 | Ej mappad | Id för köad rapport (asynkront svar); bryggan behöver anropa igen |
 | `accessLogsResult.reportResult.queueTime` | 0..1 | Ej mappad | Förväntad tid i sekunder tills den köade rapporten kan levereras |
+
+### Övriga aktiva versioner – GetAccessLogsForPatient 1.1
+
+Tabellen ovan utgår från GetAccessLogsForPatient 2.0 i `informationsecurity:auditing:log`. Version 1.1 är också aktiv för 1177 Journal. Den ligger i en annan domän, `ehr:log:querying` (`riv.ehr.log` 1.2.4), och beskrivs av den logiska modellen [SEEHDSLMAccessLogV11](StructureDefinition-SEEHDSLMAccessLogV11.md).
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `accessLogsResult.reportResult.result` | – | 1..1 Backbone | Finns bara i 2.0 |
+| `accessLogsResultType` | 1..1 Backbone | `accessLogsResult` | Bytt namn |
+| `accessLogsResultType.result` | 1..1 Backbone | `accessLogsResult.reportResult` | Bytt namn |
+| `accessLogsResultType.result.resultText` | 1..1 String | 0..1 String | Ändrad kardinalitet |
+
+Innehållet i loggposterna är detsamma; skillnaderna gäller namn och nästling:
+
+* XML-namnen i 1.1 börjar med versal (`AccessLogsResultType/AccesssLogs/AccessLog/UserId`) och namnrymden är `urn:riv:ehr:log:querying:1`. I den logiska modellen börjar elementnamnen med gemen (`accessLogsResultType.accesssLogs.accessLog.userId`) och XML-namnet bärs i `xml-name`, som för `id` i andra modeller. Varje `accessLog`-element mappas till samma `AuditEvent`-element som motsvarande element i 2.0.
+* Rapportstatusen ligger direkt i `accessLogsResultType.result` (`resultCode`, `resultText`, `startInterval`, `endInterval`, `queuedReportId`, `queueTime`) i stället för i `reportResult` med ett inre `result`. Fälten mappas inte, som i 2.0.
+* `result.resultText` är obligatorisk i 1.1. Det påverkar inte mappningen.
 
 Öppen fråga: LOG-002 i [Mappningsissues](mapping-issues.md). LOG-001 är beslutad (BALP:s entity-mönster).
 

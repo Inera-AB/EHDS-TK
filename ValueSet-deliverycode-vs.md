@@ -1,4 +1,4 @@
-# DeliveryCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# DeliveryCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/deliverycode-vs | *Version*:0.3.3 |
-| Active as of 2026-10-09 | *Computable Name*:DeliveryCodeVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/deliverycode-vs | *Version*:0.5.0 |
+| Active as of 2026-10-12 | *Computable Name*:DeliveryCodeVS |
 
  
 Tillåtna värden för förlossningssätt i GetMaternityMedicalHistory. 
@@ -46,11 +46,11 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "deliverycode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/deliverycode-vs",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "DeliveryCodeVS",
   "title" : "DeliveryCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

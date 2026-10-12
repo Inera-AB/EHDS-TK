@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3</title>
+    <title>GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"13"}
-    h3,h4,h5,h6{--heading-prefix:"13"}</style>
+    <style type="text/css">h2{--heading-prefix:"14"}
+    h3,h4,h5,h6{--heading-prefix:"14"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.3.3 - ci-build
+            <span style="display:inline-block;">0.5.0 - ci-build
 
 
 
@@ -112,6 +112,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">Mappningar<b class="caret"> </b></a>
               <ul class="dropdown-menu">
                 <li><a href="mappings.html">Översikt</a></li>
+                <li><a href="contract-versions.html">Tjänstekontraktsversioner</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Patientöversikt</li>
                 <li><a href="mapping-getdiagnosis.html">GetDiagnosis – Diagnoser</a></li>
@@ -154,7 +155,7 @@
             <li><a href="search-parameters.html">Sökparametrar</a></li>
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="mapping-issues.html">Issues &amp; Beslut</a></li>
-            <li><a href="version-history.html">Version History</a></li>
+            <li><a href="version-history.html">Versionshistorik</a></li>
           </ul>
         </div>
       </div>
@@ -193,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.3.3) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetCareDocumentation – Anteckningar</h2>
   
 
@@ -238,6 +239,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       </li>
       <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
       <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+      <li><a href="#version-2-1" id="markdown-toc-version-2-1">Övriga aktiva versioner – GetCareDocumentation 2.1</a>        <ul>
+          <li><a href="#header-caredocumentationheader--documentreference" id="markdown-toc-header-caredocumentationheader--documentreference">Header (careDocumentationHeader) → DocumentReference</a></li>
+          <li><a href="#body-caredocumentationbodyclinicaldocumentnote--documentreference" id="markdown-toc-body-caredocumentationbodyclinicaldocumentnote--documentreference">Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference</a></li>
+          <li><a href="#result" id="markdown-toc-result">result</a></li>
+        </ul>
+      </li>
       <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
       <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
       <li><a href="#beslutade-issues" id="markdown-toc-beslutade-issues">Beslutade issues</a></li>
@@ -248,10 +255,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="getcaredocumentation--journalanteckningar">GetCareDocumentation – Journalanteckningar</h1>
 
-<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetCareDocumentation v3.0<br />
+<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetCareDocumentation v3.0 och v2.1<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMCareDocumentation.html">SEEHDSLMCareDocumentation</a><br />
-<strong>Krävs för NPÖ:</strong> Ja (v3.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v3.0)<br />
+<strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMCareDocumentation.html">SEEHDSLMCareDocumentation</a> (v3.0) | <a href="StructureDefinition-SEEHDSLMCareDocumentationV21.html">SEEHDSLMCareDocumentationV21</a> (v2.1, se <a href="#version-2-1">Övriga aktiva versioner</a>)<br />
+<strong>Krävs för NPÖ:</strong> Ja (v2.1, 3.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v2.1, 3.0)<br />
 <strong>EHDS-koppling:</strong> Journalanteckningar – kan bidra till discharge report eller dokumentationsunderlag; bredare än EHDS discharge reports</p>
 
 <hr />
@@ -884,6 +891,383 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
 <hr />
 
+<h2 id="version-2-1">Övriga aktiva versioner – GetCareDocumentation 2.1</h2>
+
+<p>Mappningstabellerna ovan utgår från GetCareDocumentation 3.0. Version 2.1 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMCareDocumentationV21.html">SEEHDSLMCareDocumentationV21</a> (genererad från <code class="language-plaintext highlighter-rouge">GetCareDocumentationResponder_2.1.xsd</code> i <code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.description</code> 2.1.19 och TKB:n för samma version). Samma profil, <a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a>, används.</p>
+
+<p>Den största skillnaden är headern: 2.1 har PatientSummaryHeader (<code class="language-plaintext highlighter-rouge">careDocumentationHeader</code>) i stället för JoL-headern, och anteckningen ligger i ett mellanliggande <code class="language-plaintext highlighter-rouge">clinicalDocumentNote</code>-element. 2.1 saknar dessutom paginering (<code class="language-plaintext highlighter-rouge">hasMore</code>).</p>
+
+<!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMCareDocumentationV21 mot SEEHDSLMCareDocumentation. Redigera inte för hand. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>2.1</th>
+      <th>3.0</th>
+      <th>Skillnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.documentId</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.sourceSystemHSAid</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.documentTitle</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.documentTime</code></td>
+      <td>0..1 TimeStamp</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.patientId</code></td>
+      <td>1..1 PersonIdType</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.accountableHealthcareProfessional</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.legalAuthenticator</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.approvedForPatient</code></td>
+      <td>1..1 Boolean</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader.careContactId</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationBody.clinicalDocumentNote</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.errorCode</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.logId</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.message</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 2.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.sourceSystemId</code></td>
+      <td>–</td>
+      <td>1..1 IIType</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.record</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.author</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.signature</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.body.clinicalDocumentNoteCode</code></td>
+      <td>–</td>
+      <td>1..1 CVType</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.body.clinicalDocumentNoteTitle</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.body.clinicalDocumentNoteText</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.body.multimediaEntry</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.body.dissentingOpinion</code></td>
+      <td>–</td>
+      <td>0..* Backbone</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hasMore</code></td>
+      <td>–</td>
+      <td>0..* Backbone</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.resultText</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationHeader</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header</code></td>
+      <td>Bytt namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.careDocumentationBody</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.body</code></td>
+      <td>Bytt namn</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="header-caredocumentationheader--documentreference">Header (careDocumentationHeader) → DocumentReference</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (2.1)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.documentId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.masterIdentifier</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.record.id</code> i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.sourceSystemHSAid</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.meta.source</code></td>
+      <td>Observera stavningen <code class="language-plaintext highlighter-rouge">HSAid</code> i XSD:n. Format: <code class="language-plaintext highlighter-rouge">https://tjanstekatalogen.inera.se/Endpoint/{hsaId}</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.documentTitle</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.description</code></td>
+      <td>Används om <code class="language-plaintext highlighter-rouge">clinicalDocumentNoteTitle</code> saknas</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.documentTime</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.context.period.start</code></td>
+      <td>Händelsetidpunkten som anteckningen gäller; ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.patientId.id</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.subject.identifier.value</code></td>
+      <td>PersonIdType; se <a href="mappings.html#patientreferens">GENERAL-006</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.patientId.type</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.subject.identifier.system</code></td>
+      <td>OID→URI enligt tabellen nedan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.accountableHealthcareProfessional.authorTime</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.date</code> och <code class="language-plaintext highlighter-rouge">Provenance.recorded</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.record.timestamp</code> och <code class="language-plaintext highlighter-rouge">header.author.timestamp</code> i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.author[0]</code> (Reference(PractitionerRole))</td>
+      <td>Logisk referens via HSA-id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalName</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalRoleCode</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier.value</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….healthcareProfessionalOrgUnit.orgUnitTelecom/orgUnitEmail/orgUnitAddress/orgUnitLocation</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td>Inre Sparr; motsvarar <code class="language-plaintext highlighter-rouge">accessControlHeader.accountableCareUnit</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
+      <td>Yttre Sparr; motsvarar <code class="language-plaintext highlighter-rouge">accessControlHeader.accountableHealthcareProvider</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.legalAuthenticator.signatureTime</code></td>
+      <td>1..1 (om legalAuthenticator)</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.extension[ext-signature-time].valueDateTime</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.signature.timestamp</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.legalAuthenticator.legalAuthenticatorHSAId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.authenticator</code> (Reference(PractitionerRole))</td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">header.signature.id</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.legalAuthenticator.legalAuthenticatorName</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.approvedForPatient</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.meta.security</code></td>
+      <td>PDL-kontroll – se PDL-001</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentationHeader.careContactId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.context.encounter.identifier.value</code></td>
+      <td>Logisk referens till vårdkontakten</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>JoL-headerns <code class="language-plaintext highlighter-rouge">blockComparisonTime</code> och <code class="language-plaintext highlighter-rouge">careProcessId</code> finns inte i 2.1. Spärrkontrollen görs då mot <code class="language-plaintext highlighter-rouge">authorTime</code>.</p>
+
+<h3 id="body-caredocumentationbodyclinicaldocumentnote--documentreference">Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (2.1)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clinicalDocumentNote.clinicalDocumentNoteCode</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.type</code></td>
+      <td>Sträng med samma koder som i 3.0 (<code class="language-plaintext highlighter-rouge">utr</code>, <code class="language-plaintext highlighter-rouge">atb</code>, <code class="language-plaintext highlighter-rouge">sam</code>, <code class="language-plaintext highlighter-rouge">sao</code>, <code class="language-plaintext highlighter-rouge">ins</code>, <code class="language-plaintext highlighter-rouge">slu</code>, <code class="language-plaintext highlighter-rouge">auf</code>, <code class="language-plaintext highlighter-rouge">sva</code>, <code class="language-plaintext highlighter-rouge">bes</code>), kodsystem KV Anteckningstyp. 0..1 i XSD:n eftersom <code class="language-plaintext highlighter-rouge">clinicalDocumentTypeCode</code> är alternativet, men det är 0..0 för GetCareDocumentation, så koden finns i praktiken alltid</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clinicalDocumentNote.clinicalDocumentNoteTitle</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.description</code></td>
+      <td>Går före <code class="language-plaintext highlighter-rouge">documentTitle</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clinicalDocumentNote.clinicalDocumentNoteText</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.content[0].attachment.data</code></td>
+      <td>Som i 3.0, inklusive DocBook</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clinicalDocumentNote.multimediaEntry.mediaType/value/reference</code></td>
+      <td>–</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.content[0].attachment</code></td>
+      <td>Som i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">clinicalDocumentNote.dissentintOpinion</code></td>
+      <td>0..*</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.extension[dissentingOpinion]</code></td>
+      <td>Heter <code class="language-plaintext highlighter-rouge">dissentintOpinion</code> i XSD:n för 2.1 (stavfel som måste användas i XML:en). Delfälten mappas som <code class="language-plaintext highlighter-rouge">dissentingOpinion</code> i 3.0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="result">result</h3>
+
+<p>I 2.1 har <code class="language-plaintext highlighter-rouge">result</code> fälten <code class="language-plaintext highlighter-rouge">resultCode</code>, <code class="language-plaintext highlighter-rouge">errorCode</code>, <code class="language-plaintext highlighter-rouge">logId</code>, <code class="language-plaintext highlighter-rouge">subCode</code> och <code class="language-plaintext highlighter-rouge">message</code>, mot <code class="language-plaintext highlighter-rouge">resultCode</code> och <code class="language-plaintext highlighter-rouge">resultText</code> i 3.0. Inga av dem mappas.</p>
+
+<hr />
+
 <h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
 
 <table>
@@ -982,7 +1366,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

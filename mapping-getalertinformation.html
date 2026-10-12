@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3</title>
+    <title>GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -44,8 +44,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"6"}
-    h3,h4,h5,h6{--heading-prefix:"6"}</style>
+    <style type="text/css">h2{--heading-prefix:"7"}
+    h3,h4,h5,h6{--heading-prefix:"7"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.3.3 - ci-build
+            <span style="display:inline-block;">0.5.0 - ci-build
 
 
 
@@ -112,6 +112,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">Mappningar<b class="caret"> </b></a>
               <ul class="dropdown-menu">
                 <li><a href="mappings.html">Översikt</a></li>
+                <li><a href="contract-versions.html">Tjänstekontraktsversioner</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Patientöversikt</li>
                 <li><a href="mapping-getdiagnosis.html">GetDiagnosis – Diagnoser</a></li>
@@ -154,7 +155,7 @@
             <li><a href="search-parameters.html">Sökparametrar</a></li>
             <li><a href="downloads.html">Downloads</a></li>
             <li><a href="mapping-issues.html">Issues &amp; Beslut</a></li>
-            <li><a href="version-history.html">Version History</a></li>
+            <li><a href="version-history.html">Versionshistorik</a></li>
           </ul>
         </div>
       </div>
@@ -193,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.3.3) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetAlertInformation – Uppmärksamhetsinformation</h2>
   
 
@@ -231,6 +232,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#mappningstabell--result" id="markdown-toc-mappningstabell--result">Mappningstabell – result</a></li>
       <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
       <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+      <li><a href="#version-3-0" id="markdown-toc-version-3-0">Övriga aktiva versioner – GetAlertInformation 3.0</a>        <ul>
+          <li><a href="#typer-i-30-och-motsvarighet-i-20" id="markdown-toc-typer-i-30-och-motsvarighet-i-20">Typer i 3.0 och motsvarighet i 2.0</a></li>
+          <li><a href="#header-jol-header--flag" id="markdown-toc-header-jol-header--flag">Header (JoL-header) → Flag</a></li>
+          <li><a href="#body--flag-och-allergyintolerance" id="markdown-toc-body--flag-och-allergyintolerance">Body → Flag och AllergyIntolerance</a></li>
+        </ul>
+      </li>
       <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
       <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
     </ul>
@@ -240,10 +247,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </div>
 <h1 id="getalertinformation--uppmärksamhetsinformation">GetAlertInformation – Uppmärksamhetsinformation</h1>
 
-<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetAlertInformation v2.0<br />
+<p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetAlertInformation v2.0 och v3.0<br />
 <strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSFlag.html">SEEHDSFlag</a> | <a href="StructureDefinition-SEEHDSAllergyIntolerance.html">SEEHDSAllergyIntolerance</a><br />
-<strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMAlertInformation.html">SEEHDSLMAlertInformation</a><br />
-<strong>Krävs för NPÖ:</strong> Ja (v2.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v2.0)<br />
+<strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMAlertInformation.html">SEEHDSLMAlertInformation</a> (v2.0) | <a href="StructureDefinition-SEEHDSLMAlertInformationV30.html">SEEHDSLMAlertInformationV30</a> (v3.0, se <a href="#version-3-0">Övriga aktiva versioner</a>)<br />
+<strong>Krävs för NPÖ:</strong> Ja (v2.0, 3.0) | <strong>Krävs för 1177 Journal:</strong> Ja (v2.0, 3.0)<br />
 <strong>EHDS-koppling:</strong> Patient Summary – Allergier, överkänslighet och varningsinformation</p>
 
 <hr />
@@ -1098,6 +1105,678 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
+<h2 id="version-3-0">Övriga aktiva versioner – GetAlertInformation 3.0</h2>
+
+<p>Mappningstabellerna ovan utgår från GetAlertInformation 2.0. <a href="index.html">Startsidan</a> anger även 3.0 för både NPÖ och 1177 Journal. Version 3.0 finns ännu inte som släppt domänversion i <code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.description</code>; den finns på grenen <code class="language-plaintext highlighter-rouge">feature-GAI_3.0</code> (taggarna <code class="language-plaintext highlighter-rouge">GAI3.0_BETA1</code>–<code class="language-plaintext highlighter-rouge">GAI3.0_BETA3</code>). Den logiska modellen <a href="StructureDefinition-SEEHDSLMAlertInformationV30.html">SEEHDSLMAlertInformationV30</a> är genererad från grenens senaste <code class="language-plaintext highlighter-rouge">GetAlertInformationResponder_3.0.xsd</code> och TKB:n för GetAlertInformation på samma gren. Se VER-001 i <a href="mapping-issues.html">Mappningsissues</a>.</p>
+
+<p>Version 3.0 är en ny meddelandemodell. Den har JoL-header (som GetCareDocumentation 3.0 och GetLaboratoryOrderOutcome 4.2) och en body som följer Socialstyrelsens informationsspecifikation för uppmärksamhetsinformation, med sju typer i stället för sex. Samma profiler används: en <a href="StructureDefinition-SEEHDSFlag.html">SEEHDSFlag</a> per post och dessutom en <a href="StructureDefinition-SEEHDSAllergyIntolerance.html">SEEHDSAllergyIntolerance</a> vid överkänslighet.</p>
+
+<!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMAlertInformationV30 mot SEEHDSLMAlertInformation. Redigera inte för hand. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>3.0</th>
+      <th>2.0</th>
+      <th>Skillnad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.header.accessControlHeader</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.header.sourceSystemId</code></td>
+      <td>1..1 IIType</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.header.record</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.header.author</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.header.signature</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.specificationVersion</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.hypersensitivity.value</code></td>
+      <td>1..1 CVType</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.hypersensitivity.status</code></td>
+      <td>1..1 CVType</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.hypersensitivity.time</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.hypersensitivity.negation</code></td>
+      <td>1..1 Boolean</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.hypersensitivity.verificationMethod</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.hypersensitivity.resource</code></td>
+      <td>1..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.activity</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.condition</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.decisionNonstandardCareProcedure</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.informationNonstandardCareProcedure</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.contagion</code></td>
+      <td>0..1 Backbone</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.unstructuredAlertInformation.title</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.unstructuredAlertInformation.description</code></td>
+      <td>0..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.resultText</code></td>
+      <td>1..1 String</td>
+      <td>–</td>
+      <td>Finns bara i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader.documentId</code></td>
+      <td>–</td>
+      <td>1..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader.sourceSystemHSAId</code></td>
+      <td>–</td>
+      <td>1..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader.patientId</code></td>
+      <td>–</td>
+      <td>1..1 PersonIdType</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader.accountableHealthcareProfessional</code></td>
+      <td>–</td>
+      <td>1..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader.legalAuthenticator</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader.approvedForPatient</code></td>
+      <td>–</td>
+      <td>1..1 Boolean</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader.careContactId</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.typeOfAlertInformation</code></td>
+      <td>–</td>
+      <td>1..1 CVType</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.ascertainedDate</code></td>
+      <td>–</td>
+      <td>0..1 Date</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.verifiedTime</code></td>
+      <td>–</td>
+      <td>0..1 TimeStamp</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.validityTimePeriod</code></td>
+      <td>–</td>
+      <td>1..1 TimePeriodType</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.alertInformationComment</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.obsoleteTime</code></td>
+      <td>–</td>
+      <td>0..1 TimeStamp</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.obsoleteComment</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.hypersensitivity.typeOfHypersensitivity</code></td>
+      <td>–</td>
+      <td>0..1 CVType</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.hypersensitivity.otherHypersensitivity</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.seriousDisease</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.treatment</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.communicableDisease</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.restrictionOfCare</code></td>
+      <td>–</td>
+      <td>0..1 Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.unstructuredAlertInformation.unstructuredAlertInformationHeading</code></td>
+      <td>–</td>
+      <td>1..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.unstructuredAlertInformation.unstructuredAlertInformationContent</code></td>
+      <td>–</td>
+      <td>1..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody.relatedAlertInformation</code></td>
+      <td>–</td>
+      <td>0..* Backbone</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.errorCode</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.logId</code></td>
+      <td>–</td>
+      <td>1..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.subCode</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.message</code></td>
+      <td>–</td>
+      <td>0..1 String</td>
+      <td>Finns bara i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.header</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationHeader</code></td>
+      <td>Bytt namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body</code></td>
+      <td>1..1 Backbone</td>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.alertInformationBody</code></td>
+      <td>Bytt namn</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">alertInformation.body.hypersensitivity.degreeOfSeverity</code></td>
+      <td>1..1 CVType</td>
+      <td>0..1 CVType</td>
+      <td>Ändrad kardinalitet</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="typer-i-30-och-motsvarighet-i-20">Typer i 3.0 och motsvarighet i 2.0</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Flag.category[alertType]</code> härleds i 3.0 från vilket body-element som finns, eftersom <code class="language-plaintext highlighter-rouge">typeOfAlertInformation</code> inte finns.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Body-element (3.0)</th>
+      <th>Motsvarighet i 2.0</th>
+      <th>Resurser</th>
+      <th><code class="language-plaintext highlighter-rouge">Flag.code</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity</code></td>
+      <td>Flag + AllergyIntolerance</td>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.resource.type</code> (substans), annars <code class="language-plaintext highlighter-rouge">hypersensitivity.value</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">condition</code></td>
+      <td><code class="language-plaintext highlighter-rouge">seriousDisease</code></td>
+      <td>Flag</td>
+      <td><code class="language-plaintext highlighter-rouge">condition.value</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">activity</code></td>
+      <td><code class="language-plaintext highlighter-rouge">treatment</code></td>
+      <td>Flag</td>
+      <td><code class="language-plaintext highlighter-rouge">activity.code</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">contagion</code></td>
+      <td><code class="language-plaintext highlighter-rouge">communicableDisease</code></td>
+      <td>Flag</td>
+      <td><code class="language-plaintext highlighter-rouge">contagion.value</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">decisionNonstandardCareProcedure</code></td>
+      <td><code class="language-plaintext highlighter-rouge">restrictionOfCare</code></td>
+      <td>Flag</td>
+      <td><code class="language-plaintext highlighter-rouge">decisionNonstandardCareProcedure.code</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">informationNonstandardCareProcedure</code></td>
+      <td>– (ny)</td>
+      <td>Flag</td>
+      <td><code class="language-plaintext highlighter-rouge">informationNonstandardCareProcedure.value</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">unstructuredAlertInformation</code></td>
+      <td><code class="language-plaintext highlighter-rouge">unstructuredAlertInformation</code></td>
+      <td>Flag</td>
+      <td><code class="language-plaintext highlighter-rouge">unstructuredAlertInformation.title</code> som <code class="language-plaintext highlighter-rouge">code.text</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="header-jol-header--flag">Header (JoL-header) → Flag</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (3.0)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.patientId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.subject.identifier</code></td>
+      <td>IIType: <code class="language-plaintext highlighter-rouge">root</code> → <code class="language-plaintext highlighter-rouge">system</code> (OID→URI), <code class="language-plaintext highlighter-rouge">extension</code> → <code class="language-plaintext highlighter-rouge">value</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.accountableHealthcareProvider</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
+      <td>Yttre Sparr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.accountableCareUnit</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td>Inre Sparr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.careProcessId</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Som i GetCareDocumentation 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.blockComparisonTime</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Används för spärrkontroll</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.approvedForPatient</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.meta.security</code></td>
+      <td>PDL-kontroll – se PDL-001</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.sourceSystemId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.meta.source</code></td>
+      <td>IIType; <code class="language-plaintext highlighter-rouge">extension</code> = källsystemets HSA-id (GENERAL-005)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.record.rivId</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.identifier</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">documentId</code> i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.record.timestamp</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.recorded</code> om <code class="language-plaintext highlighter-rouge">author</code> saknas</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.author.rivId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.author</code> (Reference(PractitionerRole))</td>
+      <td>Logisk referens via HSA-id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.author.name</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.practitioner.display</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.author.timestamp</code></td>
+      <td>1..1 (om author)</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.recorded</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">authorTime</code> i 2.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.author.byRole</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.code</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.author.orgUnit.orgUnitHSAId</code> / <code class="language-plaintext highlighter-rouge">orgUnitName</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">PractitionerRole.organization</code></td>
+      <td>Övriga kontaktuppgifter mappas inte, se <a href="mappings.html#organisation">GENERAL-008</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.signature.timestamp</code></td>
+      <td>1..1 (om signature)</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.extension[alertAssertedDate]</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">legalAuthenticator.signatureTime</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.signature.rivId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.extension[alertAsserter].identifier</code></td>
+      <td>Även <code class="language-plaintext highlighter-rouge">AllergyIntolerance.asserter</code> vid överkänslighet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">header.signature.name</code>, <code class="language-plaintext highlighter-rouge">header.signature.byRole</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="body--flag-och-allergyintolerance">Body → Flag och AllergyIntolerance</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RIVTA-element (3.0)</th>
+      <th>Kard.</th>
+      <th>FHIR-element</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">body.specificationVersion</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Version av Socialstyrelsens informationsspecifikation, t.ex. "5.1"</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*.time.timestamp</code> / <code class="language-plaintext highlighter-rouge">*.time.timePeriod</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.period</code></td>
+      <td>Tiden då det observerade förekom eller förväntas förekomma; vid överkänslighet även <code class="language-plaintext highlighter-rouge">AllergyIntolerance.onset[x]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*.status</code></td>
+      <td>1..1</td>
+      <td>Ej mappad på Flag; vid överkänslighet <code class="language-plaintext highlighter-rouge">AllergyIntolerance.verificationStatus</code></td>
+      <td>Observationens status enligt informationsspecifikationen (till exempel observerat eller potentiellt). Kräver ConceptMap, se VER-001</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*.negation</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.status</code> och <code class="language-plaintext highlighter-rouge">AllergyIntolerance.verificationStatus</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> betyder att förekomsten är utesluten: <code class="language-plaintext highlighter-rouge">Flag.status = inactive</code> och <code class="language-plaintext highlighter-rouge">verificationStatus = refuted</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.value</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.category[hypersensitivityType]</code> och <code class="language-plaintext highlighter-rouge">AllergyIntolerance.category</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">typeOfHypersensitivity</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.resource.type</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.code.coding</code> och <code class="language-plaintext highlighter-rouge">AllergyIntolerance.code.coding</code></td>
+      <td>Substans (t.ex. ATC eller NSL-id för aktiv substans)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.resource.productId</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">AllergyIntolerance.reaction.substance.coding</code></td>
+      <td>Produkt, t.ex. NPL-id; motsvarar <code class="language-plaintext highlighter-rouge">pharmaceuticalProductId</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.resource.rivId</code>, <code class="language-plaintext highlighter-rouge">resource.resourceProperty</code></td>
+      <td>–</td>
+      <td>Ej mappad</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.degreeOfSeverity</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.extension[degreeOfSeverity]</code> och <code class="language-plaintext highlighter-rouge">AllergyIntolerance.reaction.severity</code></td>
+      <td>Obligatorisk i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.degreeOfCertainty</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.extension[degreeOfCertainty]</code> och <code class="language-plaintext highlighter-rouge">AllergyIntolerance.verificationStatus</code></td>
+      <td>Se ALERT-004</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hypersensitivity.verificationMethod</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td>Verifieringsmetod (t.ex. pricktest); ingen motsvarighet i AllergyIntolerance R4</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">condition.value</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.code</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">seriousDisease.disease</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">condition.bodyStructure</code>, <code class="language-plaintext highlighter-rouge">condition.resource</code></td>
+      <td>–</td>
+      <td>Ej mappad</td>
+      <td>Lokalisation och resurs (t.ex. implantat)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">activity.code</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.code</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">treatment.treatmentCode</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">activity.resource.type</code></td>
+      <td>0..*</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.extension[pharmaceuticalTreatment]</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">pharmaceuticalTreatment</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">activity.bodyStructure</code></td>
+      <td>0..1</td>
+      <td>Ej mappad</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">contagion.value</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.code</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">communicableDiseaseCode</code>; smittväg finns inte i 3.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">decisionNonstandardCareProcedure.code</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.code</code></td>
+      <td>Beslut om avvikelse från behandlingsrutin</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">decisionNonstandardCareProcedure.description</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.extension[restrictionOfCareComment]</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">restrictionOfCareComment</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">decisionNonstandardCareProcedure.approval</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.status</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code> (beslutet bifalls inte) ger <code class="language-plaintext highlighter-rouge">inactive</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">decisionNonstandardCareProcedure.timestamp</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.period.start</code></td>
+      <td>Tidpunkt för beslutet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">informationNonstandardCareProcedure.value</code></td>
+      <td>1..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.code</code></td>
+      <td>Information som kan leda till särskild vårdrutin</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">unstructuredAlertInformation.title</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.code.text</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">unstructuredAlertInformationHeading</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">unstructuredAlertInformation.description</code></td>
+      <td>0..1</td>
+      <td><code class="language-plaintext highlighter-rouge">Flag.extension[alertInformationComment]</code></td>
+      <td>Motsvarar <code class="language-plaintext highlighter-rouge">unstructuredAlertInformationContent</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">result.resultCode</code>, <code class="language-plaintext highlighter-rouge">result.resultText</code></td>
+      <td>1..1</td>
+      <td>Ej mappad</td>
+      <td>Tekniska svarsfält</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Element i 2.0 som saknar motsvarighet i 3.0: <code class="language-plaintext highlighter-rouge">validityTimePeriod</code>, <code class="language-plaintext highlighter-rouge">obsoleteTime</code>, <code class="language-plaintext highlighter-rouge">obsoleteComment</code>, <code class="language-plaintext highlighter-rouge">ascertainedDate</code>, <code class="language-plaintext highlighter-rouge">verifiedTime</code>, <code class="language-plaintext highlighter-rouge">alertInformationComment</code> och <code class="language-plaintext highlighter-rouge">relatedAlertInformation</code>.</p>
+
+<hr />
+
 <h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
 
 <table>
@@ -1183,7 +1862,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.3.3 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Oct 9, 2026 07:52+0000">2026-10-09</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 12:51+0000">2026-10-12</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

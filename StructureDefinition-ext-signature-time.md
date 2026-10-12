@@ -1,4 +1,4 @@
-# Signeringstidpunkt för journalanteckning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Signeringstidpunkt för journalanteckning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:DocumentReferenceSignatureTime |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:DocumentReferenceSignatureTime |
 
 Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003.
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-ext-signature-time.c
   "resourceType" : "StructureDefinition",
   "id" : "ext-signature-time",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "DocumentReferenceSignatureTime",
   "title" : "Signeringstidpunkt för journalanteckning",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

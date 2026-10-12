@@ -1,4 +1,4 @@
-# Smittväg - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Smittväg - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-route-of-transmission | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:AlertRouteOfTransmission |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-route-of-transmission | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:AlertRouteOfTransmission |
 
 Kod för hur sjukdomen smittar (alertInformationBody.communicableDisease.routeOfTransmission). KV Smittväg.
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-route-of-trans
   "resourceType" : "StructureDefinition",
   "id" : "alert-route-of-transmission",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-route-of-transmission",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "AlertRouteOfTransmission",
   "title" : "Smittväg",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

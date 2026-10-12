@@ -1,4 +1,4 @@
-# SE EHDS Resource Access Provider - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# SE EHDS Resource Access Provider - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider | *Version*:0.3.3 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider | *Version*:0.5.0 |
 | Draft as of 2026-10-05 | *Computable Name*:SEEHDSResourceAccessProvider |
 
  
@@ -25,7 +25,7 @@ Krav på ett FHIR-API som tillhandahåller data från RIVTA-tjänstekontrakten e
   "resourceType" : "CapabilityStatement",
   "id" : "SEEHDSResourceAccessProvider",
   "url" : "https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSResourceAccessProvider",
   "title" : "SE EHDS Resource Access Provider",
   "status" : "draft",

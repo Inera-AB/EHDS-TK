@@ -10,11 +10,11 @@
     "valueCanonical" : "http://hl7.org/fhir/uv/ips/StructureDefinition/Organization-uv-ips"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSOrganization",
   "title" : "SE EHDS Organization – Organisationsenhet",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# Examples - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# Examples - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * **Examples**

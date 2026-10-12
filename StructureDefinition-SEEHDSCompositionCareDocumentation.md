@@ -1,4 +1,4 @@
-# SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation | *Version*:0.3.3 |
-| Draft as of 2026-10-09 | *Computable Name*:SEEHDSCompositionCareDocumentation |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation | *Version*:0.5.0 |
+| Draft as of 2026-10-12 | *Computable Name*:SEEHDSCompositionCareDocumentation |
 
  
 Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när innehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType application/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ (Strategi B, se DOC-004 och sidan DocBook-mappning). 
@@ -39,11 +39,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSCompositionCar
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSCompositionCareDocumentation",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation",
-  "version" : "0.3.3",
+  "version" : "0.5.0",
   "name" : "SEEHDSCompositionCareDocumentation",
   "title" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-10-09T07:52:45+00:00",
+  "date" : "2026-10-12T12:51:47+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

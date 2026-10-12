@@ -1,4 +1,4 @@
-# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.3.3
+# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
 
 * [**Table of Contents**](toc.md)
 * **GetCareDocumentation – Anteckningar**
@@ -7,10 +7,10 @@
 
 # GetCareDocumentation – Journalanteckningar
 
-**Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetCareDocumentation v3.0
+**Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetCareDocumentation v3.0 och v2.1
  **FHIR-profil:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.md)
- **Logisk modell:** [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md)
- **Krävs för NPÖ:** Ja (v3.0) | **Krävs för 1177 Journal:** Ja (v3.0)
+ **Logiska modeller:** [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md) (v3.0) | [SEEHDSLMCareDocumentationV21](StructureDefinition-SEEHDSLMCareDocumentationV21.md) (v2.1, se [Övriga aktiva versioner](#version-2-1))
+ **Krävs för NPÖ:** Ja (v2.1, 3.0) | **Krävs för 1177 Journal:** Ja (v2.1, 3.0)
  **EHDS-koppling:** Journalanteckningar – kan bidra till discharge report eller dokumentationsunderlag; bredare än EHDS discharge reports
 
 -------
@@ -222,6 +222,86 @@ GetCareDocumentation använder JoL-header v2.2. PDL-fälten för Sparr hämtas *
 
 `Provenance.target` refererar `DocumentReference` via `urn:uuid:{resurs.id}`, och även `Composition` när en sådan skapas (DOC-004, Strategi B).
  `Provenance.recorded` = `careDocumentation.header.author.timestamp` (ISO 8601). Om `author` saknas används `careDocumentation.header.record.timestamp` som fallback (DOC-002).
+
+-------
+
+## Övriga aktiva versioner – GetCareDocumentation 2.1
+
+Mappningstabellerna ovan utgår från GetCareDocumentation 3.0. Version 2.1 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMCareDocumentationV21](StructureDefinition-SEEHDSLMCareDocumentationV21.md) (genererad från `GetCareDocumentationResponder_2.1.xsd` i `riv.clinicalprocess.healthcond.description` 2.1.19 och TKB:n för samma version). Samma profil, [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.md), används.
+
+Den största skillnaden är headern: 2.1 har PatientSummaryHeader (`careDocumentationHeader`) i stället för JoL-headern, och anteckningen ligger i ett mellanliggande `clinicalDocumentNote`-element. 2.1 saknar dessutom paginering (`hasMore`).
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `careDocumentation.careDocumentationHeader.documentId` | 1..1 String | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.sourceSystemHSAid` | 1..1 String | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.documentTitle` | 0..1 String | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.documentTime` | 0..1 TimeStamp | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.patientId` | 1..1 PersonIdType | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.accountableHealthcareProfessional` | 1..1 Backbone | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.legalAuthenticator` | 0..1 Backbone | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.approvedForPatient` | 1..1 Boolean | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationHeader.careContactId` | 0..1 String | – | Finns bara i 2.1 |
+| `careDocumentation.careDocumentationBody.clinicalDocumentNote` | 1..1 Backbone | – | Finns bara i 2.1 |
+| `result.errorCode` | 0..1 String | – | Finns bara i 2.1 |
+| `result.logId` | 1..1 String | – | Finns bara i 2.1 |
+| `result.subCode` | 0..1 String | – | Finns bara i 2.1 |
+| `result.message` | 0..1 String | – | Finns bara i 2.1 |
+| `careDocumentation.header.accessControlHeader` | – | 1..1 Backbone | Finns bara i 3.0 |
+| `careDocumentation.header.sourceSystemId` | – | 1..1 IIType | Finns bara i 3.0 |
+| `careDocumentation.header.record` | – | 1..1 Backbone | Finns bara i 3.0 |
+| `careDocumentation.header.author` | – | 0..1 Backbone | Finns bara i 3.0 |
+| `careDocumentation.header.signature` | – | 0..1 Backbone | Finns bara i 3.0 |
+| `careDocumentation.body.clinicalDocumentNoteCode` | – | 1..1 CVType | Finns bara i 3.0 |
+| `careDocumentation.body.clinicalDocumentNoteTitle` | – | 0..1 String | Finns bara i 3.0 |
+| `careDocumentation.body.clinicalDocumentNoteText` | – | 0..1 String | Finns bara i 3.0 |
+| `careDocumentation.body.multimediaEntry` | – | 0..1 Backbone | Finns bara i 3.0 |
+| `careDocumentation.body.dissentingOpinion` | – | 0..* Backbone | Finns bara i 3.0 |
+| `hasMore` | – | 0..* Backbone | Finns bara i 3.0 |
+| `result.resultText` | – | 0..1 String | Finns bara i 3.0 |
+| `careDocumentation.careDocumentationHeader` | 1..1 Backbone | `careDocumentation.header` | Bytt namn |
+| `careDocumentation.careDocumentationBody` | 1..1 Backbone | `careDocumentation.body` | Bytt namn |
+
+### Header (careDocumentationHeader) → DocumentReference
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `careDocumentationHeader.documentId` | 1..1 | `DocumentReference.masterIdentifier` | Motsvarar`header.record.id`i 3.0 |
+| `careDocumentationHeader.sourceSystemHSAid` | 1..1 | `DocumentReference.meta.source` | Observera stavningen`HSAid`i XSD:n. Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
+| `careDocumentationHeader.documentTitle` | 0..1 | `DocumentReference.description` | Används om`clinicalDocumentNoteTitle`saknas |
+| `careDocumentationHeader.documentTime` | 0..1 | `DocumentReference.context.period.start` | Händelsetidpunkten som anteckningen gäller; ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001) |
+| `careDocumentationHeader.patientId.id` | 1..1 | `DocumentReference.subject.identifier.value` | PersonIdType; se[GENERAL-006](mappings.md#patientreferens) |
+| `careDocumentationHeader.patientId.type` | 1..1 | `DocumentReference.subject.identifier.system` | OID→URI enligt tabellen nedan |
+| `careDocumentationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `DocumentReference.date`och`Provenance.recorded` | Motsvarar`header.record.timestamp`och`header.author.timestamp`i 3.0 |
+| `….accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `DocumentReference.author[0]`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `….accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` |   |
+| `….accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` |   |
+| `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` |   |
+| `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` |   |
+| `….healthcareProfessionalOrgUnit.orgUnitTelecom/orgUnitEmail/orgUnitAddress/orgUnitLocation` | 0..1 | Ej mappad | Se[GENERAL-008](mappings.md#organisation) |
+| `….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr; motsvarar`accessControlHeader.accountableCareUnit` |
+| `….accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr; motsvarar`accessControlHeader.accountableHealthcareProvider` |
+| `careDocumentationHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DocumentReference.extension[ext-signature-time].valueDateTime` | Motsvarar`header.signature.timestamp` |
+| `careDocumentationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DocumentReference.authenticator`(Reference(PractitionerRole)) | Motsvarar`header.signature.id` |
+| `careDocumentationHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | `PractitionerRole.practitioner.display` |   |
+| `careDocumentationHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security` | PDL-kontroll – se PDL-001 |
+| `careDocumentationHeader.careContactId` | 0..1 | `DocumentReference.context.encounter.identifier.value` | Logisk referens till vårdkontakten |
+
+JoL-headerns `blockComparisonTime` och `careProcessId` finns inte i 2.1. Spärrkontrollen görs då mot `authorTime`.
+
+### Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `clinicalDocumentNote.clinicalDocumentNoteCode` | 0..1 | `DocumentReference.type` | Sträng med samma koder som i 3.0 (`utr`,`atb`,`sam`,`sao`,`ins`,`slu`,`auf`,`sva`,`bes`), kodsystem KV Anteckningstyp. 0..1 i XSD:n eftersom`clinicalDocumentTypeCode`är alternativet, men det är 0..0 för GetCareDocumentation, så koden finns i praktiken alltid |
+| `clinicalDocumentNote.clinicalDocumentNoteTitle` | 0..1 | `DocumentReference.description` | Går före`documentTitle` |
+| `clinicalDocumentNote.clinicalDocumentNoteText` | 0..1 | `DocumentReference.content[0].attachment.data` | Som i 3.0, inklusive DocBook |
+| `clinicalDocumentNote.multimediaEntry.mediaType/value/reference` | – | `DocumentReference.content[0].attachment` | Som i 3.0 |
+| `clinicalDocumentNote.dissentintOpinion` | 0..* | `DocumentReference.extension[dissentingOpinion]` | Heter`dissentintOpinion`i XSD:n för 2.1 (stavfel som måste användas i XML:en). Delfälten mappas som`dissentingOpinion`i 3.0 |
+
+### result
+
+I 2.1 har `result` fälten `resultCode`, `errorCode`, `logId`, `subCode` och `message`, mot `resultCode` och `resultText` i 3.0. Inga av dem mappas.
 
 -------
 

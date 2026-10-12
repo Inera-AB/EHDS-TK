@@ -26,11 +26,11 @@
     <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Organization-uv-ips"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"/>
-  <version value="0.3.3"/>
+  <version value="0.5.0"/>
   <name value="SEEHDSOrganization"/>
   <title value="SE EHDS Organization – Organisationsenhet"/>
   <status value="draft"/>
-  <date value="2026-10-09T07:52:45+00:00"/>
+  <date value="2026-10-12T12:51:47+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
