@@ -3,6 +3,16 @@
 // riv.clinicalprocess.healthcond.basic/schemas/interactions/GetObservationsInteraction/GetObservationsResponder_1.2.xsd @ 1.2.3 (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_basic.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getobservations12-id-choice
+Description: "Högst ett av id och person.id får anges"
+Expression: "rivId.combine(person.rivId).count() <= 1"
+Severity: #error
+
+Invariant: getobservations12-participant-choice
+Description: "En och endast en av person, organisation, device och location ska anges"
+Expression: "person.combine(organisation).combine(device).combine(location).count() = 1"
+Severity: #error
+
 Logical: SEEHDSLMObservationsV12
 Id: SEEHDSLMObservationsV12
 Title: "GetObservations 1.2"
@@ -29,6 +39,7 @@ Description: """
 * insert RivNs(observationGroup.patient.gender, urn:riv:clinicalprocess:healthcond:basic:1)
 * observationGroup.performerRole 1..1 BackboneElement "Den som utfört observationerna inom gruppen" """Den som utfört observationerna inom gruppen."""
 * insert RivNs(observationGroup.performerRole, urn:riv:clinicalprocess:healthcond:basic:1)
+* observationGroup.performerRole obeys getobservations12-id-choice
 * observationGroup.performerRole.rivId 0..1 SEEHDSRivIITypeHealthcondBasic1 "rivId"
 * insert RivNs(observationGroup.performerRole.rivId, urn:riv:clinicalprocess:healthcond:basic:1)
 * insert RivXmlName(observationGroup.performerRole.rivId, id)
@@ -66,6 +77,8 @@ Description: """
 * insert RivNs(observationGroup.legalAuthenticator.name, urn:riv:clinicalprocess:healthcond:basic:1)
 * observationGroup.additionalParticipant 0..* BackboneElement "Övriga deltagare relaterat till observationerna inom gruppen" """Övriga deltagare relaterat till observationerna inom gruppen."""
 * insert RivNs(observationGroup.additionalParticipant, urn:riv:clinicalprocess:healthcond:basic:1)
+* observationGroup.additionalParticipant obeys getobservations12-id-choice
+* observationGroup.additionalParticipant obeys getobservations12-participant-choice
 * observationGroup.additionalParticipant.rivId 0..1 SEEHDSRivIITypeHealthcondBasic1 "rivId"
 * insert RivNs(observationGroup.additionalParticipant.rivId, urn:riv:clinicalprocess:healthcond:basic:1)
 * insert RivXmlName(observationGroup.additionalParticipant.rivId, id)

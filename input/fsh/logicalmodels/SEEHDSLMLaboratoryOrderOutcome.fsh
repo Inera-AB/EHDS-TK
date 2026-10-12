@@ -3,6 +3,16 @@
 // riv.clinicalprocess.healthcond.actoutcome/schemas/interactions/GetLaboratoryOrderOutcomeInteraction/GetLaboratoryOrderOutcomeResponder_4.2.xsd (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_actoutcome.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getlaboratoryorderoutcome-reference-choice
+Description: "Ett och endast ett av interval och description ska anges"
+Expression: "interval.exists() xor description.exists()"
+Severity: #error
+
+Invariant: getlaboratoryorderoutcome-value-choice
+Description: "En och endast en av cv, pq, intervalPQ och st ska anges"
+Expression: "cv.combine(pq).combine(intervalPQ).combine(st).count() = 1"
+Severity: #error
+
 Logical: SEEHDSLMLaboratoryOrderOutcome
 Id: SEEHDSLMLaboratoryOrderOutcome
 Title: "GetLaboratoryOrderOutcome"
@@ -281,6 +291,7 @@ Description: """
     Modellerad som string i avvaktan på mappningsverifiering. Se QUESTIONS.md.
   """
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value obeys getlaboratoryorderoutcome-value-choice
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value.cv 0..1 SEEHDSRivCVTypeHealthcondActoutcome4 "cv"
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value.cv, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value.pq 0..1 SEEHDSRivPQTypeHealthcondActoutcome4 "pq"
@@ -297,6 +308,7 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.interpretation, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference 0..1 BackboneElement "Referensintervall" """Information om vilket referensintervall eller referensvärde som gäller för ett resultat."""
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference obeys getlaboratoryorderoutcome-reference-choice
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference.interval 0..1 SEEHDSRivPQIntervalTypeHealthcondActoutcome4 "Referensintervall (PQIntervalType)" """
     Angivelse av referensintervall som numeriskt värde av mätvärden. Ett referensvärde anges genom att antingen ange ett intervall från det lägre värdet till det högre värdet som sätts till referensvärdet, alternativt från referensvärde som start på intervallet utan angivelse av intervallets slut för att ange att normalvärde ligger över referensvärdet.
   """

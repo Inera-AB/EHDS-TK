@@ -3,6 +3,26 @@
 // riv.crm.requeststatus/schemas/interactions/GetRequestActivitiesInteraction/GetRequestActivitiesResponder_1.0.xsd @ 1.0.7 (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_crm_requeststatus.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getrequestactivities1-request-id
+Description: "Minst ett av senderRequestId och receiverRequestId ska anges"
+Expression: "senderRequestId.exists() or receiverRequestId.exists()"
+Severity: #error
+
+Invariant: getrequestactivities1-issued-by-unit
+Description: "Minst ett av requestIssuedByOrganizationalUnitId och requestIssuedByOrganizationalUnitDescription ska anges"
+Expression: "requestIssuedByOrganizationalUnitId.exists() or requestIssuedByOrganizationalUnitDescription.exists()"
+Severity: #error
+
+Invariant: getrequestactivities1-receiving-unit
+Description: "Minst ett av receivingOrganizationalUnitId och receivingOrganizationalUnitDescription ska anges"
+Expression: "receivingOrganizationalUnitId.exists() or receivingOrganizationalUnitDescription.exists()"
+Severity: #error
+
+Invariant: getrequestactivities1-status-code
+Description: "typeOfRequest ska vara 1, 2, 4 eller 10 och statusCode ska vara en av de koder som är tillåtna för remisstypen (VER-005)"
+Expression: "(typeOfRequest.value = '1' and statusCode.value in ('20' | '30' | '90' | '126' | '130' | '136' | '140')) or (typeOfRequest.value = '2' and statusCode.value in ('20' | '30' | '126' | '130' | '136' | '140')) or (typeOfRequest.value = '4' and statusCode.value in ('20' | '30' | '90' | '130' | '140')) or (typeOfRequest.value = '10' and statusCode.value in ('20' | '30' | '90' | '140'))"
+Severity: #error
+
 Logical: SEEHDSLMRequestActivitiesV10
 Id: SEEHDSLMRequestActivitiesV10
 Title: "GetRequestActivities 1.0"
@@ -14,6 +34,10 @@ Description: """
 """
 * insert RivRoot(GetRequestActivitiesResponse, urn:riv:crm:requeststatus:GetRequestActivitiesResponder:1)
 * requestActivity 0..* BackboneElement "requestActivity"
+* requestActivity obeys getrequestactivities1-request-id
+* requestActivity obeys getrequestactivities1-issued-by-unit
+* requestActivity obeys getrequestactivities1-receiving-unit
+* requestActivity obeys getrequestactivities1-status-code
 * requestActivity.subjectOfCareId 1..1 SEEHDSRivString "Person eller samordnings-nummer enligt skatteverkets definition 12 tecken" """
     Person eller samordnings-nummer enligt skatteverkets definition 12 tecken. Del av instansen unikhet. Personnummer OID: 1.2.752.129.2.1.3.1
   """

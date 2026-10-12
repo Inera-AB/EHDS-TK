@@ -3,6 +3,11 @@
 // riv.clinicalprocess.healthcond.actoutcome/schemas/interactions/GetLaboratoryOrderOutcomeInteraction/GetLaboratoryOrderOutcomeResponder_3.1.xsd @ 3.1.10 (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_actoutcome.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getlaboratoryorderoutcome31-analysis-choice
+Description: "Ett och endast ett av analysisCode och analysisText ska anges"
+Expression: "analysisCode.exists() xor analysisText.exists()"
+Severity: #error
+
 Logical: SEEHDSLMLaboratoryOrderOutcomeV31
 Id: SEEHDSLMLaboratoryOrderOutcomeV31
 Title: "GetLaboratoryOrderOutcome 3.1"
@@ -154,6 +159,7 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.laboratoryOrderOutcomeBody.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * laboratoryOrderOutcome.laboratoryOrderOutcomeBody.analysis 0..* BackboneElement "Information om analystjänster som ligger till grund för ett undersökningsresultat"
 * insert RivNs(laboratoryOrderOutcome.laboratoryOrderOutcomeBody.analysis, urn:riv:clinicalprocess:healthcond:actoutcome:3)
+* laboratoryOrderOutcome.laboratoryOrderOutcomeBody.analysis obeys getlaboratoryorderoutcome31-analysis-choice
 * laboratoryOrderOutcome.laboratoryOrderOutcomeBody.analysis.analysisId 1..1 SEEHDSRivIITypeHealthcondActoutcome3 "Unik identifierare för analystjänsten"
 * insert RivNs(laboratoryOrderOutcome.laboratoryOrderOutcomeBody.analysis.analysisId, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * laboratoryOrderOutcome.laboratoryOrderOutcomeBody.analysis.analysisTime 0..1 SEEHDSRivTimePeriodTypeHealthcondActoutcome3 "Tidsangivelse för åtgärdens utförande" """

@@ -22,7 +22,7 @@ Description: "Profil för läkemedelsordinationer, förskrivningar och administr
 * status ^short = "Ordinationsstatus (medicationMedicalRecordBody.medicationPrescription.prescriptionStatus – Active/Inactive)"
 
 * medication[x] 1..1 MS
-* medication[x] ^short = "Läkemedel (medicationMedicalRecordBody.medicationPrescription.drug – XOR: unstructured/merchandise/drugArticle/drug/generics, se MED-003)"
+* medication[x] ^short = "Läkemedel (medicationMedicalRecordBody.medicationPrescription.drug – exakt ett av unstructured/merchandise/drugArticle/drug/generics, se invarianten getmedicationhistory-drug-choice)"
 
 * effectivePeriod MS
 * effectivePeriod ^short = "Behandlingsperiod (startOfTreatment / endOfTreatment)"

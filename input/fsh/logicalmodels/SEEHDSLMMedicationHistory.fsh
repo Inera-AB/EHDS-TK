@@ -3,6 +3,66 @@
 // riv.clinicalprocess.activityprescription.actoutcome/schemas/interactions/GetMedicationHistoryInteraction/GetMedicationHistoryResponder_2.2.xsd (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_activityprescription_actoutcome.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getmedicationhistory-drug-choice
+Description: "Ett och endast ett av unstructuredDrugInformation, merchandise, drugArticle, drug och generics ska anges (MED-003)"
+Expression: "unstructuredDrugInformation.combine(merchandise).combine(drugArticle).combine(drug).combine(generics).count() = 1"
+Severity: #error
+
+Invariant: getmedicationhistory-npl-or-atc
+Description: "Minst ett av nplId och atcCode ska anges"
+Expression: "nplId.exists() or atcCode.exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-dosage
+Description: "Minst ett av setDosage och conditionalDosage ska anges"
+Expression: "setDosage.exists() or conditionalDosage.exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-prescriber
+Description: "prescriber ska anges om selfMedication är false"
+Expression: "selfMedication.value = true or prescriber.exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-start-of-treatment
+Description: "startOfTreatment ska anges om typeOfPrescription är I"
+Expression: "typeOfPrescription.value != 'I' or startOfTreatment.exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-administration-time
+Description: "Minst ett av start och end ska anges"
+Expression: "start.exists() or end.exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-occasion-dosage
+Description: "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14"
+Expression: "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)"
+Severity: #error
+
+Invariant: getmedicationhistory-total-amount
+Description: "totalAmount och packageUnit ska anges tillsammans eller inte alls"
+Expression: "totalAmount.exists() = packageUnit.exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-referred-type
+Description: "type.originalText ska vara caa-ga eller chb-go"
+Expression: "originalText.where(value = 'caa-ga' or value = 'chb-go').exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-pq-interval
+Description: "Minst ett av low och high ska anges"
+Expression: "low.exists() or high.exists()"
+Severity: #error
+
+Invariant: getmedicationhistory-cv-strict
+Description: "code, codeSystem och displayName ska anges, originalText ska inte anges"
+Expression: "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()"
+Severity: #error
+
+Invariant: getmedicationhistory-ii-strict
+Description: "extension ska anges"
+Expression: "rivExtension.exists()"
+Severity: #error
+
 Logical: SEEHDSLMMedicationHistory
 Id: SEEHDSLMMedicationHistory
 Title: "GetMedicationHistory"
@@ -106,6 +166,8 @@ Description: """
     LÄKEMEDELSORDINATION. Ordination som avser läkemedelsbehandling. De individuella läkemedelsordinationerna kan indelas i ordination som avser utsättning, förändrande läkemedelsordination, ordination som avser insättning och bekräftande läkemedelsordination. I slutenvård görs endast ordination, men i öppenvård krävs vanligtvis även en förskrivning (se nedan).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription obeys getmedicationhistory-prescriber
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription obeys getmedicationhistory-start-of-treatment
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.prescriptionId 1..1 SEEHDSRivIITypeActivityprescriptionActoutcome2 "Ordinations-id" """
     Unik identifierare för aktuell läkemedelsordination.
     root = UUID eller OID som pekar på källsystem.
@@ -138,6 +200,7 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.principalPrescriptionReason.reason, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.principalPrescriptionReason.reason obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.principalPrescriptionReason.otherReason 0..1 SEEHDSRivString "Beskrivning om 'Annan ordinationsorsak' väljs" """
     Om koden för ”Annan ordinationsorsak” (SNOMED: 46021000052104) väljs för föregående kod så anges beskrivning här.
   """
@@ -149,6 +212,7 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.additionalPrescriptionReason.reason, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.additionalPrescriptionReason.reason obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.additionalPrescriptionReason.otherReason 0..1 SEEHDSRivString "Beskrivning om 'Annan ordinationsorsak' väljs" """
     Om koden för ”Annan ordinationsorsak” (SNOMED: 46021000052104) väljs för föregående kod så anges beskrivning här.
   """
@@ -266,9 +330,10 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.selfMedication, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug 0..1 BackboneElement "Läkemedelsval (ett av: unstructured/merchandise/drugArticle/drug/generics)" """
     OBS: Ett och endast ett av följande alternativ ska anges.
-    ASSUME-ACT-003: XOR-villkor kan inte uttryckas direkt i FSH-kardinaliteten (alla är 0..1).
+    Villkoret uttrycks av invarianten getmedicationhistory-drug-choice (MED-003).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug obeys getmedicationhistory-drug-choice
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.comment 0..1 SEEHDSRivString "Kommentar om läkemedelsval" """
     Kommentar om läkemedelsval. Text som innehåller en kommentar till det ordinerade läkemedlet. Fältet kan användas för att specificera ytterligare läkemedel eller läkemedelsnära produkter, t.ex. i samband med spädning och infusion där läkemedlet består av en huvudingrediens men där spädningsvätskor eller motsvarande också kan behöva anges.
   """
@@ -284,6 +349,7 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.merchandise.articleNumber, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.merchandise.articleNumber obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drugArticle 0..1 BackboneElement "Läkemedelsartikel" """Läkemedelsartikel."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drugArticle, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drugArticle.nplPackId 1..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "NPL pack-id (OID 1.2.752.129.2.1.5.2)" """
@@ -291,18 +357,22 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drugArticle.nplPackId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drugArticle.nplPackId obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug 0..1 BackboneElement "Läkemedelsprodukt" """Läkemedelsprodukt."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug obeys getmedicationhistory-npl-or-atc
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.nplId 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "NPL-id (OID 1.2.752.129.2.1.5.1)" """
     NPL-id. Nationellt Produktregister för Läkemedelsprodukter. OID: 1.2.752.129.2.1.5.1. Alla producenter av kontraktet ska skicka code, codeSystem samt displayName. Antingen nplId eller atcCode måste anges.
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.nplId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.nplId obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.atcCode 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "ATC-kod (OID 1.2.752.129.2.2.3.1.1)" """
     ATC-kod. atcKod + atcKodBeskrivning i SIL. Klassificeringskod för läkemedlet på sjuställig nivå. OID: 1.2.752.129.2.2.3.1.1. Underhålls av WHO Collaborating Centre for Drug Statistics Methodology, Oslo, Norge http://www.whocc.no/atcddd/ I Sverige oklart vilken instans som ansvarar men Läkemedelsverket har övergripande ansvar för läkemedelsfrågor www.lakemedelsverket.se/ ATC-kod, (Anatomic Therapeutic Chemical classification system), är ett klassificeringssystem för läkemedel. Läkemedlen indelas i olika grupper efter indikationsområde. Antingen nplId eller atcCode måste anges.
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.atcCode, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.atcCode obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.routeOfAdministration 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "Administreringssätt" """Administreringssätt. Hur produkten ska intas/administreras. Kan anges med SNOMED-kod."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.routeOfAdministration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.drug.pharmaceuticalForm 0..1 SEEHDSRivString "Läkemedelsform (t.ex. Tablett)" """Läkemedelsform enligt SIL, t.ex Tablett"""
@@ -333,12 +403,14 @@ Description: """
     Dosering. Socialstyrelsens termbank: Terminologirådet; uppgift om mängd och periodicitet. setDosage (fastdosering), maxiumumDosage (maxdosering) och conditionalDosage (villkorsdosering) anger samtliga mängd och periodicitet under en avgränsad tid, men med olika syfte. Normalt består en dosering av ett av dessa val men den kan även bestå av flera stycken, t.ex. vid upp- och nedtrappning av läkemedel. Dessa följer då varandra i tiden och utgör tillsammans den kompletta doseringen. De tre angivna attributen kan alltså, men behöver inte, förekomma samtidigt. Däremot måste minst ett av attributen fast dosering eller villkorsdosering alltid anges. Anges ej vid ordinationstyp Utsättning.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage obeys getmedicationhistory-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.lengthOfTreatment 0..1 BackboneElement "Behandlingstid" """Behandlingstid."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.lengthOfTreatment, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.lengthOfTreatment.treatmentInterval 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Tidsintervall för behandling (PQIntervalType)" """
     Behandlingstid. Tidsintervall under vilket läkemedlet ska användas enligt ordination. Exempel: 5-6 veckor.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.lengthOfTreatment.treatmentInterval, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.lengthOfTreatment.treatmentInterval obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.lengthOfTreatment.isMaximumTreatmentTime 1..1 SEEHDSRivBoolean "Om true: maximalt tillåten tid" """
     Logiskt villkor som anger om attributet behandlingstid avser den maximala tid som läkemedlet får användas. Sant = Behandlingstiden är en maxtid Falskt = Behandlingstiden är inte en maxtid.
   """
@@ -359,22 +431,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -391,22 +467,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -415,6 +495,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampStart.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -427,22 +508,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -451,6 +536,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.rampedDosage.rampEnd.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -461,6 +547,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.setDosage.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -473,22 +560,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -505,22 +596,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -529,6 +624,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampStart.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -541,22 +637,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -565,6 +665,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.rampedDosage.rampEnd.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -575,6 +676,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.maximumDosage.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -594,6 +696,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex." """
     Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex. 3 gånger dagligen (3/dag).
   """
@@ -604,18 +707,21 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, …" """
     Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, t.ex. var 6:e timme (1/6 tim).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -638,6 +744,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex." """
     Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex. 3 gånger dagligen (3/dag).
   """
@@ -648,18 +755,21 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, …" """
     Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, t.ex. var 6:e timme (1/6 tim).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -668,6 +778,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras" """Den mängd läkemedel som ska intas eller appliceras."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras" """
     Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras. Tidpunkt kan anges som en specifik dag, (datum, veckodag eller antal dagar från Doseringsstegets början) eller som ett tillfälle eller klockslag inom dygnet eller som en kombination av dessa. Om tid utelämnas tolkas det som "omgående".
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -687,6 +798,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex." """
     Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex. 3 gånger dagligen (3/dag).
   """
@@ -697,18 +809,21 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, …" """
     Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, t.ex. var 6:e timme (1/6 tim).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -717,6 +832,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras" """Den mängd läkemedel som ska intas eller appliceras."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras" """
     Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras. Tidpunkt kan anges som en specifik dag, (datum, veckodag eller antal dagar från Doseringsstegets början) eller som ett tillfälle eller klockslag inom dygnet eller som en kombination av dessa. Om tid utelämnas tolkas det som "omgående".
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -732,6 +848,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras" """Den mängd läkemedel som ska intas eller appliceras."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug.dosage.conditionalDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras" """
     Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras. Tidpunkt kan anges som en specifik dag, (datum, veckodag eller antal dagar från Doseringsstegets början) eller som ett tillfälle eller klockslag inom dygnet eller som en kombination av dessa. Om tid utelämnas tolkas det som "omgående".
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -752,6 +869,7 @@ Description: """
     nonReplaceable (0..1, enum Prescriber/Patient).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization obeys getmedicationhistory-total-amount
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.dispensationAuthorizationId 1..1 SEEHDSRivIITypeActivityprescriptionActoutcome2 "Förskrivnings-id" """Förskrivnings-id. Unik identifierare för aktuell förskrivning"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.dispensationAuthorizationId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.validUntil 0..1 SEEHDSRivDate "Sista giltighetsdag" """
@@ -764,6 +882,7 @@ Description: """
     Enligt TKB i detta sammanhang: extension 1..1.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.receivingPharmacy, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.receivingPharmacy obeys getmedicationhistory-ii-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.minimumDispensationInterval 0..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Utlämningsintervall" """
     Utlämningsintervall. Minsta tidsintervall, i dagar, som ska förflyta mellan två utlämningar. Minsta värde: 1 dag Största värde: 12 månader.
   """
@@ -833,6 +952,7 @@ Description: """
     Läkemedelsval. OBS: Ett och endast ett av följande alternativ: unstructuredDrugInformation (fritextval/extemporeberedning) merchandise (handelsvara) drugArticle (läkemedelsartikel) drug (läkemedelsprodukt) generics (generika/utbytesgrupp)
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug obeys getmedicationhistory-drug-choice
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.comment 0..1 SEEHDSRivString "Kommentar om läkemedelsval" """
     Kommentar om läkemedelsval. Text som innehåller en kommentar till det ordinerade läkemedlet. Fältet kan användas för att specificera ytterligare läkemedel eller läkemedelsnära produkter, t.ex. i samband med spädning och infusion där läkemedlet består av en huvudingrediens men där spädningsvätskor eller motsvarande också kan behöva anges.
   """
@@ -848,6 +968,7 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.merchandise.articleNumber, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.merchandise.articleNumber obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drugArticle 0..1 BackboneElement "Läkemedelsartikel" """Läkemedelsartikel."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drugArticle, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drugArticle.nplPackId 1..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "NPL pack-id" """
@@ -855,18 +976,22 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drugArticle.nplPackId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drugArticle.nplPackId obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug 0..1 BackboneElement "Läkemedelsprodukt" """Läkemedelsprodukt."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug obeys getmedicationhistory-npl-or-atc
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.nplId 1..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "NPL-id" """
     NPL-id. Nationellt Produktregister för Läkemedelsprodukter. OID: 1.2.752.129.2.1.5.1.
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.nplId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.nplId obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.atcCode 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "ATC-kod" """
     ATC-kod. atcKod + atcKodBeskrivning i SIL. Klassificeringskod för läkemedlet på sjuställig nivå. OID: 1.2.752.129.2.2.3.1.1. Underhålls av WHO Collaborating Centre for Drug Statistics Methodology, Oslo, Norge http://www.whocc.no/atcddd/ I Sverige oklart vilken instans som ansvarar men Läkemedelsverket har övergripande ansvar för läkemedelsfrågor www.lakemedelsverket.se/ ATC-kod, (Anatomic Therapeutic Chemical classification system), är ett klassificeringssystem för läkemedel. Läkemedlen indelas i olika grupper efter indikationsområde.
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.atcCode, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.atcCode obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.routeOfAdministration 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "Administreringssätt" """Administreringssätt. Hur produkten ska intas/administreras. Kan anges med SNOMED-kod."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.routeOfAdministration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.drug.pharmaceuticalForm 0..1 SEEHDSRivString "Läkemedelsform enligt SIL, t.ex Tablett"
@@ -897,6 +1022,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.lengthOfTreatment, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.lengthOfTreatment.treatmentInterval 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "treatmentInterval"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.lengthOfTreatment.treatmentInterval, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.lengthOfTreatment.treatmentInterval obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.lengthOfTreatment.isMaximumTreatmentTime 1..1 SEEHDSRivBoolean "isMaximumTreatmentTime"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.lengthOfTreatment.isMaximumTreatmentTime, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.dosageInstruction 0..1 SEEHDSRivString "dosageInstruction"
@@ -911,22 +1037,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -943,22 +1073,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -967,6 +1101,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampStart.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -979,22 +1114,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1003,6 +1142,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.rampedDosage.rampEnd.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1013,6 +1153,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.setDosage.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1025,22 +1166,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1057,22 +1202,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1081,6 +1230,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampStart.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1093,22 +1243,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1117,6 +1271,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.rampedDosage.rampEnd.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1127,6 +1282,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.maximumDosage.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1141,22 +1297,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1173,22 +1333,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1197,6 +1361,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampStart.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1209,22 +1374,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1233,6 +1402,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.rampedDosage.rampEnd.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1243,6 +1413,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.dispensationAuthorization.drug.dosage.conditionalDosage.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1264,6 +1435,7 @@ Description: """
     Tidsintervall för läkemedelsadministreringen. Om administreringen sker vid en viss tidpunkt sätts start och end till samma tidpunkt.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.administrationTime, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.administrationTime obeys getmedicationhistory-administration-time
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.administrationComment 0..1 SEEHDSRivString "Kommentar till administrering av vårdpersonal" """
     Kommentar till administrering av vårdpersonal. Exempelvis ”patienten kräktes 30 minuter efter administrering”.
   """
@@ -1309,6 +1481,7 @@ Description: """
     Läkemedelsval. OBS: Ett och endast ett av följande alternativ: unstructuredDrugInformation (fritextval/extemporeberedning) merchandise (handelsvara) drugArticle (läkemedelsartikel) drug (läkemedelsprodukt) generics (generika/utbytesgrupp)
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug obeys getmedicationhistory-drug-choice
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.comment 0..1 SEEHDSRivString "Kommentar om läkemedelsval" """
     Kommentar om läkemedelsval. Text som innehåller en kommentar till det administrerade läkemedlet. Fältet kan användas för att specificera ytterligare läkemedel eller läkemedelsnära produkter, t.ex. i samband med spädning och infusion där läkemedlet består av en huvudingrediens men där spädningsvätskor eller motsvarande också kan behöva anges.
   """
@@ -1324,6 +1497,7 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.merchandise.articleNumber, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.merchandise.articleNumber obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drugArticle 0..1 BackboneElement "Läkemedelsartikel" """Läkemedelsartikel."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drugArticle, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drugArticle.nplPackId 1..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "NPL pack-id" """
@@ -1331,18 +1505,22 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drugArticle.nplPackId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drugArticle.nplPackId obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug 0..1 BackboneElement "Läkemedelsprodukt" """Läkemedelsprodukt."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug obeys getmedicationhistory-npl-or-atc
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.nplId 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "NPL-id" """
     NPL-id. Nationellt Produktregister för Läkemedelsprodukter. OID: 1.2.752.129.2.1.5.1.
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.nplId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.nplId obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.atcCode 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "ATC-kod" """
     ATC-kod. atcKod + atcKodBeskrivning i SIL. Klassificeringskod för läkemedlet på sjuställig nivå. OID: 1.2.752.129.2.2.3.1.1. Underhålls av WHO Collaborating Centre for Drug Statistics Methodology, Oslo, Norge http://www.whocc.no/atcddd/ I Sverige oklart vilken instans som ansvarar men Läkemedelsverket har övergripande ansvar för läkemedelsfrågor www.lakemedelsverket.se/ ATC-kod, (Anatomic Therapeutic Chemical classification system), är ett klassificeringssystem för läkemedel. Läkemedlen indelas i olika grupper efter indikationsområde.
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.atcCode, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.atcCode obeys getmedicationhistory-cv-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.routeOfAdministration 0..1 SEEHDSRivCVTypeActivityprescriptionActoutcome2 "Administreringssätt" """Administreringssätt. Hur produkten ska intas/administreras. Kan anges med SNOMED-kod."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.routeOfAdministration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.drug.pharmaceuticalForm 0..1 SEEHDSRivString "Läkemedelsform enligt SIL, t.ex Tablett"
@@ -1371,10 +1549,12 @@ Description: """
     Dosering. Socialstyrelsens termbank: Terminologirådet; uppgift om mängd och periodicitet. setDosage (fastdosering), maxiumumDosage (maxdosering) och conditionalDosage (villkorsdosering) anger samtliga mängd och periodicitet under en avgränsad tid, men med olika syfte. Normalt består en dosering av ett av dessa val men den kan även bestå av flera stycken, t.ex. vid upp- och nedtrappning av läkemedel. Dessa följer då varandra i tiden och utgör tillsammans den kompletta doseringen. De tre angivna attributen kan alltså, men behöver inte, förekomma samtidigt. Däremot måste minst ett av attributen fast dosering eller villkorsdosering alltid anges.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage obeys getmedicationhistory-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.lengthOfTreatment 0..0 BackboneElement "Ska ej anges" """Ska ej anges."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.lengthOfTreatment, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.lengthOfTreatment.treatmentInterval 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "treatmentInterval"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.lengthOfTreatment.treatmentInterval, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.lengthOfTreatment.treatmentInterval obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.lengthOfTreatment.isMaximumTreatmentTime 1..1 SEEHDSRivBoolean "isMaximumTreatmentTime"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.lengthOfTreatment.isMaximumTreatmentTime, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.dosageInstruction 0..1 SEEHDSRivString "dosageInstruction"
@@ -1393,22 +1573,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1425,22 +1609,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1449,6 +1637,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampStart.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1461,22 +1650,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1485,6 +1678,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.rampedDosage.rampEnd.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1495,6 +1689,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.setDosage.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1509,22 +1704,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1541,22 +1740,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1565,6 +1768,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampStart.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1577,22 +1781,26 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "frequency"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.frequencyDosage.frequency, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage 0..1 BackboneElement "periodDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1601,6 +1809,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.rampedDosage.rampEnd.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1611,6 +1820,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "time" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.singleDose.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.maximumDosage.unstructuredDosageInformation 0..1 BackboneElement "unstructuredDosageInformation"
@@ -1632,6 +1842,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex." """
     Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex. 3 gånger dagligen (3/dag).
   """
@@ -1642,18 +1853,21 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, …" """
     Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, t.ex. var 6:e timme (1/6 tim).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1674,6 +1888,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex." """
     Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex. 3 gånger dagligen (3/dag).
   """
@@ -1684,18 +1899,21 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, …" """
     Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, t.ex. var 6:e timme (1/6 tim).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1704,6 +1922,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras" """Den mängd läkemedel som ska intas eller appliceras."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampStart.singleDose.time 0..1 SEEHDSRivTimeStamp "Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras" """
     Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras. Tidpunkt kan anges som en specifik dag, (datum, veckodag eller antal dagar från Doseringsstegets början) eller som ett tillfälle eller klockslag inom dygnet eller som en kombination av dessa. Om tid utelämnas tolkas det som "omgående".
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -1723,6 +1942,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.frequencyDosage.frequency 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex." """
     Periodicitet för intaget eller appliceringen uttryck som antal gånger per tidsenhet, t.ex. 3 gånger dagligen (3/dag).
   """
@@ -1733,18 +1953,21 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex." """Den mängd läkemedel som ska intas eller appliceras vid varje tillfälle, t.ex. 2 tabletter"""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, …" """
     Periodicitet för intaget eller appliceringen uttryck som förfluten tid mellan varje intag eller applicering, t.ex. var 6:e timme (1/6 tim).
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.periodDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage 0..1 BackboneElement "occasionDosage"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage obeys getmedicationhistory-occasion-dosage
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.period 1..1 SEEHDSRivPQTypeActivityprescriptionActoutcome2 "period"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.period, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration 1..* BackboneElement "administration"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "dose"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.time 0..1 SEEHDSRivString "time"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.time, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.occasionDosage.administration.dayOfPeriod 1..1 SEEHDSRivInteger "dayOfPeriod"
@@ -1753,6 +1976,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras" """Den mängd läkemedel som ska intas eller appliceras."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.rampedDosage.rampEnd.singleDose.time 0..1 SEEHDSRivTimeStamp "Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras" """
     Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras. Tidpunkt kan anges som en specifik dag, (datum, veckodag eller antal dagar från Doseringsstegets början) eller som ett tillfälle eller klockslag inom dygnet eller som en kombination av dessa. Om tid utelämnas tolkas det som "omgående".
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -1768,6 +1992,7 @@ Description: """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.singleDose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.singleDose.dose 1..1 SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2 "Den mängd läkemedel som ska intas eller appliceras" """Den mängd läkemedel som ska intas eller appliceras."""
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.singleDose.dose, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.singleDose.dose obeys getmedicationhistory-pq-interval
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.administration.drug.dosage.conditionalDosage.singleDose.time 0..1 SEEHDSRivTimeStamp "Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras" """
     Den tid eller det tillfälle under dygnet när läkemedlet ska intas eller appliceras. Tidpunkt kan anges som en specifik dag, (datum, veckodag eller antal. dagar från Doseringsstegets början) eller som ett tillfälle eller klockslag inom dygnet eller som en kombination av dessa. Om tid utelämnas tolkas det som "omgående".
     Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.
@@ -1802,6 +2027,7 @@ Description: """
     Typ av interaktion som behöver nyttjas för att ta del av den refererade informationen. Motsvarar fältet categorization i engagemangsindex. I skrivande stund finns inget OID-satt kodverk över olika categorization-typer, vilket betyder att fältet originalText behöver användas. Från den dag ett OID-satt kodverk finns tillgängligt bör detta användas istället. type.originalText får enbart sättas till ett av följande caa-ga för att referera till aktiviteter som tjänstekonsument kan hämta mha GetActivities chb-go för att referera till observationer som tjänstekonsument kan hämta mha GetObservations
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.type, urn:riv:clinicalprocess:activityprescription:actoutcome:2.1)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.type obeys getmedicationhistory-referred-type
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner 1..1 BackboneElement "Vårdgivare som är informationsägare av den refererade informationen" """
     Vårdgivare som är informationsägare av den refererade informationen. Används av tjänstekonsument för spärrhantering.
   """
@@ -1809,6 +2035,7 @@ Description: """
 * medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.rivId 1..1 SEEHDSRivIITypeActivityprescriptionActoutcome2 "Informationsägande vårdgivare"
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.rivId, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
 * insert RivXmlName(medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.rivId, id)
+* medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.relation.referredInformation.informationOwner.rivId obeys getmedicationhistory-ii-strict
 * medicationMedicalRecord.medicationMedicalRecordBody.additionalPatientInformation 0..1 BackboneElement "Ytterligare patientinformation" """
     Ytterligare information om patienten som inte går att få tag på via en gemensam PU-slagning.
   """
@@ -1823,6 +2050,7 @@ Description: """
     Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1, originalText 0..0.
   """
 * insert RivNs(medicationMedicalRecord.medicationMedicalRecordBody.additionalPatientInformation.gender, urn:riv:clinicalprocess:activityprescription:actoutcome:2)
+* medicationMedicalRecord.medicationMedicalRecordBody.additionalPatientInformation.gender obeys getmedicationhistory-cv-strict
 * result 1..1 BackboneElement "Svarsstatus" """Innehåller information om begäran gick bra eller ej."""
 * result.resultCode 1..1 SEEHDSRivString "OK, INFO eller ERROR" """
     Kan endast vara OK, INFO eller ERROR
