@@ -1,9 +1,9 @@
 # GetReferralOutcome – Remissvar / Konsultationssvar
 
-**Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetReferralOutcome v3.2  
+**Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetReferralOutcome v3.2 och v3.1  
 **FHIR-profil:** [SEEHDSDiagnosticReportReferral](StructureDefinition-SEEHDSDiagnosticReportReferral.html)  
-**Logisk modell:** [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html)  
-**Krävs för NPÖ:** Ja (v3.2) | **Krävs för 1177 Journal:** Ja (v3.2)  
+**Logiska modeller:** [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html) (v3.2) | [SEEHDSLMReferralOutcomeV31](StructureDefinition-SEEHDSLMReferralOutcomeV31.html) (v3.1, se [Övriga aktiva versioner](#version-3-1))  
+**Krävs för NPÖ:** Ja (v3.1) | **Krävs för 1177 Journal:** Ja (v3.1)  
 **EHDS-koppling:** Remissvar – relaterar till vårdprocess och resultat (ej separat EHDS-huvudkategori)
 
 ---
@@ -190,6 +190,16 @@ PDL-styrning i GetReferralOutcome utgår från `accountableHealthcareProfessiona
 `Provenance.target` refererar `DiagnosticReport` via `urn:uuid:{resurs.id}`.  
 `Provenance.recorded` = `referralOutcomeHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).  
 `Provenance.agent[author].onBehalfOf` = `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId`.
+
+---
+
+## Övriga aktiva versioner – GetReferralOutcome 3.1 {#version-3-1}
+
+Mappningstabellerna ovan utgår från GetReferralOutcome 3.2. [Startsidan](index.html) anger 3.1 som aktiv version för både NPÖ och 1177 Journal. Version 3.1 beskrivs av den logiska modellen [SEEHDSLMReferralOutcomeV31](StructureDefinition-SEEHDSLMReferralOutcomeV31.html) (genererad från `GetReferralOutcomeResponder_3.1.xsd` i `riv.clinicalprocess.healthcond.actoutcome` 4.2, den sista domänversionen med 3.1).
+
+{% include vdiff-SEEHDSLMReferralOutcomeV31.md %}
+
+Den enda skillnaden är att `referralOutcomeBody.referralOutcomeTitle` är obligatorisk i 3.1. Alla element mappas enligt tabellerna ovan. Eftersom titeln alltid finns i 3.1 kommer `DiagnosticReport.code.text` alltid från `referralOutcomeTitle`, se [Titel-prioritering](#titel).
 
 ---
 

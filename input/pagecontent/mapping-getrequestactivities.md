@@ -1,8 +1,8 @@
 # GetRequestActivities – Remisstatus
 
-**Tjänstekontrakt:** `crm:requeststatus` GetRequestActivities v2.0  
+**Tjänstekontrakt:** `crm:requeststatus` GetRequestActivities v2.0 och v1.0  
 **FHIR-profil:** [SEEHDSTask](StructureDefinition-SEEHDSTask.html)  
-**Logisk modell:** [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.html)  
+**Logiska modeller:** [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.html) (v2.0) | [SEEHDSLMRequestActivitiesV10](StructureDefinition-SEEHDSLMRequestActivitiesV10.html) (v1.0, se [Övriga aktiva versioner](#version-1-0))  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v1.0, 2.0)  
 **EHDS-koppling:** Stödjande processinformation (ej separat EHDS-huvudkategori)
 
@@ -78,6 +78,52 @@ En `Provenance`-resurs skapas per Task och bär PDL/Sparr-information från `hea
 
 `Provenance.target` refererar Task-resursen.  
 `Provenance.recorded` = `header.author.timestamp` om den finns, annars `header.record.timestamp` (konverterat till ISO 8601).
+
+---
+
+## Övriga aktiva versioner – GetRequestActivities 1.0 {#version-1-0}
+
+Mappningstabellerna ovan utgår från GetRequestActivities 2.0. Version 1.0 är också aktiv för 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMRequestActivitiesV10](StructureDefinition-SEEHDSLMRequestActivitiesV10.html) (genererad från `GetRequestActivitiesResponder_1.0.xsd` i `riv.crm.requeststatus` 1.0.7 och TKB:n för samma version). Samma profil, [SEEHDSTask](StructureDefinition-SEEHDSTask.html), används.
+
+Version 1.0 har en platt struktur utan header och body. Den saknar åtkomstkontrollfälten i 2.0: det finns ingen vårdgivare, inget `approvedForPatient` och ingen identitet för själva statusposten.
+
+{% include vdiff-SEEHDSLMRequestActivitiesV10.md %}
+
+### Mappningstabell – requestActivity (1.0)
+
+| RIVTA-element (1.0) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `requestActivity.subjectOfCareId` | 1..1 | `Task.for.identifier.value` | Person- eller samordningsnummer (12 tecken). `system` sätts från numrets form, se [GENERAL-006](mappings.html#patientreferens) |
+| `requestActivity.senderRequestId` | 0..1 | `Task.focus.identifier.value` | Remiss-id hos framställaren; motsvarar `body.request.rivId` i 2.0 |
+| `requestActivity.receiverRequestId` | 0..1 | `Task.focus.identifier.value` om `senderRequestId` saknas | Remiss-id hos mottagaren. Minst ett av de två id:na finns alltid |
+| `requestActivity.typeOfRequest` | 1..1 | Ej mappad | Lokal kod för framställantyp (1 röntgen, 2 lab, 4 allmän, 10 fysiologi); attribut till remissen, som i 2.0 |
+| `requestActivity.requestMedium` | 0..1 | Ej mappad | KV Form av framställan; attribut till remissen, som i 2.0 |
+| `requestActivity.requestIssuedByPersonName` | 0..1 | `Task.requester.display` | Remittentens namn |
+| `requestActivity.requestIssuedByOrganizationalUnitId` | 0..1 | `Task.requester.identifier` | Remitterande enhets HSA-id |
+| `requestActivity.requestIssuedByOrganizationalUnitDescription` | 0..1 | `Task.requester.display` | Läggs efter remittentens namn |
+| `requestActivity.receivingPersonName` | 0..1 | Ej mappad | Mottagande person; finns inte i 2.0 och Task.owner är enheten |
+| `requestActivity.receivingOrganizationalUnitId` | 0..1 | `Task.owner.identifier` | Mottagande enhets HSA-id |
+| `requestActivity.receivingOrganizationalUnitDescription` | 0..1 | `Task.owner.display` | |
+| `requestActivity.careUnit` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – informationsägande vårdenhet. Ingen vårdgivare (Yttre Sparr) finns i 1.0 |
+| `requestActivity.logicalSystemId` | 1..1 | `Task.meta.source` | Källsystemets HSA-id (GENERAL-005) |
+| `requestActivity.statusCode` | 1..1 | `Task.businessStatus` och `Task.status` | Lokalt kodverk utan nationell förankring, se tabellen nedan |
+| `requestActivity.eventTime` | 1..1 | `Task.lastModified` | ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001). Används även som `Task.authoredOn` och `Provenance.recorded`, eftersom 1.0 saknar `record.timestamp` |
+
+`Task.identifier` sätts inte, eftersom 1.0 saknar identitet för statusposten. Utan `approvedForPatient` sätts ingen `meta.security`.
+
+### statusCode 1.0 → Task.status
+
+TKB 1.0 anger klartext för sju av de tillåtna koderna. Övriga koder (10, 40–80, 100–120, 150–170) saknar beskrivning och ger `Task.status = unknown`, med koden kvar i `businessStatus`. Se VER-005 i [Mappningsissues](mapping-issues.html).
+
+| statusCode | Klartext enligt TKB 1.0 | `Task.status` |
+|---|---|---|
+| 20 | Skickad | `requested` |
+| 30 | Mottagen | `received` |
+| 90 | Bedömd | `accepted` |
+| 126 | Preliminärsvar skickat | `in-progress` |
+| 130 | Svar skickat | `completed` |
+| 136 | Preliminärsvar mottaget | `in-progress` |
+| 140 | Svar mottaget | `completed` |
 
 ---
 

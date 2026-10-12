@@ -285,9 +285,9 @@ från ett källsystem.
 
 ## Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient {#getaccesslogforpatient}
 
-**Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogForPatient v1.1, 2.0  
+**Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogsForPatient v2.0 och `ehr:log:querying` GetAccessLogsForPatient v1.1  
 **FHIR-profil:** [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.html)  
-**Logisk modell:** [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html)  
+**Logiska modeller:** [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) (v2.0) | [SEEHDSLMAccessLogV11](StructureDefinition-SEEHDSLMAccessLogV11.html) (v1.1, se [Övriga aktiva versioner](#getaccesslogforpatient-1-1))  
 **Krävs för NPÖ:** Nej | **Krävs för 1177 Journal:** Ja (v1.1, 2.0)
 
 GetAccessLogForPatient används för att lämna ut källsystemens befintliga åtkomstloggar till
@@ -318,6 +318,18 @@ Svaret `GetAccessLogsForPatientResponse` innehåller ett `accessLogsResult` med 
 | `accessLogsResult.reportResult.endInterval` | 0..1 | Ej mappad | Datum för sista loggposten som finns för uppföljning när rapporten skapades |
 | `accessLogsResult.reportResult.queuedReportId` | 0..1 | Ej mappad | Id för köad rapport (asynkront svar); bryggan behöver anropa igen |
 | `accessLogsResult.reportResult.queueTime` | 0..1 | Ej mappad | Förväntad tid i sekunder tills den köade rapporten kan levereras |
+
+### Övriga aktiva versioner – GetAccessLogsForPatient 1.1 {#getaccesslogforpatient-1-1}
+
+Tabellen ovan utgår från GetAccessLogsForPatient 2.0 i `informationsecurity:auditing:log`. Version 1.1 är också aktiv för 1177 Journal. Den ligger i en annan domän, `ehr:log:querying` (`riv.ehr.log` 1.2.4), och beskrivs av den logiska modellen [SEEHDSLMAccessLogV11](StructureDefinition-SEEHDSLMAccessLogV11.html).
+
+{% include vdiff-SEEHDSLMAccessLogV11.md %}
+
+Innehållet i loggposterna är detsamma; skillnaderna gäller namn och nästling:
+
+- XML-namnen i 1.1 börjar med versal (`AccessLogsResultType/AccesssLogs/AccessLog/UserId`) och namnrymden är `urn:riv:ehr:log:querying:1`. I den logiska modellen börjar elementnamnen med gemen (`accessLogsResultType.accesssLogs.accessLog.userId`) och XML-namnet bärs i `xml-name`, som för `id` i andra modeller. Varje `accessLog`-element mappas till samma `AuditEvent`-element som motsvarande element i 2.0.
+- Rapportstatusen ligger direkt i `accessLogsResultType.result` (`resultCode`, `resultText`, `startInterval`, `endInterval`, `queuedReportId`, `queueTime`) i stället för i `reportResult` med ett inre `result`. Fälten mappas inte, som i 2.0.
+- `result.resultText` är obligatorisk i 1.1. Det påverkar inte mappningen.
 
 Öppen fråga: LOG-002 i [Mappningsissues](mapping-issues.html). LOG-001 är beslutad (BALP:s entity-mönster).
 

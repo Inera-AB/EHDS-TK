@@ -1,8 +1,8 @@
 # GetCareContacts – Vårdkontakter
 
-**Tjänstekontrakt:** `clinicalprocess:logistics:logistics` GetCareContacts v3.0  
+**Tjänstekontrakt:** `clinicalprocess:logistics:logistics` GetCareContacts v3.0 och v2.0  
 **FHIR-profil:** [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.html)  
-**Logisk modell:** [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.html)  
+**Logiska modeller:** [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.html) (v3.0) | [SEEHDSLMCareContactsV20](StructureDefinition-SEEHDSLMCareContactsV20.html) (v2.0, se [Övriga aktiva versioner](#version-2-0))  
 **Krävs för NPÖ:** Ja (v2.0, 3.0) | **Krävs för 1177 Journal:** Ja (v2.0, 3.0)  
 
 ---
@@ -137,6 +137,49 @@ Kodverket KV Vårdkontakttyp (OID 1.2.752.129.2.2.2.x) innehåller koder som ang
 ## careContactStatus – SNOMED CT SE
 
 Status för vårdkontakt mappas från SNOMED CT SE (OID 1.2.752.116.2.1.1, SCTID 53761000052103) till `Encounter.status`. Mappning av specifika SNOMED-koder till FHIR-statusvärden görs via ConceptMap (ej inkluderad i denna version av IG) – se CC-001.
+
+---
+
+## Övriga aktiva versioner – GetCareContacts 2.0 {#version-2-0}
+
+Mappningstabellerna ovan utgår från GetCareContacts 3.0. Version 2.0 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMCareContactsV20](StructureDefinition-SEEHDSLMCareContactsV20.html) (genererad från `GetCareContactsResponder_2.0.xsd` i `riv.clinicalprocess.logistics.logistics` 2.0.7 och TKB:n för samma version). Element som är lika i båda versionerna mappas enligt tabellerna ovan; samma profil, [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.html), används.
+
+### Skillnader mot 3.0
+
+{% include vdiff-SEEHDSLMCareContactsV20.md %}
+
+### Mappning av det som skiljer i 2.0
+
+| RIVTA-element (2.0) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `careContact.careContactBody.careContactCode` | 0..1 | `Encounter.class` | Heltal i stället för CVType. Värdena 1–5 (Besök, Telefon, Vårdtillfälle, Dagsjukvård, Annan) motsvarar KV Vårdkontakttyp (1.2.752.129.2.2.2.25) som 3.0 hänvisar till. Mappas som kod i det kodverket, se tabellen nedan. Saknas värdet sätts `class` till `v3-NullFlavor#UNK` |
+| `careContact.careContactBody.careContactStatus` | 0..1 | `Encounter.status` | Heltal 1–5 enligt TKB 2.0 i stället för SNOMED CT, se tabellen nedan. Saknas värdet sätts `status` till `unknown` |
+| `careContact.careContactHeader.nullified` | 0..1 | `Encounter.status` | Finns bara i 2.0. `true` ger `entered-in-error` och går före `careContactStatus` |
+| `careContact.careContactHeader.nullifiedReason` | 0..1 | Ej mappad | Makuleringsorsak; Encounter saknar statusorsak i R4. En makulerad kontakt visas inte för patienten |
+| `careContact.careContactHeader.accountableHealthcareProfessional` med underelement | 1..1 | Som i 3.0 | Elementen är obligatoriska i 2.0 (Regel 4, NPÖ-kompatibilitet) men mappas likadant |
+| `careContact.careContactBody.careContactOrgUnit` med `orgUnitHSAId` och `orgUnitName` | 1..1 | `Encounter.serviceProvider` | Obligatoriska i 2.0; mappas som i 3.0 |
+| `careContact.careContactBody.careContactTimePeriod` | 1..1 | `Encounter.period` | Obligatorisk i 2.0 med obligatorisk `start` |
+| `legalAuthenticator`, `additionalPatientInformation`, `result` | – | – | Finns inte i 2.0. Svaret har inget `result`; fel signaleras med SOAP-fel |
+
+#### careContactCode 2.0 → Encounter.class
+
+| Värde (2.0) | Klartext enligt TKB 2.0 | `Encounter.class` (system `urn:oid:1.2.752.129.2.2.2.25`) |
+|---|---|---|
+| 1 | Besök | `1` "Besök" |
+| 2 | Telefon | `2` "Telefon" |
+| 3 | Vårdtillfälle | `3` "Vårdtillfälle" |
+| 4 | Dagsjukvård | `4` "Dagsjukvård" |
+| 5 | Annan | `5` "Annan" |
+
+#### careContactStatus 2.0 → Encounter.status
+
+| Värde (2.0) | Klartext enligt TKB 2.0 | `Encounter.status` |
+|---|---|---|
+| 1 | Ej påbörjad | `planned` |
+| 2 | Inställd | `cancelled` |
+| 3 | Pågående | `in-progress` |
+| 4 | Avbruten | `finished` (kontakten har påbörjats och avslutats i förtid; R4 saknar ett eget värde, se VER-002) |
+| 5 | Avslutad | `finished` |
 
 ---
 

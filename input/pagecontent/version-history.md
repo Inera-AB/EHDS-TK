@@ -6,6 +6,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
+| 0.5.0 | 2026-10-12 | Draft | Alla aktiva tjänstekontraktsversioner enligt startsidan har nu logiska modeller och mappning, inte bara den senaste versionen. |
 | 0.4.0 | 2026-10-12 | Draft | Ny konformitetsansats (EURIDICE och EU Core i stället för IPS/EPS), profiler omdöpta till SEEHDS, logiska modeller genererade från RIV-TA-XSD och verifierade mot TKB, och ett antal mappningsbeslut. |
 | 0.3.3 | 2026-06-25 | Draft | `ig_slug` tillagd i dispatch-anropet till fhir-portal, så att länkarna till kanonisk URL blir rätt. |
 | 0.3.2 | 2026-06-25 | Draft | Ompublicering som rättar publiceringsflödet och publiceringssökvägarna. |
@@ -15,6 +16,22 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 ---
 
 ### Ändringslogg
+
+#### 0.5.0 — 2026-10-12 (Draft)
+
+Startsidan anger flera aktiva versioner för en del tjänstekontrakt, men mappningarna byggde bara på en version per kontrakt. Nu är alla aktiva versioner med. Se [Tjänstekontraktsversioner](contract-versions.html).
+
+**Logiska modeller**
+
+- Tio nya modeller för övriga aktiva versioner: GetAlertInformation 3.0, GetCareContacts 2.0, GetCareDocumentation 2.1, GetLaboratoryOrderOutcome 4.1 och 3.1, GetReferralOutcome 3.1, GetVaccinationHistory 1.0, GetRequestActivities 1.0, GetObservations 1.2 och GetAccessLogsForPatient 1.1. Modellerna har versionen som suffix, t.ex. `SEEHDSLMCareContactsV20`.
+- Modellerna är genererade från XSD:n och TKB:n i den domänversion där kontraktsversionen senast ingick, och jämförda med motsvarande modeller i tkb-converter.
+- `tools/rivta-lm` läser domäner vid en viss tagg eller gren, och det nya skriptet `vdiff.py` beräknar skillnaderna mot modellen som mappningen utgår från.
+
+**Mappningar**
+
+- Varje berörd mappningssida har ett nytt avsnitt "Övriga aktiva versioner" med en genererad tabell över skillnaderna och en mappning av det som skiljer. För GetLaboratoryOrderOutcome 3.1, GetCareDocumentation 2.1, GetAlertInformation 3.0, GetRequestActivities 1.0 och GetObservations 1.2, som har andra meddelandemodeller, finns fullständiga mappningstabeller.
+- Sidhuvudena på mappningssidorna anger nu samma aktiva versioner som startsidan.
+- Nya öppna frågor VER-001–VER-006 på [Mappningsissues](mapping-issues.html), bland annat att GetAlertInformation 3.0 bara finns som beta, att huvudmodellen för GetObservations bygger på en release candidate medan 1.2 är aktiv, och att GetReferralOutcome mappas från 3.2 medan startsidan anger 3.1.
 
 #### 0.4.0 — 2026-10-12 (Draft)
 

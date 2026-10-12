@@ -24,4 +24,24 @@ def CFG(X):
      dict(model='SEEHDSLMRequestActivities', xsd=I(CRM, 'GetRequestActivitiesInteraction/GetRequestActivitiesResponder_2.0.xsd'), element='GetRequestActivitiesResponse', tkb=D(CRM, 'TKB_crm_requeststatus.docx'), contract='GetRequestActivities 2.0'),
      dict(model='SEEHDSLMAccessLog', xsd=I(AUD, 'GetAccessLogsForPatientInteraction/GetAccessLogsForPatientResponder_2.0.xsd'), element='GetAccessLogsForPatientResponse', tkb=D(AUD, 'TKB_informationsecurity_auditing_log.docx'), contract='GetAccessLogsForPatient 2.0'),
     ]
+    # Övriga aktiva kontraktsversioner (se startsidan). Domänen checkas ut vid angiven tagg/gren i
+    # <domains>/<repo>@<ref> (git worktree). 'base' är modellen som mappningen utgår från och som
+    # versionen jämförs med (vdiff.py).
+    R = lambda r, ref: f'{r}@{ref}'
+    OLD = [
+     ('SEEHDSLMAlertInformationV30', 'SEEHDSLMAlertInformation', R(HCD, 'feature-GAI_3.0'), 'GetAlertInformation', '3.0', 'TKB_clinicalprocess_healthcond_description_GetAlertInformation.docx', {}),
+     ('SEEHDSLMCareDocumentationV21', 'SEEHDSLMCareDocumentation', R(HCD, '2.1.19'), 'GetCareDocumentation', '2.1', 'TKB_clinicalprocess_healthcond_description.docx', {}),
+     ('SEEHDSLMCareContactsV20', 'SEEHDSLMCareContacts', R(LOG, '2.0.7'), 'GetCareContacts', '2.0', 'TKB_clinicalprocess_logistics_logistics.docx', dict(flatten=['careContactHeader', 'careContactBody'])),
+     ('SEEHDSLMLaboratoryOrderOutcomeV31', 'SEEHDSLMLaboratoryOrderOutcome', R(HCA, '3.1.10'), 'GetLaboratoryOrderOutcome', '3.1', 'TKB_clinicalprocess_healthcond_actoutcome.docx', {}),
+     ('SEEHDSLMLaboratoryOrderOutcomeV41', 'SEEHDSLMLaboratoryOrderOutcome', R(HCA, '4.1.3'), 'GetLaboratoryOrderOutcome', '4.1', 'TKB_clinicalprocess_healthcond_actoutcome.docx', {}),
+     ('SEEHDSLMReferralOutcomeV31', 'SEEHDSLMReferralOutcome', R(HCA, '4.2'), 'GetReferralOutcome', '3.1', 'TKB_clinicalprocess_healthcond_actoutcome.docx', {}),
+     ('SEEHDSLMVaccinationHistoryV10', 'SEEHDSLMVaccinationHistory', R(APA, '1.0.2'), 'GetVaccinationHistory', '1.0', 'Tjänstekontraktsbeskrivning_riv_clinicalprocess_activityprescription_actoutcome.docx', {}),
+     ('SEEHDSLMObservationsV12', 'SEEHDSLMObservations', R(BAS, '1.2.3'), 'GetObservations', '1.2', 'TKB_clinicalprocess_healthcond_basic.docx', {}),
+     ('SEEHDSLMRequestActivitiesV10', 'SEEHDSLMRequestActivities', R(CRM, '1.0.7'), 'GetRequestActivities', '1.0', 'TKB_crm_requeststatus.docx', {}),
+     ('SEEHDSLMAccessLogV11', 'SEEHDSLMAccessLog', R('riv.ehr.log', '1.2.4'), 'GetAccessLogsForPatient', '1.1', 'TKB_ehr_log.docx', {}),
+    ]
+    for model, base, repo, tk, ver, tkb, extra in OLD:
+        CFG.append(dict(model=model, base=base, version=ver,
+                        xsd=I(repo, ('querying/' if repo.startswith('riv.ehr.log') else '') + f'{tk}Interaction/{tk}Responder_{ver}.xsd'), element=f'{tk}Response',
+                        tkb=D(repo, tkb) if tkb else None, contract=f'{tk} {ver}', **extra))
     return CFG
