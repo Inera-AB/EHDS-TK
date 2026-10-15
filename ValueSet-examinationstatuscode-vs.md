@@ -50,7 +50,7 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "name" : "ExaminationStatusCodeVS",
   "title" : "ExaminationStatusCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-15T17:10:15+00:00",
+  "date" : "2026-10-15T18:03:33+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

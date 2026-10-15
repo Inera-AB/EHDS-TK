@@ -31,7 +31,7 @@ Diskriminatorkoder för de tre sektionerna i mödravårdsjournalen (GetMaternity
   "name" : "MaternityMedicalSectionCS",
   "title" : "MaternityMedicalSection",
   "status" : "active",
-  "date" : "2026-10-15T17:10:15+00:00",
+  "date" : "2026-10-15T18:03:33+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -389,7 +389,7 @@ Version 1.2 har en annan meddelandemodell: observationerna ligger i grupper (`ob
 | :--- | :--- | :--- | :--- |
 | `observation.rivId` | 1..1 | `Observation.identifier` | Motsvarar`observationBody.rivId` |
 | `observation.type` | 1..1 | `Observation.code` | Obligatorisk i 1.2. IoÖ:s SNOMED CT-koder och kodtabellen ovan gäller på samma sätt |
-| `observation.status` | 0..1 | `Observation.status` | Samma kodverk och ConceptMap som i 2.0 (OBS-003); saknas värdet blir det`unknown` |
+| `observation.status` | 0..0 | `Observation.status`=`final` | TKB 1.2 anger 0..0 (schemat tillåter 0..1): versionen omfattar bara faktiskt utförda observationer, så elementet skickas inte och`Observation.status`sätts till`final` |
 | `observation.time.start`/`time.end` | 0..1 | `Observation.effectivePeriod`, eller`effectiveDateTime`när start och end är lika | Variabel precision som`time.ts`i 2.0 (OBS-001) |
 | `observation.method` | 0..1 | `Observation.method` | Motsvarar`scale`i 2.0 |
 | `observation.value.pq` | 0..1 | `Observation.valueQuantity` | Tillväxtmätningar enligt IoÖ |

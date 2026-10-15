@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-alert-route-of-trans
   "name" : "AlertRouteOfTransmission",
   "title" : "Smittväg",
   "status" : "draft",
-  "date" : "2026-10-15T17:10:15+00:00",
+  "date" : "2026-10-15T18:03:33+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -53,7 +53,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
   "name" : "SEEHDSLMObservationsV12",
   "title" : "GetObservations 1.2",
   "status" : "draft",
-  "date" : "2026-10-15T17:10:15+00:00",
+  "date" : "2026-10-15T18:03:33+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -120,8 +120,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.patient.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Id för patienten, 12 tecken utan avskiljare (IIType)",
+      "definition" : "- root: OID för typ av identifierare. Personnummer 1.2.752.129.2.1.3.1, samordningsnummer 1.2.752.129.2.1.3.3, reservnummer lokalt definierad OID (t.ex. SLL reservnummer 1.2.752.97.3.1.3). - extension: personnummer/samordningsnummer/reservnummer.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -135,8 +135,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.patient.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "Personens namn",
+      "definition" : "Personens namn.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -150,8 +150,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.patient.dateOfBirth",
-      "short" : "dateOfBirth",
-      "definition" : "Format enligt XSD (DateType): ÅÅÅÅMMDD.",
+      "short" : "Patientens födelseår, månad och dag. Ej personnummer. Format ÅÅÅÅMMDD (DateType)",
+      "definition" : "Patientens födelseår, månad och dag. Ej personnummer. Format ÅÅÅÅMMDD (DateType).\nFormat enligt XSD (DateType): ÅÅÅÅMMDD.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -165,8 +165,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.patient.gender",
-      "short" : "gender",
-      "definition" : "gender",
+      "short" : "Patientens kön (CVType). KV kön, OID 1.2.752.129.2.2.1.1",
+      "definition" : "Koder: 0 okänt, 1 man, 2 kvinna, 9 ej tillämpligt. Kodverket finns i [R9].",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -206,8 +206,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "HSA-id för personen som utfört observationen (IIType). Regel 2.1",
+      "definition" : "Anges enbart om observationen utförts av hälso- och sjukvårdspersonal. root = 1.2.752.129.2.1.4.1 (HSA-katalogen), extension = HSA-id.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -221,8 +221,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.code",
-      "short" : "code",
-      "definition" : "code",
+      "short" : "Den roll som utföraren agerar i under observationen (CVType)",
+      "definition" : "Den roll som utföraren agerar i under observationen (CVType).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -236,8 +236,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.person",
-      "short" : "person",
-      "definition" : "person",
+      "short" : "Den person som utfört observationen (PersonType). Regel 2.1",
+      "definition" : "Används då det finns behov av att beskriva egenskaper hos personen som inte beskrivs i performerRole (t.ex. namn på hälso- och sjukvårdspersonal), eller då observationen utförts av en person som inte klassas som hälso- och sjukvårdspersonal.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -255,8 +255,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.person.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Identifierare för personen (IIType)",
+      "definition" : "Anges endast om observationen utförts av person som INTE klassas som hälso- och sjukvårdspersonal. root: OID för personnummer (1.2.752.129.2.1.3.1), samordningsnummer (1.2.752.129.2.1.3.3) eller lokalt definierat reservnummer. extension: personnummer/samordningsnummer/reservnummer.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -270,8 +270,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.person.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "För- och efternamn i klartext. Regel 2.1",
+      "definition" : "För- och efternamn i klartext. Regel 2.1.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -285,8 +285,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.careUnit",
-      "short" : "careUnit",
-      "definition" : "careUnit",
+      "short" : "PDL-vårdenhet och vårdgivare som observationen utförs på uppdrag av (CareUnitType). Regel 2.1, 2.5",
+      "definition" : "Ska endast anges då den person som utfört observationen är hälso- och sjukvårdspersonal. Krävs för spärrhantering, åtkomstkontroll samt loggning enligt PDL.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -304,8 +304,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.careUnit.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "HSA-id för PDL-vårdenhet med medicinskt ansvar för observationen (IIType)",
+      "definition" : "HSA-id för PDL-vårdenhet med medicinskt ansvar för observationen (IIType).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -319,8 +319,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.careUnit.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "Vårdenhetens namn",
+      "definition" : "Vårdenhetens namn.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -334,8 +334,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.careUnit.careGiver",
-      "short" : "careGiver",
-      "definition" : "careGiver",
+      "short" : "Den vårdgivare som enheten är knuten till (CareGiverType)",
+      "definition" : "Den vårdgivare som enheten är knuten till (CareGiverType).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -353,8 +353,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.careUnit.careGiver.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "HSA-id för vårdgivaren (IIType)",
+      "definition" : "HSA-id för vårdgivaren (IIType).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -368,8 +368,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.performerRole.careUnit.careGiver.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "Vårdgivarens namn",
+      "definition" : "Vårdgivarens namn.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -402,8 +402,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.legalAuthenticator.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "HSA-id för personen som signerat (IIType). root = 1.2.752.129.2.1.4.1",
+      "definition" : "HSA-id för personen som signerat (IIType). root = 1.2.752.129.2.1.4.1.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -417,8 +417,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.legalAuthenticator.time",
-      "short" : "YYYY, YYYYMM, YYYYMMDD, YYYYMMDDhh, YYYYMMDDhhmm, YYYYMMDDhhmmss",
-      "definition" : "YYYY, YYYYMM, YYYYMMDD, YYYYMMDDhh, YYYYMMDDhhmm, YYYYMMDDhhmmss",
+      "short" : "Tid för signeringen (PartialTimeStampType). Format ÅÅÅÅMMDDttmmss där klockslaget är frivilligt",
+      "definition" : "Tid för signeringen (PartialTimeStampType). Format ÅÅÅÅMMDDttmmss där klockslaget är frivilligt.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -432,8 +432,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.legalAuthenticator.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "För- och efternamn i klartext för signerande person. Regel 2.3",
+      "definition" : "För- och efternamn i klartext för signerande person. Regel 2.3.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -480,8 +480,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "HSA-id för ytterligare deltagare som är hälso- och sjukvårdspersonal (IIType)",
+      "definition" : "HSA-id för ytterligare deltagare som är hälso- och sjukvårdspersonal (IIType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -495,8 +495,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.type",
-      "short" : "type",
-      "definition" : "type",
+      "short" : "Typ av deltagande (CVType), t.ex. sekundär utförare/assistent",
+      "definition" : "codeSystemName, codeSystemVersion och displayName ska ej anges (0..0).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -510,8 +510,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.role",
-      "short" : "role",
-      "definition" : "role",
+      "short" : "Den roll deltagaren agerar i (CVType), t.ex. anhörig eller vårdpersonal",
+      "definition" : "codeSystemName, codeSystemVersion och displayName ska ej anges (0..0).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -525,8 +525,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.time",
-      "short" : "Används för att specificera ett datumintervall med hjälp av start- och slutdatum",
-      "definition" : "Används för att specificera ett datumintervall med hjälp av start- och slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet YYYYMMDDhhmmss",
+      "short" : "Deltagandetid om den inte överensstämmer med observationens (TimePeriodType)",
+      "definition" : "Deltagandetid om den inte överensstämmer med observationens (TimePeriodType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -540,8 +540,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.person",
-      "short" : "person",
-      "definition" : "person",
+      "short" : "Deltagande övrig person (PersonType)",
+      "definition" : "Deltagande övrig person (PersonType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -559,8 +559,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.person.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Identifierare för personen (IIType)",
+      "definition" : "Identifierare för personen (IIType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -574,8 +574,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.person.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "För- och efternamn i klartext",
+      "definition" : "För- och efternamn i klartext.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -589,8 +589,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.organisation",
-      "short" : "organisation",
-      "definition" : "organisation",
+      "short" : "Deltagande övrig organisation (OrganisationType)",
+      "definition" : "Deltagande övrig organisation (OrganisationType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -608,8 +608,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.organisation.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Id för organisation, vanligtvis HSA-id (root 1.2.752.129.2.1.4.1)",
+      "definition" : "Id för organisation, vanligtvis HSA-id (root 1.2.752.129.2.1.4.1).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -623,8 +623,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.organisation.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "Organisationens namn",
+      "definition" : "Organisationens namn.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -638,8 +638,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.device",
-      "short" : "device",
-      "definition" : "device",
+      "short" : "Deltagande utrustning (DeviceType)",
+      "definition" : "Deltagande utrustning (DeviceType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -657,8 +657,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.device.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Identitetsbeteckning på en viss verklig instans av utrustning (IIType)",
+      "definition" : "Identitetsbeteckning på en viss verklig instans av utrustning (IIType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -672,8 +672,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.device.type",
-      "short" : "type",
-      "definition" : "type",
+      "short" : "Typ av deltagande utrustning (CVType)",
+      "definition" : "Typ av deltagande utrustning (CVType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -687,8 +687,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.device.model",
-      "short" : "model",
-      "definition" : "model",
+      "short" : "Modell för angiven utrustning (SCType)",
+      "definition" : "Modell för angiven utrustning (SCType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -702,8 +702,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.device.model.code",
-      "short" : "code",
-      "definition" : "code",
+      "short" : "Modellbeteckning (CVType). codeSystemVersion ska ej anges",
+      "definition" : "Modellbeteckning (CVType). codeSystemVersion ska ej anges.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -717,8 +717,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.device.model.value",
-      "short" : "value",
-      "definition" : "value",
+      "short" : "Tillverkarens modellbeteckning i klartext; komplement eller i stället för modelCode",
+      "definition" : "Tillverkarens modellbeteckning i klartext; komplement eller i stället för modelCode.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -732,8 +732,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location",
-      "short" : "location",
-      "definition" : "location",
+      "short" : "Deltagande plats (LocationType). Sammanslagning av roll och plats enligt V-MIM",
+      "definition" : "Deltagande plats (LocationType). Sammanslagning av roll och plats enligt V-MIM.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -751,8 +751,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "HSA-id för platsen; anges om platsen är en vårdenhet (IIType)",
+      "definition" : "HSA-id för platsen; anges om platsen är en vårdenhet (IIType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -766,8 +766,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.name",
-      "short" : "name",
-      "definition" : "name",
+      "short" : "Namn på den plats där observationen har genomförts",
+      "definition" : "Namn på den plats där observationen har genomförts.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -781,8 +781,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.address",
-      "short" : "address",
-      "definition" : "address",
+      "short" : "Adress till plats (AddressType)",
+      "definition" : "Adress till plats (AddressType).",
       "min" : 0,
       "max" : "*",
       "type" : [{
@@ -796,8 +796,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.address.use",
-      "short" : "use",
-      "definition" : "Tillåtna värden enligt XSD: PHYS, H, HV, WP, TMP.",
+      "short" : "Adressens användning (PostalAddressUseEnum). Den primära adressen anges utan use-kod",
+      "definition" : "Adressens användning (PostalAddressUseEnum). Den primära adressen anges utan use-kod.\nTillåtna värden enligt XSD: PHYS, H, HV, WP, TMP.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -811,8 +811,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.address.part",
-      "short" : "part",
-      "definition" : "part",
+      "short" : "Adressdel (AddressPartType). Delarna listas i ordningen CAR, POB, SAL, ZIP, CTY, CNT, PRE, CPA",
+      "definition" : "Adressdel (AddressPartType). Delarna listas i ordningen CAR, POB, SAL, ZIP, CTY, CNT, PRE, CPA.",
       "min" : 1,
       "max" : "*",
       "type" : [{
@@ -826,8 +826,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.address.part.value",
-      "short" : "value",
-      "definition" : "value",
+      "short" : "Adressdelens värde",
+      "definition" : "Adressdelens värde.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -841,8 +841,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.address.part.type",
-      "short" : "type",
-      "definition" : "Tillåtna värden enligt XSD: SAL, CAR, CEN, CNT, CPA, CTY, POB, ZIP, PRE, STA.",
+      "short" : "Typ av adressdel (AddressPartTypeEnum, baserad på ISO 21090)",
+      "definition" : "Typ av adressdel (AddressPartTypeEnum, baserad på ISO 21090).\nTillåtna värden enligt XSD: SAL, CAR, CEN, CNT, CPA, CTY, POB, ZIP, PRE, STA.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -856,8 +856,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.electronicAddress",
-      "short" : "electronicAddress",
-      "definition" : "electronicAddress",
+      "short" : "Elektronisk adress till plats (TelType)",
+      "definition" : "Elektronisk adress till plats (TelType).",
       "min" : 0,
       "max" : "*",
       "type" : [{
@@ -871,8 +871,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.electronicAddress.use",
-      "short" : "use",
-      "definition" : "Tillåtna värden enligt XSD: voice, fax, data, sms.",
+      "short" : "Typ av elektronisk adress (TelTypeEnum): voice, fax, data, sms",
+      "definition" : "Typ av elektronisk adress (TelTypeEnum): voice, fax, data, sms.\nTillåtna värden enligt XSD: voice, fax, data, sms.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -886,8 +886,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.location.electronicAddress.value",
-      "short" : "value",
-      "definition" : "value",
+      "short" : "Elektronisk adress",
+      "definition" : "Elektronisk adress.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -920,8 +920,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.sourceSystem.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "HSA-id för källsystemet (IIType). root = 1.2.752.129.2.1.4.1",
+      "definition" : "HSA-id för källsystemet (IIType). root = 1.2.752.129.2.1.4.1.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -954,8 +954,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Unik identifierare för observationen (IIType)",
+      "definition" : "Identifieraren ska vara konsistent och beständig mellan olika majorversioner av ett kontrakt och mellan olika kontrakt. root: vårdgivarens HSA-id. extension: den inom vårdgivaren eller källsystemet unika identifieraren för observationen.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -969,8 +969,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.type",
-      "short" : "type",
-      "definition" : "type",
+      "short" : "NI 2015:1 Observation.typ — kod för typ av observation (CVType)",
+      "definition" : "Det som faktiskt är avsett, önskat eller observerat tillstånd dokumenteras i value. Exempelvis kan type vara \"diagnos\", vilket innebär att value håller diagnosen.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -984,10 +984,10 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.status",
-      "short" : "status",
-      "definition" : "status",
+      "short" : "NI 2015:1 Observation.status (CVType). TKB: 0..0",
+      "definition" : "Denna version av specifikationen tillåter endast faktiskt utförda observationer; TKB anger kardinalitet 0..0 medan schemat tillåter 0..1. Om statuskoden utelämnas antas detta vara en faktisk observation.",
       "min" : 0,
-      "max" : "1",
+      "max" : "0",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondBasic1"
       }]
@@ -1044,8 +1044,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.method",
-      "short" : "method",
-      "definition" : "method",
+      "short" : "Kod för typ av tillvägagångssätt för genomförandet av observationen (CVType)",
+      "definition" : "Kod för typ av tillvägagångssätt för genomförandet av observationen (CVType).",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -1059,8 +1059,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.value",
-      "short" : "value",
-      "definition" : "value",
+      "short" : "NI 2015:1 Observation.värde — observationens utfall (ValueANYType)",
+      "definition" : "En och endast en av huvudtyperna cv, pq, ivl_pq, ts och ivl_ts. I schemat en xs:sequence av valfria element (av kompatibilitetsskäl i stället för xs:choice).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1074,8 +1074,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.value.pq",
-      "short" : "pq",
-      "definition" : "pq",
+      "short" : "Mätvärde (PQType), t.ex. 187 cm",
+      "definition" : "Mätvärde (PQType), t.ex. 187 cm.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -1089,8 +1089,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.value.ts",
-      "short" : "YYYY, YYYYMM, YYYYMMDD, YYYYMMDDhh, YYYYMMDDhhmm, YYYYMMDDhhmmss",
-      "definition" : "YYYY, YYYYMM, YYYYMMDD, YYYYMMDDhh, YYYYMMDDhhmm, YYYYMMDDhhmmss",
+      "short" : "Tidpunkt (PartialTimeStampType), precision ner till endast årtal",
+      "definition" : "Tidpunkt (PartialTimeStampType), precision ner till endast årtal.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -1153,8 +1153,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.value.cv",
-      "short" : "cv",
-      "definition" : "cv",
+      "short" : "Kodat värde (CVType), t.ex. diagnoskod enligt ICD-10 eller kliniskt fynd enligt Snomed CT",
+      "definition" : "Kodat värde (CVType), t.ex. diagnoskod enligt ICD-10 eller kliniskt fynd enligt Snomed CT.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -1187,8 +1187,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.targetSite",
-      "short" : "targetSite",
-      "definition" : "targetSite",
+      "short" : "NI 2015:1 Observation.lokalisation (CVType)",
+      "definition" : "Beskriver vad observationen avser gällande anatomi, funktion eller system. Används endast om inte type innefattar tillräcklig information om detta.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -1202,8 +1202,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.valueNegation",
-      "short" : "valueNegation",
-      "definition" : "valueNegation",
+      "short" : "NI 2015:1 Observation.negation — negerar betydelsen av value. Normalvärde false",
+      "definition" : "NI 2015:1 Observation.negation — negerar betydelsen av value. Normalvärde false.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1217,8 +1217,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.description",
-      "short" : "description",
-      "definition" : "description",
+      "short" : "Fritextbeskrivning av observationen där sådan kompletterar kodbeteckningen",
+      "definition" : "Fritextbeskrivning av observationen där sådan kompletterar kodbeteckningen.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -1232,8 +1232,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.approvedForPatient",
-      "short" : "approvedForPatient",
-      "definition" : "approvedForPatient",
+      "short" : "Om informationen får delas till patient (menprövad)",
+      "definition" : "Om informationen får delas till patient (menprövad).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1247,8 +1247,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.registrationTime",
-      "short" : "registrationTime",
-      "definition" : "Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.",
+      "short" : "Dokumentationstidpunkt i patientens journal. Format ÅÅÅÅMMDDttmmss (TimeStampType)",
+      "definition" : "Dokumentationstidpunkt i patientens journal. Format ÅÅÅÅMMDDttmmss (TimeStampType).\nFormat enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.",
       "min" : 0,
       "max" : "1",
       "type" : [{
@@ -1262,8 +1262,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation",
-      "short" : "relation",
-      "definition" : "relation",
+      "short" : "Typade samband till andra informationsmängder (RelationType)",
+      "definition" : "Typade samband till andra informationsmängder (RelationType).",
       "min" : 0,
       "max" : "*",
       "type" : [{
@@ -1277,8 +1277,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation.code",
-      "short" : "code",
-      "definition" : "code",
+      "short" : "Typ av relation den refererade informationen har till observationen (CVType)",
+      "definition" : "Typ av relation den refererade informationen har till observationen (CVType).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1292,8 +1292,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation.referredInformation",
-      "short" : "referredInformation",
-      "definition" : "referredInformation",
+      "short" : "Den refererade informationen (ReferredInformationType)",
+      "definition" : "Den refererade informationen (ReferredInformationType).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1311,8 +1311,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation.referredInformation.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Den refererade informationens identitet (IIType)",
+      "definition" : "root: HSA-id för källsystem där den refererade informationen är lagrad. extension: ett inom vårdgivaren unikt id.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1326,8 +1326,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation.referredInformation.time",
-      "short" : "YYYY, YYYYMM, YYYYMMDD, YYYYMMDDhh, YYYYMMDDhhmm, YYYYMMDDhhmmss",
-      "definition" : "YYYY, YYYYMM, YYYYMMDD, YYYYMMDDhh, YYYYMMDDhhmm, YYYYMMDDhhmmss",
+      "short" : "Starttid för refererad information (PartialTimeStampType). Regel 2.4",
+      "definition" : "Starttid för refererad information (PartialTimeStampType). Regel 2.4.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1341,8 +1341,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation.referredInformation.type",
-      "short" : "type",
-      "definition" : "type",
+      "short" : "Typ av uppgift som sambandet pekar ut — kod från Categorization i engagemangsindex, t.ex. chb-o",
+      "definition" : "Typ av uppgift som sambandet pekar ut — kod från Categorization i engagemangsindex, t.ex. chb-o.",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1356,8 +1356,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation.referredInformation.informationOwner",
-      "short" : "informationOwner",
-      "definition" : "informationOwner",
+      "short" : "Vårdgivare som är informationsägare av den refererade informationen (InformationOwnerType)",
+      "definition" : "Vårdgivare som är informationsägare av den refererade informationen (InformationOwnerType).",
       "min" : 1,
       "max" : "1",
       "type" : [{
@@ -1375,8 +1375,8 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
         "valueString" : "id"
       }],
       "path" : "SEEHDSLMObservationsV12.observationGroup.observation.relation.referredInformation.informationOwner.rivId",
-      "short" : "rivId",
-      "definition" : "rivId",
+      "short" : "Vårdgivarens HSA-id (IIType). root = 1.2.752.129.2.1.4.1",
+      "definition" : "Vårdgivarens HSA-id (IIType). root = 1.2.752.129.2.1.4.1.",
       "min" : 1,
       "max" : "1",
       "type" : [{

@@ -42,7 +42,7 @@ Tillåtna värden enligt XSD: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120,
   <name value="SEEHDSLMRequestActivitiesV10"/>
   <title value="GetRequestActivities 1.0"/>
   <status value="draft"/>
-  <date value="2026-10-15T17:10:15+00:00"/>
+  <date value="2026-10-15T18:03:33+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

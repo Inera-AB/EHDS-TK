@@ -53,7 +53,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareContacts
   "name" : "SEEHDSLMCareContactsV20",
   "title" : "GetCareContacts 2.0",
   "status" : "draft",
-  "date" : "2026-10-15T17:10:15+00:00",
+  "date" : "2026-10-15T18:03:33+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

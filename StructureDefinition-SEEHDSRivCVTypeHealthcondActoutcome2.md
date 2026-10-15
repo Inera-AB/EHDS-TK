@@ -45,7 +45,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivCVTypeHealt
   "name" : "SEEHDSRivCVTypeHealthcondActoutcome2",
   "title" : "RIV-TA CVType (clinicalprocess:healthcond:actoutcome:2)",
   "status" : "draft",
-  "date" : "2026-10-15T17:10:15+00:00",
+  "date" : "2026-10-15T18:03:33+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

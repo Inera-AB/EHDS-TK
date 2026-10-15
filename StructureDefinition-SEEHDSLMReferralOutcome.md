@@ -53,7 +53,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMReferralOutc
   "name" : "SEEHDSLMReferralOutcome",
   "title" : "GetReferralOutcome",
   "status" : "draft",
-  "date" : "2026-10-15T17:10:15+00:00",
+  "date" : "2026-10-15T18:03:33+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
