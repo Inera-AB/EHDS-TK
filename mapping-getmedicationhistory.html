@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0</title>
+    <title>GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.5.0 - ci-build
+            <span style="display:inline-block;">0.6.0 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.5.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.6.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetMedicationHistory – Läkemedel</h2>
   
 
@@ -222,7 +222,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <li><a href="#mappningstabell--result-tekniska-svarsfält" id="markdown-toc-mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</a></li>
       <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a>        <ul>
           <li><a href="#medicationstatementstatus-från-prescriptionstatus--typeofprescription" id="markdown-toc-medicationstatementstatus-från-prescriptionstatus--typeofprescription">MedicationStatement.status (från prescriptionStatus + typeOfPrescription)</a></li>
-          <li><a href="#drug-xor-villkor-med-003" id="markdown-toc-drug-xor-villkor-med-003">drug XOR-villkor (MED-003)</a></li>
+          <li><a href="#drug-villkoret-med-003" id="markdown-toc-drug-villkoret-med-003">drug-villkoret (MED-003)</a></li>
           <li><a href="#selfmedication-des-008" id="markdown-toc-selfmedication-des-008">selfMedication (DES-008)</a></li>
         </ul>
       </li>
@@ -731,9 +731,9 @@ representeras via extensions.</p>
 
 <h2 id="mappningstabell--drug-xor-villkor">Mappningstabell – drug (XOR-villkor)</h2>
 
-<p><code class="language-plaintext highlighter-rouge">drug 0..1</code> innehåller ett av fem alternativa delelement (ömsesidigt uteslutande). Alla varianter
-mappas till <code class="language-plaintext highlighter-rouge">MedicationStatement.medicationCodeableConcept</code>. Se <a href="#öppna-frågor">MED-003</a> för
-begränsning i FSH-uttrycket.</p>
+<p><code class="language-plaintext highlighter-rouge">drug 0..1</code> innehåller exakt ett av fem alternativa delelement. Alla varianter
+mappas till <code class="language-plaintext highlighter-rouge">MedicationStatement.medicationCodeableConcept</code>. Villkoret är en invariant i den
+logiska modellen, se <a href="#drug-villkoret-med-003">drug-villkoret (MED-003)</a>.</p>
 
 <table>
   <thead>
@@ -1020,10 +1020,20 @@ ingår i klinisk FHIR-data.</p>
   </tbody>
 </table>
 
-<h3 id="drug-xor-villkor-med-003">drug XOR-villkor (MED-003)</h3>
+<h3 id="drug-villkoret-med-003">drug-villkoret (MED-003)</h3>
 
-<p>Fem alternativa delelement under <code class="language-plaintext highlighter-rouge">drug 0..1</code> är ömsesidigt uteslutande i TKB:n.
-En FSH Invariant med FHIRPath implementeras i profilen som workaround.</p>
+<p>Exakt ett av de fem delelementen under <code class="language-plaintext highlighter-rouge">drug</code> ska anges. Den logiska modellen
+<a href="StructureDefinition-SEEHDSLMMedicationHistory.html">SEEHDSLMMedicationHistory</a> uttrycker villkoret med
+invarianten <code class="language-plaintext highlighter-rouge">getmedicationhistory-drug-choice</code> på alla tre <code class="language-plaintext highlighter-rouge">drug</code>-elementen (ordination,
+expediering och administrering):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unstructuredDrugInformation.combine(merchandise).combine(drugArticle).combine(drug).combine(generics).count() = 1
+</code></pre></div></div>
+
+<p>Modellen har också invarianter för övriga regler i testsvitens schematron, bland annat att
+<code class="language-plaintext highlighter-rouge">prescriber</code> krävs när <code class="language-plaintext highlighter-rouge">selfMedication</code> är <code class="language-plaintext highlighter-rouge">false</code>, att <code class="language-plaintext highlighter-rouge">startOfTreatment</code> krävs vid
+insättning (<code class="language-plaintext highlighter-rouge">typeOfPrescription = I</code>) och att <code class="language-plaintext highlighter-rouge">nplId</code> eller <code class="language-plaintext highlighter-rouge">atcCode</code> anges för läkemedelsprodukter.
+Se <a href="logical-models.html#invarianter">Logiska modeller</a>.</p>
 
 <h3 id="selfmedication-des-008">selfMedication (DES-008)</h3>
 
@@ -1144,7 +1154,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
     </tr>
     <tr>
       <td>MED-003</td>
-      <td><strong><code class="language-plaintext highlighter-rouge">drug</code> XOR-villkor kan inte uttryckas i FSH-kardinalitet.</strong> Fem varianter (unstructured/merchandise/drugArticle/drug/generics) är ömsesidigt uteslutande enligt TKB. FSH Invariant med FHIRPath implementeras som workaround.</td>
+      <td><strong>Löst:</strong> villkoret uttrycks av invarianten <code class="language-plaintext highlighter-rouge">getmedicationhistory-drug-choice</code> i den logiska modellen, se <a href="#drug-villkoret-med-003">drug-villkoret</a>.</td>
     </tr>
     <tr>
       <td>PDL-001</td>
@@ -1201,7 +1211,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.5.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 12, 2026 13:38+0000">2026-10-12</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.6.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 15, 2026 17:10+0000">2026-10-15</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

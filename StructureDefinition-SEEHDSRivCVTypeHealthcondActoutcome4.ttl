@@ -18,11 +18,11 @@
      fhir:Extension.valueUri [ fhir:value "urn:riv:clinicalprocess:healthcond:actoutcome:4" ]
   ] ;
   fhir:StructureDefinition.url [ fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4"] ;
-  fhir:StructureDefinition.version [ fhir:value "0.5.0"] ;
+  fhir:StructureDefinition.version [ fhir:value "0.6.0"] ;
   fhir:StructureDefinition.name [ fhir:value "SEEHDSRivCVTypeHealthcondActoutcome4"] ;
   fhir:StructureDefinition.title [ fhir:value "RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4)"] ;
   fhir:StructureDefinition.status [ fhir:value "draft"] ;
-  fhir:StructureDefinition.date [ fhir:value "2026-10-12T13:38:08+00:00"^^xsd:dateTime] ;
+  fhir:StructureDefinition.date [ fhir:value "2026-10-15T17:10:15+00:00"^^xsd:dateTime] ;
   fhir:StructureDefinition.publisher [ fhir:value "Inera AB"] ;
   fhir:StructureDefinition.contact [
      fhir:index 0 ;

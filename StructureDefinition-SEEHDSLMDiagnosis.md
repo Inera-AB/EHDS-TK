@@ -1,4 +1,4 @@
-# GetDiagnosis - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetDiagnosis - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMDiagnosis | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMDiagnosis |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMDiagnosis | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMDiagnosis |
 
  
 Logisk modell för tjänstekontraktet GetDiagnosis (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetDiagnosisResponder:2). Representerar responsens informationsstruktur: registrerade diagnoser för en patient inklusive diagnoskod per ursprungligt diagnosticeringstillfälle. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMDiagnosis.cs
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetDiagnosisResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMDiagnosis",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMDiagnosis",
   "title" : "GetDiagnosis",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

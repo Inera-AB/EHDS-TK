@@ -1,4 +1,4 @@
-# SexCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# SexCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/sexcode | *Version*:0.5.0 |
-| Active as of 2026-10-12 | *Computable Name*:SexCodeCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/sexcode | *Version*:0.6.0 |
+| Active as of 2026-10-15 | *Computable Name*:SexCodeCS |
 
  
 Kodverk för kön (SexCodeEnum). Används i GetMaternityMedicalHistory för barnets kön. OBS: Överväg att använda HL7 AdministrativeGender istället. 
@@ -27,11 +27,11 @@ Kodverk för kön (SexCodeEnum). Används i GetMaternityMedicalHistory för barn
   "resourceType" : "CodeSystem",
   "id" : "sexcode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/sexcode",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SexCodeCS",
   "title" : "SexCode",
   "status" : "active",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

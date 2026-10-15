@@ -1,4 +1,4 @@
-# GetCareContacts - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetCareContacts - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareContacts | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMCareContacts |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareContacts | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMCareContacts |
 
  
 Logisk modell för tjänstekontraktet GetCareContacts (RIV-TA urn:riv:clinicalprocess:logistics:logistics:GetCareContacts:3). Representerar responsens informationsstruktur (GetCareContactsResponseType). En lista med CareContactType returneras. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareContacts
     "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareContacts",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMCareContacts",
   "title" : "GetCareContacts",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

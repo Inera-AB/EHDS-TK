@@ -1,4 +1,4 @@
-# GetRequestActivities 1.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetRequestActivities 1.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivitiesV10 | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMRequestActivitiesV10 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivitiesV10 | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMRequestActivitiesV10 |
 
  
 Logisk modell för version 1.0 av tjänstekontraktet GetRequestActivities (urn:riv:crm:requeststatus:GetRequestActivitiesResponder:1). Mappningen utgår från versionen i SEEHDSLMRequestActivities. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMRequestActiv
     "valueUri" : "urn:riv:crm:requeststatus:GetRequestActivitiesResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivitiesV10",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMRequestActivitiesV10",
   "title" : "GetRequestActivities 1.0",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -92,6 +92,34 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMRequestActiv
       "max" : "*",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getrequestactivities1-request-id",
+        "severity" : "error",
+        "human" : "Minst ett av senderRequestId och receiverRequestId ska anges",
+        "expression" : "senderRequestId.exists() or receiverRequestId.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivitiesV10"
+      },
+      {
+        "key" : "getrequestactivities1-issued-by-unit",
+        "severity" : "error",
+        "human" : "Minst ett av requestIssuedByOrganizationalUnitId och requestIssuedByOrganizationalUnitDescription ska anges",
+        "expression" : "requestIssuedByOrganizationalUnitId.exists() or requestIssuedByOrganizationalUnitDescription.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivitiesV10"
+      },
+      {
+        "key" : "getrequestactivities1-receiving-unit",
+        "severity" : "error",
+        "human" : "Minst ett av receivingOrganizationalUnitId och receivingOrganizationalUnitDescription ska anges",
+        "expression" : "receivingOrganizationalUnitId.exists() or receivingOrganizationalUnitDescription.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivitiesV10"
+      },
+      {
+        "key" : "getrequestactivities1-status-code",
+        "severity" : "error",
+        "human" : "typeOfRequest ska vara 1, 2, 4 eller 10 och statusCode ska vara en av de koder som är tillåtna för remisstypen (VER-005)",
+        "expression" : "(typeOfRequest.value = '1' and statusCode.value in ('20' | '30' | '90' | '126' | '130' | '136' | '140')) or (typeOfRequest.value = '2' and statusCode.value in ('20' | '30' | '126' | '130' | '136' | '140')) or (typeOfRequest.value = '4' and statusCode.value in ('20' | '30' | '90' | '130' | '140')) or (typeOfRequest.value = '10' and statusCode.value in ('20' | '30' | '90' | '140'))",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivitiesV10"
       }]
     },
     {

@@ -39,11 +39,11 @@ påverkar mappningen beskrivs på tjänstekontraktets mappningssida.">SEEHDSLMAc
     <valueUri value="urn:riv:ehr:log:querying:GetAccessLogsForPatientResponder:1"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLogV11"/>
-  <version value="0.5.0"/>
+  <version value="0.6.0"/>
   <name value="SEEHDSLMAccessLogV11"/>
   <title value="GetAccessLogsForPatient 1.1"/>
   <status value="draft"/>
-  <date value="2026-10-12T13:38:08+00:00"/>
+  <date value="2026-10-15T17:10:15+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

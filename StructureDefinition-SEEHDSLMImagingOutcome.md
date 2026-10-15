@@ -1,4 +1,4 @@
-# GetImagingOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetImagingOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMImagingOutcome |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMImagingOutcome |
 
  
 Logisk modell för tjänstekontraktet GetImagingOutcome (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetImagingOutcome:1). Representerar responsens informationsstruktur — bilddiagnostiska resultat för en patient. Baseras på NPÖ RIV 2.2.0-specifikation. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMImagingOutco
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetImagingOutcomeResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMImagingOutcome",
   "title" : "GetImagingOutcome",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -1112,6 +1112,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMImagingOutco
       "max" : "*",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getimagingoutcome-dicom-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av dicomValue och dicomReference ska anges",
+        "expression" : "dicomValue.exists() xor dicomReference.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome"
       }]
     },
     {
@@ -1292,6 +1299,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMImagingOutco
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getimagingoutcome-imagedata-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av value och reference ska anges",
+        "expression" : "value.exists() xor reference.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome"
       }]
     },
     {

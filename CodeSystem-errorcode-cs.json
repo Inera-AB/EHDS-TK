@@ -6,11 +6,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem errorcode-cs</b></p><a name=\"errorcode-cs\"> </a><a name=\"hcerrorcode-cs\"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/CodeSystem/errorcode-actoutcome</code> definierar följande kod:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">INVALID_REQUEST<a name=\"errorcode-cs-INVALID_REQUEST\"> </a></td><td>Ogiltig begäran</td><td>Begäran är felaktig eller saknar obligatoriska fält</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/CodeSystem/errorcode-actoutcome",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "ErrorCodeCS",
   "title" : "ErrorCode",
   "status" : "active",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

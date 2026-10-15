@@ -1,4 +1,4 @@
-# Relaterad uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# Relaterad uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/related-alert-information | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:RelatedAlertInformation |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/related-alert-information | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:RelatedAlertInformation |
 
 Information om samband med andra uppmärksamhetssignaler (alertInformationBody.relatedAlertInformation).
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-related-alert-inform
   "resourceType" : "StructureDefinition",
   "id" : "related-alert-information",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/related-alert-information",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "RelatedAlertInformation",
   "title" : "Relaterad uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

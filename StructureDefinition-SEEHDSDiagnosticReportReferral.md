@@ -1,4 +1,4 @@
-# SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSDiagnosticReportReferral |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSDiagnosticReportReferral |
 
  
 Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med SEEHDSServiceRequestReferral. 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDiagnosticRepo
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDiagnosticReportReferral",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSDiagnosticReportReferral",
   "title" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

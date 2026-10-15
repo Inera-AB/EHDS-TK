@@ -1,4 +1,4 @@
-# GetMaternityMedicalHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetMaternityMedicalHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMaternityMedicalHistory | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMMaternityMedicalHistory |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMaternityMedicalHistory | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMMaternityMedicalHistory |
 
  
 Logisk modell för tjänstekontraktet GetMaternityMedicalHistory (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetMaternityMedicalHistory:2). Representerar responsens informationsstruktur — mödravårdsjournal för en patient. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMaternityMed
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetMaternityMedicalHistoryResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMaternityMedicalHistory",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMMaternityMedicalHistory",
   "title" : "GetMaternityMedicalHistory",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -512,6 +512,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMaternityMed
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmaternitymedicalhistory-body-choice",
+        "severity" : "error",
+        "human" : "En och endast en av registrationRecord, pregnancyCheckupRecord och postDeliveryRecord ska anges",
+        "expression" : "registrationRecord.combine(pregnancyCheckupRecord).combine(postDeliveryRecord).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMaternityMedicalHistory"
       }]
     },
     {

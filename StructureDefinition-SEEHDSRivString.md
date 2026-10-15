@@ -1,4 +1,4 @@
-# RIV-TA text - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# RIV-TA text - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivString |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSRivString |
 
  
 Textinnehåll i ett RIV-TA-element av typen xs:string eller en strängbaserad typ (t.ex. HSAIdType, kodlistor). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivString.csv)
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivString",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSRivString",
   "title" : "RIV-TA text",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

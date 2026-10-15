@@ -13,12 +13,12 @@
      fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet se-observation-status-vs</b></p><a name=\"se-observation-status-vs\"> </a><a name=\"hcse-observation-status-vs\"> </a><ul><li>Include dessa koder enligt definitionen i <a href=\"http://www.snomed.org/\"><code>http://snomed.info/sct</code></a><span title=\"Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades\"> version Ej angiven (använd senaste från terminologiserver)</span><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td></tr><tr><td><a href=\"http://snomed.info/id/385676005\">385676005</a></td><td>Under utförande</td></tr><tr><td><a href=\"http://snomed.info/id/385651009\">385651009</a></td><td>Slutlig</td></tr><tr><td><a href=\"http://snomed.info/id/272393004\">272393004</a></td><td>Korrigerad</td></tr><tr><td><a href=\"http://snomed.info/id/59776000\">59776000</a></td><td>Avbeställd/annullerad</td></tr><tr><td><a href=\"http://snomed.info/id/444301002\">444301002</a></td><td>Avböjd av patient</td></tr></table></li></ul></div>"
   ] ;
   fhir:ValueSet.url [ fhir:value "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs"] ;
-  fhir:ValueSet.version [ fhir:value "0.5.0"] ;
+  fhir:ValueSet.version [ fhir:value "0.6.0"] ;
   fhir:ValueSet.name [ fhir:value "SEObservationStatusVS"] ;
   fhir:ValueSet.title [ fhir:value "SE Observation Status (SNOMED CT urval 56431000052106)"] ;
   fhir:ValueSet.status [ fhir:value "active"] ;
   fhir:ValueSet.experimental [ fhir:value "false"^^xsd:boolean] ;
-  fhir:ValueSet.date [ fhir:value "2026-10-12T13:38:08+00:00"^^xsd:dateTime] ;
+  fhir:ValueSet.date [ fhir:value "2026-10-15T17:10:15+00:00"^^xsd:dateTime] ;
   fhir:ValueSet.publisher [ fhir:value "Inera AB"] ;
   fhir:ValueSet.contact [
      fhir:index 0 ;

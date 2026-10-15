@@ -1,4 +1,4 @@
-# GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMObservations |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMObservations |
 
  
 Logisk modell för tjänstekontraktet GetObservations (RIV-TA urn:riv:clinicalprocess:healthcond:basic:GetObservationsInteraction:2). Representerar responsens informationsstruktur — en samling observationer som matchar sökkriterier i begäran, inklusive header-information. Meddelandemodellen från avsnitt 5.1 V-MIM — Observationer i TKB motsvarar en observation i svarsmeddelandet. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:GetObservationsResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMObservations",
   "title" : "GetObservations",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -1231,6 +1231,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-value-choice",
+        "severity" : "error",
+        "human" : "En och endast en av cv, pq, ivl_pq, ts, ivl_ts, st och int ska anges",
+        "expression" : "cv.combine(pq).combine(ivlPq).combine(ts).combine(ivlTs).combine(st).combine(int).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {
@@ -1449,6 +1456,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av ts och ivl_ts ska anges",
+        "expression" : "ts.exists() xor ivlTs.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {
@@ -1543,6 +1557,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-patient-id-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av id och person.id ska anges",
+        "expression" : "rivId.combine(person.rivId).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {
@@ -2001,6 +2022,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "*",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-participation-choice",
+        "severity" : "error",
+        "human" : "En och endast en av healthcareProfessional, patient, otherPerson, locationRole, resource och organisation ska anges",
+        "expression" : "healthcareProfessional.combine(patient).combine(otherPerson).combine(locationRole).combine(resource).combine(organisation).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {
@@ -2031,6 +2059,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av ts och ivl_ts ska anges",
+        "expression" : "ts.exists() xor ivlTs.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {
@@ -2812,6 +2847,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-patient-id-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av id och person.id ska anges",
+        "expression" : "rivId.combine(person.rivId).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {
@@ -4081,6 +4123,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-amount-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av pq och ivl_pq ska anges",
+        "expression" : "pq.exists() xor ivlPq.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {
@@ -4160,6 +4209,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations-value-choice",
+        "severity" : "error",
+        "human" : "En och endast en av cv, pq, ivl_pq, ts, ivl_ts, st och int ska anges",
+        "expression" : "cv.combine(pq).combine(ivlPq).combine(ts).combine(ivlTs).combine(st).combine(int).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"
       }]
     },
     {

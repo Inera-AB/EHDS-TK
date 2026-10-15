@@ -1,4 +1,4 @@
-# GetVaccinationHistory 1.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetVaccinationHistory 1.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMVaccinationHistoryV10 | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMVaccinationHistoryV10 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMVaccinationHistoryV10 | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMVaccinationHistoryV10 |
 
  
 Logisk modell för version 1.0 av tjänstekontraktet GetVaccinationHistory (urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1). Mappningen utgår från versionen i SEEHDSLMVaccinationHistory. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMVaccinationH
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMVaccinationHistoryV10",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMVaccinationHistoryV10",
   "title" : "GetVaccinationHistory 1.0",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

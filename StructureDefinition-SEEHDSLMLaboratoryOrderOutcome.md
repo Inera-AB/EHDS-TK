@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetLaboratoryOrderOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcome | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcome |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcome | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcome |
 
  
 Logisk modell för tjänstekontraktet GetLaboratoryOrderOutcome (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcome:4). Representerar responsens informationsstruktur — multidisciplinära laboratoriesvar för en patient. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMLaboratoryOr
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcome",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMLaboratoryOrderOutcome",
   "title" : "GetLaboratoryOrderOutcome",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -1335,6 +1335,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMLaboratoryOr
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getlaboratoryorderoutcome-value-choice",
+        "severity" : "error",
+        "human" : "En och endast en av cv, pq, intervalPQ och st ska anges",
+        "expression" : "cv.combine(pq).combine(intervalPQ).combine(st).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcome"
       }]
     },
     {
@@ -1440,6 +1447,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMLaboratoryOr
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getlaboratoryorderoutcome-reference-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av interval och description ska anges",
+        "expression" : "interval.exists() xor description.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcome"
       }]
     },
     {

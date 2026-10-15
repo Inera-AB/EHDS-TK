@@ -18,11 +18,11 @@
     "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareContacts",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMCareContacts",
   "title" : "GetCareContacts",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

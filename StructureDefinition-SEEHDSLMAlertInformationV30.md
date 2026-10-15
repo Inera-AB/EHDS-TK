@@ -1,4 +1,4 @@
-# GetAlertInformation 3.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetAlertInformation 3.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30 | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMAlertInformationV30 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30 | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMAlertInformationV30 |
 
  
 Logisk modell för version 3.0 av tjänstekontraktet GetAlertInformation (urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:3). Mappningen utgår från versionen i SEEHDSLMAlertInformation. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMAlertInformationV30",
   "title" : "GetAlertInformation 3.0",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -546,6 +546,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation3-body-choice",
+        "severity" : "error",
+        "human" : "En och endast en av hypersensitivity, activity, condition, decisionNonstandardCareProcedure, informationNonstandardCareProcedure, contagion och unstructuredAlertInformation ska anges",
+        "expression" : "hypersensitivity.combine(activity).combine(condition).combine(decisionNonstandardCareProcedure).combine(informationNonstandardCareProcedure).combine(contagion).combine(unstructuredAlertInformation).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"
       }]
     },
     {
@@ -601,6 +608,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation3-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av timestamp och timePeriod ska anges",
+        "expression" : "timestamp.exists() xor timePeriod.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"
       }]
     },
     {
@@ -700,6 +714,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation3-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av timestamp och timePeriod ska anges",
+        "expression" : "timestamp.exists() xor timePeriod.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"
       }]
     },
     {
@@ -847,6 +868,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation3-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av timestamp och timePeriod ska anges",
+        "expression" : "timestamp.exists() xor timePeriod.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"
       }]
     },
     {
@@ -1038,6 +1066,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation3-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av timestamp och timePeriod ska anges",
+        "expression" : "timestamp.exists() xor timePeriod.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"
       }]
     },
     {
@@ -1295,6 +1330,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation3-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av timestamp och timePeriod ska anges",
+        "expression" : "timestamp.exists() xor timePeriod.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"
       }]
     },
     {
@@ -1372,6 +1414,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation3-time-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av timestamp och timePeriod ska anges",
+        "expression" : "timestamp.exists() xor timePeriod.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"
       }]
     },
     {

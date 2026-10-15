@@ -1,4 +1,4 @@
-# SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSDiagnosticReportLab |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSDiagnosticReportLab |
 
  
 Profil för laboratorieresultat mappat från RIVTA-tjänstekontraktet GetLaboratoryOrderOutcome (clinicalprocess:healthcond:actoutcome v4.2). Täcker NPÖ v4.2 och 1177 Journal v4.2. 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDiagnosticRepo
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDiagnosticReportLab",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSDiagnosticReportLab",
   "title" : "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

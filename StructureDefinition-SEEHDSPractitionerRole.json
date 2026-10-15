@@ -10,11 +10,11 @@
     "valueCanonical" : "http://hl7.org/fhir/uv/ips/StructureDefinition/PractitionerRole-uv-ips"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSPractitionerRole",
   "title" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

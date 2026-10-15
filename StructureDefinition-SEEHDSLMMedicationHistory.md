@@ -1,4 +1,4 @@
-# GetMedicationHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetMedicationHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMMedicationHistory |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMMedicationHistory |
 
  
 Logisk modell för tjänstekontraktet GetMedicationHistory (RIV-TA urn:riv:clinicalprocess:activityprescription:actoutcome:GetMedicationHistoryResponder:2). Representerar responsens informationsstruktur — läkemedelshistorik per patient. 
@@ -50,11 +50,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:GetMedicationHistoryResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMMedicationHistory",
   "title" : "GetMedicationHistory",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -543,6 +543,20 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-prescriber",
+        "severity" : "error",
+        "human" : "prescriber ska anges om selfMedication är false",
+        "expression" : "selfMedication.value = true or prescriber.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
+      },
+      {
+        "key" : "getmedicationhistory-start-of-treatment",
+        "severity" : "error",
+        "human" : "startOfTreatment ska anges om typeOfPrescription är I",
+        "expression" : "typeOfPrescription.value != 'I' or startOfTreatment.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -649,6 +663,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -694,6 +715,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1289,11 +1317,18 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       }],
       "path" : "SEEHDSLMMedicationHistory.medicationMedicalRecord.medicationMedicalRecordBody.medicationPrescription.drug",
       "short" : "Läkemedelsval (ett av: unstructured/merchandise/drugArticle/drug/generics)",
-      "definition" : "OBS: Ett och endast ett av följande alternativ ska anges.\nASSUME-ACT-003: XOR-villkor kan inte uttryckas direkt i FSH-kardinaliteten (alla är 0..1).",
+      "definition" : "OBS: Ett och endast ett av följande alternativ ska anges.\nVillkoret uttrycks av invarianten getmedicationhistory-drug-choice (MED-003).",
       "min" : 0,
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-drug-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av unstructuredDrugInformation, merchandise, drugArticle, drug och generics ska anges (MED-003)",
+        "expression" : "unstructuredDrugInformation.combine(merchandise).combine(drugArticle).combine(drug).combine(generics).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1369,6 +1404,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1399,6 +1441,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1414,6 +1463,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-npl-or-atc",
+        "severity" : "error",
+        "human" : "Minst ett av nplId och atcCode ska anges",
+        "expression" : "nplId.exists() or atcCode.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1429,6 +1485,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1444,6 +1507,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1579,6 +1649,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "*",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-dosage",
+        "severity" : "error",
+        "human" : "Minst ett av setDosage och conditionalDosage ska anges",
+        "expression" : "setDosage.exists() or conditionalDosage.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1609,6 +1686,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1714,6 +1798,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1759,6 +1850,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1789,6 +1887,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1834,6 +1939,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1954,6 +2066,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -1999,6 +2118,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2029,6 +2155,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2074,6 +2207,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2134,6 +2274,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2224,6 +2371,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2269,6 +2423,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2299,6 +2460,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2344,6 +2512,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2404,6 +2579,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2479,6 +2661,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2569,6 +2758,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2614,6 +2810,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2644,6 +2847,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2689,6 +2899,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2809,6 +3026,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2854,6 +3078,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2884,6 +3115,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2929,6 +3167,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -2989,6 +3234,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3079,6 +3331,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3124,6 +3383,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3154,6 +3420,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3199,6 +3472,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3259,6 +3539,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3334,6 +3621,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3439,6 +3733,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3484,6 +3785,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3514,6 +3822,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3559,6 +3874,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3679,6 +4001,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3724,6 +4053,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3754,6 +4090,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3799,6 +4142,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3859,6 +4209,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3949,6 +4306,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -3994,6 +4358,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4024,6 +4395,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4069,6 +4447,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4129,6 +4514,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4204,6 +4596,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4264,6 +4663,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-total-amount",
+        "severity" : "error",
+        "human" : "totalAmount och packageUnit ska anges tillsammans eller inte alls",
+        "expression" : "totalAmount.exists() = packageUnit.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4309,6 +4715,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-ii-strict",
+        "severity" : "error",
+        "human" : "extension ska anges",
+        "expression" : "rivExtension.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4654,6 +5067,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-drug-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av unstructuredDrugInformation, merchandise, drugArticle, drug och generics ska anges (MED-003)",
+        "expression" : "unstructuredDrugInformation.combine(merchandise).combine(drugArticle).combine(drug).combine(generics).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4729,6 +5149,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4759,6 +5186,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4774,6 +5208,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-npl-or-atc",
+        "severity" : "error",
+        "human" : "Minst ett av nplId och atcCode ska anges",
+        "expression" : "nplId.exists() or atcCode.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4789,6 +5230,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4804,6 +5252,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -4969,6 +5424,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5074,6 +5536,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5119,6 +5588,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5149,6 +5625,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5194,6 +5677,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5314,6 +5804,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5359,6 +5856,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5389,6 +5893,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5434,6 +5945,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5494,6 +6012,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5584,6 +6109,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5629,6 +6161,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5659,6 +6198,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5704,6 +6250,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5764,6 +6317,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5839,6 +6399,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5929,6 +6496,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -5974,6 +6548,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6004,6 +6585,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6049,6 +6637,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6169,6 +6764,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6214,6 +6816,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6244,6 +6853,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6289,6 +6905,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6349,6 +6972,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6439,6 +7069,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6484,6 +7121,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6514,6 +7158,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6559,6 +7210,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6619,6 +7277,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6694,6 +7359,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6799,6 +7471,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6844,6 +7523,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6874,6 +7560,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -6919,6 +7612,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7039,6 +7739,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7084,6 +7791,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7114,6 +7828,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7159,6 +7880,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7219,6 +7947,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7309,6 +8044,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7354,6 +8096,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7384,6 +8133,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7429,6 +8185,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7489,6 +8252,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7564,6 +8334,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7654,6 +8431,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-administration-time",
+        "severity" : "error",
+        "human" : "Minst ett av start och end ska anges",
+        "expression" : "start.exists() or end.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7909,6 +8693,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-drug-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av unstructuredDrugInformation, merchandise, drugArticle, drug och generics ska anges (MED-003)",
+        "expression" : "unstructuredDrugInformation.combine(merchandise).combine(drugArticle).combine(drug).combine(generics).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -7984,6 +8775,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8014,6 +8812,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8029,6 +8834,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-npl-or-atc",
+        "severity" : "error",
+        "human" : "Minst ett av nplId och atcCode ska anges",
+        "expression" : "nplId.exists() or atcCode.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8044,6 +8856,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8059,6 +8878,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8194,6 +9020,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "*",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-dosage",
+        "severity" : "error",
+        "human" : "Minst ett av setDosage och conditionalDosage ska anges",
+        "expression" : "setDosage.exists() or conditionalDosage.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8224,6 +9057,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8329,6 +9169,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8374,6 +9221,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8404,6 +9258,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8449,6 +9310,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8569,6 +9437,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8614,6 +9489,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8644,6 +9526,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8689,6 +9578,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8749,6 +9645,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8839,6 +9742,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8884,6 +9794,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8914,6 +9831,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -8959,6 +9883,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9019,6 +9950,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9094,6 +10032,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9184,6 +10129,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9229,6 +10181,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9259,6 +10218,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9304,6 +10270,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9424,6 +10397,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9469,6 +10449,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9499,6 +10486,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9544,6 +10538,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9604,6 +10605,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9694,6 +10702,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9739,6 +10754,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9769,6 +10791,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9814,6 +10843,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9874,6 +10910,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -9949,6 +10992,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10054,6 +11104,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10099,6 +11156,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10129,6 +11193,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10174,6 +11245,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10294,6 +11372,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10339,6 +11424,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10369,6 +11461,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10414,6 +11513,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10474,6 +11580,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10564,6 +11677,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10609,6 +11729,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10639,6 +11766,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-occasion-dosage",
+        "severity" : "error",
+        "human" : "period.value ska vara mellan 1 och 28 och administration.dayOfPeriod mellan 1 och 14",
+        "expression" : "period.value.value.all($this > 0 and $this < 29) and administration.dayOfPeriod.value.all($this > 0 and $this < 15)",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10684,6 +11818,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10744,6 +11885,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10819,6 +11967,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-pq-interval",
+        "severity" : "error",
+        "human" : "Minst ett av low och high ska anges",
+        "expression" : "low.exists() or high.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10943,6 +12098,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-referred-type",
+        "severity" : "error",
+        "human" : "type.originalText ska vara caa-ga eller chb-go",
+        "expression" : "originalText.where(value = 'caa-ga' or value = 'chb-go').exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -10977,6 +12139,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-ii-strict",
+        "severity" : "error",
+        "human" : "extension ska anges",
+        "expression" : "rivExtension.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {
@@ -11022,6 +12191,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
       "max" : "1",
       "type" : [{
         "code" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2"
+      }],
+      "constraint" : [{
+        "key" : "getmedicationhistory-cv-strict",
+        "severity" : "error",
+        "human" : "code, codeSystem och displayName ska anges, originalText ska inte anges",
+        "expression" : "code.exists() and codeSystem.exists() and displayName.exists() and originalText.empty()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory"
       }]
     },
     {

@@ -10,14 +10,14 @@
   fhir:Resource.id [ fhir:value "typeofprescription-vs"] ;
   fhir:DomainResource.text [
      fhir:Narrative.status [ fhir:value "generated" ] ;
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet typeofprescription-vs</b></p><a name=\"typeofprescription-vs\"> </a><a name=\"hctypeofprescription-vs\"> </a><ul><li>Include alla koder som definieras i <a href=\"CodeSystem-typeofprescription-cs.html\"><code>https://fhir.inera.se/CodeSystem/typeofprescription</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version ?0.5.0</span></li></ul></div>"
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet typeofprescription-vs</b></p><a name=\"typeofprescription-vs\"> </a><a name=\"hctypeofprescription-vs\"> </a><ul><li>Include alla koder som definieras i <a href=\"CodeSystem-typeofprescription-cs.html\"><code>https://fhir.inera.se/CodeSystem/typeofprescription</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version ?0.6.0</span></li></ul></div>"
   ] ;
   fhir:ValueSet.url [ fhir:value "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofprescription-vs"] ;
-  fhir:ValueSet.version [ fhir:value "0.5.0"] ;
+  fhir:ValueSet.version [ fhir:value "0.6.0"] ;
   fhir:ValueSet.name [ fhir:value "TypeOfPrescriptionVS"] ;
   fhir:ValueSet.title [ fhir:value "TypeOfPrescription — ValueSet"] ;
   fhir:ValueSet.status [ fhir:value "active"] ;
-  fhir:ValueSet.date [ fhir:value "2026-10-12T13:38:08+00:00"^^xsd:dateTime] ;
+  fhir:ValueSet.date [ fhir:value "2026-10-15T17:10:15+00:00"^^xsd:dateTime] ;
   fhir:ValueSet.publisher [ fhir:value "Inera AB"] ;
   fhir:ValueSet.contact [
      fhir:index 0 ;

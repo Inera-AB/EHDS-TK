@@ -243,8 +243,8 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Tidpunkt för åtgärd","Tidpunkt då åtgärd genomfördes
 Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.","","","","","","","","","",,,,,"",,,,"SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actTime",0,1,"",""
 "SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult","SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult","","","",0,*,"","","","BackboneElement {[]} {[]}
-","Resultat (multimedia)","Resultat av åtgärd. Data i form av bifogade bilder eller liknande.","","","","","","","","","",,,,,"",,,,"SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-"
+","Resultat (multimedia)","Resultat av åtgärd. Data i form av bifogade bilder eller liknande.","","","","","","","","","",,,,,"",,,,"SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult",0,*,"","getreferraloutcome-actresult-choice:Ett och endast ett av value och reference ska anges {value.exists() xor reference.exists()}
+ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}"
 "SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult.id","SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"",""
 "SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult.extension","SEEHDSLMReferralOutcome.referralOutcome.referralOutcomeBody.act.actResult.extension","","extensions

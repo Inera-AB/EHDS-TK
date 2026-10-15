@@ -1,4 +1,4 @@
-# Juridisk äkthetsintygsgivare för vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# Juridisk äkthetsintygsgivare för vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-legal-authenticator | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:ImmunizationLegalAuthenticator |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-legal-authenticator | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:ImmunizationLegalAuthenticator |
 
 Signeringstidpunkt och HSA-id för juridisk äkthetsintygsgivare (vaccinationMedicalRecordHeader.legalAuthenticator).
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-immunization-legal-a
   "resourceType" : "StructureDefinition",
   "id" : "immunization-legal-authenticator",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-legal-authenticator",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "ImmunizationLegalAuthenticator",
   "title" : "Juridisk äkthetsintygsgivare för vaccination",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

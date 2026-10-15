@@ -1,4 +1,4 @@
-# Versionshistorik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# Versionshistorik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * **Versionshistorik**
@@ -13,6 +13,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | | | | |
 | :--- | :--- | :--- | :--- |
+| 0.6.0 | 2026-10-12 | Draft | Regler från TKB:erna och testsvitens schematron, bland annat val mellan element (MED-003), är FHIRPath-invarianter i de logiska modellerna. |
 | 0.5.0 | 2026-10-12 | Draft | Alla aktiva tjänstekontraktsversioner enligt startsidan har nu logiska modeller och mappning, inte bara den senaste versionen. |
 | 0.4.0 | 2026-10-12 | Draft | Ny konformitetsansats (EURIDICE och EU Core i stället för IPS/EPS), profiler omdöpta till SEEHDS, logiska modeller genererade från RIV-TA-XSD och verifierade mot TKB, och ett antal mappningsbeslut. |
 | 0.3.3 | 2026-06-25 | Draft | `ig_slug`tillagd i dispatch-anropet till fhir-portal, så att länkarna till kanonisk URL blir rätt. |
@@ -23,6 +24,21 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 -------
 
 ### Ändringslogg
+
+#### 0.6.0 — 2026-10-12 (Draft)
+
+Regler som inte finns i XSD:erna, men i TKB:ernas text och i schematron-filerna i domänernas testsviter, är nu FHIRPath-invarianter i de logiska modellerna (GENERAL-009). Se [Logiska modeller](logical-models.md#invarianter).
+
+**Logiska modeller**
+
+* GetMedicationHistory: läkemedelsvalet under `drug` kräver exakt ett av fem alternativ (MED-003, stängd), och modellen har invarianter för testsvitens övriga regler: `nplId` eller `atcCode`, dosering, förskrivare vid `selfMedication = false`, `startOfTreatment` vid insättning, administreringstid, gränser för tillfällesdosering, `totalAmount`/`packageUnit`, `referredInformation.type` och strikta kod- och id-typer.
+* Val mellan element i GetAlertInformation 2.0 och 3.0, GetCareDocumentation 2.1, GetImagingOutcome, GetLaboratoryOrderOutcome 4.2, 4.1 och 3.1, GetMaternityMedicalHistory, GetReferralOutcome 3.2 och 3.1 samt GetObservations 2.0 och 1.2.
+* GetRequestActivities 1.0: tillåtna `statusCode` per `typeOfRequest` enligt testsviten (VER-005, stängd), och att id och enheter anges.
+* `tools/rivta-lm` kopplar inte längre en `obeys`-regel på ett element som heter `value` till föräldraelementet.
+
+**Mappningar**
+
+* GetMedicationHistory beskriver villkoret för `drug`, och GetRequestActivities anger att 1.0 bara tillåter de sju beskrivna statuskoderna.
 
 #### 0.5.0 — 2026-10-12 (Draft)
 

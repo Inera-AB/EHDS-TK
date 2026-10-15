@@ -1,4 +1,4 @@
-# GetObservations 1.2 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetObservations 1.2 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservationsV12 | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMObservationsV12 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservationsV12 | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMObservationsV12 |
 
  
 Logisk modell för version 1.2 av tjänstekontraktet GetObservations (urn:riv:clinicalprocess:healthcond:basic:GetObservationsResponder:1). Mappningen utgår från versionen i SEEHDSLMObservations. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:GetObservationsResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservationsV12",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMObservationsV12",
   "title" : "GetObservations 1.2",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -186,6 +186,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations12-id-choice",
+        "severity" : "error",
+        "human" : "Högst ett av id och person.id får anges",
+        "expression" : "rivId.combine(person.rivId).count() <= 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservationsV12"
       }]
     },
     {
@@ -446,6 +453,20 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMObservations
       "max" : "*",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getobservations12-id-choice",
+        "severity" : "error",
+        "human" : "Högst ett av id och person.id får anges",
+        "expression" : "rivId.combine(person.rivId).count() <= 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservationsV12"
+      },
+      {
+        "key" : "getobservations12-participant-choice",
+        "severity" : "error",
+        "human" : "En och endast en av person, organisation, device och location ska anges",
+        "expression" : "person.combine(organisation).combine(device).combine(location).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservationsV12"
       }]
     },
     {

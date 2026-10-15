@@ -1,4 +1,4 @@
-# AssessmentCategory — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# AssessmentCategory — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs | *Version*:0.5.0 |
-| Active as of 2026-10-12 | *Computable Name*:AssessmentCategoryVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs | *Version*:0.6.0 |
+| Active as of 2026-10-15 | *Computable Name*:AssessmentCategoryVS |
 
  
 Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus. 
@@ -46,11 +46,11 @@ Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus.
   "resourceType" : "ValueSet",
   "id" : "assessmentcategory-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "AssessmentCategoryVS",
   "title" : "AssessmentCategory — ValueSet",
   "status" : "active",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

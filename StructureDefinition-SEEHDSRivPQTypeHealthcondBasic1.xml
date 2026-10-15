@@ -12,11 +12,11 @@
     <valueUri value="urn:riv:clinicalprocess:healthcond:basic:1"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQTypeHealthcondBasic1"/>
-  <version value="0.5.0"/>
+  <version value="0.6.0"/>
   <name value="SEEHDSRivPQTypeHealthcondBasic1"/>
   <title value="RIV-TA PQType (clinicalprocess:healthcond:basic:1)"/>
   <status value="draft"/>
-  <date value="2026-10-12T13:38:08+00:00"/>
+  <date value="2026-10-15T17:10:15+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

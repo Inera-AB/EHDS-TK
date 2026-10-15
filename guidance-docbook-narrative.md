@@ -1,4 +1,4 @@
-# DocBook-mappning – clinicalDocumentNoteText och bilagor - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# DocBook-mappning – clinicalDocumentNoteText och bilagor - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * **DocBook-mappning – clinicalDocumentNoteText och bilagor**

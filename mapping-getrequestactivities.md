@@ -1,4 +1,4 @@
-# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * **GetRequestActivities – Remisstatus**
@@ -138,7 +138,7 @@ Version 1.0 har en platt struktur utan header och body. Den saknar åtkomstkontr
 
 ### statusCode 1.0 → Task.status
 
-TKB 1.0 anger klartext för sju av de tillåtna koderna. Övriga koder (10, 40–80, 100–120, 150–170) saknar beskrivning och ger `Task.status = unknown`, med koden kvar i `businessStatus`. Se VER-005 i [Mappningsissues](mapping-issues.md).
+TKB 1.0 anger klartext för sju koder, och testsvitens schematron tillåter bara dem (invarianten `getrequestactivities1-status-code` i [SEEHDSLMRequestActivitiesV10](StructureDefinition-SEEHDSLMRequestActivitiesV10.md), se VER-005 i [Mappningsissues](mapping-issues.md#stangda-fragor)). Ett svar med en annan kod bryter mot kontraktet och ger `Task.status = unknown`, med koden kvar i `businessStatus`.
 
 | | | |
 | :--- | :--- | :--- |

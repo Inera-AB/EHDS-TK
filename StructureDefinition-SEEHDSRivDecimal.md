@@ -1,4 +1,4 @@
-# RIV-TA decimaltal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# RIV-TA decimaltal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDecimal | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSRivDecimal |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDecimal | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSRivDecimal |
 
  
 Decimaltal (xs:double/xs:decimal). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivDecimal.csv
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivDecimal",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDecimal",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSRivDecimal",
   "title" : "RIV-TA decimaltal",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

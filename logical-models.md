@@ -1,4 +1,4 @@
-# Logical Models - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# Logical Models - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * **Logical Models**
@@ -83,6 +83,57 @@ En FML-motor baserad på HL7:s Java-verktyg (t.ex. Matchbox eller validatorn) ka
 * Rotelementet matchas mot modellen via `xml-name` och namnrymd.
 * Textinnehåll nås via `.value`, t.ex. `src.diagnosis.diagnosisHeader.documentId.value`.
 * Tidsstämplar (`SEEHDSRivTimeStamp`) är text i formatet ÅÅÅÅMMDDttmmss och konverteras i FML till `dateTime` med tidszon enligt [GENERAL-001](mappings.md#tidszon). OID:er och `PersonIdType {id, type}` konverteras enligt [GENERAL-002](mapping-issues.md) och [GENERAL-006](mappings.md#patientreferens).
+
+### Invarianter
+
+En del regler i tjänstekontrakten finns inte i XSD:n utan i TKB:ns text och i schematron-filerna i domänernas testsviter (`test-suite/<kontrakt>/constraints.xml`). Regler som gäller ett enskilt meddelandeelement är uttryckta som FHIRPath-invarianter (`Severity: error`) på motsvarande element i den logiska modellen. Uttrycken utgår från modellens FHIR-namn, t.ex. `rivId` för XML-elementet `id`, och textvärden nås via `.value`.
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| SEEHDSLMMedicationHistory | `getmedicationhistory-drug-choice` | `drug`(ordination, expediering, administrering) | Exakt ett av`unstructuredDrugInformation`,`merchandise`,`drugArticle`,`drug`och`generics`(MED-003) |
+|   | `getmedicationhistory-npl-or-atc` | `drug.drug` | Minst ett av`nplId`och`atcCode` |
+|   | `getmedicationhistory-dosage` | `drug.dosage`(ordination, administrering) | Minst ett av`setDosage`och`conditionalDosage` |
+|   | `getmedicationhistory-prescriber` | `medicationPrescription` | `prescriber`krävs när`selfMedication`är`false` |
+|   | `getmedicationhistory-start-of-treatment` | `medicationPrescription` | `startOfTreatment`krävs när`typeOfPrescription`är`I` |
+|   | `getmedicationhistory-administration-time` | `administration.administrationTime` | Minst ett av`start`och`end` |
+|   | `getmedicationhistory-occasion-dosage` | `occasionDosage` | `period.value`1–28 och`administration.dayOfPeriod`1–14 |
+|   | `getmedicationhistory-total-amount` | `dispensationAuthorization` | `totalAmount`och`packageUnit`anges tillsammans eller inte alls |
+|   | `getmedicationhistory-referred-type` | `relation.referredInformation.type` | `originalText`är`caa-ga`eller`chb-go` |
+|   | `getmedicationhistory-pq-interval` | `dose`,`treatmentInterval` | Minst ett av`low`och`high` |
+|   | `getmedicationhistory-cv-strict` | `reason`,`articleNumber`,`atcCode`,`nplId`,`nplPackId`,`gender` | `code`,`codeSystem`och`displayName`anges, inte`originalText` |
+|   | `getmedicationhistory-ii-strict` | `receivingPharmacy`,`informationOwner.id` | `extension`anges |
+| SEEHDSLMAlertInformation | `getalertinformation-body-choice` | `alertInformationBody` | Exakt en av`hypersensitivity`,`seriousDisease`,`treatment`,`communicableDisease`,`restrictionOfCare`och`unstructuredAlertInformation` |
+|   | `getalertinformation-substance-choice` | `pharmaceuticalHypersensitivity` | Antingen`atcSubstance`eller både`nonATCSubstance`och`nonATCSubstanceComment` |
+| SEEHDSLMAlertInformationV30 | `getalertinformation3-body-choice` | `body` | Exakt en av de sju typerna av uppmärksamhetsinformation |
+|   | `getalertinformation3-time-choice` | `time`(sex ställen) | Exakt ett av`timestamp`och`timePeriod` |
+| SEEHDSLMCareDocumentation, V21 | `getcaredocumentation-body-xor`,`getcaredocumentation-multimedia-xor` | `body`,`multimediaEntry` | Exakt ett av`clinicalDocumentNoteText`och`multimediaEntry`, och av`value`och`reference` |
+| SEEHDSLMCareDocumentationV21 | `getcaredocumentation21-code-choice` | `clinicalDocumentNote` | Exakt ett av`clinicalDocumentNoteCode`och`clinicalDocumentTypeCode` |
+| SEEHDSLMCarePlans | `getcareplans-content-xor` | `content` | Exakt ett av`value`och`reference` |
+| SEEHDSLMImagingOutcome | `getimagingoutcome-dicom-choice` | `imageDicomData` | Exakt ett av`dicomValue`och`dicomReference` |
+|   | `getimagingoutcome-imagedata-choice` | `imageData` | Exakt ett av`value`och`reference` |
+| SEEHDSLMLaboratoryOrderOutcome, V41 | `getlaboratoryorderoutcome-reference-choice` | `result.reference` | Exakt ett av`interval`och`description` |
+|   | `getlaboratoryorderoutcome-value-choice` | `result.value` | Exakt ett av`cv`,`pq`,`intervalPQ`och`st` |
+| SEEHDSLMLaboratoryOrderOutcomeV31 | `getlaboratoryorderoutcome31-analysis-choice` | `analysis` | Exakt ett av`analysisCode`och`analysisText` |
+| SEEHDSLMMaternityMedicalHistory | `getmaternitymedicalhistory-body-choice` | `maternityMedicalRecordBody` | Exakt en av`registrationRecord`,`pregnancyCheckupRecord`och`postDeliveryRecord` |
+| SEEHDSLMReferralOutcome, V31 | `getreferraloutcome-actresult-choice` | `act.actResult` | Exakt ett av`value`och`reference` |
+| SEEHDSLMObservations | `getobservations-patient-id-choice` | `observationBody.patient`,`participation.patient` | Exakt ett av`id`och`person.id` |
+|   | `getobservations-participation-choice` | `participation` | Exakt en av`healthcareProfessional`,`patient`,`otherPerson`,`locationRole`,`resource`och`organisation` |
+|   | `getobservations-time-choice` | `observationBody.time`,`participation.time` | Exakt ett av`ts`och`ivl_ts` |
+|   | `getobservations-amount-choice` | `resource.amount` | Exakt ett av`pq`och`ivl_pq` |
+|   | `getobservations-value-choice` | `observationBody.value`,`resourceProperty.value` | Exakt ett av`cv`,`pq`,`ivl_pq`,`ts`,`ivl_ts`,`st`och`int` |
+| SEEHDSLMObservationsV12 | `getobservations12-id-choice` | `performerRole`,`additionalParticipant` | Högst ett av`id`och`person.id` |
+|   | `getobservations12-participant-choice` | `additionalParticipant` | Exakt en av`person`,`organisation`,`device`och`location` |
+| SEEHDSLMRequestActivitiesV10 | `getrequestactivities1-status-code` | `requestActivity` | `typeOfRequest`är 1, 2, 4 eller 10, och`statusCode`är en av de koder som testsviten tillåter för remisstypen (VER-005) |
+|   | `getrequestactivities1-request-id`,`-issued-by-unit`,`-receiving-unit` | `requestActivity` | Minst ett av`senderRequestId`/`receiverRequestId`, och id eller beskrivning för remitterande respektive mottagande enhet |
+
+Följande schematron-regler är inte invarianter i modellerna:
+
+* Regler för datatypen CVType (att `code`, `codeSystem` och `displayName` anges tillsammans och att `originalText` utesluter kod), eftersom datatypmodellerna genereras och delas mellan kontrakten. `getmedicationhistory-cv-strict` är undantaget, där TKB:n skärper regeln för vissa element.
+* Unika id:n i svaret, att inga element är tomma och kontroller av OID:er och kodvärden mot fasta listor.
+* Regler som rör begäran eller resultatkoden i svaret.
+* Övriga villkorsregler i de andra kontrakten, t.ex. `uterusNote` i GetMaternityMedicalHistory och `nullifiedReason` i GetVaccinationHistory. De kan läggas till på samma sätt.
+
+Generatorn i `tools/rivta-lm` behåller invarianterna och deras `obeys`-regler när modellerna genereras om.
 
 ### Verifiering mot TKB
 

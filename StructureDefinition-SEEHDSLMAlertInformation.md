@@ -1,4 +1,4 @@
-# GetAlertInformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetAlertInformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformation | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMAlertInformation |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformation | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMAlertInformation |
 
  
 Logisk modell för tjänstekontraktet GetAlertInformation (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:2). Representerar responsens informationsstruktur: uppmärksamhetsinformation för en patient, exempelvis överkänslighet mot läkemedel, allvarlig sjukdom, behandling, smittsam sjukdom, vårdbegränsning eller historisk varning. 
@@ -50,11 +50,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformation",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMAlertInformation",
   "title" : "GetAlertInformation",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -528,6 +528,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation-body-choice",
+        "severity" : "error",
+        "human" : "En och endast en av hypersensitivity, seriousDisease, treatment, communicableDisease, restrictionOfCare och unstructuredAlertInformation ska anges",
+        "expression" : "hypersensitivity.combine(seriousDisease).combine(treatment).combine(communicableDisease).combine(restrictionOfCare).combine(unstructuredAlertInformation).count() = 1",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformation"
       }]
     },
     {
@@ -708,6 +715,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAlertInforma
       "max" : "1",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getalertinformation-substance-choice",
+        "severity" : "error",
+        "human" : "Antingen atcSubstance eller både nonATCSubstance och nonATCSubstanceComment ska anges",
+        "expression" : "(atcSubstance.exists() and nonATCSubstance.empty() and nonATCSubstanceComment.empty()) or (atcSubstance.empty() and nonATCSubstance.exists() and nonATCSubstanceComment.exists())",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformation"
       }]
     },
     {

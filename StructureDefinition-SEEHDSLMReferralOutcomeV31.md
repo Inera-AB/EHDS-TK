@@ -1,4 +1,4 @@
-# GetReferralOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetReferralOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcomeV31 | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMReferralOutcomeV31 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcomeV31 | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMReferralOutcomeV31 |
 
  
 Logisk modell för version 3.1 av tjänstekontraktet GetReferralOutcome (urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcomeResponder:3). Mappningen utgår från versionen i SEEHDSLMReferralOutcome. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMReferralOutc
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcomeResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcomeV31",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMReferralOutcomeV31",
   "title" : "GetReferralOutcome 3.1",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -782,6 +782,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMReferralOutc
       "max" : "*",
       "type" : [{
         "code" : "BackboneElement"
+      }],
+      "constraint" : [{
+        "key" : "getreferraloutcome-actresult-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av value och reference ska anges",
+        "expression" : "value.exists() xor reference.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcomeV31"
       }]
     },
     {

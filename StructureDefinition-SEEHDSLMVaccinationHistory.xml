@@ -143,11 +143,11 @@ Tillåtna värden enligt XSD: INVALID_REQUEST.">errorCode</a><a name="SEEHDSLMVa
     <valueUri value="urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMVaccinationHistory"/>
-  <version value="0.5.0"/>
+  <version value="0.6.0"/>
   <name value="SEEHDSLMVaccinationHistory"/>
   <title value="GetVaccinationHistory"/>
   <status value="draft"/>
-  <date value="2026-10-12T13:38:08+00:00"/>
+  <date value="2026-10-15T17:10:15+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

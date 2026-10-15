@@ -1,4 +1,4 @@
-# GetCareDocumentation 2.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.5.0
+# GetCareDocumentation 2.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentationV21 | *Version*:0.5.0 |
-| Draft as of 2026-10-12 | *Computable Name*:SEEHDSLMCareDocumentationV21 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentationV21 | *Version*:0.6.0 |
+| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMCareDocumentationV21 |
 
  
 Logisk modell för version 2.1 av tjänstekontraktet GetCareDocumentation (urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:2). Mappningen utgår från versionen i SEEHDSLMCareDocumentation. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareDocument
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentationV21",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSLMCareDocumentationV21",
   "title" : "GetCareDocumentation 2.1",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -548,6 +548,13 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareDocument
         "severity" : "error",
         "human" : "Antingen clinicalDocumentNoteText eller multimediaEntry ska anges, ej båda",
         "expression" : "clinicalDocumentNoteText.exists() xor multimediaEntry.exists()",
+        "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentationV21"
+      },
+      {
+        "key" : "getcaredocumentation21-code-choice",
+        "severity" : "error",
+        "human" : "Ett och endast ett av clinicalDocumentNoteCode och clinicalDocumentTypeCode ska anges",
+        "expression" : "clinicalDocumentNoteCode.exists() xor clinicalDocumentTypeCode.exists()",
         "source" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentationV21"
       }]
     },

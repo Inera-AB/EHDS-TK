@@ -10,11 +10,11 @@
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeHealthcondDescription2",
-  "version" : "0.5.0",
+  "version" : "0.6.0",
   "name" : "SEEHDSRivPersonIdTypeHealthcondDescription2",
   "title" : "RIV-TA PersonIdType (clinicalprocess:healthcond:description:2)",
   "status" : "draft",
-  "date" : "2026-10-12T13:38:08+00:00",
+  "date" : "2026-10-15T17:10:15+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

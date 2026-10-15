@@ -45,8 +45,8 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "SEEHDSLMObservationsV12.observationGroup.patient.gender","SEEHDSLMObservationsV12.observationGroup.patient.gender","","","",0,1,"","","","https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondBasic1 {[]} {[]}
 ","gender","gender","","","","","","","","","",,,,,"",,,,"SEEHDSLMObservationsV12.observationGroup.patient.gender",0,1,"",""
 "SEEHDSLMObservationsV12.observationGroup.performerRole","SEEHDSLMObservationsV12.observationGroup.performerRole","","","",1,1,"","","","BackboneElement {[]} {[]}
-","Den som utfört observationerna inom gruppen","Den som utfört observationerna inom gruppen.","","","","","","","","","",,,,,"",,,,"SEEHDSLMObservationsV12.observationGroup.performerRole",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-"
+","Den som utfört observationerna inom gruppen","Den som utfört observationerna inom gruppen.","","","","","","","","","",,,,,"",,,,"SEEHDSLMObservationsV12.observationGroup.performerRole",1,1,"","getobservations12-id-choice:Högst ett av id och person.id får anges {rivId.combine(person.rivId).count() <= 1}
+ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}"
 "SEEHDSLMObservationsV12.observationGroup.performerRole.id","SEEHDSLMObservationsV12.observationGroup.performerRole.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"",""
 "SEEHDSLMObservationsV12.observationGroup.performerRole.extension","SEEHDSLMObservationsV12.observationGroup.performerRole.extension","","extensions
@@ -147,8 +147,8 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "SEEHDSLMObservationsV12.observationGroup.legalAuthenticator.name","SEEHDSLMObservationsV12.observationGroup.legalAuthenticator.name","","","",0,1,"","","","https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivString {[]} {[]}
 ","name","name","","","","","","","","","",,,,,"",,,,"SEEHDSLMObservationsV12.observationGroup.legalAuthenticator.name",0,1,"",""
 "SEEHDSLMObservationsV12.observationGroup.additionalParticipant","SEEHDSLMObservationsV12.observationGroup.additionalParticipant","","","",0,*,"","","","BackboneElement {[]} {[]}
-","Övriga deltagare relaterat till observationerna inom gruppen","Övriga deltagare relaterat till observationerna inom gruppen.","","","","","","","","","",,,,,"",,,,"SEEHDSLMObservationsV12.observationGroup.additionalParticipant",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-"
+","Övriga deltagare relaterat till observationerna inom gruppen","Övriga deltagare relaterat till observationerna inom gruppen.","","","","","","","","","",,,,,"",,,,"SEEHDSLMObservationsV12.observationGroup.additionalParticipant",0,*,"","getobservations12-id-choice:Högst ett av id och person.id får anges {rivId.combine(person.rivId).count() <= 1}
+getobservations12-participant-choice:En och endast en av person, organisation, device och location ska anges {person.combine(organisation).combine(device).combine(location).count() = 1}ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}"
 "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.id","SEEHDSLMObservationsV12.observationGroup.additionalParticipant.id","","","",0,1,"","","","string {[]} {[]}
 ","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"",""
 "SEEHDSLMObservationsV12.observationGroup.additionalParticipant.extension","SEEHDSLMObservationsV12.observationGroup.additionalParticipant.extension","","extensions
