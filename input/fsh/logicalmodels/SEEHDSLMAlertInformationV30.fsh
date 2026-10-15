@@ -3,6 +3,16 @@
 // riv.clinicalprocess.healthcond.description/schemas/interactions/GetAlertInformationInteraction/GetAlertInformationResponder_3.0.xsd @ feature-GAI_3.0 (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_description_GetAlertInformation.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getalertinformation3-body-choice
+Description: "En och endast en av hypersensitivity, activity, condition, decisionNonstandardCareProcedure, informationNonstandardCareProcedure, contagion och unstructuredAlertInformation ska anges"
+Expression: "hypersensitivity.combine(activity).combine(condition).combine(decisionNonstandardCareProcedure).combine(informationNonstandardCareProcedure).combine(contagion).combine(unstructuredAlertInformation).count() = 1"
+Severity: #error
+
+Invariant: getalertinformation3-time-choice
+Description: "Ett och endast ett av timestamp och timePeriod ska anges"
+Expression: "timestamp.exists() xor timePeriod.exists()"
+Severity: #error
+
 Logical: SEEHDSLMAlertInformationV30
 Id: SEEHDSLMAlertInformationV30
 Title: "GetAlertInformation 3.0"
@@ -112,6 +122,7 @@ Description: """
 * alertInformation.header.signature.byRole 0..1 SEEHDSRivCVTypeHealthcondDescription3 "byRole"
 * insert RivNs(alertInformation.header.signature.byRole, urn:riv:clinicalprocess:healthcond:description:3)
 * alertInformation.body 1..1 BackboneElement "Uppmärksamhetsinformation" """Uppmärksamhetsinformation."""
+* alertInformation.body obeys getalertinformation3-body-choice
 * alertInformation.body.specificationVersion 1..1 SEEHDSRivString "Version av Socialstyrelsens informationspecifikation för uppmärksamhetsinformation som används när …" """
     Version av Socialstyrelsens informationspecifikation för uppmärksamhetsinformation som används när information produceras i detta kontrakt. T.ex. ”5.1”
   """
@@ -127,6 +138,7 @@ Description: """
 * alertInformation.body.hypersensitivity.time 1..1 BackboneElement "Angivelse av den tid då överkänslighet som observerats faktiskt förekom eller förväntas förekomma" """
     Angivelse av den tid då överkänslighet som observerats faktiskt förekom eller förväntas förekomma. Se även regel Verify TimeType.
   """
+* alertInformation.body.hypersensitivity.time obeys getalertinformation3-time-choice
 * alertInformation.body.hypersensitivity.time.timestamp 0..1 SEEHDSRivTimeStamp "timestamp" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * alertInformation.body.hypersensitivity.time.timePeriod 0..1 SEEHDSRivTimePeriodTypeHealthcondDescription3 "Används för att specificera ett datumintervall med hjälp av start- och slutdatum" """
     Används för att specificera ett datumintervall med hjälp av start- och slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet YYYYMMDDhhmmss
@@ -152,6 +164,7 @@ Description: """
 * alertInformation.body.hypersensitivity.verificationMethod.time 0..1 BackboneElement "Angivelse av vilken tid en aktivitet utförts, är planerad att utföras eller önskas utföras" """
     Angivelse av vilken tid en aktivitet utförts, är planerad att utföras eller önskas utföras. Se även regel Verify TimeType.
   """
+* alertInformation.body.hypersensitivity.verificationMethod.time obeys getalertinformation3-time-choice
 * alertInformation.body.hypersensitivity.verificationMethod.time.timestamp 0..1 SEEHDSRivTimeStamp "timestamp" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * alertInformation.body.hypersensitivity.verificationMethod.time.timePeriod 0..1 SEEHDSRivTimePeriodTypeHealthcondDescription3 "Används för att specificera ett datumintervall med hjälp av start- och slutdatum" """
     Används för att specificera ett datumintervall med hjälp av start- och slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet YYYYMMDDhhmmss
@@ -190,6 +203,7 @@ Description: """
 * alertInformation.body.activity.time 1..1 BackboneElement "Angivelse av vilken tid en aktivitet utförts, är planerad att utföras eller önskas utföras" """
     Angivelse av vilken tid en aktivitet utförts, är planerad att utföras eller önskas utföras. Se även regel Verify TimeType.
   """
+* alertInformation.body.activity.time obeys getalertinformation3-time-choice
 * alertInformation.body.activity.time.timestamp 0..1 SEEHDSRivTimeStamp "timestamp" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * alertInformation.body.activity.time.timePeriod 0..1 SEEHDSRivTimePeriodTypeHealthcondDescription3 "Används för att specificera ett datumintervall med hjälp av start- och slutdatum" """
     Används för att specificera ett datumintervall med hjälp av start- och slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet YYYYMMDDhhmmss
@@ -240,6 +254,7 @@ Description: """
 * alertInformation.body.condition.time 1..1 BackboneElement "Angivelse av den tid då det som observerats faktiskt förekom eller förväntas förekomma" """
     Angivelse av den tid då det som observerats faktiskt förekom eller förväntas förekomma. Se även regel Verify TimeType.
   """
+* alertInformation.body.condition.time obeys getalertinformation3-time-choice
 * alertInformation.body.condition.time.timestamp 0..1 SEEHDSRivTimeStamp "timestamp" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * alertInformation.body.condition.time.timePeriod 0..1 SEEHDSRivTimePeriodTypeHealthcondDescription3 "Används för att specificera ett datumintervall med hjälp av start- och slutdatum" """
     Används för att specificera ett datumintervall med hjälp av start- och slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet YYYYMMDDhhmmss
@@ -309,6 +324,7 @@ Description: """
 * alertInformation.body.informationNonstandardCareProcedure.time 1..1 BackboneElement "Angivelse av den tid då det som observerats faktiskt förekom eller förväntas förekomma" """
     Angivelse av den tid då det som observerats faktiskt förekom eller förväntas förekomma. Se även regel Verify TimeType.
   """
+* alertInformation.body.informationNonstandardCareProcedure.time obeys getalertinformation3-time-choice
 * alertInformation.body.informationNonstandardCareProcedure.time.timestamp 0..1 SEEHDSRivTimeStamp "timestamp" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * alertInformation.body.informationNonstandardCareProcedure.time.timePeriod 0..1 SEEHDSRivTimePeriodTypeHealthcondDescription3 "Används för att specificera ett datumintervall med hjälp av start- och slutdatum" """
     Används för att specificera ett datumintervall med hjälp av start- och slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet YYYYMMDDhhmmss
@@ -326,6 +342,7 @@ Description: """
 * alertInformation.body.contagion.time 1..1 BackboneElement "Angivelse av den tid då den smittsamma sjukdomen eller smittämnet som observerats faktiskt förekom eller …" """
     Angivelse av den tid då den smittsamma sjukdomen eller smittämnet som observerats faktiskt förekom eller förväntas förekomma. Se även regel Verify TimeType.
   """
+* alertInformation.body.contagion.time obeys getalertinformation3-time-choice
 * alertInformation.body.contagion.time.timestamp 0..1 SEEHDSRivTimeStamp "timestamp" """Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss."""
 * alertInformation.body.contagion.time.timePeriod 0..1 SEEHDSRivTimePeriodTypeHealthcondDescription3 "Används för att specificera ett datumintervall med hjälp av start- och slutdatum" """
     Används för att specificera ett datumintervall med hjälp av start- och slutdatum. start: Startdatum på formatet YYYYMMDDhhmmss end: Slutdatum på formatet YYYYMMDDhhmmss

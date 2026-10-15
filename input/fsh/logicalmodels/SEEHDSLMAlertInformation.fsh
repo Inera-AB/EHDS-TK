@@ -3,6 +3,16 @@
 // riv.clinicalprocess.healthcond.description/schemas/interactions/GetAlertInformationInteraction/GetAlertInformationResponder_2.0.xsd (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_description.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getalertinformation-body-choice
+Description: "En och endast en av hypersensitivity, seriousDisease, treatment, communicableDisease, restrictionOfCare och unstructuredAlertInformation ska anges"
+Expression: "hypersensitivity.combine(seriousDisease).combine(treatment).combine(communicableDisease).combine(restrictionOfCare).combine(unstructuredAlertInformation).count() = 1"
+Severity: #error
+
+Invariant: getalertinformation-substance-choice
+Description: "Antingen atcSubstance eller både nonATCSubstance och nonATCSubstanceComment ska anges"
+Expression: "(atcSubstance.exists() and nonATCSubstance.empty() and nonATCSubstanceComment.empty()) or (atcSubstance.empty() and nonATCSubstance.exists() and nonATCSubstanceComment.exists())"
+Severity: #error
+
 Logical: SEEHDSLMAlertInformation
 Id: SEEHDSLMAlertInformation
 Title: "GetAlertInformation"
@@ -95,6 +105,7 @@ Description: """
     restrictionOfCare, unstructuredAlertInformation ska anges (XOR).
   """
 * insert RivNs(alertInformation.alertInformationBody, urn:riv:clinicalprocess:healthcond:description:2)
+* alertInformation.alertInformationBody obeys getalertinformation-body-choice
 * alertInformation.alertInformationBody.typeOfAlertInformation 1..1 SEEHDSRivCVTypeHealthcondDescription2 "Typ av uppmärksamhetssignal (CVType)" """
     Kod som anger vilken typ av uppmärksamhetssignal som avses.
     Bör tas från KV Uppmärksamhetstyp eller KV Informationstyp (OID 1.2.752.129.2.2.2.1).
@@ -149,6 +160,7 @@ Description: """
 * insert RivNs(alertInformation.alertInformationBody.hypersensitivity.degreeOfCertainty, urn:riv:clinicalprocess:healthcond:description:2)
 * alertInformation.alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity 0..1 BackboneElement "Läkemedelsöverkänslighet (PharmaceuticalHypersensitivityType)" """Mer detaljerad information om läkemedelsöverkänslighet."""
 * insert RivNs(alertInformation.alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity, urn:riv:clinicalprocess:healthcond:description:2)
+* alertInformation.alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity obeys getalertinformation-substance-choice
 * alertInformation.alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.atcSubstance 0..1 SEEHDSRivCVTypeHealthcondDescription2 "ATC-substans (CVType)" """
     Substans eller grupp av substanser som kan orsaka överkänslighetsreaktion.
     ATC-kod på minst treställig nivå ska anges vid livshotande/skadande allvarlighetsgrad.

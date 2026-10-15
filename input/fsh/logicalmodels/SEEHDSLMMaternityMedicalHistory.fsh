@@ -3,6 +3,11 @@
 // riv.clinicalprocess.healthcond.actoutcome/schemas/interactions/GetMaternityMedicalHistoryInteraction/GetMaternityMedicalHistoryResponder_2.0.xsd (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_actoutcome.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getmaternitymedicalhistory-body-choice
+Description: "En och endast en av registrationRecord, pregnancyCheckupRecord och postDeliveryRecord ska anges"
+Expression: "registrationRecord.combine(pregnancyCheckupRecord).combine(postDeliveryRecord).count() = 1"
+Severity: #error
+
 Logical: SEEHDSLMMaternityMedicalHistory
 Id: SEEHDSLMMaternityMedicalHistory
 Title: "GetMaternityMedicalHistory"
@@ -96,6 +101,7 @@ Description: """
     Kan bestå av antingen en registrationRecord, en pregnancyCheckupRecord eller en postDeliveryRecord.
   """
 * insert RivNs(maternityMedicalRecord.maternityMedicalRecordBody, urn:riv:clinicalprocess:healthcond:actoutcome:2)
+* maternityMedicalRecord.maternityMedicalRecordBody obeys getmaternitymedicalhistory-body-choice
 * maternityMedicalRecord.maternityMedicalRecordBody.registrationRecord 0..1 BackboneElement "Inskrivningsuppgifter" """Information som registreras vid inskrivningsbesöket."""
 * insert RivNs(maternityMedicalRecord.maternityMedicalRecordBody.registrationRecord, urn:riv:clinicalprocess:healthcond:actoutcome:2)
 * maternityMedicalRecord.maternityMedicalRecordBody.registrationRecord.lastMenstrualPeriod 0..1 SEEHDSRivDate "Sista menstruationsdag" """
