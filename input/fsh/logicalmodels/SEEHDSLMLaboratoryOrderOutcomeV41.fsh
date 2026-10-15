@@ -278,6 +278,7 @@ Description: """
     Angivelse av utfall av en utförd analys angiven med en och endast en av datatyperna: Physical Quantity (PQ) I PQ.value anges ett numeriskt värde I PQ.unit anges en måttenhet enligt referens [R10]. Intervall av Physical Quantity IVL<PQ> IVL<PQ>.low Det numeriska värdet som utgör den lägre delen av intervallet IVL<PQ>.lowClosed Angivelse av om värdet är en del av intervallet eller ej. Exempel: lowClosed = true och low = 5 motsvarar intervallet ≥ 5 lowClosed = false och low = 5 motsvarar intervallet > 5 IVL<PQ>.high Det numeriska värdet som utgör den högre delen av intervallet IVL<PQ>.highClosed Exempel: highClosed = true och high = 10 motsvarar intervallet ≤ 10 highClosed = false och high = 10 motsvarar intervallet < 10 Sträng ST Textuellt resultat Kodat värde CV Kodat värde
   """
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value obeys getlaboratoryorderoutcome-value-choice
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value.cv 0..1 SEEHDSRivCVTypeHealthcondActoutcome4 "cv"
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value.cv, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value.pq 0..1 SEEHDSRivPQTypeHealthcondActoutcome4 "pq"
@@ -294,6 +295,7 @@ Description: """
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.interpretation, urn:riv:clinicalprocess:healthcond:actoutcome:4)
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference 0..1 BackboneElement "Information om vilket referensintervall eller referensvärde som gäller för ett resultat" """Information om vilket referensintervall eller referensvärde som gäller för ett resultat."""
 * insert RivNs(laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference, urn:riv:clinicalprocess:healthcond:actoutcome:4)
+* laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference obeys getlaboratoryorderoutcome-reference-choice
 * laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.reference.interval 0..1 SEEHDSRivPQIntervalTypeHealthcondActoutcome4 "Angivelse av referensintervall som numeriskt värde av mätvärden" """
     Angivelse av referensintervall som numeriskt värde av mätvärden. Ett referensvärde anges genom att antingen ange ett intervall från det lägre värdet 0 till det högre värdet som sätts till referensvärdet, alternativt från referensvärde som start på intervallet utan angivelse av intervallets slut för att ange att normalvärde ligger över referensvärdet. För att ange om det lägre eller högre värdet är inkluderat i intervallet sätts lowClosed/highClosed till true. Exempel: <= 40 high = 40 highClosed = true Exempel: 10 > < 40 low = 10 high = 40 Ett och endast ett av attributen intervall eller text ska anges.
   """

@@ -168,7 +168,8 @@ def generate(cfg, models_dir, report):
             else:
                 ftype = leaf_type(n)
             okey = ((o and next((k for k in old if old[k] is o), None)) or path).lower()
-            for kind, val in rule_map.get(okey, []) + rule_map.get(okey + '.value', []):
+            # bindningar på datatypens textvärde (x.value from …) hör till elementet x; obeys gäller bara egen sökväg
+            for kind, val in rule_map.get(okey, []) + [r for r in rule_map.get(okey + '.value', []) if r[0] == 'from']:
                 if kind == 'from':
                     if ftype.startswith('SEEHDSRiv') and not is_datatype(n):
                         out_bind.append(f'* {path}.value from {val}')

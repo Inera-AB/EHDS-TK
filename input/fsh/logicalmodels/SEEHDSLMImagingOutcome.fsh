@@ -3,6 +3,16 @@
 // riv.clinicalprocess.healthcond.actoutcome/schemas/interactions/GetImagingOutcomeInteraction/GetImagingOutcomeResponder_1.0.xsd (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_actoutcome.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getimagingoutcome-dicom-choice
+Description: "Ett och endast ett av dicomValue och dicomReference ska anges"
+Expression: "dicomValue.exists() xor dicomReference.exists()"
+Severity: #error
+
+Invariant: getimagingoutcome-imagedata-choice
+Description: "Ett och endast ett av value och reference ska anges"
+Expression: "value.exists() xor reference.exists()"
+Severity: #error
+
 Logical: SEEHDSLMImagingOutcome
 Id: SEEHDSLMImagingOutcome
 Title: "GetImagingOutcome"
@@ -213,6 +223,7 @@ Description: """
     DICOM-objekt. För att ge renderbar data som kan visas på det sätt som användaren önskar (med hjälp av en viewer/renderare) ges möjligheten att skicka med binärdata eller en URI till ett DICOM-objekt i någon av SOP-klasserna för Bild. Både imageDicomData och ImageStaticData kan, och om möjligt bör anges för att underlätta för konsument.
   """
 * insert RivNs(imagingOutcome.imagingOutcomeBody.imageRecording.imageDicomData, urn:riv:clinicalprocess:healthcond:actoutcome:3)
+* imagingOutcome.imagingOutcomeBody.imageRecording.imageDicomData obeys getimagingoutcome-dicom-choice
 * imagingOutcome.imagingOutcomeBody.imageRecording.imageDicomData.dicomSOP 1..1 SEEHDSRivString "DICOM SOP (UID)" """
     SOP UID för DICOM-objektet. Beskriver vilken information som kan förväntas i datan (jmf. mediaType nedan för statisk bild). T.ex. 1.2.840.10008.5.1.4.1.1.1.1 för digital x-ray for presentation
   """
@@ -252,6 +263,7 @@ Description: """
     Möjlighet att svara med en bild i något av de tillåtna formaten enligt HL7 multimediatyper (inkl. PDF).
   """
 * insert RivNs(imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData, urn:riv:clinicalprocess:healthcond:actoutcome:3)
+* imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData obeys getimagingoutcome-imagedata-choice
 * imagingOutcome.imagingOutcomeBody.imageRecording.imageStructuredData.imageData.mediaType 1..1 SEEHDSRivString "Medietyp" """
     Mediatyper enligt HL7 MediaType
     Tillåtna värden enligt XSD: application/dicom, application/msword, application/pdf, audio/basic, audio/k32adpcm, audio/mpeg, image/g3fax, image/gif, image/jpeg, image/png, image/tiff, model/vrml, multipart/x-hl7-cda-level1, text/html, text/plain, text/rtf, text/sgml, text/x-hl7-ft, text/xml, video/mpeg, video/x-avi.

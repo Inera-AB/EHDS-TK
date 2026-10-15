@@ -3,6 +3,11 @@
 // riv.clinicalprocess.healthcond.description/schemas/interactions/GetCareDocumentationInteraction/GetCareDocumentationResponder_2.1.xsd @ 2.1.19 (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_description.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getcaredocumentation21-code-choice
+Description: "Ett och endast ett av clinicalDocumentNoteCode och clinicalDocumentTypeCode ska anges"
+Expression: "clinicalDocumentNoteCode.exists() xor clinicalDocumentTypeCode.exists()"
+Severity: #error
+
 Logical: SEEHDSLMCareDocumentationV21
 Id: SEEHDSLMCareDocumentationV21
 Title: "GetCareDocumentation 2.1"
@@ -101,6 +106,7 @@ Description: """
 * careDocumentation.careDocumentationBody.clinicalDocumentNote 1..1 BackboneElement "Dokument/anteckning" """Dokument/anteckning."""
 * insert RivNs(careDocumentation.careDocumentationBody.clinicalDocumentNote, urn:riv:clinicalprocess:healthcond:description:2)
 * careDocumentation.careDocumentationBody.clinicalDocumentNote obeys getcaredocumentation-body-xor
+* careDocumentation.careDocumentationBody.clinicalDocumentNote obeys getcaredocumentation21-code-choice
 * careDocumentation.careDocumentationBody.clinicalDocumentNote.clinicalDocumentNoteCode 0..1 SEEHDSRivString "Obligatoriskt om clinicalDocumentTypeCode saknas" """
     Obligatoriskt om clinicalDocumentTypeCode saknas. Får annars inte anges samtidigt med clinicalDocumentTypeCode. Typ av hälso- och sjukvårdsdokument. Kod tas från KV Anteckningstyp (1.2.752.129.2.2.2.11).Tillåtna värden är: utr = Utredning, atb = åtgärd/Behandling, sam = Sammanfattning, sao = Samordning, ins = Inskrivning, slu = Slutanteckning, auf = Anteckning utan fysiskt möte, sva = Slutenvårdsanteckning, bes = Besöksanteckning.
     Tillåtna värden enligt XSD: utr, atb, sam, sao, ins, slu, auf, sva, bes.

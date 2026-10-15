@@ -141,6 +141,7 @@ Description: """
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actTime, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * referralOutcome.referralOutcomeBody.act.actResult 0..* BackboneElement "Resultat av åtgärd" """Resultat av åtgärd. Data i form av bifogade bilder eller liknande."""
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actResult, urn:riv:clinicalprocess:healthcond:actoutcome:3)
+* referralOutcome.referralOutcomeBody.act.actResult obeys getreferraloutcome-actresult-choice
 * referralOutcome.referralOutcomeBody.act.actResult.rivId 0..0 SEEHDSRivString "Ska ej anges" """Ska ej anges."""
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actResult.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * insert RivXmlName(referralOutcome.referralOutcomeBody.act.actResult.rivId, id)

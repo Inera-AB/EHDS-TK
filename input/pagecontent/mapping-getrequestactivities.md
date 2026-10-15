@@ -113,7 +113,7 @@ Version 1.0 har en platt struktur utan header och body. Den saknar åtkomstkontr
 
 ### statusCode 1.0 → Task.status
 
-TKB 1.0 anger klartext för sju av de tillåtna koderna. Övriga koder (10, 40–80, 100–120, 150–170) saknar beskrivning och ger `Task.status = unknown`, med koden kvar i `businessStatus`. Se VER-005 i [Mappningsissues](mapping-issues.html).
+TKB 1.0 anger klartext för sju koder, och testsvitens schematron tillåter bara dem (invarianten `getrequestactivities1-status-code` i [SEEHDSLMRequestActivitiesV10](StructureDefinition-SEEHDSLMRequestActivitiesV10.html), se VER-005 i [Mappningsissues](mapping-issues.html#stangda-fragor)). Ett svar med en annan kod bryter mot kontraktet och ger `Task.status = unknown`, med koden kvar i `businessStatus`.
 
 | statusCode | Klartext enligt TKB 1.0 | `Task.status` |
 |---|---|---|

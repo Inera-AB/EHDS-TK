@@ -3,6 +3,31 @@
 // riv.clinicalprocess.healthcond.basic/schemas/interactions/GetObservationsInteraction/GetObservationsResponder_2.0.xsd (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_basic.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getobservations-patient-id-choice
+Description: "Ett och endast ett av id och person.id ska anges"
+Expression: "rivId.combine(person.rivId).count() = 1"
+Severity: #error
+
+Invariant: getobservations-participation-choice
+Description: "En och endast en av healthcareProfessional, patient, otherPerson, locationRole, resource och organisation ska anges"
+Expression: "healthcareProfessional.combine(patient).combine(otherPerson).combine(locationRole).combine(resource).combine(organisation).count() = 1"
+Severity: #error
+
+Invariant: getobservations-time-choice
+Description: "Ett och endast ett av ts och ivl_ts ska anges"
+Expression: "ts.exists() xor ivlTs.exists()"
+Severity: #error
+
+Invariant: getobservations-amount-choice
+Description: "Ett och endast ett av pq och ivl_pq ska anges"
+Expression: "pq.exists() xor ivlPq.exists()"
+Severity: #error
+
+Invariant: getobservations-value-choice
+Description: "En och endast en av cv, pq, ivl_pq, ts, ivl_ts, st och int ska anges"
+Expression: "cv.combine(pq).combine(ivlPq).combine(ts).combine(ivlTs).combine(st).combine(int).count() = 1"
+Severity: #error
+
 Logical: SEEHDSLMObservations
 Id: SEEHDSLMObservations
 Title: "GetObservations"
@@ -180,6 +205,7 @@ Description: """
     Angivelse av värde som alltid representerar det faktiska observerade hälsotillståndet. Exempelvis så skulle observationens typ [type] kunna motsvara "huvuddiagnos”, vilket innebär att attributet värde håller den huvudsakliga diagnosen. Ett annat exempel är "längd mätt utan skor" och då innehåller attributet värde resultatet av mätningen, exempelvis 158 cm. Om observationen avser ett måltillstånd motsvarar attributet värde det resultat man önskar uppnå för att målet ska uppfyllas. Notera att även observationer vars representation dokumenteras som fritext använder attributet värde. Se ValueANYType i avsnitt 6.1.2.2.16.
   """
 * insert RivNs(observations.observationBody.value, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.value obeys getobservations-value-choice
 * observations.observationBody.value.cv 0..1 SEEHDSRivCVTypeHealthcondBasic2 "Kodat värde" """
     Kodat värde. I fallet med observationer kan det exempelvis vara en diagnoskod enligt ICD-10 eller ett kliniskt fynd enligt Snomed CT.
   """
@@ -238,6 +264,7 @@ Description: """
     Skiljer sig från registrationTime (dokumentationstidpunkt).
   """
 * insert RivNs(observations.observationBody.time, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.time obeys getobservations-time-choice
 * observations.observationBody.time.ts 0..1 SEEHDSRivPartialTimeStampTypeHealthcondBasic2 "Tidpunkt med variabel precision." """
     Format: YYYY | YYYYMM | YYYYMMDD | YYYYMMDDhh | YYYYMMDDhhmm | YYYYMMDDhhmmss.
     Se OBS-001 (beslutad mappning i FHIR).
@@ -257,6 +284,7 @@ Description: """
 * insert RivNs(observations.observationBody.valueNegation, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.patient 1..1 BackboneElement "Den patient som observationen avser (PatientInformationType)." """Motsvarar klassen Patient i NI 2017. Se PatientInformationType."""
 * insert RivNs(observations.observationBody.patient, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.patient obeys getobservations-patient-id-choice
 * observations.observationBody.patient.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Patient.id)" """
     Angivelse av identitetsbeteckning för patientrollen. Denna identitet används då patienten inte kan eller bör identifieras med ett person-id (personnummer eller samordningsnummer). Identitetsbeteckningen på patient är vanligtvis ett reservnummer. En person kan ha flera instanser av klassen patient och dessa kan ha olika id. Observera att det är obligatoriskt att ange antingen person-id på person eller id på patient. Nationell reservidentitet är den enda typ av reservnummer som tillåts i denna tjänst. Denna ska anges med 12 tecken utan avskiljare. Se [R9] för mer information om nationell reservidentitet.
   """
@@ -378,6 +406,7 @@ Description: """
     Motsvarar klassen Deltagande i NI 2017.
   """
 * insert RivNs(observations.observationBody.participation, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation obeys getobservations-participation-choice
 * observations.observationBody.participation.type 1..1 SEEHDSRivCVTypeHealthcondBasic2 "Typ av deltagande" """
     Typ av deltagande. Detta beskriver på vilket sätt en deltagare deltagit i observationen. Kan exempelvis vara utförare, vittne eller ansvarig. Koder för deltagandetyp tillhandahålls av Socialstyrelsen som ett urval ur Snomed CT samt som bilaga till NI 2017 [R5]. Snomed CT urvals-id är 53351000052100. Vilka koder som ingår i urvalet söks fram i IHTSDO SNOMED CT Browser [R7]. Om koder utanför urvalet behöver användas ska detta göras i samråd med Socialstyrelsen.
   """
@@ -386,6 +415,7 @@ Description: """
     Om tiden för deltagandet inte överensstämmer med tiden för observationen (observations/observationBody/time) kan detta fält ange när den specifika deltagaren deltog i observationen. Se TimeType i avsnitt 6.1.2.2.18.
   """
 * insert RivNs(observations.observationBody.participation.time, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.time obeys getobservations-time-choice
 * observations.observationBody.participation.time.ts 0..1 SEEHDSRivPartialTimeStampTypeHealthcondBasic2 "Tidpunkt där precisionen kan varieras utifrån behov" """Tidpunkt där precisionen kan varieras utifrån behov."""
 * insert RivNs(observations.observationBody.participation.time.ts, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.time.ivlTs 0..1 BackboneElement "Tidsintervall där precisionen kan varieras utifrån behov" """Tidsintervall där precisionen kan varieras utifrån behov."""
@@ -566,6 +596,7 @@ Description: """
     Patienten i det fall då patienten deltar på andra sätt än som subjekt för observationen. Se PatientInformationType i avsnitt 6.1.2.2.4.
   """
 * insert RivNs(observations.observationBody.participation.patient, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.patient obeys getobservations-patient-id-choice
 * observations.observationBody.participation.patient.rivId 0..1 SEEHDSRivIITypeHealthcondBasic2 "NI 2017 (Patient.id)" """
     Angivelse av identitetsbeteckning för patientrollen. Denna identitet används då patienten inte kan eller bör identifieras med ett person-id (personnummer eller samordningsnummer). Identitetsbeteckningen på patient är vanligtvis ett reservnummer. En person kan ha flera instanser av klassen patient och dessa kan ha olika id. Observera att det är obligatoriskt att ange antingen person-id på person eller id på patient. Nationell reservidentitet är den enda typ av reservnummer som tillåts i denna tjänst. Denna ska anges med 12 tecken utan avskiljare. Se [R9] för mer information om nationell reservidentitet.
   """
@@ -849,6 +880,7 @@ Description: """
     Angivelse av den kvantitativa omfattning som en resurs har, uttryckt exempelvis som volym, massa eller antal. Exempel kan vara att den använda resursen blodtrycksmanschett är en till antalet. Se AmountType i avsnitt 6.1.2.2.17.
   """
 * insert RivNs(observations.observationBody.participation.resource.amount, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.resource.amount obeys getobservations-amount-choice
 * observations.observationBody.participation.resource.amount.pq 0..1 SEEHDSRivPQTypeHealthcondBasic2 "Värdet som är resultatet av att en mängd uppmätts, exempelvis 100 mg eller 8 tabletter" """Värdet som är resultatet av att en mängd uppmätts, exempelvis 100 mg eller 8 tabletter."""
 * insert RivNs(observations.observationBody.participation.resource.amount.pq, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.resource.amount.ivlPq 0..1 SEEHDSRivPQIntervalTypeHealthcondBasic2 "Intervall av mängder" """Intervall av mängder."""
@@ -862,6 +894,7 @@ Description: """
 * insert RivNs(observations.observationBody.participation.resource.resourceProperty.type, urn:riv:clinicalprocess:healthcond:basic:2)
 * observations.observationBody.participation.resource.resourceProperty.value 1..1 BackboneElement "value"
 * insert RivNs(observations.observationBody.participation.resource.resourceProperty.value, urn:riv:clinicalprocess:healthcond:basic:2)
+* observations.observationBody.participation.resource.resourceProperty.value obeys getobservations-value-choice
 * observations.observationBody.participation.resource.resourceProperty.value.cv 0..1 SEEHDSRivCVTypeHealthcondBasic2 "Kodat värde" """
     Kodat värde. I fallet med observationer kan det exempelvis vara en diagnoskod enligt ICD-10 eller ett kliniskt fynd enligt Snomed CT.
   """

@@ -3,6 +3,11 @@
 // riv.clinicalprocess.healthcond.actoutcome/schemas/interactions/GetReferralOutcomeInteraction/GetReferralOutcomeResponder_3.2.xsd (bitbucket.org/rivta-domains).
 // Kardinaliteter är verifierade mot TKB_clinicalprocess_healthcond_actoutcome.docx; texter är sammanslagna från tidigare modell och TKB.
 
+Invariant: getreferraloutcome-actresult-choice
+Description: "Ett och endast ett av value och reference ska anges"
+Expression: "value.exists() xor reference.exists()"
+Severity: #error
+
 Logical: SEEHDSLMReferralOutcome
 Id: SEEHDSLMReferralOutcome
 Title: "GetReferralOutcome"
@@ -144,6 +149,7 @@ Description: """
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actTime, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * referralOutcome.referralOutcomeBody.act.actResult 0..* BackboneElement "Resultat (multimedia)" """Resultat av åtgärd. Data i form av bifogade bilder eller liknande."""
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actResult, urn:riv:clinicalprocess:healthcond:actoutcome:3)
+* referralOutcome.referralOutcomeBody.act.actResult obeys getreferraloutcome-actresult-choice
 * referralOutcome.referralOutcomeBody.act.actResult.rivId 0..0 SEEHDSRivString "Ska ej anges" """Ska ej anges."""
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actResult.rivId, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * insert RivXmlName(referralOutcome.referralOutcomeBody.act.actResult.rivId, id)
