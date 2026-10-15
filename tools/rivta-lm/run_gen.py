@@ -9,6 +9,9 @@ ap = argparse.ArgumentParser(description='Generera logiska modeller för RIV-TA-
 ap.add_argument('--domains', required=True, help='Katalog med kloner av bitbucket.org/rivta-domains/riv.*')
 ap.add_argument('--models', default='input/fsh/logicalmodels', help='Befintliga modeller (källa för beskrivningar)')
 ap.add_argument('--out', default='input/fsh/logicalmodels', help='Utkatalog')
+ap.add_argument('--diffdir', default=os.environ.get('RIVTA_LM_DIFFDIR', '/tmp/rivta-lm-diff'),
+                help='Utkatalog för modeller av mindre versioner (diffonly), som bara används för difftool.py')
+ap.add_argument('--tkbconv', help='Klon av github.com/oskthu2/tkb-converter; reservkälla för TKB-texter och -kardinaliteter där cfg anger tkbconv')
 ap.add_argument('only', nargs='*', help='Begränsa till dessa modeller')
 args = ap.parse_args()
 X = args.domains; MODELS, OUT = args.models, args.out
@@ -18,8 +21,19 @@ os.makedirs(OUT, exist_ok=True)
 report = {}; all_dt = {}
 for cfg in CFG:
     if only and cfg['model'] not in only: continue
-    root, lines, dts, header = generate(cfg, MODELS, report)
-    all_dt.update({k: v for k, v in dts.items() if k not in all_dt})
+    diffonly = cfg.get('diffonly'); cfg['seed_dir'] = MODELS; cfg['tkbconv_dir'] = args.tkbconv
+    root, lines, dts, header = generate(cfg, args.diffdir if diffonly else MODELS, report)
+    if not diffonly:
+        all_dt.update({k: v for k, v in dts.items() if k not in all_dt})
+    if header is None:
+        name = cfg['element'].replace('Response', '')
+        header = [f'Logical: {cfg["model"]}', f'Id: {cfg["model"]}',
+                  f'Title: "{name} {cfg["contract"].split()[1]}"',
+                  'Description: """',
+                  f'  Logisk modell för svaret i tjänstekontraktet {cfg["contract"]}',
+                  f'  (RIV-TA {root.ns}), domänversion {cfg["tag"]}.',
+                  f'  Äldre majorversion som fortfarande används. Senaste versionen beskrivs i {cfg["seed"]}.',
+                  '"""']
     # header: keep invariants and Logical/Id/Title/Description, drop Characteristics and old comment lines
     htxt = '\n'.join(header)
     htxt = re.sub(r'^Characteristics:.*\n?', '', htxt, flags=re.M)
@@ -32,7 +46,9 @@ for cfg in CFG:
                f'// Kardinaliteter är verifierade mot {tkbrel}; texter är sammanslagna från tidigare modell och TKB.\n')
     body = '\n'.join(lines)
     txt = comment + '\n' + htxt + f'\n* insert RivRoot({cfg["element"]}, {root.ns})\n' + body + '\n'
-    open(os.path.join(OUT, cfg['model'] + '.fsh'), 'w', encoding='utf-8').write(txt)
+    od = args.diffdir if diffonly else OUT
+    os.makedirs(od, exist_ok=True)
+    open(os.path.join(od, cfg['model'] + '.fsh'), 'w', encoding='utf-8').write(txt)
 if os.environ.get('RIVTA_LM_REPORT'):
     json.dump(report, open(os.environ['RIVTA_LM_REPORT'], 'w'), ensure_ascii=False, indent=1)
 # datatypes

@@ -2,8 +2,9 @@
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetReferralOutcome v3.2  
 **FHIR-profil:** [SEEHDSDiagnosticReportReferral](StructureDefinition-SEEHDSDiagnosticReportReferral.html)  
-**Logisk modell:** [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html)  
-**Krävs för NPÖ:** Ja (v3.2) | **Krävs för 1177 Journal:** Ja (v3.2)  
+**Logisk modell:** [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html) (v3.1, 3.2)  
+**Krävs för NPÖ:** Ja (v3.1) | **Krävs för 1177 Journal:** Ja (v3.1)  
+**Version 3.1:** samma namnrymd och mappning som 3.2, se [GetReferralOutcome 3.1](#v3-1)  
 **EHDS-koppling:** Remissvar – relaterar till vårdprocess och resultat (ej separat EHDS-huvudkategori)
 
 ---
@@ -202,6 +203,20 @@ PDL-styrning i GetReferralOutcome utgår från `accountableHealthcareProfessiona
 | `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
+
+---
+
+## GetReferralOutcome 3.1 {#v3-1}
+
+NPÖ och 1177 Journal hämtar version 3.1 (domänversion 3.1.10). Den har samma namnrymd som 3.2, som IG:n modellerar, och ett exempelsvar enligt 3.1 läses utan fel av [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html). Mappningen ovan gäller oförändrad. Den enda skillnaden är kardinaliteten för `referralOutcomeTitle`:
+
+<!-- versionsdiff:SEEHDSLMReferralOutcomeV3_1:start -->
+| Element i GetReferralOutcome 3.1 | GetReferralOutcome 3.1 | Motsvarighet i GetReferralOutcome 3.2 | GetReferralOutcome 3.2 | Skillnad |
+|---|---|---|---|---|
+| `referralOutcome.referralOutcomeBody.referralOutcomeTitle` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+
+Element som saknas i den ena versionen redovisas på översta nivån; deras underelement listas inte. Element som är 0..0 i senaste versionen och saknas i den äldre listas inte. Element med samma namn, kardinalitet och datatyp i båda versionerna listas inte, och inte heller element som bara följer med när föräldern byter namn eller plats.
+<!-- versionsdiff:SEEHDSLMReferralOutcomeV3_1:end -->
 
 ---
 

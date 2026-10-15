@@ -285,9 +285,9 @@ från ett källsystem.
 
 ## Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient {#getaccesslogforpatient}
 
-**Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogForPatient v1.1, 2.0  
+**Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogsForPatient v2.0 och `ehr:log:querying` GetAccessLogsForPatient v1.1  
 **FHIR-profil:** [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.html)  
-**Logisk modell:** [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html)  
+**Logisk modell:** [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) (v2.0) | [SEEHDSLMAccessLogV1](StructureDefinition-SEEHDSLMAccessLogV1.html) (v1.1)  
 **Krävs för NPÖ:** Nej | **Krävs för 1177 Journal:** Ja (v1.1, 2.0)
 
 GetAccessLogForPatient används för att lämna ut källsystemens befintliga åtkomstloggar till
@@ -320,6 +320,26 @@ Svaret `GetAccessLogsForPatientResponse` innehåller ett `accessLogsResult` med 
 | `accessLogsResult.reportResult.queueTime` | 0..1 | Ej mappad | Förväntad tid i sekunder tills den köade rapporten kan levereras |
 
 Öppen fråga: LOG-002 i [Mappningsissues](mapping-issues.html). LOG-001 är beslutad (BALP:s entity-mönster).
+
+### GetAccessLogsForPatient 1.1 {#aldre-versioner}
+
+1177 Journal hämtar även version 1.1, som ingår i den äldre domänen `ehr:log` (namnrymd `urn:riv:ehr:log:querying:GetAccessLogsForPatientResponder:1`, domänversion 1.2.4). Svaret beskrivs av den logiska modellen [SEEHDSLMAccessLogV1](StructureDefinition-SEEHDSLMAccessLogV1.html) och mappas till samma profil. Loggposten har samma fält som i 2.0; skillnaden är namnen på de omslutande elementen.
+
+<!-- versionsdiff:SEEHDSLMAccessLogV1:start -->
+Svarets namnrymd: `urn:riv:ehr:log:querying:GetAccessLogsForPatientResponder:1` (GetAccessLogsForPatient 1.1) och `urn:riv:informationsecurity:auditing:log:GetAccessLogsForPatientResponder:2` (GetAccessLogsForPatient 2.0).
+
+| Element i GetAccessLogsForPatient 1.1 | GetAccessLogsForPatient 1.1 | Motsvarighet i GetAccessLogsForPatient 2.0 | GetAccessLogsForPatient 2.0 | Skillnad |
+|---|---|---|---|---|
+| `accessLogsResultType` | 1..1 struktur | `accessLogsResult` | 1..1 struktur | Ändrad namn/plats |
+| `accessLogsResultType.result` | 1..1 struktur | `accessLogsResult.reportResult` | 1..1 struktur | Ändrad namn/plats |
+| `accessLogsResultType.result.resultCode` | 1..1 text | `accessLogsResult.reportResult.result.resultCode` | 1..1 text | Ändrad namn/plats |
+| `accessLogsResultType.result.resultText` | 1..1 text | `accessLogsResult.reportResult.result.resultText` | 0..1 text | Ändrad namn/plats, kardinalitet |
+| – | – | `accessLogsResult.reportResult.result` | 1..1 struktur | Ny i GetAccessLogsForPatient 2.0 |
+
+Element som saknas i den ena versionen redovisas på översta nivån; deras underelement listas inte. Element som är 0..0 i senaste versionen och saknas i den äldre listas inte. Element med samma namn, kardinalitet och datatyp i båda versionerna listas inte, och inte heller element som bara följer med när föräldern byter namn eller plats.
+<!-- versionsdiff:SEEHDSLMAccessLogV1:end -->
+
+Elementen i XML:en heter med stor begynnelsebokstav i 1.1 (`AccessLogsResultType`, `Result`, `AccesssLogs`, `AccessLog`, `CareProviderId` …). I den logiska modellen har de liten begynnelsebokstav, och XML-namnet ligger i `xml-name`. Varje `accessLog` mappas som i tabellen ovan. `resultText` är 1..1 i 1.1 men mappas inte i någon av versionerna.
 
 ---
 

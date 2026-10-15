@@ -2,8 +2,9 @@
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetCareDocumentation v3.0  
 **FHIR-profil:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html)  
-**Logisk modell:** [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html)  
-**Krävs för NPÖ:** Ja (v3.0) | **Krävs för 1177 Journal:** Ja (v3.0)  
+**Logisk modell:** [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html) (v3.0) | [SEEHDSLMCareDocumentationV2](StructureDefinition-SEEHDSLMCareDocumentationV2.html) (v2.1)  
+**Krävs för NPÖ:** Ja (v2.1, 3.0) | **Krävs för 1177 Journal:** Ja (v2.1, 3.0)  
+**Äldre version:** v2.1 mappas till samma profil, se [GetCareDocumentation 2.1](#aldre-versioner)  
 **EHDS-koppling:** Journalanteckningar – kan bidra till discharge report eller dokumentationsunderlag; bredare än EHDS discharge reports
 
 ---
@@ -253,6 +254,93 @@ PatientSummaryHeader-baserade TK:er (DES-005):
 | `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
+
+---
+
+## GetCareDocumentation 2.1 {#aldre-versioner}
+
+NPÖ och 1177 Journal hämtar även version 2.1 (namnrymd `…:GetCareDocumentationResponder:2`, domänversion 2.1.19). Svaret beskrivs av den logiska modellen [SEEHDSLMCareDocumentationV2](StructureDefinition-SEEHDSLMCareDocumentationV2.html) och mappas till samma profil, [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html). Version 2.1 använder PatientSummaryHeader i stället för JoL-headern, och anteckningen ligger ett steg längre ned (`careDocumentationBody.clinicalDocumentNote`).
+
+### Skillnader mot version 3.0
+
+<!-- versionsdiff:SEEHDSLMCareDocumentationV2:start -->
+Svarets namnrymd: `urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:2` (GetCareDocumentation 2.1) och `urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3` (GetCareDocumentation 3.0).
+
+| Element i GetCareDocumentation 2.1 | GetCareDocumentation 2.1 | Motsvarighet i GetCareDocumentation 3.0 | GetCareDocumentation 3.0 | Skillnad |
+|---|---|---|---|---|
+| `careDocumentation.careDocumentationHeader` | 1..1 struktur | `careDocumentation.header` | 1..1 struktur | Ändrad namn/plats |
+| `careDocumentation.careDocumentationHeader.documentId` | 1..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.sourceSystemHSAid` | 1..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.documentTitle` | 0..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.documentTime` | 0..1 TimeStampType | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.patientId` | 1..1 PersonIdType | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.accountableHealthcareProfessional` | 1..1 struktur | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.legalAuthenticator` | 0..1 struktur | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.approvedForPatient` | 1..1 boolean | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.careContactId` | 0..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.nullified` | 0..0 boolean | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationHeader.nullifiedReason` | 0..0 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationBody` | 1..1 struktur | `careDocumentation.body` | 1..1 struktur | Ändrad namn/plats |
+| `careDocumentation.careDocumentationBody.clinicalDocumentNote` | 1..1 struktur | `careDocumentation.body` | 1..1 struktur | Ändrad namn/plats |
+| `careDocumentation.careDocumentationBody.clinicalDocumentNote.clinicalDocumentNoteCode` | 0..1 text | `careDocumentation.body.clinicalDocumentNoteCode` | 1..1 CVType | Ändrad namn/plats, kardinalitet, typ |
+| `careDocumentation.careDocumentationBody.clinicalDocumentNote.clinicalDocumentTypeCode` | 0..0 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `careDocumentation.careDocumentationBody.clinicalDocumentNote.dissentintOpinion` | 0..* struktur | `careDocumentation.body.dissentingOpinion` | 0..* struktur | Ändrad namn/plats |
+| `careDocumentation.careDocumentationBody.clinicalDocumentNote.dissentintOpinion.personId` | 1..1 PersonIdType | `careDocumentation.body.dissentingOpinion.personId` | 1..1 IIType | Ändrad namn/plats, typ |
+| `result.errorCode` | 0..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `result.logId` | 1..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `result.subCode` | 0..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| `result.message` | 0..1 text | – | – | Finns bara i GetCareDocumentation 2.1 |
+| – | – | `careDocumentation.header.accessControlHeader` | 1..1 struktur | Ny i GetCareDocumentation 3.0 |
+| – | – | `careDocumentation.header.sourceSystemId` | 1..1 IIType | Ny i GetCareDocumentation 3.0 |
+| – | – | `careDocumentation.header.record` | 1..1 struktur | Ny i GetCareDocumentation 3.0 |
+| – | – | `careDocumentation.header.author` | 0..1 struktur | Ny i GetCareDocumentation 3.0 |
+| – | – | `careDocumentation.header.signature` | 0..1 struktur | Ny i GetCareDocumentation 3.0 |
+| – | – | `hasMore` | 0..* struktur | Ny i GetCareDocumentation 3.0 |
+| – | – | `result.resultText` | 0..1 text | Ny i GetCareDocumentation 3.0 |
+
+Element som saknas i den ena versionen redovisas på översta nivån; deras underelement listas inte. Element som är 0..0 i senaste versionen och saknas i den äldre listas inte. Element med samma namn, kardinalitet och datatyp i båda versionerna listas inte, och inte heller element som bara följer med när föräldern byter namn eller plats.
+<!-- versionsdiff:SEEHDSLMCareDocumentationV2:end -->
+
+### Mappning av header (PatientSummaryHeader)
+
+Headern mappas enligt det [gemensamma headermönstret](mappings.html#headermonster), med DocumentReference som resurs.
+
+| RIVTA-element (v2.1) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `careDocumentationHeader.documentId` | 1..1 | `DocumentReference.masterIdentifier` | Motsvarar `header.record.id` i v3.0 |
+| `careDocumentationHeader.sourceSystemHSAid` | 1..1 | `DocumentReference.meta.source` | Obs: litet `id` i elementnamnet (bakåtkompatibilitet med v2.0). Format enligt [GENERAL-005](mappings.html#meta-source) |
+| `careDocumentationHeader.documentTitle` | 0..1 | `DocumentReference.description` | Används om `clinicalDocumentNoteTitle` saknas |
+| `careDocumentationHeader.documentTime` | 0..1 | `DocumentReference.date` | Händelsetidpunkt; YYYYMMDDHHMMSS → ISO 8601. Saknas den används `accountableHealthcareProfessional.authorTime` |
+| `careDocumentationHeader.patientId.id` | 1..1 | `DocumentReference.subject.identifier.value` | Se [GENERAL-006](mappings.html#patientreferens) |
+| `careDocumentationHeader.patientId.type` | 1..1 | `DocumentReference.subject.identifier.system` | OID→URI, se tabell ovan |
+| `careDocumentationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | Motsvarar `header.author.timestamp` i v3.0 |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation` | 0..1 | Ej mappade | Som i v3.0, se [GENERAL-008](mappings.html#organisation) |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr. Motsvarar `accessControlHeader.accountableCareUnit` i v3.0 |
+| `careDocumentationHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr. Motsvarar `accessControlHeader.accountableHealthcareProvider` i v3.0 |
+| `careDocumentationHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DocumentReference.extension[ext-signature-time].valueDateTime` | Som `header.signature.timestamp` i v3.0 |
+| `careDocumentationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DocumentReference.authenticator` (Reference(PractitionerRole)) | |
+| `careDocumentationHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | `PractitionerRole.practitioner.display` (signerarens) | |
+| `careDocumentationHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security` | Se [PDL-001](#öppna-frågor) |
+| `careDocumentationHeader.careContactId` | 0..1 | `DocumentReference.context.encounter.identifier.value` | Logisk referens till vårdkontakt. Saknar motsvarighet i v3.0 |
+| `careDocumentationHeader.nullified`, `nullifiedReason` | 0..0 | N/A | Används inte enligt TKB |
+
+### Mappning av body
+
+| RIVTA-element (v2.1) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `clinicalDocumentNote.clinicalDocumentNoteCode` | 0..1 | `DocumentReference.type` | Kod ur KV Anteckningstyp som text (inte CVType). `coding.system` sätts till ClinicalDocumentNoteCodeCS och `coding.code` till värdet |
+| `clinicalDocumentNote.clinicalDocumentTypeCode` | 0..0 | N/A | Används inte enligt TKB |
+| `clinicalDocumentNote.clinicalDocumentNoteTitle` | 0..1 | `DocumentReference.description` | Går före `documentTitle` |
+| `clinicalDocumentNote.clinicalDocumentNoteText` | 0..1 | `DocumentReference.content[0].attachment.data` | Som i v3.0, inklusive [DocBook-mappning](guidance-docbook-narrative.html) |
+| `clinicalDocumentNote.multimediaEntry.*` | 0..1 | `DocumentReference.content[0].attachment` | Som i v3.0 |
+| `clinicalDocumentNote.dissentintOpinion[i].*` | 0..* | `DocumentReference.extension[dissentingOpinion][i]` | Elementet är felstavat i XSD:n (`dissentintOpinion`). Delfälten mappas som `dissentingOpinion` i v3.0; `personId` är PersonIdType (`id` och `type`) i stället för IIType |
+
+`result` (`resultCode`, `errorCode`, `subCode`, `logId`, `message`) hanteras av transportlagret och mappas inte. I v2.1 är `clinicalDocumentNoteCode` 0..1, så `DocumentReference.type` kan saknas (profilen kräver den inte).
 
 ---
 

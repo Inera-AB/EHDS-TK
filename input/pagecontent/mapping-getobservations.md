@@ -2,8 +2,9 @@
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:basic` GetObservations v2.0  
 **FHIR-profiler:** [SEEHDSObservationBase](StructureDefinition-SEEHDSObservationBase.html) (generell) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.html) (tillväxtkurva)  
-**Logisk modell:** [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html)  
+**Logisk modell:** [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html) (v2.0) | [SEEHDSLMObservationsV1](StructureDefinition-SEEHDSLMObservationsV1.html) (v1.2)  
 **Krävs för NPÖ:** Ja (v1.2) | **Krävs för 1177 Journal:** Ja (v1.2)  
+**Version i drift:** v1.2 har en annan struktur än v2.0 och en egen mappningstabell, se [GetObservations 1.2](#aldre-versioner). Version 2.0 finns i domänens huvudgren men har ingen releasetagg (senaste tagg är 1.2.3)  
 **EHDS-koppling:** Kliniska mätresultat och tillväxtdata  
 **IoÖ:** Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)
 
@@ -429,6 +430,55 @@ Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObserva
 - **Vikt:** Enbart kod `27113001` (kroppsvikt). Enhet alltid `kg`, decimalseparator `"."` (XML-standard).
 - **Huvudomfång:** Enbart kod `363812007`. Enhet alltid `cm` med 1 decimal.
 - **Graviditetslängd vid födelse:** Kod `412726003`. Anges i **dagar** (heltal, enhet `d`). Representerar antalet dagar som graviditeten beräknas ha varat vid barnets födelse.
+
+---
+
+## GetObservations 1.2 {#aldre-versioner}
+
+NPÖ och 1177 Journal hämtar version 1.2 (namnrymd `…:GetObservationsResponder:1`, domänversion 1.2.3). Svaret beskrivs av den logiska modellen [SEEHDSLMObservationsV1](StructureDefinition-SEEHDSLMObservationsV1.html). Modellens texter och TKB-kardinaliteter kommer från TKB:n via [tkb-converter](https://github.com/oskthu2/tkb-converter), eftersom TKB:n använder andra elementnamn än XSD:n (t.ex. `patientId` för `patient/id`).
+
+Version 1.2 grupperar observationerna: en `observationGroup` har gemensam patient, utförare, signerare, övriga deltagare och källsystem, och en eller flera `observation`. Varje `observation` blir en [SEEHDSObservationBase](StructureDefinition-SEEHDSObservationBase.html) (eller [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.html) för tillväxtmätningar enligt IoÖ), och gruppens uppgifter upprepas i varje Observation. Version 1.2 har en vårdenhet och vårdgivare för PDL i `performerRole.careUnit`, vilket 2.0 saknar i headern.
+
+### Grupp – patient, utförare och källsystem
+
+| RIVTA-element (v1.2) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `observationGroup.patient.id` | 1..1 | `Observation.subject.identifier` | IIType: `root` → `system` (OID→URI), `extension` → `value`. Se [GENERAL-006](mappings.html#patientreferens) |
+| `observationGroup.patient.name`, `dateOfBirth`, `gender` | – | Ej mappade i Observation | Lagras i Patient om en Patient-resurs skapas, som för `observationBody.patient` i 2.0 |
+| `observationGroup.performerRole.id` | 0..1 | `Observation.performer` (Reference(PractitionerRole)), `identifier` | HSA-id för utföraren |
+| `observationGroup.performerRole.code` | 1..1 | `PractitionerRole.code` | Utförarens roll under observationen |
+| `observationGroup.performerRole.person.id`, `person.name` | 0..1 | `PractitionerRole.practitioner.identifier`, `.display` | |
+| `observationGroup.performerRole.careUnit.id` | 1..1 (om careUnit) | `Provenance.agent[author].who.identifier` och `PractitionerRole.organization.identifier` | Inre Sparr – PDL-vårdenhet |
+| `observationGroup.performerRole.careUnit.name` | 0..1 | `PractitionerRole.organization.display` | |
+| `observationGroup.performerRole.careUnit.careGiver.id` | 1..1 (om careUnit) | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
+| `observationGroup.performerRole.careUnit.careGiver.name` | 0..1 | `Provenance.agent[custodian].who.display` | |
+| `observationGroup.legalAuthenticator.id`, `name` | 0..1 | Ej mappade | Observation i R4 har ingen plats för signerare; samma fråga som MAT-004 i [Mödravård](mapping-getmaternitymedicalhistory.html) |
+| `observationGroup.legalAuthenticator.time` | 1..1 (om legalAuthenticator) | Ej mappad | PartialTimeStampType |
+| `observationGroup.additionalParticipant` | 0..* | Se 2.0:s `participation` | `person` → RelatedPerson eller PractitionerRole, `organisation` → Organization och `device` → `Observation.device`, med samma regler som för `participation` i 2.0. `location` mappas inte (OBS-006) |
+| `observationGroup.sourceSystem.id` | 1..1 | `Observation.meta.source` | Källsystemets HSA-id, se [GENERAL-005](mappings.html#meta-source) |
+
+### Observation
+
+| RIVTA-element (v1.2) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `observation.id` | 1..1 | `Observation.identifier` | IIType |
+| `observation.type` | 1..1 | `Observation.code` | Krävs i 1.2, så platshållarkoden för 2.0 behövs inte. IoÖ:s koder gäller som i 2.0 |
+| `observation.status` | 0..0 | N/A | Används inte enligt TKB; endast utförda observationer skickas. `Observation.status` sätts till `final` |
+| `observation.time.start`, `time.end` | 0..1 | `Observation.effectiveDateTime` eller `Observation.effectivePeriod` | Lika eller bara start → `effectiveDateTime`; båda och olika → `effectivePeriod`. Precision under dag hanteras som i OBS-001 (avsnittet om ts-fältet ovan) |
+| `observation.method` | 0..1 | `Observation.method` | |
+| `observation.value.pq` | 0..1 | `Observation.valueQuantity` | |
+| `observation.value.ts` | 0..1 | `Observation.valueDateTime` eller `valueString` | Som `value.ts` i 2.0 |
+| `observation.value.ivlTs` | 0..1 | `Observation.valuePeriod` | |
+| `observation.value.cv` | 0..1 | `Observation.valueCodeableConcept` | |
+| `observation.value.ivlPq` | 0..1 | `Observation.valueRange` | |
+| `observation.targetSite` | 0..1 | `Observation.bodySite` | Bara en i 1.2, så extensionen för fler platser behövs inte |
+| `observation.valueNegation` | 1..1 | `Observation.dataAbsentReason` | Som i 2.0, se OBS-002 ovan |
+| `observation.description` | 0..1 | `Observation.note.text` | |
+| `observation.approvedForPatient` | 1..1 | `Observation.meta.security` | Se PDL-001. Ligger per observation i 1.2 |
+| `observation.registrationTime` | 0..1 | `Observation.issued` och `Provenance.recorded` | |
+| `observation.relation` | 0..* | `Observation.derivedFrom` eller `Observation.hasMember` | Som `relation` i 2.0, se OBS-005 ovan; `code` styr valet, och `referredInformation.type` motsvarar `categorization` |
+
+Version 1.2 har inget `result`-element.
 
 ---
 

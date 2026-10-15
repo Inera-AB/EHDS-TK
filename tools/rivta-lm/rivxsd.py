@@ -36,6 +36,8 @@ RESERVED = {'id', 'extension', 'modifierExtension'}
 def fhir_name(name):
     parts = _re.split(r'[^A-Za-z0-9]+', name)
     n = parts[0] + ''.join(p[:1].upper() + p[1:] for p in parts[1:])
+    # FHIR-elementnamn börjar med liten bokstav (t.ex. ehr:log 1.x: AccessLogsResultType → accessLogsResultType)
+    n = n[:1].lower() + n[1:]
     if n in RESERVED:
         n = 'riv' + n[:1].upper() + n[1:]
     return n

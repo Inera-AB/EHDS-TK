@@ -2,8 +2,9 @@
 
 **Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0  
 **FHIR-profiler:** [SEEHDSImmunization](StructureDefinition-SEEHDSImmunization.html) | [SEEHDSDevice](StructureDefinition-SEEHDSDevice.html) | [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.html)  
-**Logisk modell:** [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html)  
+**Logisk modell:** [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html) (v2.0) | [SEEHDSLMVaccinationHistoryV1](StructureDefinition-SEEHDSLMVaccinationHistoryV1.html) (v1.0)  
 **Krävs för NPÖ:** Ja (v2.0) | **Krävs för 1177 Journal:** Ja (v1.0, 2.0)  
+**Äldre version:** v1.0 mappas till samma profiler, se [GetVaccinationHistory 1.0](#aldre-versioner)  
 **EHDS-koppling:** Patient Summary – Vaccinationer
 
 ---
@@ -312,6 +313,40 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 | `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
+
+---
+
+## GetVaccinationHistory 1.0 {#aldre-versioner}
+
+1177 Journal hämtar även version 1.0 (namnrymd `…:GetVaccinationHistoryResponder:1`, domänversion 1.0.2). Svaret beskrivs av den logiska modellen [SEEHDSLMVaccinationHistoryV1](StructureDefinition-SEEHDSLMVaccinationHistoryV1.html) och mappas till samma profiler som 2.0. Strukturen är nästan densamma; skillnaderna är några namnbyten och två element som tillkom i 2.0.
+
+### Skillnader mot version 2.0
+
+<!-- versionsdiff:SEEHDSLMVaccinationHistoryV1:start -->
+Svarets namnrymd: `urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1` (GetVaccinationHistory 1.0) och `urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:2` (GetVaccinationHistory 2.0).
+
+| Element i GetVaccinationHistory 1.0 | GetVaccinationHistory 1.0 | Motsvarighet i GetVaccinationHistory 2.0 | GetVaccinationHistory 2.0 | Skillnad |
+|---|---|---|---|---|
+| `vaccinationMedicalRecord.vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAid` | 0..1 text | `vaccinationMedicalRecord.vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 text | Ändrad namn/plats |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAid` | 0..1 text | `vaccinationMedicalRecord.vaccinationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 text | Ändrad namn/plats |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 boolean | samma | 0..1 text | Ändrad typ |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitHSAid` | 0..1 text | `vaccinationMedicalRecord.vaccinationMedicalRecordBody.registrationRecord.careGiverOrg.orgUnitHSAId` | 0..1 text | Ändrad namn/plats |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.prescriberOrg.orgUnitHSAid` | 0..1 text | `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.prescriberOrg.orgUnitHSAId` | 0..1 text | Ändrad namn/plats |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.performerOrg.orgUnitHSAid` | 0..1 text | `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.performerOrg.orgUnitHSAId` | 0..1 text | Ändrad namn/plats |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.dosage` | 0..1 struktur | `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.dose` | 0..1 struktur | Ändrad namn/plats |
+| `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.vaccineType` | 0..1 CVType | `vaccinationMedicalRecord.vaccinationMedicalRecordBody.administrationRecord.typeOfVaccine` | 0..1 CVType | Ändrad namn/plats |
+| – | – | `vaccinationMedicalRecord.vaccinationMedicalRecordBody.additionalPatientInformation` | 0..1 struktur | Ny i GetVaccinationHistory 2.0 |
+| – | – | `result` | 1..1 struktur | Ny i GetVaccinationHistory 2.0 |
+
+Element som saknas i den ena versionen redovisas på översta nivån; deras underelement listas inte. Element som är 0..0 i senaste versionen och saknas i den äldre listas inte. Element med samma namn, kardinalitet och datatyp i båda versionerna listas inte, och inte heller element som bara följer med när föräldern byter namn eller plats.
+<!-- versionsdiff:SEEHDSLMVaccinationHistoryV1:end -->
+
+### Mappning av skillnaderna
+
+- **`orgUnitHSAid` och `legalAuthenticatorHSAid`** (litet `id`) mappas som `orgUnitHSAId` respektive `legalAuthenticatorHSAId` i 2.0.
+- **`administrationRecord.dosage`** mappas som `dose` (`Immunization.doseQuantity`), och **`administrationRecord.vaccineType`** som `typeOfVaccine` (`Immunization.vaccineCode.coding`).
+- **`nullifiedReason`** är boolean i XSD:n för 1.0, så makuleringsorsaken kan inte bäras som text. `Immunization.statusReason` sätts inte; `nullified = true` ger fortfarande `Immunization.status = entered-in-error`.
+- **`additionalPatientInformation` och `result`** finns inte i 1.0. Inget mappas.
 
 ---
 

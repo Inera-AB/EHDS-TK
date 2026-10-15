@@ -74,4 +74,5 @@ if __name__ == '__main__':
         errs = []; seen = set()
         walk(sd, sd['differential']['element'][0]['path'], doc, errs, seen)
         n = sum(1 for _ in doc.iter()) - 1
-        print(f'{m:34} xml-element={n:5} fel={len(errs)}' + ('' if not errs else '  ' + '; '.join(errs[:4])))
+        via = '' if sd['name'] == m else f'  (läses med {sd["name"]})'
+        print(f'{m:34} xml-element={n:5} fel={len(errs)}' + via + ('' if not errs else '  ' + '; '.join(errs[:4])))

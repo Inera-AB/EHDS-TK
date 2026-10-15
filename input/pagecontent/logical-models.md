@@ -30,7 +30,28 @@ De logiska modellerna nedan representerar de informationskrav som definieras av 
 | [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html) | GetObservations | Tillväxtkurva barn |
 | [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) | GetAccessLogForPatient | Logg |
 
+#### Äldre versioner {#aldre-versioner}
+
+NPÖ och 1177 Journal använder fortfarande äldre majorversioner av flera kontrakt (se [Omfång](index.html#versioner)). De har egna modeller, genererade på samma sätt från XSD:n i respektive domäntagg. Modellnamnet slutar på majorversionen.
+
+| Logisk modell | Tjänstekontrakt | Domän och tagg | Senaste version |
+|---|---|---|---|
+| [SEEHDSLMCareDocumentationV2](StructureDefinition-SEEHDSLMCareDocumentationV2.html) | GetCareDocumentation 2.1 | `clinicalprocess:healthcond:description` 2.1.19 | [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html) (3.0) |
+| [SEEHDSLMCareContactsV2](StructureDefinition-SEEHDSLMCareContactsV2.html) | GetCareContacts 2.0 | `clinicalprocess:logistics:logistics` 2.0.7 | [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.html) (3.0) |
+| [SEEHDSLMLaboratoryOrderOutcomeV3](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV3.html) | GetLaboratoryOrderOutcome 3.1 | `clinicalprocess:healthcond:actoutcome` 3.1.10 | [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html) (4.2) |
+| [SEEHDSLMVaccinationHistoryV1](StructureDefinition-SEEHDSLMVaccinationHistoryV1.html) | GetVaccinationHistory 1.0 | `clinicalprocess:activityprescription:actoutcome` 1.0.2 | [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html) (2.0) |
+| [SEEHDSLMObservationsV1](StructureDefinition-SEEHDSLMObservationsV1.html) | GetObservations 1.2 | `clinicalprocess:healthcond:basic` 1.2.3 | [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html) (2.0, ingen releasetagg) |
+| [SEEHDSLMRequestActivitiesV1](StructureDefinition-SEEHDSLMRequestActivitiesV1.html) | GetRequestActivities 1.0 | `crm:requeststatus` 1.0.7 | [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.html) (2.0) |
+| [SEEHDSLMAccessLogV1](StructureDefinition-SEEHDSLMAccessLogV1.html) | GetAccessLogsForPatient 1.1 | `ehr:log` 1.2.4 | [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) (2.0, `informationsecurity:auditing:log`) |
+
+Mindre versioner med samma namnrymd som en modellerad version har ingen egen modell, eftersom samma modell läser dem. Det gäller GetLaboratoryOrderOutcome 4.1 (modellen avser 4.2) och GetReferralOutcome 3.1 (modellen avser 3.2). Generatorn har kontrollerat att ett exempelsvar enligt den mindre versionen läses utan fel.
+
+Varje mappningssida har ett avsnitt om de äldre versionerna. Där finns en genererad tabell med skillnaderna mot senaste versionen och hur de skiljande elementen mappas. GetLaboratoryOrderOutcome 3.1 och GetObservations 1.2 har en helt annan struktur än senaste versionen och har därför en egen mappningstabell.
+
+GetAlertInformation 3.0 finns bara som betaversion (taggarna `GAI3.0_BETA1`–`BETA3`) och har ingen modell.
+
 ---
+
 
 ### Hur modellerna är byggda {#uppbyggnad}
 
@@ -81,5 +102,8 @@ Varje kardinalitet har jämförts mellan XSD, TKB och den tidigare modellen. TKB
 | GetMedicationHistory | `…drug.dosage.conditionalDosage.conditionDescription` (två ställen) | 0..1 | 1..1 (TKB:n hänvisar själv till ett arkitekturbeslut om diskrepansen) |
 
 - **Stavning:** TKB:n för GetMedicationHistory och GetCarePlans skriver `healthcareProfessionalcareUnitHSAId`/`…careGiverHSAId` med litet c; XSD:n och modellerna har `healthcareProfessionalCareUnitHSAId`. XSD:n stavar `accesssLogs` (GetAccessLogsForPatient) och `burnedInaAnnotations` (GetImagingOutcome) på det sättet, och modellerna följer XSD:n.
+
+- **Äldre versioner:** samma regler gäller. Texter som saknas i den äldre TKB:n lånas från senaste versionens modell, men inte kardinaliteter. För GetObservations 1.2 använder TKB:n andra elementnamn än XSD:n (t.ex. `patientId` för `patient/id`), och texter och TKB-kardinaliteter hämtas därför från motsvarande modell i [tkb-converter](https://github.com/oskthu2/tkb-converter) (bland annat `observation.status` 0..0). Kardinaliteterna i modellerna för äldre versioner har jämförts med tkb-converters modeller och stämmer överens, utom där TKB:n är strängare än XSD:n och IG:n följer TKB:n (`careContactHeader.accountableHealthcareProfessional` 1..1 i GetCareContacts 2.0, `nullified` 1..1 i GetVaccinationHistory 1.0).
+- **Elementnamn med stor begynnelsebokstav** (GetAccessLogsForPatient 1.1 i `ehr:log`, t.ex. `AccessLogsResultType`) får liten begynnelsebokstav i FHIR-namnet, och XML-namnet ligger i `xml-name`.
 
 > **Vägledning för författare:** Modellerna i `input/fsh/logicalmodels/` är genererade. Ändringar i struktur görs genom att generera om från XSD:n; beskrivningar kan redigeras direkt.

@@ -32,7 +32,7 @@ Mappningarna spårar varje element i de logiska modellerna till det FHIR-profil-
 
 ---
 
-### Gemensamt headermönster
+### Gemensamt headermönster {#headermonster}
 
 Alla tjänstekontrakt (utom GetAccessLogForPatient) delar ett headermönster som mappas på följande sätt:
 

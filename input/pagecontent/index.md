@@ -30,6 +30,32 @@ IG:n täcker följande FHIR-grupper och tjänstekontrakt:
 
 IG:n täcker **inte** tjänstekontrakt utanför ovanstående tabell, och avser inte att ersätta källsystemen eller specificera gränssnittet mot NPÖ/1177 Journal på transaktionsnivå.
 
+#### Versioner {#versioner}
+
+Versionerna inom parentes är tjänstekontraktens versioner. Mappningssidorna utgår från den senaste versionen. Varje äldre version som fortfarande används har en egen logisk modell och ett eget avsnitt på mappningssidan, som visar skillnaderna och hur de mappas till samma profiler. En mindre version med samma namnrymd som den modellerade läses av samma logiska modell.
+
+| Tjänstekontrakt | Version | Logisk modell | Mappning |
+|---|---|---|---|
+| GetAlertInformation | 2.0 | [SEEHDSLMAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.html) | [GetAlertInformation](mapping-getalertinformation.html) |
+| GetAlertInformation | 3.0 | – | Finns bara som betaversion i Bitbucket (`GAI3.0_BETA1`–`BETA3`) och är inte modellerad |
+| GetVaccinationHistory | 2.0 | [SEEHDSLMVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.html) | [GetVaccinationHistory](mapping-getvaccinationhistory.html) |
+| GetVaccinationHistory | 1.0 | [SEEHDSLMVaccinationHistoryV1](StructureDefinition-SEEHDSLMVaccinationHistoryV1.html) | [GetVaccinationHistory 1.0](mapping-getvaccinationhistory.html#aldre-versioner) |
+| GetCareContacts | 3.0 | [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.html) | [GetCareContacts](mapping-getcarecontacts.html) |
+| GetCareContacts | 2.0 | [SEEHDSLMCareContactsV2](StructureDefinition-SEEHDSLMCareContactsV2.html) | [GetCareContacts 2.0](mapping-getcarecontacts.html#aldre-versioner) |
+| GetCareDocumentation | 3.0 | [SEEHDSLMCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.html) | [GetCareDocumentation](mapping-getcaredocumentation.html) |
+| GetCareDocumentation | 2.1 | [SEEHDSLMCareDocumentationV2](StructureDefinition-SEEHDSLMCareDocumentationV2.html) | [GetCareDocumentation 2.1](mapping-getcaredocumentation.html#aldre-versioner) |
+| GetLaboratoryOrderOutcome | 4.1, 4.2 | [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html) | [GetLaboratoryOrderOutcome](mapping-getlaboratoryorderoutcome.html), [4.1](mapping-getlaboratoryorderoutcome.html#v4-1) |
+| GetLaboratoryOrderOutcome | 3.1 | [SEEHDSLMLaboratoryOrderOutcomeV3](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV3.html) | [GetLaboratoryOrderOutcome 3.1](mapping-getlaboratoryorderoutcome.html#aldre-versioner) |
+| GetReferralOutcome | 3.1 (modellen avser 3.2) | [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html) | [GetReferralOutcome 3.1](mapping-getreferraloutcome.html#v3-1) |
+| GetRequestActivities | 2.0 | [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.html) | [GetRequestActivities](mapping-getrequestactivities.html) |
+| GetRequestActivities | 1.0 | [SEEHDSLMRequestActivitiesV1](StructureDefinition-SEEHDSLMRequestActivitiesV1.html) | [GetRequestActivities 1.0](mapping-getrequestactivities.html#aldre-versioner) |
+| GetObservations | 1.2 | [SEEHDSLMObservationsV1](StructureDefinition-SEEHDSLMObservationsV1.html) | [GetObservations 1.2](mapping-getobservations.html#aldre-versioner) |
+| GetObservations | 2.0 (ingen releasetagg) | [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html) | [GetObservations](mapping-getobservations.html) |
+| GetAccessLogsForPatient | 2.0 | [SEEHDSLMAccessLog](StructureDefinition-SEEHDSLMAccessLog.html) | [Åtkomstloggar](mapping-getaccesslogforpatient.html#getaccesslogforpatient) |
+| GetAccessLogsForPatient | 1.1 (`ehr:log`) | [SEEHDSLMAccessLogV1](StructureDefinition-SEEHDSLMAccessLogV1.html) | [GetAccessLogsForPatient 1.1](mapping-getaccesslogforpatient.html#aldre-versioner) |
+
+Övriga kontrakt används bara i den version som IG:n modellerar.
+
 ---
 
 ### Vad IG:n utlovar {#loften}

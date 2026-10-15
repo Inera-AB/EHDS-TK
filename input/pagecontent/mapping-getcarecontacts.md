@@ -2,8 +2,9 @@
 
 **Tjänstekontrakt:** `clinicalprocess:logistics:logistics` GetCareContacts v3.0  
 **FHIR-profil:** [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.html)  
-**Logisk modell:** [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.html)  
+**Logisk modell:** [SEEHDSLMCareContacts](StructureDefinition-SEEHDSLMCareContacts.html) (v3.0) | [SEEHDSLMCareContactsV2](StructureDefinition-SEEHDSLMCareContactsV2.html) (v2.0)  
 **Krävs för NPÖ:** Ja (v2.0, 3.0) | **Krävs för 1177 Journal:** Ja (v2.0, 3.0)  
+**Äldre version:** v2.0 mappas till samma profil, se [GetCareContacts 2.0](#aldre-versioner)  
 
 ---
 
@@ -149,6 +150,45 @@ Status för vårdkontakt mappas från SNOMED CT SE (OID 1.2.752.116.2.1.1, SCTID
 | `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
+
+---
+
+## GetCareContacts 2.0 {#aldre-versioner}
+
+Version 2.0 (namnrymd `…:GetCareContactsResponder:2`, domänversion 2.0.7) beskrivs av den logiska modellen [SEEHDSLMCareContactsV2](StructureDefinition-SEEHDSLMCareContactsV2.html) och mappas till samma profil, [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.html). Strukturen är densamma som i 3.0; skillnaderna är kardinaliteter, två kodelement och några element som tillkom i 3.0.
+
+### Skillnader mot version 3.0
+
+<!-- versionsdiff:SEEHDSLMCareContactsV2:start -->
+Svarets namnrymd: `urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2` (GetCareContacts 2.0) och `urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:3` (GetCareContacts 3.0).
+
+| Element i GetCareContacts 2.0 | GetCareContacts 2.0 | Motsvarighet i GetCareContacts 3.0 | GetCareContacts 3.0 | Skillnad |
+|---|---|---|---|---|
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit` | 1..1 struktur | samma | 0..1 struktur | Ändrad kardinalitet |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+| `careContact.careContactHeader.nullified` | 0..1 boolean | samma | 0..0 boolean | Ändrad kardinalitet |
+| `careContact.careContactHeader.nullifiedReason` | 0..1 text | samma | 0..0 text | Ändrad kardinalitet |
+| `careContact.careContactBody.careContactCode` | 0..1 heltal | samma | 0..1 CVType | Ändrad typ |
+| `careContact.careContactBody.careContactOrgUnit` | 1..1 struktur | samma | 0..1 struktur | Ändrad kardinalitet |
+| `careContact.careContactBody.careContactOrgUnit.orgUnitHSAId` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+| `careContact.careContactBody.careContactOrgUnit.orgUnitName` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+| `careContact.careContactBody.careContactTimePeriod` | 1..1 TimePeriodType | samma | 0..1 TimePeriodType | Ändrad kardinalitet |
+| `careContact.careContactBody.careContactStatus` | 0..1 heltal | samma | 0..1 CVType | Ändrad typ |
+| – | – | `careContact.careContactBody.additionalPatientInformation` | 0..1 struktur | Ny i GetCareContacts 3.0 |
+| – | – | `result` | 1..1 struktur | Ny i GetCareContacts 3.0 |
+
+Element som saknas i den ena versionen redovisas på översta nivån; deras underelement listas inte. Element som är 0..0 i senaste versionen och saknas i den äldre listas inte. Element med samma namn, kardinalitet och datatyp i båda versionerna listas inte, och inte heller element som bara följer med när föräldern byter namn eller plats.
+<!-- versionsdiff:SEEHDSLMCareContactsV2:end -->
+
+### Mappning av skillnaderna
+
+- **`careContactCode` och `careContactStatus`** är heltal (1–5) i 2.0 och CVType i 3.0. Heltalet är koden i samma kodverk (KV Vårdkontakttyp respektive SNOMED CT SE-urvalet), så FHIR-målet är detsamma: `Encounter.class` respektive `Encounter.status`. Kodsystemet sätts från kodverkets OID eftersom 2.0 inte bär `codeSystem`.
+- **Striktare kardinaliteter i 2.0** (t.ex. `healthcareProfessionalHSAId`, `careContactOrgUnit` och `careContactTimePeriod` 1..1) påverkar inte mappningen; profilen tillåter båda.
+- **`nullified` och `nullifiedReason`** är 0..1 i 2.0 men 0..0 i 3.0. En vårdkontakt med `nullified = true` mappas till `Encounter.status = entered-in-error`. Profilen har ingen plats för `nullifiedReason`, så den mappas inte.
+- **`additionalPatientInformation` och `result`** finns inte i 2.0. Inget mappas.
 
 ---
 

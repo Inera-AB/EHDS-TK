@@ -2,8 +2,9 @@
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetLaboratoryOrderOutcome v4.2  
 **FHIR-profiler:** [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.html) | [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.html)  
-**Logisk modell:** [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html)  
-**Krävs för NPÖ:** Ja (v4.2) | **Krävs för 1177 Journal:** Ja (v4.2)  
+**Logisk modell:** [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html) (v4.1, 4.2) | [SEEHDSLMLaboratoryOrderOutcomeV3](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV3.html) (v3.1)  
+**Krävs för NPÖ:** Ja (v3.1, 4.1) | **Krävs för 1177 Journal:** Ja (v3.1, 4.2)  
+**Äldre versioner:** [GetLaboratoryOrderOutcome 4.1](#v4-1) och [GetLaboratoryOrderOutcome 3.1](#aldre-versioner) mappas till samma profiler  
 **EHDS-koppling:** Medical test results – laboratorie- och diagnostiska resultat
 
 ---
@@ -301,6 +302,93 @@ Observera att `accountableCareGiver` och `accountableCareUnit` är direkt under 
 | `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
+
+---
+
+## GetLaboratoryOrderOutcome 4.1 {#v4-1}
+
+NPÖ hämtar version 4.1 (domänversion 4.1.3). Den har samma namnrymd som 4.2, så samma logiska modell läser båda; ett exempelsvar enligt 4.1 läses utan fel av [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html). Mappningen ovan gäller oförändrad. Skillnaderna är att några element är obligatoriska i 4.1 och att `referral.referralInformation` tillkom i 4.2:
+
+<!-- versionsdiff:SEEHDSLMLaboratoryOrderOutcomeV4_1:start -->
+| Element i GetLaboratoryOrderOutcome 4.1 | GetLaboratoryOrderOutcome 4.1 | Motsvarighet i GetLaboratoryOrderOutcome 4.2 | GetLaboratoryOrderOutcome 4.2 | Skillnad |
+|---|---|---|---|---|
+| `laboratoryOrderOutcome.header.author.orgUnit.rivId` | 1..1 IIType | samma | 0..1 IIType | Ändrad kardinalitet |
+| `laboratoryOrderOutcome.header.signature.orgUnit.rivId` | 1..1 IIType | samma | 0..1 IIType | Ändrad kardinalitet |
+| `laboratoryOrderOutcome.body.referral.requester` | 1..1 struktur | samma | 0..1 struktur | Ändrad kardinalitet |
+| `laboratoryOrderOutcome.body.referral.requester.name` | 1..1 text | samma | 0..1 text | Ändrad kardinalitet |
+| `laboratoryOrderOutcome.body.referral.requester.orgUnit.rivId` | 1..1 IIType | samma | 0..1 IIType | Ändrad kardinalitet |
+| – | – | `laboratoryOrderOutcome.body.referral.referralInformation` | 0..1 struktur | Ny i GetLaboratoryOrderOutcome 4.2 |
+
+Element som saknas i den ena versionen redovisas på översta nivån; deras underelement listas inte. Element som är 0..0 i senaste versionen och saknas i den äldre listas inte. Element med samma namn, kardinalitet och datatyp i båda versionerna listas inte, och inte heller element som bara följer med när föräldern byter namn eller plats.
+<!-- versionsdiff:SEEHDSLMLaboratoryOrderOutcomeV4_1:end -->
+
+---
+
+## GetLaboratoryOrderOutcome 3.1 {#aldre-versioner}
+
+NPÖ och 1177 Journal hämtar även version 3.1 (namnrymd `…:GetLaboratoryOrderOutcomeResponder:3`, domänversion 3.1.10). Svaret beskrivs av den logiska modellen [SEEHDSLMLaboratoryOrderOutcomeV3](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV3.html). Strukturen skiljer sig helt från 4.x: headern är PatientSummaryHeader, analyserna ligger direkt under body utan analysgrupper, och resultatet är text. Därför har 3.1 en egen mappningstabell. Resurserna är desamma: en [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.html) per `laboratoryOrderOutcome` och en [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.html) per `analysis`.
+
+### Header (PatientSummaryHeader)
+
+| RIVTA-element (v3.1) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `laboratoryOrderOutcomeHeader.documentId` | 1..1 | `DiagnosticReport.identifier[record]` | Källsystemets dokumentidentifierare |
+| `laboratoryOrderOutcomeHeader.sourceSystemHSAId` | 1..1 | `DiagnosticReport.meta.source` | Se [GENERAL-005](mappings.html#meta-source) |
+| `laboratoryOrderOutcomeHeader.documentTitle` | 0..0 | N/A | Används inte enligt TKB |
+| `laboratoryOrderOutcomeHeader.documentTime` | 1..1 | `DiagnosticReport.issued` | När svaret kom in till beställarens system; YYYYMMDDHHMMSS → ISO 8601 |
+| `laboratoryOrderOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Se [GENERAL-006](mappings.html#patientreferens) |
+| `laboratoryOrderOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
+| `laboratoryOrderOutcomeHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | |
+| `laboratoryOrderOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId`, `healthcareProfessionalName`, `healthcareProfessionalRoleCode`, `healthcareProfessionalOrgUnit.orgUnitHSAId`, `orgUnitName` | – | `DiagnosticReport.performer` (Reference(PractitionerRole)) | Som `header.author` i 4.2: `identifier`, `practitioner.display`, `code`, `organization.identifier` och `organization.display` |
+| `…healthcareProfessionalOrgUnit.orgUnitTelecom`, `orgUnitEmail`, `orgUnitAddress`, `orgUnitLocation` | 0..1 | Ej mappade | Se [GENERAL-008](mappings.html#organisation) |
+| `laboratoryOrderOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr |
+| `laboratoryOrderOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr |
+| `laboratoryOrderOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DiagnosticReport.extension[signatureTime]` | Som `header.signature.timestamp` i 4.2 |
+| `laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.extension[signatureId]` | Som `header.signature.id` i 4.2 |
+| `laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | |
+| `laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..0 | N/A | Används inte enligt TKB |
+| `laboratoryOrderOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | Se [PDL-001](#öppna-frågor) |
+| `laboratoryOrderOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Logisk referens till vårdkontakt |
+| `laboratoryOrderOutcomeHeader.nullified`, `nullifiedReason` | 0..0 | N/A | Används inte enligt TKB |
+
+### Body – svaret
+
+| RIVTA-element (v3.1) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `laboratoryOrderOutcomeBody.resultType` | 1..1 | `DiagnosticReport.status` | `DEF` (definitivsvar) och `TILL` (tilläggssvar) → `final` respektive `appended` |
+| `laboratoryOrderOutcomeBody.registrationTime` | 1..1 | `DiagnosticReport.meta.lastUpdated` | Senaste uppdatering i källsystemet |
+| `laboratoryOrderOutcomeBody.discipline` | 1..1 | `DiagnosticReport.code.text` | Bara värdet "Klinisk kemi" är tillåtet. Version 3.1 har ingen kod för beställningstypen; `category` sätts till laboratory enligt profilen |
+| `laboratoryOrderOutcomeBody.resultReport` | 0..1 | `DiagnosticReport.conclusion` | Sammanfattande utlåtande |
+| `laboratoryOrderOutcomeBody.resultComment` | 0..1 | `DiagnosticReport.note.text` | Kommentar till hela svaret, på samma sätt som `groupOfAnalyses.comment` i 4.2. `note` finns på DiagnosticReport först i R5; i R4 bärs den med cross-version-extensionen för `DiagnosticReport.note`, se [Val av FHIR-version](index.html#fhir-version) |
+| `laboratoryOrderOutcomeBody.accountableHealthcareProfessional.*` | 0..1 | `DiagnosticReport.resultsInterpreter` (Reference(PractitionerRole)) | Ansvarig labbläkare; HSA-id, namn, befattning och enhet som i headern. `authorTime` (när svaret skickades) mappas inte. `healthcareProfessionalCareUnitHSAId` och `healthcareProfessionalCareGiverHSAId` är 0..0 |
+| `laboratoryOrderOutcomeBody.order.orderId` | 1..1 | `DiagnosticReport.identifier[order]` och `DiagnosticReport.basedOn.identifier` | Tom sträng om remiss saknas; då sätts varken identifier eller basedOn |
+| `laboratoryOrderOutcomeBody.order.orderReason` | 0..1 | Ej mappad till DiagnosticReport | Frågeställningen tillhör remissen (ServiceRequest.reasonCode.text), som i 4.2 |
+
+### Body – analyser (en SEEHDSObservationLab per analysis)
+
+| RIVTA-element (v3.1) | Kard. | FHIR-element | Kommentar |
+|---|---|---|---|
+| `analysis.analysisId` | 1..1 | `Observation.identifier` | IIType: `root` → `system`, `extension` → `value` |
+| `analysis.analysisTime` | 0..1 | `Specimen.collection.collectedPeriod` och `Observation.effectivePeriod` | Provtagningstid. Saknas start eller end tolkas båda som samma tidpunkt |
+| `analysis.analysisCode` | 0..1 | `Observation.code.coding` | NPU-kod |
+| `analysis.analysisText` | 0..1 | `Observation.code.text` | Används när analysen inte är NPU-kodad |
+| `analysis.analysisStatus` | 0..1 | `Observation.status` | KV åtgärdsstatus i klartext: Planerad → `registered`, Pågående → `preliminary`, Avklarad → `final`. Saknas status: `final` om `analysisOutcome` finns, annars `registered` |
+| `analysis.analysisComment` | 0..1 | `Observation.note.text` | |
+| `analysis.specimen` | 0..1 | `Specimen.type.text` | Provmaterial i klartext, ibland med lokalisation |
+| `analysis.method` | 0..1 | `Observation.method.text` | |
+| `analysis.relationToAnalysis.analysisId` | 1..1 | Ej mappad | Samband utan typ; se [LAB-002](#öppna-frågor) |
+| `analysis.analysisOutcome.outcomeValue` | 1..1 | `Observation.valueQuantity.value` eller `Observation.valueString` | `valueQuantity` om värdet är numeriskt och `outcomeUnit` finns, annars `valueString` |
+| `analysis.analysisOutcome.outcomeUnit` | 0..1 | `Observation.valueQuantity.unit` | Enheten som text; `system`/`code` sätts bara om den är en giltig UCUM-enhet |
+| `analysis.analysisOutcome.observationTime` | 0..1 | `Observation.effectiveDateTime` | Går före `analysisTime` |
+| `analysis.analysisOutcome.pathologicalFlag` | 1..1 | `Observation.interpretation` | `true` → `A` (onormal), `false` → `N` (normal) i v3-ObservationInterpretation |
+| `analysis.analysisOutcome.outcomeDescription` | 0..1 | `Observation.note.text` | Läggs efter `analysisComment` |
+| `analysis.analysisOutcome.referenceInterval` | 0..1 | `Observation.referenceRange.text` | |
+| `analysis.analysisOutcome.referencePopulation` | 0..1 | `Observation.referenceRange.appliesTo.text` | |
+| `analysis.attested.attestedTime` | 1..1 (om attested) | Ej mappad | Vidimering av enskild analys; inget standardfält i Observation |
+| `analysis.attested.attesterHSAId` | 0..1 | `Observation.performer.identifier` | Vidimerande person |
+| `analysis.attested.attesterName` | 0..1 | `Observation.performer.display` | |
+
+`result` (`resultCode`, `errorCode`, `subCode`, `logId`, `message`) hanteras av transportlagret och mappas inte.
 
 ---
 

@@ -19,7 +19,8 @@ def domain_code(ns):
     parts = [p for p in parts if p != 'clinicalprocess']
     out = ''
     for p in parts:
-        out += p.replace('.', '_')[:1].upper() + p.replace('.', '_')[1:]
+        p = p.replace('.', '')  # namnrymdsversion 1.2 → 12 (FHIR-id får inte innehålla _)
+        out += p[:1].upper() + p[1:]
     return out
 
 def dt_name(tname, ns): return f'SEEHDSRiv{tname}{domain_code(ns)}'
@@ -79,11 +80,50 @@ class TKBIndex:
             return self.types[parent_tname].get(rel.lower())
         return None
 
+class ConvIndex:
+    """Reservkälla: en logisk modell från tkb-converter (github.com/oskthu2/tkb-converter) för samma kontrakt.
+    tkb-converter följer TKB:ns elementnamn, som kan skilja sig från XSD:ns (t.ex. patient.patientId för
+    patient/id). Ett XSD-namn matchas mot ett syskon med samma namn eller som slutar på namnet."""
+    def __init__(self, path):
+        self.elems = {}; self.kids = {}
+        if not path or not os.path.exists(path): return
+        _, self.elems, _ = old_parse(path)
+        for p in self.elems:
+            par = p.rsplit('.', 1)[0] if '.' in p else ''
+            self.kids.setdefault(par, []).append(p.split('.')[-1])
+    def lookup(self, xpath):
+        cur = ''
+        for seg in xpath.split('.'):
+            kids = self.kids.get(cur, [])
+            hit = [k for k in kids if k.lower() == seg.lower()]
+            if not hit:
+                hit = [k for k in kids if k.lower().endswith(seg.lower()) and len(k) > len(seg)]
+            if len(hit) != 1: return None
+            cur = (cur + '.' if cur else '') + hit[0]
+        e = self.elems.get(cur)
+        if not e: return None
+        desc = e.get('def') or e.get('short') or ''
+        m = re.search(r'TKB(?::| anger kardinalitet(?:en)?)\s*(\d\.\.(?:\d+|\*))', desc)
+        short = (e.get('short') or '').rstrip('.')
+        return {'card': m.group(1) if m else e['card'], 'desc': desc, 'type': '', 'short': short if len(short) <= 110 else None}
+
 def generate(cfg, models_dir, report):
     root, S = xsd_parse(cfg['xsd'], cfg['element'])
     top = root.children[0].name
     tkb = TKBIndex(cfg.get('tkb'), top)
-    header, old, rules = old_parse(os.path.join(models_dir, cfg['model'] + '.fsh'))
+    conv = ConvIndex(os.path.join(cfg['tkbconv_dir'], cfg['tkbconv']) if cfg.get('tkbconv') and cfg.get('tkbconv_dir') else None)
+    own = os.path.join(models_dir, cfg['model'] + '.fsh')
+    seeded = False
+    if os.path.exists(own):
+        header, old, rules = old_parse(own)
+    elif cfg.get('seed'):
+        # Ny modell för en äldre version: texter lånas från senaste versionens modell där TKB:n saknar dem.
+        # Kardinaliteter och invarianter lånas inte, eftersom de gäller den nyare versionen.
+        _, old, rules = old_parse(os.path.join(cfg.get('seed_dir', models_dir), cfg['seed'] + '.fsh'))
+        header = None; seeded = True
+        rules = [r for r in rules if r[1] == 'from']
+    else:
+        header, old, rules = None, {}, []
     oldl = {k.lower(): (k, v) for k, v in old.items()}
     used_old = set()
     def find_old(p, xp=None):
@@ -106,10 +146,12 @@ def generate(cfg, models_dir, report):
     def emit(n, path, parent, pxpath=''):
         xpath = (pxpath + '.' if pxpath else '') + (n.xml_name or n.name)
         tk = tkb.lookup(xpath, parent.tname if parent else None, n.xml_name or n.name) or tkb.lookup(path, parent.tname if parent else None, n.name)
+        if not tk and conv.elems:
+            tk = conv.lookup(xpath)
         o = find_old(path, xpath)
         xsd = n.card; final = xsd; note = None
         tc = tk['card'] if tk and tk.get('card') else None
-        oc = o['card'] if o else None
+        oc = o['card'] if o and not seeded else None
         tkb_outside = None
         if tc and not within(tc, xsd):
             note = f'TKB-kardinalitet {tc} ligger utanför XSD:ns {xsd}; XSD används'; tkb_outside = tc; tc = None
@@ -124,10 +166,13 @@ def generate(cfg, models_dir, report):
             card_notes.append((path, xsd, tc, oc, 'bekräftad av TKB' if tc == oc else 'behållen'))
         if note: card_notes.append((path, xsd, tk['card'], oc, note))
         short = (o or {}).get('short')
-        if short and o and o['type'] in ('Identifier', 'CodeableConcept') and False: pass
         d = clean_def((o or {}).get('def'))
+        if seeded and tk and tk.get('desc', '').strip():
+            short = d = None
         tparas = [' '.join(x.split()) for x in (tk or {}).get('desc', '').split('\n') if x.strip()] if tk else []
         tdesc = ' '.join(tparas)
+        if not short and tk and tk.get('short'):
+            short = tk['short']
         if not short:
             if len(tparas) > 1 and len(tparas[0]) <= 45 and not tparas[0].endswith('.'):
                 short = tparas[0]; tdesc = ' '.join(tparas[1:])
