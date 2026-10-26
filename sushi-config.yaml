@@ -6,7 +6,7 @@ description: >-
   FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för
   att informationsförsörja NPÖ och 1177 Journal.
 status: draft
-version: 0.8.0
+version: 0.8.1
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: ci-build
@@ -29,6 +29,26 @@ dependencies:
 parameters:
   show-inherited-invariants: false
   usage-stats-opt-out: true
+  # Kodsystem och ConceptMap som har en egen url utanför IG:ns canonical
+  # (Instance: … InstanceOf: CodeSystem, se README avsnitt 4).
+  special-url:
+    - https://fhir.inera.se/CodeSystem/deliverycode
+    - https://fhir.inera.se/CodeSystem/errorcode-actoutcome
+    - https://fhir.inera.se/CodeSystem/examinationstatuscode
+    - https://fhir.inera.se/CodeSystem/fetalpositioncode
+    - https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome
+    - https://fhir.inera.se/CodeSystem/prescriptionstatus
+    - https://fhir.inera.se/CodeSystem/referraloutcometypecode
+    - https://fhir.inera.se/CodeSystem/resultcode-actoutcome
+    - https://fhir.inera.se/CodeSystem/sexcode
+    - https://fhir.inera.se/CodeSystem/typeofcareplan-cs
+    - https://fhir.inera.se/CodeSystem/typeofleavecode
+    - https://fhir.inera.se/CodeSystem/typeofprescription
+    - https://fhir.inera.se/CodeSystem/typeofresultcode
+    - https://fhir.inera.se/ConceptMap/observation-status-map
+    - https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs
+    - https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp
+    - urn:oid:1.2.752.129.2.2.2.11
 pages:
   index.md:
     title: Introduction

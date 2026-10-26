@@ -1,4 +1,4 @@
-# GetDiagnosis – Diagnoser
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetDiagnosis v2.0  
 **FHIR-profil:** [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.html)  

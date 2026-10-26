@@ -1,4 +1,4 @@
-# GetRequestActivities – Remisstatus
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `crm:requeststatus` GetRequestActivities v2.0 och v1.0  
 **FHIR-profil:** [SEEHDSTask](StructureDefinition-SEEHDSTask.html)  

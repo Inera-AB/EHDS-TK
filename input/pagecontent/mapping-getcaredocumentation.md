@@ -1,4 +1,4 @@
-# GetCareDocumentation – Journalanteckningar
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetCareDocumentation v3.0 och v2.1  
 **FHIR-profil:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html)  

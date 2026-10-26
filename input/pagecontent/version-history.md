@@ -1,11 +1,10 @@
-# Versionshistorik
-
 Sidan beskriver ändringarna mellan publicerade versioner av denna Implementation Guide.
 
 ---
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
+| 0.8.1 | 2026-10-26 | Draft | Rättar felen i IG Publishers QA: sidrubriker, egna url:er för kodsystem, `DiagnosticReport.performer` och bindningen av `Observation.status`. |
 | 0.8.0 | 2026-10-26 | Draft | Releaser publiceras med IG Publishers officiella publiceringsläge enligt IneraFHIRTemplate. Paket-id:t är nu `inera.ehds.ehds-tk`. |
 | 0.7.0 | 2026-10-26 | Draft | Rätt kod `NOPAT` för `approvedForPatient = false`, och Provenance-agenterna custodian och author går nu att skilja åt vid validering. |
 | 0.6.0 | 2026-10-12 | Draft | Regler från TKB:erna och testsvitens schematron, bland annat val mellan element (MED-003), är FHIRPath-invarianter i de logiska modellerna. |
@@ -19,6 +18,21 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 ---
 
 ### Ändringslogg
+
+#### 0.8.1 — 2026-10-26 (Draft)
+
+**Profiler**
+
+- `SEEHDSObservationBase`: `Observation.status` var bunden (required) till SNOMED CT-värdemängden `SEObservationStatusVS`, som inte är en delmängd av FHIR:s `observation-status`. Bindningen är borttagen. `status` följer FHIR:s värdemängd, och koderna från tjänstekontraktet översätts med [ObservationStatusMap](ConceptMap-observation-status-map.html) (OBS-003), som tidigare.
+- `ObservationStatusMap` anger nu källa och mål som värdemängder (`sourceCanonical`/`targetCanonical`) i stället för kodsystem.
+- `SEEHDSDiagnosticReportLab`, `-Imaging` och `-Referral`: EU Core-slicen `performer:organization` begränsas till `SEEHDSOrganization`. Tidigare ärvde slicen även `SEEHDSPractitionerRole`, vilket inte är en giltig begränsning av EU Core.
+
+**Byggfel**
+
+- Sidorna börjar inte längre med en egen `#`-rubrik, eftersom IG Publishers template redan sätter sidtiteln. Sidor vars avsnitt börjar på `##` renderas en nivå ned (`header_offset`).
+- Kodsystemen och ConceptMap:en med en egen url utanför IG:ns canonical listas som `special-url` i `sushi-config.yaml`.
+- [Examples](examples.html) länkade till mallens exempel `IneraPatient`.
+- De inaktiva SNOMED CT-koderna `248334005` och `444301002`, som ingår i Ineras urval, är undantagna i `ignoreWarnings.txt`.
 
 #### 0.8.0 — 2026-10-26 (Draft)
 

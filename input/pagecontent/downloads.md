@@ -1,5 +1,3 @@
-# Downloads
-
 The following downloads are available for this Implementation Guide.
 
 ### Full IG package
