@@ -6,6 +6,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
+| 0.7.0 | 2026-10-26 | Draft | Rätt kod `NOPAT` för `approvedForPatient = false`, och Provenance-agenterna custodian och author går nu att skilja åt vid validering. |
 | 0.6.0 | 2026-10-12 | Draft | Regler från TKB:erna och testsvitens schematron, bland annat val mellan element (MED-003), är FHIRPath-invarianter i de logiska modellerna. |
 | 0.5.0 | 2026-10-12 | Draft | Alla aktiva tjänstekontraktsversioner enligt startsidan har nu logiska modeller och mappning, inte bara den senaste versionen. |
 | 0.4.0 | 2026-10-12 | Draft | Ny konformitetsansats (EURIDICE och EU Core i stället för IPS/EPS), profiler omdöpta till SEEHDS, logiska modeller genererade från RIV-TA-XSD och verifierade mot TKB, och ett antal mappningsbeslut. |
@@ -17,6 +18,19 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 ---
 
 ### Ändringslogg
+
+#### 0.7.0 — 2026-10-26 (Draft)
+
+**Säkerhetsmärkning (PDL-001)**
+
+- `approvedForPatient = false` mappas till `meta.security` med koden `NOPAT` från v3-ActCode. Tidigare angavs `NOPATIENT`, som inte finns i kodsystemet. Rättat på alla mappningssidor, i [Mappningsissues](mapping-issues.html) och i `SEEHDSObservationBase`.
+
+**Provenance (GENERAL-003)**
+
+- Uppdelningen av agenterna i [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.html) gick inte att utvärdera: diskriminatorn pekade på `agent.type.coding.code`, men profilen hade bara ett mönster på `agent.type`. Diskriminatorn är nu av typen `pattern` på `type`, så att en validator kan avgöra vilken agent som är `custodian` och vilken som är `author`.
+- Båda agenterna kräver nu HSA-id i `who.identifier` (system `urn:oid:1.2.752.29.4.19`), vilket är vad mappningssidorna redan anger.
+- Nytt exempel, [SEEHDSProvenanceExample](Provenance-SEEHDSProvenanceExample.html), som valideras mot profilen när IG:n byggs.
+- [Profiler](profiles.html) beskrev felaktigt tre agenter (med `assembler`). Profilen har två.
 
 #### 0.6.0 — 2026-10-12 (Draft)
 

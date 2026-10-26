@@ -123,7 +123,7 @@ Alla tjänstekontrakt med `PatientSummaryHeader` (eller motsvarande header) mapp
 | `careProviderHSAId` | `Provenance.agent[custodian].who.identifier` | Juridiskt ansvarig vårdgivare — yttre Sparr |
 | `careUnitHSAId` | `Provenance.agent[author].who.identifier` | Informationsägare vårdenhet — inre Sparr |
 | (jämförelsetid, Sparr/CheckBlocks) | Skickas till spärrtjänsten vid filtreringsanropet | Källa varierar per TK: `accessControlHeader.blockComparisonTime` där det finns (t.ex. GetCareDocumentation), annars `accountableHealthcareProfessional.authorTime` (t.ex. GetDiagnosis, som saknar `blockComparisonTime`). Se tjänstekontraktets egen mappningssida. |
-| `approvedForPatient = false` | `{Resurs}.meta.security` kod `NOPATIENT` | PDL — information ej avsedd att visas för patient (se avsnitt 10) |
+| `approvedForPatient = false` | `{Resurs}.meta.security` kod `NOPAT` | PDL — information ej avsedd att visas för patient (se avsnitt 10) |
 
 > `recorder`/`asserter` används för Condition. `author`/`authenticator` används för DocumentReference. Välj det fält i FHIR-resursen som semantiskt bäst motsvarar rollen.
 
@@ -177,14 +177,14 @@ Dessa beslut har fattats under implementationsarbetet och dokumenteras här som 
 
 ### PDL-001 – approvedForPatient
 
-`approvedForPatient = false` (1..1 boolean i alla PatientSummaryHeader-kontrakt) mappas till `{Resurs}.meta.security` med kod `NOPATIENT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`. Kod `NOPATIENT` signalerar att resursen inte ska visas för patienten via t.ex. 1177.
+`approvedForPatient = false` (1..1 boolean i alla PatientSummaryHeader-kontrakt) mappas till `{Resurs}.meta.security` med kod `NOPAT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`. Kod `NOPAT` signalerar att resursen inte ska visas för patienten via t.ex. 1177.
 
 ```json
 "meta": {
   "security": [
     {
       "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-      "code": "NOPATIENT"
+      "code": "NOPAT"
     }
   ]
 }
@@ -248,5 +248,5 @@ Extension `additionalBodySite` är en övergångslösning för FHIR R4. I FHIR R
 - [ ] `recorder`/`asserter`/`author`/`authenticator only Reference(SEEHDSPractitionerRole)`
 - [ ] Provenance-mönstret med tre agenter är implementerat
 - [ ] Kardinalitet från RIVTA (1..1, 1..*) är överfört till profilen
-- [ ] `approvedForPatient = false` → `meta.security` kod `NOPATIENT` (se avsnitt 9)
+- [ ] `approvedForPatient = false` → `meta.security` kod `NOPAT` (se avsnitt 9)
 - [ ] ig.ini pekar på `ImplementationGuide-{id}.json` (filnamn genereras från `id`-fältet i sushi-config, inte `name`)

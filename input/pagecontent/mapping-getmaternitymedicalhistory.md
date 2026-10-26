@@ -396,7 +396,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | Id | Fråga | Status |
 |---|---|---|
 | MAT-001 | **Beslutat:** varje avsnitt blir en grupperande Observation (`code` = avsnittskod, `code.text` = documentTitle) med fälten som medlems-Observationer via `hasMember`. Se [Flersektionsdesign](#flersektionsdesign-mat-001). | Beslutat |
-| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). | Beslutat |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPAT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). | Beslutat |
 | GENERAL-001 | Gemensam hantering av RIVTA variabelprecisions-tidsstämplar (YYYYMMDDHHMMSS, YYYYMMDD, YYYYMM, YYYY) vid konvertering till ISO 8601 och tidszon Europe/Stockholm behöver dokumenteras i gemensam konverteringsspecifikation. | Öppen |
 
 ---
