@@ -11,3 +11,7 @@ permissions:
 jobs:
   qa:
     uses: Inera-AB/fhir-ig-workflows/.github/workflows/pr-qa.yml@v1
+    # Same terminology server as the branch build and the release, so that
+    # the QA numbers on a pull request match what -go-publish compares against.
+    with:
+      tx-server: https://tx.fhir.org/r4
