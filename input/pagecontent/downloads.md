@@ -13,7 +13,7 @@ The full npm package for this IG, for use with the FHIR validator and other tool
 To validate instances against profiles in this IG, use the [HL7 FHIR Validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator) with the package above:
 
 ```
-java -jar validator_cli.jar <instance.json> -ig inera.core.template#0.1.0
+java -jar validator_cli.jar <instance.json> -ig {{site.data.fhir.packageId}}#{{site.data.fhir.version}}
 ```
 
 ---

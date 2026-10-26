@@ -1,0 +1,14 @@
+{
+  "mode" : "milestone",
+  "status" : "release",
+  "sequence" : "Releases",
+  "desc" : "Övergång till IG Publishers officiella publiceringsläge, med logiska modeller och mappningar för alla aktiva tjänstekontraktsversioner.",
+  "first" : false,
+  "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
+  "category" : "National Base",
+  "introduction" : "FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för att informationsförsörja NPÖ och 1177 Journal.",
+  "ci-build" : "https://inera-ab.github.io/EHDS-TK",
+  "registry-description" : "Mappning av Ineras RIVTA-tjänstekontrakt till FHIR för EHDS-användningsfall.",
+  "registry-country" : "se",
+  "registry-authority" : "Inera"
+}
