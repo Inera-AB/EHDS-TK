@@ -1,4 +1,4 @@
-# GetImagingOutcome – Bilddiagnostik
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetImagingOutcome v1.0  
 **FHIR-profiler:** [SEEHDSDiagnosticReportImaging](StructureDefinition-SEEHDSDiagnosticReportImaging.html) (primär) | [ImagingStudy](http://hl7.org/fhir/R4/imagingstudy.html) (sekundär, per imageRecording)  

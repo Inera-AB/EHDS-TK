@@ -3,13 +3,15 @@
 # Display name for Sweden not available in sv-SE on tx server — acceptable
 There are no valid display names found for the code urn:iso:std:iso:3166#SE
 
-# Auto-generated links in the IG narrative point to the canonical URL which is not live yet.
-# These will resolve once the IG is published at https://fhir.inera.se/ig/template
-The link 'StructureDefinition-IneraPatient.html' for "fake generated link for Implementation Guide" cannot be resolved
-The link 'Patient-IneraPatientExample.html' for "fake generated link for Implementation Guide" cannot be resolved
-
 # Standard xhtml fragments not included — acceptable when using a custom local template
 The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
 The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+
+# Inaktiva SNOMED CT-koder som ändå ingår i Ineras urval. 248334005 (Längd i
+# liggande) finns kvar för bakåtkompatibilitet enligt IoÖ Tillväxtkurva v3, och
+# 444301002 (Avböjd av patient) ingår i urvals-id 56431000052106 för
+# GetObservations observationStatus.
+The concept '248334005' has a status of inactive and its use should be reviewed
+The concept '444301002' has a status of inactive and its use should be reviewed

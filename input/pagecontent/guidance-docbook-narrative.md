@@ -1,4 +1,4 @@
-# DocBook-mappning – clinicalDocumentNoteText och bilagor
+{::options header_offset="1" /}
 
 **Gäller:** GetCareDocumentation v3.0 (`careDocumentation.body.clinicalDocumentNoteText` och `careDocumentation.body.multimediaEntry`)  
 **FHIR-resurser:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.html) (obligatorisk), [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.html) (valfri)  

@@ -1,5 +1,3 @@
-# Introduktion
-
 ### Domän
 
 Denna Implementation Guide (IG) beskriver den FHIR-funktionalitet som krävs för att informationsförsörja **NPÖ** (Nationell patientöversikt) och **1177 Journal** via Ineras RIVTA-tjänstekontrakt. IG:n definierar FHIR-profiler, logiska modeller och mappningar för 16 tjänstekontrakt fördelade på 6 FHIR-grupper.

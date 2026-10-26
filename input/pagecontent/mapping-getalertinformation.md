@@ -1,4 +1,4 @@
-# GetAlertInformation – Uppmärksamhetsinformation
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetAlertInformation v2.0 och v3.0  
 **FHIR-profiler:** [SEEHDSFlag](StructureDefinition-SEEHDSFlag.html) | [SEEHDSAllergyIntolerance](StructureDefinition-SEEHDSAllergyIntolerance.html)  

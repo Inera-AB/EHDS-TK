@@ -1,4 +1,4 @@
-# GetFunctionalStatus – Funktionstillstånd och ADL
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetFunctionalStatus v2.0  
 **FHIR-profil:** [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html)  

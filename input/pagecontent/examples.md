@@ -1,14 +1,12 @@
-# Examples
-
 This page lists example instances defined in this Implementation Guide.
 
 Examples demonstrate how the profiles should be populated in practice. Authors should provide at least one example per profile, covering the most common use cases.
 
-### Patient examples
+### Provenance
 
 | Example | Profile | Description |
 |---------|---------|-------------|
-| [IneraPatientExample](Patient-IneraPatientExample.html) | [IneraPatient](StructureDefinition-IneraPatient.html) | A minimal example of a patient conforming to the IneraPatient profile. |
+| [SEEHDSProvenanceExample](Provenance-SEEHDSProvenanceExample.html) | [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.html) | Provenance med agenterna custodian och author. |
 
 ---
 

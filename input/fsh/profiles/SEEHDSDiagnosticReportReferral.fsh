@@ -12,6 +12,8 @@ Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. 
 * meta.source ^short = "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * performer only Reference(SEEHDSPractitionerRole or SEEHDSOrganization)
+// EU Core-slicen organization tillåter bara Organization
+* performer[organization] only Reference(SEEHDSOrganization)
 * performer MS
 * performer ^short = "Svarande specialist/enhet (referralOutcomeHeader.accountableHealthcareProfessional)"
 

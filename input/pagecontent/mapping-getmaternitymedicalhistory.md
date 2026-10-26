@@ -1,4 +1,4 @@
-# GetMaternityMedicalHistory – Mödravård
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetMaternityMedicalHistory v2.0  
 **FHIR-profil:** [SEEHDSObservationMaternity](StructureDefinition-SEEHDSObservationMaternity.html)  

@@ -1,5 +1,3 @@
-# Profiles
-
 Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR-grupp. Se [Mappings](mappings.html) för hur respektive profil relaterar till RIVTA-tjänstekontrakten.
 
 Profilerna ärver HL7 Europe Core där en EU Core-profil finns, annars FHIR-basresursen, så att de är en giltig profilering av EURIDICE. De heter `SEEHDS…` med `Id` lika med namnet, enligt de svenska basprofilernas konvention. Se [Vad IG:n utlovar](index.html#loften).
