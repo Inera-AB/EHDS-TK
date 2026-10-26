@@ -1,4 +1,4 @@
-# RIV-TA TimeStampType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# RIV-TA TimeStampType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSRivTimeStamp |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivTimeStamp |
 
  
 Tidpunkt i formatet ÅÅÅÅMMDDttmmss (lokal svensk tid utan tidszon). Konverteras till FHIR dateTime/instant med Europe/Stockholm, se GENERAL-001. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivTimeStamp.c
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivTimeStamp",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSRivTimeStamp",
   "title" : "RIV-TA TimeStampType",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

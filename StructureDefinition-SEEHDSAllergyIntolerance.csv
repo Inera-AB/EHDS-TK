@@ -153,6 +153,18 @@ Age {[]} {[]}Period {[]} {[]}Range {[]} {[]}string {[]} {[]}","When allergy or i
 "AllergyIntolerance.onset[x]:onsetDateTime","AllergyIntolerance.onset[x]","onsetDateTime","","",0,1,"Y","","","dateTime {[]} {[]}
 ","Datum för konstaterande (alertInformationBody.ascertainedDate)","Estimated or actual date,  date-time, or age when allergy or intolerance was identified.","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.onset[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","effectiveTime.low","FiveWs.init"
+"AllergyIntolerance.onset[x]:onsetAge","AllergyIntolerance.onset[x]","onsetAge","","",0,1,"","","","Age {[]} {[]}
+","When allergy or intolerance was identified","Estimated or actual date,  date-time, or age when allergy or intolerance was identified.","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.onset[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","effectiveTime.low","FiveWs.init"
+"AllergyIntolerance.onset[x]:onsetPeriod","AllergyIntolerance.onset[x]","onsetPeriod","","",0,1,"","","","Period {[]} {[]}
+","When allergy or intolerance was identified","Estimated or actual date,  date-time, or age when allergy or intolerance was identified.","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.onset[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","effectiveTime.low","FiveWs.init"
+"AllergyIntolerance.onset[x]:onsetRange","AllergyIntolerance.onset[x]","onsetRange","","",0,1,"","","","Range {[]} {[]}
+","When allergy or intolerance was identified","Estimated or actual date,  date-time, or age when allergy or intolerance was identified.","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.onset[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","effectiveTime.low","FiveWs.init"
+"AllergyIntolerance.onset[x]:onsetString","AllergyIntolerance.onset[x]","onsetString","","",0,1,"","","","string {[]} {[]}
+","When allergy or intolerance was identified","Estimated or actual date,  date-time, or age when allergy or intolerance was identified.","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.onset[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","effectiveTime.low","FiveWs.init"
 "AllergyIntolerance.recordedDate","AllergyIntolerance.recordedDate","","","",0,1,"Y","","","dateTime {[]} {[]}
 ","Registreringstidpunkt (alertInformationHeader.accountableHealthcareProfessional.authorTime)","The recordedDate represents when this particular AllergyIntolerance record was created in the system, which is often a system-generated date.","","","","","","","","","",,,,,"",,,,"AllergyIntolerance.recordedDate",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=AUT].time","FiveWs.recorded","IAM-13"

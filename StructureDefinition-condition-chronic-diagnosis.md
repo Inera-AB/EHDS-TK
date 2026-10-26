@@ -1,4 +1,4 @@
-# Kronisk diagnos - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# Kronisk diagnos - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:ConditionChronicDiagnosis |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:ConditionChronicDiagnosis |
 
 Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001.
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-condition-chronic-di
   "resourceType" : "StructureDefinition",
   "id" : "condition-chronic-diagnosis",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "ConditionChronicDiagnosis",
   "title" : "Kronisk diagnos",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

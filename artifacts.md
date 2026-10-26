@@ -1,4 +1,4 @@
-# Artifacts Summary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# Artifacts Summary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **Artifacts Summary**
@@ -163,7 +163,7 @@ Kodsystem för observationBody.type: SNOMED CT SE, OID 1.2.752.116.2.1.1.Täcker
 | [SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag](StructureDefinition-SEEHDSPractitionerRole.md) | Profil för hälso- och sjukvårdspersonal i uppdrag (medarbetaruppdrag) som refereras från EHDS-TK-resurserna (t.ex. accountableHealthcareProfessional, legalAuthenticator, author). Ärver HL7 Europe Core PractitionerRole (EURIDICE). Identifier-slicen följer svenska basprofilernas konvention (SEBasePractitionerRole: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN). Används normalt som logisk referens via identifier. |
 | [SE EHDS Provenance](StructureDefinition-SEEHDSProvenance.md) | Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance med två agenter som speglar spärr-hierarkin enligt PDL:* custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren
 * author (inre Sparr) — den informationsägande vårdenheten
-OBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver Provenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte inkluderas i svaret — filtreringen sker då redan på servernivå. |
+Agenterna skiljs åt på `agent.type` (diskriminator av typen pattern på `type`), som ska innehålla kodningen `provenance-participant-type#custodian` respektive `provenance-participant-type#author`. En validator kan därmed avgöra vilken agent som är vilken. Båda agenterna anges som logisk referens med HSA-id i `who.identifier`. Se GENERAL-003.OBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver Provenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte inkluderas i svaret — filtreringen sker då redan på servernivå. |
 | [SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)](StructureDefinition-SEEHDSServiceRequestReferral.md) | Profil för konsultationsremisser mappat från RIVTA-tjänstekontraktet GetReferralOutcome (clinicalprocess:healthcond:actoutcome v3.2). Täcker NPÖ 3.2 och 1177 Journal 3.2.Notera: GetReferralOutcome returnerar remissvaret, inte remissen i sig. Remissens metadata finns under referralOutcomeBody.referral och är begränsad till id, orsak, tid och avsändare. Inget mottagarfält, prioritet, typ eller diagnos finns i TKBn för remissens del. |
 | [SE EHDS Task – Remisstatus (GetRequestActivities)](StructureDefinition-SEEHDSTask.md) | Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0. |
 
@@ -292,4 +292,12 @@ These define transformations to convert between codes by systems conforming with
 | | |
 | :--- | :--- |
 | [GetObservations – observationStatus (SNOMED CT) → FHIR ObservationStatus](ConceptMap-observation-status-map.md) | Mappning från RIVTA GetObservations observationStatus-koder (SNOMED CT, urvals-id 56431000052106) till FHIR R4 ObservationStatus (OBS-003).Kodsystem: SNOMED CT SE, OID 1.2.752.116.2.1.1 → URI http://snomed.info/sct. Om en okänd kod tas emot sätts status till 'unknown' och en OperationOutcome-varning genereras av bryggan. |
+
+### Example: Example Instances 
+
+These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.
+
+| | |
+| :--- | :--- |
+| [Exempel: Provenance med custodian och author](Provenance-SEEHDSProvenanceExample.md) | Visar hur de två agenterna anges så att validering kan avgöra vilken agent som är vilken. |
 

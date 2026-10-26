@@ -1,4 +1,4 @@
-# Terminology - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# Terminology - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **Terminology**

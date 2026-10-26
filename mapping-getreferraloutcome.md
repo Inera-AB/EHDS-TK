@@ -1,4 +1,4 @@
-# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **GetReferralOutcome – Remisser**
@@ -231,7 +231,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | | |
 | :--- | :--- |
 | REF-001 | **`act 0..*` saknar standard DiagnosticReport-element.**`referralOutcomeBody.act`innehåller kodad åtgärd (`actCode`), fritext (`actText`), tidpunkt (`actTime`) och eventuell multimedia (`actResult`med`mediaType`/`value`/`reference`). Nuvarande lösning: textinnehåll och bilagor →`presentedForm`, kodad åtgärd → custom extension. Alternativ: en`Procedure`-resurs per`act`-post länkad via`DiagnosticReport.result`. Kräver beslut. |
-| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPATIENT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
+| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPAT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
 ## Föreslagna nya issues

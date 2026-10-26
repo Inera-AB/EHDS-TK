@@ -1,4 +1,4 @@
-# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **GetMedicationHistory – Läkemedel**
@@ -254,7 +254,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | MED-001 | **Löst:**hela strukturen för`dispensationAuthorization`,`administration`och`relation`finns i den logiska modellen (genererad från XSD:n). Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | MED-002 | **`typeOfPrescription` (I/U) mappar inte naturligt till `MedicationStatement.status`.**I=Insättning och U=Utsättning anger ordinationshändelsens karaktär, inte dess aktuella status. Nuvarande beslut: bevara i extension; status härleds primärt från`prescriptionStatus`. Alternativ: ignorera`prescriptionStatus`och sätt`status=active`för I,`status=stopped`för U. |
 | MED-003 | **Löst:**villkoret uttrycks av invarianten`getmedicationhistory-drug-choice`i den logiska modellen, se[drug-villkoret](#drug-villkoret-med-003). |
-| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPATIENT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
+| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPAT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
 ## Föreslagna nya issues

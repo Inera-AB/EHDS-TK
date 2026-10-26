@@ -1,4 +1,4 @@
-# GetMedicationHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetMedicationHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMMedicationHistory |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMMedicationHistory |
 
  
 Logisk modell för tjänstekontraktet GetMedicationHistory (RIV-TA urn:riv:clinicalprocess:activityprescription:actoutcome:GetMedicationHistoryResponder:2). Representerar responsens informationsstruktur — läkemedelshistorik per patient. 
@@ -50,11 +50,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMMedicationHi
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:GetMedicationHistoryResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSLMMedicationHistory",
   "title" : "GetMedicationHistory",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

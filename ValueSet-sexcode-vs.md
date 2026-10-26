@@ -1,4 +1,4 @@
-# SexCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# SexCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs | *Version*:0.6.0 |
-| Active as of 2026-10-15 | *Computable Name*:SexCodeVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs | *Version*:0.7.0 |
+| Active as of 2026-10-26 | *Computable Name*:SexCodeVS |
 
  
 Tillåtna värden för kön i GetMaternityMedicalHistory. 
@@ -46,11 +46,11 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "sexcode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SexCodeVS",
   "title" : "SexCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -179,6 +179,9 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","N/A"
 "Immunization.occurrence[x]:occurrenceDateTime.value","Immunization.occurrence[x].value","","","",0,1,"","","","dateTime {[]} {[]}
 ","Primitive value for dateTime","The actual value","","","","","","","","","",,,,,"",,,,"dateTime.value",0,1,"",""
+"Immunization.occurrence[x]:occurrenceString","Immunization.occurrence[x]","occurrenceString","","",0,1,"","","Y","string {[]} {[]}
+","Vaccine administration date","Date vaccine administered or was to be administered.","When immunizations are given a specific date and time should always be known.   When immunizations are patient reported, a specific date might not be known.  Although partial dates are allowed, an adult patient might not be able to recall the year a childhood immunization was given. An exact date is always preferable, but the use of the String data type is acceptable when an exact date is not known. A small number of vaccines (e.g. live oral typhoid vaccine) are given as a series of patient self-administered dose over a span of time. In cases like this, often, only the first dose (typically a provider supervised dose) is recorded with the occurrence indicating the date/time of the first dose.","","","","","","","","",,,,,"",,,,"Immunization.occurrence[x]",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","Event.occurrence[x]","RXA-3",".effectiveTime","FiveWs.done[x]","ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/effectiveTime/value"
 "Immunization.recorded","Immunization.recorded","","","",0,1,"Y","","","dateTime {[]} {[]}
 ","Registreringsdatum (vaccinationMedicalRecordBody.registrationRecord.date)","The date the occurrence of the immunization was first captured in the record - potentially significantly after the occurrence of the event.","","","","","","","","","",,,,,"",,,,"Immunization.recorded",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".participation[typeCode=AUT].time","FiveWs.recorded"
@@ -208,7 +211,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","RXR-1",".routeCode","ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/routeCode/code"
 "Immunization.doseQuantity","Immunization.doseQuantity","","","",0,1,"Y","","","Quantity {[CanonicalType[http://hl7.org/fhir/StructureDefinition/SimpleQuantity|4.0.1]]} {[]}
 ","Dos (administrationRecord.dose.quantity)","The quantity of vaccine product that was administered.","","","","","","","","","",,,,,"",,,,"Immunization.doseQuantity",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
-","RXA-6 / RXA-7",".doseQuantity"
+sqty-1:The comparator is not used on a SimpleQuantity {comparator.empty()}","RXA-6 / RXA-7",".doseQuantity"
 "Immunization.performer","Immunization.performer","","","",0,*,"","","Y","BackboneElement {[]} {[]}
 ","Who performed event","Indicates who performed the immunization event.","","","","","","","","","",,,,,"","value:$this.function}
 ","",,"open","Immunization.performer",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
@@ -381,15 +384,21 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","N/A"
 "Immunization.protocolApplied.doseNumber[x]","Immunization.protocolApplied.doseNumber[x]","","","",1,1,"","","","positiveInt {[]} {[]}
 string {[]} {[]}","Dose Number","Nominal position in a series.","The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).","","","","","","","","",,,,,"","type:$this}
-","",,"open","Immunization.protocolApplied.doseNumber[x]",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","",,"closed","Immunization.protocolApplied.doseNumber[x]",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","N/A"
 "Immunization.protocolApplied.doseNumber[x]:doseNumberPositiveInt","Immunization.protocolApplied.doseNumber[x]","doseNumberPositiveInt","","",0,1,"Y","","","positiveInt {[]} {[]}
 ","Dosnummer (administrationRecord.doseOrdinalNumber)","Nominal position in a series.","The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).","","","","","","","","",,,,,"",,,,"Immunization.protocolApplied.doseNumber[x]",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","N/A"
+"Immunization.protocolApplied.doseNumber[x]:doseNumberString","Immunization.protocolApplied.doseNumber[x]","doseNumberString","","",0,1,"","","","string {[]} {[]}
+","Dose Number","Nominal position in a series.","The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).","","","","","","","","",,,,,"",,,,"Immunization.protocolApplied.doseNumber[x]",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","N/A"
 "Immunization.protocolApplied.seriesDoses[x]","Immunization.protocolApplied.seriesDoses[x]","","","",0,1,"","","","positiveInt {[]} {[]}
 string {[]} {[]}","Number of doses","The recommended number of doses to achieve immunity.","The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).","","","","","","","","",,,,,"","type:$this}
-","",,"open","Immunization.protocolApplied.seriesDoses[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","",,"closed","Immunization.protocolApplied.seriesDoses[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","N/A"
 "Immunization.protocolApplied.seriesDoses[x]:seriesDosesPositiveInt","Immunization.protocolApplied.seriesDoses[x]","seriesDosesPositiveInt","","",0,1,"Y","","","positiveInt {[]} {[]}
 ","Antal ordinerade doser (administrationRecord.numberOfPrescribedDoses)","The recommended number of doses to achieve immunity.","The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).","","","","","","","","",,,,,"",,,,"Immunization.protocolApplied.seriesDoses[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","N/A"
+"Immunization.protocolApplied.seriesDoses[x]:seriesDosesString","Immunization.protocolApplied.seriesDoses[x]","seriesDosesString","","",0,1,"","","","string {[]} {[]}
+","Number of doses","The recommended number of doses to achieve immunity.","The use of an integer is preferred if known. A string should only be used in cases where an integer is not available (such as when documenting a recurring booster dose).","","","","","","","","",,,,,"",,,,"Immunization.protocolApplied.seriesDoses[x]",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","N/A"

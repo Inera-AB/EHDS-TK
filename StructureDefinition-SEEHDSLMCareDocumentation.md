@@ -1,4 +1,4 @@
-# GetCareDocumentation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetCareDocumentation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMCareDocumentation |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMCareDocumentation |
 
  
 Logisk modell för tjänstekontraktet GetCareDocumentation (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3). Representerar responsens informationsstruktur: journalanteckningar för en patient. Anteckningstyper: utredning, åtgärd/behandling, sammanfattning, samordning, inskrivning, slutanteckning, anteckning utan fysiskt möte, slutenvårdsanteckning och besöksanteckning. Meddelandeformatet är kompatibelt med HL7 v3 CDA v2. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareDocument
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSLMCareDocumentation",
   "title" : "GetCareDocumentation",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

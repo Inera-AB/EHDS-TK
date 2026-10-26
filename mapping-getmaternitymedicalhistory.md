@@ -1,4 +1,4 @@
-# GetMaternityMedicalHistory – Mödravård - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetMaternityMedicalHistory – Mödravård - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **GetMaternityMedicalHistory – Mödravård**
@@ -378,7 +378,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | | | |
 | :--- | :--- | :--- |
 | MAT-001 | **Beslutat:**varje avsnitt blir en grupperande Observation (`code`= avsnittskod,`code.text`= documentTitle) med fälten som medlems-Observationer via`hasMember`. Se[Flersektionsdesign](#flersektionsdesign-mat-001). | Beslutat |
-| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPATIENT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). | Beslutat |
+| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPAT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). | Beslutat |
 | GENERAL-001 | Gemensam hantering av RIVTA variabelprecisions-tidsstämplar (YYYYMMDDHHMMSS, YYYYMMDD, YYYYMM, YYYY) vid konvertering till ISO 8601 och tidszon Europe/Stockholm behöver dokumenteras i gemensam konverteringsspecifikation. | Öppen |
 
 -------

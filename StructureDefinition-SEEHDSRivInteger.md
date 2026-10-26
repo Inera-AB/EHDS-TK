@@ -1,4 +1,4 @@
-# RIV-TA heltal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# RIV-TA heltal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivInteger | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSRivInteger |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivInteger | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivInteger |
 
  
 Heltal (xs:int/xs:integer). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivInteger.csv
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivInteger",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivInteger",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSRivInteger",
   "title" : "RIV-TA heltal",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

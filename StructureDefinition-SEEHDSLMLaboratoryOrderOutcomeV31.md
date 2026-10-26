@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetLaboratoryOrderOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV31 | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcomeV31 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV31 | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcomeV31 |
 
  
 Logisk modell för version 3.1 av tjänstekontraktet GetLaboratoryOrderOutcome (urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3). Mappningen utgår från versionen i SEEHDSLMLaboratoryOrderOutcome. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMLaboratoryOr
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV31",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSLMLaboratoryOrderOutcomeV31",
   "title" : "GetLaboratoryOrderOutcome 3.1",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

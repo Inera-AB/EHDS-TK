@@ -1,4 +1,4 @@
-# Workflow - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# Workflow - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **Workflow**

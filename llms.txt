@@ -1,4 +1,4 @@
-# inera.ehds.tk#0.6.0: Inera EHDS Tjänstekontrakt – FHIR Implementation Guide
+# inera.ehds.tk#0.7.0: Inera EHDS Tjänstekontrakt – FHIR Implementation Guide
 
 ## Pages
 
@@ -228,3 +228,7 @@
 ### ImplementationGuides
 
 * [Inera EHDS Tjänstekontrakt – FHIR Implementation Guide](index.md)
+
+### Examples
+
+* [SEEHDSProvenanceExample (Provenance)](Provenance-SEEHDSProvenanceExample.md)

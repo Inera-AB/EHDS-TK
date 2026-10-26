@@ -1,4 +1,4 @@
-# RIV-TA xs:base64Binary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# RIV-TA xs:base64Binary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSRivBase64Binary |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivBase64Binary |
 
  
 Base64-kodat innehåll. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivBase64Binar
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivBase64Binary",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSRivBase64Binary",
   "title" : "RIV-TA xs:base64Binary",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

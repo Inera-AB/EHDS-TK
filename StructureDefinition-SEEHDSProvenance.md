@@ -1,4 +1,4 @@
-# SE EHDS Provenance - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# SE EHDS Provenance - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,20 +8,21 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSProvenance |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSProvenance |
 
  
 Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance med två agenter som speglar spärr-hierarkin enligt PDL: 
 * custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren
 * author (inre Sparr) — den informationsägande vårdenheten
  
+Agenterna skiljs åt på `agent.type` (diskriminator av typen pattern på `type`), som ska innehålla kodningen `provenance-participant-type#custodian` respektive `provenance-participant-type#author`. En validator kan därmed avgöra vilken agent som är vilken. Båda agenterna anges som logisk referens med HSA-id i `who.identifier`. Se GENERAL-003. 
 OBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver Provenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte inkluderas i svaret — filtreringen sker då redan på servernivå. 
 
 **Användningar:**
 
+* Exempel för denna Profil: [Provenance/SEEHDSProvenanceExample](Provenance-SEEHDSProvenanceExample.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
-* Denna Profil används inte av några profiler i denna implementationsguide
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSProvenance)
 
@@ -42,11 +43,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSProvenance.csv
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSProvenance",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSProvenance",
   "title" : "SE EHDS Provenance",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -55,7 +56,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSProvenance.csv
       "value" : "https://www.inera.se"
     }]
   }],
-  "description" : "Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance\nmed två agenter som speglar spärr-hierarkin enligt PDL:\n- custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren\n- author (inre Sparr) — den informationsägande vårdenheten\n\nOBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering\nbaserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver\nProvenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte\ninkluderas i svaret — filtreringen sker då redan på servernivå.",
+  "description" : "Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance\nmed två agenter som speglar spärr-hierarkin enligt PDL:\n- custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren\n- author (inre Sparr) — den informationsägande vårdenheten\n\nAgenterna skiljs åt på `agent.type` (diskriminator av typen pattern på `type`),\nsom ska innehålla kodningen `provenance-participant-type#custodian` respektive\n`provenance-participant-type#author`. En validator kan därmed avgöra vilken agent\nsom är vilken. Båda agenterna anges som logisk referens med HSA-id i\n`who.identifier`. Se GENERAL-003.\n\nOBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering\nbaserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver\nProvenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte\ninkluderas i svaret — filtreringen sker då redan på servernivå.",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
@@ -116,9 +117,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSProvenance.csv
       "path" : "Provenance.agent",
       "slicing" : {
         "discriminator" : [{
-          "type" : "value",
-          "path" : "type.coding.code"
+          "type" : "pattern",
+          "path" : "type"
         }],
+        "description" : "Agenterna skiljs åt på agent.type: custodian (vårdgivare, yttre Sparr) och author (vårdenhet, inre Sparr).",
+        "ordered" : false,
         "rules" : "open"
       },
       "min" : 2,
@@ -128,6 +131,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSProvenance.csv
       "id" : "Provenance.agent:custodian",
       "path" : "Provenance.agent",
       "sliceName" : "custodian",
+      "short" : "Juridiskt ansvarig vårdgivare – yttre Sparr",
       "min" : 1,
       "max" : "1",
       "mustSupport" : true
@@ -155,9 +159,30 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSProvenance.csv
       "mustSupport" : true
     },
     {
+      "id" : "Provenance.agent:custodian.who.identifier",
+      "path" : "Provenance.agent.who.identifier",
+      "short" : "Vårdgivarens HSA-id",
+      "min" : 1,
+      "mustSupport" : true
+    },
+    {
+      "id" : "Provenance.agent:custodian.who.identifier.system",
+      "path" : "Provenance.agent.who.identifier.system",
+      "min" : 1,
+      "patternUri" : "urn:oid:1.2.752.29.4.19",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Provenance.agent:custodian.who.identifier.value",
+      "path" : "Provenance.agent.who.identifier.value",
+      "min" : 1,
+      "mustSupport" : true
+    },
+    {
       "id" : "Provenance.agent:author",
       "path" : "Provenance.agent",
       "sliceName" : "author",
+      "short" : "Informationsägande vårdenhet – inre Sparr",
       "min" : 1,
       "max" : "1",
       "mustSupport" : true
@@ -182,6 +207,26 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSProvenance.csv
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"]
       }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Provenance.agent:author.who.identifier",
+      "path" : "Provenance.agent.who.identifier",
+      "short" : "Vårdenhetens HSA-id",
+      "min" : 1,
+      "mustSupport" : true
+    },
+    {
+      "id" : "Provenance.agent:author.who.identifier.system",
+      "path" : "Provenance.agent.who.identifier.system",
+      "min" : 1,
+      "patternUri" : "urn:oid:1.2.752.29.4.19",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Provenance.agent:author.who.identifier.value",
+      "path" : "Provenance.agent.who.identifier.value",
+      "min" : 1,
       "mustSupport" : true
     }]
   }

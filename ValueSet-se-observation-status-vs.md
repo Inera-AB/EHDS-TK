@@ -1,4 +1,4 @@
-# SE Observation Status (SNOMED CT urval 56431000052106) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# SE Observation Status (SNOMED CT urval 56431000052106) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs | *Version*:0.6.0 |
-| Active as of 2026-10-15 | *Computable Name*:SEObservationStatusVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs | *Version*:0.7.0 |
+| Active as of 2026-10-26 | *Computable Name*:SEObservationStatusVS |
 
  
 Tillåtna statusvärden för GetObservations observationStatus. Urvals-id 56431000052106, SNOMED CT SE (OID 1.2.752.116.2.1.1). Mappning till FHIR ObservationStatus via ConceptMap observation-status-map. 
@@ -46,12 +46,12 @@ Tillåtna statusvärden för GetObservations observationStatus. Urvals-id 564310
   "resourceType" : "ValueSet",
   "id" : "se-observation-status-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEObservationStatusVS",
   "title" : "SE Observation Status (SNOMED CT urval 56431000052106)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

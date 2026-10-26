@@ -1,4 +1,4 @@
-# RIV-TA xs:boolean - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# RIV-TA xs:boolean - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSRivBoolean |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivBoolean |
 
  
 Sanningsvärde (true/false). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivBoolean.csv
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivBoolean",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSRivBoolean",
   "title" : "RIV-TA xs:boolean",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

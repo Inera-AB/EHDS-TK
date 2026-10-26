@@ -1,4 +1,4 @@
-# SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSAuditEventReadAccessLog |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSAuditEventReadAccessLog |
 
  
 Profil för att läsa åtkomstloggar: representerar en befintlig loggpost som lämnas ut till patienten, mappad från RIVTA-tjänstekontraktet GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Täcker 1177 Journal 1.1, 2.0. Krävs ej för NPÖ. 
@@ -39,11 +39,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventRead
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSAuditEventReadAccessLog",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventReadAccessLog",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSAuditEventReadAccessLog",
   "title" : "SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,0 +1,72 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/Provenance/SEEHDSProvenanceExample> a fhir:Provenance ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "SEEHDSProvenanceExample"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance" ;
+       fhir:index 0 ;
+       fhir:link <https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance>
+     ]
+  ] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: Provenance SEEHDSProvenanceExample</b></p><a name=\"SEEHDSProvenanceExample\"> </a><a name=\"hcSEEHDSProvenanceExample\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-SEEHDSProvenance.html\">SE EHDS Provenance</a></p></div><p>Härkomst för Identifier: <a href=\"http://terminology.hl7.org/7.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt #xD;#xA;#xD;#xA;This oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: #xD;#xA;#xD;#xA;Note that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.#xD;#xA;#xD;#xA;This OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b</p><p>Sammanfattning</p><table class=\"grid\"><tr><td>Registrerad</td><td>2023-06-01 12:00:00+0200</td></tr></table><p><b>Agenter</b></p><table class=\"grid\"><tr><td><b>Typ</b></td><td><b>vem</b></td></tr><tr><td><span title=\"Koder:{http://terminology.hl7.org/CodeSystem/provenance-participant-type custodian}\">Custodian</span></td><td>Exempelregionen (Identifier: <code>urn:oid:1.2.752.29.4.19</code>/SE2321000016-15CQ)</td></tr><tr><td><span title=\"Koder:{http://terminology.hl7.org/CodeSystem/provenance-participant-type author}\">Author</span></td><td>Exempelvårdcentralen (Identifier: <code>urn:oid:1.2.752.29.4.19</code>/SE2321000016-15D1)</td></tr></table></div>"
+  ] ;
+  fhir:Provenance.target [
+     fhir:index 0 ;
+     fhir:Reference.identifier [
+       fhir:Identifier.system [ fhir:value "urn:ietf:rfc:3986" ] ;
+       fhir:Identifier.value [ fhir:value "urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b" ]
+     ]
+  ] ;
+  fhir:Provenance.recorded [ fhir:value "2023-06-01T12:00:00+02:00"^^xsd:dateTime] ;
+  fhir:Provenance.agent [
+     fhir:index 0 ;
+     fhir:Provenance.agent.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/provenance-participant-type" ] ;
+         fhir:Coding.code [ fhir:value "custodian" ] ;
+         fhir:Coding.display [ fhir:value "Custodian" ]
+       ]
+     ] ;
+     fhir:Provenance.agent.who [
+       fhir:Reference.identifier [
+         fhir:Identifier.system [ fhir:value "urn:oid:1.2.752.29.4.19" ] ;
+         fhir:Identifier.value [ fhir:value "SE2321000016-15CQ" ]
+       ] ;
+       fhir:Reference.display [ fhir:value "Exempelregionen" ]
+     ]
+  ], [
+     fhir:index 1 ;
+     fhir:Provenance.agent.type [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/provenance-participant-type" ] ;
+         fhir:Coding.code [ fhir:value "author" ] ;
+         fhir:Coding.display [ fhir:value "Author" ]
+       ]
+     ] ;
+     fhir:Provenance.agent.who [
+       fhir:Reference.identifier [
+         fhir:Identifier.system [ fhir:value "urn:oid:1.2.752.29.4.19" ] ;
+         fhir:Identifier.value [ fhir:value "SE2321000016-15D1" ]
+       ] ;
+       fhir:Reference.display [ fhir:value "Exempelvårdcentralen" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/Provenance/SEEHDSProvenanceExample.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome – Provsvar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetLaboratoryOrderOutcome – Provsvar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **GetLaboratoryOrderOutcome – Provsvar**
@@ -454,7 +454,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | | |
 | :--- | :--- |
 | LAB-001 | **Beslutat:**`cv`→`valueCodeableConcept`,`pq`→`valueQuantity`,`intervalPQ`→`valueRange`,`st`→`valueString`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
-| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPATIENT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
+| PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPAT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
 ## Föreslagna nya issues

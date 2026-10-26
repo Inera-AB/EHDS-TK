@@ -1,4 +1,4 @@
-# Profiles - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# Profiles - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * **Profiles**
@@ -22,7 +22,7 @@ Kraven på API:et anges i [SEEHDSResourceAccessProvider](CapabilityStatement-SEE
 | [SEEHDSPatient](StructureDefinition-SEEHDSPatient.md) | EU Core Patient (patient-eu-core) | Patient med identifierarslicar enligt SEBasePatient (personnummer, samordningsnummer, nationelltReservnummer). Skapas utifrån patientId, se GENERAL-006. |
 | [SEEHDSPractitionerRole](StructureDefinition-SEEHDSPractitionerRole.md) | EU Core PractitionerRole (practitionerRole-eu-core) | Personal i uppdrag; identifier-slice`hsaid`enligt SEBasePractitionerRole. Används som logisk referens. |
 | [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.md) | EU Core Organization (organization-eu-core) | Organisationsenhet; identifier-slice`hsaid`enligt SEBaseOrganization samt SMI-id. |
-| [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.md) | Provenance | Provenance med tre agenter: custodian (vårdgivare), author (vårdenhet), assembler (EHDS-bryggan). |
+| [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.md) | Provenance | Provenance med två agenter, custodian (vårdgivare, yttre Sparr) och author (vårdenhet, inre Sparr), som skiljs åt på`agent.type`och anges med HSA-id. Se GENERAL-003. |
 
 -------
 

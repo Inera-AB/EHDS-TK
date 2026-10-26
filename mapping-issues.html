@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0</title>
+    <title>Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.6.0 - ci-build
+            <span style="display:inline-block;">0.7.0 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.6.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Mappningsissues och Designbeslut</h2>
   
 
@@ -610,7 +610,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>PDL-001</td>
       <td>Alla TK</td>
       <td><code class="language-plaintext highlighter-rouge">approvedForPatient</code> (boolean, <code class="language-plaintext highlighter-rouge">1..1</code>) i alla TK-headrar saknar standardmappning till FHIR <code class="language-plaintext highlighter-rouge">meta.security</code>.</td>
-      <td><code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPATIENT</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> <code class="language-plaintext highlighter-rouge">v3-ActCode#NOPAT</code>.</td>
     </tr>
     <tr>
       <td>MED-001</td>
@@ -710,8 +710,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td>GENERAL-003</td>
       <td>Alla TK</td>
-      <td>Provenance-agenter: två agenter definieras — <code class="language-plaintext highlighter-rouge">custodian</code> (vårdgivare/yttre Sparr) och <code class="language-plaintext highlighter-rouge">author</code> (vårdenhet/inre Sparr). Gäller alla TK.</td>
-      <td>Tydlig ansvarskedja i Provenance-resursen krävs för spårbarhet och PDL-krav.</td>
+      <td>Provenance-agenter: två agenter definieras — <code class="language-plaintext highlighter-rouge">custodian</code> (vårdgivare/yttre Sparr) och <code class="language-plaintext highlighter-rouge">author</code> (vårdenhet/inre Sparr). Gäller alla TK. Agenterna skiljs åt på <code class="language-plaintext highlighter-rouge">agent.type</code>, som innehåller <code class="language-plaintext highlighter-rouge">provenance-participant-type#custodian</code> respektive <code class="language-plaintext highlighter-rouge">#author</code> (diskriminator <code class="language-plaintext highlighter-rouge">pattern</code> på <code class="language-plaintext highlighter-rouge">type</code>). Båda anges som logisk referens med HSA-id i <code class="language-plaintext highlighter-rouge">who.identifier</code> (system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code>).</td>
+      <td>Tydlig ansvarskedja i Provenance-resursen krävs för spårbarhet och PDL-krav. Tidigare pekade diskriminatorn på <code class="language-plaintext highlighter-rouge">type.coding.code</code>, där profilen inte hade något fast värde, så validering kunde inte avgöra vilken agent som var vilken. Diskriminatorn pekar nu på det element som har mönstret.</td>
     </tr>
     <tr>
       <td>GENERAL-004</td>
@@ -752,8 +752,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td>PDL-001</td>
       <td>Alla TK</td>
-      <td><code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> kod <code class="language-plaintext highlighter-rouge">NOPATIENT</code> (v3-ActCode).</td>
-      <td>Standardkod <code class="language-plaintext highlighter-rouge">NOPATIENT</code> är närmast semantiskt korrekta för "ej avsedd att visas för patient". Undviker custom extension.</td>
+      <td><code class="language-plaintext highlighter-rouge">approvedForPatient = false</code> → <code class="language-plaintext highlighter-rouge">meta.security</code> kod <code class="language-plaintext highlighter-rouge">NOPAT</code> (v3-ActCode). Tidigare versioner angav felaktigt koden <code class="language-plaintext highlighter-rouge">NOPATIENT</code>, som inte finns i v3-ActCode.</td>
+      <td><code class="language-plaintext highlighter-rouge">NOPAT</code> är den kod i v3-ActCode som ligger närmast "ej avsedd att visas för patient". Undviker custom extension.</td>
     </tr>
     <tr>
       <td>OBS-001</td>
@@ -843,7 +843,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><strong><code class="language-plaintext highlighter-rouge">DocumentReference.content[0].attachment.data</code> är base64</strong> — stora dokument bör refereras via URL i <code class="language-plaintext highlighter-rouge">attachment.url</code> för att undvika onödigt stora FHIR-resurser.</li>
   <li><strong><code class="language-plaintext highlighter-rouge">ImagingStudy</code> är komplex och kan vara overkill för enbart utlåtandemetadata</strong> — för GetImagingOutcome med begränsad DICOM-referensdata kan ImagingStudy-resursen bli onödigt komplex (se IMG-002).</li>
   <li><strong><code class="language-plaintext highlighter-rouge">Observation.value[x]</code> stödjer variabelprecisions-datum dåligt</strong> — FHIR R4 <code class="language-plaintext highlighter-rouge">dateTime</code> kräver specifik precisionsnivå, men RIVTA-tidsstämplar kan ha varierande precision (se OBS-001). <strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">valueString</code> för <code class="language-plaintext highlighter-rouge">YYYY</code>/<code class="language-plaintext highlighter-rouge">YYYYMM</code>, <code class="language-plaintext highlighter-rouge">valueDateTime</code> för <code class="language-plaintext highlighter-rouge">YYYYMMDD</code>/<code class="language-plaintext highlighter-rouge">YYYYMMDDHHMMSS</code>.</li>
-  <li><strong>Inga standardiserade FHIR-element för samtycke/Sparr-information</strong> — <code class="language-plaintext highlighter-rouge">approvedForPatient</code>-flaggan i RIVTA-headrar har ingen direkt FHIR-motsvarighet. <strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">meta.security</code> med kod <code class="language-plaintext highlighter-rouge">NOPATIENT</code> (v3-ActCode) om <code class="language-plaintext highlighter-rouge">false</code> (se PDL-001).</li>
+  <li><strong>Inga standardiserade FHIR-element för samtycke/Sparr-information</strong> — <code class="language-plaintext highlighter-rouge">approvedForPatient</code>-flaggan i RIVTA-headrar har ingen direkt FHIR-motsvarighet. <strong>Beslutat:</strong> <code class="language-plaintext highlighter-rouge">meta.security</code> med kod <code class="language-plaintext highlighter-rouge">NOPAT</code> (v3-ActCode) om <code class="language-plaintext highlighter-rouge">false</code> (se PDL-001).</li>
   <li><strong><code class="language-plaintext highlighter-rouge">Flag</code> saknar <code class="language-plaintext highlighter-rouge">note</code>-element i R4</strong> — <code class="language-plaintext highlighter-rouge">alertInformationComment</code> kan inte mappas till standardelement på Flag (se ALERT-005). Kräver custom extension.</li>
   <li><strong><code class="language-plaintext highlighter-rouge">AuditEvent.patient</code> är R4B-tillägg</strong> — i R4 anges patienten med BALP:s entity-mönster (<code class="language-plaintext highlighter-rouge">entity.role = 1</code>), se <a href="mapping-getaccesslogforpatient.html">Auditloggning</a> och LOG-001.</li>
   <li><strong>Logiska modeller och RIV-TA-XML</strong> — de logiska modellerna avbildar svarsmeddelandena exakt (namn, nästling, namnrymder, RIV-TA-datatyper, textinnehåll) och kan läsas av en FML-motor, se <a href="logical-models.html#fml">Logiska modeller</a>. Kvarvarande begränsningar: SOAP-kuvertet måste skalas av före transformering, <code class="language-plaintext highlighter-rouge">xs:any</code>-utökningar ignoreras, val mellan element och andra regler från testsvitens schematron är invarianter (GENERAL-009), men TKB-regler för datatypernas underelement i ett visst sammanhang (t.ex. <code class="language-plaintext highlighter-rouge">validityTimePeriod.start</code> 1..1) står i definitionen men är inte maskinellt uttryckta.</li>
@@ -868,7 +868,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.6.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Oct 15, 2026 18:03+0000">2026-10-15</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

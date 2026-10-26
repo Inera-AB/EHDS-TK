@@ -1,4 +1,4 @@
-# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSObservationBase |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSObservationBase |
 
  
 Basprofil för alla observationer från GetObservations (clinicalprocess:healthcond:basic v2.0). 
@@ -46,11 +46,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSObservationBase",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSObservationBase",
   "title" : "SE EHDS Observation Base – GetObservations",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -117,7 +117,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
     {
       "id" : "Observation.meta.security",
       "path" : "Observation.meta.security",
-      "short" : "Säkerhetsmärkning:\nconfidentialityIndicator=true → v3-Confidentiality#R (skyddad identitet)\napprovedForPatient=false      → ActCode#NOPATIENT (ej visas för patient, se PDL-001)",
+      "short" : "Säkerhetsmärkning:\nconfidentialityIndicator=true → v3-Confidentiality#R (skyddad identitet)\napprovedForPatient=false      → ActCode#NOPAT (ej visas för patient, se PDL-001)",
       "mustSupport" : true
     },
     {

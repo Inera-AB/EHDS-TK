@@ -1,4 +1,4 @@
-# GetFunctionalStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# GetFunctionalStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMFunctionalStatus | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSLMFunctionalStatus |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMFunctionalStatus | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMFunctionalStatus |
 
  
 Logisk modell för tjänstekontraktet GetFunctionalStatus (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatusResponder:2). Representerar responsens informationsstruktur: dokumenterade bedömningar av funktionsnedsättningar och/eller aktivitetsförmåga (PADL) för en patient. Bedömningskategori styrs av assessmentCategory: 'pad-pad' (PADL) eller 'fun-fun' (funktionsnedsättning). En tjänsteproducent måste använda samma värde för categorization i engagemangsindex som för assessmentCategory i svaret. 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMFunctionalSt
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatusResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMFunctionalStatus",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSLMFunctionalStatus",
   "title" : "GetFunctionalStatus",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

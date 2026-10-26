@@ -1,4 +1,4 @@
-# SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:SEEHDSMedicationStatement |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:SEEHDSMedicationStatement |
 
  
 Profil för läkemedelsordinationer, förskrivningar och administrerade läkemedel mappat från RIVTA-tjänstekontraktet GetMedicationHistory (clinicalprocess:activityprescription:actoutcome v2.2). Täcker NPÖ 2.2 och 1177 Journal 2.2. 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSMedicationStat
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSMedicationStatement",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "SEEHDSMedicationStatement",
   "title" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

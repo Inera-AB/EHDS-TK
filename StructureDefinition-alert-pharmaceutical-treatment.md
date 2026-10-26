@@ -1,4 +1,4 @@
-# Läkemedel vid behandling - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# Läkemedel vid behandling - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-pharmaceutical-treatment | *Version*:0.6.0 |
-| Draft as of 2026-10-15 | *Computable Name*:AlertPharmaceuticalTreatment |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-pharmaceutical-treatment | *Version*:0.7.0 |
+| Draft as of 2026-10-26 | *Computable Name*:AlertPharmaceuticalTreatment |
 
 Läkemedel som används vid uppmärksammad behandling, ATC-kod rekommenderas (alertInformationBody.treatment.pharmaceuticalTreatment). Lista med 0..* – ryms ej i Flag.code (1..1).
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-pharmaceutical
   "resourceType" : "StructureDefinition",
   "id" : "alert-pharmaceutical-treatment",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-pharmaceutical-treatment",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "AlertPharmaceuticalTreatment",
   "title" : "Läkemedel vid behandling",
   "status" : "draft",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

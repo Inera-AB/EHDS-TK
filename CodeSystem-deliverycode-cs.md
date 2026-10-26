@@ -1,4 +1,4 @@
-# DeliveryCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.6.0
+# DeliveryCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/deliverycode | *Version*:0.6.0 |
-| Active as of 2026-10-15 | *Computable Name*:DeliveryCodeCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/deliverycode | *Version*:0.7.0 |
+| Active as of 2026-10-26 | *Computable Name*:DeliveryCodeCS |
 
  
 Kodverk för förlossningssätt (DeliveryCodeEnum). Används i GetMaternityMedicalHistory. 
@@ -27,11 +27,11 @@ Kodverk för förlossningssätt (DeliveryCodeEnum). Används i GetMaternityMedic
   "resourceType" : "CodeSystem",
   "id" : "deliverycode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/deliverycode",
-  "version" : "0.6.0",
+  "version" : "0.7.0",
   "name" : "DeliveryCodeCS",
   "title" : "DeliveryCode",
   "status" : "active",
-  "date" : "2026-10-15T18:03:33+00:00",
+  "date" : "2026-10-26T15:58:30+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
