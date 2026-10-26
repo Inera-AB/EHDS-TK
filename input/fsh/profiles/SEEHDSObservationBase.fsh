@@ -37,7 +37,7 @@ Description: """
 * meta.security ^short = """
     Säkerhetsmärkning:
     confidentialityIndicator=true → v3-Confidentiality#R (skyddad identitet)
-    approvedForPatient=false      → ActCode#NOPATIENT (ej visas för patient, se PDL-001)
+    approvedForPatient=false      → ActCode#NOPAT (ej visas för patient, se PDL-001)
   """
 
 // ─── Status ────────────────────────────────────────────────────────────────

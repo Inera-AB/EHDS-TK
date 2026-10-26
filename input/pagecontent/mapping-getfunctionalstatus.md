@@ -70,7 +70,7 @@ PADL-typ krävs.
 | `functionalStatusAssessmentHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (om legalAuthenticator finns, prioriteras framför documentTime) |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Condition.asserter` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | `false` → kod `NOPATIENT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
+| `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | `false` → kod `NOPAT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
 | `functionalStatusAssessmentHeader.careContactId` | 0..1 | `Condition.encounter.identifier.value` | Logisk referens till vårdkontakt |
 | `functionalStatusAssessmentHeader.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
 | `functionalStatusAssessmentHeader.nullified` | 0..0 | N/A | Ej tillämpligt för detta TK |
@@ -127,7 +127,7 @@ PDL-styrning i GetFunctionalStatus utgår från `accountableHealthcareProfession
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
 | Inre Sparr (vårdenhet) | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
-| Patientgodkännande | `functionalStatusAssessmentHeader.approvedForPatient` (boolean) | `Condition.meta.security`; `false` → `NOPATIENT` (v3-ActCode) |
+| Patientgodkännande | `functionalStatusAssessmentHeader.approvedForPatient` (boolean) | `Condition.meta.security`; `false` → `NOPAT` (v3-ActCode) |
 
 ---
 
@@ -161,7 +161,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | ID | Fråga |
 |---|---|
 | FUNC-001 | **Beslutat:** PADL-poster kodas som `Condition.note` med format `[typeOfAssessment]: assessment`. Se avsnitt ovan. |
-| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPATIENT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
+| PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPAT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
 ---
