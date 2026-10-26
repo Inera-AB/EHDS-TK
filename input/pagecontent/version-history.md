@@ -6,6 +6,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
+| 0.8.0 | 2026-10-26 | Draft | Releaser publiceras med IG Publishers officiella publiceringsläge enligt IneraFHIRTemplate. Paket-id:t är nu `inera.ehds.ehds-tk`. |
 | 0.7.0 | 2026-10-26 | Draft | Rätt kod `NOPAT` för `approvedForPatient = false`, och Provenance-agenterna custodian och author går nu att skilja åt vid validering. |
 | 0.6.0 | 2026-10-12 | Draft | Regler från TKB:erna och testsvitens schematron, bland annat val mellan element (MED-003), är FHIRPath-invarianter i de logiska modellerna. |
 | 0.5.0 | 2026-10-12 | Draft | Alla aktiva tjänstekontraktsversioner enligt startsidan har nu logiska modeller och mappning, inte bara den senaste versionen. |
@@ -18,6 +19,16 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 ---
 
 ### Ändringslogg
+
+#### 0.8.0 — 2026-10-26 (Draft)
+
+**Publicering**
+
+- Releaser publiceras med IG Publishers officiella publiceringsläge (`-go-publish`) till den gemensamma webbroten på fhir.inera.se, enligt den nya publiceringsmetoden i IneraFHIRTemplate. Publishern skriver versionshistoriken (`history.html` och `package-list.json` på `https://fhir.inera.se/ig/ehds-tk/`) och sätter releasebannern på alla sidor, även i tidigare versioner.
+- Paket-id:t är ändrat från `inera.ehds.tk` till `inera.ehds.ehds-tk`. Publiceringen lägger IG:n i katalogen som anges av tredje delen av paket-id:t, och den ska vara densamma som i canonical (`https://fhir.inera.se/ig/ehds-tk`), som är oförändrad.
+- Releasetaggar skrivs utan `v`, till exempel `0.8.0`. De tidigare taggarna `v0.3.1`–`v0.3.3` ligger kvar.
+- `publication-request.json` beskriver varje release. `package-list.json` finns inte längre i repot.
+- Workflowsen anropar de delade workflowsen i `Inera-AB/fhir-ig-workflows`. release-please och `CHANGELOG.md` är borttagna; versionen räknas upp för hand och ändringarna beskrivs på den här sidan.
 
 #### 0.7.0 — 2026-10-26 (Draft)
 
