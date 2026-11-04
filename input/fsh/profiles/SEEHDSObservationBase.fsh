@@ -43,7 +43,6 @@ Description: """
 // ─── Status ────────────────────────────────────────────────────────────────
 
 * status 1..1 MS
-* status from SEObservationStatusVS (required)
 * status ^short = "Observationsstatus (observationBody.status – SNOMED CT urvals-id 56431000052106 → FHIR ObservationStatus via ConceptMap, se OBS-003)"
 
 // ─── Klassificering ────────────────────────────────────────────────────────

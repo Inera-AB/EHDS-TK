@@ -12,6 +12,8 @@ Description: "Profil för laboratorieresultat mappat från RIVTA-tjänstekontrak
 * meta.source ^short = "Källsystem HSA-id (header.sourceSystemId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 * performer only Reference(SEEHDSPractitionerRole or SEEHDSOrganization)
+// EU Core-slicen organization tillåter bara Organization
+* performer[organization] only Reference(SEEHDSOrganization)
 * performer MS
 * performer ^short = "Ansvarig laboratorium/personal (header.author.orgUnit)"
 

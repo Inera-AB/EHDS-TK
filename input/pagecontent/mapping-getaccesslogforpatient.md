@@ -1,4 +1,4 @@
-# Åtkomstloggar – patientåtkomst och auditloggning i ett EHDS-kompatibelt FHIR-API
+{::options header_offset="1" /}
 
 **Gäller:** EHDS-bryggor och andra FHIR-API:er som lämnar ut patientdata från RIVTA-tjänstekontrakten i denna IG  
 **FHIR-resurs:** `AuditEvent` (FHIR R4)  

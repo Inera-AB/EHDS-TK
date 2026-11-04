@@ -1,4 +1,4 @@
-# GetVaccinationHistory – Vaccinationshistorik
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetVaccinationHistory v2.0 och v1.0  
 **FHIR-profiler:** [SEEHDSImmunization](StructureDefinition-SEEHDSImmunization.html) | [SEEHDSDevice](StructureDefinition-SEEHDSDevice.html) | [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.html)  

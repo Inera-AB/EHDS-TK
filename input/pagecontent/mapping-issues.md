@@ -1,4 +1,4 @@
-# Mappningsissues och Designbeslut
+{::options header_offset="1" /}
 
 Denna sida dokumenterar öppna designfrågor och fattade beslut för mappningar från svenska RIVTA-tjänstekontrakt (TKBer) till FHIR R4-resurser inom ramen för EHDS-TK. Sidan används som arbetsunderlag under implementationsguidearbetet och uppdateras löpande i takt med att frågor utreds och beslut fattas. Varje issue är kopplat till ett eller flera tjänstekontrakt och beskriver det tekniska problemet, möjliga lösningsalternativ samt aktuellt förslag eller fattat beslut. Öppna frågor kräver vidare utredning eller nationellt samordningsbeslut innan de kan avslutas.
 

@@ -1,4 +1,4 @@
-# GetMedicationHistory – Läkemedelshistorik
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetMedicationHistory v2.2  
 **FHIR-profil:** [SEEHDSMedicationStatement](StructureDefinition-SEEHDSMedicationStatement.html)  

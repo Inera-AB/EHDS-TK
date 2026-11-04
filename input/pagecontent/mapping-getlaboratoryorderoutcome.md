@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome – Provsvar
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetLaboratoryOrderOutcome v4.2, v4.1 och v3.1  
 **FHIR-profiler:** [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.html) | [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.html)  

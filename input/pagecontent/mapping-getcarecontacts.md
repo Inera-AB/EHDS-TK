@@ -1,4 +1,4 @@
-# GetCareContacts – Vårdkontakter
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:logistics:logistics` GetCareContacts v3.0 och v2.0  
 **FHIR-profil:** [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.html)  

@@ -1,4 +1,4 @@
-# GetCarePlans – Vårdplan
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:logistics:logistics` GetCarePlans v2.0  
 **FHIR-profil:** [SEEHDSCarePlan](StructureDefinition-SEEHDSCarePlan.html)  

@@ -1,4 +1,4 @@
-# GetReferralOutcome – Remissvar / Konsultationssvar
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetReferralOutcome v3.2 och v3.1  
 **FHIR-profil:** [SEEHDSDiagnosticReportReferral](StructureDefinition-SEEHDSDiagnosticReportReferral.html)  

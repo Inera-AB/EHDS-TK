@@ -250,3 +250,28 @@ Extension `additionalBodySite` är en övergångslösning för FHIR R4. I FHIR R
 - [ ] Kardinalitet från RIVTA (1..1, 1..*) är överfört till profilen
 - [ ] `approvedForPatient = false` → `meta.security` kod `NOPAT` (se avsnitt 9)
 - [ ] ig.ini pekar på `ImplementationGuide-{id}.json` (filnamn genereras från `id`-fältet i sushi-config, inte `name`)
+
+---
+
+## Publicering och releaser
+
+IG:n följer publiceringsmetoden i [IneraFHIRTemplate](https://github.com/Inera-AB/IneraFHIRTemplate). Workflowsen i `.github/workflows/` är korta anrop till de delade workflowsen i [Inera-AB/fhir-ig-workflows](https://github.com/Inera-AB/fhir-ig-workflows) (`@v1`).
+
+- **Branchbyggen** (`publish.yml`) hamnar på repots egna GitHub Pages: `https://inera-ab.github.io/EHDS-TK/` för `main` och `…/branches/<branch>/` för övriga brancher.
+- **Releaser** (`release.yml`) publiceras med IG Publishers publiceringsläge till `https://fhir.inera.se/ig/ehds-tk/<version>/`. Versionshistoriken (`history.html`, `package-list.json`) skrivs av publishern i webbroten och finns inte i repot.
+
+Inför en release, i en PR mot `main`:
+
+1. Räkna upp `version` i `sushi-config.yaml` och lägg till en post i `input/pagecontent/version-history.md`.
+2. Skriv en ny `desc` i `publication-request.json` (den måste skilja sig från tidigare releaser) och sätt `mode`: `milestone`, eller `working` för en release candidate.
+3. Testpublicera gärna: Actions → *Publish release* → *Run workflow* på branchen publicerar till testwebbroten [inera-ab/fhir-portal-test](https://github.com/Inera-AB/fhir-portal-test).
+
+Tagga sedan release-commiten med versionen **utan `v`**:
+
+```bash
+git fetch origin
+git tag -a 0.8.0 -m "0.8.0" origin/main
+git push origin 0.8.0
+```
+
+Efter releasen: skicka en PR till [FHIR/ig-registry](https://github.com/FHIR/ig-registry) med ändringen i artefakten `fhir-ig-list.diff`. Fullständiga instruktioner finns i mallens [`docs/`](https://github.com/Inera-AB/IneraFHIRTemplate/tree/main/docs).

@@ -18,8 +18,8 @@ Usage: #definition
 * status = #active
 * experimental = false
 * date = "2025-01-01"
-* sourceUri = "http://snomed.info/sct"
-* targetUri = "http://hl7.org/fhir/observation-status"
+* sourceCanonical = Canonical(SEObservationStatusVS)
+* targetCanonical = "http://hl7.org/fhir/ValueSet/observation-status"
 * description = "Mappar SNOMED CT-koder från urvals-id 56431000052106 till FHIR ObservationStatus."
 
 * group[0].source = "http://snomed.info/sct"

@@ -1,4 +1,4 @@
-# GetObservations – Kliniska observationer och mätvärden
+{::options header_offset="1" /}
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:basic` GetObservations v2.0 och v1.2  
 **FHIR-profiler:** [SEEHDSObservationBase](StructureDefinition-SEEHDSObservationBase.html) (generell) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.html) (tillväxtkurva)  

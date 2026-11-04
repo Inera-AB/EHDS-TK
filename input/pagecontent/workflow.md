@@ -1,5 +1,3 @@
-# Workflow
-
 This page describes the clinical or administrative workflows supported by this Implementation Guide, the roles involved, and the obligations that apply to each actor.
 
 ---
