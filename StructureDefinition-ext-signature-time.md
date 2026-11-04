@@ -1,4 +1,4 @@
-# Signeringstidpunkt för journalanteckning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Signeringstidpunkt för journalanteckning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:DocumentReferenceSignatureTime |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:DocumentReferenceSignatureTime |
 
 Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.timestamp, JoL-header v2.2). Anges endast när signature.timestamp finns i källan; ingen ersättningstidpunkt sätts annars. Se DOC-003.
 
@@ -21,7 +21,7 @@ Tidpunkt då journalanteckningen signerades (careDocumentation.header.signature.
 
 * Använd denna Extension: [SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)](StructureDefinition-SEEHDSDocumentReference.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/ext-signature-time)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/ext-signature-time)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-ext-signature-time.c
   "resourceType" : "StructureDefinition",
   "id" : "ext-signature-time",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "DocumentReferenceSignatureTime",
   "title" : "Signeringstidpunkt för journalanteckning",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

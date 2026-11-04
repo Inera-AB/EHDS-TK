@@ -1,4 +1,4 @@
-# RIV-TA TimeStampType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# RIV-TA TimeStampType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivTimeStamp |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSRivTimeStamp |
 
  
 Tidpunkt i formatet ÅÅÅÅMMDDttmmss (lokal svensk tid utan tidszon). Konverteras till FHIR dateTime/instant med Europe/Stockholm, se GENERAL-001. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -18,7 +18,7 @@ Tidpunkt i formatet ÅÅÅÅMMDDttmmss (lokal svensk tid utan tidszon). Konverte
 
 * Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md), [GetAlertInformation 3.0](StructureDefinition-SEEHDSLMAlertInformationV30.md), [GetCareContacts](StructureDefinition-SEEHDSLMCareContacts.md), [GetCareContacts 2.0](StructureDefinition-SEEHDSLMCareContactsV20.md)... Show 26 more, [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md), [GetCareDocumentation 2.1](StructureDefinition-SEEHDSLMCareDocumentationV21.md), [GetCarePlans](StructureDefinition-SEEHDSLMCarePlans.md), [GetDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md), [GetFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md), [GetLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md), [GetLaboratoryOrderOutcome 3.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.md), [GetLaboratoryOrderOutcome 4.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.md), [GetMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.md), [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md), [GetObservations](StructureDefinition-SEEHDSLMObservations.md), [GetObservations 1.2](StructureDefinition-SEEHDSLMObservationsV12.md), [GetReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md), [GetReferralOutcome 3.1](StructureDefinition-SEEHDSLMReferralOutcomeV31.md), [GetRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md), [GetVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md), [GetVaccinationHistory 1.0](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md), [RIV-TA TimePeriodType (clinicalprocess:activityprescription:actoutcome:2)](StructureDefinition-SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:3)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondActoutcome3.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:4)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondActoutcome4.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:basic:1)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondBasic1.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription2.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:description:3)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription3.md), [RIV-TA TimePeriodType (clinicalprocess:logistics:logistics:2)](StructureDefinition-SEEHDSRivTimePeriodTypeLogisticsLogistics2.md) and [RIV-TA TimePeriodType (clinicalprocess:logistics:logistics:3)](StructureDefinition-SEEHDSRivTimePeriodTypeLogisticsLogistics3.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivTimeStamp)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivTimeStamp)
 
 ### Formal Views of Profile Content
 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivTimeStamp.c
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivTimeStamp",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSRivTimeStamp",
   "title" : "RIV-TA TimeStampType",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

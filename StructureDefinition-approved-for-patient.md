@@ -1,4 +1,4 @@
-# Godkänd för patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Godkänd för patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:ApprovedForPatient |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:ApprovedForPatient |
 
 Anger om information är godkänd för delning med patient (approvedForPatient, Regel 3).
 
@@ -21,7 +21,7 @@ Anger om information är godkänd för delning med patient (approvedForPatient, 
 
 * Använd denna Extension: [SE EHDS CarePlan – Vårdplan (GetCarePlans)](StructureDefinition-SEEHDSCarePlan.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/approved-for-patient)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/approved-for-patient)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-approved-for-patient
   "resourceType" : "StructureDefinition",
   "id" : "approved-for-patient",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "ApprovedForPatient",
   "title" : "Godkänd för patient",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

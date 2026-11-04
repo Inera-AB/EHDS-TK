@@ -1,4 +1,4 @@
-# GetCareDocumentation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetCareDocumentation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMCareDocumentation |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSLMCareDocumentation |
 
  
 Logisk modell för tjänstekontraktet GetCareDocumentation (RIV-TA urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3). Representerar responsens informationsstruktur: journalanteckningar för en patient. Anteckningstyper: utredning, åtgärd/behandling, sammanfattning, samordning, inskrivning, slutanteckning, anteckning utan fysiskt möte, slutenvårdsanteckning och besöksanteckning. Meddelandeformatet är kompatibelt med HL7 v3 CDA v2. 
@@ -18,7 +18,7 @@ Logisk modell för tjänstekontraktet GetCareDocumentation (RIV-TA urn:riv:clini
 
 * Denna Logisk modell används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSLMCareDocumentation)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSLMCareDocumentation)
 
 ### Formal Views of Profile Content
 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMCareDocument
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSLMCareDocumentation",
   "title" : "GetCareDocumentation",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

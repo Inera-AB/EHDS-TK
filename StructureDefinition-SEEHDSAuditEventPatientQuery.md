@@ -1,4 +1,4 @@
-# SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSAuditEventPatientQuery |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSAuditEventPatientQuery |
 
  
 Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga) tar emot en sökning på en patients uppgifter och lämnar ut träfflistan, t.ex. MHD ITI-67 Find Document References eller QEDm PCC-44. Loggposterna behövs för att patienten ska kunna få veta vem som har tagit del av patientens uppgifter. 
@@ -25,7 +25,7 @@ Loggpost som ska skapas när ett EHDS-kompatibelt FHIR-API (t.ex. en EHDS-brygga
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 * Denna Profil används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSAuditEventPatientQuery)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSAuditEventPatientQuery)
 
 ### Formal Views of Profile Content
 
@@ -44,11 +44,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAuditEventPati
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSAuditEventPatientQuery",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSAuditEventPatientQuery",
   "title" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

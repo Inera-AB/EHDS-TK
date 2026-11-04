@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>DocBook-mappning – clinicalDocumentNoteText och bilagor - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
+    <title>DocBook-mappning – clinicalDocumentNoteText och bilagor - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.7.0 - ci-build
+            <span style="display:inline-block;">0.8.1 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>DocBook-mappning – clinicalDocumentNoteText och bilagor</h2>
   
 
@@ -210,44 +210,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#docbook-mappning--clinicaldocumentnotetext-och-bilagor" id="markdown-toc-docbook-mappning--clinicaldocumentnotetext-och-bilagor">DocBook-mappning – clinicalDocumentNoteText och bilagor</a>    <ul>
-      <li><a href="#bakgrund" id="markdown-toc-bakgrund">Bakgrund</a></li>
-      <li><a href="#översikt-över-flödet" id="markdown-toc-översikt-över-flödet">Översikt över flödet</a></li>
-      <li><a href="#steg-1--avkodning" id="markdown-toc-steg-1--avkodning">Steg 1 – Avkodning</a></li>
-      <li><a href="#steg-2--identifiering-av-docbook" id="markdown-toc-steg-2--identifiering-av-docbook">Steg 2 – Identifiering av DocBook</a>        <ul>
-          <li><a href="#i-clinicaldocumentnotetext" id="markdown-toc-i-clinicaldocumentnotetext">I clinicalDocumentNoteText</a></li>
-          <li><a href="#i-en-bilaga-multimediaentry" id="markdown-toc-i-en-bilaga-multimediaentry">I en bilaga (multimediaEntry)</a></li>
-          <li><a href="#om-tolkningen-misslyckas" id="markdown-toc-om-tolkningen-misslyckas">Om tolkningen misslyckas</a></li>
-        </ul>
-      </li>
-      <li><a href="#steg-3a--strategi-a-docbook--xhtml-obligatorisk" id="markdown-toc-steg-3a--strategi-a-docbook--xhtml-obligatorisk">Steg 3A – Strategi A: DocBook → XHTML (obligatorisk)</a>        <ul>
-          <li><a href="#elementmappning" id="markdown-toc-elementmappning">Elementmappning</a></li>
-          <li><a href="#stylade-sektioner-rutor" id="markdown-toc-stylade-sektioner-rutor">Stylade sektioner (rutor)</a></li>
-          <li><a href="#säkerhet" id="markdown-toc-säkerhet">Säkerhet</a></li>
-          <li><a href="#placering" id="markdown-toc-placering">Placering</a></li>
-        </ul>
-      </li>
-      <li><a href="#steg-3b--strategi-b-compositionsection-valfri" id="markdown-toc-steg-3b--strategi-b-compositionsection-valfri">Steg 3B – Strategi B: Composition.section (valfri)</a>        <ul>
-          <li><a href="#sektionsmappning" id="markdown-toc-sektionsmappning">Sektionsmappning</a></li>
-          <li><a href="#övriga-fält-i-composition" id="markdown-toc-övriga-fält-i-composition">Övriga fält i Composition</a></li>
-          <li><a href="#koppling-till-documentreference" id="markdown-toc-koppling-till-documentreference">Koppling till DocumentReference</a></li>
-        </ul>
-      </li>
-      <li><a href="#exempel" id="markdown-toc-exempel">Exempel</a>        <ul>
-          <li><a href="#källa-efter-avkodning" id="markdown-toc-källa-efter-avkodning">Källa (efter avkodning)</a></li>
-          <li><a href="#strategi-a--contentattachment" id="markdown-toc-strategi-a--contentattachment">Strategi A – content.attachment</a></li>
-          <li><a href="#strategi-b--composition" id="markdown-toc-strategi-b--composition">Strategi B – Composition</a></li>
-        </ul>
-      </li>
-      <li><a href="#kända-begränsningar" id="markdown-toc-kända-begränsningar">Kända begränsningar</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="docbook-mappning--clinicaldocumentnotetext-och-bilagor">DocBook-mappning – clinicalDocumentNoteText och bilagor</h1>
 
 <p><strong>Gäller:</strong> GetCareDocumentation v3.0 (<code class="language-plaintext highlighter-rouge">careDocumentation.body.clinicalDocumentNoteText</code> och <code class="language-plaintext highlighter-rouge">careDocumentation.body.multimediaEntry</code>)<br />
 <strong>FHIR-resurser:</strong> <a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a> (obligatorisk), <a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html">SEEHDSCompositionCareDocumentation</a> (valfri)<br />
@@ -256,7 +221,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="bakgrund">Bakgrund</h2>
+<h4 id="bakgrund">Bakgrund</h4>
 
 <p><code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> är av typen string. Fältet innehåller antingen fritext eller ett
 DocBook-dokument. När DocBook används ska fältet innehålla XML. Eftersom XML:en ligger inuti
@@ -322,7 +287,7 @@ format som FHIR-konsumenter kan använda direkt:</p>
 
 <hr />
 
-<h2 id="översikt-över-flödet">Översikt över flödet</h2>
+<h4 id="översikt-över-flödet">Översikt över flödet</h4>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RIVTA-svar (XML)
   ├── clinicalDocumentNoteText (entity-kodad sträng)
@@ -343,7 +308,7 @@ format som FHIR-konsumenter kan använda direkt:</p>
 
 <hr />
 
-<h2 id="steg-1--avkodning">Steg 1 – Avkodning</h2>
+<h4 id="steg-1--avkodning">Steg 1 – Avkodning</h4>
 
 <p><strong>clinicalDocumentNoteText:</strong> Entity-kodningen tas bort av den vanliga XML-parsningen av
 RIVTA-svaret. Strängvärdet som parsern ger är alltså DocBook-XML i klartext:</p>
@@ -366,11 +331,11 @@ saknas).</p>
 
 <hr />
 
-<h2 id="steg-2--identifiering-av-docbook">Steg 2 – Identifiering av DocBook</h2>
+<h4 id="steg-2--identifiering-av-docbook">Steg 2 – Identifiering av DocBook</h4>
 
 <p>Regeln skiljer sig beroende på var innehållet ligger.</p>
 
-<h3 id="i-clinicaldocumentnotetext">I clinicalDocumentNoteText</h3>
+<h5 id="i-clinicaldocumentnotetext">I clinicalDocumentNoteText</h5>
 
 <p>Textfältet saknar en egen typindikator. DocBook känns igen på att fältet innehåller
 <strong>entity-kodad XML</strong>, som i exemplet under <a href="#bakgrund">Bakgrund</a>:</p>
@@ -385,7 +350,7 @@ börjar med <code class="language-plaintext highlighter-rouge">&lt;?xml</code> e
 <p>Är båda villkoren uppfyllda behandlas innehållet som <strong>DocBook</strong>. Annars behandlas det som
 <strong>fritext</strong>, även om texten råkar innehålla enstaka tecken som <code class="language-plaintext highlighter-rouge">&lt;</code> eller <code class="language-plaintext highlighter-rouge">&amp;</code>.</p>
 
-<h3 id="i-en-bilaga-multimediaentry">I en bilaga (multimediaEntry)</h3>
+<h5 id="i-en-bilaga-multimediaentry">I en bilaga (multimediaEntry)</h5>
 
 <p>En bilaga har en uttrycklig typindikator. DocBook känns igen på <code class="language-plaintext highlighter-rouge">multimediaEntry.mediaType</code>:</p>
 
@@ -415,7 +380,7 @@ börjar med <code class="language-plaintext highlighter-rouge">&lt;?xml</code> e
 <p>En bilaga som innehåller <code class="language-plaintext highlighter-rouge">multimediaEntry.reference</code> (URL) i stället för <code class="language-plaintext highlighter-rouge">value</code> transformeras
 inte, eftersom innehållet inte finns i svaret.</p>
 
-<h3 id="om-tolkningen-misslyckas">Om tolkningen misslyckas</h3>
+<h5 id="om-tolkningen-misslyckas">Om tolkningen misslyckas</h5>
 
 <p>Om innehållet ser ut som DocBook men inte kan tolkas, eller om transformationen misslyckas:</p>
 
@@ -429,14 +394,14 @@ oförändrat.</li>
 
 <hr />
 
-<h2 id="steg-3a--strategi-a-docbook--xhtml-obligatorisk">Steg 3A – Strategi A: DocBook → XHTML (obligatorisk)</h2>
+<h4 id="steg-3a--strategi-a-docbook--xhtml-obligatorisk">Steg 3A – Strategi A: DocBook → XHTML (obligatorisk)</h4>
 
 <p>DocBook-dokumentet transformeras till ett XHTML-fragment med en rot-<code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> i XHTML-namnrymden.
 Transformationen behåller källans ordning och struktur. Resultatet base64-kodas och läggs i
 <code class="language-plaintext highlighter-rouge">DocumentReference.content[0].attachment.data</code> med
 <code class="language-plaintext highlighter-rouge">contentType: text/html; charset=utf-8</code>.</p>
 
-<h3 id="elementmappning">Elementmappning</h3>
+<h5 id="elementmappning">Elementmappning</h5>
 
 <table>
   <thead>
@@ -540,7 +505,7 @@ Transformationen behåller källans ordning och struktur. Resultatet base64-koda
   </tbody>
 </table>
 
-<h3 id="stylade-sektioner-rutor">Stylade sektioner (rutor)</h3>
+<h5 id="stylade-sektioner-rutor">Stylade sektioner (rutor)</h5>
 
 <p>En sektion vars <code class="language-plaintext highlighter-rouge">&lt;title&gt;</code> innehåller <code class="language-plaintext highlighter-rouge">&lt;emphasis role="…"&gt;</code> med något av rollvärdena
 <code class="language-plaintext highlighter-rouge">information</code>, <code class="language-plaintext highlighter-rouge">observe</code>, <code class="language-plaintext highlighter-rouge">frame</code> eller <code class="language-plaintext highlighter-rouge">collapsible</code> är en informationsruta, inte en
@@ -563,20 +528,20 @@ strukturell rubrik. Den renderas som en inbäddad ruta i föräldern:</p>
 
 <p>Motsvarande gäller rollerna <code class="language-plaintext highlighter-rouge">observe</code>, <code class="language-plaintext highlighter-rouge">frame</code> och <code class="language-plaintext highlighter-rouge">collapsible</code> (klassnamnet är rollvärdet).</p>
 
-<h3 id="säkerhet">Säkerhet</h3>
+<h5 id="säkerhet">Säkerhet</h5>
 
 <p>XHTML:en ska följa FHIR:s regler för narrativ XHTML: inga <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>-, <code class="language-plaintext highlighter-rouge">&lt;style&gt;</code>-, <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code>-
 eller <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code>-element, inga händelseattribut (<code class="language-plaintext highlighter-rouge">on*</code>) och inga <code class="language-plaintext highlighter-rouge">javascript:</code>-länkar. Allt
 innehåll som inte täcks av elementmappningen ovan blir text.</p>
 
-<h3 id="placering">Placering</h3>
+<h5 id="placering">Placering</h5>
 
 <p>XHTML:en läggs i <code class="language-plaintext highlighter-rouge">content.attachment</code> och <strong>inte</strong> i resursens <code class="language-plaintext highlighter-rouge">DomainResource.text</code>.
 <code class="language-plaintext highlighter-rouge">text</code> ska sammanfatta resursen, inte bära dokumentets faktiska innehåll.</p>
 
 <hr />
 
-<h2 id="steg-3b--strategi-b-compositionsection-valfri">Steg 3B – Strategi B: Composition.section (valfri)</h2>
+<h4 id="steg-3b--strategi-b-compositionsection-valfri">Steg 3B – Strategi B: Composition.section (valfri)</h4>
 
 <p>Utöver Strategi A kan en fristående <code class="language-plaintext highlighter-rouge">Composition</code> skapas när innehållet är DocBook. Den gör
 dokumentets sektioner adresserbara var för sig, till exempel för navigering eller för att visa
@@ -586,7 +551,7 @@ enskilda avsnitt.</p>
 <a href="StructureDefinition-SEEHDSCompositionCareDocumentation.html">SEEHDSCompositionCareDocumentation</a>.
 Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.</p>
 
-<h3 id="sektionsmappning">Sektionsmappning</h3>
+<h5 id="sektionsmappning">Sektionsmappning</h5>
 
 <table>
   <thead>
@@ -623,7 +588,7 @@ Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.</p>
 som Strategi A ger, men begränsad till sektionens eget innehåll. Nästlade sektioner ligger i
 <code class="language-plaintext highlighter-rouge">section.section</code> och upprepas inte i förälderns <code class="language-plaintext highlighter-rouge">text</code>.</p>
 
-<h3 id="övriga-fält-i-composition">Övriga fält i Composition</h3>
+<h5 id="övriga-fält-i-composition">Övriga fält i Composition</h5>
 
 <table>
   <thead>
@@ -660,7 +625,7 @@ som Strategi A ger, men begränsad till sektionens eget innehåll. Nästlade sek
   </tbody>
 </table>
 
-<h3 id="koppling-till-documentreference">Koppling till DocumentReference</h3>
+<h5 id="koppling-till-documentreference">Koppling till DocumentReference</h5>
 
 <p><code class="language-plaintext highlighter-rouge">Composition</code> saknar ett eget element som pekar på <code class="language-plaintext highlighter-rouge">DocumentReference</code>. Kopplingen görs genom
 att samma <code class="language-plaintext highlighter-rouge">Provenance</code> har både <code class="language-plaintext highlighter-rouge">DocumentReference</code> och <code class="language-plaintext highlighter-rouge">Composition</code> i <code class="language-plaintext highlighter-rouge">Provenance.target</code>.
@@ -670,9 +635,9 @@ spärrkontroll gäller för båda resurserna. En konsument som hämtar <code cla
 
 <hr />
 
-<h2 id="exempel">Exempel</h2>
+<h4 id="exempel">Exempel</h4>
 
-<h3 id="källa-efter-avkodning">Källa (efter avkodning)</h3>
+<h5 id="källa-efter-avkodning">Källa (efter avkodning)</h5>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
 <span class="nt">&lt;article&gt;</span>
@@ -694,7 +659,7 @@ spärrkontroll gäller för båda resurserna. En konsument som hämtar <code cla
 <span class="nt">&lt;/article&gt;</span>
 </code></pre></div></div>
 
-<h3 id="strategi-a--contentattachment">Strategi A – content.attachment</h3>
+<h5 id="strategi-a--contentattachment">Strategi A – content.attachment</h5>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
   </span><span class="nl">"attachment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -724,7 +689,7 @@ spärrkontroll gäller för båda resurserna. En konsument som hämtar <code cla
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<h3 id="strategi-b--composition">Strategi B – Composition</h3>
+<h5 id="strategi-b--composition">Strategi B – Composition</h5>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Composition"</span><span class="p">,</span><span class="w">
@@ -755,7 +720,7 @@ spärrkontroll gäller för båda resurserna. En konsument som hämtar <code cla
 
 <hr />
 
-<h2 id="kända-begränsningar">Kända begränsningar</h2>
+<h4 id="kända-begränsningar">Kända begränsningar</h4>
 
 <ul>
   <li><strong>Identifieringen i clinicalDocumentNoteText bygger på innehållet.</strong> Textfältet saknar typindikator, så
@@ -787,7 +752,7 @@ exakt visuell återgivning krävs.</li>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.ehds-tk#0.8.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Nov 4, 2026 19:17+0000">2026-11-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

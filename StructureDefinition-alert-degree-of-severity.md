@@ -1,4 +1,4 @@
-# Allvarlighetsgrad för överkänslighet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Allvarlighetsgrad för överkänslighet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:AlertDegreeOfSeverity |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:AlertDegreeOfSeverity |
 
 Bedömning av överkänslighetens allvarlighetsgrad (alertInformationBody.hypersensitivity.degreeOfSeverity). KV Allvarlighetsgrad 1.2.752.129.2.2.3.3.
 
@@ -21,7 +21,7 @@ Bedömning av överkänslighetens allvarlighetsgrad (alertInformationBody.hypers
 
 * Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-degree-of-severity)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/alert-degree-of-severity)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-degree-of-seve
   "resourceType" : "StructureDefinition",
   "id" : "alert-degree-of-severity",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "AlertDegreeOfSeverity",
   "title" : "Allvarlighetsgrad för överkänslighet",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

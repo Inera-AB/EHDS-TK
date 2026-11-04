@@ -1,4 +1,4 @@
-# SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSAllergyIntolerance |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSAllergyIntolerance |
 
  
 Sekundär profil för allergier och överkänslighet från GetAlertInformation. 
@@ -29,7 +29,7 @@ Täcker NPÖ 2.0 och 1177 Journal 2.0.
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 * Denna Profil används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSAllergyIntolerance)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSAllergyIntolerance)
 
 ### Formal Views of Profile Content
 
@@ -48,11 +48,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSAllergyIntoler
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSAllergyIntolerance",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSAllergyIntolerance",
   "title" : "SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

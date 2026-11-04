@@ -1,11 +1,9 @@
-# GetImagingOutcome – Bilddiagnostik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetImagingOutcome – Bilddiagnostik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **GetImagingOutcome – Bilddiagnostik**
 
 ## GetImagingOutcome – Bilddiagnostik
-
-# GetImagingOutcome – Bilddiagnostik
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetImagingOutcome v1.0
  **FHIR-profiler:** [SEEHDSDiagnosticReportImaging](StructureDefinition-SEEHDSDiagnosticReportImaging.md) (primär) | [ImagingStudy](http://hl7.org/fhir/R4/imagingstudy.html) (sekundär, per imageRecording)
@@ -15,7 +13,7 @@
 
 -------
 
-## Resurshierarki
+#### Resurshierarki
 
 ```
 imagingOutcome 0..*
@@ -29,11 +27,11 @@ En `imagingOutcome` representerar ett bilddiagnostiskt utlåtande (t.ex. ett rö
 
 -------
 
-## Mappningstabell – SEEHDSDiagnosticReportImaging
+#### Mappningstabell – SEEHDSDiagnosticReportImaging
 
 Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt till DiagnosticReport.
 
-### imagingOutcomeHeader (PatientSummaryHeader)
+##### imagingOutcomeHeader (PatientSummaryHeader)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -64,7 +62,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeHeader.nullified` | 0..1 | (härledd till`DiagnosticReport.status`) | `true`→`status = entered-in-error`; se[IMG-001](#öppna-frågor) |
 | `imagingOutcomeHeader.nullifiedReason` | 0..1 | `DiagnosticReport.extension[nullifiedReason]` | Orsak till makulering; fritext |
 
-### imagingOutcomeBody
+##### imagingOutcomeBody
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -77,7 +75,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeBody.patientData.patientWeight` | 0..1 | `DiagnosticReport.extension[patientWeight]` | Patientvikt vid undersökningstillfället |
 | `imagingOutcomeBody.patientData.patientLength` | 0..1 | `DiagnosticReport.extension[patientLength]` | Patientlängd vid undersökningstillfället |
 
-#### imagingOutcomeBody.referral (kopplad remiss)
+###### imagingOutcomeBody.referral (kopplad remiss)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -104,7 +102,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 
 > Alla `imagingOutcomeBody.referral.*`-fält är attribut till ursprungsremissen. En logisk referens via `DiagnosticReport.basedOn` → `ServiceRequest.identifier` är tillräcklig. Se [Referral → ServiceRequest](#referral--servicerequest).
 
-#### Härledda fält – DiagnosticReport
+###### Härledda fält – DiagnosticReport
 
 | | | |
 | :--- | :--- | :--- |
@@ -112,11 +110,11 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 
 -------
 
-## Mappningstabell – ImagingStudy (per imageRecording)
+#### Mappningstabell – ImagingStudy (per imageRecording)
 
 Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som länkas via `DiagnosticReport.imagingStudy`.
 
-### Grunddata och undersökning
+##### Grunddata och undersökning
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -128,7 +126,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.examinationUnit` | 0..1 | `ImagingStudy.location.display` | Undersökningsenhet som fritextsträng; Reference(Location) med logisk referens om HSA-id kan utvinnas |
 | `imageRecording.numberOfImages` | 0..1 | `ImagingStudy.numberOfInstances` | Totalt antal bilder i undersökningen |
 
-### Ansvarig personal (imageRecording.accountableHealthcareProfessional)
+##### Ansvarig personal (imageRecording.accountableHealthcareProfessional)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -140,7 +138,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `imageRecording.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
-### Modalitetsdata (imageRecording.modalityData)
+##### Modalitetsdata (imageRecording.modalityData)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -151,7 +149,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.modalityData.softwareVersion` | 0..1 | `ImagingStudy.extension[softwareVersion]` | Programversion i utrustningen; kräver lokal extension |
 | `imageRecording.modalityData.lineFilter` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
-### DICOM-bilddata (imageRecording.imageDicomData)
+##### DICOM-bilddata (imageRecording.imageDicomData)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -159,7 +157,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.imageDicomData[i].dicomValue` | 0..1 | Ej mappad direkt | Base64-kodad DICOM-data; ingår ej i FHIR-resursen; se[IMG-002](#öppna-frågor) |
 | `imageRecording.imageDicomData[i].dicomReference` | 0..1 | `ImagingStudy.series[i].instance[i].url` | URL till DICOM-bild i WADO-RS eller DICOMweb; se[IMG-002](#öppna-frågor) |
 
-### Strukturerad bilddata (imageRecording.imageStructuredData)
+##### Strukturerad bilddata (imageRecording.imageStructuredData)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -175,14 +173,14 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 | `imageRecording.imageStructuredData[i].imageData.reference` | 0..1 | `ImagingStudy.series[i].instance[i].url` | Referens-URL till extern bild; kombineras med dicomReference vid mappning |
 | `imageRecording.imageStructuredData[i].imageData.burnedInaAnnotations` | 0..1 | Ej mappad | Indikerar inbrända annotationer i bild; ingen standardiserad plats i ImagingStudy R4; kan lagras i extension |
 
-### Härledda fält – ImagingStudy
+##### Härledda fält – ImagingStudy
 
 | | | |
 | :--- | :--- | :--- |
 | (härledd) | `ImagingStudy.subject` | Samma patient som DiagnosticReport.subject |
 | (härledd) | `ImagingStudy.series[*].uid` | Genereras av bryggan om dicomSOP saknar serie-UID |
 
-### Statusmappning – imageRecording.examinationStatus → ImagingStudy.status
+##### Statusmappning – imageRecording.examinationStatus → ImagingStudy.status
 
 | | |
 | :--- | :--- |
@@ -194,7 +192,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 
 -------
 
-## Mappningstabell – result
+#### Mappningstabell – result
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -206,9 +204,9 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 
 -------
 
-## Härledda fält / Designbeslut
+#### Härledda fält / Designbeslut
 
-### DiagnosticReport.status (härledd från typeOfResult och nullified)
+##### DiagnosticReport.status (härledd från typeOfResult och nullified)
 
 `DiagnosticReport.status` härleds från två fält i kombination:
 
@@ -222,7 +220,7 @@ Varje `imageRecording`-element mappas till en separat `ImagingStudy`-instans som
 
 `nullified` kontrolleras **alltid** först. Om `nullified = true` sätts status till `entered-in-error` oavsett `typeOfResult`.
 
-### DiagnosticReport.code – fallback om examinationSpeciality saknas
+##### DiagnosticReport.code – fallback om examinationSpeciality saknas
 
 Om `imagingOutcomeBody.examinationSpeciality` saknas sätts `DiagnosticReport.code` till en fast LOINC-kod för bilddiagnostik:
 
@@ -233,7 +231,7 @@ code.coding.display = "Diagnostic imaging study"
 
 ```
 
-### DiagnosticReport.conclusion – sammanslagning
+##### DiagnosticReport.conclusion – sammanslagning
 
 `resultReport` och `resultComment` kombineras till `DiagnosticReport.conclusion`:
 
@@ -244,7 +242,7 @@ code.coding.display = "Diagnostic imaging study"
 
 ```
 
-### DiagnosticReport.code.text – titel
+##### DiagnosticReport.code.text – titel
 
 `DiagnosticReport.code.text` är rapportens namn i klartext. `code.coding` sätts oberoende av texten, från `examinationSpeciality` eller med fallback-koden ovan. Texten sätts enligt följande prioritet:
 
@@ -252,7 +250,7 @@ code.coding.display = "Diagnostic imaging study"
 1. `imagingOutcomeBody.examinationSpeciality.originalText`(om satt)
 1. `examinationSpeciality.displayName`, annars fallback-kodens display
 
-### ImagingStudy.series-konstruktion från imageDicomData
+##### ImagingStudy.series-konstruktion från imageDicomData
 
 `imageDicomData` är ett platt fält per `imageRecording`. ImagingStudy i FHIR kräver en serie-hierarki. Bryggan konstruerar serien enligt:
 
@@ -262,17 +260,17 @@ code.coding.display = "Diagnostic imaging study"
 * `series.instance[*].url` = `dicomReference` (om URL finns, annars utelämnas).
 * `dicomValue` (base64-binär) ingår **inte** i FHIR-resursen; se [IMG-002](#öppna-frågor).
 
-### imageRecording.examinationUnit – string vs. Reference
+##### imageRecording.examinationUnit – string vs. Reference
 
 `imageRecording.examinationUnit` är modellerad som en fritextsträng i den logiska modellen (inte ett strukturerat objekt med HSA-id/namn). Om HSA-id kan identifieras i strängen skapas en logisk Reference(Location); annars används `ImagingStudy.location.display` direkt.
 
-### Referral → ServiceRequest
+##### Referral → ServiceRequest
 
 Om `imagingOutcomeBody.referral.referralId` finns skapas en logisk referens till en `ServiceRequest` via `DiagnosticReport.basedOn`. Bryggan matchar mot befintliga ServiceRequest-instanser (från GetReferralOutcome) eller skapar en minimal stub med enbart identifier satt. Remissens övriga fält tillhör ServiceRequest och repeteras inte i DiagnosticReport.
 
 -------
 
-## PDL och Sparr
+#### PDL och Sparr
 
 GetImagingOutcome v1.0 använder standardmönstret **PatientSummaryHeader** via `accountableHealthcareProfessional`-blocket:
 
@@ -284,7 +282,7 @@ GetImagingOutcome v1.0 använder standardmönstret **PatientSummaryHeader** via 
 
 -------
 
-## Provenance
+#### Provenance
 
 | | | |
 | :--- | :--- | :--- |
@@ -297,7 +295,7 @@ GetImagingOutcome v1.0 använder standardmönstret **PatientSummaryHeader** via 
 
 -------
 
-## OID-till-URI-tabell
+#### OID-till-URI-tabell
 
 | | | |
 | :--- | :--- | :--- |
@@ -309,7 +307,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-## Öppna frågor
+#### Öppna frågor
 
 | | |
 | :--- | :--- |
@@ -318,7 +316,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPAT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
-## Föreslagna nya issues
+#### Föreslagna nya issues
 
 | | |
 | :--- | :--- |

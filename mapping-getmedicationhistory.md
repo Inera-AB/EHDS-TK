@@ -1,11 +1,9 @@
-# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **GetMedicationHistory – Läkemedel**
 
 ## GetMedicationHistory – Läkemedel
-
-# GetMedicationHistory – Läkemedelshistorik
 
 **Tjänstekontrakt:** `clinicalprocess:activityprescription:actoutcome` GetMedicationHistory v2.2
  **FHIR-profil:** [SEEHDSMedicationStatement](StructureDefinition-SEEHDSMedicationStatement.md)
@@ -19,7 +17,7 @@
 
 -------
 
-## Resurshierarki
+#### Resurshierarki
 
 ```
 SEEHDSMedicationStatement (1 per medicationMedicalRecord)
@@ -33,7 +31,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 
 -------
 
-## Mappningstabell – medicationMedicalRecordHeader
+#### Mappningstabell – medicationMedicalRecordHeader
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -65,7 +63,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 
 -------
 
-## Mappningstabell – medicationPrescription
+#### Mappningstabell – medicationPrescription
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -119,7 +117,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 
 -------
 
-## Mappningstabell – drug (XOR-villkor)
+#### Mappningstabell – drug (XOR-villkor)
 
 `drug 0..1` innehåller exakt ett av fem alternativa delelement. Alla varianter mappas till `MedicationStatement.medicationCodeableConcept`. Villkoret är en invariant i den logiska modellen, se [drug-villkoret (MED-003)](#drug-villkoret-med-003).
 
@@ -141,7 +139,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 
 -------
 
-## Mappningstabell – dosage
+#### Mappningstabell – dosage
 
 `dosage 0..*` kan innehålla flera doseringsposter. Varje `dosage[i]` mappas till `MedicationStatement.dosage[i]`.
 
@@ -158,7 +156,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 
 -------
 
-## Mappningstabell – additionalPatientInformation (om present)
+#### Mappningstabell – additionalPatientInformation (om present)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -167,7 +165,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 
 -------
 
-## Mappningstabell – result (tekniska svarsfält)
+#### Mappningstabell – result (tekniska svarsfält)
 
 `result 1..1` innehåller teknisk statusinformation som hanteras av transportlagret och inte ingår i klinisk FHIR-data.
 
@@ -181,9 +179,9 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 
 -------
 
-## Härledda fält / Designbeslut
+#### Härledda fält / Designbeslut
 
-### MedicationStatement.status (från prescriptionStatus + typeOfPrescription)
+##### MedicationStatement.status (från prescriptionStatus + typeOfPrescription)
 
 `prescriptionStatus` (Active/Inactive) är primär källa för `MedicationStatement.status`. `typeOfPrescription` (I/U) ger kompletterande semantik men mappar inte rakt till status-värdena – se [MED-002](#öppna-frågor). `typeOfPrescription` bevaras alltid i extension.
 
@@ -194,7 +192,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 | `Inactive` | `I` | `stopped` | Insättning som avslutats |
 | `Inactive` | `U` | `stopped` | Avslutad utsättningsordination |
 
-### drug-villkoret (MED-003)
+##### drug-villkoret (MED-003)
 
 Exakt ett av de fem delelementen under `drug` ska anges. Den logiska modellen [SEEHDSLMMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md) uttrycker villkoret med invarianten `getmedicationhistory-drug-choice` på alla tre `drug`-elementen (ordination, expediering och administrering):
 
@@ -205,13 +203,13 @@ unstructuredDrugInformation.combine(merchandise).combine(drugArticle).combine(dr
 
 Modellen har också invarianter för övriga regler i testsvitens schematron, bland annat att `prescriber` krävs när `selfMedication` är `false`, att `startOfTreatment` krävs vid insättning (`typeOfPrescription = I`) och att `nplId` eller `atcCode` anges för läkemedelsprodukter. Se [Logiska modeller](logical-models.md#invarianter).
 
-### selfMedication (DES-008)
+##### selfMedication (DES-008)
 
 `selfMedication 1..1 boolean` har ingen standardiserad FHIR MedicationStatement-representation. Mappas till custom extension `https://fhir.inera.se/StructureDefinition/self-medication`.
 
 -------
 
-## PDL och Sparr
+#### PDL och Sparr
 
 PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern. **OBS:** Fältnamnen avviker från övriga TK:er med lowercase 'c' i 'care':
 
@@ -223,7 +221,7 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 
 -------
 
-## Provenance
+#### Provenance
 
 | | | |
 | :--- | :--- | :--- |
@@ -235,7 +233,7 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 
 -------
 
-## OID-till-URI-tabell
+#### OID-till-URI-tabell
 
 | | |
 | :--- | :--- |
@@ -247,7 +245,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-## Öppna frågor
+#### Öppna frågor
 
 | | |
 | :--- | :--- |
@@ -257,7 +255,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPAT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
-## Föreslagna nya issues
+#### Föreslagna nya issues
 
 | | |
 | :--- | :--- |

@@ -1,11 +1,9 @@
-# Workflow - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Workflow - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Workflow**
 
 ## Workflow
-
-# Workflow
 
 This page describes the clinical or administrative workflows supported by this Implementation Guide, the roles involved, and the obligations that apply to each actor.
 

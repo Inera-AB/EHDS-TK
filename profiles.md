@@ -1,11 +1,9 @@
-# Profiles - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Profiles - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Profiles**
 
 ## Profiles
-
-# Profiles
 
 Denna sida listar alla FHIR-profiler definierade i denna IG, grupperade per FHIR-grupp. Se [Mappings](mappings.md) för hur respektive profil relaterar till RIVTA-tjänstekontrakten.
 

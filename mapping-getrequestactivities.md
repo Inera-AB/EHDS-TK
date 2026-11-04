@@ -1,11 +1,9 @@
-# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **GetRequestActivities – Remisstatus**
 
 ## GetRequestActivities – Remisstatus
-
-# GetRequestActivities – Remisstatus
 
 **Tjänstekontrakt:** `crm:requeststatus` GetRequestActivities v2.0 och v1.0
  **FHIR-profil:** [SEEHDSTask](StructureDefinition-SEEHDSTask.md)
@@ -15,13 +13,13 @@
 
 -------
 
-## Meddelandestruktur
+#### Meddelandestruktur
 
 Svaret `GetRequestActivitiesResponse` innehåller noll eller flera `requestActivity`, var och en med `header` (åtkomstkontroll, källsystem, post och dokumentationsansvarig) och `body` (status, händelsetidpunkt och den remiss som statusen gäller). Svaret har ingen patientidentitet och inget `result`-element. Patienten är den som efterfrågades i begäran (`patientId`). Strukturen följer den logiska modellen [SEEHDSLMRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md), som är genererad från XSD:n och verifierad mot TKB:n.
 
 -------
 
-## Mappningstabell – header
+#### Mappningstabell – header
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -43,7 +41,7 @@ Svaret `GetRequestActivitiesResponse` innehåller noll eller flera `requestActiv
 
 -------
 
-## Mappningstabell – body
+#### Mappningstabell – body
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -60,7 +58,7 @@ Svaret `GetRequestActivitiesResponse` innehåller noll eller flera `requestActiv
 
 -------
 
-## Statusmappning (Kv status vårdbegäran → Task.status)
+#### Statusmappning (Kv status vårdbegäran → Task.status)
 
 Mappningen görs på koden i `statusCode`. Tabellen anger klartexterna; koderna i kodverket 1.2.752.129.2.2.2.43 behöver verifieras mot Ineras kodverkstjänst.
 
@@ -74,7 +72,7 @@ Mappningen görs på koden i `statusCode`. Tabellen anger klartexterna; koderna 
 
 -------
 
-## Provenance
+#### Provenance
 
 En `Provenance`-resurs skapas per Task och bär PDL/Sparr-information från `header.accessControlHeader`.
 
@@ -88,7 +86,7 @@ En `Provenance`-resurs skapas per Task och bär PDL/Sparr-information från `hea
 
 -------
 
-## Övriga aktiva versioner – GetRequestActivities 1.0
+#### Övriga aktiva versioner – GetRequestActivities 1.0
 
 Mappningstabellerna ovan utgår från GetRequestActivities 2.0. Version 1.0 är också aktiv för 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMRequestActivitiesV10](StructureDefinition-SEEHDSLMRequestActivitiesV10.md) (genererad från `GetRequestActivitiesResponder_1.0.xsd` i `riv.crm.requeststatus` 1.0.7 och TKB:n för samma version). Samma profil, [SEEHDSTask](StructureDefinition-SEEHDSTask.md), används.
 
@@ -114,7 +112,7 @@ Version 1.0 har en platt struktur utan header och body. Den saknar åtkomstkontr
 | `requestActivity.header` | – | 1..1 Backbone | Finns bara i 2.0 |
 | `requestActivity.body` | – | 1..1 Backbone | Finns bara i 2.0 |
 
-### Mappningstabell – requestActivity (1.0)
+##### Mappningstabell – requestActivity (1.0)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -136,7 +134,7 @@ Version 1.0 har en platt struktur utan header och body. Den saknar åtkomstkontr
 
 `Task.identifier` sätts inte, eftersom 1.0 saknar identitet för statusposten. Utan `approvedForPatient` sätts ingen `meta.security`.
 
-### statusCode 1.0 → Task.status
+##### statusCode 1.0 → Task.status
 
 TKB 1.0 anger klartext för sju koder, och testsvitens schematron tillåter bara dem (invarianten `getrequestactivities1-status-code` i [SEEHDSLMRequestActivitiesV10](StructureDefinition-SEEHDSLMRequestActivitiesV10.md), se VER-005 i [Mappningsissues](mapping-issues.md#stangda-fragor)). Ett svar med en annan kod bryter mot kontraktet och ger `Task.status = unknown`, med koden kvar i `businessStatus`.
 
@@ -152,7 +150,7 @@ TKB 1.0 anger klartext för sju koder, och testsvitens schematron tillåter bara
 
 -------
 
-## OID-till-URI-tabell
+#### OID-till-URI-tabell
 
 | | | |
 | :--- | :--- | :--- |
@@ -164,13 +162,13 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-## Designbeslut
+#### Designbeslut
 
-### Task.identifier och Task.focus (tidigare REQ-001)
+##### Task.identifier och Task.focus (tidigare REQ-001)
 
 Meddelandet har två skilda identiteter: `header.record.id` identifierar remisstatusen och mappas till `Task.identifier`, medan `body.request.id` identifierar remissen och mappas till `Task.focus.identifier`.
 
-### Task.requester (tidigare REQ-002)
+##### Task.requester (tidigare REQ-002)
 
 Remittenten finns i `body.request.author` (namn och remitterande enhet) och mappas till `Task.requester` som logisk referens.
 

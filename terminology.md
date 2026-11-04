@@ -1,11 +1,9 @@
-# Terminology - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Terminology - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Terminology**
 
 ## Terminology
-
-# Terminology
 
 All CodeSystems and ValueSets referenced in this IG that are developed by Inera are published on [Inera Terminologitjänst](https://www.inera.se/tjanster/alla-tjanster-a-o/terminologitjanst-for-nationell-e-halsa/).
 

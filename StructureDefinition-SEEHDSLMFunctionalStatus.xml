@@ -83,11 +83,11 @@ Tillåtna värden enligt XSD: INVALID_REQUEST.">errorCode</a><a name="SEEHDSLMFu
     <valueUri value="urn:riv:clinicalprocess:healthcond:description:GetFunctionalStatusResponder:2"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMFunctionalStatus"/>
-  <version value="0.7.0"/>
+  <version value="0.8.1"/>
   <name value="SEEHDSLMFunctionalStatus"/>
   <title value="GetFunctionalStatus"/>
   <status value="draft"/>
-  <date value="2026-10-26T15:58:30+00:00"/>
+  <date value="2026-11-04T19:17:50+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

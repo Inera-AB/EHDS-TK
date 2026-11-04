@@ -1,11 +1,9 @@
-# Logical Models - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Logical Models - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Logical Models**
 
 ## Logical Models
-
-# Logical Models
 
 Denna sida dokumenterar de logiska informationsmodeller som utgör grunden för profilerna i denna IG. De logiska modellerna är en exakt avbildning av svarsmeddelandena i Ineras RIVTA-tjänstekontrakt: samma elementnamn, nästling, ordning, XML-namnrymder och datatyper som i XSD:erna, med kardinaliteter verifierade mot respektive TKB. De kan därför användas både som dokumentation och som källstruktur när en FML-motor (StructureMap) läser RIV-TA-XML direkt.
 

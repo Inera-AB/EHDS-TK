@@ -1,4 +1,4 @@
-# ReferralOutcomeTypeCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# ReferralOutcomeTypeCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/referraloutcometypecode | *Version*:0.7.0 |
-| Active as of 2026-10-26 | *Computable Name*:ReferralOutcomeTypeCodeCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/referraloutcometypecode | *Version*:0.8.1 |
+| Active as of 2026-11-04 | *Computable Name*:ReferralOutcomeTypeCodeCS |
 
  
 Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetReferralOutcome. 
@@ -27,11 +27,11 @@ Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetRefer
   "resourceType" : "CodeSystem",
   "id" : "referraloutcometypecode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/referraloutcometypecode",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "ReferralOutcomeTypeCodeCS",
   "title" : "ReferralOutcomeTypeCode",
   "status" : "active",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

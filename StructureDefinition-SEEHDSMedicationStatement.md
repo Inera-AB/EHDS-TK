@@ -1,4 +1,4 @@
-# SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSMedicationStatement |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSMedicationStatement |
 
  
 Profil för läkemedelsordinationer, förskrivningar och administrerade läkemedel mappat från RIVTA-tjänstekontraktet GetMedicationHistory (clinicalprocess:activityprescription:actoutcome v2.2). Täcker NPÖ 2.2 och 1177 Journal 2.2. 
@@ -19,7 +19,7 @@ Profil för läkemedelsordinationer, förskrivningar och administrerade läkemed
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 * Denna Profil används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSMedicationStatement)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSMedicationStatement)
 
 ### Formal Views of Profile Content
 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSMedicationStat
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSMedicationStatement",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSMedicationStatement",
   "title" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# GetReferralOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetReferralOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcome | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMReferralOutcome |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcome | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSLMReferralOutcome |
 
  
 Logisk modell för tjänstekontraktet GetReferralOutcome (RIV-TA urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcome:3). Representerar responsens informationsstruktur — svar på konsultationsremiss och begäran om övertagande av vårdansvar. Meddelandeformatet är kompatibelt med HL7v3 CDA v.2. 
@@ -18,7 +18,7 @@ Logisk modell för tjänstekontraktet GetReferralOutcome (RIV-TA urn:riv:clinica
 
 * Denna Logisk modell används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSLMReferralOutcome)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSLMReferralOutcome)
 
 ### Formal Views of Profile Content
 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMReferralOutc
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcomeResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcome",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSLMReferralOutcome",
   "title" : "GetReferralOutcome",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

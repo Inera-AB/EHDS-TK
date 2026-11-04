@@ -18,11 +18,11 @@
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetMaternityMedicalHistoryResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMaternityMedicalHistory",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSLMMaternityMedicalHistory",
   "title" : "GetMaternityMedicalHistory",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

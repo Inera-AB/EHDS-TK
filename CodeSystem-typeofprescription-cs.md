@@ -1,4 +1,4 @@
-# TypeOfPrescription - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# TypeOfPrescription - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/CodeSystem/typeofprescription | *Version*:0.7.0 |
-| Active as of 2026-10-26 | *Computable Name*:TypeOfPrescriptionCS |
+| *Official URL*:https://fhir.inera.se/CodeSystem/typeofprescription | *Version*:0.8.1 |
+| Active as of 2026-11-04 | *Computable Name*:TypeOfPrescriptionCS |
 
  
 Kodverk för ordinationstyp i GetMedicationHistory. Anger om en ordination är en insättnings- eller utsättningsordination. 
@@ -27,11 +27,11 @@ Kodverk för ordinationstyp i GetMedicationHistory. Anger om en ordination är e
   "resourceType" : "CodeSystem",
   "id" : "typeofprescription-cs",
   "url" : "https://fhir.inera.se/CodeSystem/typeofprescription",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "TypeOfPrescriptionCS",
   "title" : "TypeOfPrescription",
   "status" : "active",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

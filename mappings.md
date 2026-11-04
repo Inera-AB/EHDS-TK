@@ -1,11 +1,9 @@
-# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Mappings**
 
 ## Mappings
-
-# Mappings
 
 Denna sida ger en översikt över hur RIVTA-tjänstekontraktens element mappas till FHIR-profiler i denna IG. Detaljerade mappningstabeller finns på respektive tjänstekontrakts sida.
 

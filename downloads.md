@@ -1,11 +1,9 @@
-# Downloads - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Downloads - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Downloads**
 
 ## Downloads
-
-# Downloads
 
 The following downloads are available for this Implementation Guide.
 
@@ -20,7 +18,7 @@ The full npm package for this IG, for use with the FHIR validator and other tool
 To validate instances against profiles in this IG, use the [HL7 FHIR Validator](https://confluence.hl7.org/display/FHIR/Using+the+FHIR+Validator) with the package above:
 
 ```
-java -jar validator_cli.jar <instance.json> -ig inera.core.template#0.1.0
+java -jar validator_cli.jar <instance.json> -ig inera.ehds.ehds-tk#4.0.1
 
 ```
 

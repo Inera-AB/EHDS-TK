@@ -1,11 +1,9 @@
-# DocBook-mappning – clinicalDocumentNoteText och bilagor - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# DocBook-mappning – clinicalDocumentNoteText och bilagor - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **DocBook-mappning – clinicalDocumentNoteText och bilagor**
 
 ## DocBook-mappning – clinicalDocumentNoteText och bilagor
-
-# DocBook-mappning – clinicalDocumentNoteText och bilagor
 
 **Gäller:** GetCareDocumentation v3.0 (`careDocumentation.body.clinicalDocumentNoteText` och `careDocumentation.body.multimediaEntry`)
  **FHIR-resurser:** [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.md) (obligatorisk), [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.md) (valfri)
@@ -14,7 +12,7 @@
 
 -------
 
-## Bakgrund
+#### Bakgrund
 
 `clinicalDocumentNoteText` är av typen string. Fältet innehåller antingen fritext eller ett DocBook-dokument. När DocBook används ska fältet innehålla XML. Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas:
 
@@ -47,7 +45,7 @@ DocBook kan förekomma på två ställen, som identifieras på olika sätt (se [
 
 -------
 
-## Översikt över flödet
+#### Översikt över flödet
 
 ```
 RIVTA-svar (XML)
@@ -70,7 +68,7 @@ RIVTA-svar (XML)
 
 -------
 
-## Steg 1 – Avkodning
+#### Steg 1 – Avkodning
 
 **clinicalDocumentNoteText:** Entity-kodningen tas bort av den vanliga XML-parsningen av RIVTA-svaret. Strängvärdet som parsern ger är alltså DocBook-XML i klartext:
 
@@ -91,11 +89,11 @@ Ingen ytterligare avkodning ska göras. Att avkoda en gång till skulle förstö
 
 -------
 
-## Steg 2 – Identifiering av DocBook
+#### Steg 2 – Identifiering av DocBook
 
 Regeln skiljer sig beroende på var innehållet ligger.
 
-### I clinicalDocumentNoteText
+##### I clinicalDocumentNoteText
 
 Textfältet saknar en egen typindikator. DocBook känns igen på att fältet innehåller **entity-kodad XML**, som i exemplet under [Bakgrund](#bakgrund):
 
@@ -104,7 +102,7 @@ Textfältet saknar en egen typindikator. DocBook känns igen på att fältet inn
 
 Är båda villkoren uppfyllda behandlas innehållet som **DocBook**. Annars behandlas det som **fritext**, även om texten råkar innehålla enstaka tecken som `<` eller `&`.
 
-### I en bilaga (multimediaEntry)
+##### I en bilaga (multimediaEntry)
 
 En bilaga har en uttrycklig typindikator. DocBook känns igen på `multimediaEntry.mediaType`:
 
@@ -116,7 +114,7 @@ En bilaga har en uttrycklig typindikator. DocBook känns igen på `multimediaEnt
 
 En bilaga som innehåller `multimediaEntry.reference` (URL) i stället för `value` transformeras inte, eftersom innehållet inte finns i svaret.
 
-### Om tolkningen misslyckas
+##### Om tolkningen misslyckas
 
 Om innehållet ser ut som DocBook men inte kan tolkas, eller om transformationen misslyckas:
 
@@ -127,11 +125,11 @@ Inget innehåll tappas.
 
 -------
 
-## Steg 3A – Strategi A: DocBook → XHTML (obligatorisk)
+#### Steg 3A – Strategi A: DocBook → XHTML (obligatorisk)
 
 DocBook-dokumentet transformeras till ett XHTML-fragment med en rot-`<div>` i XHTML-namnrymden. Transformationen behåller källans ordning och struktur. Resultatet base64-kodas och läggs i `DocumentReference.content[0].attachment.data` med `contentType: text/html; charset=utf-8`.
 
-### Elementmappning
+##### Elementmappning
 
 | | | |
 | :--- | :--- | :--- |
@@ -154,7 +152,7 @@ DocBook-dokumentet transformeras till ett XHTML-fragment med en rot-`<div>` i XH
 | `<sbr/>` | `<br/>` |   |
 | Okända element | – | Elementet tas bort men textinnehållet behålls |
 
-### Stylade sektioner (rutor)
+##### Stylade sektioner (rutor)
 
 En sektion vars `<title>` innehåller `<emphasis role="…">` med något av rollvärdena `information`, `observe`, `frame` eller `collapsible` är en informationsruta, inte en strukturell rubrik. Den renderas som en inbäddad ruta i föräldern:
 
@@ -164,23 +162,23 @@ En sektion vars `<title>` innehåller `<emphasis role="…">` med något av roll
 
 Motsvarande gäller rollerna `observe`, `frame` och `collapsible` (klassnamnet är rollvärdet).
 
-### Säkerhet
+##### Säkerhet
 
 XHTML:en ska följa FHIR:s regler för narrativ XHTML: inga `<script>`-, `<style>`-, `<form>`- eller `<iframe>`-element, inga händelseattribut (`on*`) och inga `javascript:`-länkar. Allt innehåll som inte täcks av elementmappningen ovan blir text.
 
-### Placering
+##### Placering
 
 XHTML:en läggs i `content.attachment` och **inte** i resursens `DomainResource.text`. `text` ska sammanfatta resursen, inte bära dokumentets faktiska innehåll.
 
 -------
 
-## Steg 3B – Strategi B: Composition.section (valfri)
+#### Steg 3B – Strategi B: Composition.section (valfri)
 
 Utöver Strategi A kan en fristående `Composition` skapas när innehållet är DocBook. Den gör dokumentets sektioner adresserbara var för sig, till exempel för navigering eller för att visa enskilda avsnitt.
 
 Strategi B är valfri, men en `Composition` som skapas ska följa profilen [SEEHDSCompositionCareDocumentation](StructureDefinition-SEEHDSCompositionCareDocumentation.md). Då kan konsumenter lita på strukturen oavsett vilket API som skapat den.
 
-### Sektionsmappning
+##### Sektionsmappning
 
 | | |
 | :--- | :--- |
@@ -192,7 +190,7 @@ Strategi B är valfri, men en `Composition` som skapas ska följa profilen [SEEH
 
 Varje `section.text` är en `Narrative` med `status = generated` och samma slags XHTML-`<div>` som Strategi A ger, men begränsad till sektionens eget innehåll. Nästlade sektioner ligger i `section.section` och upprepas inte i förälderns `text`.
 
-### Övriga fält i Composition
+##### Övriga fält i Composition
 
 | | |
 | :--- | :--- |
@@ -203,15 +201,15 @@ Varje `section.text` är en `Narrative` med `status = generated` och samma slags
 | `author` | Kopieras från`DocumentReference.author`. Om`author`saknas i källan används vårdenheten (`accessControlHeader.accountableCareUnit`) som logisk referens till`Organization`, eftersom`Composition.author`är obligatorisk |
 | `title` | `clinicalDocumentNoteTitle`; fallback`"Journalanteckning"` |
 
-### Koppling till DocumentReference
+##### Koppling till DocumentReference
 
 `Composition` saknar ett eget element som pekar på `DocumentReference`. Kopplingen görs genom att samma `Provenance` har både `DocumentReference` och `Composition` i `Provenance.target`. Den `Provenance` bär redan Sparr-agenterna (`agent[custodian]`, `agent[author]`), så samma spärrkontroll gäller för båda resurserna. En konsument som hämtar `Provenance` för en `DocumentReference` hittar den tillhörande `Composition` bland dess targets.
 
 -------
 
-## Exempel
+#### Exempel
 
-### Källa (efter avkodning)
+##### Källa (efter avkodning)
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +233,7 @@ Varje `section.text` är en `Narrative` med `status = generated` och samma slags
 
 ```
 
-### Strategi A – content.attachment
+##### Strategi A – content.attachment
 
 ```
 "content": [{
@@ -269,7 +267,7 @@ Varje `section.text` är en `Narrative` med `status = generated` och samma slags
 
 ```
 
-### Strategi B – Composition
+##### Strategi B – Composition
 
 ```
 {
@@ -301,7 +299,7 @@ Den stylade sektionen "Observera" bryts inte ut som egen rubrik. Den ligger dire
 
 -------
 
-## Kända begränsningar
+#### Kända begränsningar
 
 * **Identifieringen i clinicalDocumentNoteText bygger på innehållet.** Textfältet saknar typindikator, så DocBook känns igen på den entity-kodade XML:en. Se [Steg 2](#steg-2--identifiering-av-docbook).
 * **Dokumentordning i Strategi B.** Löst innehåll direkt under `<article>` vid sidan av strukturella `<section>`-element samlas i en avslutande sektion i stället för att behålla sin ursprungliga position. Det är en medveten förenkling för att inget innehåll ska tappas. Strategi A bevarar alltid exakt källordning och är den representation som ska användas när exakt visuell återgivning krävs.

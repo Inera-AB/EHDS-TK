@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Sökparametrar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
+    <title>Sökparametrar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.7.0 - ci-build
+            <span style="display:inline-block;">0.8.1 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Sökparametrar</h2>
   
 
@@ -210,34 +210,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#sökparametrar--rivta-inparametrar-och-fhir-search-api" id="markdown-toc-sökparametrar--rivta-inparametrar-och-fhir-search-api">Sökparametrar – RIVTA inparametrar och FHIR Search API</a>    <ul>
-      <li><a href="#bakgrund" id="markdown-toc-bakgrund">Bakgrund</a></li>
-      <li><a href="#gemensamma-parametrar" id="markdown-toc-gemensamma-parametrar">Gemensamma parametrar</a>        <ul>
-          <li><a href="#resonemang--subjectofcareid" id="markdown-toc-resonemang--subjectofcareid">Resonemang – subjectOfCareId</a></li>
-          <li><a href="#resonemang--sourcesystemhsaid-ej-tillämplig-i-fhir-kontext" id="markdown-toc-resonemang--sourcesystemhsaid-ej-tillämplig-i-fhir-kontext">Resonemang – sourceSystemHSAId (ej tillämplig i FHIR-kontext)</a></li>
-        </ul>
-      </li>
-      <li><a href="#sammanfattning-per-tjänstekontrakt" id="markdown-toc-sammanfattning-per-tjänstekontrakt">Sammanfattning per tjänstekontrakt</a></li>
-      <li><a href="#detaljerade-mappningar--tk-specifika-parametrar" id="markdown-toc-detaljerade-mappningar--tk-specifika-parametrar">Detaljerade mappningar – TK-specifika parametrar</a>        <ul>
-          <li><a href="#getcarecontacts-och-getcaredocumentation--datumintervall-och-vårdenhet" id="markdown-toc-getcarecontacts-och-getcaredocumentation--datumintervall-och-vårdenhet">GetCareContacts och GetCareDocumentation – datumintervall och vårdenhet</a></li>
-          <li><a href="#getobservations--observationskod" id="markdown-toc-getobservations--observationskod">GetObservations – observationskod</a></li>
-          <li><a href="#getrequestactivities--datumintervall" id="markdown-toc-getrequestactivities--datumintervall">GetRequestActivities – datumintervall</a></li>
-          <li><a href="#getaccesslogforpatient--datumintervall-och-vårdgivare" id="markdown-toc-getaccesslogforpatient--datumintervall-och-vårdgivare">GetAccessLogForPatient – datumintervall och vårdgivare</a></li>
-        </ul>
-      </li>
-      <li><a href="#parametrar-utan-fhir-sökparametermotpart" id="markdown-toc-parametrar-utan-fhir-sökparametermotpart">Parametrar utan FHIR-sökparametermotpart</a></li>
-      <li><a href="#paginering--getcaredocumentation" id="markdown-toc-paginering--getcaredocumentation">Paginering – GetCareDocumentation</a></li>
-      <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="sökparametrar--rivta-inparametrar-och-fhir-search-api">Sökparametrar – RIVTA inparametrar och FHIR Search API</h1>
 
-<h2 id="bakgrund">Bakgrund</h2>
+<h4 id="bakgrund">Bakgrund</h4>
 
 <p>RIVTA-tjänstekontrakt definierar en <strong>begärantyp</strong> (<code class="language-plaintext highlighter-rouge">GetXxxType</code>) med obligatoriska och valfria inparametrar som filtrerar vilka poster som returneras. När kontrakten exponeras via ett FHIR-API ersätts dessa inparametrar av FHIR:s standardiserade sökparametrar (<code class="language-plaintext highlighter-rouge">_search</code>).</p>
 
@@ -249,7 +226,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="gemensamma-parametrar">Gemensamma parametrar</h2>
+<h4 id="gemensamma-parametrar">Gemensamma parametrar</h4>
 
 <table>
   <thead>
@@ -279,7 +256,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="resonemang--subjectofcareid">Resonemang – subjectOfCareId</h3>
+<h5 id="resonemang--subjectofcareid">Resonemang – subjectOfCareId</h5>
 
 <p><code class="language-plaintext highlighter-rouge">subjectOfCareId</code> är obligatorisk i alla RIVTA-kontrakt och anger patienten vars data ska returneras. I FHIR är <code class="language-plaintext highlighter-rouge">patient</code> ett standardiserat sökfält på alla patientcentrerade resurser. För exakt matchning på personnummer bör sökparametern kombineras med identifierarsystemet:</p>
 
@@ -288,7 +265,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Alternativt, om en intern Patient-resurs skapas med identifieraren länkad, räcker <code class="language-plaintext highlighter-rouge">patient={id}</code>.</p>
 
-<h3 id="resonemang--sourcesystemhsaid-ej-tillämplig-i-fhir-kontext">Resonemang – sourceSystemHSAId (ej tillämplig i FHIR-kontext)</h3>
+<h5 id="resonemang--sourcesystemhsaid-ej-tillämplig-i-fhir-kontext">Resonemang – sourceSystemHSAId (ej tillämplig i FHIR-kontext)</h5>
 
 <p><code class="language-plaintext highlighter-rouge">sourceSystemHSAId</code> existerar i RIVTA-kontrakten för att hantera tjänsteplattformens standardbeteende: en fråga förgrenas automatiskt till alla regioners bakändessystem och svaren aggregeras ihop. Parametern gör det möjligt att begränsa denna fan-out till ett specifikt källsystem.</p>
 
@@ -296,7 +273,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="sammanfattning-per-tjänstekontrakt">Sammanfattning per tjänstekontrakt</h2>
+<h4 id="sammanfattning-per-tjänstekontrakt">Sammanfattning per tjänstekontrakt</h4>
 
 <p><code class="language-plaintext highlighter-rouge">sourceSystemHSAId</code> förekommer som valfri inparameter i alla TKBs men har ingen FHIR-sökparametermotpart (se resonemang ovan) och är utesluten ur tabellen nedan.</p>
 
@@ -405,13 +382,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="detaljerade-mappningar--tk-specifika-parametrar">Detaljerade mappningar – TK-specifika parametrar</h2>
+<h4 id="detaljerade-mappningar--tk-specifika-parametrar">Detaljerade mappningar – TK-specifika parametrar</h4>
 
-<h3 id="getcarecontacts-och-getcaredocumentation--datumintervall-och-vårdenhet">GetCareContacts och GetCareDocumentation – datumintervall och vårdenhet</h3>
+<h5 id="getcarecontacts-och-getcaredocumentation--datumintervall-och-vårdenhet">GetCareContacts och GetCareDocumentation – datumintervall och vårdenhet</h5>
 
 <p>Dessa två kontrakt delar mönstret med <code class="language-plaintext highlighter-rouge">fromDateTime</code>/<code class="language-plaintext highlighter-rouge">toDateTime</code> och <code class="language-plaintext highlighter-rouge">careUnitHSAId</code>.</p>
 
-<h4 id="fromdatetime--todatetime--date">fromDateTime / toDateTime → <code class="language-plaintext highlighter-rouge">date</code></h4>
+<h6 id="fromdatetime--todatetime--date">fromDateTime / toDateTime → <code class="language-plaintext highlighter-rouge">date</code></h6>
 
 <table>
   <thead>
@@ -448,7 +425,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <p><strong>OBS:</strong> RIVTA-kontrakten använder formatet <code class="language-plaintext highlighter-rouge">YYYYMMDDhhmmss</code>; FHIR kräver ISO 8601. Bryggan måste konvertera formaten.</p>
 </blockquote>
 
-<h4 id="careunithsaid">careUnitHSAId</h4>
+<h6 id="careunithsaid">careUnitHSAId</h6>
 
 <table>
   <thead>
@@ -508,7 +485,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.29.4.
 
 <hr />
 
-<h3 id="getobservations--observationskod">GetObservations – observationskod</h3>
+<h5 id="getobservations--observationskod">GetObservations – observationskod</h5>
 
 <table>
   <thead>
@@ -540,7 +517,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.29.4.
 
 <hr />
 
-<h3 id="getrequestactivities--datumintervall">GetRequestActivities – datumintervall</h3>
+<h5 id="getrequestactivities--datumintervall">GetRequestActivities – datumintervall</h5>
 
 <table>
   <thead>
@@ -571,7 +548,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.29.4.
 
 <hr />
 
-<h3 id="getaccesslogforpatient--datumintervall-och-vårdgivare">GetAccessLogForPatient – datumintervall och vårdgivare</h3>
+<h5 id="getaccesslogforpatient--datumintervall-och-vårdgivare">GetAccessLogForPatient – datumintervall och vårdgivare</h5>
 
 <table>
   <thead>
@@ -608,7 +585,7 @@ GET /DocumentReference?patient.identifier=...&amp;careUnit=urn:oid:1.2.752.29.4.
   </tbody>
 </table>
 
-<h4 id="caregiverid--tre-möjliga-strategier">careGiverId – tre möjliga strategier</h4>
+<h6 id="caregiverid--tre-möjliga-strategier">careGiverId – tre möjliga strategier</h6>
 
 <p><code class="language-plaintext highlighter-rouge">careGiverId</code> i GetAccessLogForPatient avser den juridiskt ansvariga vårdgivaren (yttre Sparr-nivå), konsekvent med hur <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareGiverHSAId</code> hanteras i övriga kontrakt. I FHIR-mappningen lagras detta i <code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code> — inte på resursen direkt.</p>
 
@@ -649,7 +626,7 @@ GET /AuditEvent?patient.identifier=...&amp;_source:in={enhetslista}
 
 <hr />
 
-<h2 id="parametrar-utan-fhir-sökparametermotpart">Parametrar utan FHIR-sökparametermotpart</h2>
+<h4 id="parametrar-utan-fhir-sökparametermotpart">Parametrar utan FHIR-sökparametermotpart</h4>
 
 <table>
   <thead>
@@ -684,7 +661,7 @@ GET /AuditEvent?patient.identifier=...&amp;_source:in={enhetslista}
 
 <hr />
 
-<h2 id="paginering--getcaredocumentation">Paginering – GetCareDocumentation</h2>
+<h4 id="paginering--getcaredocumentation">Paginering – GetCareDocumentation</h4>
 
 <p>GetCareDocumentation stöder implicit paginering via <code class="language-plaintext highlighter-rouge">hasMore</code>-flaggan i svaret. I FHIR hanteras paginering med <code class="language-plaintext highlighter-rouge">_count</code> och <code class="language-plaintext highlighter-rouge">Bundle.link[next]</code> (cursor-baserad eller offset-baserad beroende på server). Bryggimplementationen måste mappa RIVTA:s <code class="language-plaintext highlighter-rouge">hasMore</code>-logik till FHIR:s Bundle-pagineringsmekanism.</p>
 
@@ -709,7 +686,7 @@ GET /AuditEvent?patient.identifier=...&amp;_source:in={enhetslista}
 
 <hr />
 
-<h2 id="öppna-frågor">Öppna frågor</h2>
+<h4 id="öppna-frågor">Öppna frågor</h4>
 
 <table>
   <thead>
@@ -767,7 +744,7 @@ GET /AuditEvent?patient.identifier=...&amp;_source:in={enhetslista}
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.ehds-tk#0.8.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Nov 4, 2026 19:17+0000">2026-11-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

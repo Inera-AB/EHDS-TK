@@ -1,4 +1,4 @@
-# SE EHDS Organization – Organisationsenhet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS Organization – Organisationsenhet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSOrganization |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSOrganization |
 
  
 Profil för organisationsenheter i EHDS-TK-mappningar (vårdenheter, juridiska vårdgivare m.fl.). Ärver HL7 Europe Core Organization (EURIDICE). Identifier-slicen följer svenska basprofilernas konvention (SEBaseOrganization: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN). 
@@ -19,7 +19,7 @@ Identifier-slicen ger stöd för HSA-id och SMI-id (Folkhälsomyndighetens id f�
 
 * Referera till denna Profil: [SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)](StructureDefinition-SEEHDSAuditEventReadAccessLog.md), [SE EHDS CarePlan – Vårdplan (GetCarePlans)](StructureDefinition-SEEHDSCarePlan.md), [SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)](StructureDefinition-SEEHDSCompositionCareDocumentation.md), [SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)](StructureDefinition-SEEHDSDiagnosticReportImaging.md)... Show 7 more, [SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)](StructureDefinition-SEEHDSDiagnosticReportLab.md), [SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)](StructureDefinition-SEEHDSDiagnosticReportReferral.md), [SE EHDS Encounter – Vårdkontakter (GetCareContacts)](StructureDefinition-SEEHDSEncounter.md), [SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)](StructureDefinition-SEEHDSImmunization.md), [SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag](StructureDefinition-SEEHDSPractitionerRole.md), [SE EHDS Provenance](StructureDefinition-SEEHDSProvenance.md) and [SE EHDS Task – Remisstatus (GetRequestActivities)](StructureDefinition-SEEHDSTask.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSOrganization)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSOrganization)
 
 ### Formal Views of Profile Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSOrganization.c
     "valueCanonical" : "http://hl7.org/fhir/uv/ips/StructureDefinition/Organization-uv-ips"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSOrganization",
   "title" : "SE EHDS Organization – Organisationsenhet",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

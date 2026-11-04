@@ -1,4 +1,4 @@
-# RIV-TA PartialTimeStampType (clinicalprocess:healthcond:basic:1) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# RIV-TA PartialTimeStampType (clinicalprocess:healthcond:basic:1) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic1 | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivPartialTimeStampTypeHealthcondBasic1 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic1 | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSRivPartialTimeStampTypeHealthcondBasic1 |
 
  
 RIV-TA-datatypen PartialTimeStampType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1. 
@@ -18,7 +18,7 @@ RIV-TA-datatypen PartialTimeStampType i namnrymden urn:riv:clinicalprocess:healt
 
 * Använd denna Logisk modell: [GetObservations 1.2](StructureDefinition-SEEHDSLMObservationsV12.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic1)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic1)
 
 ### Formal Views of Profile Content
 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivPartialTime
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPartialTimeStampTypeHealthcondBasic1",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSRivPartialTimeStampTypeHealthcondBasic1",
   "title" : "RIV-TA PartialTimeStampType (clinicalprocess:healthcond:basic:1)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# Patientens postnummer vid vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Patientens postnummer vid vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-patient-postal-code | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:ImmunizationPatientPostalCode |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-patient-postal-code | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:ImmunizationPatientPostalCode |
 
 Patientens postnummer vid vaccinationstillfället (registrationRecord.patientPostalCode).
 
@@ -21,7 +21,7 @@ Patientens postnummer vid vaccinationstillfället (registrationRecord.patientPos
 
 * Använd denna Extension: [SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)](StructureDefinition-SEEHDSImmunization.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/immunization-patient-postal-code)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/immunization-patient-postal-code)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-immunization-patient
   "resourceType" : "StructureDefinition",
   "id" : "immunization-patient-postal-code",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-patient-postal-code",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "ImmunizationPatientPostalCode",
   "title" : "Patientens postnummer vid vaccination",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

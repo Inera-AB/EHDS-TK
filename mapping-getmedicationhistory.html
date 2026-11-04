@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
+    <title>GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.7.0 - ci-build
+            <span style="display:inline-block;">0.8.1 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetMedicationHistory – Läkemedel</h2>
   
 
@@ -210,33 +210,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#getmedicationhistory--läkemedelshistorik" id="markdown-toc-getmedicationhistory--läkemedelshistorik">GetMedicationHistory – Läkemedelshistorik</a>    <ul>
-      <li><a href="#resurshierarki" id="markdown-toc-resurshierarki">Resurshierarki</a></li>
-      <li><a href="#mappningstabell--medicationmedicalrecordheader" id="markdown-toc-mappningstabell--medicationmedicalrecordheader">Mappningstabell – medicationMedicalRecordHeader</a></li>
-      <li><a href="#mappningstabell--medicationprescription" id="markdown-toc-mappningstabell--medicationprescription">Mappningstabell – medicationPrescription</a></li>
-      <li><a href="#mappningstabell--drug-xor-villkor" id="markdown-toc-mappningstabell--drug-xor-villkor">Mappningstabell – drug (XOR-villkor)</a></li>
-      <li><a href="#mappningstabell--dosage" id="markdown-toc-mappningstabell--dosage">Mappningstabell – dosage</a></li>
-      <li><a href="#mappningstabell--additionalpatientinformation-om-present" id="markdown-toc-mappningstabell--additionalpatientinformation-om-present">Mappningstabell – additionalPatientInformation (om present)</a></li>
-      <li><a href="#mappningstabell--result-tekniska-svarsfält" id="markdown-toc-mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</a></li>
-      <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a>        <ul>
-          <li><a href="#medicationstatementstatus-från-prescriptionstatus--typeofprescription" id="markdown-toc-medicationstatementstatus-från-prescriptionstatus--typeofprescription">MedicationStatement.status (från prescriptionStatus + typeOfPrescription)</a></li>
-          <li><a href="#drug-villkoret-med-003" id="markdown-toc-drug-villkoret-med-003">drug-villkoret (MED-003)</a></li>
-          <li><a href="#selfmedication-des-008" id="markdown-toc-selfmedication-des-008">selfMedication (DES-008)</a></li>
-        </ul>
-      </li>
-      <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
-      <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
-      <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
-      <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
-      <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="getmedicationhistory--läkemedelshistorik">GetMedicationHistory – Läkemedelshistorik</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:activityprescription:actoutcome</code> GetMedicationHistory v2.2<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSMedicationStatement.html">SEEHDSMedicationStatement</a><br />
@@ -257,7 +233,7 @@ Detta är en känd avvikelse i TKB:n och måste hanteras explicit i bryggkoden.<
 
 <hr />
 
-<h2 id="resurshierarki">Resurshierarki</h2>
+<h4 id="resurshierarki">Resurshierarki</h4>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEEHDSMedicationStatement (1 per medicationMedicalRecord)
   └── informationSource → PractitionerRole (accountableHealthcareProfessional)
@@ -271,7 +247,7 @@ representeras via extensions.</p>
 
 <hr />
 
-<h2 id="mappningstabell--medicationmedicalrecordheader">Mappningstabell – medicationMedicalRecordHeader</h2>
+<h4 id="mappningstabell--medicationmedicalrecordheader">Mappningstabell – medicationMedicalRecordHeader</h4>
 
 <table>
   <thead>
@@ -438,7 +414,7 @@ representeras via extensions.</p>
 
 <hr />
 
-<h2 id="mappningstabell--medicationprescription">Mappningstabell – medicationPrescription</h2>
+<h4 id="mappningstabell--medicationprescription">Mappningstabell – medicationPrescription</h4>
 
 <table>
   <thead>
@@ -729,7 +705,7 @@ representeras via extensions.</p>
 
 <hr />
 
-<h2 id="mappningstabell--drug-xor-villkor">Mappningstabell – drug (XOR-villkor)</h2>
+<h4 id="mappningstabell--drug-xor-villkor">Mappningstabell – drug (XOR-villkor)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">drug 0..1</code> innehåller exakt ett av fem alternativa delelement. Alla varianter
 mappas till <code class="language-plaintext highlighter-rouge">MedicationStatement.medicationCodeableConcept</code>. Villkoret är en invariant i den
@@ -828,7 +804,7 @@ logiska modellen, se <a href="#drug-villkoret-med-003">drug-villkoret (MED-003)<
 
 <hr />
 
-<h2 id="mappningstabell--dosage">Mappningstabell – dosage</h2>
+<h4 id="mappningstabell--dosage">Mappningstabell – dosage</h4>
 
 <p><code class="language-plaintext highlighter-rouge">dosage 0..*</code> kan innehålla flera doseringsposter. Varje <code class="language-plaintext highlighter-rouge">dosage[i]</code> mappas till
 <code class="language-plaintext highlighter-rouge">MedicationStatement.dosage[i]</code>.</p>
@@ -896,7 +872,7 @@ logiska modellen, se <a href="#drug-villkoret-med-003">drug-villkoret (MED-003)<
 
 <hr />
 
-<h2 id="mappningstabell--additionalpatientinformation-om-present">Mappningstabell – additionalPatientInformation (om present)</h2>
+<h4 id="mappningstabell--additionalpatientinformation-om-present">Mappningstabell – additionalPatientInformation (om present)</h4>
 
 <table>
   <thead>
@@ -925,7 +901,7 @@ logiska modellen, se <a href="#drug-villkoret-med-003">drug-villkoret (MED-003)<
 
 <hr />
 
-<h2 id="mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</h2>
+<h4 id="mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">result 1..1</code> innehåller teknisk statusinformation som hanteras av transportlagret och inte
 ingår i klinisk FHIR-data.</p>
@@ -975,9 +951,9 @@ ingår i klinisk FHIR-data.</p>
 
 <hr />
 
-<h2 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h2>
+<h4 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h4>
 
-<h3 id="medicationstatementstatus-från-prescriptionstatus--typeofprescription">MedicationStatement.status (från prescriptionStatus + typeOfPrescription)</h3>
+<h5 id="medicationstatementstatus-från-prescriptionstatus--typeofprescription">MedicationStatement.status (från prescriptionStatus + typeOfPrescription)</h5>
 
 <p><code class="language-plaintext highlighter-rouge">prescriptionStatus</code> (Active/Inactive) är primär källa för <code class="language-plaintext highlighter-rouge">MedicationStatement.status</code>.
 <code class="language-plaintext highlighter-rouge">typeOfPrescription</code> (I/U) ger kompletterande semantik men mappar inte rakt till status-värdena
@@ -1020,7 +996,7 @@ ingår i klinisk FHIR-data.</p>
   </tbody>
 </table>
 
-<h3 id="drug-villkoret-med-003">drug-villkoret (MED-003)</h3>
+<h5 id="drug-villkoret-med-003">drug-villkoret (MED-003)</h5>
 
 <p>Exakt ett av de fem delelementen under <code class="language-plaintext highlighter-rouge">drug</code> ska anges. Den logiska modellen
 <a href="StructureDefinition-SEEHDSLMMedicationHistory.html">SEEHDSLMMedicationHistory</a> uttrycker villkoret med
@@ -1035,14 +1011,14 @@ expediering och administrering):</p>
 insättning (<code class="language-plaintext highlighter-rouge">typeOfPrescription = I</code>) och att <code class="language-plaintext highlighter-rouge">nplId</code> eller <code class="language-plaintext highlighter-rouge">atcCode</code> anges för läkemedelsprodukter.
 Se <a href="logical-models.html#invarianter">Logiska modeller</a>.</p>
 
-<h3 id="selfmedication-des-008">selfMedication (DES-008)</h3>
+<h5 id="selfmedication-des-008">selfMedication (DES-008)</h5>
 
 <p><code class="language-plaintext highlighter-rouge">selfMedication 1..1 boolean</code> har ingen standardiserad FHIR MedicationStatement-representation.
 Mappas till custom extension <code class="language-plaintext highlighter-rouge">https://fhir.inera.se/StructureDefinition/self-medication</code>.</p>
 
 <hr />
 
-<h2 id="pdl-och-sparr">PDL och Sparr</h2>
+<h4 id="pdl-och-sparr">PDL och Sparr</h4>
 
 <p>PDL-styrning utgår från <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code>-blocket i headern.
 <strong>OBS:</strong> Fältnamnen avviker från övriga TK:er med lowercase 'c' i 'care':</p>
@@ -1076,7 +1052,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
 
 <hr />
 
-<h2 id="provenance">Provenance</h2>
+<h4 id="provenance">Provenance</h4>
 
 <table>
   <thead>
@@ -1105,7 +1081,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
 
 <hr />
 
-<h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
+<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
 
 <table>
   <thead>
@@ -1134,7 +1110,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
 
 <hr />
 
-<h2 id="öppna-frågor">Öppna frågor</h2>
+<h4 id="öppna-frågor">Öppna frågor</h4>
 
 <table>
   <thead>
@@ -1167,7 +1143,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
   </tbody>
 </table>
 
-<h2 id="föreslagna-nya-issues">Föreslagna nya issues</h2>
+<h4 id="föreslagna-nya-issues">Föreslagna nya issues</h4>
 
 <table>
   <thead>
@@ -1211,7 +1187,7 @@ Mappas till custom extension <code class="language-plaintext highlighter-rouge">
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.ehds-tk#0.8.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Nov 4, 2026 19:17+0000">2026-11-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

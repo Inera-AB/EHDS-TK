@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetMaternityMedicalHistory – Mödravård - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
+    <title>GetMaternityMedicalHistory – Mödravård - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.7.0 - ci-build
+            <span style="display:inline-block;">0.8.1 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetMaternityMedicalHistory – Mödravård</h2>
   
 
@@ -210,65 +210,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#getmaternitymedicalhistory--mödravård" id="markdown-toc-getmaternitymedicalhistory--mödravård">GetMaternityMedicalHistory – Mödravård</a>    <ul>
-      <li><a href="#datamodell--översikt" id="markdown-toc-datamodell--översikt">Datamodell – översikt</a></li>
-      <li><a href="#flersektionsdesign-mat-001" id="markdown-toc-flersektionsdesign-mat-001">Flersektionsdesign (MAT-001)</a></li>
-      <li><a href="#mappningstabell--header-gemensam-för-alla-sektioner" id="markdown-toc-mappningstabell--header-gemensam-för-alla-sektioner">Mappningstabell – Header (gemensam för alla sektioner)</a>        <ul>
-          <li><a href="#dokumentidentitet-och-patient" id="markdown-toc-dokumentidentitet-och-patient">Dokumentidentitet och patient</a></li>
-          <li><a href="#ansvarig-hälso--och-sjukvårdspersonal" id="markdown-toc-ansvarig-hälso--och-sjukvårdspersonal">Ansvarig hälso- och sjukvårdspersonal</a></li>
-          <li><a href="#juridisk-autentisering" id="markdown-toc-juridisk-autentisering">Juridisk autentisering</a></li>
-          <li><a href="#pdl-och-övriga-headerfält" id="markdown-toc-pdl-och-övriga-headerfält">PDL och övriga headerfält</a></li>
-        </ul>
-      </li>
-      <li><a href="#tekniska-responsfält-result" id="markdown-toc-tekniska-responsfält-result">Tekniska responsfält (result)</a></li>
-      <li><a href="#mappningstabell--registrationrecord-inskrivningsuppgifter" id="markdown-toc-mappningstabell--registrationrecord-inskrivningsuppgifter">Mappningstabell – registrationRecord (inskrivningsuppgifter)</a>        <ul>
-          <li><a href="#beräknat-nedkomstdatum-och-graviditetsstatus" id="markdown-toc-beräknat-nedkomstdatum-och-graviditetsstatus">Beräknat nedkomstdatum och graviditetsstatus</a></li>
-          <li><a href="#antropometri-vid-inskrivning" id="markdown-toc-antropometri-vid-inskrivning">Antropometri vid inskrivning</a></li>
-          <li><a href="#infertilitetsbehandling" id="markdown-toc-infertilitetsbehandling">Infertilitetsbehandling</a></li>
-          <li><a href="#tidigare-graviditeter-och-förlossningar" id="markdown-toc-tidigare-graviditeter-och-förlossningar">Tidigare graviditeter och förlossningar</a></li>
-          <li><a href="#sjukdomar-och-riskfaktorer-booleska-fält" id="markdown-toc-sjukdomar-och-riskfaktorer-booleska-fält">Sjukdomar och riskfaktorer (booleska fält)</a></li>
-          <li><a href="#läkemedel-under-graviditet" id="markdown-toc-läkemedel-under-graviditet">Läkemedel under graviditet</a></li>
-          <li><a href="#bedömning-första-kontakt" id="markdown-toc-bedömning-första-kontakt">Bedömning första kontakt</a></li>
-        </ul>
-      </li>
-      <li><a href="#mappningstabell--pregnancycheckuprecord-graviditetskontroll" id="markdown-toc-mappningstabell--pregnancycheckuprecord-graviditetskontroll">Mappningstabell – pregnancyCheckupRecord (graviditetskontroll)</a>        <ul>
-          <li><a href="#gestationsålder-och-vikt" id="markdown-toc-gestationsålder-och-vikt">Gestationsålder och vikt</a></li>
-          <li><a href="#blodstatus" id="markdown-toc-blodstatus">Blodstatus</a></li>
-          <li><a href="#blodtryck" id="markdown-toc-blodtryck">Blodtryck</a></li>
-          <li><a href="#urinstatus" id="markdown-toc-urinstatus">Urinstatus</a></li>
-          <li><a href="#fosterdata" id="markdown-toc-fosterdata">Fosterdata</a></li>
-          <li><a href="#ledighet" id="markdown-toc-ledighet">Ledighet</a></li>
-          <li><a href="#läkemedel-sedan-inskrivning" id="markdown-toc-läkemedel-sedan-inskrivning">Läkemedel sedan inskrivning</a></li>
-        </ul>
-      </li>
-      <li><a href="#mappningstabell--postdeliveryrecord-eftervård" id="markdown-toc-mappningstabell--postdeliveryrecord-eftervård">Mappningstabell – postDeliveryRecord (eftervård)</a>        <ul>
-          <li><a href="#moderuppgifter-efter-förlossning" id="markdown-toc-moderuppgifter-efter-förlossning">Moderuppgifter efter förlossning</a></li>
-          <li><a href="#barnuppgifter-efter-förlossning" id="markdown-toc-barnuppgifter-efter-förlossning">Barnuppgifter efter förlossning</a></li>
-        </ul>
-      </li>
-      <li><a href="#härledda-fält-och-designbeslut" id="markdown-toc-härledda-fält-och-designbeslut">Härledda fält och designbeslut</a>        <ul>
-          <li><a href="#observationstatus" id="markdown-toc-observationstatus">Observation.status</a></li>
-          <li><a href="#observationcategory" id="markdown-toc-observationcategory">Observation.category</a></li>
-          <li><a href="#observationeffectivex" id="markdown-toc-observationeffectivex">Observation.effective[x]</a></li>
-          <li><a href="#länkning-av-sektioner-mat-001" id="markdown-toc-länkning-av-sektioner-mat-001">Länkning av sektioner (MAT-001)</a></li>
-          <li><a href="#documenttitle-mat-003" id="markdown-toc-documenttitle-mat-003">documentTitle (MAT-003)</a></li>
-          <li><a href="#läkemedel--alternativ-representation" id="markdown-toc-läkemedel--alternativ-representation">Läkemedel – alternativ representation</a></li>
-          <li><a href="#orgunit-kontaktuppgifter-orgunittelecom-orgunitemail-orgunitaddress-orgunitlocation" id="markdown-toc-orgunit-kontaktuppgifter-orgunittelecom-orgunitemail-orgunitaddress-orgunitlocation">OrgUnit-kontaktuppgifter (orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation)</a></li>
-        </ul>
-      </li>
-      <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
-      <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
-      <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
-      <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
-      <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="getmaternitymedicalhistory--mödravård">GetMaternityMedicalHistory – Mödravård</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetMaternityMedicalHistory v2.0<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSObservationMaternity.html">SEEHDSObservationMaternity</a><br />
@@ -282,7 +226,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="datamodell--översikt">Datamodell – översikt</h2>
+<h4 id="datamodell--översikt">Datamodell – översikt</h4>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>maternityMedicalRecord [0..*]
   maternityMedicalRecordHeader [1..1]          ← standard PatientSummaryHeader
@@ -322,7 +266,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="flersektionsdesign-mat-001">Flersektionsdesign (MAT-001)</h2>
+<h4 id="flersektionsdesign-mat-001">Flersektionsdesign (MAT-001)</h4>
 
 <p>Varje avsnitt i <code class="language-plaintext highlighter-rouge">maternityMedicalRecordBody</code> som finns i svaret blir en <strong>grupperande Observation</strong>, och varje fält i avsnittet blir en <strong>medlems-Observation</strong> som den grupperande Observationen refererar via <code class="language-plaintext highlighter-rouge">hasMember</code>. Detta följer FHIR:s mönster för grupperade observationer: den grupperande Observationen har inget eget <code class="language-plaintext highlighter-rouge">value[x]</code>.</p>
 
@@ -392,12 +336,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="mappningstabell--header-gemensam-för-alla-sektioner">Mappningstabell – Header (gemensam för alla sektioner)</h2>
+<h4 id="mappningstabell--header-gemensam-för-alla-sektioner">Mappningstabell – Header (gemensam för alla sektioner)</h4>
 
 <p>Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 <code class="language-plaintext highlighter-rouge">maternityMedicalRecord</code>-objekt.</p>
 
-<h3 id="dokumentidentitet-och-patient">Dokumentidentitet och patient</h3>
+<h5 id="dokumentidentitet-och-patient">Dokumentidentitet och patient</h5>
 
 <table>
   <thead>
@@ -448,7 +392,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="ansvarig-hälso--och-sjukvårdspersonal">Ansvarig hälso- och sjukvårdspersonal</h3>
+<h5 id="ansvarig-hälso--och-sjukvårdspersonal">Ansvarig hälso- och sjukvårdspersonal</h5>
 
 <table>
   <thead>
@@ -535,7 +479,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="juridisk-autentisering">Juridisk autentisering</h3>
+<h5 id="juridisk-autentisering">Juridisk autentisering</h5>
 
 <table>
   <thead>
@@ -562,7 +506,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="pdl-och-övriga-headerfält">PDL och övriga headerfält</h3>
+<h5 id="pdl-och-övriga-headerfält">PDL och övriga headerfält</h5>
 
 <table>
   <thead>
@@ -603,17 +547,17 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="tekniska-responsfält-result">Tekniska responsfält (result)</h2>
+<h4 id="tekniska-responsfält-result">Tekniska responsfält (result)</h4>
 
 <p>Svarsmeddelandet <code class="language-plaintext highlighter-rouge">GetMaternityMedicalHistoryResponse</code> i version 2.0 har inget <code class="language-plaintext highlighter-rouge">result</code>-element enligt XSD:n (GetMaternityMedicalHistoryResponder_2.0.xsd), till skillnad från flera andra tjänstekontrakt. Det finns därför inga tekniska responsfält att mappa.</p>
 
 <hr />
 
-<h2 id="mappningstabell--registrationrecord-inskrivningsuppgifter">Mappningstabell – registrationRecord (inskrivningsuppgifter)</h2>
+<h4 id="mappningstabell--registrationrecord-inskrivningsuppgifter">Mappningstabell – registrationRecord (inskrivningsuppgifter)</h4>
 
 <p>Avsnittet blir en grupperande Observation med <code class="language-plaintext highlighter-rouge">code = maternity-section#registration</code>, och varje fält en medlems-Observation (se <a href="#flersektionsdesign-mat-001">Flersektionsdesign</a>).</p>
 
-<h3 id="beräknat-nedkomstdatum-och-graviditetsstatus">Beräknat nedkomstdatum och graviditetsstatus</h3>
+<h5 id="beräknat-nedkomstdatum-och-graviditetsstatus">Beräknat nedkomstdatum och graviditetsstatus</h5>
 
 <table>
   <thead>
@@ -664,7 +608,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="antropometri-vid-inskrivning">Antropometri vid inskrivning</h3>
+<h5 id="antropometri-vid-inskrivning">Antropometri vid inskrivning</h5>
 
 <table>
   <thead>
@@ -697,7 +641,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="infertilitetsbehandling">Infertilitetsbehandling</h3>
+<h5 id="infertilitetsbehandling">Infertilitetsbehandling</h5>
 
 <table>
   <thead>
@@ -718,7 +662,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="tidigare-graviditeter-och-förlossningar">Tidigare graviditeter och förlossningar</h3>
+<h5 id="tidigare-graviditeter-och-förlossningar">Tidigare graviditeter och förlossningar</h5>
 
 <p><code class="language-plaintext highlighter-rouge">previousGravidityAndParity</code> är en repeterad sektion. Varje post blir en medlems-Observation med postens fält som <code class="language-plaintext highlighter-rouge">component</code>:</p>
 
@@ -783,7 +727,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="sjukdomar-och-riskfaktorer-booleska-fält">Sjukdomar och riskfaktorer (booleska fält)</h3>
+<h5 id="sjukdomar-och-riskfaktorer-booleska-fält">Sjukdomar och riskfaktorer (booleska fält)</h5>
 
 <table>
   <thead>
@@ -822,7 +766,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="läkemedel-under-graviditet">Läkemedel under graviditet</h3>
+<h5 id="läkemedel-under-graviditet">Läkemedel under graviditet</h5>
 
 <p><code class="language-plaintext highlighter-rouge">medicationDuringPregnacy</code> är en repeterad sektion. Varje läkemedel mappas som
 ett komponent-par (namn + dosering) med löpande index:</p>
@@ -852,7 +796,7 @@ ett komponent-par (namn + dosering) med löpande index:</p>
   </tbody>
 </table>
 
-<h3 id="bedömning-första-kontakt">Bedömning första kontakt</h3>
+<h5 id="bedömning-första-kontakt">Bedömning första kontakt</h5>
 
 <table>
   <thead>
@@ -875,11 +819,11 @@ ett komponent-par (namn + dosering) med löpande index:</p>
 
 <hr />
 
-<h2 id="mappningstabell--pregnancycheckuprecord-graviditetskontroll">Mappningstabell – pregnancyCheckupRecord (graviditetskontroll)</h2>
+<h4 id="mappningstabell--pregnancycheckuprecord-graviditetskontroll">Mappningstabell – pregnancyCheckupRecord (graviditetskontroll)</h4>
 
 <p>Avsnittet blir en grupperande Observation med <code class="language-plaintext highlighter-rouge">code = maternity-section#checkup</code>, och varje fält en medlems-Observation (se <a href="#flersektionsdesign-mat-001">Flersektionsdesign</a>).</p>
 
-<h3 id="gestationsålder-och-vikt">Gestationsålder och vikt</h3>
+<h5 id="gestationsålder-och-vikt">Gestationsålder och vikt</h5>
 
 <table>
   <thead>
@@ -912,7 +856,7 @@ ett komponent-par (namn + dosering) med löpande index:</p>
   </tbody>
 </table>
 
-<h3 id="blodstatus">Blodstatus</h3>
+<h5 id="blodstatus">Blodstatus</h5>
 
 <table>
   <thead>
@@ -933,7 +877,7 @@ ett komponent-par (namn + dosering) med löpande index:</p>
   </tbody>
 </table>
 
-<h3 id="blodtryck">Blodtryck</h3>
+<h5 id="blodtryck">Blodtryck</h5>
 
 <table>
   <thead>
@@ -960,7 +904,7 @@ ett komponent-par (namn + dosering) med löpande index:</p>
   </tbody>
 </table>
 
-<h3 id="urinstatus">Urinstatus</h3>
+<h5 id="urinstatus">Urinstatus</h5>
 
 <table>
   <thead>
@@ -987,7 +931,7 @@ ett komponent-par (namn + dosering) med löpande index:</p>
   </tbody>
 </table>
 
-<h3 id="fosterdata">Fosterdata</h3>
+<h5 id="fosterdata">Fosterdata</h5>
 
 <table>
   <thead>
@@ -1020,7 +964,7 @@ ett komponent-par (namn + dosering) med löpande index:</p>
   </tbody>
 </table>
 
-<h3 id="ledighet">Ledighet</h3>
+<h5 id="ledighet">Ledighet</h5>
 
 <table>
   <thead>
@@ -1041,7 +985,7 @@ ett komponent-par (namn + dosering) med löpande index:</p>
   </tbody>
 </table>
 
-<h3 id="läkemedel-sedan-inskrivning">Läkemedel sedan inskrivning</h3>
+<h5 id="läkemedel-sedan-inskrivning">Läkemedel sedan inskrivning</h5>
 
 <p><code class="language-plaintext highlighter-rouge">medicationSinceRegistration</code> är en repeterad sektion. Varje läkemedel mappas som
 ett komponent-par (namn + dosering) med löpande index:</p>
@@ -1073,13 +1017,13 @@ ett komponent-par (namn + dosering) med löpande index:</p>
 
 <hr />
 
-<h2 id="mappningstabell--postdeliveryrecord-eftervård">Mappningstabell – postDeliveryRecord (eftervård)</h2>
+<h4 id="mappningstabell--postdeliveryrecord-eftervård">Mappningstabell – postDeliveryRecord (eftervård)</h4>
 
 <p>Avsnittet blir en grupperande Observation med <code class="language-plaintext highlighter-rouge">code = maternity-section#post-delivery</code>, och varje fält en medlems-Observation (se <a href="#flersektionsdesign-mat-001">Flersektionsdesign</a>).
 Sektionen är uppdelad i moderuppgifter (<code class="language-plaintext highlighter-rouge">motherPostDeliveryRecord</code>, kard. 1..1) och
 barnuppgifter (<code class="language-plaintext highlighter-rouge">childPostDeliveryRecord</code>, kard. 1..*).</p>
 
-<h3 id="moderuppgifter-efter-förlossning">Moderuppgifter efter förlossning</h3>
+<h5 id="moderuppgifter-efter-förlossning">Moderuppgifter efter förlossning</h5>
 
 <table>
   <thead>
@@ -1160,7 +1104,7 @@ barnuppgifter (<code class="language-plaintext highlighter-rouge">childPostDeliv
   </tbody>
 </table>
 
-<h3 id="barnuppgifter-efter-förlossning">Barnuppgifter efter förlossning</h3>
+<h5 id="barnuppgifter-efter-förlossning">Barnuppgifter efter förlossning</h5>
 
 <p><code class="language-plaintext highlighter-rouge">childPostDeliveryRecord</code> är repeterat (ett element per barn). Varje barns data
 separeras med ordningsnumret <code class="language-plaintext highlighter-rouge">ordinalNumber</code> i komponent-koden:</p>
@@ -1210,35 +1154,35 @@ separeras med ordningsnumret <code class="language-plaintext highlighter-rouge">
 
 <hr />
 
-<h2 id="härledda-fält-och-designbeslut">Härledda fält och designbeslut</h2>
+<h4 id="härledda-fält-och-designbeslut">Härledda fält och designbeslut</h4>
 
-<h3 id="observationstatus">Observation.status</h3>
+<h5 id="observationstatus">Observation.status</h5>
 
 <p>Inget explicit statusfält finns i GetMaternityMedicalHistory. <code class="language-plaintext highlighter-rouge">Observation.status</code>
 sätts statiskt till <code class="language-plaintext highlighter-rouge">final</code> för alla producerade Observation-resurser, eftersom
 ett svarsmeddelande från tjänstekontraktet representerar en färdig journalpost.</p>
 
-<h3 id="observationcategory">Observation.category</h3>
+<h5 id="observationcategory">Observation.category</h5>
 
 <p><code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte. GetMaternityMedicalHistory bär ingen kategori, och den statiska
 kategorin <code class="language-plaintext highlighter-rouge">survey</code> fanns bara för att harmonisera med IPS (GENERAL-007). Sektionen identifieras av
 <code class="language-plaintext highlighter-rouge">Observation.code</code>.</p>
 
-<h3 id="observationeffectivex">Observation.effective[x]</h3>
+<h5 id="observationeffectivex">Observation.effective[x]</h5>
 
 <p><code class="language-plaintext highlighter-rouge">maternityMedicalRecordHeader.accountableHealthcareProfessional.authorTime</code> används
 som <code class="language-plaintext highlighter-rouge">Observation.effectiveDateTime</code>. <code class="language-plaintext highlighter-rouge">documentTime</code> (registreringstidpunkt) mappas
 till <code class="language-plaintext highlighter-rouge">Observation.issued</code> om de skiljer sig åt.</p>
 
-<h3 id="länkning-av-sektioner-mat-001">Länkning av sektioner (MAT-001)</h3>
+<h5 id="länkning-av-sektioner-mat-001">Länkning av sektioner (MAT-001)</h5>
 
 <p>Fälten i ett avsnitt hålls ihop av den grupperande Observationens <code class="language-plaintext highlighter-rouge">hasMember</code>. De grupperande Observationerna från samma <code class="language-plaintext highlighter-rouge">maternityMedicalRecord</code> har <code class="language-plaintext highlighter-rouge">identifier</code> som bygger på samma <code class="language-plaintext highlighter-rouge">documentId</code> (<code class="language-plaintext highlighter-rouge">{documentId}#registration</code>, <code class="language-plaintext highlighter-rouge">{documentId}#checkup</code>, <code class="language-plaintext highlighter-rouge">{documentId}#post-delivery</code>). Någon <code class="language-plaintext highlighter-rouge">List</code>- eller <code class="language-plaintext highlighter-rouge">Composition</code>-resurs behövs inte.</p>
 
-<h3 id="documenttitle-mat-003">documentTitle (MAT-003)</h3>
+<h5 id="documenttitle-mat-003">documentTitle (MAT-003)</h5>
 
 <p><code class="language-plaintext highlighter-rouge">maternityMedicalRecordHeader.documentTitle</code> beskriver hela journalposten och mappas till <code class="language-plaintext highlighter-rouge">code.text</code> på varje grupperande Observation. Den mappas <strong>inte</strong> på medlems-Observationerna. De är enskilda observationer (t.ex. vikt eller blodtryck), där <code class="language-plaintext highlighter-rouge">code.text</code> beskriver det som observerats och inte dokumentet.</p>
 
-<h3 id="läkemedel--alternativ-representation">Läkemedel – alternativ representation</h3>
+<h5 id="läkemedel--alternativ-representation">Läkemedel – alternativ representation</h5>
 
 <p><code class="language-plaintext highlighter-rouge">medicationDuringPregnacy</code> och <code class="language-plaintext highlighter-rouge">medicationSinceRegistration</code> innehåller
 läkemedelsbeskrivningar som i en fullständig implementering bör representeras
@@ -1246,7 +1190,7 @@ som separata <code class="language-plaintext highlighter-rouge">MedicationStatem
 I nuvarande mappning används <code class="language-plaintext highlighter-rouge">valueString</code> som förenkling i avvaktan på
 profilbeslut (se MAT-001).</p>
 
-<h3 id="orgunit-kontaktuppgifter-orgunittelecom-orgunitemail-orgunitaddress-orgunitlocation">OrgUnit-kontaktuppgifter (orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation)</h3>
+<h5 id="orgunit-kontaktuppgifter-orgunittelecom-orgunitemail-orgunitaddress-orgunitlocation">OrgUnit-kontaktuppgifter (orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation)</h5>
 
 <p>Dessa fyra fält representerar enhetens kontaktinformation. De saknar en naturlig
 plats i Observation-resursen och tillhör egentligen Organization-resursen i FHIR.
@@ -1256,7 +1200,7 @@ PractitionerRole refererar. Ingen mappning fastlagd i nuläget; se GENERAL-008.<
 
 <hr />
 
-<h2 id="pdl-och-sparr">PDL och Sparr</h2>
+<h4 id="pdl-och-sparr">PDL och Sparr</h4>
 
 <p>GetMaternityMedicalHistory använder <strong>standard <code class="language-plaintext highlighter-rouge">PatientSummaryHeader</code></strong> med
 <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code> som inkluderar både <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareUnitHSAId</code>
@@ -1297,7 +1241,7 @@ och <code class="language-plaintext highlighter-rouge">healthcareProfessionalCar
 
 <hr />
 
-<h2 id="provenance">Provenance</h2>
+<h4 id="provenance">Provenance</h4>
 
 <p>En <code class="language-plaintext highlighter-rouge">Provenance</code>-resurs skapas per <code class="language-plaintext highlighter-rouge">maternityMedicalRecord</code>-objekt och refererar
 samtliga Observation-resurser producerade från det objektet.</p>
@@ -1331,7 +1275,7 @@ samtliga Observation-resurser producerade från det objektet.</p>
 
 <hr />
 
-<h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
+<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
 
 <table>
   <thead>
@@ -1364,7 +1308,7 @@ samtliga Observation-resurser producerade från det objektet.</p>
 
 <hr />
 
-<h2 id="öppna-frågor">Öppna frågor</h2>
+<h4 id="öppna-frågor">Öppna frågor</h4>
 
 <table>
   <thead>
@@ -1395,7 +1339,7 @@ samtliga Observation-resurser producerade från det objektet.</p>
 
 <hr />
 
-<h2 id="föreslagna-nya-issues">Föreslagna nya issues</h2>
+<h4 id="föreslagna-nya-issues">Föreslagna nya issues</h4>
 
 <table>
   <thead>
@@ -1443,7 +1387,7 @@ samtliga Observation-resurser producerade från det objektet.</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.ehds-tk#0.8.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Nov 4, 2026 19:17+0000">2026-11-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

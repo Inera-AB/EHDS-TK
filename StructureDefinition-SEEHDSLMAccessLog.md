@@ -1,4 +1,4 @@
-# GetAccessLogForPatient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetAccessLogForPatient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLog | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMAccessLog |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLog | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSLMAccessLog |
 
  
 Logisk modell för patientens åtkomstloggar hämtad via GetAccessLogForPatient (informationsecurity:auditing:log v1.1, 2.0). Krävs för 1177 Journal 1.1, 2.0 men ej för NPÖ. 
@@ -18,7 +18,7 @@ Logisk modell för patientens åtkomstloggar hämtad via GetAccessLogForPatient 
 
 * Denna Logisk modell används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSLMAccessLog)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSLMAccessLog)
 
 ### Formal Views of Profile Content
 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAccessLog.cs
     "valueUri" : "urn:riv:informationsecurity:auditing:log:GetAccessLogsForPatientResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLog",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSLMAccessLog",
   "title" : "GetAccessLogForPatient",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

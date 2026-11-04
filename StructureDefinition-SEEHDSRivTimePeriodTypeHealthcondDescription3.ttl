@@ -18,11 +18,11 @@
      fhir:Extension.valueUri [ fhir:value "urn:riv:clinicalprocess:healthcond:description:3" ]
   ] ;
   fhir:StructureDefinition.url [ fhir:value "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondDescription3"] ;
-  fhir:StructureDefinition.version [ fhir:value "0.7.0"] ;
+  fhir:StructureDefinition.version [ fhir:value "0.8.1"] ;
   fhir:StructureDefinition.name [ fhir:value "SEEHDSRivTimePeriodTypeHealthcondDescription3"] ;
   fhir:StructureDefinition.title [ fhir:value "RIV-TA TimePeriodType (clinicalprocess:healthcond:description:3)"] ;
   fhir:StructureDefinition.status [ fhir:value "draft"] ;
-  fhir:StructureDefinition.date [ fhir:value "2026-10-26T15:58:30+00:00"^^xsd:dateTime] ;
+  fhir:StructureDefinition.date [ fhir:value "2026-11-04T19:17:50+00:00"^^xsd:dateTime] ;
   fhir:StructureDefinition.publisher [ fhir:value "Inera AB"] ;
   fhir:StructureDefinition.contact [
      fhir:index 0 ;

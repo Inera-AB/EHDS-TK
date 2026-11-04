@@ -1,4 +1,4 @@
-# Datum för konstaterande - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Datum för konstaterande - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-ascertained-date | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:AlertAscertainedDate |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-ascertained-date | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:AlertAscertainedDate |
 
 Datum då förhållandet som föranledde uppmärksamhetssignalen konstaterades (alertInformationBody.ascertainedDate).
 
@@ -21,7 +21,7 @@ Datum då förhållandet som föranledde uppmärksamhetssignalen konstaterades (
 
 * Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-ascertained-date)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/alert-ascertained-date)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-ascertained-da
   "resourceType" : "StructureDefinition",
   "id" : "alert-ascertained-date",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-ascertained-date",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "AlertAscertainedDate",
   "title" : "Datum för konstaterande",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

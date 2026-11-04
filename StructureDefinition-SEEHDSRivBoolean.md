@@ -1,4 +1,4 @@
-# RIV-TA xs:boolean - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# RIV-TA xs:boolean - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivBoolean |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSRivBoolean |
 
  
 Sanningsvärde (true/false). Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -18,7 +18,7 @@ Sanningsvärde (true/false). Elementets värde ligger som textinnehåll i XML-el
 
 * Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md), [GetAlertInformation 3.0](StructureDefinition-SEEHDSLMAlertInformationV30.md), [GetCareContacts](StructureDefinition-SEEHDSLMCareContacts.md), [GetCareContacts 2.0](StructureDefinition-SEEHDSLMCareContactsV20.md)... Show 20 more, [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md), [GetCareDocumentation 2.1](StructureDefinition-SEEHDSLMCareDocumentationV21.md), [GetCarePlans](StructureDefinition-SEEHDSLMCarePlans.md), [GetDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md), [GetFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md), [GetLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md), [GetLaboratoryOrderOutcome 3.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.md), [GetLaboratoryOrderOutcome 4.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.md), [GetMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.md), [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md), [GetObservations](StructureDefinition-SEEHDSLMObservations.md), [GetObservations 1.2](StructureDefinition-SEEHDSLMObservationsV12.md), [GetReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md), [GetReferralOutcome 3.1](StructureDefinition-SEEHDSLMReferralOutcomeV31.md), [GetRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md), [GetVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md), [GetVaccinationHistory 1.0](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md), [RIV-TA PQIntervalType (clinicalprocess:healthcond:actoutcome:4)](StructureDefinition-SEEHDSRivPQIntervalTypeHealthcondActoutcome4.md) and [RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:1.2)](StructureDefinition-SEEHDSRivPQIntervalTypeHealthcondBasic12.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivBoolean)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivBoolean)
 
 ### Formal Views of Profile Content
 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivBoolean.csv
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivBoolean",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBoolean",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSRivBoolean",
   "title" : "RIV-TA xs:boolean",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

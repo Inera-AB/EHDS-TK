@@ -1,4 +1,4 @@
-# RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:1.2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:1.2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic12 | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivPQIntervalTypeHealthcondBasic12 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic12 | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSRivPQIntervalTypeHealthcondBasic12 |
 
  
 RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:basic:1.2. 
@@ -18,7 +18,7 @@ RIV-TA-datatypen PQIntervalType i namnrymden urn:riv:clinicalprocess:healthcond:
 
 * Använd denna Logisk modell: [GetObservations 1.2](StructureDefinition-SEEHDSLMObservationsV12.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic12)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic12)
 
 ### Formal Views of Profile Content
 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivPQIntervalT
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:1.2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic12",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSRivPQIntervalTypeHealthcondBasic12",
   "title" : "RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:1.2)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

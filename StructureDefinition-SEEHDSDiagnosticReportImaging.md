@@ -1,4 +1,4 @@
-# SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSDiagnosticReportImaging |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSDiagnosticReportImaging |
 
  
 Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med SEEHDSImagingStudy för att representera både undersökning och svar. 
@@ -19,7 +19,7 @@ Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används 
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 * Denna Profil används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSDiagnosticReportImaging)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSDiagnosticReportImaging)
 
 ### Formal Views of Profile Content
 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDiagnosticRepo
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDiagnosticReportImaging",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSDiagnosticReportImaging",
   "title" : "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -171,8 +171,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDiagnosticRepo
       "sliceName" : "organization",
       "type" : [{
         "code" : "Reference",
-        "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
-        "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"]
+        "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"]
       }]
     },
     {

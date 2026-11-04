@@ -1,4 +1,4 @@
-# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSConditionDiagnosis |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSConditionDiagnosis |
 
  
 Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (clinicalprocess:healthcond:description v2.0). Ärver HL7 Europe Core Condition (EURIDICE). Täcker NPÖ 2.0 och 1177 Journal 2.0. 
@@ -19,7 +19,7 @@ Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet GetDiagnosis (
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 * Denna Profil används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSConditionDiagnosis)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSConditionDiagnosis)
 
 ### Formal Views of Profile Content
 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSConditionDiagn
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSConditionDiagnosis",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

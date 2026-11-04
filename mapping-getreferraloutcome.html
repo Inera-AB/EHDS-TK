@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
+    <title>GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.7.0 - ci-build
+            <span style="display:inline-block;">0.8.1 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetReferralOutcome – Remisser</h2>
   
 
@@ -210,40 +210,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#getreferraloutcome--remissvar--konsultationssvar" id="markdown-toc-getreferraloutcome--remissvar--konsultationssvar">GetReferralOutcome – Remissvar / Konsultationssvar</a>    <ul>
-      <li><a href="#resurshierarki" id="markdown-toc-resurshierarki">Resurshierarki</a></li>
-      <li><a href="#mappningstabell--referraloutcomeheader-patientsummaryheader" id="markdown-toc-mappningstabell--referraloutcomeheader-patientsummaryheader">Mappningstabell – referralOutcomeHeader (PatientSummaryHeader)</a></li>
-      <li><a href="#mappningstabell--referraloutcomebody" id="markdown-toc-mappningstabell--referraloutcomebody">Mappningstabell – referralOutcomeBody</a>        <ul>
-          <li><a href="#svarstext-och-klassificering" id="markdown-toc-svarstext-och-klassificering">Svarstext och klassificering</a></li>
-          <li><a href="#klinisk-information-clinicalinformation" id="markdown-toc-klinisk-information-clinicalinformation">Klinisk information (clinicalInformation)</a></li>
-          <li><a href="#åtgärder-act" id="markdown-toc-åtgärder-act">Åtgärder (act)</a></li>
-          <li><a href="#attestering-attested" id="markdown-toc-attestering-attested">Attestering (attested)</a></li>
-          <li><a href="#kopplad-remiss-referral" id="markdown-toc-kopplad-remiss-referral">Kopplad remiss (referral)</a></li>
-        </ul>
-      </li>
-      <li><a href="#mappningstabell--result" id="markdown-toc-mappningstabell--result">Mappningstabell – result</a></li>
-      <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a>        <ul>
-          <li><a href="#diagnosticreportstatus-från-referraloutcometypecode" id="markdown-toc-diagnosticreportstatus-från-referraloutcometypecode">DiagnosticReport.status (från referralOutcomeTypeCode)</a></li>
-          <li><a href="#titel" id="markdown-toc-titel">Titel-prioritering (DiagnosticReport.code.text)</a></li>
-          <li><a href="#act-poster-och-multimedia-ref-001" id="markdown-toc-act-poster-och-multimedia-ref-001">act-poster och multimedia (REF-001)</a></li>
-          <li><a href="#clinicalinformation-sammanslagning" id="markdown-toc-clinicalinformation-sammanslagning">clinicalInformation-sammanslagning</a></li>
-          <li><a href="#referral--servicerequest" id="markdown-toc-referral--servicerequest">Referral → ServiceRequest</a></li>
-        </ul>
-      </li>
-      <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
-      <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
-      <li><a href="#version-3-1" id="markdown-toc-version-3-1">Övriga aktiva versioner – GetReferralOutcome 3.1</a></li>
-      <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
-      <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
-      <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="getreferraloutcome--remissvar--konsultationssvar">GetReferralOutcome – Remissvar / Konsultationssvar</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:actoutcome</code> GetReferralOutcome v3.2 och v3.1<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSDiagnosticReportReferral.html">SEEHDSDiagnosticReportReferral</a><br />
@@ -253,7 +222,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="resurshierarki">Resurshierarki</h2>
+<h4 id="resurshierarki">Resurshierarki</h4>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEEHDSDiagnosticReportReferral (1 per referralOutcome)
   └── basedOn → ServiceRequest (logisk referens via referral.referralId)
@@ -264,7 +233,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="mappningstabell--referraloutcomeheader-patientsummaryheader">Mappningstabell – referralOutcomeHeader (PatientSummaryHeader)</h2>
+<h4 id="mappningstabell--referraloutcomeheader-patientsummaryheader">Mappningstabell – referralOutcomeHeader (PatientSummaryHeader)</h4>
 
 <table>
   <thead>
@@ -437,9 +406,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="mappningstabell--referraloutcomebody">Mappningstabell – referralOutcomeBody</h2>
+<h4 id="mappningstabell--referraloutcomebody">Mappningstabell – referralOutcomeBody</h4>
 
-<h3 id="svarstext-och-klassificering">Svarstext och klassificering</h3>
+<h5 id="svarstext-och-klassificering">Svarstext och klassificering</h5>
 
 <table>
   <thead>
@@ -472,7 +441,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="klinisk-information-clinicalinformation">Klinisk information (clinicalInformation)</h3>
+<h5 id="klinisk-information-clinicalinformation">Klinisk information (clinicalInformation)</h5>
 
 <table>
   <thead>
@@ -499,7 +468,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="åtgärder-act">Åtgärder (act)</h3>
+<h5 id="åtgärder-act">Åtgärder (act)</h5>
 
 <table>
   <thead>
@@ -556,7 +525,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="attestering-attested">Attestering (attested)</h3>
+<h5 id="attestering-attested">Attestering (attested)</h5>
 
 <table>
   <thead>
@@ -589,7 +558,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="kopplad-remiss-referral">Kopplad remiss (referral)</h3>
+<h5 id="kopplad-remiss-referral">Kopplad remiss (referral)</h5>
 
 <table>
   <thead>
@@ -680,7 +649,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="mappningstabell--result">Mappningstabell – result</h2>
+<h4 id="mappningstabell--result">Mappningstabell – result</h4>
 
 <table>
   <thead>
@@ -727,9 +696,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h2>
+<h4 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h4>
 
-<h3 id="diagnosticreportstatus-från-referraloutcometypecode">DiagnosticReport.status (från referralOutcomeTypeCode)</h3>
+<h5 id="diagnosticreportstatus-från-referraloutcometypecode">DiagnosticReport.status (från referralOutcomeTypeCode)</h5>
 
 <table>
   <thead>
@@ -753,7 +722,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h3 id="titel">Titel-prioritering (DiagnosticReport.code.text)</h3>
+<h5 id="titel">Titel-prioritering (DiagnosticReport.code.text)</h5>
 
 <p>Titeln mappas till <code class="language-plaintext highlighter-rouge">DiagnosticReport.code.text</code>, rapportens namn i klartext. <code class="language-plaintext highlighter-rouge">code.coding</code> är fortfarande den fasta LOINC-koden <code class="language-plaintext highlighter-rouge">11488-4</code> ("Consult note"). Texten sätts enligt följande prioritet:</p>
 
@@ -763,7 +732,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>Annars LOINC-kodens display, "Consult note"</li>
 </ol>
 
-<h3 id="act-poster-och-multimedia-ref-001">act-poster och multimedia (REF-001)</h3>
+<h5 id="act-poster-och-multimedia-ref-001">act-poster och multimedia (REF-001)</h5>
 
 <p><code class="language-plaintext highlighter-rouge">referralOutcomeBody.act 0..*</code> representerar utförda åtgärder med eventuella bilagor. FHIR <code class="language-plaintext highlighter-rouge">DiagnosticReport</code> har inget dedikerat element för åtgärdslistor. Designbeslut:</p>
 
@@ -776,7 +745,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Se <a href="#öppna-frågor">REF-001</a> för öppen fråga.</p>
 
-<h3 id="clinicalinformation-sammanslagning">clinicalInformation-sammanslagning</h3>
+<h5 id="clinicalinformation-sammanslagning">clinicalInformation-sammanslagning</h5>
 
 <p><code class="language-plaintext highlighter-rouge">clinicalInformation 0..*</code> innehåller kliniska fynd/slutsatser med kod och fritext. Koden mappas till <code class="language-plaintext highlighter-rouge">DiagnosticReport.conclusionCode</code>; fritexterna konkateneras med <code class="language-plaintext highlighter-rouge">referralOutcomeText</code> i <code class="language-plaintext highlighter-rouge">DiagnosticReport.conclusion</code>:</p>
 
@@ -785,13 +754,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 [{clinicalInformationCode.display}]: {clinicalInformationText}   ← per clinicalInformation-post
 </code></pre></div></div>
 
-<h3 id="referral--servicerequest">Referral → ServiceRequest</h3>
+<h5 id="referral--servicerequest">Referral → ServiceRequest</h5>
 
 <p>Om <code class="language-plaintext highlighter-rouge">referralOutcomeBody.referral.referralId</code> finns skapas en logisk referens till en <code class="language-plaintext highlighter-rouge">ServiceRequest</code> via <code class="language-plaintext highlighter-rouge">DiagnosticReport.basedOn</code>. Bryggan ansvarar för att matcha <code class="language-plaintext highlighter-rouge">referralId</code> mot befintliga ServiceRequest-instanser (från GetReferralOutcome eller GetRequestActivities) eller skapa en minimal stub-ServiceRequest med enbart identifier satt. Remissens övriga fält (<code class="language-plaintext highlighter-rouge">referralReason</code>, <code class="language-plaintext highlighter-rouge">referralTime</code>, <code class="language-plaintext highlighter-rouge">referralAuthor.*</code>) tillhör ServiceRequest och repeteras inte i DiagnosticReport.</p>
 
 <hr />
 
-<h2 id="pdl-och-sparr">PDL och Sparr</h2>
+<h4 id="pdl-och-sparr">PDL och Sparr</h4>
 
 <p>PDL-styrning i GetReferralOutcome utgår från <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code>-blockets HSA-id:n i headern (standard PatientSummaryHeader-mönster):</p>
 
@@ -824,7 +793,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="provenance">Provenance</h2>
+<h4 id="provenance">Provenance</h4>
 
 <table>
   <thead>
@@ -854,7 +823,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="version-3-1">Övriga aktiva versioner – GetReferralOutcome 3.1</h2>
+<h4 id="version-3-1">Övriga aktiva versioner – GetReferralOutcome 3.1</h4>
 
 <p>Mappningstabellerna ovan utgår från GetReferralOutcome 3.2. <a href="index.html">Startsidan</a> anger 3.1 som aktiv version för både NPÖ och 1177 Journal. Version 3.1 beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMReferralOutcomeV31.html">SEEHDSLMReferralOutcomeV31</a> (genererad från <code class="language-plaintext highlighter-rouge">GetReferralOutcomeResponder_3.1.xsd</code> i <code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.actoutcome</code> 4.2, den sista domänversionen med 3.1).</p>
 
@@ -883,7 +852,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
+<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
 
 <table>
   <thead>
@@ -916,7 +885,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h2 id="öppna-frågor">Öppna frågor</h2>
+<h4 id="öppna-frågor">Öppna frågor</h4>
 
 <table>
   <thead>
@@ -941,7 +910,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h2 id="föreslagna-nya-issues">Föreslagna nya issues</h2>
+<h4 id="föreslagna-nya-issues">Föreslagna nya issues</h4>
 
 <table>
   <thead>
@@ -985,7 +954,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.ehds-tk#0.8.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Nov 4, 2026 19:17+0000">2026-11-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

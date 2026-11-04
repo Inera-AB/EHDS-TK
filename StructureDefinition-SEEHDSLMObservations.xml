@@ -371,11 +371,11 @@ Exempel: ett systoliskt blodtryck (observation) är resultat av aktiviteten blod
     <valueUri value="urn:riv:clinicalprocess:healthcond:basic:GetObservationsResponder:2"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations"/>
-  <version value="0.7.0"/>
+  <version value="0.8.1"/>
   <name value="SEEHDSLMObservations"/>
   <title value="GetObservations"/>
   <status value="draft"/>
-  <date value="2026-10-26T15:58:30+00:00"/>
+  <date value="2026-11-04T19:17:50+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

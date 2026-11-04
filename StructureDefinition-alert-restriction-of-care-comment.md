@@ -1,4 +1,4 @@
-# Kommentar om vårdbegränsning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Kommentar om vårdbegränsning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-restriction-of-care-comment | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:AlertRestrictionOfCareComment |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-restriction-of-care-comment | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:AlertRestrictionOfCareComment |
 
 Information om uppmärksammat förhållande som inte avser överkänslighet, sjukdom eller behandling (alertInformationBody.restrictionOfCare.restrictionOfCareComment).
 
@@ -21,7 +21,7 @@ Information om uppmärksammat förhållande som inte avser överkänslighet, sju
 
 * Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-restriction-of-care-comment)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/alert-restriction-of-care-comment)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-restriction-of
   "resourceType" : "StructureDefinition",
   "id" : "alert-restriction-of-care-comment",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-restriction-of-care-comment",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "AlertRestrictionOfCareComment",
   "title" : "Kommentar om vårdbegränsning",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSObservationBase |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSObservationBase |
 
  
 Basprofil för alla observationer från GetObservations (clinicalprocess:healthcond:basic v2.0). 
@@ -27,7 +27,7 @@ Täcker NPÖ 1.2 och 1177 Journal 1.2.
 
 * Härledd från denna Profil: [SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)](StructureDefinition-SEEHDSObservationGrowth.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSObservationBase)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSObservationBase)
 
 ### Formal Views of Profile Content
 
@@ -46,11 +46,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSObservationBase",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSObservationBase",
   "title" : "SE EHDS Observation Base – GetObservations",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -142,11 +142,7 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationBas
       "id" : "Observation.status",
       "path" : "Observation.status",
       "short" : "Observationsstatus (observationBody.status – SNOMED CT urvals-id 56431000052106 → FHIR ObservationStatus via ConceptMap, se OBS-003)",
-      "mustSupport" : true,
-      "binding" : {
-        "strength" : "required",
-        "valueSet" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs"
-      }
+      "mustSupport" : true
     },
     {
       "id" : "Observation.code",

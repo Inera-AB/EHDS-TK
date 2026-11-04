@@ -1,4 +1,4 @@
-# SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSObservationLab |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSObservationLab |
 
  
 Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrderOutcome. Används i kombination med SEEHDSDiagnosticReportLab. 
@@ -19,7 +19,7 @@ Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrde
 * Referera till denna Profil: [SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)](StructureDefinition-SEEHDSDiagnosticReportLab.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSObservationLab)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSObservationLab)
 
 ### Formal Views of Profile Content
 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSObservationLab
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSObservationLab",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSObservationLab",
   "title" : "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

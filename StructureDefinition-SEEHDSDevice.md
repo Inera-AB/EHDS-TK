@@ -1,4 +1,4 @@
-# SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDevice | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSDevice |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDevice | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSDevice |
 
  
 Profil för det källsystem som registrerat en vaccination i GetVaccinationHistory v2.0. 
@@ -20,7 +20,7 @@ deviceName[systemName] = sourceSystemName (1..1, obligatorisk) deviceName[produc
 
 * Referera till denna Profil: [Källsystem för vaccinationsregistrering](StructureDefinition-immunization-registration-device.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSDevice)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSDevice)
 
 ### Formal Views of Profile Content
 
@@ -39,11 +39,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDevice.csv), [
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDevice",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDevice",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSDevice",
   "title" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

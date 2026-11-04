@@ -1,4 +1,4 @@
-# RIV-TA xs:anyURI - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# RIV-TA xs:anyURI - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivAnyURI | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSRivAnyURI |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivAnyURI | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSRivAnyURI |
 
  
 URI. Elementets värde ligger som textinnehåll i XML-elementet (representation xmlText). 
@@ -18,7 +18,7 @@ URI. Elementets värde ligger som textinnehåll i XML-elementet (representation 
 
 * Använd denna Logisk modell: [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md), [GetCareDocumentation 2.1](StructureDefinition-SEEHDSLMCareDocumentationV21.md), [GetCarePlans](StructureDefinition-SEEHDSLMCarePlans.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md)... Show 3 more, [GetObservations](StructureDefinition-SEEHDSLMObservations.md), [GetReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md) and [GetReferralOutcome 3.1](StructureDefinition-SEEHDSLMReferralOutcomeV31.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSRivAnyURI)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivAnyURI)
 
 ### Formal Views of Profile Content
 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSRivAnyURI.csv)
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivAnyURI",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivAnyURI",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSRivAnyURI",
   "title" : "RIV-TA xs:anyURI",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

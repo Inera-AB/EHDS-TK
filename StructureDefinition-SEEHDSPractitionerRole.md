@@ -1,4 +1,4 @@
-# SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSPractitionerRole |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSPractitionerRole |
 
  
 Profil för hälso- och sjukvårdspersonal i uppdrag (medarbetaruppdrag) som refereras från EHDS-TK-resurserna (t.ex. accountableHealthcareProfessional, legalAuthenticator, author). Ärver HL7 Europe Core PractitionerRole (EURIDICE). Identifier-slicen följer svenska basprofilernas konvention (SEBasePractitionerRole: slice hsaid, system urn:oid:1.2.752.29.4.19, typ PRN). Används normalt som logisk referens via identifier. 
@@ -18,7 +18,7 @@ Profil för hälso- och sjukvårdspersonal i uppdrag (medarbetaruppdrag) som ref
 
 * Referera till denna Profil: [SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)](StructureDefinition-SEEHDSAllergyIntolerance.md), [SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)](StructureDefinition-SEEHDSAuditEventReadAccessLog.md), [SE EHDS CarePlan – Vårdplan (GetCarePlans)](StructureDefinition-SEEHDSCarePlan.md), [SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)](StructureDefinition-SEEHDSCompositionCareDocumentation.md)... Show 14 more, [SE EHDS Condition – Diagnos (GetDiagnosis)](StructureDefinition-SEEHDSConditionDiagnosis.md), [SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)](StructureDefinition-SEEHDSConditionFunctional.md), [SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)](StructureDefinition-SEEHDSDiagnosticReportImaging.md), [SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)](StructureDefinition-SEEHDSDiagnosticReportLab.md), [SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)](StructureDefinition-SEEHDSDiagnosticReportReferral.md), [SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)](StructureDefinition-SEEHDSDocumentReference.md), [SE EHDS Encounter – Vårdkontakter (GetCareContacts)](StructureDefinition-SEEHDSEncounter.md), [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md), [SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)](StructureDefinition-SEEHDSImagingStudy.md), [SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)](StructureDefinition-SEEHDSImmunization.md), [SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)](StructureDefinition-SEEHDSMedicationStatement.md), [SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)](StructureDefinition-SEEHDSServiceRequestReferral.md), [SE EHDS Task – Remisstatus (GetRequestActivities)](StructureDefinition-SEEHDSTask.md) and [Juridisk äkthetsintygsgivare för uppmärksamhetssignal](StructureDefinition-alert-asserter.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSPractitionerRole)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSPractitionerRole)
 
 ### Formal Views of Profile Content
 
@@ -41,11 +41,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSPractitionerRo
     "valueCanonical" : "http://hl7.org/fhir/uv/ips/StructureDefinition/PractitionerRole-uv-ips"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSPractitionerRole",
   "title" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

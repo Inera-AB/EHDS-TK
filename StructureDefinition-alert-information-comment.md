@@ -1,4 +1,4 @@
-# Kommentar till uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Kommentar till uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:AlertInformationComment |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:AlertInformationComment |
 
 Kommentar angående uppmärksamhetssignalen (alertInformationBody.alertInformationComment). Om obsoleteComment är angivet konkateneras det med prefix 'Inaktiveringskommentar: {obsoleteComment}'. För body = unstructuredAlertInformation: unstructuredAlertInformationContent läggs här.
 
@@ -21,7 +21,7 @@ Kommentar angående uppmärksamhetssignalen (alertInformationBody.alertInformati
 
 * Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-information-comment)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/alert-information-comment)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-information-co
   "resourceType" : "StructureDefinition",
   "id" : "alert-information-comment",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "AlertInformationComment",
   "title" : "Kommentar till uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

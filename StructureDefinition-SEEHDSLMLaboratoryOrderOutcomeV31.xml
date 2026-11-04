@@ -106,11 +106,11 @@ Enligt TKB i detta sammanhang: code 1..1, codeSystem 1..1, displayName 1..1.">an
     <valueUri value="urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:3"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV31"/>
-  <version value="0.7.0"/>
+  <version value="0.8.1"/>
   <name value="SEEHDSLMLaboratoryOrderOutcomeV31"/>
   <title value="GetLaboratoryOrderOutcome 3.1"/>
   <status value="draft"/>
-  <date value="2026-10-26T15:58:30+00:00"/>
+  <date value="2026-11-04T19:17:50+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

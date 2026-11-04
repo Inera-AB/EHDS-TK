@@ -1,4 +1,4 @@
-# Källsystemskontakt - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Källsystemskontakt - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:DeviceSourceSystemContact |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:DeviceSourceSystemContact |
 
 Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContact.hsaid/personName).
 
@@ -21,7 +21,7 @@ Ansvarig kontaktperson för källsystemet (registrationRecord.sourceSystemContac
 
 * Använd denna Extension: [SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)](StructureDefinition-SEEHDSDevice.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/device-source-system-contact)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/device-source-system-contact)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-device-source-system
   "resourceType" : "StructureDefinition",
   "id" : "device-source-system-contact",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "DeviceSourceSystemContact",
   "title" : "Källsystemskontakt",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

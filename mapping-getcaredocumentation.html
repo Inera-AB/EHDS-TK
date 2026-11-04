@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
+    <title>GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -59,7 +59,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.7.0 - ci-build
+            <span style="display:inline-block;">0.8.1 - ci-build
 
 
 
@@ -194,7 +194,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetCareDocumentation – Anteckningar</h2>
   
 
@@ -210,50 +210,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div class="markdown-toc">
-<ul id="markdown-toc">
-  <li><a href="#getcaredocumentation--journalanteckningar" id="markdown-toc-getcaredocumentation--journalanteckningar">GetCareDocumentation – Journalanteckningar</a>    <ul>
-      <li><a href="#resurshierarki" id="markdown-toc-resurshierarki">Resurshierarki</a></li>
-      <li><a href="#mappningstabell--caredocumentationheader-jol-header-v22" id="markdown-toc-mappningstabell--caredocumentationheader-jol-header-v22">Mappningstabell – careDocumentation.header (JoL-header v2.2)</a>        <ul>
-          <li><a href="#accesscontrolheader" id="markdown-toc-accesscontrolheader">accessControlHeader</a></li>
-          <li><a href="#sourcesystemid-och-record" id="markdown-toc-sourcesystemid-och-record">sourceSystemId och record</a></li>
-          <li><a href="#author-dokumentationsansvarig" id="markdown-toc-author-dokumentationsansvarig">author (dokumentationsansvarig)</a></li>
-          <li><a href="#signature-signeringsinformation" id="markdown-toc-signature-signeringsinformation">signature (signeringsinformation)</a></li>
-        </ul>
-      </li>
-      <li><a href="#mappningstabell--caredocumentationbody" id="markdown-toc-mappningstabell--caredocumentationbody">Mappningstabell – careDocumentation.body</a>        <ul>
-          <li><a href="#klassificering-och-titel" id="markdown-toc-klassificering-och-titel">Klassificering och titel</a></li>
-          <li><a href="#innehåll--xor-clinicaldocumentnotetext-eller-multimediaentry" id="markdown-toc-innehåll--xor-clinicaldocumentnotetext-eller-multimediaentry">Innehåll – XOR: clinicalDocumentNoteText eller multimediaEntry</a></li>
-          <li><a href="#dissentingopinion-avvikande-mening" id="markdown-toc-dissentingopinion-avvikande-mening">dissentingOpinion (avvikande mening)</a></li>
-        </ul>
-      </li>
-      <li><a href="#mappningstabell--hasmore-paginering-toppnivå" id="markdown-toc-mappningstabell--hasmore-paginering-toppnivå">Mappningstabell – hasMore (paginering, toppnivå)</a></li>
-      <li><a href="#mappningstabell--result-tekniska-svarsfält" id="markdown-toc-mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</a></li>
-      <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a>        <ul>
-          <li><a href="#documentreferencestatus" id="markdown-toc-documentreferencestatus">DocumentReference.status</a></li>
-          <li><a href="#xor-villkor-för-body-innehåll" id="markdown-toc-xor-villkor-för-body-innehåll">XOR-villkor för body-innehåll</a></li>
-          <li><a href="#dissentingopinion" id="markdown-toc-dissentingopinion">dissentingOpinion</a></li>
-          <li><a href="#hasmore-paginering" id="markdown-toc-hasmore-paginering">hasMore (paginering)</a></li>
-          <li><a href="#clinicaldocumentnotetext-och-docbook" id="markdown-toc-clinicaldocumentnotetext-och-docbook">clinicalDocumentNoteText och DocBook</a></li>
-        </ul>
-      </li>
-      <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
-      <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
-      <li><a href="#version-2-1" id="markdown-toc-version-2-1">Övriga aktiva versioner – GetCareDocumentation 2.1</a>        <ul>
-          <li><a href="#header-caredocumentationheader--documentreference" id="markdown-toc-header-caredocumentationheader--documentreference">Header (careDocumentationHeader) → DocumentReference</a></li>
-          <li><a href="#body-caredocumentationbodyclinicaldocumentnote--documentreference" id="markdown-toc-body-caredocumentationbodyclinicaldocumentnote--documentreference">Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference</a></li>
-          <li><a href="#result" id="markdown-toc-result">result</a></li>
-        </ul>
-      </li>
-      <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
-      <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
-      <li><a href="#beslutade-issues" id="markdown-toc-beslutade-issues">Beslutade issues</a></li>
-    </ul>
-  </li>
-</ul>
-
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h1 id="getcaredocumentation--journalanteckningar">GetCareDocumentation – Journalanteckningar</h1>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetCareDocumentation v3.0 och v2.1<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a><br />
@@ -279,7 +238,7 @@ Se DES-005 i <a href="mapping-issues.html">mapping-issues</a>.</p>
 
 <hr />
 
-<h2 id="resurshierarki">Resurshierarki</h2>
+<h4 id="resurshierarki">Resurshierarki</h4>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SEEHDSDocumentReference (1 per careDocumentation)
   └── author → PractitionerRole (header.author)
@@ -295,9 +254,9 @@ eller URL) – se Härledda fält nedan.</p>
 
 <hr />
 
-<h2 id="mappningstabell--caredocumentationheader-jol-header-v22">Mappningstabell – careDocumentation.header (JoL-header v2.2)</h2>
+<h4 id="mappningstabell--caredocumentationheader-jol-header-v22">Mappningstabell – careDocumentation.header (JoL-header v2.2)</h4>
 
-<h3 id="accesscontrolheader">accessControlHeader</h3>
+<h5 id="accesscontrolheader">accessControlHeader</h5>
 
 <table>
   <thead>
@@ -354,7 +313,7 @@ eller URL) – se Härledda fält nedan.</p>
   </tbody>
 </table>
 
-<h3 id="sourcesystemid-och-record">sourceSystemId och record</h3>
+<h5 id="sourcesystemid-och-record">sourceSystemId och record</h5>
 
 <table>
   <thead>
@@ -387,7 +346,7 @@ eller URL) – se Härledda fält nedan.</p>
   </tbody>
 </table>
 
-<h3 id="author-dokumentationsansvarig">author (dokumentationsansvarig)</h3>
+<h5 id="author-dokumentationsansvarig">author (dokumentationsansvarig)</h5>
 
 <table>
   <thead>
@@ -462,7 +421,7 @@ eller URL) – se Härledda fält nedan.</p>
   </tbody>
 </table>
 
-<h3 id="signature-signeringsinformation">signature (signeringsinformation)</h3>
+<h5 id="signature-signeringsinformation">signature (signeringsinformation)</h5>
 
 <table>
   <thead>
@@ -503,9 +462,9 @@ eller URL) – se Härledda fält nedan.</p>
 
 <hr />
 
-<h2 id="mappningstabell--caredocumentationbody">Mappningstabell – careDocumentation.body</h2>
+<h4 id="mappningstabell--caredocumentationbody">Mappningstabell – careDocumentation.body</h4>
 
-<h3 id="klassificering-och-titel">Klassificering och titel</h3>
+<h5 id="klassificering-och-titel">Klassificering och titel</h5>
 
 <table>
   <thead>
@@ -532,7 +491,7 @@ eller URL) – se Härledda fält nedan.</p>
   </tbody>
 </table>
 
-<h4 id="värdegrupptabell--clinicaldocumentnotecode">Värdegrupptabell – clinicalDocumentNoteCode</h4>
+<h6 id="värdegrupptabell--clinicaldocumentnotecode">Värdegrupptabell – clinicalDocumentNoteCode</h6>
 
 <table>
   <thead>
@@ -591,7 +550,7 @@ eller URL) – se Härledda fält nedan.</p>
   </tbody>
 </table>
 
-<h3 id="innehåll--xor-clinicaldocumentnotetext-eller-multimediaentry">Innehåll – XOR: clinicalDocumentNoteText eller multimediaEntry</h3>
+<h5 id="innehåll--xor-clinicaldocumentnotetext-eller-multimediaentry">Innehåll – XOR: clinicalDocumentNoteText eller multimediaEntry</h5>
 
 <p>Exakt ett av <code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> och <code class="language-plaintext highlighter-rouge">multimediaEntry</code> ska förekomma per post (se FSH Invariant <code class="language-plaintext highlighter-rouge">getcaredocumentation-body-xor</code>).</p>
 
@@ -632,7 +591,7 @@ eller URL) – se Härledda fält nedan.</p>
   </tbody>
 </table>
 
-<h3 id="dissentingopinion-avvikande-mening">dissentingOpinion (avvikande mening)</h3>
+<h5 id="dissentingopinion-avvikande-mening">dissentingOpinion (avvikande mening)</h5>
 
 <table>
   <thead>
@@ -685,7 +644,7 @@ delfälten <code class="language-plaintext highlighter-rouge">opinionId</code>, 
 
 <hr />
 
-<h2 id="mappningstabell--hasmore-paginering-toppnivå">Mappningstabell – hasMore (paginering, toppnivå)</h2>
+<h4 id="mappningstabell--hasmore-paginering-toppnivå">Mappningstabell – hasMore (paginering, toppnivå)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">hasMore 0..*</code> är ett toppnivåelement i responsen (parallellt med <code class="language-plaintext highlighter-rouge">careDocumentation</code> och <code class="language-plaintext highlighter-rouge">result</code>)
 och indikerar att ytterligare data kan hämtas.</p>
@@ -717,7 +676,7 @@ och indikerar att ytterligare data kan hämtas.</p>
 
 <hr />
 
-<h2 id="mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</h2>
+<h4 id="mappningstabell--result-tekniska-svarsfält">Mappningstabell – result (tekniska svarsfält)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">result 1..1</code> innehåller teknisk statusinformation som hanteras av transportlagret och inte
 ingår i klinisk FHIR-data. OBS: GetCareDocumentation v3.0 använder <code class="language-plaintext highlighter-rouge">resultText</code> (ej <code class="language-plaintext highlighter-rouge">message</code>
@@ -750,15 +709,15 @@ och <code class="language-plaintext highlighter-rouge">logId</code> som i Patien
 
 <hr />
 
-<h2 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h2>
+<h4 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h4>
 
-<h3 id="documentreferencestatus">DocumentReference.status</h3>
+<h5 id="documentreferencestatus">DocumentReference.status</h5>
 
 <p><code class="language-plaintext highlighter-rouge">careDocumentation.body</code> innehåller inget statusfält. <code class="language-plaintext highlighter-rouge">DocumentReference.status</code> sätts alltid
 till <code class="language-plaintext highlighter-rouge">current</code> – antagandet är att tjänsten returnerar aktiva, giltiga journalanteckningar.
 Makulerade anteckningar förväntas inte returneras av källsystemet.</p>
 
-<h3 id="xor-villkor-för-body-innehåll">XOR-villkor för body-innehåll</h3>
+<h5 id="xor-villkor-för-body-innehåll">XOR-villkor för body-innehåll</h5>
 
 <p>Exakt ett av <code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> och <code class="language-plaintext highlighter-rouge">multimediaEntry</code> ska förekomma per post (FSH
 Invariant <code class="language-plaintext highlighter-rouge">getcaredocumentation-body-xor</code>). Inom <code class="language-plaintext highlighter-rouge">multimediaEntry</code> är <code class="language-plaintext highlighter-rouge">value</code> och <code class="language-plaintext highlighter-rouge">reference</code>
@@ -773,20 +732,20 @@ description: "Antingen value eller reference ska anges i multimediaEntry, ej bå
 expression: "value.exists() xor reference.exists()"
 </code></pre></div></div>
 
-<h3 id="dissentingopinion">dissentingOpinion</h3>
+<h5 id="dissentingopinion">dissentingOpinion</h5>
 
 <p>Det finns inget standardiserat FHIR R4-element för avvikande meningar i <code class="language-plaintext highlighter-rouge">DocumentReference</code>.
 Custom extension <code class="language-plaintext highlighter-rouge">https://fhir.inera.se/StructureDefinition/dissenting-opinion</code> definieras
 med delfälten <code class="language-plaintext highlighter-rouge">opinionId</code>, <code class="language-plaintext highlighter-rouge">authorTime</code>, <code class="language-plaintext highlighter-rouge">opinion</code>, <code class="language-plaintext highlighter-rouge">personId</code>, <code class="language-plaintext highlighter-rouge">personName</code>.</p>
 
-<h3 id="hasmore-paginering">hasMore (paginering)</h3>
+<h5 id="hasmore-paginering">hasMore (paginering)</h5>
 
 <p><code class="language-plaintext highlighter-rouge">hasMore 0..*</code> är ett toppnivåelement parallellt med <code class="language-plaintext highlighter-rouge">careDocumentation</code> och <code class="language-plaintext highlighter-rouge">result</code> i
 responsstrukturen (inte under body) och indikerar att svaret är paginerat. Paginering via
 <code class="language-plaintext highlighter-rouge">hasMore</code> <strong>stöds inte</strong> av denna IG och mappas inte till FHIR. Den behöver hanteras utanför
 IG:n. Se <a href="#beslutade-issues">DOC-001</a>.</p>
 
-<h3 id="clinicaldocumentnotetext-och-docbook">clinicalDocumentNoteText och DocBook</h3>
+<h5 id="clinicaldocumentnotetext-och-docbook">clinicalDocumentNoteText och DocBook</h5>
 
 <p><code class="language-plaintext highlighter-rouge">clinicalDocumentNoteText</code> är av typen string. När DocBook används ska fältet innehålla XML.
 Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas. DocBook i
@@ -827,7 +786,7 @@ undersidan <a href="guidance-docbook-narrative.html">DocBook-mappning</a>. Se ä
 
 <hr />
 
-<h2 id="pdl-och-sparr">PDL och Sparr</h2>
+<h4 id="pdl-och-sparr">PDL och Sparr</h4>
 
 <p>GetCareDocumentation använder JoL-header v2.2. PDL-fälten för Sparr hämtas <strong>direkt från
 <code class="language-plaintext highlighter-rouge">accessControlHeader</code></strong> – inte från ett <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code>-block som i
@@ -862,7 +821,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
 <hr />
 
-<h2 id="provenance">Provenance</h2>
+<h4 id="provenance">Provenance</h4>
 
 <table>
   <thead>
@@ -891,7 +850,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
 <hr />
 
-<h2 id="version-2-1">Övriga aktiva versioner – GetCareDocumentation 2.1</h2>
+<h4 id="version-2-1">Övriga aktiva versioner – GetCareDocumentation 2.1</h4>
 
 <p>Mappningstabellerna ovan utgår från GetCareDocumentation 3.0. Version 2.1 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMCareDocumentationV21.html">SEEHDSLMCareDocumentationV21</a> (genererad från <code class="language-plaintext highlighter-rouge">GetCareDocumentationResponder_2.1.xsd</code> i <code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.description</code> 2.1.19 och TKB:n för samma version). Samma profil, <a href="StructureDefinition-SEEHDSDocumentReference.html">SEEHDSDocumentReference</a>, används.</p>
 
@@ -1080,7 +1039,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
   </tbody>
 </table>
 
-<h3 id="header-caredocumentationheader--documentreference">Header (careDocumentationHeader) → DocumentReference</h3>
+<h5 id="header-caredocumentationheader--documentreference">Header (careDocumentationHeader) → DocumentReference</h5>
 
 <table>
   <thead>
@@ -1217,7 +1176,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
 <p>JoL-headerns <code class="language-plaintext highlighter-rouge">blockComparisonTime</code> och <code class="language-plaintext highlighter-rouge">careProcessId</code> finns inte i 2.1. Spärrkontrollen görs då mot <code class="language-plaintext highlighter-rouge">authorTime</code>.</p>
 
-<h3 id="body-caredocumentationbodyclinicaldocumentnote--documentreference">Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference</h3>
+<h5 id="body-caredocumentationbodyclinicaldocumentnote--documentreference">Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference</h5>
 
 <table>
   <thead>
@@ -1262,13 +1221,13 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
   </tbody>
 </table>
 
-<h3 id="result">result</h3>
+<h5 id="result">result</h5>
 
 <p>I 2.1 har <code class="language-plaintext highlighter-rouge">result</code> fälten <code class="language-plaintext highlighter-rouge">resultCode</code>, <code class="language-plaintext highlighter-rouge">errorCode</code>, <code class="language-plaintext highlighter-rouge">logId</code>, <code class="language-plaintext highlighter-rouge">subCode</code> och <code class="language-plaintext highlighter-rouge">message</code>, mot <code class="language-plaintext highlighter-rouge">resultCode</code> och <code class="language-plaintext highlighter-rouge">resultText</code> i 3.0. Inga av dem mappas.</p>
 
 <hr />
 
-<h2 id="oid-till-uri-tabell">OID-till-URI-tabell</h2>
+<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
 
 <table>
   <thead>
@@ -1297,7 +1256,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
 <hr />
 
-<h2 id="öppna-frågor">Öppna frågor</h2>
+<h4 id="öppna-frågor">Öppna frågor</h4>
 
 <table>
   <thead>
@@ -1318,7 +1277,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
   </tbody>
 </table>
 
-<h2 id="beslutade-issues">Beslutade issues</h2>
+<h4 id="beslutade-issues">Beslutade issues</h4>
 
 <table>
   <thead>
@@ -1366,7 +1325,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.ehds-tk#0.8.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Nov 4, 2026 19:17+0000">2026-11-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -1,4 +1,4 @@
-# Juridisk äkthetsintygsgivare för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Juridisk äkthetsintygsgivare för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserter | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:AlertAsserter |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserter | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:AlertAsserter |
 
 HSA-id för juridisk äkthetsintygsgivare (alertInformationHeader.legalAuthenticator.legalAuthenticatorHSAId).
 
@@ -21,7 +21,7 @@ HSA-id för juridisk äkthetsintygsgivare (alertInformationHeader.legalAuthentic
 
 * Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/alert-asserter)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/alert-asserter)
 
 ### Formal Views of Extension Content
 
@@ -42,11 +42,11 @@ Other representations of profile: [CSV](StructureDefinition-alert-asserter.csv),
   "resourceType" : "StructureDefinition",
   "id" : "alert-asserter",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserter",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "AlertAsserter",
   "title" : "Juridisk äkthetsintygsgivare för uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

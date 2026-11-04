@@ -1,4 +1,4 @@
-# TypeOfResultCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# TypeOfResultCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs | *Version*:0.7.0 |
-| Active as of 2026-10-26 | *Computable Name*:TypeOfResultCodeVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs | *Version*:0.8.1 |
+| Active as of 2026-11-04 | *Computable Name*:TypeOfResultCodeVS |
 
  
 Tillåtna värden för typeOfResult i GetImagingOutcome. 
@@ -46,11 +46,11 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "typeofresultcode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "TypeOfResultCodeVS",
   "title" : "TypeOfResultCode — ValueSet",
   "status" : "active",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSImagingStudy |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSImagingStudy |
 
  
 Profil för bilddiagnostiska undersökningar mappat från RIVTA-tjänstekontraktet GetImagingOutcome (clinicalprocess:healthcond:actoutcome v1.0). Täcker NPÖ 1.0 och 1177 Journal 1.0. 
@@ -19,7 +19,7 @@ Profil för bilddiagnostiska undersökningar mappat från RIVTA-tjänstekontrakt
 * Referera till denna Profil: [SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)](StructureDefinition-SEEHDSDiagnosticReportImaging.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSImagingStudy)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSImagingStudy)
 
 ### Formal Views of Profile Content
 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSImagingStudy.c
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSImagingStudy",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSImagingStudy",
   "title" : "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -37,11 +37,11 @@
     <valueUri value="urn:riv:informationsecurity:auditing:log:GetAccessLogsForPatientResponder:2"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLog"/>
-  <version value="0.7.0"/>
+  <version value="0.8.1"/>
   <name value="SEEHDSLMAccessLog"/>
   <title value="GetAccessLogForPatient"/>
   <status value="draft"/>
-  <date value="2026-10-26T15:58:30+00:00"/>
+  <date value="2026-11-04T19:17:50+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

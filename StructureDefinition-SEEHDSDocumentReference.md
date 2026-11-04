@@ -1,4 +1,4 @@
-# SE EHDS DocumentReference – Anteckningar (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS DocumentReference – Anteckningar (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSDocumentReference |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSDocumentReference |
 
  
 Profil för vårdanteckningar mappat från RIVTA-tjänstekontraktet GetCareDocumentation (clinicalprocess:healthcond:description v3.0). Täcker NPÖ 3.0 och 1177 Journal 3.0. 
@@ -20,7 +20,7 @@ Använder JoL-header v2.2 (ej PatientSummaryHeader): accessControlHeader för PD
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 * Denna Profil används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSDocumentReference)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSDocumentReference)
 
 ### Formal Views of Profile Content
 
@@ -39,11 +39,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSDocumentRefere
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDocumentReference",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSDocumentReference",
   "title" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

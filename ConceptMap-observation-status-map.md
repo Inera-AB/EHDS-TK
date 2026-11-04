@@ -1,4 +1,4 @@
-# GetObservations – observationStatus (SNOMED CT) → FHIR ObservationStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetObservations – observationStatus (SNOMED CT) → FHIR ObservationStatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,7 +8,7 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ConceptMap/observation-status-map | *Version*:0.7.0 |
+| *Official URL*:https://fhir.inera.se/ConceptMap/observation-status-map | *Version*:0.8.1 |
 | Active as of 2025-01-01 | *Computable Name*:ObservationStatusMap |
 
  
@@ -23,7 +23,7 @@ Mappar SNOMED CT-koder från urvals-id 56431000052106 till FHIR ObservationStatu
   "resourceType" : "ConceptMap",
   "id" : "observation-status-map",
   "url" : "https://fhir.inera.se/ConceptMap/observation-status-map",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "ObservationStatusMap",
   "title" : "GetObservations observationStatus → FHIR ObservationStatus",
   "status" : "active",
@@ -45,8 +45,8 @@ Mappar SNOMED CT-koder från urvals-id 56431000052106 till FHIR ObservationStatu
       "display" : "Sweden"
     }]
   }],
-  "sourceUri" : "http://snomed.info/sct",
-  "targetUri" : "http://hl7.org/fhir/observation-status",
+  "sourceCanonical" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs",
+  "targetCanonical" : "http://hl7.org/fhir/ValueSet/observation-status",
   "group" : [{
     "source" : "http://snomed.info/sct",
     "target" : "http://hl7.org/fhir/observation-status",

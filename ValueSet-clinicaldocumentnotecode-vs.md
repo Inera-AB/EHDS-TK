@@ -1,4 +1,4 @@
-# KV Anteckningstyp — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# KV Anteckningstyp — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/clinicaldocumentnotecode-vs | *Version*:0.7.0 |
-| Active as of 2026-10-26 | *Computable Name*:ClinicalDocumentNoteCodeVS |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/ValueSet/clinicaldocumentnotecode-vs | *Version*:0.8.1 |
+| Active as of 2026-11-04 | *Computable Name*:ClinicalDocumentNoteCodeVS |
 
  
 Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation enligt KV Anteckningstyp (OID: 1.2.752.129.2.2.2.11). 
@@ -46,11 +46,11 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "clinicaldocumentnotecode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/clinicaldocumentnotecode-vs",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "ClinicalDocumentNoteCodeVS",
   "title" : "KV Anteckningstyp — ValueSet",
   "status" : "active",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

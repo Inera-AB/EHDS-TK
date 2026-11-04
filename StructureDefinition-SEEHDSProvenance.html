@@ -7,7 +7,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>SE EHDS Provenance - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0</title>
+    <title>SE EHDS Provenance - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -63,7 +63,7 @@
         <div id="ig-status">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.7.0 - ci-build
+            <span style="display:inline-block;">0.8.1 - ci-build
 
 
 
@@ -191,7 +191,7 @@
           <div class="inner-wrapper">
 
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.7.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   
 
 
@@ -281,7 +281,7 @@
       <td colspan="4"><i>Official URL</i>: <span class="copy-text">https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance<button title="Click to copy URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance"/></span>
       </td>
       <td><i>Version</i>:
-      <span class="copy-text">0.7.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance|0.7.0"/></span>
+      <span class="copy-text">0.8.1<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance|0.8.1"/></span>
       </td>
     </tr>
 
@@ -297,7 +297,7 @@
         
           Draft
           
-            as of 2026-10-26
+            as of 2026-11-04
           
         
       </td>
@@ -345,7 +345,7 @@ inkluderas i svaret — filtreringen sker då redan på servernivå.</p>
  <li>Exempel för denna Profil: <a href="Provenance-SEEHDSProvenanceExample.html">Provenance/SEEHDSProvenanceExample</a></li>
  <li>CapabilityStatements som använder denna Profil: <a href="CapabilityStatement-SEEHDSResourceAccessProvider.html">SE EHDS Resource Access Provider</a></li>
 </ul>
-<p>Du kan också kontrollera <a href="https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSProvenance">användningar i FHIR IG-statistiken</a></p>
+<p>Du kan också kontrollera <a href="https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSProvenance">användningar i FHIR IG-statistiken</a></p>
 
   <!-- no uri -->
   <a name="profile"> </a>
@@ -540,7 +540,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">1..1</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="" class="hierarchy xhtCellBorder0">The value that is unique<br/><span class="xhtPieceBold">Exempel General: </span><span class="xhtPieceDarkGreen">123456</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 4d759b7c-9b0b-4c67-b828-22dd4766b3bd
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 17b4e526-db43-4c13-badf-a35835986ac2
 document.getElementById('cbSEEHDSProvenanceK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSProvenanceK'), 'constraint', document.getElementById('cbSEEHDSProvenanceK-constraint').checked, document.getElementById('ppSEEHDSProvenanceK'));
 document.getElementById('cbSEEHDSProvenanceK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -575,10 +575,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceK'), 'obligation', document.
     <td>Provenance.agent:custodian.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -590,10 +590,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceK'), 'obligation', document.
     <td>Provenance.agent:custodian.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -605,10 +605,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceK'), 'obligation', document.
     <td>Provenance.agent:author.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -620,10 +620,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceK'), 'obligation', document.
     <td>Provenance.agent:author.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -767,7 +767,7 @@ filterDesc(document.getElementById('SEEHDSProvenanceK'), 'obligation', document.
 <td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string" class="xhtPieceDeEmphasized">string</a></td>
 <td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The value that is unique</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 4d759b7c-9b0b-4c67-b828-22dd4766b3bd
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 17b4e526-db43-4c13-badf-a35835986ac2
 document.getElementById('cbSEEHDSProvenanceD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSProvenanceD'), 'constraint', document.getElementById('cbSEEHDSProvenanceD-constraint').checked, document.getElementById('ppSEEHDSProvenanceD'));
 document.getElementById('cbSEEHDSProvenanceD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -879,7 +879,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0"></td>
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td>
-<td style="" class="hierarchy xhtCellBorder0">Reason the activity is occurring<br class="binding"/><span class="xhtPieceBold binding">Bindning: </span><a href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span class="binding">)</span><span class="binding">: </span><span class="binding">The reason the activity took place.</span><br/></td></tr>
+<td style="" class="hierarchy xhtCellBorder0">Reason the activity is occurring<br class="binding"/><span class="xhtPieceBold binding">Bindning: </span><a href="http://terminology.hl7.org/7.5.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span class="binding">)</span><span class="binding">: </span><span class="binding">The reason the activity took place.</span><br/></td></tr>
 <tr fhir="generated-heirarchy" id="s-ao" class="xhtRowBorder0 xhtRowOdd" data-fhir="generated-heirarchy"><td role="rowheader" style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_datatype.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Datatyp" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.</span><a no-external="true" href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.activity" title="An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." data-no-external="true">activity</a><a name="s-Provenance.activity"> </a></td>
 <td style="" class="hierarchy xhtCellBorder0"></td>
 <td style="" class="hierarchy xhtCellBorder0">0..1</td>
@@ -1218,7 +1218,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Signature">Signature</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Signature on target<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 4d759b7c-9b0b-4c67-b828-22dd4766b3bd
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 17b4e526-db43-4c13-badf-a35835986ac2
 document.getElementById('cbSEEHDSProvenanceS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSProvenanceS'), 'constraint', document.getElementById('cbSEEHDSProvenanceS-constraint').checked, document.getElementById('ppSEEHDSProvenanceS'));
 document.getElementById('cbSEEHDSProvenanceS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1253,10 +1253,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.language</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[preferred]">preferred</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[preferred]">preferred</a>
     </td>
     <td title="A human language.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-languages.html">Common Languages</a>
+      <a href="http://hl7.org/fhir/R4/valueset-languages.html">Common Languages</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/languages|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1268,25 +1268,25 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.reason</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The reason the activity took place.">
-      <a style="opacity: 1.0" href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
+      <a href="http://terminology.hl7.org/7.5.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
       <button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till 3.1.0, versionen som hittas via paketreferenserna">&#x1F4E6;3.1.0</td>
     <td>
-      <a href="http://terminology.hl7.org/7.4.0">THO v7.4</a>
+      <a href="http://terminology.hl7.org/7.5.0">THO v7.5</a>
     </td>
   </tr>
   <tr>
     <td>Provenance.activity</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The activity that took place.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-activity-type.html">Provenance activity type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-activity-type.html">Provenance activity type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-activity-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1298,10 +1298,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1313,10 +1313,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent.role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
     </td>
     <td title="The role that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/security-role-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1328,10 +1328,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:custodian.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1343,10 +1343,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:custodian.​role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
     </td>
     <td title="The role that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/security-role-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1358,10 +1358,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:custodian.​who.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="Aa resource (or, for logical models, the URI of the logical model).">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/resource-types|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1373,10 +1373,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:custodian.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1388,10 +1388,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:custodian.​who.identifier.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1403,10 +1403,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:author.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1418,10 +1418,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:author.​role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
     </td>
     <td title="The role that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/security-role-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1433,10 +1433,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:author.​who.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="Aa resource (or, for logical models, the URI of the logical model).">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/resource-types|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1448,10 +1448,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:author.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1463,10 +1463,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.agent:author.​who.identifier.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1478,10 +1478,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceS'), 'obligation', document.
     <td>Provenance.entity.role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="How an entity was used in an activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-entity-role.html">ProvenanceEntityRole</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-entity-role.html">ProvenanceEntityRole</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-entity-role|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1825,7 +1825,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">1..1</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string">string</a></td>
 <td style="" class="hierarchy xhtCellBorder0">The value that is unique<br/><span class="xhtPieceBold">Exempel General: </span><span class="xhtPieceDarkGreen">123456</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 4d759b7c-9b0b-4c67-b828-22dd4766b3bd
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 17b4e526-db43-4c13-badf-a35835986ac2
 document.getElementById('cbSEEHDSProvenanceKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSProvenanceKA'), 'constraint', document.getElementById('cbSEEHDSProvenanceKA-constraint').checked, document.getElementById('ppSEEHDSProvenanceKA'));
 document.getElementById('cbSEEHDSProvenanceKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1860,10 +1860,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceKA'), 'obligation', document
     <td>Provenance.agent:custodian.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1875,10 +1875,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceKA'), 'obligation', document
     <td>Provenance.agent:custodian.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1890,10 +1890,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceKA'), 'obligation', document
     <td>Provenance.agent:author.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -1905,10 +1905,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceKA'), 'obligation', document
     <td>Provenance.agent:author.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2052,7 +2052,7 @@ filterDesc(document.getElementById('SEEHDSProvenanceKA'), 'obligation', document
 <td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string" class="xhtPieceDeEmphasized">string</a></td>
 <td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The value that is unique</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 4d759b7c-9b0b-4c67-b828-22dd4766b3bd
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 17b4e526-db43-4c13-badf-a35835986ac2
 document.getElementById('cbSEEHDSProvenanceDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSProvenanceDA'), 'constraint', document.getElementById('cbSEEHDSProvenanceDA-constraint').checked, document.getElementById('ppSEEHDSProvenanceDA'));
 document.getElementById('cbSEEHDSProvenanceDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2163,7 +2163,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0"></td>
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept">CodeableConcept</a></td>
-<td style="" class="hierarchy xhtCellBorder0">Reason the activity is occurring<br class="binding"/><span class="xhtPieceBold binding">Bindning: </span><a href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span class="binding">)</span><span class="binding">: </span><span class="binding">The reason the activity took place.</span><br/></td></tr>
+<td style="" class="hierarchy xhtCellBorder0">Reason the activity is occurring<br class="binding"/><span class="xhtPieceBold binding">Bindning: </span><a href="http://terminology.hl7.org/7.5.0/ValueSet-v3-PurposeOfUse.html" title="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" class="binding">PurposeOfUse</a><span class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#extensible" title="To be conformant, the concept in this element SHALL be from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead." class="binding">extensible</a><span class="binding">)</span><span class="binding">: </span><span class="binding">The reason the activity took place.</span><br/></td></tr>
 <tr fhir="generated-heirarchy" id="sa-ao" class="xhtRowBorder0 xhtRowOdd" data-fhir="generated-heirarchy"><td role="rowheader" style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_datatype.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Datatyp" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.</span><a no-external="true" href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.activity" title="An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." data-no-external="true">activity</a><a name="sa-Provenance.activity"> </a></td>
 <td style="" class="hierarchy xhtCellBorder0"></td>
 <td style="" class="hierarchy xhtCellBorder0">0..1</td>
@@ -2502,7 +2502,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Signature">Signature</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Signature on target<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 4d759b7c-9b0b-4c67-b828-22dd4766b3bd
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 17b4e526-db43-4c13-badf-a35835986ac2
 document.getElementById('cbSEEHDSProvenanceSA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'constraint', document.getElementById('cbSEEHDSProvenanceSA-constraint').checked, document.getElementById('ppSEEHDSProvenanceSA'));
 document.getElementById('cbSEEHDSProvenanceSA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2537,10 +2537,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.language</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[preferred]">preferred</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[preferred]">preferred</a>
     </td>
     <td title="A human language.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-languages.html">Common Languages</a>
+      <a href="http://hl7.org/fhir/R4/valueset-languages.html">Common Languages</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/languages|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2552,25 +2552,25 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.reason</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The reason the activity took place.">
-      <a style="opacity: 1.0" href="http://terminology.hl7.org/7.4.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
+      <a href="http://terminology.hl7.org/7.5.0/ValueSet-v3-PurposeOfUse.html">PurposeOfUse</a>
       <button data-clipboard-text="http://terminology.hl7.org/ValueSet/v3-PurposeOfUse" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till 3.1.0, versionen som hittas via paketreferenserna">&#x1F4E6;3.1.0</td>
     <td>
-      <a href="http://terminology.hl7.org/7.4.0">THO v7.4</a>
+      <a href="http://terminology.hl7.org/7.5.0">THO v7.5</a>
     </td>
   </tr>
   <tr>
     <td>Provenance.activity</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The activity that took place.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-activity-type.html">Provenance activity type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-activity-type.html">Provenance activity type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-activity-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2582,10 +2582,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2597,10 +2597,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent.role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
     </td>
     <td title="The role that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/security-role-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2612,10 +2612,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:custodian.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2627,10 +2627,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:custodian.​role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
     </td>
     <td title="The role that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/security-role-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2642,10 +2642,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:custodian.​who.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="Aa resource (or, for logical models, the URI of the logical model).">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/resource-types|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2657,10 +2657,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:custodian.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2672,10 +2672,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:custodian.​who.identifier.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2687,10 +2687,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:author.​type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="The type of participation that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-agent-type.html">Provenance participant type</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-agent-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2702,10 +2702,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:author.​role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[example]">example</a>
     </td>
     <td title="The role that a provenance agent played with respect to the activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-security-role-type.html">SecurityRoleType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/security-role-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2717,10 +2717,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:author.​who.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="Aa resource (or, for logical models, the URI of the logical model).">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-resource-types.html">ResourceType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/resource-types|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2732,10 +2732,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:author.​who.identifier.use</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="Identifies the purpose for this identifier, if known .">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-use.html">IdentifierUse</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-use|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2747,10 +2747,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.agent:author.​who.identifier.type</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[extensible]">extensible</a>
     </td>
     <td title="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
+      <a href="http://hl7.org/fhir/R4/valueset-identifier-type.html">IdentifierType</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/identifier-type|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2762,10 +2762,10 @@ filterDesc(document.getElementById('SEEHDSProvenanceSA'), 'obligation', document
     <td>Provenance.entity.role</td>
     <td>Base</td>
     <td>
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
+      <a href="http://hl7.org/fhir/R4/terminologies.html#Enumeration[required]">required</a>
     </td>
     <td title="How an entity was used in an activity.">
-      <a style="opacity: 1.0" href="http://hl7.org/fhir/R4/valueset-provenance-entity-role.html">ProvenanceEntityRole</a>
+      <a href="http://hl7.org/fhir/R4/valueset-provenance-entity-role.html">ProvenanceEntityRole</a>
       <button data-clipboard-text="http://hl7.org/fhir/ValueSet/provenance-entity-role|4.0.1" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
     <td title="Versionen anges uttryckligen vara 4.0.1">&#x1F4CD;4.0.1</td>
@@ -2980,7 +2980,7 @@ Sammanfattning
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.tk#0.7.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Oct 26, 2026 15:58+0000">2026-10-26</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  Package inera.ehds.ehds-tk#0.8.1 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Nov 4, 2026 19:17+0000">2026-11-04</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

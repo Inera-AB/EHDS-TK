@@ -1,4 +1,4 @@
-# SE EHDS Patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS Patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSPatient |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSPatient |
 
  
 Patientprofil för EHDS-TK. Ärver HL7 Europe Core Patient (EURIDICE) och följer svenska basprofilernas identifierarkonvention (SEBasePatient: slicarna personnummer, samordningsnummer, nationelltReservnummer). Skapas av API:et utifrån patientId i RIVTA-svaret, eftersom EU Core kräver subject.reference (GENERAL-006). 
@@ -19,7 +19,7 @@ Patientprofil för EHDS-TK. Ärver HL7 Europe Core Patient (EURIDICE) och följe
 * Referera till denna Profil: [SE EHDS AllergyIntolerance – Allergi/överkänslighet (GetAlertInformation)](StructureDefinition-SEEHDSAllergyIntolerance.md), [SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)](StructureDefinition-SEEHDSAuditEventPatientQuery.md), [SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)](StructureDefinition-SEEHDSAuditEventPatientRead.md), [SE EHDS AuditEvent – Läsning av åtkomstloggar (GetAccessLogForPatient)](StructureDefinition-SEEHDSAuditEventReadAccessLog.md)... Show 18 more, [SE EHDS CarePlan – Vårdplan (GetCarePlans)](StructureDefinition-SEEHDSCarePlan.md), [SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)](StructureDefinition-SEEHDSCompositionCareDocumentation.md), [SE EHDS Condition – Diagnos (GetDiagnosis)](StructureDefinition-SEEHDSConditionDiagnosis.md), [SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)](StructureDefinition-SEEHDSConditionFunctional.md), [SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)](StructureDefinition-SEEHDSDiagnosticReportImaging.md), [SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)](StructureDefinition-SEEHDSDiagnosticReportLab.md), [SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)](StructureDefinition-SEEHDSDiagnosticReportReferral.md), [SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)](StructureDefinition-SEEHDSDocumentReference.md), [SE EHDS Encounter – Vårdkontakter (GetCareContacts)](StructureDefinition-SEEHDSEncounter.md), [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md), [SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)](StructureDefinition-SEEHDSImagingStudy.md), [SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)](StructureDefinition-SEEHDSImmunization.md), [SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)](StructureDefinition-SEEHDSMedicationStatement.md), [SE EHDS Observation Base – GetObservations](StructureDefinition-SEEHDSObservationBase.md), [SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)](StructureDefinition-SEEHDSObservationLab.md), [SE EHDS Observation – Mödravård (GetMaternityMedicalHistory)](StructureDefinition-SEEHDSObservationMaternity.md), [SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)](StructureDefinition-SEEHDSServiceRequestReferral.md) and [SE EHDS Task – Remisstatus (GetRequestActivities)](StructureDefinition-SEEHDSTask.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSPatient)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSPatient)
 
 ### Formal Views of Profile Content
 
@@ -38,11 +38,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSPatient.csv), 
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSPatient",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSPatient",
   "title" : "SE EHDS Patient",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

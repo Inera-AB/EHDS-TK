@@ -1,11 +1,9 @@
-# Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Åtkomstloggar – patientåtkomst och auditloggning**
 
 ## Åtkomstloggar – patientåtkomst och auditloggning
-
-# Åtkomstloggar – patientåtkomst och auditloggning i ett EHDS-kompatibelt FHIR-API
 
 **Gäller:** EHDS-bryggor och andra FHIR-API:er som lämnar ut patientdata från RIVTA-tjänstekontrakten i denna IG
  **FHIR-resurs:** `AuditEvent` (FHIR R4)
@@ -19,7 +17,7 @@
 
 -------
 
-## Patientens åtkomst till loggar via API:et
+#### Patientens åtkomst till loggar via API:et
 
 EHDS ger patienten rätt att få veta vem som har tagit del av patientens elektroniska patientuppgifter. I ett EHDS-kompatibelt FHIR-API tillhandahålls därför åtkomstloggar till patienten som en del av API:et, på samma sätt som övriga patientuppgifter. Patienten (eller en app som agerar för patienten, t.ex. 1177 Journal) hämtar loggarna som `AuditEvent`-resurser:
 
@@ -43,11 +41,11 @@ Patientens egen hämtning av loggar är också en utlämning av patientdata. Den
 
 -------
 
-## Loggar som måste skapas när API:et nyttjas
+#### Loggar som måste skapas när API:et nyttjas
 
 **Dessa loggar måste skapas när detta API nyttjas för att kunna stödja patientåtkomsten till loggar.** Varje gång API:et lämnar ut patientdata ska det skapa en loggpost som patienten senare kan ta del av enligt [föregående avsnitt](#patientatkomst).
 
-### Antaganden
+##### Antaganden
 
 EURIDICE hänvisar till IHE:s profiler för hur loggningen ska realiseras tekniskt. Denna IG gör följande antaganden:
 
@@ -76,7 +74,7 @@ EURIDICE hänvisar till IHE:s profiler för hur loggningen ska realiseras teknis
 | **Resultat** | Om utlämningen lyckades eller nekades/misslyckades |
 
 
-### Händelser och profiler
+##### Händelser och profiler
 
 En `AuditEvent` skapas per FHIR-interaktion som lämnar ut, eller försöker lämna ut, patientdata.
 
@@ -92,7 +90,7 @@ Kodsystem: `audit-event-type` = `http://terminology.hl7.org/CodeSystem/audit-eve
 
 Sökning och träfflista loggas i **samma** `AuditEvent`. Frågan registreras som en query-entity och de resurser som lämnades ut registreras som egna entities (se [Träfflistan](#trafflistan)).
 
-### Vad Inera-profilerna lägger till utöver BALP
+##### Vad Inera-profilerna lägger till utöver BALP
 
 Profilerna ärver från IHE BALP (`ihe.iti.balp`) och skärper följande:
 
@@ -105,7 +103,7 @@ Profilerna ärver från IHE BALP (`ihe.iti.balp`) och skärper följande:
 | Patient (`entity[patient].what`) | `Reference(Patient)` | `Reference(SEEHDSPatient)` |
 | Träfflista | Antal och innehåll registreras inte | Varje utlämnad resurs registreras som entity (PatientQuery) |
 
-### Vem – agenter
+##### Vem – agenter
 
 | | | | | |
 | :--- | :--- | :--- | :--- | :--- |
@@ -118,7 +116,7 @@ Att klient och server har olika DICOM-roller för sökning respektive läsning f
 
 När åtkomsttoken är en OAuth-token eller SAML-assertion följs BALP:s mönster för tokenanvändning: uppgifter ur token (t.ex. subjekt, `client_id`, organisation, syfte) förs över till användar- och applikationsagenterna.
 
-### Vilken patient – entity[patient]
+##### Vilken patient – entity[patient]
 
 FHIR R4 saknar `AuditEvent.patient`. Patienten anges med BALP:s entity-mönster:
 
@@ -130,7 +128,7 @@ FHIR R4 saknar `AuditEvent.patient`. Patienten anges med BALP:s entity-mönster:
 
 Varje `AuditEvent` gäller exakt en patient. Om en sökning ger träffar för flera patienter skapas en `AuditEvent` per patient, enligt BALP.
 
-### Frågan – entity[query]
+##### Frågan – entity[query]
 
 | | |
 | :--- | :--- |
@@ -139,7 +137,7 @@ Varje `AuditEvent` gäller exakt en patient. Om en sökning ger träffar för fl
 | `entity.query` | Den råa frågesträngen, base64-kodad |
 | `entity.description` | Valfritt: den tvättade frågesträngen i klartext |
 
-### Träfflistan
+##### Träfflistan
 
 Träfflistan är en utlämning i sig. Varje resurs som lämnades ut registreras som en entity i samma `AuditEvent`:
 
@@ -151,7 +149,7 @@ Träfflistan är en utlämning i sig. Varje resurs som lämnades ut registreras 
 
 Resurser som filtrerades bort före utlämning, till exempel på grund av spärr eller `approvedForPatient = false`, registreras **inte**.
 
-### Syfte (purpose of use)
+##### Syfte (purpose of use)
 
 Syftet anges i `AuditEvent.purposeOfEvent` och i `agent[user].purposeOfUse`, med koder från `http://terminology.hl7.org/CodeSystem/v3-ActReason`:
 
@@ -163,7 +161,7 @@ Syftet anges i `AuditEvent.purposeOfEvent` och i `agent[user].purposeOfUse`, med
 
 Syftet ska komma från anropet (t.ex. åtkomsttokenens claims). Om syftet saknas i ett anrop som kräver ett syfte ska utlämningen nekas och loggas (se nedan).
 
-### Resultat (outcome)
+##### Resultat (outcome)
 
 Inera-profilerna, liksom BALP, beskriver **lyckade** utlämningar (`outcome = 0`, även med noll träffar). Nekade och misslyckade försök ska också loggas. De loggas med samma struktur men utan `meta.profile` till profilerna, med ett `OperationOutcome` till klienten enligt FHIR:s mönster för nekad åtkomst:
 
@@ -176,7 +174,7 @@ Inera-profilerna, liksom BALP, beskriver **lyckade** utlämningar (`outcome = 0`
 
 `outcomeDesc` får inte avslöja bortfiltrerad eller spärrad information.
 
-### Källsystem och noder
+##### Källsystem och noder
 
 En utlämning från bryggan bygger på ett eller flera RIVTA-anrop mot källsystem. För spårbarhet hela vägen tillbaka till källan:
 
@@ -184,14 +182,14 @@ En utlämning från bryggan bygger på ett eller flera RIVTA-anrop mot källsyst
 * Varje källsystem (eller vårdgivare) som bidrog till svaret registreras som `agent[custodian]`, med samma HSA-id som `Provenance.agent[custodian]` för de utlämnade resurserna.
 * RIVTA-anropets `logId` (`result.logId`, där det finns) kan anges som extra identifier på `agent[custodian]`, så att API:ets loggpost kan kopplas till källsystemets egen loggpost.
 
-### Lagring (ATNA)
+##### Lagring (ATNA)
 
 * `AuditEvent` skickas till ett **Audit Record Repository** enligt ATNA, med FHIR-överföring (ITI-20 Record Audit Event, FHIR Feed) eller ett likvärdigt säkert flöde.
 * Loggposter får inte ändras eller raderas av den som utför åtkomsten och ska bevaras enligt gällande krav (t.ex. patientdatalagen).
 * Loggposterna innehåller inte själva patientdatat, bara referenser till det som lämnades ut.
 * Loggposterna lämnas ut till patienten enligt [Patientens åtkomst till loggar](#patientatkomst).
 
-### Exempel – sökning efter diagnoser
+##### Exempel – sökning efter diagnoser
 
 En användare i vården söker aktiva diagnoser för en patient via QEDm. Två `Condition` lämnas ut från ett källsystem.
 
@@ -262,7 +260,7 @@ En användare i vården söker aktiva diagnoser för en patient via QEDm. Två `
 
 -------
 
-## Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient
+#### Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient
 
 **Tjänstekontrakt:** `informationsecurity:auditing:log` GetAccessLogsForPatient v2.0 och `ehr:log:querying` GetAccessLogsForPatient v1.1
  **FHIR-profil:** [SEEHDSAuditEventReadAccessLog](StructureDefinition-SEEHDSAuditEventReadAccessLog.md)
@@ -295,7 +293,7 @@ Svaret `GetAccessLogsForPatientResponse` innehåller ett `accessLogsResult` med 
 | `accessLogsResult.reportResult.queuedReportId` | 0..1 | Ej mappad | Id för köad rapport (asynkront svar); bryggan behöver anropa igen |
 | `accessLogsResult.reportResult.queueTime` | 0..1 | Ej mappad | Förväntad tid i sekunder tills den köade rapporten kan levereras |
 
-### Övriga aktiva versioner – GetAccessLogsForPatient 1.1
+##### Övriga aktiva versioner – GetAccessLogsForPatient 1.1
 
 Tabellen ovan utgår från GetAccessLogsForPatient 2.0 i `informationsecurity:auditing:log`. Version 1.1 är också aktiv för 1177 Journal. Den ligger i en annan domän, `ehr:log:querying` (`riv.ehr.log` 1.2.4), och beskrivs av den logiska modellen [SEEHDSLMAccessLogV11](StructureDefinition-SEEHDSLMAccessLogV11.md).
 
@@ -316,7 +314,7 @@ Innehållet i loggposterna är detsamma; skillnaderna gäller namn och nästling
 
 -------
 
-## Öppna frågor
+#### Öppna frågor
 
 | | |
 | :--- | :--- |

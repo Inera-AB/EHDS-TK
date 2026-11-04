@@ -104,11 +104,11 @@ Format enligt XSD (TimeStampType): ÅÅÅÅMMDDttmmss.">authorTime</a><a name="S
     <valueUri value="urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcomeResponder:3"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcomeV31"/>
-  <version value="0.7.0"/>
+  <version value="0.8.1"/>
   <name value="SEEHDSLMReferralOutcomeV31"/>
   <title value="GetReferralOutcome 3.1"/>
   <status value="draft"/>
-  <date value="2026-10-26T15:58:30+00:00"/>
+  <date value="2026-11-04T19:17:50+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

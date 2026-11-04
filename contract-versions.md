@@ -1,11 +1,9 @@
-# Tjänstekontraktsversioner - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# Tjänstekontraktsversioner - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **Tjänstekontraktsversioner**
 
 ## Tjänstekontraktsversioner
-
-# Tjänstekontraktsversioner
 
 [Startsidan](index.md) anger vilka versioner av varje tjänstekontrakt som är aktiva för NPÖ och 1177 Journal. Flera tjänstekontrakt har mer än en aktiv version. För att IG:n ska vara ett fullständigt underlag för mappning har varje aktiv version en egen logisk modell, och mappningssidorna beskriver hur de övriga versionerna skiljer sig från den version som mappningstabellerna utgår från.
 

@@ -1,4 +1,4 @@
-# GetAccessLogsForPatient 1.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetAccessLogsForPatient 1.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLogV11 | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMAccessLogV11 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLogV11 | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSLMAccessLogV11 |
 
  
 Logisk modell för version 1.1 av tjänstekontraktet GetAccessLogsForPatient (urn:riv:ehr:log:querying:GetAccessLogsForPatientResponder:1). Mappningen utgår från versionen i SEEHDSLMAccessLog. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -18,7 +18,7 @@ Logisk modell för version 1.1 av tjänstekontraktet GetAccessLogsForPatient (ur
 
 * Denna Logisk modell används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSLMAccessLogV11)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSLMAccessLogV11)
 
 ### Formal Views of Profile Content
 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMAccessLogV11
     "valueUri" : "urn:riv:ehr:log:querying:GetAccessLogsForPatientResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLogV11",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSLMAccessLogV11",
   "title" : "GetAccessLogsForPatient 1.1",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

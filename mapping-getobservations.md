@@ -1,11 +1,9 @@
-# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * **GetObservations – Tillväxtkurva**
 
 ## GetObservations – Tillväxtkurva
-
-# GetObservations – Kliniska observationer och mätvärden
 
 **Tjänstekontrakt:** `clinicalprocess:healthcond:basic` GetObservations v2.0 och v1.2
  **FHIR-profiler:** [SEEHDSObservationBase](StructureDefinition-SEEHDSObservationBase.md) (generell) | [SEEHDSObservationGrowth](StructureDefinition-SEEHDSObservationGrowth.md) (tillväxtkurva)
@@ -18,7 +16,7 @@
 
 -------
 
-## Profilhierarki
+#### Profilhierarki
 
 GetObservations-mappningen är uppdelad i två profiler:
 
@@ -31,7 +29,7 @@ Alla GetObservations-implementationer instansierar `SEEHDSObservationBase` (elle
 
 -------
 
-## Datamodell – översikt
+#### Datamodell – översikt
 
 Tjänstekontraktet returnerar en lista med `observations 0..*`. Varje observation består av ett `header`-element och ett `observationBody`-element. Trädet visar svarsmeddelandet enligt XSD:n (GetObservationsResponder_2.0.xsd):
 
@@ -82,15 +80,15 @@ Typnamnen är RIV-TA-typerna i XSD:n. `ivl_pq` och `ivl_ts` heter `ivlPq` och `i
 
 -------
 
-## Mappningstabell
+#### Mappningstabell
 
-### Header
+##### Header
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `header`(headertyp specifik för GetObservations) | 1..1 | — | Ej standard`PatientSummaryHeader`; se avsnitt PDL och Sparr |
 
-### observationBody – identitet och tidpunkt
+##### observationBody – identitet och tidpunkt
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -98,7 +96,7 @@ Typnamnen är RIV-TA-typerna i XSD:n. `ivl_pq` och `ivl_ts` heter `ivlPq` och `i
 | `observationBody.id.root` | 1..1 | `Observation.identifier.system` | OID för vårdgivarens HSA-id; format`urn:oid:{root}` |
 | `observationBody.registrationTime` | 1..1 | `Observation.issued` | Dokumentationstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (se GENERAL-001) |
 
-### type – klassificering och kod
+##### type – klassificering och kod
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -106,7 +104,7 @@ Typnamnen är RIV-TA-typerna i XSD:n. `ivl_pq` och `ivl_ts` heter `ivlPq` och `i
 
 > **OBS:** `Observation.category` sätts inte (se avsnitt Observation.category nedan). `observationBody.type` styr `Observation.code`, inte `category`.
 
-### value – XOR-union av värdetyper
+##### value – XOR-union av värdetyper
 
 Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet väljs baserat på vilken gren som är populerad i källdata.
 
@@ -120,33 +118,33 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 | `observationBody.value.st` | 0..1 | `Observation.valueString` | Fritextsvar |
 | `observationBody.value.int` | 0..1 | `Observation.valueInteger` | Heltalsvärde. Ska ENBART användas för skalvärden (t.ex. AUDIT-poäng). Får INTE användas för fysiskt uppmätta värden (längd, vikt etc.) – använd`pq`för dessa. |
 
-### Negation och frånvaro av värde
+##### Negation och frånvaro av värde
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.valueNegation` | 1..1 | `Observation.dataAbsentReason` | Om`true`utelämnas`value[x]`och`dataAbsentReason.code = "not-detected"`; se OBS-002 |
 
-### Status och skala
+##### Status och skala
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.status` | 1..1 | `Observation.status` | SNOMED CT (urvals-id 56431000052106) → FHIR ObservationStatus; kräver ConceptMap, se OBS-003 |
 | `observationBody.scale` | 0..1 | `Observation.method` | Mätskala eller mätmetod (t.ex. AUDIT-skalan, AB0-systemet) |
 
-### Anatomisk lokalisation
+##### Anatomisk lokalisation
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.targetSite[0]` | 0..1 | `Observation.bodySite` | Första elementet mappas till bodySite (FHIR R4 är 0..1); se OBS-004 |
 | `observationBody.targetSite[1..*]` | 0..* | `Observation.extension[additionalBodySite]` | Ytterligare platser via lokal extension (R4-övergångslösning; tas bort vid R5-migration) |
 
-### Beskrivning och kommentar
+##### Beskrivning och kommentar
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.description` | 0..1 | `Observation.note.text` | Klinisk fritextbeskrivning som komplement till value |
 
-### Effektiv tid
+##### Effektiv tid
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -154,7 +152,7 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 | `observationBody.time.ts` | 0..1 | `Observation.effectiveDateTime` | Variabelprecisions-sträng; konverteras om precision ≥ dag (se OBS-001 och GENERAL-001) |
 | `observationBody.time.ivlTs` | 0..1 | `Observation.effectivePeriod` | Tidsintervall för observationen; XOR med`time.ts`. Villkor: Minst ett av start och end måste anges. |
 
-### Patient (observationBody.patient)
+##### Patient (observationBody.patient)
 
 `observationBody.patient` innehåller den patient som observationen avser. Denna information används primärt för att sätta `Observation.subject` och för skyddsbedömning.
 
@@ -177,18 +175,18 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 | `observationBody.patient.address` | 0..* | Ej mappad | Särskild kallelseadress för patienten – lagras i Patient.address om Patient-resurs skapas |
 | `observationBody.patient.electronicAddress` | 0..* | Ej mappad | Elektronisk adress för patienten (t.ex. telemedicinutrustning) – lagras i Patient.telecom om Patient-resurs skapas |
 
-### Utförare (participation)
+##### Utförare (participation)
 
 `observationBody.participation` är en polymorf lista med XOR-union av deltagartyper: `healthcareProfessional`, `patient`, `otherPerson`, `locationRole`, `resource`, `organisation`. Mappningen nedan täcker alla grenar.
 
-#### participation – gemensamma fält
+###### participation – gemensamma fält
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.participation[*].type` | 1..1 | `Observation.performer.extension[participationType]` | Deltagarroll (utförare, vittne, ansvarig etc.); SNOMED CT urvals-id 53351000052100 |
 | `observationBody.participation[*].time` | 0..1 | Ej mappad | Tidpunkt för deltagandet – FHIR Observation har inget per-performer-tidsfält; kan noteras i extension om nödvändigt (se OBS-006) |
 
-#### participation – hälso- och sjukvårdspersonal (healthcareProfessional)
+###### participation – hälso- och sjukvårdspersonal (healthcareProfessional)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -201,37 +199,37 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 | `observationBody.participation[*].healthcareProfessional.address` | 0..* | Ej mappad | Hälso- och sjukvårdspersonals adress – ingen plats i PractitionerRole; lagras i Practitioner.address om resurs skapas |
 | `observationBody.participation[*].healthcareProfessional.electronicAddress` | 0..* | Ej mappad | Hälso- och sjukvårdspersonals elektroniska adress – lagras i Practitioner.telecom om resurs skapas |
 
-#### participation – patient som deltagare
+###### participation – patient som deltagare
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.participation[*].patient` | 0..1 | Ej mappad | Patienten som aktiv deltagare (ej som subjekt) – ingen standardmappning i FHIR Observation.performer för PatientInformationType; se OBS-006 |
 
-#### participation – övrig person (otherPerson)
+###### participation – övrig person (otherPerson)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.participation[*].otherPerson` | 0..1 | `Observation.performer`(Reference(RelatedPerson)) | Övrig person (t.ex. anhörig, tolk); type → RelatedPerson.relationship; person → RelatedPerson |
 
-#### participation – plats/platsroll (locationRole)
+###### participation – plats/platsroll (locationRole)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.participation[*].locationRole` | 0..1 | Ej mappad | Platsroll (t.ex. patientens hem, arbetsplats) – FHIR Observation har inget performer-fält för Location; kan mappas till`Observation.extension[locationRole]`om extension definieras (se OBS-006) |
 
-#### participation – resurs (resource)
+###### participation – resurs (resource)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.participation[*].resource` | 0..1 | `Observation.device` | Medicinteknisk utrustning; id → Device.identifier; type → Device.type; övriga fält (groupId, amount, resourceProperty) är ej mappade (se OBS-006) |
 
-#### participation – organisation
+###### participation – organisation
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `observationBody.participation[*].organisation` | 0..1 | `Observation.performer`(Reference(Organization)) | Organisation som deltar; HSA-id via logisk referens |
 
-### Relationer (relation)
+##### Relationer (relation)
 
 `observationBody.relation` innehåller typade samband till andra informationsmängder. Val av FHIR-element beror på koden i `type` – se OBS-005.
 
@@ -245,15 +243,15 @@ Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet 
 | `observationBody.relation[*].referredInformation.categorization` | 1..1 | Ej mappad | Typ av information från engagemangsindexet – ingen standardmotpart i FHIR Observation.derivedFrom; kan lagras i extension (se OBS-005) |
 | `observationBody.relation[*].referredInformation.informationOwner.id` | 1..1 | Ej mappad | Informationsägande vårdgivare – ingen per-referens ägarinformation i FHIR; kan lagras i Provenance om nödvändigt (se OBS-005) |
 
-### Tekniska responsfält (result)
+##### Tekniska responsfält (result)
 
 Svarsmeddelandet `GetObservationsResponse` har inget `result`-element enligt XSD:n (GetObservationsResponder_2.0.xsd). Det finns därför inga tekniska responsfält att mappa.
 
 -------
 
-## Härledda fält och designbeslut
+#### Härledda fält och designbeslut
 
-### Observation.status (OBS-003)
+##### Observation.status (OBS-003)
 
 `observationBody.status` använder SNOMED CT-koder ur urvalsuppsättningen med id `56431000052106`. En ConceptMap krävs för att översätta dessa till FHIR `ObservationStatus`-värden:
 
@@ -267,15 +265,15 @@ Svarsmeddelandet `GetObservationsResponse` har inget `result`-element enligt XSD
 
 Saknad mappning: status sätts till `unknown` och en `OperationOutcome`-varning genereras.
 
-### Observation.category
+##### Observation.category
 
 `Observation.category` sätts inte. GetObservations bär ingen kategori, och den statiska kategorin `exam` fanns bara för att harmonisera med IPS (GENERAL-007).
 
-### Observation.code – fallback
+##### Observation.code – fallback
 
 Om `observationBody.type` saknas och ingen annan kod kan härledas sätts `Observation.code` till en lokal platshållarkod `https://fhir.inera.se/ig/ehds-tk/CodeSystem/observation-placeholder#unspecified` med display **"Okänd observationstyp"** för att uppfylla FHIR-profilens krav på minst en kod.
 
-### valueNegation (OBS-002) – Beslut
+##### valueNegation (OBS-002) – Beslut
 
 När `observationBody.valueNegation = true` innebär det att observationens värde explicit förnekats eller är frånvarande av klinisk orsak. Mappning:
 
@@ -286,7 +284,7 @@ När `observationBody.valueNegation = true` innebär det att observationens vär
 
 Koden `not-detected` hämtas från `http://terminology.hl7.org/CodeSystem/data-absent-reason`.
 
-### ts-fältet (OBS-001) – Beslut
+##### ts-fältet (OBS-001) – Beslut
 
 `observationBody.value.ts` och `observationBody.time.ts` är RIVTA `TimeType/ts`-strängar med variabel precision, t.ex. `202306`, `20230601`, `20230601120000`. Beslutad hantering:
 
@@ -301,7 +299,7 @@ Koden `not-detected` hämtas från `http://terminology.hl7.org/CodeSystem/data-a
 
 För `time.ts`: om precision ≥ dag mappas till `Observation.effectiveDateTime`. Vid lägre precision används `Observation.effectiveDateTime` med FHIR-primitiv extension `_effectiveDateTime.extension[originalText]` (system `http://hl7.org/fhir/StructureDefinition/originalText`) för att bevara källsträngen – se GENERAL-001.
 
-### targetSite – kardinalitetskollision (OBS-004) – Beslut
+##### targetSite – kardinalitetskollision (OBS-004) – Beslut
 
 `observationBody.targetSite` är definierad som `0..*` i TKB men `Observation.bodySite` är `0..1` i FHIR R4. Beslutad strategi:
 
@@ -309,7 +307,7 @@ För `time.ts`: om precision ≥ dag mappas till `Observation.effectiveDateTime`
 1. Eventuella ytterligare element (index ≥ 1) mappas till`Observation.extension[additionalBodySite]`(lokal extension med`url`och`valueCodeableConcept`).
 1. **R5-migration:**I FHIR R5 är`Observation.bodySite``0..*`– extensionen tas bort och alla element mappas direkt till`bodySite`.
 
-### relation – relationstyper (OBS-005)
+##### relation – relationstyper (OBS-005)
 
 `observationBody.relation` innehåller referenser till andra observationer med en koden i `relation.type`. Mapping:
 
@@ -323,7 +321,7 @@ Notera att `referredInformation.time`, `referredInformation.categorization` och 
 
 -------
 
-## PDL och Sparr
+#### PDL och Sparr
 
 > GetObservations v2.0 har en **avvikande headerstruktur** jämfört med `PatientSummaryHeader`. Det finns inga dedikerade fält `careProviderHSAId` och `careUnitHSAId` på standardplats i headern.
 
@@ -339,7 +337,7 @@ Implementationer **måste** hantera avsaknaden av standard-Sparr-fält och antin
 
 -------
 
-## Provenance
+#### Provenance
 
 En `Provenance`-resurs skapas per `Observation`-resurs.
 
@@ -353,7 +351,7 @@ En `Provenance`-resurs skapas per `Observation`-resurs.
 
 -------
 
-## Övriga aktiva versioner – GetObservations 1.2
+#### Övriga aktiva versioner – GetObservations 1.2
 
 Mappningstabellerna ovan utgår från GetObservations 2.0, som [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.md) bygger på. [Startsidan](index.md) anger 1.2 som aktiv version för både NPÖ och 1177 Journal, och 2.0 finns hittills bara som release candidate (`2.0_RC1`–`2.0_RC4`) i `riv.clinicalprocess.healthcond.basic`. Version 1.2 beskrivs av den logiska modellen [SEEHDSLMObservationsV12](StructureDefinition-SEEHDSLMObservationsV12.md) (genererad från `GetObservationsResponder_1.2.xsd` i domänversion 1.2.3). Se VER-003 i [Mappningsissues](mapping-issues.md).
 
@@ -364,7 +362,7 @@ Version 1.2 har en annan meddelandemodell: observationerna ligger i grupper (`ob
 | `observationGroup` | 0..* Backbone | – | Finns bara i 1.2 |
 | `observations` | – | 0..* Backbone | Finns bara i 2.0 |
 
-### Gruppnivå (observationGroup) → varje Observation i gruppen
+##### Gruppnivå (observationGroup) → varje Observation i gruppen
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -383,7 +381,7 @@ Version 1.2 har en annan meddelandemodell: observationerna ligger i grupper (`ob
 | `observationGroup.additionalParticipant` | 0..* | Ej mappad | Övriga deltagare (person, organisation, enhet, plats); samma fråga som OBS-006 för`participation`i 2.0 |
 | `observationGroup.sourceSystem.rivId` | 1..1 | `Observation.meta.source` | Källsystemets HSA-id (GENERAL-005) |
 
-### Observationsnivå (observationGroup.observation) → Observation
+##### Observationsnivå (observationGroup.observation) → Observation
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -410,7 +408,7 @@ Element i 2.0 som saknar motsvarighet i 1.2 är bland annat `observationBody.val
 
 -------
 
-## OID-till-URI-tabell
+#### OID-till-URI-tabell
 
 | | | |
 | :--- | :--- | :--- |
@@ -426,11 +424,11 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-## IoÖ Tillväxtkurva för barn och ungdom v3
+#### IoÖ Tillväxtkurva för barn och ungdom v3
 
 Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska användas för fyra tillväxtmätningar. Profilen `SEEHDSObservationGrowth` implementerar dessa krav.
 
-### Kodtabell – IoÖ SNOMED CT-koder → FHIR
+##### Kodtabell – IoÖ SNOMED CT-koder → FHIR
 
 Kodsystem för `observationBody.type.codeSystem`: `1.2.752.116.2.1.1` (SNOMED CT SE) → URI `http://snomed.info/sct`.
 
@@ -443,7 +441,7 @@ Kodsystem för `observationBody.type.codeSystem`: `1.2.752.116.2.1.1` (SNOMED CT
 | Huvudomfång | `363812007` | Huvudomfång | `9843-4` | `cm` | 1 decimal (t.ex. 38.5) |
 | Graviditetslängd vid födelse | `412726003` | Graviditetslängd vid födelse | `11885-1` | `d` | Heltal (t.ex. 280) |
 
-### IoÖ-fält → FHIR Observation mappning
+##### IoÖ-fält → FHIR Observation mappning
 
 Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR `SEEHDSObservationGrowth` (sökvägar enligt den logiska modellen):
 
@@ -454,7 +452,7 @@ Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObserva
 | `observationBody.value.pq.value` | Decimal (enhet beror på mättyp) | `Observation.valueQuantity.value` | Längd: 0–1 dec.; Vikt: 0–3 dec.; HuC: 1 dec.; Gest: heltal |
 | `observationBody.value.pq.unit` | `cm`/`kg`/`d` | `Observation.valueQuantity.unit`+`valueQuantity.code` | UCUM-kod sätts parallellt med textenhet |
 
-### IoÖ-kommentarer
+##### IoÖ-kommentarer
 
 * **Längd:** IoÖ anger `1153637007` (kroppslängd) som primärkod och `50373000` (mått på kroppslängd) som alternativ. Koden `248334005` (längd i liggande) stöds bakåtkompatibelt men ska **inte** användas vid nyanslutning.
 * **Vikt:** Enbart kod `27113001` (kroppsvikt). Enhet alltid `kg`, decimalseparator `"."` (XML-standard).
@@ -463,7 +461,7 @@ Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObserva
 
 -------
 
-## Öppna frågor
+#### Öppna frågor
 
 | | | |
 | :--- | :--- | :--- |
@@ -476,7 +474,7 @@ Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObserva
 
 -------
 
-## Föreslagna nya issues
+#### Föreslagna nya issues
 
 | | | |
 | :--- | :--- | :--- |

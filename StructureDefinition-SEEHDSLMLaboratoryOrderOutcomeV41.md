@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome 4.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# GetLaboratoryOrderOutcome 4.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41 | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcomeV41 |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41 | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSLMLaboratoryOrderOutcomeV41 |
 
  
 Logisk modell för version 4.1 av tjänstekontraktet GetLaboratoryOrderOutcome (urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4). Mappningen utgår från versionen i SEEHDSLMLaboratoryOrderOutcome. Skillnaderna mot den och hur de påverkar mappningen beskrivs på tjänstekontraktets mappningssida. 
@@ -18,7 +18,7 @@ Logisk modell för version 4.1 av tjänstekontraktet GetLaboratoryOrderOutcome (
 
 * Denna Logisk modell används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41)
 
 ### Formal Views of Profile Content
 
@@ -49,11 +49,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSLMLaboratoryOr
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSLMLaboratoryOrderOutcomeV41",
   "title" : "GetLaboratoryOrderOutcome 4.1",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

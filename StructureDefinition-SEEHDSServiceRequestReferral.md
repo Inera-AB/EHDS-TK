@@ -1,4 +1,4 @@
-# SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.7.0
+# SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral | *Version*:0.7.0 |
-| Draft as of 2026-10-26 | *Computable Name*:SEEHDSServiceRequestReferral |
+| *Official URL*:https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral | *Version*:0.8.1 |
+| Draft as of 2026-11-04 | *Computable Name*:SEEHDSServiceRequestReferral |
 
  
 Profil för konsultationsremisser mappat från RIVTA-tjänstekontraktet GetReferralOutcome (clinicalprocess:healthcond:actoutcome v3.2). Täcker NPÖ 3.2 och 1177 Journal 3.2. 
@@ -20,7 +20,7 @@ Notera: GetReferralOutcome returnerar remissvaret, inte remissen i sig. Remissen
 * Referera till denna Profil: [SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)](StructureDefinition-SEEHDSDiagnosticReportReferral.md) and [SE EHDS Task – Remisstatus (GetRequestActivities)](StructureDefinition-SEEHDSTask.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.tk|current/StructureDefinition/SEEHDSServiceRequestReferral)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSServiceRequestReferral)
 
 ### Formal Views of Profile Content
 
@@ -39,11 +39,11 @@ Other representations of profile: [CSV](StructureDefinition-SEEHDSServiceRequest
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSServiceRequestReferral",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral",
-  "version" : "0.7.0",
+  "version" : "0.8.1",
   "name" : "SEEHDSServiceRequestReferral",
   "title" : "SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)",
   "status" : "draft",
-  "date" : "2026-10-26T15:58:30+00:00",
+  "date" : "2026-11-04T19:17:50+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
