@@ -6,15 +6,15 @@
   "status" : "draft",
   "package-id" : "inera.ehds.ehds-tk",
   "ig-ver" : "0.8.1",
-  "date" : "Wed, 04 Nov, 2026 19:17:50 +0000",
-  "dateISO8601" : "2026-11-04T19:17:50+00:00",
+  "date" : "Fri, 13 Nov, 2026 15:20:27 +0000",
+  "dateISO8601" : "2026-11-13T15:20:27+00:00",
   "errs" : 19,
-  "warnings" : 1655,
+  "warnings" : 211,
   "hints" : 342,
   "broken-links" : 0,
-  "suppressed-hints" : 0,
-  "suppressed-warnings" : 6,
+  "suppressed-hints" : 1,
+  "suppressed-warnings" : 5,
   "version" : "4.0.1",
   "tool" : "6.0.0-snapshot1 (3)",
-  "maxMemory" : 3555647504
+  "maxMemory" : 3664272856
 }

@@ -1,16 +1,17 @@
 {
   "resourceType" : "ImplementationGuide",
   "id" : "inera.ehds.ehds-tk",
+  "language" : "sv",
   "text" : {
     "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ImplementationGuide inera.ehds.ehds-tk</b></p><a name=\"inera.ehds.ehds-tk\"> </a><a name=\"hcinera.ehds.ehds-tk\"> </a><h2>SEEHDSTK</h2><p>Den officiella URL:en för denna implementationsguide är: </p><pre>https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk</pre><div><p>FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för att informationsförsörja NPÖ och 1177 Journal.</p>\n</div></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"sv\" lang=\"sv\"><p class=\"res-header-id\"><b>Genererad berättande text: ImplementationGuide inera.ehds.ehds-tk</b></p><a name=\"inera.ehds.ehds-tk\"> </a><a name=\"hcinera.ehds.ehds-tk\"> </a><div style=\"display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Språk: sv</p></div><h2>SEEHDSTK</h2><p>Den officiella URL:en för denna implementationsguide är: </p><pre>https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk</pre><div><p>FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för att informationsförsörja NPÖ och 1177 Journal.</p>\n</div></div>"
   },
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk",
   "version" : "0.8.1",
   "name" : "SEEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-11-04T19:17:50+00:00",
+  "date" : "2026-11-13T15:20:27+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -88,6 +89,17 @@
       {
         "url" : "value",
         "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "i18n-default-lang"
+      },
+      {
+        "url" : "value",
+        "valueString" : "sv"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -314,7 +326,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-liquid"
+        "valueCode" : "path-liquid-template"
       },
       {
         "url" : "value",
@@ -325,7 +337,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-liquid"
+        "valueCode" : "path-liquid-template"
       },
       {
         "url" : "value",
@@ -2917,6 +2929,10 @@
     {
       "code" : "path-pages",
       "value" : "template/config"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "input/assets"
     },
     {
       "code" : "path-pages",

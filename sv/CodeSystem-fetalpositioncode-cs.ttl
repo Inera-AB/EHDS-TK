@@ -1,0 +1,73 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/fetalpositioncode-cs> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "fetalpositioncode-cs"] ;
+  fhir:Resource.language [ fhir:value "sv"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem fetalpositioncode-cs</b></p><a name=\"fetalpositioncode-cs\"> </a><a name=\"hcfetalpositioncode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/fetalpositioncode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">0<a name=\"fetalpositioncode-cs-0\"> </a></td><td>Huvudläge</td><td>Fostret ligger med huvudet nedåt</td></tr><tr><td style=\"white-space:nowrap\">1<a name=\"fetalpositioncode-cs-1\"> </a></td><td>Sätesläge</td><td>Fostret ligger med sätet nedåt</td></tr><tr><td style=\"white-space:nowrap\">2<a name=\"fetalpositioncode-cs-2\"> </a></td><td>Snedläge</td><td>Fostret ligger snett</td></tr><tr><td style=\"white-space:nowrap\">3<a name=\"fetalpositioncode-cs-3\"> </a></td><td>Tvärläge</td><td>Fostret ligger tvärs</td></tr></table></div>"
+  ] ;
+  fhir:CodeSystem.url [ fhir:value "https://fhir.inera.se/CodeSystem/fetalpositioncode"] ;
+  fhir:CodeSystem.version [ fhir:value "0.8.1"] ;
+  fhir:CodeSystem.name [ fhir:value "FetalPositionCodeCS"] ;
+  fhir:CodeSystem.title [ fhir:value "FetalPositionCode"] ;
+  fhir:CodeSystem.status [ fhir:value "active"] ;
+  fhir:CodeSystem.date [ fhir:value "2026-11-13T15:20:27+00:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.publisher [ fhir:value "Inera AB"] ;
+  fhir:CodeSystem.contact [
+     fhir:index -1 ;
+     fhir:ContactDetail.name [ fhir:value "Inera AB" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index -1 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
+     ]
+  ] ;
+  fhir:CodeSystem.description [ fhir:value "Kodverk för fosterläge (FetalPositionCodeEnum). Används i GetMaternityMedicalHistory."] ;
+  fhir:CodeSystem.jurisdiction [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "SE" ] ;
+       fhir:Coding.display [ fhir:value "Sweden" ]
+     ]
+  ] ;
+  fhir:CodeSystem.caseSensitive [ fhir:value "true"^^xsd:boolean] ;
+  fhir:CodeSystem.content [ fhir:value "complete"] ;
+  fhir:CodeSystem.count [ fhir:value "4"^^xsd:nonNegativeInteger] ;
+  fhir:CodeSystem.concept [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "0" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Huvudläge" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Fostret ligger med huvudet nedåt" ]
+  ], [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "1" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Sätesläge" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Fostret ligger med sätet nedåt" ]
+  ], [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "2" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Snedläge" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Fostret ligger snett" ]
+  ], [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "3" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Tvärläge" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Fostret ligger tvärs" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/fetalpositioncode-cs.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

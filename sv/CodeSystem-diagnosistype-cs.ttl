@@ -1,0 +1,62 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/diagnosistype-cs> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "diagnosistype-cs"] ;
+  fhir:Resource.language [ fhir:value "sv"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem diagnosistype-cs</b></p><a name=\"diagnosistype-cs\"> </a><a name=\"hcdiagnosistype-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp</code> tillhandahåller <b>ett fragment</b> som inkluderar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">HD<a name=\"diagnosistype-cs-HD\"> </a></td><td>Huvuddiagnos</td><td>Huvuddiagnos</td></tr><tr><td style=\"white-space:nowrap\">BY<a name=\"diagnosistype-cs-BY\"> </a></td><td>Bidiagnos</td><td>Bidiagnos</td></tr></table></div>"
+  ] ;
+  fhir:CodeSystem.url [ fhir:value "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"] ;
+  fhir:CodeSystem.version [ fhir:value "0.8.1"] ;
+  fhir:CodeSystem.name [ fhir:value "DiagnosisTypeCS"] ;
+  fhir:CodeSystem.title [ fhir:value "KV Diagnostyp (fragment)"] ;
+  fhir:CodeSystem.status [ fhir:value "active"] ;
+  fhir:CodeSystem.date [ fhir:value "2026-11-13T15:20:27+00:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.publisher [ fhir:value "Inera AB"] ;
+  fhir:CodeSystem.contact [
+     fhir:index -1 ;
+     fhir:ContactDetail.name [ fhir:value "Inera AB" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index -1 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
+     ]
+  ] ;
+  fhir:CodeSystem.description [ fhir:value "Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n."] ;
+  fhir:CodeSystem.jurisdiction [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "SE" ] ;
+       fhir:Coding.display [ fhir:value "Sweden" ]
+     ]
+  ] ;
+  fhir:CodeSystem.caseSensitive [ fhir:value "true"^^xsd:boolean] ;
+  fhir:CodeSystem.content [ fhir:value "fragment"] ;
+  fhir:CodeSystem.concept [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "HD" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Huvuddiagnos" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Huvuddiagnos" ]
+  ], [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "BY" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Bidiagnos" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Bidiagnos" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/diagnosistype-cs.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

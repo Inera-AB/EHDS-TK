@@ -1,0 +1,62 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/typeofprescription-cs> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "typeofprescription-cs"] ;
+  fhir:Resource.language [ fhir:value "sv"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem typeofprescription-cs</b></p><a name=\"typeofprescription-cs\"> </a><a name=\"hctypeofprescription-cs\"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/CodeSystem/typeofprescription</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">I<a name=\"typeofprescription-cs-I\"> </a></td><td>Insättningsordination</td><td>Ordination som innebär att läkemedelsbehandling påbörjas</td></tr><tr><td style=\"white-space:nowrap\">U<a name=\"typeofprescription-cs-U\"> </a></td><td>Utsättningsordination</td><td>Ordination som innebär att läkemedelsbehandling avslutas</td></tr></table></div>"
+  ] ;
+  fhir:CodeSystem.url [ fhir:value "https://fhir.inera.se/CodeSystem/typeofprescription"] ;
+  fhir:CodeSystem.version [ fhir:value "0.8.1"] ;
+  fhir:CodeSystem.name [ fhir:value "TypeOfPrescriptionCS"] ;
+  fhir:CodeSystem.title [ fhir:value "TypeOfPrescription"] ;
+  fhir:CodeSystem.status [ fhir:value "active"] ;
+  fhir:CodeSystem.date [ fhir:value "2026-11-13T15:20:27+00:00"^^xsd:dateTime] ;
+  fhir:CodeSystem.publisher [ fhir:value "Inera AB"] ;
+  fhir:CodeSystem.contact [
+     fhir:index -1 ;
+     fhir:ContactDetail.name [ fhir:value "Inera AB" ] ;
+     fhir:ContactDetail.telecom [
+       fhir:index -1 ;
+       fhir:ContactPoint.system [ fhir:value "url" ] ;
+       fhir:ContactPoint.value [ fhir:value "https://www.inera.se" ]
+     ]
+  ] ;
+  fhir:CodeSystem.description [ fhir:value "Kodverk för ordinationstyp i GetMedicationHistory. Anger om en ordination är en insättnings- eller utsättningsordination."] ;
+  fhir:CodeSystem.jurisdiction [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "urn:iso:std:iso:3166" ] ;
+       fhir:Coding.code [ fhir:value "SE" ] ;
+       fhir:Coding.display [ fhir:value "Sweden" ]
+     ]
+  ] ;
+  fhir:CodeSystem.content [ fhir:value "complete"] ;
+  fhir:CodeSystem.count [ fhir:value "2"^^xsd:nonNegativeInteger] ;
+  fhir:CodeSystem.concept [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "I" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Insättningsordination" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Ordination som innebär att läkemedelsbehandling påbörjas" ]
+  ], [
+     fhir:index -1 ;
+     fhir:CodeSystem.concept.code [ fhir:value "U" ] ;
+     fhir:CodeSystem.concept.display [ fhir:value "Utsättningsordination" ] ;
+     fhir:CodeSystem.concept.definition [ fhir:value "Ordination som innebär att läkemedelsbehandling avslutas" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://fhir.inera.se/ig/ehds-tk/CodeSystem/typeofprescription-cs.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
