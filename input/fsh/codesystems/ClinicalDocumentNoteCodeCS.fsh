@@ -8,6 +8,8 @@ Title: "KV Anteckningstyp"
 Description: "Kodverk för typ av journalanteckning enligt KV Anteckningstyp. OID: 1.2.752.129.2.2.2.11."
 * ^url = "urn:oid:1.2.752.129.2.2.2.11"
 * ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
 * ^content = #complete
 * #utr "utr" "Utredning"
 * #atb "atb" "Åtgärd/Behandling"

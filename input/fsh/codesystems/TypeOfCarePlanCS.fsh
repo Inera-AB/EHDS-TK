@@ -7,6 +7,8 @@ Title: "TypeOfCarePlan"
 Description: "Typ av vård- och omsorgsplan enligt clinicalprocess:logistics:logistics v3.0. Definierad i clinicalprocess_logistics_logistics_enum_3.0.xsd."
 * ^url = "https://fhir.inera.se/CodeSystem/typeofcareplan-cs"
 * ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
 * ^content = #complete
 * #SIP "SIP" "Samordnad individuell plan"
 * #SPLPTLRV "SPLPTLRV" "Samordnad plan enligt LPT och LRV"

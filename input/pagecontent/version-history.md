@@ -4,6 +4,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
+| 0.8.2 | 2026-11-13 | Draft | Inera-grafiken från inera-fhir-graphic-profile, och rättade fel och varningar i IG Publishers QA: rubriknivåer, `experimental` och `caseSensitive` för kodsystem och värdemängder, låsta kanoniska referenser och HTML-liknande text i definitioner. |
 | 0.8.1 | 2026-10-26 | Draft | Rättar felen i IG Publishers QA: sidrubriker, egna url:er för kodsystem, `DiagnosticReport.performer` och bindningen av `Observation.status`. |
 | 0.8.0 | 2026-10-26 | Draft | Releaser publiceras med IG Publishers officiella publiceringsläge enligt IneraFHIRTemplate. Paket-id:t är nu `inera.ehds.ehds-tk`. |
 | 0.7.0 | 2026-10-26 | Draft | Rätt kod `NOPAT` för `approvedForPatient = false`, och Provenance-agenterna custodian och author går nu att skilja åt vid validering. |
@@ -18,6 +19,19 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 ---
 
 ### Ändringslogg
+
+#### 0.8.2 — 2026-11-13 (Draft)
+
+**Presentation**
+
+- IG:n använder Inera-grafiken från `inera-fhir-graphic-profile` i stället för egna kopior av stilmall och logotyper.
+
+**Byggfel och varningar**
+
+- Med den nya mallen renderades avsnitt som börjar på `##` med `header_offset` två nivåer ned (`h4` direkt efter sidtitelns `h2`), vilket IG Publisher rapporterar som fel (WCAG). `header_offset` är borttaget och avsnitten börjar på `###`, som på övriga sidor.
+- Alla kodsystem och värdemängder anger `experimental = false`, och kodsystemen anger `caseSensitive = true` (ShareableCodeSystem/ShareableValueSet).
+- `pin-canonicals: pin-multiples` låser kanoniska referenser som finns i flera versioner bland beroendena.
+- Text som `<actText>`, `IVL<PQ>` och `<section>` i definitioner skrivs som kod, så att den inte tolkas som inbäddad HTML.
 
 #### 0.8.1 — 2026-10-26 (Draft)
 

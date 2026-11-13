@@ -8,6 +8,7 @@ Title: "ExaminationStatusCode"
 Description: "Kodverk för undersökningsstatus (ExaminationStatusCodeEnum). Används i GetImagingOutcome."
 * ^url = "https://fhir.inera.se/CodeSystem/examinationstatuscode"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #Initierad "Initierad" "Undersökning initierad"

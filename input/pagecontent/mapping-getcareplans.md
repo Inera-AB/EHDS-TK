@@ -1,5 +1,3 @@
-{::options header_offset="1" /}
-
 **Tjänstekontrakt:** `clinicalprocess:logistics:logistics` GetCarePlans v2.0  
 **FHIR-profil:** [SEEHDSCarePlan](StructureDefinition-SEEHDSCarePlan.html)  
 **Logisk modell:** [SEEHDSLMCarePlans](StructureDefinition-SEEHDSLMCarePlans.html)  
@@ -7,15 +5,15 @@
 
 ---
 
-## Struktur
+### Struktur
 
 GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla fält finns direkt på `carePlan`, utan separata header/body-undernivåer i TKB.
 
 ---
 
-## Mappningstabell
+### Mappningstabell
 
-### Header – identitet och patient
+#### Header – identitet och patient
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -24,14 +22,14 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | `carePlan.carePlanHeader.patientId.id` | 1..1 | `CarePlan.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `carePlan.carePlanHeader.patientId.type` | 1..1 | `CarePlan.subject.identifier.system` | OID→URI-konvertering (se OID-tabell nedan) |
 
-### Header – dokumenttid
+#### Header – dokumenttid
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `carePlan.carePlanHeader.documentTitle` | 1..1 | `CarePlan.title` | Obligatorisk (1..1 i profilen) |
 | `carePlan.carePlanHeader.documentTime` | 0..1 | `CarePlan.created` | YYYYMMDDHHMMSS → ISO 8601 |
 
-### Header – ansvarig personal (accountableHealthcareProfessional)
+#### Header – ansvarig personal (accountableHealthcareProfessional)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -40,7 +38,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Valfritt komplement till HSA-id |
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod (KV Befattning OID 1.2.752.129.2.2.1.4) |
 
-### Header – ansvarig personal – organisationsenhet
+#### Header – ansvarig personal – organisationsenhet
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -51,7 +49,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till org.enhet – ingår ej i PractitionerRole; kan lagras i Organization.address om Organization-resurs skapas |
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Fritextplats för org.enhet – ingen standardiserad FHIR-plats i CarePlan/PractitionerRole |
 
-### Header – PDL/Sparr
+#### Header – PDL/Sparr
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -59,7 +57,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare (Regel 1) |
 | `carePlan.carePlanHeader.approvedForPatient` | 1..1 | `CarePlan.meta.security` | PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues |
 
-### Header – signerare (legalAuthenticator)
+#### Header – signerare (legalAuthenticator)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -67,7 +65,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | `carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `CarePlan.asserter.identifier` | Via asserter-referens |
 | `carePlan.carePlanHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
 
-### Header – relaterad vårdkontakt
+#### Header – relaterad vårdkontakt
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -75,14 +73,14 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | `carePlan.carePlanHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `carePlan.carePlanHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 
-### Body – plantyp och deltagare
+#### Body – plantyp och deltagare
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `carePlan.carePlanBody.typeOfCarePlanEnum` | 0..1 | `CarePlan.category` | Bunden till TypeOfCarePlanVS (required) |
 | `carePlan.carePlanBody.participatingCareUnitHSAId` | 0..* | `CarePlan.contributor` | Deltagande vårdenheters HSA-id (IIType); en referens per enhet |
 
-### Body – innehåll (MultimediaType)
+#### Body – innehåll (MultimediaType)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -96,7 +94,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 
 > **Invariant:** `carePlan.carePlanBody.content` – antingen `value` eller `reference` måste anges, ej båda (`getcareplans-content-xor` i logisk modell).
 
-### Tekniska responsfält (result)
+#### Tekniska responsfält (result)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -108,7 +106,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 
 ---
 
-## PDL och Sparr
+### PDL och Sparr
 
 PDL-fälten `healthcareProfessionalCareUnitHSAId` och `healthcareProfessionalCareGiverHSAId` är **inte** toppnivå-header-fält utan finns under `carePlan.carePlanHeader.accountableHealthcareProfessional`. De är valfria i kontraktet men krävs av Regel 1 för korrekt Sparr-hantering.
 
@@ -119,7 +117,7 @@ PDL-fälten `healthcareProfessionalCareUnitHSAId` och `healthcareProfessionalCar
 
 ---
 
-## Provenance
+### Provenance
 
 | Agent | Roll | Källa |
 |---|---|---|
@@ -128,7 +126,7 @@ PDL-fälten `healthcareProfessionalCareUnitHSAId` och `healthcareProfessionalCar
 
 ---
 
-## TypeOfCarePlan – kodverk
+### TypeOfCarePlan – kodverk
 
 | Kod | Display | Beskrivning |
 |---|---|---|
@@ -143,7 +141,7 @@ PDL-fälten `healthcareProfessionalCareUnitHSAId` och `healthcareProfessionalCar
 
 ---
 
-## OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | OID | URI | Beskrivning |
 |---|---|---|
@@ -155,7 +153,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ---
 
-## Föreslagna nya issues
+### Föreslagna nya issues
 
 | Id | Fråga | Status |
 |---|---|---|

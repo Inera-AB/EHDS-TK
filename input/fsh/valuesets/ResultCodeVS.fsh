@@ -6,4 +6,5 @@ Id: resultcode-vs
 Title: "ResultCode — ValueSet"
 Description: "Tillåtna värden för resultCode i svar."
 * ^status = #active
+* ^experimental = false
 * include codes from system ResultCodeCS

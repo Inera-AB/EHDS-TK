@@ -1,5 +1,3 @@
-{::options header_offset="1" /}
-
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetLaboratoryOrderOutcome v4.2, v4.1 och v3.1  
 **FHIR-profiler:** [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.html) | [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.html)  
 **Logiska modeller:** [SEEHDSLMLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.html) (v4.2) | [SEEHDSLMLaboratoryOrderOutcomeV41](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.html) (v4.1, se [Övriga aktiva versioner](#version-4-1)) | [SEEHDSLMLaboratoryOrderOutcomeV31](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.html) (v3.1, se [Övriga aktiva versioner](#version-3-1))  
@@ -14,7 +12,7 @@
 
 ---
 
-## Resurshierarki
+### Resurshierarki
 
 ```
 laboratoryOrderOutcome 0..*
@@ -28,11 +26,11 @@ En `laboratoryOrderOutcome` representerar en beställning (order) med tillhöran
 
 ---
 
-## Mappningstabell – SEEHDSDiagnosticReportLab
+### Mappningstabell – SEEHDSDiagnosticReportLab
 
 Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticReport-instans.
 
-### Header – accessControlHeader (PDL/Sparr)
+#### Header – accessControlHeader (PDL/Sparr)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -45,7 +43,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används av Sparr-tjänsten vid filtrering; transportlagerdata, ingår ej i FHIR-resursen |
 | `header.accessControlHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
 
-### Header – sourceSystemId och record
+#### Header – sourceSystemId och record
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -53,7 +51,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `header.record.id` | 1..1 | `DiagnosticReport.identifier[record]` | Källsystemets postidentifierare |
 | `header.record.timestamp` | 1..1 | `DiagnosticReport.issued` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 
-### Header – author (vårdfacklig information)
+#### Header – author (vårdfacklig information)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -64,7 +62,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `header.author.orgUnit.id` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
 | `header.author.orgUnit.name` | 1..1 | `PractitionerRole.organization.display` | Organisationsenhetens namn |
 
-### Header – signature (signatär)
+#### Header – signature (signatär)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -75,7 +73,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `header.signature.orgUnit.id` | 0..1 | Ej mappad | Signatärens organisationsenhet (HSA-id) |
 | `header.signature.orgUnit.name` | 1..1 (om orgUnit) | Ej mappad | Signatärens organisationsenhet (namn) |
 
-### Body – beställningsinformation
+#### Body – beställningsinformation
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -84,7 +82,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `body.type` | 1..1 | `DiagnosticReport.code` | Typ av laboratoriebeställning (NPU/LOINC/lokalt) |
 | `body.text` | 0..1 | `DiagnosticReport.conclusion` | Fritext-sammanfattning av beställningssvaret |
 
-### Body – referral (kopplad remiss)
+#### Body – referral (kopplad remiss)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -103,7 +101,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 
 > Alla `body.referral.*`-fält är attribut till ursprungsremissen. En logisk referens via `DiagnosticReport.basedOn` → `ServiceRequest.identifier` är tillräcklig. Bryggan skapar en minimal stub-ServiceRequest om ingen matchning finns. Se [Referral → ServiceRequest](#referral--servicerequest).
 
-### Body – mottagande enhet och kontakt
+#### Body – mottagande enhet och kontakt
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -115,7 +113,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `body.recipientSignature.byRole` | 0..1 | Ej mappad | Yrkesroll vid kvittens; inget standardiserat FHIR-fält |
 | `body.contactInformation.text` | 1..1 | Ej mappad | Kontaktinformation i fritext; inget standardiserat FHIR-fält i DiagnosticReport; kan läggas i DiagnosticReport.text.div som narrativ |
 
-### Härledda fält – DiagnosticReport
+#### Härledda fält – DiagnosticReport
 
 | Källa | FHIR-element | Kommentar |
 |---|---|---|
@@ -124,7 +122,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 
 ---
 
-## Mappningstabell – groupOfAnalyses-metadata
+### Mappningstabell – groupOfAnalyses-metadata
 
 `groupOfAnalyses` har egna fält som fångar metadata om gruppen av analyser (t.ex. ett analyspaket).
 
@@ -136,7 +134,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 
 ---
 
-## Mappningstabell – SEEHDSObservationLab (per analysis)
+### Mappningstabell – SEEHDSObservationLab (per analysis)
 
 Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SEEHDSObservationLab`-instans.
 
@@ -150,7 +148,7 @@ Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SE
 | `groupOfAnalyses.analysis.comment` | 0..1 | `Observation.note[0].text` | Kommentar till analysen |
 | `groupOfAnalyses.analysis.accredited` | 0..1 | `Observation.extension[accredited]` | Boolean; ackrediteringsstatus för analysen |
 
-### Resultat (analysis.result)
+#### Resultat (analysis.result)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -172,13 +170,13 @@ Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SE
 | `groupOfAnalyses.analysis.result.performerSignature.byRole` | 0..1 | Ej mappad | Utförarens yrkesroll; ingår via PractitionerRole.code om performer-referens skapas |
 | `groupOfAnalyses.analysis.result.related` | 0..* | Ej mappad | Relaterade analyser; inget strukturerat fält i Observation R4; alternativ: `Observation.hasMember` eller `Observation.derivedFrom` beroende på relationstyp – se [LAB-002](#öppna-frågor) |
 
-### Mätinstrument (analysis.device)
+#### Mätinstrument (analysis.device)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `groupOfAnalyses.analysis.device.identifier` | 1..1 | `Observation.device.identifier` | Mätinstrumentets id; Reference(Device) via logisk referens |
 
-### Härledda fält – Observation
+#### Härledda fält – Observation
 
 | Källa | FHIR-element | Kommentar |
 |---|---|---|
@@ -187,7 +185,7 @@ Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SE
 
 ---
 
-## Mappningstabell – Specimen (per analysis.specimen)
+### Mappningstabell – Specimen (per analysis.specimen)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -205,9 +203,9 @@ Varje element i `body.groupOfAnalyses[*].analysis[*]` mappas till en separat `SE
 
 ---
 
-## Härledda fält / Designbeslut
+### Härledda fält / Designbeslut
 
-### DiagnosticReport.status
+#### DiagnosticReport.status
 
 `DiagnosticReport.status` finns inte explicit i TKB:n och måste härledas från statusarna hos de ingående analyserna (`analysis.status`). Mappningsreglerna är:
 
@@ -230,11 +228,11 @@ Analysstatus från RIVTA mappas till FHIR `ObservationStatus` enligt:
 | `KVAL` / `corrected` | `corrected` |
 | `AVED` / `cancelled` | `cancelled` |
 
-### body.text – conclusion kontra narrative
+#### body.text – conclusion kontra narrative
 
 `body.text` är en fritext som antingen representerar en samlad kommentar eller ett sammandrag av beställningssvaret. Mappas till `DiagnosticReport.conclusion`. Om texten ska presenteras som XHTML-narrativ sätts även `DiagnosticReport.text.div` (med `text.status = generated`).
 
-### result.value – AnyValueType (LAB-001, beslutat) {#lab-001}
+#### result.value – AnyValueType (LAB-001, beslutat) {#lab-001}
 
 `analysis.result.value` är av typen `AnyValueType`. I XSD:n har den fyra grenar, varav en används per resultat, och var och en mappas entydigt till `Observation.value[x]`:
 
@@ -245,15 +243,15 @@ Analysstatus från RIVTA mappas till FHIR `ObservationStatus` enligt:
 | `intervalPQ` | PQIntervalType | `valueRange` |
 | `st` | string | `valueString` |
 
-### performerSignature → Observation.performer
+#### performerSignature → Observation.performer
 
 `analysis.result.performerSignature` representerar den utförande analytikers signatur. Mappas till `Observation.performer` som Reference(PractitionerRole) med logisk referens via HSA-id om id finns tillgängligt.
 
-### Referral → ServiceRequest
+#### Referral → ServiceRequest
 
 Om `body.referral.identifier` finns skapas en logisk referens till en `ServiceRequest`-resurs via `DiagnosticReport.basedOn`. Bryggan ansvarar för att matcha `identifier` mot befintliga ServiceRequest-instanser (från GetReferralOutcome eller GetRequestActivities) eller skapa en minimal stub-ServiceRequest med enbart identifier satt. Remissens övriga fält (timestamp, question, requestedCareService, requester, referralInformation) tillhör ServiceRequest och repeteras inte i DiagnosticReport.
 
-### result.related → Observation-relation
+#### result.related → Observation-relation
 
 `analysis.result.related 0..*` refererar till relaterade analyser men saknar specificerat relationsmönster i TKB:n. FHIR Observation har två relevanta fält:
 
@@ -264,7 +262,7 @@ Bryggan behöver tilldelningsregler för att avgöra vilken relationstyp som gä
 
 ---
 
-## PDL och Sparr
+### PDL och Sparr
 
 GetLaboratoryOrderOutcome v4.2 använder **JoL-header** (inte PatientSummaryHeader). PDL-fälten skiljer sig från andra TK:er:
 
@@ -279,7 +277,7 @@ Observera att `accountableCareGiver` och `accountableCareUnit` är direkt under 
 
 ---
 
-## Provenance
+### Provenance
 
 | Agent | Roll | Källa |
 |---|---|---|
@@ -292,7 +290,7 @@ Observera att `accountableCareGiver` och `accountableCareUnit` är direkt under 
 
 ---
 
-## Övriga aktiva versioner {#versioner}
+### Övriga aktiva versioner {#versioner}
 
 Mappningstabellerna ovan utgår från GetLaboratoryOrderOutcome 4.2. Enligt [startsidan](index.html) är även 4.1 (NPÖ) och 3.1 (NPÖ och 1177 Journal) aktiva. Båda har egna logiska modeller och mappas till samma profiler, [SEEHDSDiagnosticReportLab](StructureDefinition-SEEHDSDiagnosticReportLab.html) och [SEEHDSObservationLab](StructureDefinition-SEEHDSObservationLab.html).
 
@@ -301,7 +299,7 @@ Mappningstabellerna ovan utgår från GetLaboratoryOrderOutcome 4.2. Enligt [sta
 | 4.1 | [SEEHDSLMLaboratoryOrderOutcomeV41](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.html) | `riv.clinicalprocess.healthcond.actoutcome` 4.1.3 | Samma struktur; några kardinaliteter och `referralInformation` skiljer |
 | 3.1 | [SEEHDSLMLaboratoryOrderOutcomeV31](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.html) | `riv.clinicalprocess.healthcond.actoutcome` 3.1.10 | Annan meddelandemodell (PatientSummaryHeader och platt analyslista) |
 
-### GetLaboratoryOrderOutcome 4.1 {#version-4-1}
+#### GetLaboratoryOrderOutcome 4.1 {#version-4-1}
 
 {% include vdiff-SEEHDSLMLaboratoryOrderOutcomeV41.md %}
 
@@ -310,7 +308,7 @@ Alla element i 4.1 finns i 4.2 med samma namn och mappas enligt tabellerna ovan.
 - `header.author.orgUnit.id`, `header.signature.orgUnit.id`, `body.referral.requester` med `name` och `orgUnit.id` är obligatoriska i 4.1. Målelementen är desamma.
 - `body.referral.referralInformation` finns inte i 4.1. De element som då saknas är ändå inte mappade till DiagnosticReport.
 
-### GetLaboratoryOrderOutcome 3.1 {#version-3-1}
+#### GetLaboratoryOrderOutcome 3.1 {#version-3-1}
 
 Version 3.1 har PatientSummaryHeader (`laboratoryOrderOutcomeHeader`), en body med svarets typ, disciplin, utlåtande och ansvarig labbläkare, och en platt lista `analysis` med ett resultat per analys. Det finns ingen gruppering i `groupOfAnalyses`, inget strukturerat provmaterial och inget kodat resultatvärde.
 
@@ -318,7 +316,7 @@ Version 3.1 har PatientSummaryHeader (`laboratoryOrderOutcomeHeader`), en body m
 
 Resurshierarkin är densamma som för 4.2: en `SEEHDSDiagnosticReportLab` per `laboratoryOrderOutcome` och en `SEEHDSObservationLab` per `analysis`.
 
-#### Header (laboratoryOrderOutcomeHeader) → DiagnosticReport
+##### Header (laboratoryOrderOutcomeHeader) → DiagnosticReport
 
 | RIVTA-element (3.1) | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -342,7 +340,7 @@ Resurshierarkin är densamma som för 4.2: en `SEEHDSDiagnosticReportLab` per `l
 | `laboratoryOrderOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se PDL-001 |
 | `laboratoryOrderOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Logisk referens till vårdkontakten |
 
-#### Body (laboratoryOrderOutcomeBody) → DiagnosticReport
+##### Body (laboratoryOrderOutcomeBody) → DiagnosticReport
 
 | RIVTA-element (3.1) | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -360,7 +358,7 @@ Resurshierarkin är densamma som för 4.2: en `SEEHDSDiagnosticReportLab` per `l
 | `laboratoryOrderOutcomeBody.order.orderReason` | 0..1 | Ej mappad till DiagnosticReport | Frågeställningen tillhör remissen (ServiceRequest.reasonCode.text), som i 4.2 |
 | (härledd från `analysis`) | – | `DiagnosticReport.result` | Reference(SEEHDSObservationLab) per analys |
 
-#### analysis → Observation
+##### analysis → Observation
 
 | RIVTA-element (3.1) | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -384,13 +382,13 @@ Resurshierarkin är densamma som för 4.2: en `SEEHDSDiagnosticReportLab` per `l
 | `analysis.attested.attesterHSAId` | 0..1 | `Observation.performer.identifier` | Logisk referens till PractitionerRole |
 | `analysis.attested.attesterName` | 0..1 | `Observation.performer.display` | |
 
-#### result
+##### result
 
 `result.resultCode`, `errorCode`, `logId`, `subCode` och `message` är tekniska svarsfält och mappas inte, som i 4.2.
 
 ---
 
-## OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | OID | URI | Beskrivning |
 |---|---|---|
@@ -402,7 +400,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ---
 
-## Öppna frågor
+### Öppna frågor
 
 | ID | Fråga |
 |---|---|
@@ -410,7 +408,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPAT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
-## Föreslagna nya issues
+### Föreslagna nya issues
 
 | ID | Fråga |
 |---|---|

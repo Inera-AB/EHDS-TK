@@ -1,5 +1,3 @@
-{::options header_offset="1" /}
-
 **Tjänstekontrakt:** `clinicalprocess:healthcond:description` GetAlertInformation v2.0 och v3.0  
 **FHIR-profiler:** [SEEHDSFlag](StructureDefinition-SEEHDSFlag.html) | [SEEHDSAllergyIntolerance](StructureDefinition-SEEHDSAllergyIntolerance.html)  
 **Logiska modeller:** [SEEHDSLMAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.html) (v2.0) | [SEEHDSLMAlertInformationV30](StructureDefinition-SEEHDSLMAlertInformationV30.html) (v3.0, se [Övriga aktiva versioner](#version-3-0))  
@@ -8,7 +6,7 @@
 
 ---
 
-## Profilval – alltid Flag, ibland även AllergyIntolerance
+### Profilval – alltid Flag, ibland även AllergyIntolerance
 
 `Flag` skapas **alltid** för varje `alertInformation`-post, oavsett typ av uppmärksamhetssignal (beslut GENERAL-004, ALERT-003).
 
@@ -27,7 +25,7 @@ Body-typen avgörs av vilket XOR-element som anges i `alertInformationBody`.
 
 ---
 
-## Mappning av Flag.category och Flag.code
+### Mappning av Flag.category och Flag.code
 
 `Flag.category` bär alltid body-typen (obligatorisk) och, vid överkänslighet, även preciseringstypen:
 
@@ -49,13 +47,13 @@ Body-typen avgörs av vilket XOR-element som anges i `alertInformationBody`.
 
 ---
 
-## Flag.status
+### Flag.status
 
 Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `active` (poster som returneras av tjänsten är per definition aktiva uppmärksamhetssignaler vid svarstillfället).
 
 ---
 
-## Mappningstabell – alertInformationHeader
+### Mappningstabell – alertInformationHeader
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -83,7 +81,7 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `acti
 
 ---
 
-## Mappningstabell – alertInformationBody (gemensamma fält)
+### Mappningstabell – alertInformationBody (gemensamma fält)
 
 Följande fält är gemensamma för alla body-typer (förekommer oberoende av XOR-val):
 
@@ -104,11 +102,11 @@ Följande fält är gemensamma för alla body-typer (förekommer oberoende av XO
 
 ---
 
-## Body XOR-sektion 1: hypersensitivity (överkänslighet)
+### Body XOR-sektion 1: hypersensitivity (överkänslighet)
 
 Gäller när `alertInformationBody.hypersensitivity` är angivet. Skapar Flag **och** AllergyIntolerance.
 
-### Flag-fält (hypersensitivity)
+#### Flag-fält (hypersensitivity)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -122,7 +120,7 @@ Gäller när `alertInformationBody.hypersensitivity` är angivet. Skapar Flag **
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgentCode` | 0..1 | `Flag.code.coding` | Agenskod (LMK-kod, CAS-kod m.fl.). XOR med pharmaceuticalHypersensitivity |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgent` | 0..1 | `Flag.code.text` | Agens i fritext |
 
-### AllergyIntolerance-fält (hypersensitivity)
+#### AllergyIntolerance-fält (hypersensitivity)
 
 AllergyIntolerance skapas enbart när body = hypersensitivity. Fält från header och hypersensitivity-blocket mappas:
 
@@ -150,7 +148,7 @@ AllergyIntolerance skapas enbart när body = hypersensitivity. Fält från heade
 
 ---
 
-## Body XOR-sektion 2: seriousDisease (allvarlig sjukdom)
+### Body XOR-sektion 2: seriousDisease (allvarlig sjukdom)
 
 Gäller när `alertInformationBody.seriousDisease` är angivet. Skapar enbart Flag.
 
@@ -160,7 +158,7 @@ Gäller när `alertInformationBody.seriousDisease` är angivet. Skapar enbart Fl
 
 ---
 
-## Body XOR-sektion 3: treatment (behandling)
+### Body XOR-sektion 3: treatment (behandling)
 
 Gäller när `alertInformationBody.treatment` är angivet. Skapar enbart Flag.
 
@@ -172,7 +170,7 @@ Gäller när `alertInformationBody.treatment` är angivet. Skapar enbart Flag.
 
 ---
 
-## Body XOR-sektion 4: communicableDisease (smittsam sjukdom)
+### Body XOR-sektion 4: communicableDisease (smittsam sjukdom)
 
 Gäller när `alertInformationBody.communicableDisease` är angivet. Skapar enbart Flag.
 
@@ -183,7 +181,7 @@ Gäller när `alertInformationBody.communicableDisease` är angivet. Skapar enba
 
 ---
 
-## Body XOR-sektion 5: restrictionOfCare (vårdbegränsning)
+### Body XOR-sektion 5: restrictionOfCare (vårdbegränsning)
 
 Gäller när `alertInformationBody.restrictionOfCare` är angivet. Skapar enbart Flag.
 
@@ -195,7 +193,7 @@ Gäller när `alertInformationBody.restrictionOfCare` är angivet. Skapar enbart
 
 ---
 
-## Body XOR-sektion 6: unstructuredAlertInformation (ostrukturerad varning)
+### Body XOR-sektion 6: unstructuredAlertInformation (ostrukturerad varning)
 
 Gäller när `alertInformationBody.unstructuredAlertInformation` är angivet. Skapar enbart Flag.
 
@@ -206,7 +204,7 @@ Gäller när `alertInformationBody.unstructuredAlertInformation` är angivet. Sk
 
 ---
 
-## Mappningstabell – relatedAlertInformation
+### Mappningstabell – relatedAlertInformation
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -217,7 +215,7 @@ Gäller när `alertInformationBody.unstructuredAlertInformation` är angivet. Sk
 
 ---
 
-## Mappningstabell – result
+### Mappningstabell – result
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -229,7 +227,7 @@ Gäller när `alertInformationBody.unstructuredAlertInformation` är angivet. Sk
 
 ---
 
-## PDL och Sparr
+### PDL och Sparr
 
 PDL-styrning i GetAlertInformation utgår från `accountableHealthcareProfessional`-blockets HSA-id:n i headern:
 
@@ -241,7 +239,7 @@ PDL-styrning i GetAlertInformation utgår från `accountableHealthcareProfession
 
 ---
 
-## Provenance
+### Provenance
 
 | Agent | Roll | Källa |
 |---|---|---|
@@ -253,7 +251,7 @@ PDL-styrning i GetAlertInformation utgår från `accountableHealthcareProfession
 
 ---
 
-## Övriga aktiva versioner – GetAlertInformation 3.0 {#version-3-0}
+### Övriga aktiva versioner – GetAlertInformation 3.0 {#version-3-0}
 
 Mappningstabellerna ovan utgår från GetAlertInformation 2.0. [Startsidan](index.html) anger även 3.0 för både NPÖ och 1177 Journal. Version 3.0 finns ännu inte som släppt domänversion i `riv.clinicalprocess.healthcond.description`; den finns på grenen `feature-GAI_3.0` (taggarna `GAI3.0_BETA1`–`GAI3.0_BETA3`). Den logiska modellen [SEEHDSLMAlertInformationV30](StructureDefinition-SEEHDSLMAlertInformationV30.html) är genererad från grenens senaste `GetAlertInformationResponder_3.0.xsd` och TKB:n för GetAlertInformation på samma gren. Se VER-001 i [Mappningsissues](mapping-issues.html).
 
@@ -261,7 +259,7 @@ Version 3.0 är en ny meddelandemodell. Den har JoL-header (som GetCareDocumenta
 
 {% include vdiff-SEEHDSLMAlertInformationV30.md %}
 
-### Typer i 3.0 och motsvarighet i 2.0
+#### Typer i 3.0 och motsvarighet i 2.0
 
 `Flag.category[alertType]` härleds i 3.0 från vilket body-element som finns, eftersom `typeOfAlertInformation` inte finns.
 
@@ -275,7 +273,7 @@ Version 3.0 är en ny meddelandemodell. Den har JoL-header (som GetCareDocumenta
 | `informationNonstandardCareProcedure` | – (ny) | Flag | `informationNonstandardCareProcedure.value` |
 | `unstructuredAlertInformation` | `unstructuredAlertInformation` | Flag | `unstructuredAlertInformation.title` som `code.text` |
 
-### Header (JoL-header) → Flag
+#### Header (JoL-header) → Flag
 
 | RIVTA-element (3.0) | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -297,7 +295,7 @@ Version 3.0 är en ny meddelandemodell. Den har JoL-header (som GetCareDocumenta
 | `header.signature.rivId` | 0..1 | `Flag.extension[alertAsserter].identifier` | Även `AllergyIntolerance.asserter` vid överkänslighet |
 | `header.signature.name`, `header.signature.byRole` | 0..1 | Ej mappad | |
 
-### Body → Flag och AllergyIntolerance
+#### Body → Flag och AllergyIntolerance
 
 | RIVTA-element (3.0) | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -331,7 +329,7 @@ Element i 2.0 som saknar motsvarighet i 3.0: `validityTimePeriod`, `obsoleteTime
 
 ---
 
-## OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | OID | URI |
 |---|---|
@@ -345,7 +343,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ---
 
-## Öppna frågor
+### Öppna frågor
 
 | ID | Fråga |
 |---|---|

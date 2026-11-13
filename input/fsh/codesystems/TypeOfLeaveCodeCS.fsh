@@ -8,6 +8,7 @@ Title: "TypeOfLeaveCode"
 Description: "Kodverk för typ av ledighet (TypeOfLeaveCodeEnum). Används i GetMaternityMedicalHistory."
 * ^url = "https://fhir.inera.se/CodeSystem/typeofleavecode"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #0 "Sjukskrivning" "Sjukskrivning under graviditet"

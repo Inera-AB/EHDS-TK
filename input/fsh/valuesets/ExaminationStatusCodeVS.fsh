@@ -6,4 +6,5 @@ Id: examinationstatuscode-vs
 Title: "ExaminationStatusCode — ValueSet"
 Description: "Tillåtna värden för examinationStatus i GetImagingOutcome."
 * ^status = #active
+* ^experimental = false
 * include codes from system ExaminationStatusCodeCS

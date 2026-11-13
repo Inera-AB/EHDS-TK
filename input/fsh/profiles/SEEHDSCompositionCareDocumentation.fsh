@@ -5,7 +5,7 @@ Title: "SE EHDS Composition – Strukturerad journalanteckning från DocBook (Ge
 Description: """
   Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när
   innehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType
-  application/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ
+  application/docbook+xml). Varje DocBook-`section` blir en Composition.section med XHTML-narrativ
   (Strategi B, se DOC-004 och sidan DocBook-mappning).
 
   Kompletterar SEEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).

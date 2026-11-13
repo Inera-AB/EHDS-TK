@@ -6,4 +6,5 @@ Id: fetalpositioncode-vs
 Title: "FetalPositionCode — ValueSet"
 Description: "Tillåtna värden för fosterläge i GetMaternityMedicalHistory."
 * ^status = #active
+* ^experimental = false
 * include codes from system FetalPositionCodeCS

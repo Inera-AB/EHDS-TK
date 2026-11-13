@@ -6,4 +6,5 @@ Id: sexcode-vs
 Title: "SexCode — ValueSet"
 Description: "Tillåtna värden för kön i GetMaternityMedicalHistory."
 * ^status = #active
+* ^experimental = false
 * include codes from system SexCodeCS

@@ -1,5 +1,3 @@
-{::options header_offset="1" /}
-
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetReferralOutcome v3.2 och v3.1  
 **FHIR-profil:** [SEEHDSDiagnosticReportReferral](StructureDefinition-SEEHDSDiagnosticReportReferral.html)  
 **Logiska modeller:** [SEEHDSLMReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.html) (v3.2) | [SEEHDSLMReferralOutcomeV31](StructureDefinition-SEEHDSLMReferralOutcomeV31.html) (v3.1, se [Övriga aktiva versioner](#version-3-1))  
@@ -8,7 +6,7 @@
 
 ---
 
-## Resurshierarki
+### Resurshierarki
 
 ```
 SEEHDSDiagnosticReportReferral (1 per referralOutcome)
@@ -20,7 +18,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 
 ---
 
-## Mappningstabell – referralOutcomeHeader (PatientSummaryHeader)
+### Mappningstabell – referralOutcomeHeader (PatientSummaryHeader)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -53,9 +51,9 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 
 ---
 
-## Mappningstabell – referralOutcomeBody
+### Mappningstabell – referralOutcomeBody
 
-### Svarstext och klassificering
+#### Svarstext och klassificering
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -63,14 +61,14 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeBody.referralOutcomeTitle` | 0..1 | `DiagnosticReport.code.text` | Går före `documentTitle`, se [Titel-prioritering](#titel) |
 | `referralOutcomeBody.referralOutcomeText` | 1..1 | `DiagnosticReport.conclusion` | Fritext remissvar/utlåtande |
 
-### Klinisk information (clinicalInformation)
+#### Klinisk information (clinicalInformation)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `referralOutcomeBody.clinicalInformation[i].clinicalInformationCode` | 1..1 | `DiagnosticReport.conclusionCode[i]` | Klinisk informationskod (t.ex. diagnoskod) |
 | `referralOutcomeBody.clinicalInformation[i].clinicalInformationText` | 1..1 | `DiagnosticReport.conclusion` (sammanslagen) | Fritextbeskrivning av klinisk information; konkateneras med referralOutcomeText; se [clinicalInformation-sammanslagning](#clinicalinformation-sammanslagning) |
 
-### Åtgärder (act)
+#### Åtgärder (act)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -82,7 +80,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeBody.act[i].actResult[j].value` | 0..1 | `DiagnosticReport.presentedForm[i].data` | Binärdata base64-kodat; XOR med reference |
 | `referralOutcomeBody.act[i].actResult[j].reference` | 0..1 | `DiagnosticReport.presentedForm[i].url` | URL till externt dokument; XOR med value |
 
-### Attestering (attested)
+#### Attestering (attested)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -90,7 +88,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeBody.attested.attesterHSAId` | 0..1 | `DiagnosticReport.extension[attested].attestorHSAId` | Attesterarens HSA-id |
 | `referralOutcomeBody.attested.attesterName` | 0..1 | Ej mappad | Attesterarens namn i klartext – HSA-id räcker för logisk referens |
 
-### Kopplad remiss (referral)
+#### Kopplad remiss (referral)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -112,7 +110,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 
 ---
 
-## Mappningstabell – result
+### Mappningstabell – result
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -124,16 +122,16 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 
 ---
 
-## Härledda fält / Designbeslut
+### Härledda fält / Designbeslut
 
-### DiagnosticReport.status (från referralOutcomeTypeCode)
+#### DiagnosticReport.status (från referralOutcomeTypeCode)
 
 | referralOutcomeTypeCode | Beskrivning | DiagnosticReport.status |
 |---|---|---|
 | `SS` | Specialistutlåtande/svar (slutgiltig bedömning) | `final` |
 | `SR` | Specialistremissvar (preliminärt/delsvar) | `preliminary` |
 
-### Titel-prioritering (DiagnosticReport.code.text) {#titel}
+#### Titel-prioritering (DiagnosticReport.code.text) {#titel}
 
 Titeln mappas till `DiagnosticReport.code.text`, rapportens namn i klartext. `code.coding` är fortfarande den fasta LOINC-koden `11488-4` ("Consult note"). Texten sätts enligt följande prioritet:
 
@@ -141,7 +139,7 @@ Titeln mappas till `DiagnosticReport.code.text`, rapportens namn i klartext. `co
 2. `referralOutcomeHeader.documentTitle` (om satt)
 3. Annars LOINC-kodens display, "Consult note"
 
-### act-poster och multimedia (REF-001)
+#### act-poster och multimedia (REF-001)
 
 `referralOutcomeBody.act 0..*` representerar utförda åtgärder med eventuella bilagor. FHIR `DiagnosticReport` har inget dedikerat element för åtgärdslistor. Designbeslut:
 
@@ -152,7 +150,7 @@ Titeln mappas till `DiagnosticReport.code.text`, rapportens namn i klartext. `co
 
 Se [REF-001](#öppna-frågor) för öppen fråga.
 
-### clinicalInformation-sammanslagning
+#### clinicalInformation-sammanslagning
 
 `clinicalInformation 0..*` innehåller kliniska fynd/slutsatser med kod och fritext. Koden mappas till `DiagnosticReport.conclusionCode`; fritexterna konkateneras med `referralOutcomeText` i `DiagnosticReport.conclusion`:
 
@@ -162,13 +160,13 @@ Se [REF-001](#öppna-frågor) för öppen fråga.
 [{clinicalInformationCode.display}]: {clinicalInformationText}   ← per clinicalInformation-post
 ```
 
-### Referral → ServiceRequest
+#### Referral → ServiceRequest
 
 Om `referralOutcomeBody.referral.referralId` finns skapas en logisk referens till en `ServiceRequest` via `DiagnosticReport.basedOn`. Bryggan ansvarar för att matcha `referralId` mot befintliga ServiceRequest-instanser (från GetReferralOutcome eller GetRequestActivities) eller skapa en minimal stub-ServiceRequest med enbart identifier satt. Remissens övriga fält (`referralReason`, `referralTime`, `referralAuthor.*`) tillhör ServiceRequest och repeteras inte i DiagnosticReport.
 
 ---
 
-## PDL och Sparr
+### PDL och Sparr
 
 PDL-styrning i GetReferralOutcome utgår från `accountableHealthcareProfessional`-blockets HSA-id:n i headern (standard PatientSummaryHeader-mönster):
 
@@ -180,7 +178,7 @@ PDL-styrning i GetReferralOutcome utgår från `accountableHealthcareProfessiona
 
 ---
 
-## Provenance
+### Provenance
 
 | Agent | Roll | Källa |
 |---|---|---|
@@ -193,7 +191,7 @@ PDL-styrning i GetReferralOutcome utgår från `accountableHealthcareProfessiona
 
 ---
 
-## Övriga aktiva versioner – GetReferralOutcome 3.1 {#version-3-1}
+### Övriga aktiva versioner – GetReferralOutcome 3.1 {#version-3-1}
 
 Mappningstabellerna ovan utgår från GetReferralOutcome 3.2. [Startsidan](index.html) anger 3.1 som aktiv version för både NPÖ och 1177 Journal. Version 3.1 beskrivs av den logiska modellen [SEEHDSLMReferralOutcomeV31](StructureDefinition-SEEHDSLMReferralOutcomeV31.html) (genererad från `GetReferralOutcomeResponder_3.1.xsd` i `riv.clinicalprocess.healthcond.actoutcome` 4.2, den sista domänversionen med 3.1).
 
@@ -203,7 +201,7 @@ Den enda skillnaden är att `referralOutcomeBody.referralOutcomeTitle` är oblig
 
 ---
 
-## OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | OID | URI | Beskrivning |
 |---|---|---|
@@ -215,7 +213,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ---
 
-## Öppna frågor
+### Öppna frågor
 
 | ID | Fråga |
 |---|---|
@@ -223,7 +221,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | PDL-001 | **Beslutat:** `approvedForPatient = false` → `meta.security` `v3-ActCode#NOPAT`. Se [Mappningsissues](mapping-issues.html#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.** RIVTA-tidsstämplar tolkas som lokal tid i `Europe/Stockholm` (sommartid beaktas). `dateTime` får explicit offset (`+01:00`/`+02:00`); `instant` anger samma tidpunkt, helst med samma offset-form. Se [Tidsstämplar och tidszon](mappings.html#tidszon). |
 
-## Föreslagna nya issues
+### Föreslagna nya issues
 
 | ID | Fråga |
 |---|---|

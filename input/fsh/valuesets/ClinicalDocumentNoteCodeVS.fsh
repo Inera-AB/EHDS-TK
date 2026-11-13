@@ -7,4 +7,5 @@ Id: clinicaldocumentnotecode-vs
 Title: "KV Anteckningstyp — ValueSet"
 Description: "Tillåtna värden för fältet clinicalDocumentNoteCode i GetCareDocumentation enligt KV Anteckningstyp (OID: 1.2.752.129.2.2.2.11)."
 * ^status = #active
+* ^experimental = false
 * include codes from system ClinicalDocumentNoteCodeCS

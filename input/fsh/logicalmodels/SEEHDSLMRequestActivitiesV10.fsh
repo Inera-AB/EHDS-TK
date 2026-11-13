@@ -83,7 +83,7 @@ Description: """
   """
 * insert RivNs(requestActivity.careUnit, urn:riv:crm:requeststatus:1)
 * requestActivity.logicalSystemId 1..1 SEEHDSRivString "Referens till informationskällan" """
-    Referens till informationskällan. <Systemets HSA-id>. Format enligt aktuell identiferare, tex HSA-id OID 1.2.752.129.2.1.4.1
+    Referens till informationskällan. `<Systemets HSA-id>`. Format enligt aktuell identiferare, tex HSA-id OID 1.2.752.129.2.1.4.1
   """
 * insert RivNs(requestActivity.logicalSystemId, urn:riv:crm:requeststatus:1)
 * requestActivity.statusCode 1..1 SEEHDSRivString "Anger i vilken status remissen befinner sig i" """

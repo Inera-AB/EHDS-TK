@@ -6,4 +6,5 @@ Id: typeofcareplan-vs
 Title: "TypeOfCarePlan — ValueSet"
 Description: "Tillåtna värden för typeOfCarePlanEnum i GetCarePlans enligt clinicalprocess:logistics:logistics."
 * ^status = #active
+* ^experimental = false
 * include codes from system TypeOfCarePlanCS

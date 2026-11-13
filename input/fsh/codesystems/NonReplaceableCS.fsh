@@ -9,6 +9,8 @@ Title: "NonReplaceable"
 Description: "Kodverk för aktör som har angett att ett läkemedel inte är utbytbart i GetMedicationHistory (DispensationAuthorizationType)."
 * ^url = "https://fhir.inera.se/CodeSystem/nonreplaceable-actoutcome"
 * ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
 * ^content = #complete
 * #Prescriber "Förskrivare" "Förskrivaren har angett att läkemedlet inte är utbytbart"
 * #Patient "Patient" "Patienten har begärt att läkemedlet inte ska bytas ut"
