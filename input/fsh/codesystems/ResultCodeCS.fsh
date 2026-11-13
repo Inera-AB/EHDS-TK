@@ -9,6 +9,8 @@ Title: "ResultCode"
 Description: "Kodverk för resultatkod i svar från tjänstekontrakten i domänen clinicalprocess:activityprescription:actoutcome."
 * ^url = "https://fhir.inera.se/CodeSystem/resultcode-actoutcome"
 * ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
 * ^content = #complete
 * #OK "OK" "Begäran genomfördes utan fel"
 * #INFO "Info" "Begäran genomfördes men med informationsmeddelande"

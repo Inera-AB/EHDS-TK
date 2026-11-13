@@ -8,6 +8,7 @@ Title: "TypeOfResultCode"
 Description: "Kodverk för typ av resultat (TypeOfResultCodeEnum). Används i GetImagingOutcome och GetReferralOutcome."
 * ^url = "https://fhir.inera.se/CodeSystem/typeofresultcode"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #PREL "Preliminärsvar" "Preliminärt svar"

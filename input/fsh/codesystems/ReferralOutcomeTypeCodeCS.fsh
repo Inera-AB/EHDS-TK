@@ -8,6 +8,7 @@ Title: "ReferralOutcomeTypeCode"
 Description: "Kodverk för typ av remissvar (ReferralOutcomeTypeCodeEnum). Används i GetReferralOutcome."
 * ^url = "https://fhir.inera.se/CodeSystem/referraloutcometypecode"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #SS "Slutsvar på remissfråga" "Slutsvar på remissfråga"

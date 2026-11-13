@@ -6,7 +6,7 @@ description: >-
   FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för
   att informationsförsörja NPÖ och 1177 Journal.
 status: draft
-version: 0.8.1
+version: 0.8.2
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: ci-build
@@ -31,6 +31,9 @@ parameters:
   i18n-default-lang: sv
   show-inherited-invariants: false
   usage-stats-opt-out: true
+  # Lås kanoniska referenser till den version som används när flera paket
+  # (kärnspecen, extensions, terminology) har samma url i olika versioner.
+  pin-canonicals: pin-multiples
   # Kodsystem och ConceptMap som har en egen url utanför IG:ns canonical
   # (Instance: … InstanceOf: CodeSystem, se README avsnitt 4).
   special-url:

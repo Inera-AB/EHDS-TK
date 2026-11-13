@@ -128,7 +128,7 @@ Description: """
 * referralOutcome.referralOutcomeBody.act.actCode 0..1 BackboneElement "Kod för åtgärd" """Kod för åtgärd. Koden anges i code. Kodverkets OID anges i codeSystem."""
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actCode, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * referralOutcome.referralOutcomeBody.act.actCode.code 1..1 SEEHDSRivString "Nullvärde är tillåtet om kod ej är tillgänglig, och åtgärdskodstext ska då skrivas i <actText>" """
-    Nullvärde är tillåtet om kod ej är tillgänglig, och åtgärdskodstext ska då skrivas i <actText>.
+    Nullvärde är tillåtet om kod ej är tillgänglig, och åtgärdskodstext ska då skrivas i `actText`.
   """
 * insert RivNs(referralOutcome.referralOutcomeBody.act.actCode.code, urn:riv:clinicalprocess:healthcond:actoutcome:3)
 * referralOutcome.referralOutcomeBody.act.actCode.codeSystem 1..1 SEEHDSRivString "Lämpliga kodverk kan vara: KVÅ (1.2.752.116.1.3.2.1.4) men andra kodverk kan förekomma."

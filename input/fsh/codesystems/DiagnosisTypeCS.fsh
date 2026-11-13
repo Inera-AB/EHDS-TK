@@ -7,6 +7,7 @@ Title: "KV Diagnostyp (fragment)"
 Description: "Fragment av Ineras kodverk kv_diagnostyp med de koder som används för typ av diagnos i GetDiagnosis (diagnosisBody.typeOfDiagnosis): HD = huvuddiagnos, BY = bidiagnos. Kodverket förvaltas av Inera; detta är en delmängd för validering i IG:n."
 * ^url = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
 * ^status = #active
+* ^experimental = false
 * ^content = #fragment
 * ^caseSensitive = true
 * #HD "Huvuddiagnos" "Huvuddiagnos"

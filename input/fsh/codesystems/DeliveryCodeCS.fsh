@@ -8,6 +8,7 @@ Title: "DeliveryCode"
 Description: "Kodverk för förlossningssätt (DeliveryCodeEnum). Används i GetMaternityMedicalHistory."
 * ^url = "https://fhir.inera.se/CodeSystem/deliverycode"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #0 "Ej angivet" "Förlossningssätt ej angivet"

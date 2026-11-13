@@ -8,6 +8,7 @@ Title: "MaternityMedicalSection"
 Description: "Diskriminatorkoder för de tre sektionerna i mödravårdsjournalen (GetMaternityMedicalHistory v2.0). Varje Observation-resurs som skapas ur ett maternityMedicalRecord sätter Observation.code till en av dessa koder."
 * ^url = "https://fhir.inera.se/ig/ehds-tk/CodeSystem/maternity-section"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #registration "Inskrivning mödravård" "Inskrivningsuppgifter (maternityMedicalRecordBody.registrationRecord)"

@@ -6,4 +6,5 @@ Id: errorcode-vs
 Title: "ErrorCode — ValueSet"
 Description: "Tillåtna värden för errorCode i svar."
 * ^status = #active
+* ^experimental = false
 * include codes from system ErrorCodeCS

@@ -8,6 +8,7 @@ Title: "SexCode"
 Description: "Kodverk för kön (SexCodeEnum). Används i GetMaternityMedicalHistory för barnets kön. OBS: Överväg att använda HL7 AdministrativeGender istället."
 * ^url = "https://fhir.inera.se/CodeSystem/sexcode"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #0 "Okänt" "Kön okänt"

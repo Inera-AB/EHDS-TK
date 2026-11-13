@@ -9,5 +9,7 @@ Title: "ErrorCode"
 Description: "Kodverk för felkoder i svar från tjänstekontrakten i domänen clinicalprocess:activityprescription:actoutcome."
 * ^url = "https://fhir.inera.se/CodeSystem/errorcode-actoutcome"
 * ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
 * ^content = #complete
 * #INVALID_REQUEST "Ogiltig begäran" "Begäran är felaktig eller saknar obligatoriska fält"

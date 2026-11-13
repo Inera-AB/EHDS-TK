@@ -16,6 +16,7 @@ Description: """
   - 412726003  | Graviditetslängd vid födelse |
 """
 
+* ^experimental = false
 * $SCT#1153637007 "Kroppslängd"
 * $SCT#50373000 "Mått på kroppslängd"
 * $SCT#248334005 "Längd i liggande (bakåtkompatibel – ej för nyanslutning)"

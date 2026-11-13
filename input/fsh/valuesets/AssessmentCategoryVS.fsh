@@ -7,4 +7,5 @@ Id: assessmentcategory-vs
 Title: "AssessmentCategory — ValueSet"
 Description: "Tillåtna värden för fältet assessmentCategory i GetFunctionalStatus."
 * ^status = #active
+* ^experimental = false
 * include codes from system AssessmentCategoryCS

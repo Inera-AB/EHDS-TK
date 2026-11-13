@@ -6,4 +6,5 @@ Id: typeofresultcode-vs
 Title: "TypeOfResultCode — ValueSet"
 Description: "Tillåtna värden för typeOfResult i GetImagingOutcome."
 * ^status = #active
+* ^experimental = false
 * include codes from system TypeOfResultCodeCS

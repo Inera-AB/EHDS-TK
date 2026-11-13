@@ -8,6 +8,7 @@ Title: "FetalPositionCode"
 Description: "Kodverk för fosterläge (FetalPositionCodeEnum). Används i GetMaternityMedicalHistory."
 * ^url = "https://fhir.inera.se/CodeSystem/fetalpositioncode"
 * ^status = #active
+* ^experimental = false
 * ^content = #complete
 * ^caseSensitive = true
 * #0 "Huvudläge" "Fostret ligger med huvudet nedåt"

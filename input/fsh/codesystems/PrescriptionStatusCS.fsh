@@ -9,6 +9,8 @@ Title: "PrescriptionStatus"
 Description: "Kodverk för ordinationsstatus i GetMedicationHistory. Anger om en ordination är aktiv eller inaktiv."
 * ^url = "https://fhir.inera.se/CodeSystem/prescriptionstatus"
 * ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
 * ^content = #complete
 * #Active "Aktiv" "Aktiv ordination — den sista i sin ordinationskedja. Representerar gällande behandling."
 * #Inactive "Inaktiv" "Inaktiv ordination — inte den sista i sin ordinationskedja. Historisk ordination."

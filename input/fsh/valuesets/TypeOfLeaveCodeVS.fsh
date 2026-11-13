@@ -6,4 +6,5 @@ Id: typeofleavecode-vs
 Title: "TypeOfLeaveCode — ValueSet"
 Description: "Tillåtna värden för typ av ledighet i GetMaternityMedicalHistory."
 * ^status = #active
+* ^experimental = false
 * include codes from system TypeOfLeaveCodeCS

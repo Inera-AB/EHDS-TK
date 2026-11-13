@@ -8,6 +8,8 @@ Title: "AssessmentCategory"
 Description: "Bedömningskategori för funktionsstatus. Tillåtna värden är 'pad-pad' (PADL-bedömning) och 'fun-fun' (funktionsnedsättningsbedömning). Definierat i enum XSD v2.1 för domänen."
 * ^url = "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"
 * ^status = #active
+* ^experimental = false
+* ^caseSensitive = true
 * ^content = #complete
 * #pad-pad "pad-pad" "PADL-bedömning"
 * #fun-fun "fun-fun" "Funktionsnedsättningsbedömning"

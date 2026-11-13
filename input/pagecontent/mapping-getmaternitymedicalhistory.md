@@ -1,5 +1,3 @@
-{::options header_offset="1" /}
-
 **Tjänstekontrakt:** `clinicalprocess:healthcond:actoutcome` GetMaternityMedicalHistory v2.0  
 **FHIR-profil:** [SEEHDSObservationMaternity](StructureDefinition-SEEHDSObservationMaternity.html)  
 **Logisk modell:** [SEEHDSLMMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.html)  
@@ -10,7 +8,7 @@
 
 ---
 
-## Datamodell – översikt
+### Datamodell – översikt
 
 ```
 maternityMedicalRecord [0..*]
@@ -51,7 +49,7 @@ maternityMedicalRecord [0..*]
 
 ---
 
-## Flersektionsdesign (MAT-001) {#flersektionsdesign-mat-001}
+### Flersektionsdesign (MAT-001) {#flersektionsdesign-mat-001}
 
 Varje avsnitt i `maternityMedicalRecordBody` som finns i svaret blir en **grupperande Observation**, och varje fält i avsnittet blir en **medlems-Observation** som den grupperande Observationen refererar via `hasMember`. Detta följer FHIR:s mönster för grupperade observationer: den grupperande Observationen har inget eget `value[x]`.
 
@@ -77,12 +75,12 @@ De tre grupperande Observationerna från samma `maternityMedicalRecord` hålls i
 
 ---
 
-## Mappningstabell – Header (gemensam för alla sektioner)
+### Mappningstabell – Header (gemensam för alla sektioner)
 
 Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 `maternityMedicalRecord`-objekt.
 
-### Dokumentidentitet och patient
+#### Dokumentidentitet och patient
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -93,7 +91,7 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 | `maternityMedicalRecordHeader.patientId.id` | 1..1 | `Observation.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `maternityMedicalRecordHeader.patientId.type` | 1..1 | `Observation.subject.identifier.system` | OID→URI-konvertering; se OID-tabell nedan |
 
-### Ansvarig hälso- och sjukvårdspersonal
+#### Ansvarig hälso- och sjukvårdspersonal
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -110,14 +108,14 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 1..1 | `Provenance.agent[author].who.identifier.value` | HSA-id för vårdenhet; Inre Sparr (OBLIGATORISK i detta TK) |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 1..1 | `Provenance.agent[custodian].who.identifier.value` | HSA-id för vårdgivare; Yttre Sparr (OBLIGATORISK i detta TK) |
 
-### Juridisk autentisering
+#### Juridisk autentisering
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `maternityMedicalRecordHeader.legalAuthenticator.signatureTime` | 1..1 | `Observation.extension[assertedDate]` | Signeringstidpunkt; lokal extension (ingen standardekvivalent i R4 Observation) |
 | `maternityMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Observation.asserter.identifier.value` | HSA-id för juridiskt ansvarig signatär; via asserter-referens till Practitioner |
 
-### PDL och övriga headerfält
+#### PDL och övriga headerfält
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -128,17 +126,17 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 
 ---
 
-## Tekniska responsfält (result)
+### Tekniska responsfält (result)
 
 Svarsmeddelandet `GetMaternityMedicalHistoryResponse` i version 2.0 har inget `result`-element enligt XSD:n (GetMaternityMedicalHistoryResponder_2.0.xsd), till skillnad från flera andra tjänstekontrakt. Det finns därför inga tekniska responsfält att mappa.
 
 ---
 
-## Mappningstabell – registrationRecord (inskrivningsuppgifter)
+### Mappningstabell – registrationRecord (inskrivningsuppgifter)
 
 Avsnittet blir en grupperande Observation med `code = maternity-section#registration`, och varje fält en medlems-Observation (se [Flersektionsdesign](#flersektionsdesign-mat-001)).
 
-### Beräknat nedkomstdatum och graviditetsstatus
+#### Beräknat nedkomstdatum och graviditetsstatus
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -149,7 +147,7 @@ Avsnittet blir en grupperande Observation med `code = maternity-section#registra
 | `registrationRecord.expectedDayOfDeliveryFromUltrasoundScan` | 0..1 | `Observation[edd-us].valueDateTime` | Beräknat nedkomstdatum från ultraljud; LOINC `11779-6` |
 | `registrationRecord.expectedDayOfDeliveryFromEmbryonicTransfer` | 0..1 | `Observation[edd-et].valueDateTime` | Beräknat nedkomstdatum från embryotransfer |
 
-### Antropometri vid inskrivning
+#### Antropometri vid inskrivning
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -157,13 +155,13 @@ Avsnittet blir en grupperande Observation med `code = maternity-section#registra
 | `registrationRecord.weight` | 0..1 | `Observation[body-weight].valueQuantity` | Kroppsvikt; LOINC `29463-7`; enhet kg (UCUM) |
 | `registrationRecord.bodyMassIndex` | 0..1 | `Observation[bmi].valueQuantity` | BMI; LOINC `39156-5`; enhet kg/m2 (UCUM) |
 
-### Infertilitetsbehandling
+#### Infertilitetsbehandling
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `registrationRecord.infertility` | 0..1 | `Observation[infertility-duration].valueQuantity` | Duration av infertilitetsbehandling (år, decimal) |
 
-### Tidigare graviditeter och förlossningar
+#### Tidigare graviditeter och förlossningar
 
 `previousGravidityAndParity` är en repeterad sektion. Varje post blir en medlems-Observation med postens fält som `component`:
 
@@ -178,7 +176,7 @@ Avsnittet blir en grupperande Observation med `code = maternity-section#registra
 | `registrationRecord.previousGravidityAndParity[i].weightOfChild` | 0..1 | `Observation[prev-delivery-{i}].component[weight].valueQuantity` | Barnets födslovikt (g) |
 | `registrationRecord.previousGravidityAndParity[i].gestation` | 0..1 | `Observation[prev-delivery-{i}].component[gestation].valueInteger` | Gestationsålder vid förlossning (veckor) |
 
-### Sjukdomar och riskfaktorer (booleska fält)
+#### Sjukdomar och riskfaktorer (booleska fält)
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -187,7 +185,7 @@ Avsnittet blir en grupperande Observation med `code = maternity-section#registra
 | `registrationRecord.diseasesRecurrentUrinaryTractInfections` | 0..1 | `Observation[disease-uti-recurrent].valueBoolean` | Recidiverande urinvägsinfektioner i anamnes |
 | `registrationRecord.diseasesDiabetesMellitus` | 0..1 | `Observation[disease-diabetes].valueBoolean` | Diabetes mellitus i anamnes |
 
-### Läkemedel under graviditet
+#### Läkemedel under graviditet
 
 `medicationDuringPregnacy` är en repeterad sektion. Varje läkemedel mappas som
 ett komponent-par (namn + dosering) med löpande index:
@@ -197,7 +195,7 @@ ett komponent-par (namn + dosering) med löpande index:
 | `registrationRecord.medicationDuringPregnacy[i].medicament` | 1..1 | `Observation[medication-pregnancy-{i}].component[name].valueString` | Läkemedelsnamn/-beskrivning; FHIR MedicationStatement är alternativ resurstyp (se MAT-001) |
 | `registrationRecord.medicationDuringPregnacy[i].dosage` | 0..1 | `Observation[medication-pregnancy-{i}].component[dosage].valueString` | Doseringsbeskrivning i fritext |
 
-### Bedömning första kontakt
+#### Bedömning första kontakt
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -205,11 +203,11 @@ ett komponent-par (namn + dosering) med löpande index:
 
 ---
 
-## Mappningstabell – pregnancyCheckupRecord (graviditetskontroll)
+### Mappningstabell – pregnancyCheckupRecord (graviditetskontroll)
 
 Avsnittet blir en grupperande Observation med `code = maternity-section#checkup`, och varje fält en medlems-Observation (se [Flersektionsdesign](#flersektionsdesign-mat-001)).
 
-### Gestationsålder och vikt
+#### Gestationsålder och vikt
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -217,27 +215,27 @@ Avsnittet blir en grupperande Observation med `code = maternity-section#checkup`
 | `pregnancyCheckupRecord.weight` | 0..1 | `Observation[body-weight].valueQuantity` | Aktuell vikt; LOINC `29463-7`; enhet kg |
 | `pregnancyCheckupRecord.symphysisFundalHeight` | 0..1 | `Observation[sfh].valueQuantity` | Symfys-fundusavstånd; LOINC `11881-0`; enhet cm |
 
-### Blodstatus
+#### Blodstatus
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `pregnancyCheckupRecord.haemoglobin` | 0..1 | `Observation[haemoglobin].valueQuantity` | Hb; LOINC `718-7`; enhet g/dL |
 
-### Blodtryck
+#### Blodtryck
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `pregnancyCheckupRecord.bloodPressureSystolic` | 0..1 | `Observation[bp-systolic].valueQuantity` | Systoliskt blodtryck; LOINC `8480-6`; enhet mmHg |
 | `pregnancyCheckupRecord.bloodPressureDiastolic` | 0..1 | `Observation[bp-diastolic].valueQuantity` | Diastoliskt blodtryck; LOINC `8462-4`; enhet mmHg |
 
-### Urinstatus
+#### Urinstatus
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `pregnancyCheckupRecord.proteinuria` | 0..1 | `Observation[proteinuria].valueCodeableConcept` | Proteinuri; semikvantitatif kod (negativ/spår/+/++/+++); LOINC `2888-6`. OBS: LM-typen är `Quantity` men klinisk praxis i Sverige är kodad skala – FHIR-mappningen använder `valueCodeableConcept` (se MAT-001 i issues) |
 | `pregnancyCheckupRecord.glycosuria` | 0..1 | `Observation[glycosuria].valueCodeableConcept` | Glukosuri; semikvantitatif kod (negativ/positiv); LOINC `2349-9`. OBS: LM-typen är `Quantity` men klinisk praxis är kodad skala – se proteinuri-not ovan |
 
-### Fosterdata
+#### Fosterdata
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -245,13 +243,13 @@ Avsnittet blir en grupperande Observation med `code = maternity-section#checkup`
 | `pregnancyCheckupRecord.fetalPresentation` | 0..* | `Observation[fetal-presentation].valueCodeableConcept` | Bjudning; repeterbara komponenter vid flera foster |
 | `pregnancyCheckupRecord.fetalHeartRate` | 0..* | `Observation[fetal-heart-rate].valueQuantity` | Fosterhjärtfrekvens; LOINC `55283-6`; enhet /min; repeterbara vid flera foster |
 
-### Ledighet
+#### Ledighet
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `pregnancyCheckupRecord.typeOfLeave` | 0..* | `Observation[leave-type].valueCodeableConcept` | Ledighetstyp; från `TypeOfLeaveCodeCS`; repeterbara |
 
-### Läkemedel sedan inskrivning
+#### Läkemedel sedan inskrivning
 
 `medicationSinceRegistration` är en repeterad sektion. Varje läkemedel mappas som
 ett komponent-par (namn + dosering) med löpande index:
@@ -263,13 +261,13 @@ ett komponent-par (namn + dosering) med löpande index:
 
 ---
 
-## Mappningstabell – postDeliveryRecord (eftervård)
+### Mappningstabell – postDeliveryRecord (eftervård)
 
 Avsnittet blir en grupperande Observation med `code = maternity-section#post-delivery`, och varje fält en medlems-Observation (se [Flersektionsdesign](#flersektionsdesign-mat-001)).
 Sektionen är uppdelad i moderuppgifter (`motherPostDeliveryRecord`, kard. 1..1) och
 barnuppgifter (`childPostDeliveryRecord`, kard. 1..*).
 
-### Moderuppgifter efter förlossning
+#### Moderuppgifter efter förlossning
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
@@ -285,7 +283,7 @@ barnuppgifter (`childPostDeliveryRecord`, kard. 1..*).
 | `postDeliveryRecord.motherPostDeliveryRecord.uterusContracted` | 0..1 | `Observation[postpartum-uterus-contracted].valueBoolean` | Uterus kontraherad |
 | `postDeliveryRecord.motherPostDeliveryRecord.uterusNote` | 0..1 | `Observation[postpartum-uterus-note].valueString` | Fri anteckning om uterus |
 
-### Barnuppgifter efter förlossning
+#### Barnuppgifter efter förlossning
 
 `childPostDeliveryRecord` är repeterat (ett element per barn). Varje barns data
 separeras med ordningsnumret `ordinalNumber` i komponent-koden:
@@ -300,35 +298,35 @@ separeras med ordningsnumret `ordinalNumber` i komponent-koden:
 
 ---
 
-## Härledda fält och designbeslut
+### Härledda fält och designbeslut
 
-### Observation.status
+#### Observation.status
 
 Inget explicit statusfält finns i GetMaternityMedicalHistory. `Observation.status`
 sätts statiskt till `final` för alla producerade Observation-resurser, eftersom
 ett svarsmeddelande från tjänstekontraktet representerar en färdig journalpost.
 
-### Observation.category
+#### Observation.category
 
 `Observation.category` sätts inte. GetMaternityMedicalHistory bär ingen kategori, och den statiska
 kategorin `survey` fanns bara för att harmonisera med IPS (GENERAL-007). Sektionen identifieras av
 `Observation.code`.
 
-### Observation.effective[x]
+#### Observation.effective[x]
 
 `maternityMedicalRecordHeader.accountableHealthcareProfessional.authorTime` används
 som `Observation.effectiveDateTime`. `documentTime` (registreringstidpunkt) mappas
 till `Observation.issued` om de skiljer sig åt.
 
-### Länkning av sektioner (MAT-001)
+#### Länkning av sektioner (MAT-001)
 
 Fälten i ett avsnitt hålls ihop av den grupperande Observationens `hasMember`. De grupperande Observationerna från samma `maternityMedicalRecord` har `identifier` som bygger på samma `documentId` (`{documentId}#registration`, `{documentId}#checkup`, `{documentId}#post-delivery`). Någon `List`- eller `Composition`-resurs behövs inte.
 
-### documentTitle (MAT-003)
+#### documentTitle (MAT-003)
 
 `maternityMedicalRecordHeader.documentTitle` beskriver hela journalposten och mappas till `code.text` på varje grupperande Observation. Den mappas **inte** på medlems-Observationerna. De är enskilda observationer (t.ex. vikt eller blodtryck), där `code.text` beskriver det som observerats och inte dokumentet.
 
-### Läkemedel – alternativ representation
+#### Läkemedel – alternativ representation
 
 `medicationDuringPregnacy` och `medicationSinceRegistration` innehåller
 läkemedelsbeskrivningar som i en fullständig implementering bör representeras
@@ -336,7 +334,7 @@ som separata `MedicationStatement`-resurser med referens från Observation.
 I nuvarande mappning används `valueString` som förenkling i avvaktan på
 profilbeslut (se MAT-001).
 
-### OrgUnit-kontaktuppgifter (orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation)
+#### OrgUnit-kontaktuppgifter (orgUnitTelecom, orgUnitEmail, orgUnitAddress, orgUnitLocation)
 
 Dessa fyra fält representerar enhetens kontaktinformation. De saknar en naturlig
 plats i Observation-resursen och tillhör egentligen Organization-resursen i FHIR.
@@ -346,7 +344,7 @@ PractitionerRole refererar. Ingen mappning fastlagd i nuläget; se GENERAL-008.
 
 ---
 
-## PDL och Sparr
+### PDL och Sparr
 
 GetMaternityMedicalHistory använder **standard `PatientSummaryHeader`** med
 `accountableHealthcareProfessional` som inkluderar både `healthcareProfessionalCareUnitHSAId`
@@ -362,7 +360,7 @@ och `healthcareProfessionalCareGiverHSAId`. Dessa är **OBLIGATORISKA** i detta 
 
 ---
 
-## Provenance
+### Provenance
 
 En `Provenance`-resurs skapas per `maternityMedicalRecord`-objekt och refererar
 samtliga Observation-resurser producerade från det objektet.
@@ -379,7 +377,7 @@ samtliga Observation-resurser producerade från det objektet.
 
 ---
 
-## OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | OID | URI | Beskrivning |
 |---|---|---|
@@ -391,7 +389,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ---
 
-## Öppna frågor
+### Öppna frågor
 
 | Id | Fråga | Status |
 |---|---|---|
@@ -401,7 +399,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ---
 
-## Föreslagna nya issues
+### Föreslagna nya issues
 
 | Id | Fråga | Prioritet |
 |---|---|---|

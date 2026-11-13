@@ -6,4 +6,5 @@ Id: referraloutcometypecode-vs
 Title: "ReferralOutcomeTypeCode — ValueSet"
 Description: "Tillåtna värden för referralOutcomeTypeCode i GetReferralOutcome."
 * ^status = #active
+* ^experimental = false
 * include codes from system ReferralOutcomeTypeCodeCS
