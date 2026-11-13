@@ -15,3 +15,6 @@ The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced
 # GetObservations observationStatus.
 The concept '248334005' has a status of inactive and its use should be reviewed
 The concept '444301002' has a status of inactive and its use should be reviewed
+
+# The package is written to output after the link check, so the relative link is reported as broken. It works on the built site.
+The link 'package.tgz' for "Package (tgz)" cannot be resolved

@@ -27,6 +27,8 @@ dependencies:
   # IHE Basic Audit Log Patterns – grund för loggprofilerna (auditloggning).
   ihe.iti.balp: 1.1.4
 parameters:
+  # Pages in Swedish (generated text such as banners and headings); the pages are under sv/ and the root redirects there
+  i18n-default-lang: sv
   show-inherited-invariants: false
   usage-stats-opt-out: true
   # Kodsystem och ConceptMap som har en egen url utanför IG:ns canonical
