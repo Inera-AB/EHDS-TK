@@ -1,10 +1,10 @@
-# Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Mappningsissues och Designbeslut
 
 Denna sida dokumenterar öppna designfrågor och fattade beslut för mappningar från svenska RIVTA-tjänstekontrakt (TKBer) till FHIR R4-resurser inom ramen för EHDS-TK. Sidan används som arbetsunderlag under implementationsguidearbetet och uppdateras löpande i takt med att frågor utreds och beslut fattas. Varje issue är kopplat till ett eller flera tjänstekontrakt och beskriver det tekniska problemet, möjliga lösningsalternativ samt aktuellt förslag eller fattat beslut. Öppna frågor kräver vidare utredning eller nationellt samordningsbeslut innan de kan avslutas.
 
-#### Öppna frågor
+### Öppna frågor
 
 | | | | | |
 | :--- | :--- | :--- | :--- | :--- |
@@ -52,7 +52,7 @@ Denna sida dokumenterar öppna designfrågor och fattade beslut för mappningar 
 
 -------
 
-#### Stängda frågor
+### Stängda frågor
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -83,7 +83,7 @@ Denna sida dokumenterar öppna designfrågor och fattade beslut för mappningar 
 
 -------
 
-#### Designbeslut (fattade)
+### Designbeslut (fattade)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -112,7 +112,7 @@ Denna sida dokumenterar öppna designfrågor och fattade beslut för mappningar 
 
 -------
 
-#### Kända begränsningar
+### Kända begränsningar
 
 Följande begränsningar i FHIR R4 påverkar mappningarna i denna implementationsguide. Vilka som löses i R5 framgår av [Val av FHIR-version](index.md#fhir-version).
 

@@ -1,4 +1,4 @@
-# SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Resursprofil: SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag 
 
@@ -65,11 +65,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSPractitio
     "valueCanonical" : "http://hl7.org/fhir/uv/ips/StructureDefinition/PractitionerRole-uv-ips"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSPractitionerRole",
   "title" : "SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

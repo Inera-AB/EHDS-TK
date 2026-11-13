@@ -1,4 +1,4 @@
-# Källsystemskontakt - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Källsystemskontakt - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Extension: Källsystemskontakt 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-device-source-s
   "resourceType" : "StructureDefinition",
   "id" : "device-source-system-contact",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "DeviceSourceSystemContact",
   "title" : "Källsystemskontakt",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

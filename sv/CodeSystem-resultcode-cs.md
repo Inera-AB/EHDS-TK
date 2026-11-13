@@ -1,4 +1,4 @@
-# ResultCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# ResultCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## CodeSystem: ResultCode 
 
@@ -19,11 +19,12 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
   "resourceType" : "CodeSystem",
   "id" : "resultcode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/resultcode-actoutcome",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "ResultCodeCS",
   "title" : "ResultCode",
   "status" : "active",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "experimental" : false,
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -40,6 +41,7 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
       "display" : "Sweden"
     }]
   }],
+  "caseSensitive" : true,
   "content" : "complete",
   "count" : 3,
   "concept" : [{

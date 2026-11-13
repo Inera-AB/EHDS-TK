@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
+    <title>Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.1 - ci-build
+            <span style="display:inline-block;">0.8.2 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Åtkomstloggar – patientåtkomst och auditloggning</h2>
   
 
@@ -203,10 +203,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
-</div>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#patientatkomst" id="markdown-toc-patientatkomst">Patientens åtkomst till loggar via API:et</a></li>
+  <li><a href="#loggar-som-maste-skapas" id="markdown-toc-loggar-som-maste-skapas">Loggar som måste skapas när API:et nyttjas</a></li>
+  <li><a href="#getaccesslogforpatient" id="markdown-toc-getaccesslogforpatient">Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient</a></li>
+  <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
+</ul>
 
+</div>
 <p><strong>Gäller:</strong> EHDS-bryggor och andra FHIR-API:er som lämnar ut patientdata från RIVTA-tjänstekontrakten i denna IG<br />
 <strong>FHIR-resurs:</strong> <code class="language-plaintext highlighter-rouge">AuditEvent</code> (FHIR R4)<br />
 <strong>Profiler:</strong></p>
@@ -220,7 +225,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="patientatkomst">Patientens åtkomst till loggar via API:et</h4>
+<h3 id="patientatkomst">Patientens åtkomst till loggar via API:et</h3>
 
 <p>EHDS ger patienten rätt att få veta vem som har tagit del av patientens elektroniska
 patientuppgifter. I ett EHDS-kompatibelt FHIR-API tillhandahålls därför åtkomstloggar till
@@ -269,13 +274,13 @@ sätt som andra utlämningar, med syftet <code class="language-plaintext highlig
 
 <hr />
 
-<h4 id="loggar-som-maste-skapas">Loggar som måste skapas när API:et nyttjas</h4>
+<h3 id="loggar-som-maste-skapas">Loggar som måste skapas när API:et nyttjas</h3>
 
 <p><strong>Dessa loggar måste skapas när detta API nyttjas för att kunna stödja patientåtkomsten till
 loggar.</strong> Varje gång API:et lämnar ut patientdata ska det skapa en loggpost som patienten
 senare kan ta del av enligt <a href="#patientatkomst">föregående avsnitt</a>.</p>
 
-<h5 id="antaganden">Antaganden</h5>
+<h4 id="antaganden">Antaganden</h4>
 
 <p>EURIDICE hänvisar till IHE:s profiler för hur loggningen ska realiseras tekniskt. Denna IG gör
 följande antaganden:</p>
@@ -354,7 +359,7 @@ resurs hämtas.</li>
   </li>
 </ol>
 
-<h5 id="händelser-och-profiler">Händelser och profiler</h5>
+<h4 id="händelser-och-profiler">Händelser och profiler</h4>
 
 <p>En <code class="language-plaintext highlighter-rouge">AuditEvent</code> skapas per FHIR-interaktion som lämnar ut, eller försöker lämna ut,
 patientdata.</p>
@@ -427,7 +432,7 @@ patientdata.</p>
 query-entity och de resurser som lämnades ut registreras som egna entities (se
 <a href="#trafflistan">Träfflistan</a>).</p>
 
-<h5 id="vad-inera-profilerna-lägger-till-utöver-balp">Vad Inera-profilerna lägger till utöver BALP</h5>
+<h4 id="vad-inera-profilerna-lägger-till-utöver-balp">Vad Inera-profilerna lägger till utöver BALP</h4>
 
 <p>Profilerna ärver från IHE BALP (<code class="language-plaintext highlighter-rouge">ihe.iti.balp</code>) och skärper följande:</p>
 
@@ -473,7 +478,7 @@ query-entity och de resurser som lämnades ut registreras som egna entities (se
   </tbody>
 </table>
 
-<h5 id="vem--agenter">Vem – agenter</h5>
+<h4 id="vem--agenter">Vem – agenter</h4>
 
 <table>
   <thead>
@@ -523,7 +528,7 @@ query-entity och de resurser som lämnades ut registreras som egna entities (se
 tokenanvändning: uppgifter ur token (t.ex. subjekt, <code class="language-plaintext highlighter-rouge">client_id</code>, organisation, syfte) förs
 över till användar- och applikationsagenterna.</p>
 
-<h5 id="vilken-patient--entitypatient">Vilken patient – entity[patient]</h5>
+<h4 id="vilken-patient--entitypatient">Vilken patient – entity[patient]</h4>
 
 <p>FHIR R4 saknar <code class="language-plaintext highlighter-rouge">AuditEvent.patient</code>. Patienten anges med BALP:s entity-mönster:</p>
 
@@ -553,7 +558,7 @@ tokenanvändning: uppgifter ur token (t.ex. subjekt, <code class="language-plain
 <p>Varje <code class="language-plaintext highlighter-rouge">AuditEvent</code> gäller exakt en patient. Om en sökning ger träffar för flera patienter skapas
 en <code class="language-plaintext highlighter-rouge">AuditEvent</code> per patient, enligt BALP.</p>
 
-<h5 id="frågan--entityquery">Frågan – entity[query]</h5>
+<h4 id="frågan--entityquery">Frågan – entity[query]</h4>
 
 <table>
   <thead>
@@ -582,7 +587,7 @@ en <code class="language-plaintext highlighter-rouge">AuditEvent</code> per pati
   </tbody>
 </table>
 
-<h5 id="trafflistan">Träfflistan</h5>
+<h4 id="trafflistan">Träfflistan</h4>
 
 <p>Träfflistan är en utlämning i sig. Varje resurs som lämnades ut registreras som en entity i
 samma <code class="language-plaintext highlighter-rouge">AuditEvent</code>:</p>
@@ -613,7 +618,7 @@ samma <code class="language-plaintext highlighter-rouge">AuditEvent</code>:</p>
 <p>Resurser som filtrerades bort före utlämning, till exempel på grund av spärr eller
 <code class="language-plaintext highlighter-rouge">approvedForPatient = false</code>, registreras <strong>inte</strong>.</p>
 
-<h5 id="syfte-purpose-of-use">Syfte (purpose of use)</h5>
+<h4 id="syfte-purpose-of-use">Syfte (purpose of use)</h4>
 
 <p>Syftet anges i <code class="language-plaintext highlighter-rouge">AuditEvent.purposeOfEvent</code> och i <code class="language-plaintext highlighter-rouge">agent[user].purposeOfUse</code>, med koder från
 <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/v3-ActReason</code>:</p>
@@ -644,7 +649,7 @@ samma <code class="language-plaintext highlighter-rouge">AuditEvent</code>:</p>
 <p>Syftet ska komma från anropet (t.ex. åtkomsttokenens claims). Om syftet saknas i ett anrop som
 kräver ett syfte ska utlämningen nekas och loggas (se nedan).</p>
 
-<h5 id="resultat-outcome">Resultat (outcome)</h5>
+<h4 id="resultat-outcome">Resultat (outcome)</h4>
 
 <p>Inera-profilerna, liksom BALP, beskriver <strong>lyckade</strong> utlämningar (<code class="language-plaintext highlighter-rouge">outcome = 0</code>, även med noll
 träffar). Nekade och misslyckade försök ska också loggas. De loggas med samma struktur men utan
@@ -680,7 +685,7 @@ för nekad åtkomst:</p>
 
 <p><code class="language-plaintext highlighter-rouge">outcomeDesc</code> får inte avslöja bortfiltrerad eller spärrad information.</p>
 
-<h5 id="kallsystem-och-noder">Källsystem och noder</h5>
+<h4 id="kallsystem-och-noder">Källsystem och noder</h4>
 
 <p>En utlämning från bryggan bygger på ett eller flera RIVTA-anrop mot källsystem. För
 spårbarhet hela vägen tillbaka till källan:</p>
@@ -693,7 +698,7 @@ med samma HSA-id som <code class="language-plaintext highlighter-rouge">Provenan
 <code class="language-plaintext highlighter-rouge">agent[custodian]</code>, så att API:ets loggpost kan kopplas till källsystemets egen loggpost.</li>
 </ul>
 
-<h5 id="lagring-atna">Lagring (ATNA)</h5>
+<h4 id="lagring-atna">Lagring (ATNA)</h4>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">AuditEvent</code> skickas till ett <strong>Audit Record Repository</strong> enligt ATNA, med FHIR-överföring
@@ -704,7 +709,7 @@ gällande krav (t.ex. patientdatalagen).</li>
   <li>Loggposterna lämnas ut till patienten enligt <a href="#patientatkomst">Patientens åtkomst till loggar</a>.</li>
 </ul>
 
-<h5 id="exempel--sökning-efter-diagnoser">Exempel – sökning efter diagnoser</h5>
+<h4 id="exempel--sökning-efter-diagnoser">Exempel – sökning efter diagnoser</h4>
 
 <p>En användare i vården söker aktiva diagnoser för en patient via QEDm. Två <code class="language-plaintext highlighter-rouge">Condition</code> lämnas ut
 från ett källsystem.</p>
@@ -774,7 +779,7 @@ från ett källsystem.</p>
 
 <hr />
 
-<h4 id="getaccesslogforpatient">Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient</h4>
+<h3 id="getaccesslogforpatient">Läsning av källsystemens åtkomstloggar – GetAccessLogForPatient</h3>
 
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">informationsecurity:auditing:log</code> GetAccessLogsForPatient v2.0 och <code class="language-plaintext highlighter-rouge">ehr:log:querying</code> GetAccessLogsForPatient v1.1<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSAuditEventReadAccessLog.html">SEEHDSAuditEventReadAccessLog</a><br />
@@ -915,7 +920,7 @@ inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skap
   </tbody>
 </table>
 
-<h5 id="getaccesslogforpatient-1-1">Övriga aktiva versioner – GetAccessLogsForPatient 1.1</h5>
+<h4 id="getaccesslogforpatient-1-1">Övriga aktiva versioner – GetAccessLogsForPatient 1.1</h4>
 
 <p>Tabellen ovan utgår från GetAccessLogsForPatient 2.0 i <code class="language-plaintext highlighter-rouge">informationsecurity:auditing:log</code>. Version 1.1 är också aktiv för 1177 Journal. Den ligger i en annan domän, <code class="language-plaintext highlighter-rouge">ehr:log:querying</code> (<code class="language-plaintext highlighter-rouge">riv.ehr.log</code> 1.2.4), och beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMAccessLogV11.html">SEEHDSLMAccessLogV11</a>.</p>
 
@@ -970,7 +975,7 @@ inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skap
 
 <hr />
 
-<h4 id="öppna-frågor">Öppna frågor</h4>
+<h3 id="öppna-frågor">Öppna frågor</h3>
 
 <table>
   <thead>
@@ -1029,9 +1034,9 @@ inte för de loggposter API:et själv skapar (se <a href="#loggar-som-maste-skap
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.1 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 15:20:00 +0000">
+  <span title="2026-11-13 16:07:00 +0000">
     2026-11-13
   </span>
 

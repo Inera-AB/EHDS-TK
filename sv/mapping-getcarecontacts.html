@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetCareContacts – Vårdkontakter - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
+    <title>GetCareContacts – Vårdkontakter - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.1 - ci-build
+            <span style="display:inline-block;">0.8.2 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetCareContacts – Vårdkontakter</h2>
   
 
@@ -203,10 +203,20 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
-</div>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#struktur" id="markdown-toc-struktur">Struktur</a></li>
+  <li><a href="#mappningstabell" id="markdown-toc-mappningstabell">Mappningstabell</a></li>
+  <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
+  <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+  <li><a href="#carecontactcode--kv-vårdkontakttyp" id="markdown-toc-carecontactcode--kv-vårdkontakttyp">careContactCode – KV Vårdkontakttyp</a></li>
+  <li><a href="#carecontactstatus--snomed-ct-se" id="markdown-toc-carecontactstatus--snomed-ct-se">careContactStatus – SNOMED CT SE</a></li>
+  <li><a href="#version-2-0" id="markdown-toc-version-2-0">Övriga aktiva versioner – GetCareContacts 2.0</a></li>
+  <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
+  <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
+</ul>
 
+</div>
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:logistics:logistics</code> GetCareContacts v3.0 och v2.0<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSEncounter.html">SEEHDSEncounter</a><br />
 <strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMCareContacts.html">SEEHDSLMCareContacts</a> (v3.0) | <a href="StructureDefinition-SEEHDSLMCareContactsV20.html">SEEHDSLMCareContactsV20</a> (v2.0, se <a href="#version-2-0">Övriga aktiva versioner</a>)<br />
@@ -214,15 +224,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="struktur">Struktur</h4>
+<h3 id="struktur">Struktur</h3>
 
 <p>GetCareContacts returnerar en lista <code class="language-plaintext highlighter-rouge">careContact</code> (0..*). Varje post innehåller header-fält (documentId, sourceSystemHSAId, patientId, accountableHealthcareProfessional, approvedForPatient) och body-fält (careContactCode, careContactReason, careContactOrgUnit, careContactTimePeriod, careContactStatus, additionalPatientInformation).</p>
 
 <hr />
 
-<h4 id="mappningstabell">Mappningstabell</h4>
+<h3 id="mappningstabell">Mappningstabell</h3>
 
-<h5 id="header--identitet-och-patient">Header – identitet och patient</h5>
+<h4 id="header--identitet-och-patient">Header – identitet och patient</h4>
 
 <table>
   <thead>
@@ -261,7 +271,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--ansvarig-personal-accountablehealthcareprofessional">Header – ansvarig personal (accountableHealthcareProfessional)</h5>
+<h4 id="header--ansvarig-personal-accountablehealthcareprofessional">Header – ansvarig personal (accountableHealthcareProfessional)</h4>
 
 <table>
   <thead>
@@ -300,7 +310,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--ansvarig-personal--organisationsenhet">Header – ansvarig personal – organisationsenhet</h5>
+<h4 id="header--ansvarig-personal--organisationsenhet">Header – ansvarig personal – organisationsenhet</h4>
 
 <table>
   <thead>
@@ -351,7 +361,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--pdlsparr">Header – PDL/Sparr</h5>
+<h4 id="header--pdlsparr">Header – PDL/Sparr</h4>
 
 <table>
   <thead>
@@ -420,7 +430,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="body--kontakttyp-orsak-och-status">Body – kontakttyp, orsak och status</h5>
+<h4 id="body--kontakttyp-orsak-och-status">Body – kontakttyp, orsak och status</h4>
 
 <table>
   <thead>
@@ -453,7 +463,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="body--tid">Body – tid</h5>
+<h4 id="body--tid">Body – tid</h4>
 
 <table>
   <thead>
@@ -490,7 +500,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <p><strong>Invariant:</strong> Om <code class="language-plaintext highlighter-rouge">careContactTimePeriod</code> anges måste minst ett av <code class="language-plaintext highlighter-rouge">start</code> och <code class="language-plaintext highlighter-rouge">end</code> vara satt (<code class="language-plaintext highlighter-rouge">encounter-period-min-one</code>).</p>
 </blockquote>
 
-<h5 id="body--kontaktenhet-carecontactorgunit">Body – kontaktenhet (careContactOrgUnit)</h5>
+<h4 id="body--kontaktenhet-carecontactorgunit">Body – kontaktenhet (careContactOrgUnit)</h4>
 
 <table>
   <thead>
@@ -547,7 +557,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="body--ytterligare-patientinformation-additionalpatientinformation">Body – ytterligare patientinformation (additionalPatientInformation)</h5>
+<h4 id="body--ytterligare-patientinformation-additionalpatientinformation">Body – ytterligare patientinformation (additionalPatientInformation)</h4>
 
 <table>
   <thead>
@@ -580,7 +590,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="tekniska-responsfält-result">Tekniska responsfält (result)</h5>
+<h4 id="tekniska-responsfält-result">Tekniska responsfält (result)</h4>
 
 <table>
   <thead>
@@ -627,7 +637,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="pdl-och-sparr">PDL och Sparr</h4>
+<h3 id="pdl-och-sparr">PDL och Sparr</h3>
 
 <p>PDL-fälten finns under <code class="language-plaintext highlighter-rouge">careContact.careContactHeader.accountableHealthcareProfessional</code> (inte på toppnivå).</p>
 
@@ -655,7 +665,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="provenance">Provenance</h4>
+<h3 id="provenance">Provenance</h3>
 
 <table>
   <thead>
@@ -681,23 +691,23 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="carecontactcode--kv-vårdkontakttyp">careContactCode – KV Vårdkontakttyp</h4>
+<h3 id="carecontactcode--kv-vårdkontakttyp">careContactCode – KV Vårdkontakttyp</h3>
 
 <p>Kodverket KV Vårdkontakttyp (OID 1.2.752.129.2.2.2.x) innehåller koder som anger kontaktform. Vanliga värden inkluderar öppenvård, slutenvård och hemsjukvård. Exakt version specificeras av producenten.</p>
 
 <hr />
 
-<h4 id="carecontactstatus--snomed-ct-se">careContactStatus – SNOMED CT SE</h4>
+<h3 id="carecontactstatus--snomed-ct-se">careContactStatus – SNOMED CT SE</h3>
 
 <p>Status för vårdkontakt mappas från SNOMED CT SE (OID 1.2.752.116.2.1.1, SCTID 53761000052103) till <code class="language-plaintext highlighter-rouge">Encounter.status</code>. Mappning av specifika SNOMED-koder till FHIR-statusvärden görs via ConceptMap (ej inkluderad i denna version av IG) – se CC-001.</p>
 
 <hr />
 
-<h4 id="version-2-0">Övriga aktiva versioner – GetCareContacts 2.0</h4>
+<h3 id="version-2-0">Övriga aktiva versioner – GetCareContacts 2.0</h3>
 
 <p>Mappningstabellerna ovan utgår från GetCareContacts 3.0. Version 2.0 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMCareContactsV20.html">SEEHDSLMCareContactsV20</a> (genererad från <code class="language-plaintext highlighter-rouge">GetCareContactsResponder_2.0.xsd</code> i <code class="language-plaintext highlighter-rouge">riv.clinicalprocess.logistics.logistics</code> 2.0.7 och TKB:n för samma version). Element som är lika i båda versionerna mappas enligt tabellerna ovan; samma profil, <a href="StructureDefinition-SEEHDSEncounter.html">SEEHDSEncounter</a>, används.</p>
 
-<h5 id="skillnader-mot-30">Skillnader mot 3.0</h5>
+<h4 id="skillnader-mot-30">Skillnader mot 3.0</h4>
 
 <!-- Genererad av tools/rivta-lm/vdiff.py: SEEHDSLMCareContactsV20 mot SEEHDSLMCareContacts. Redigera inte för hand. -->
 
@@ -822,7 +832,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="mappning-av-det-som-skiljer-i-20">Mappning av det som skiljer i 2.0</h5>
+<h4 id="mappning-av-det-som-skiljer-i-20">Mappning av det som skiljer i 2.0</h4>
 
 <table>
   <thead>
@@ -885,7 +895,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h6 id="carecontactcode-20--encounterclass">careContactCode 2.0 → Encounter.class</h6>
+<h5 id="carecontactcode-20--encounterclass">careContactCode 2.0 → Encounter.class</h5>
 
 <table>
   <thead>
@@ -924,7 +934,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h6 id="carecontactstatus-20--encounterstatus">careContactStatus 2.0 → Encounter.status</h6>
+<h5 id="carecontactstatus-20--encounterstatus">careContactStatus 2.0 → Encounter.status</h5>
 
 <table>
   <thead>
@@ -965,7 +975,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
+<h3 id="oid-till-uri-tabell">OID-till-URI-tabell</h3>
 
 <table>
   <thead>
@@ -998,7 +1008,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="föreslagna-nya-issues">Föreslagna nya issues</h4>
+<h3 id="föreslagna-nya-issues">Föreslagna nya issues</h3>
 
 <table>
   <thead>
@@ -1053,9 +1063,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.1 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 15:20:00 +0000">
+  <span title="2026-11-13 16:07:00 +0000">
     2026-11-13
   </span>
 

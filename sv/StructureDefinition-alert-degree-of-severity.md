@@ -1,4 +1,4 @@
-# Allvarlighetsgrad för överkänslighet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Allvarlighetsgrad för överkänslighet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Extension: Allvarlighetsgrad för överkänslighet 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-alert-degree-of
   "resourceType" : "StructureDefinition",
   "id" : "alert-degree-of-severity",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-degree-of-severity",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "AlertDegreeOfSeverity",
   "title" : "Allvarlighetsgrad för överkänslighet",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

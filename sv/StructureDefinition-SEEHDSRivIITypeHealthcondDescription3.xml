@@ -13,11 +13,11 @@
     <valueUri value="urn:riv:clinicalprocess:healthcond:description:3"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeHealthcondDescription3"/>
-  <version value="0.8.1"/>
+  <version value="0.8.2"/>
   <name value="SEEHDSRivIITypeHealthcondDescription3"/>
   <title value="RIV-TA IIType (clinicalprocess:healthcond:description:3)"/>
   <status value="draft"/>
-  <date value="2026-11-13T15:20:27+00:00"/>
+  <date value="2026-11-13T16:07:48+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

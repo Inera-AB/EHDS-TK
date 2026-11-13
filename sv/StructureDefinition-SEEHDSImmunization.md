@@ -1,4 +1,4 @@
-# SE EHDS Immunization – Vaccinationer (GetVaccinationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# SE EHDS Immunization – Vaccinationer (GetVaccinationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Resursprofil: SE EHDS Immunization – Vaccinationer (GetVaccinationHistory) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSImmunizat
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSImmunization",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSImmunization",
   "title" : "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

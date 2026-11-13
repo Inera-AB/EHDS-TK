@@ -4,14 +4,15 @@
   "language" : "sv",
   "text" : {
     "status" : "generated",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem assessmentcategory-cs</b></p><a name=\"assessmentcategory-cs\"> </a><a name=\"hcassessmentcategory-cs\"> </a><p>Detta  kodsystem <code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">pad-pad<a name=\"assessmentcategory-cs-pad-pad\"> </a></td><td>PADL-bedömning</td></tr><tr><td style=\"white-space:nowrap\">fun-fun<a name=\"assessmentcategory-cs-fun-fun\"> </a></td><td>Funktionsnedsättningsbedömning</td></tr></table></div>"
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem assessmentcategory-cs</b></p><a name=\"assessmentcategory-cs\"> </a><a name=\"hcassessmentcategory-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">pad-pad<a name=\"assessmentcategory-cs-pad-pad\"> </a></td><td>PADL-bedömning</td></tr><tr><td style=\"white-space:nowrap\">fun-fun<a name=\"assessmentcategory-cs-fun-fun\"> </a></td><td>Funktionsnedsättningsbedömning</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "AssessmentCategoryCS",
   "title" : "AssessmentCategory",
   "status" : "active",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "experimental" : false,
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -28,6 +29,7 @@
       "display" : "Sweden"
     }]
   }],
+  "caseSensitive" : true,
   "content" : "complete",
   "count" : 2,
   "concept" : [{

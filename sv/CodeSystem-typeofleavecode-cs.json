@@ -7,11 +7,12 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem typeofleavecode-cs</b></p><a name=\"typeofleavecode-cs\"> </a><a name=\"hctypeofleavecode-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/typeofleavecode</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">0<a name=\"typeofleavecode-cs-0\"> </a></td><td>Sjukskrivning</td><td>Sjukskrivning under graviditet</td></tr><tr><td style=\"white-space:nowrap\">1<a name=\"typeofleavecode-cs-1\"> </a></td><td>Havandekapsledighet</td><td>Havandekapsledighet</td></tr><tr><td style=\"white-space:nowrap\">2<a name=\"typeofleavecode-cs-2\"> </a></td><td>Föräldrarledighet</td><td>Föräldrarledighet</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/CodeSystem/typeofleavecode",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "TypeOfLeaveCodeCS",
   "title" : "TypeOfLeaveCode",
   "status" : "active",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "experimental" : false,
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# GetAccessLogForPatient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetAccessLogForPatient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetAccessLogForPatient 
 
@@ -58,11 +58,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMAccessL
     "valueUri" : "urn:riv:informationsecurity:auditing:log:GetAccessLogsForPatientResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAccessLog",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMAccessLog",
   "title" : "GetAccessLogForPatient",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

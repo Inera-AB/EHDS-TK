@@ -1,4 +1,4 @@
-# SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Resursprofil: SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) 
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSObservati
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSObservationGrowth",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSObservationGrowth",
   "title" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

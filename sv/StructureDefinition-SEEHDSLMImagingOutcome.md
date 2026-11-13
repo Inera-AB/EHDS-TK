@@ -1,4 +1,4 @@
-# GetImagingOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetImagingOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetImagingOutcome 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMImaging
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetImagingOutcomeResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMImagingOutcome",
   "title" : "GetImagingOutcome",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

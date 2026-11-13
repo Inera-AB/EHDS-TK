@@ -30,11 +30,11 @@
     <valueCanonical value="http://hl7.org/fhir/uv/ips/StructureDefinition/Organization-uv-ips"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"/>
-  <version value="0.8.1"/>
+  <version value="0.8.2"/>
   <name value="SEEHDSOrganization"/>
   <title value="SE EHDS Organization – Organisationsenhet"/>
   <status value="draft"/>
-  <date value="2026-11-13T15:20:27+00:00"/>
+  <date value="2026-11-13T16:07:48+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -1824,7 +1824,7 @@
       </base>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName|5.3.0"/>
       </type>
       <constraint>
         <key value="ele-1"/>
@@ -1861,7 +1861,7 @@
       </base>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber|5.3.0"/>
       </type>
       <constraint>
         <key value="ele-1"/>
@@ -1898,7 +1898,7 @@
       </base>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox|5.3.0"/>
       </type>
       <constraint>
         <key value="ele-1"/>
@@ -2239,7 +2239,7 @@
       </base>
       <type>
         <code value="Extension"/>
-        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-codedString"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-codedString|5.3.0"/>
       </type>
       <constraint>
         <key value="ele-1"/>

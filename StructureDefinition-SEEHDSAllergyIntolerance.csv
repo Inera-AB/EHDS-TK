@@ -52,7 +52,7 @@ anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"AllergyIntolerance.extension:abatement","AllergyIntolerance.extension","abatement","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement]]} {[]}
+"AllergyIntolerance.extension:abatement","AllergyIntolerance.extension","abatement","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0]]} {[]}
 ","When the allergy or intolerance resolved","The date or estimated date that the allergy or intolerance resolved. This is called abatement because of the many overloaded connotations associated with resolution.","Age is generally used when the patient reports an age at which the allergy or intolerance abated. If there is no abatement element, the clinicalStatus can be used to convey whether allergy or intolerance has resolved or not. When abatementString exists, it conveys that the allergy or intolerance is abated.","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "AllergyIntolerance.extension:abatement.id","AllergyIntolerance.extension.id","","","",0,1,"","","","id {[]} {[]}

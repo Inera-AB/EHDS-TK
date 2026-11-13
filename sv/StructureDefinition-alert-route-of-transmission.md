@@ -1,4 +1,4 @@
-# Smittväg - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Smittväg - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Extension: Smittväg 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-alert-route-of-
   "resourceType" : "StructureDefinition",
   "id" : "alert-route-of-transmission",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-route-of-transmission",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "AlertRouteOfTransmission",
   "title" : "Smittväg",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
+    <title>GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.1 - ci-build
+            <span style="display:inline-block;">0.8.2 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetRequestActivities – Remisstatus</h2>
   
 
@@ -203,10 +203,19 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
-</div>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#meddelandestruktur" id="markdown-toc-meddelandestruktur">Meddelandestruktur</a></li>
+  <li><a href="#mappningstabell--header" id="markdown-toc-mappningstabell--header">Mappningstabell – header</a></li>
+  <li><a href="#mappningstabell--body" id="markdown-toc-mappningstabell--body">Mappningstabell – body</a></li>
+  <li><a href="#statusmappning-kv-status-vårdbegäran--taskstatus" id="markdown-toc-statusmappning-kv-status-vårdbegäran--taskstatus">Statusmappning (Kv status vårdbegäran → Task.status)</a></li>
+  <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+  <li><a href="#version-1-0" id="markdown-toc-version-1-0">Övriga aktiva versioner – GetRequestActivities 1.0</a></li>
+  <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
+  <li><a href="#designbeslut" id="markdown-toc-designbeslut">Designbeslut</a></li>
+</ul>
 
+</div>
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">crm:requeststatus</code> GetRequestActivities v2.0 och v1.0<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSTask.html">SEEHDSTask</a><br />
 <strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMRequestActivities.html">SEEHDSLMRequestActivities</a> (v2.0) | <a href="StructureDefinition-SEEHDSLMRequestActivitiesV10.html">SEEHDSLMRequestActivitiesV10</a> (v1.0, se <a href="#version-1-0">Övriga aktiva versioner</a>)<br />
@@ -215,13 +224,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="meddelandestruktur">Meddelandestruktur</h4>
+<h3 id="meddelandestruktur">Meddelandestruktur</h3>
 
 <p>Svaret <code class="language-plaintext highlighter-rouge">GetRequestActivitiesResponse</code> innehåller noll eller flera <code class="language-plaintext highlighter-rouge">requestActivity</code>, var och en med <code class="language-plaintext highlighter-rouge">header</code> (åtkomstkontroll, källsystem, post och dokumentationsansvarig) och <code class="language-plaintext highlighter-rouge">body</code> (status, händelsetidpunkt och den remiss som statusen gäller). Svaret har ingen patientidentitet och inget <code class="language-plaintext highlighter-rouge">result</code>-element. Patienten är den som efterfrågades i begäran (<code class="language-plaintext highlighter-rouge">patientId</code>). Strukturen följer den logiska modellen <a href="StructureDefinition-SEEHDSLMRequestActivities.html">SEEHDSLMRequestActivities</a>, som är genererad från XSD:n och verifierad mot TKB:n.</p>
 
 <hr />
 
-<h4 id="mappningstabell--header">Mappningstabell – header</h4>
+<h3 id="mappningstabell--header">Mappningstabell – header</h3>
 
 <table>
   <thead>
@@ -328,7 +337,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="mappningstabell--body">Mappningstabell – body</h4>
+<h3 id="mappningstabell--body">Mappningstabell – body</h3>
 
 <table>
   <thead>
@@ -405,7 +414,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="statusmappning-kv-status-vårdbegäran--taskstatus">Statusmappning (Kv status vårdbegäran → Task.status)</h4>
+<h3 id="statusmappning-kv-status-vårdbegäran--taskstatus">Statusmappning (Kv status vårdbegäran → Task.status)</h3>
 
 <p>Mappningen görs på koden i <code class="language-plaintext highlighter-rouge">statusCode</code>. Tabellen anger klartexterna; koderna i kodverket 1.2.752.129.2.2.2.43 behöver verifieras mot Ineras kodverkstjänst.</p>
 
@@ -442,7 +451,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="provenance">Provenance</h4>
+<h3 id="provenance">Provenance</h3>
 
 <p>En <code class="language-plaintext highlighter-rouge">Provenance</code>-resurs skapas per Task och bär PDL/Sparr-information från <code class="language-plaintext highlighter-rouge">header.accessControlHeader</code>.</p>
 
@@ -473,7 +482,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="version-1-0">Övriga aktiva versioner – GetRequestActivities 1.0</h4>
+<h3 id="version-1-0">Övriga aktiva versioner – GetRequestActivities 1.0</h3>
 
 <p>Mappningstabellerna ovan utgår från GetRequestActivities 2.0. Version 1.0 är också aktiv för 1177 Journal och beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMRequestActivitiesV10.html">SEEHDSLMRequestActivitiesV10</a> (genererad från <code class="language-plaintext highlighter-rouge">GetRequestActivitiesResponder_1.0.xsd</code> i <code class="language-plaintext highlighter-rouge">riv.crm.requeststatus</code> 1.0.7 och TKB:n för samma version). Samma profil, <a href="StructureDefinition-SEEHDSTask.html">SEEHDSTask</a>, används.</p>
 
@@ -596,7 +605,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="mappningstabell--requestactivity-10">Mappningstabell – requestActivity (1.0)</h5>
+<h4 id="mappningstabell--requestactivity-10">Mappningstabell – requestActivity (1.0)</h4>
 
 <table>
   <thead>
@@ -703,7 +712,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p><code class="language-plaintext highlighter-rouge">Task.identifier</code> sätts inte, eftersom 1.0 saknar identitet för statusposten. Utan <code class="language-plaintext highlighter-rouge">approvedForPatient</code> sätts ingen <code class="language-plaintext highlighter-rouge">meta.security</code>.</p>
 
-<h5 id="statuscode-10--taskstatus">statusCode 1.0 → Task.status</h5>
+<h4 id="statuscode-10--taskstatus">statusCode 1.0 → Task.status</h4>
 
 <p>TKB 1.0 anger klartext för sju koder, och testsvitens schematron tillåter bara dem (invarianten <code class="language-plaintext highlighter-rouge">getrequestactivities1-status-code</code> i <a href="StructureDefinition-SEEHDSLMRequestActivitiesV10.html">SEEHDSLMRequestActivitiesV10</a>, se VER-005 i <a href="mapping-issues.html#stangda-fragor">Mappningsissues</a>). Ett svar med en annan kod bryter mot kontraktet och ger <code class="language-plaintext highlighter-rouge">Task.status = unknown</code>, med koden kvar i <code class="language-plaintext highlighter-rouge">businessStatus</code>.</p>
 
@@ -756,7 +765,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
+<h3 id="oid-till-uri-tabell">OID-till-URI-tabell</h3>
 
 <table>
   <thead>
@@ -789,13 +798,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="designbeslut">Designbeslut</h4>
+<h3 id="designbeslut">Designbeslut</h3>
 
-<h5 id="taskidentifier-och-taskfocus-tidigare-req-001">Task.identifier och Task.focus (tidigare REQ-001)</h5>
+<h4 id="taskidentifier-och-taskfocus-tidigare-req-001">Task.identifier och Task.focus (tidigare REQ-001)</h4>
 
 <p>Meddelandet har två skilda identiteter: <code class="language-plaintext highlighter-rouge">header.record.id</code> identifierar remisstatusen och mappas till <code class="language-plaintext highlighter-rouge">Task.identifier</code>, medan <code class="language-plaintext highlighter-rouge">body.request.id</code> identifierar remissen och mappas till <code class="language-plaintext highlighter-rouge">Task.focus.identifier</code>.</p>
 
-<h5 id="taskrequester-tidigare-req-002">Task.requester (tidigare REQ-002)</h5>
+<h4 id="taskrequester-tidigare-req-002">Task.requester (tidigare REQ-002)</h4>
 
 <p>Remittenten finns i <code class="language-plaintext highlighter-rouge">body.request.author</code> (namn och remitterande enhet) och mappas till <code class="language-plaintext highlighter-rouge">Task.requester</code> som logisk referens.</p>
 
@@ -825,9 +834,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.1 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 15:20:00 +0000">
+  <span title="2026-11-13 16:07:00 +0000">
     2026-11-13
   </span>
 

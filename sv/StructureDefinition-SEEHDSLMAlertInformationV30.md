@@ -1,4 +1,4 @@
-# GetAlertInformation 3.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetAlertInformation 3.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetAlertInformation 3.0 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMAlertIn
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMAlertInformationV30",
   "title" : "GetAlertInformation 3.0",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

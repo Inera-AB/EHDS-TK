@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
+    <title>GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.1 - ci-build
+            <span style="display:inline-block;">0.8.2 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetFunctionalStatus – Funktionstillstånd och ADL</h2>
   
 
@@ -203,10 +203,20 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
-</div>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#härledda-fält--designbeslut" id="markdown-toc-härledda-fält--designbeslut">Härledda fält / Designbeslut</a></li>
+  <li><a href="#mappningstabell--functionalstatusassessmentheader" id="markdown-toc-mappningstabell--functionalstatusassessmentheader">Mappningstabell – functionalStatusAssessmentHeader</a></li>
+  <li><a href="#mappningstabell--functionalstatusassessmentbody" id="markdown-toc-mappningstabell--functionalstatusassessmentbody">Mappningstabell – functionalStatusAssessmentBody</a></li>
+  <li><a href="#mappningstabell--result" id="markdown-toc-mappningstabell--result">Mappningstabell – result</a></li>
+  <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
+  <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+  <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
+  <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
+  <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
+</ul>
 
+</div>
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:description</code> GetFunctionalStatus v2.0<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSConditionFunctional.html">SEEHDSConditionFunctional</a><br />
 <strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMFunctionalStatus.html">SEEHDSLMFunctionalStatus</a><br />
@@ -215,13 +225,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h4>
+<h3 id="härledda-fält--designbeslut">Härledda fält / Designbeslut</h3>
 
-<h5 id="en-condition-per-functionalstatusassessment">En Condition per functionalStatusAssessment</h5>
+<h4 id="en-condition-per-functionalstatusassessment">En Condition per functionalStatusAssessment</h4>
 
 <p>Varje <code class="language-plaintext highlighter-rouge">functionalStatusAssessment</code>-post mappas till en <code class="language-plaintext highlighter-rouge">Condition</code>-resurs med profilen <code class="language-plaintext highlighter-rouge">SEEHDSConditionFunctional</code>. Roten för ett svar är <code class="language-plaintext highlighter-rouge">functionalStatusAssessment 0..*</code>.</p>
 
-<h5 id="assessmentcategory-styr-körningens-innehåll">assessmentCategory styr körningens innehåll</h5>
+<h4 id="assessmentcategory-styr-körningens-innehåll">assessmentCategory styr körningens innehåll</h4>
 
 <p><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentBody.assessmentCategory</code> avgör vilka underelement som är relevanta:</p>
 
@@ -249,7 +259,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Kategorin i sig mappas alltid till <code class="language-plaintext highlighter-rouge">Condition.category</code> från kodverket <code class="language-plaintext highlighter-rouge">AssessmentCategoryCS</code>.</p>
 
-<h5 id="clinicalstatus-och-verificationstatus">clinicalStatus och verificationStatus</h5>
+<h4 id="clinicalstatus-och-verificationstatus">clinicalStatus och verificationStatus</h4>
 
 <p>Inget explicit statusfält finns i TKB:n. Fälten härleds:</p>
 
@@ -275,7 +285,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="padl-poster-func-001--beslutat">PADL-poster (FUNC-001 – Beslutat)</h5>
+<h4 id="padl-poster-func-001--beslutat">PADL-poster (FUNC-001 – Beslutat)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">padl</code>-blockets <code class="language-plaintext highlighter-rouge">typeOfAssessment</code> och <code class="language-plaintext highlighter-rouge">assessment</code> mappas till <code class="language-plaintext highlighter-rouge">Condition.note</code> med formatet
 <code class="language-plaintext highlighter-rouge">[typeOfAssessment]: assessment</code> per post. <code class="language-plaintext highlighter-rouge">functionalStatusAssessmentBody.comment</code> mappas separat till
@@ -287,7 +297,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="mappningstabell--functionalstatusassessmentheader">Mappningstabell – functionalStatusAssessmentHeader</h4>
+<h3 id="mappningstabell--functionalstatusassessmentheader">Mappningstabell – functionalStatusAssessmentHeader</h3>
 
 <table>
   <thead>
@@ -454,7 +464,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="mappningstabell--functionalstatusassessmentbody">Mappningstabell – functionalStatusAssessmentBody</h4>
+<h3 id="mappningstabell--functionalstatusassessmentbody">Mappningstabell – functionalStatusAssessmentBody</h3>
 
 <table>
   <thead>
@@ -481,7 +491,7 @@ PADL-typ krävs.</p>
   </tbody>
 </table>
 
-<h5 id="underelement--padl-vid-assessmentcategory--pad-pad">Underelement – padl (vid assessmentCategory = pad-pad)</h5>
+<h4 id="underelement--padl-vid-assessmentcategory--pad-pad">Underelement – padl (vid assessmentCategory = pad-pad)</h4>
 
 <table>
   <thead>
@@ -514,7 +524,7 @@ PADL-typ krävs.</p>
   </tbody>
 </table>
 
-<h5 id="underelement--disability-vid-assessmentcategory--fun-fun">Underelement – disability (vid assessmentCategory = fun-fun)</h5>
+<h4 id="underelement--disability-vid-assessmentcategory--fun-fun">Underelement – disability (vid assessmentCategory = fun-fun)</h4>
 
 <table>
   <thead>
@@ -565,7 +575,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="mappningstabell--result">Mappningstabell – result</h4>
+<h3 id="mappningstabell--result">Mappningstabell – result</h3>
 
 <table>
   <thead>
@@ -612,7 +622,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="pdl-och-sparr">PDL och Sparr</h4>
+<h3 id="pdl-och-sparr">PDL och Sparr</h3>
 
 <p>PDL-styrning i GetFunctionalStatus utgår från <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code>-blockets HSA-id:n i headern (samma mönster som övriga PatientSummaryHeader-kontrakt):</p>
 
@@ -645,7 +655,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="provenance">Provenance</h4>
+<h3 id="provenance">Provenance</h3>
 
 <table>
   <thead>
@@ -674,7 +684,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
+<h3 id="oid-till-uri-tabell">OID-till-URI-tabell</h3>
 
 <table>
   <thead>
@@ -707,7 +717,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="öppna-frågor">Öppna frågor</h4>
+<h3 id="öppna-frågor">Öppna frågor</h3>
 
 <table>
   <thead>
@@ -734,7 +744,7 @@ PADL-typ krävs.</p>
 
 <hr />
 
-<h4 id="föreslagna-nya-issues">Föreslagna nya issues</h4>
+<h3 id="föreslagna-nya-issues">Föreslagna nya issues</h3>
 
 <table>
   <thead>
@@ -779,9 +789,9 @@ PADL-typ krävs.</p>
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.1 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 15:20:00 +0000">
+  <span title="2026-11-13 16:07:00 +0000">
     2026-11-13
   </span>
 

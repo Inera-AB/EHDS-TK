@@ -1,4 +1,4 @@
-# GetReferralOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetReferralOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetReferralOutcome 3.1 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMReferra
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcomeResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcomeV31",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMReferralOutcomeV31",
   "title" : "GetReferralOutcome 3.1",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -730,7 +730,7 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMReferra
       }],
       "path" : "SEEHDSLMReferralOutcomeV31.referralOutcome.referralOutcomeBody.act.actCode.code",
       "short" : "Nullvärde är tillåtet om kod ej är tillgänglig, och åtgärdskodstext ska då skrivas i <actText>",
-      "definition" : "Nullvärde är tillåtet om kod ej är tillgänglig, och åtgärdskodstext ska då skrivas i <actText>.",
+      "definition" : "Nullvärde är tillåtet om kod ej är tillgänglig, och åtgärdskodstext ska då skrivas i `actText`.",
       "min" : 1,
       "max" : "1",
       "type" : [{

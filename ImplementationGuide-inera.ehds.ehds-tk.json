@@ -7,11 +7,11 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"sv\" lang=\"sv\"><p class=\"res-header-id\"><b>Genererad berättande text: ImplementationGuide inera.ehds.ehds-tk</b></p><a name=\"inera.ehds.ehds-tk\"> </a><a name=\"hcinera.ehds.ehds-tk\"> </a><div style=\"display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Språk: sv</p></div><h2>SEEHDSTK</h2><p>Den officiella URL:en för denna implementationsguide är: </p><pre>https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk</pre><div><p>FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för att informationsförsörja NPÖ och 1177 Journal.</p>\n</div></div>"
   },
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -122,6 +122,17 @@
       {
         "url" : "value",
         "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "pin-canonicals"
+      },
+      {
+        "url" : "value",
+        "valueString" : "pin-multiples"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -2134,7 +2145,7 @@
         "reference" : "StructureDefinition/SEEHDSCompositionCareDocumentation"
       },
       "name" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
-      "description" : "Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när\ninnehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType\napplication/docbook+xml). Varje DocBook-<section> blir en Composition.section med XHTML-narrativ\n(Strategi B, se DOC-004 och sidan DocBook-mappning).\n\nKompletterar SEEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).\nComposition kopplas till DocumentReference genom att samma Provenance har båda i\nProvenance.target.",
+      "description" : "Valfri strukturerad representation av en journalanteckning från GetCareDocumentation v3.0 när\ninnehållet är DocBook (clinicalDocumentNoteText eller en bilaga med mediaType\napplication/docbook+xml). Varje DocBook-`section` blir en Composition.section med XHTML-narrativ\n(Strategi B, se DOC-004 och sidan DocBook-mappning).\n\nKompletterar SEEHDSDocumentReference, där innehållet alltid finns som XHTML (Strategi A).\nComposition kopplas till DocumentReference genom att samma Provenance har båda i\nProvenance.target.",
       "exampleBoolean" : false
     },
     {

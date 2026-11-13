@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Versionshistorik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
+    <title>Versionshistorik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.1 - ci-build
+            <span style="display:inline-block;">0.8.2 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Versionshistorik</h2>
   
 
@@ -220,6 +220,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>0.8.2</td>
+      <td>2026-11-13</td>
+      <td>Draft</td>
+      <td>Inera-grafiken från inera-fhir-graphic-profile, och rättade fel och varningar i IG Publishers QA: rubriknivåer, <code class="language-plaintext highlighter-rouge">experimental</code> och <code class="language-plaintext highlighter-rouge">caseSensitive</code> för kodsystem och värdemängder, låsta kanoniska referenser och HTML-liknande text i definitioner.</td>
+    </tr>
     <tr>
       <td>0.8.1</td>
       <td>2026-10-26</td>
@@ -286,6 +292,23 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <hr />
 
 <h3 id="ändringslogg">Ändringslogg</h3>
+
+<h4 id="082--2026-11-13-draft">0.8.2 — 2026-11-13 (Draft)</h4>
+
+<p><strong>Presentation</strong></p>
+
+<ul>
+  <li>IG:n använder Inera-grafiken från <code class="language-plaintext highlighter-rouge">inera-fhir-graphic-profile</code> i stället för egna kopior av stilmall och logotyper.</li>
+</ul>
+
+<p><strong>Byggfel och varningar</strong></p>
+
+<ul>
+  <li>Med den nya mallen renderades avsnitt som börjar på <code class="language-plaintext highlighter-rouge">##</code> med <code class="language-plaintext highlighter-rouge">header_offset</code> två nivåer ned (<code class="language-plaintext highlighter-rouge">h4</code> direkt efter sidtitelns <code class="language-plaintext highlighter-rouge">h2</code>), vilket IG Publisher rapporterar som fel (WCAG). <code class="language-plaintext highlighter-rouge">header_offset</code> är borttaget och avsnitten börjar på <code class="language-plaintext highlighter-rouge">###</code>, som på övriga sidor.</li>
+  <li>Alla kodsystem och värdemängder anger <code class="language-plaintext highlighter-rouge">experimental = false</code>, och kodsystemen anger <code class="language-plaintext highlighter-rouge">caseSensitive = true</code> (ShareableCodeSystem/ShareableValueSet).</li>
+  <li><code class="language-plaintext highlighter-rouge">pin-canonicals: pin-multiples</code> låser kanoniska referenser som finns i flera versioner bland beroendena.</li>
+  <li>Text som <code class="language-plaintext highlighter-rouge">&lt;actText&gt;</code>, <code class="language-plaintext highlighter-rouge">IVL&lt;PQ&gt;</code> och <code class="language-plaintext highlighter-rouge">&lt;section&gt;</code> i definitioner skrivs som kod, så att den inte tolkas som inbäddad HTML.</li>
+</ul>
 
 <h4 id="081--2026-10-26-draft">0.8.1 — 2026-10-26 (Draft)</h4>
 
@@ -490,9 +513,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.1 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 15:20:00 +0000">
+  <span title="2026-11-13 16:07:00 +0000">
     2026-11-13
   </span>
 

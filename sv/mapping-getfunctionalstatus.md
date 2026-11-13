@@ -1,4 +1,4 @@
-# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## GetFunctionalStatus – Funktionstillstånd och ADL
 
@@ -10,13 +10,13 @@
 
 -------
 
-#### Härledda fält / Designbeslut
+### Härledda fält / Designbeslut
 
-##### En Condition per functionalStatusAssessment
+#### En Condition per functionalStatusAssessment
 
 Varje `functionalStatusAssessment`-post mappas till en `Condition`-resurs med profilen `SEEHDSConditionFunctional`. Roten för ett svar är `functionalStatusAssessment 0..*`.
 
-##### assessmentCategory styr körningens innehåll
+#### assessmentCategory styr körningens innehåll
 
 `functionalStatusAssessmentBody.assessmentCategory` avgör vilka underelement som är relevanta:
 
@@ -27,7 +27,7 @@ Varje `functionalStatusAssessment`-post mappas till en `Condition`-resurs med pr
 
 Kategorin i sig mappas alltid till `Condition.category` från kodverket `AssessmentCategoryCS`.
 
-##### clinicalStatus och verificationStatus
+#### clinicalStatus och verificationStatus
 
 Inget explicit statusfält finns i TKB:n. Fälten härleds:
 
@@ -36,7 +36,7 @@ Inget explicit statusfält finns i TKB:n. Fälten härleds:
 | `Condition.clinicalStatus` | `active` | Posterna är aktiva bedömningar vid svarstillfället |
 | `Condition.verificationStatus` | `confirmed` | RIVTA-svar representerar bekräftade journaluppgifter |
 
-##### PADL-poster (FUNC-001 – Beslutat)
+#### PADL-poster (FUNC-001 – Beslutat)
 
 `padl`-blockets `typeOfAssessment` och `assessment` mappas till `Condition.note` med formatet `[typeOfAssessment]: assessment` per post. `functionalStatusAssessmentBody.comment` mappas separat till `Condition.note[0]` (helbedömningskommentar); därefter en post per `padl`-element.
 
@@ -44,7 +44,7 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 
 -------
 
-#### Mappningstabell – functionalStatusAssessmentHeader
+### Mappningstabell – functionalStatusAssessmentHeader
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -76,14 +76,14 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 
 -------
 
-#### Mappningstabell – functionalStatusAssessmentBody
+### Mappningstabell – functionalStatusAssessmentBody
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `functionalStatusAssessmentBody.assessmentCategory` | 1..1 | `Condition.category` | Kodverk`AssessmentCategoryCS`;`pad-pad`eller`fun-fun` |
 | `functionalStatusAssessmentBody.comment` | 0..1 | `Condition.note[0].text` | Fritext-kommentar för hela bedömningen. Villkor: Gäller enbart vid assessmentCategory = 'pad-pad'. |
 
-##### Underelement – padl (vid assessmentCategory = pad-pad)
+#### Underelement – padl (vid assessmentCategory = pad-pad)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -91,7 +91,7 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 | `functionalStatusAssessmentBody.padl.typeOfAssessment` | 1..1 | `Condition.note[n].text`(prefix) | Typ av PADL-bedömning; läggs som prefix i note-texten, t.ex.`[typeOfAssessment]: assessment`. Tillåtna värden (Regel 2): 'personlig hygien', 'på/avklädning', 'förflyttning', 'toalettbesök', 'födointag' |
 | `functionalStatusAssessmentBody.padl.assessment` | 1..1 | `Condition.note[n].text`(suffix) | Textuell PADL-bedömning |
 
-##### Underelement – disability (vid assessmentCategory = fun-fun)
+#### Underelement – disability (vid assessmentCategory = fun-fun)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -105,7 +105,7 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 
 -------
 
-#### Mappningstabell – result
+### Mappningstabell – result
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -117,7 +117,7 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 
 -------
 
-#### PDL och Sparr
+### PDL och Sparr
 
 PDL-styrning i GetFunctionalStatus utgår från `accountableHealthcareProfessional`-blockets HSA-id:n i headern (samma mönster som övriga PatientSummaryHeader-kontrakt):
 
@@ -129,7 +129,7 @@ PDL-styrning i GetFunctionalStatus utgår från `accountableHealthcareProfession
 
 -------
 
-#### Provenance
+### Provenance
 
 | | | |
 | :--- | :--- | :--- |
@@ -141,7 +141,7 @@ PDL-styrning i GetFunctionalStatus utgår från `accountableHealthcareProfession
 
 -------
 
-#### OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | | |
 | :--- | :--- |
@@ -154,7 +154,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-#### Öppna frågor
+### Öppna frågor
 
 | | |
 | :--- | :--- |
@@ -164,7 +164,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-#### Föreslagna nya issues
+### Föreslagna nya issues
 
 | | | |
 | :--- | :--- | :--- |

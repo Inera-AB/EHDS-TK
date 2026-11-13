@@ -1,4 +1,4 @@
-# GetVaccinationHistory 1.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetVaccinationHistory 1.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetVaccinationHistory 1.0 
 
@@ -58,11 +58,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMVaccina
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:GetVaccinationHistoryResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMVaccinationHistoryV10",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMVaccinationHistoryV10",
   "title" : "GetVaccinationHistory 1.0",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

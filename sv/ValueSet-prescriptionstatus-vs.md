@@ -1,4 +1,4 @@
-# PrescriptionStatus — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# PrescriptionStatus — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## ValueSet: PrescriptionStatus — ValueSet 
 
@@ -25,11 +25,12 @@
   "resourceType" : "ValueSet",
   "id" : "prescriptionstatus-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/prescriptionstatus-vs",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "PrescriptionStatusVS",
   "title" : "PrescriptionStatus — ValueSet",
   "status" : "active",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "experimental" : false,
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

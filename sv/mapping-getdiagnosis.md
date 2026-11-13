@@ -1,4 +1,4 @@
-# GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## GetDiagnosis – Diagnoser
 
@@ -10,7 +10,7 @@
 
 -------
 
-#### Mappningstabell – diagnosisHeader
+### Mappningstabell – diagnosisHeader
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -42,7 +42,7 @@
 
 -------
 
-#### Mappningstabell – diagnosisBody
+### Mappningstabell – diagnosisBody
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -58,7 +58,7 @@
 
 -------
 
-#### Mappningstabell – result
+### Mappningstabell – result
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -70,13 +70,13 @@
 
 -------
 
-#### Härledda fält
+### Härledda fält
 
-##### clinicalStatus
+#### clinicalStatus
 
 Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `Condition.clinicalStatus` sätts därför **inte**. Tidigare sattes det alltid till `active` för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver `clinicalStatus` för diagnoser som inte är problemlisteposter.
 
-##### abatementDateTime
+#### abatementDateTime
 
 `Condition.abatementDateTime` sätts **aldrig**. GetDiagnosis:2 har ingen slutpunkt eller period för diagnosen, bara tidpunkten `diagnosisBody.diagnosisTime` (→ `Condition.onsetDateTime`). Avsaknaden av slutdatum är ett känt gap i TKB:n.
 
@@ -84,7 +84,7 @@ Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `
 
 -------
 
-#### healthcareProfessionalType → PractitionerRole
+### healthcareProfessionalType → PractitionerRole
 
 Både `accountableHealthcareProfessional` och `legalAuthenticator` är av RIVTA-typen `healthcareProfessionalType` och mappas till FHIR `PractitionerRole` som logisk referens via HSA-id:
 
@@ -102,13 +102,13 @@ Både `accountableHealthcareProfessional` och `legalAuthenticator` är av RIVTA-
 
 -------
 
-#### Profil i meta.profile
+### Profil i meta.profile
 
 Varje producerad Condition anger profilen `https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis` i `meta.profile`. Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core genom arvet.
 
 -------
 
-#### OID till URI-mappningar
+### OID till URI-mappningar
 
 | | | |
 | :--- | :--- | :--- |
@@ -124,7 +124,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-#### diagnosisType – kv_diagnostyp
+### diagnosisType – kv_diagnostyp
 
 Slicen `category[diagnostyp]` låser `coding.system` till kv_diagnostyp och har en obligatorisk (required) bindning till [DiagnosisTypeVS](ValueSet-diagnosistype-vs.md). Kodsystemet finns i IG-paketet som fragmentet [DiagnosisTypeCS](CodeSystem-diagnosistype-cs.md) med koderna `HD` och `BY`.
 
@@ -137,7 +137,7 @@ Slicen `category[diagnostyp]` låser `coding.system` till kv_diagnostyp och har 
 
 -------
 
-#### PDL och Sparr
+### PDL och Sparr
 
 PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blockets HSA-id:n i headern:
 
@@ -152,7 +152,7 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 
 -------
 
-#### Provenance
+### Provenance
 
 | | | |
 | :--- | :--- | :--- |
@@ -164,9 +164,9 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 
 -------
 
-#### Exempelresurs
+### Exempelresurs
 
-##### RIVTA XML (GetDiagnosis:2)
+#### RIVTA XML (GetDiagnosis:2)
 
 ```
 <ns1:diagnosisBody>
@@ -181,7 +181,7 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 
 ```
 
-##### Resulterande FHIR Condition (JSON)
+#### Resulterande FHIR Condition (JSON)
 
 ```
 {
@@ -215,7 +215,7 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 
 -------
 
-#### Öppna frågor
+### Öppna frågor
 
 | | |
 | :--- | :--- |
@@ -224,7 +224,7 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 
 -------
 
-#### Beslutade issues
+### Beslutade issues
 
 | | | |
 | :--- | :--- | :--- |

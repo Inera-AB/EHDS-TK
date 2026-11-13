@@ -1,4 +1,4 @@
-# GetRequestActivities - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetRequestActivities - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetRequestActivities 
 
@@ -58,11 +58,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMRequest
     "valueUri" : "urn:riv:crm:requeststatus:GetRequestActivitiesResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivities",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMRequestActivities",
   "title" : "GetRequestActivities",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

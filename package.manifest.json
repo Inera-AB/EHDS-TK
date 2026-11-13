@@ -1,7 +1,7 @@
 {
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "fhirVersion" : ["4.0.1"],
-  "date" : "20261113152027",
+  "date" : "20261113160748",
   "name" : "inera.ehds.ehds-tk",
   "jurisdiction" : "urn:iso:std:iso:3166#SE"
 }

@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
+    <title>GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.1 - ci-build
+            <span style="display:inline-block;">0.8.2 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetObservations – Tillväxtkurva</h2>
   
 
@@ -203,10 +203,22 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
-</div>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#profilhierarki" id="markdown-toc-profilhierarki">Profilhierarki</a></li>
+  <li><a href="#datamodell--översikt" id="markdown-toc-datamodell--översikt">Datamodell – översikt</a></li>
+  <li><a href="#mappningstabell" id="markdown-toc-mappningstabell">Mappningstabell</a></li>
+  <li><a href="#härledda-fält-och-designbeslut" id="markdown-toc-härledda-fält-och-designbeslut">Härledda fält och designbeslut</a></li>
+  <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
+  <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+  <li><a href="#version-1-2" id="markdown-toc-version-1-2">Övriga aktiva versioner – GetObservations 1.2</a></li>
+  <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
+  <li><a href="#ioö-tillväxtkurva-för-barn-och-ungdom-v3" id="markdown-toc-ioö-tillväxtkurva-för-barn-och-ungdom-v3">IoÖ Tillväxtkurva för barn och ungdom v3</a></li>
+  <li><a href="#öppna-frågor" id="markdown-toc-öppna-frågor">Öppna frågor</a></li>
+  <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
+</ul>
 
+</div>
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:healthcond:basic</code> GetObservations v2.0 och v1.2<br />
 <strong>FHIR-profiler:</strong> <a href="StructureDefinition-SEEHDSObservationBase.html">SEEHDSObservationBase</a> (generell) | <a href="StructureDefinition-SEEHDSObservationGrowth.html">SEEHDSObservationGrowth</a> (tillväxtkurva)<br />
 <strong>Logiska modeller:</strong> <a href="StructureDefinition-SEEHDSLMObservations.html">SEEHDSLMObservations</a> (v2.0) | <a href="StructureDefinition-SEEHDSLMObservationsV12.html">SEEHDSLMObservationsV12</a> (v1.2, se <a href="#version-1-2">Övriga aktiva versioner</a>)<br />
@@ -223,7 +235,7 @@ på toppnivå i headern. PDL- och Sparr-fält hanteras separat – se avsnitt
 
 <hr />
 
-<h4 id="profilhierarki">Profilhierarki</h4>
+<h3 id="profilhierarki">Profilhierarki</h3>
 
 <p>GetObservations-mappningen är uppdelad i två profiler:</p>
 
@@ -253,7 +265,7 @@ på toppnivå i headern. PDL- och Sparr-fält hanteras separat – se avsnitt
 
 <hr />
 
-<h4 id="datamodell--översikt">Datamodell – översikt</h4>
+<h3 id="datamodell--översikt">Datamodell – översikt</h3>
 
 <p>Tjänstekontraktet returnerar en lista med <code class="language-plaintext highlighter-rouge">observations 0..*</code>. Varje observation
 består av ett <code class="language-plaintext highlighter-rouge">header</code>-element och ett <code class="language-plaintext highlighter-rouge">observationBody</code>-element. Trädet visar svarsmeddelandet enligt XSD:n (GetObservationsResponder_2.0.xsd):</p>
@@ -303,9 +315,9 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
 
 <hr />
 
-<h4 id="mappningstabell">Mappningstabell</h4>
+<h3 id="mappningstabell">Mappningstabell</h3>
 
-<h5 id="header">Header</h5>
+<h4 id="header">Header</h4>
 
 <table>
   <thead>
@@ -326,7 +338,7 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
   </tbody>
 </table>
 
-<h5 id="observationbody--identitet-och-tidpunkt">observationBody – identitet och tidpunkt</h5>
+<h4 id="observationbody--identitet-och-tidpunkt">observationBody – identitet och tidpunkt</h4>
 
 <table>
   <thead>
@@ -359,7 +371,7 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
   </tbody>
 </table>
 
-<h5 id="type--klassificering-och-kod">type – klassificering och kod</h5>
+<h4 id="type--klassificering-och-kod">type – klassificering och kod</h4>
 
 <table>
   <thead>
@@ -384,7 +396,7 @@ består av ett <code class="language-plaintext highlighter-rouge">header</code>-
   <p><strong>OBS:</strong> <code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte (se avsnitt Observation.category nedan). <code class="language-plaintext highlighter-rouge">observationBody.type</code> styr <code class="language-plaintext highlighter-rouge">Observation.code</code>, inte <code class="language-plaintext highlighter-rouge">category</code>.</p>
 </blockquote>
 
-<h5 id="value--xor-union-av-värdetyper">value – XOR-union av värdetyper</h5>
+<h4 id="value--xor-union-av-värdetyper">value – XOR-union av värdetyper</h4>
 
 <p>Exakt ett av nedanstående fält används per observation (XOR). FHIR-elementet väljs
 baserat på vilken gren som är populerad i källdata.</p>
@@ -444,7 +456,7 @@ baserat på vilken gren som är populerad i källdata.</p>
   </tbody>
 </table>
 
-<h5 id="negation-och-frånvaro-av-värde">Negation och frånvaro av värde</h5>
+<h4 id="negation-och-frånvaro-av-värde">Negation och frånvaro av värde</h4>
 
 <table>
   <thead>
@@ -465,7 +477,7 @@ baserat på vilken gren som är populerad i källdata.</p>
   </tbody>
 </table>
 
-<h5 id="status-och-skala">Status och skala</h5>
+<h4 id="status-och-skala">Status och skala</h4>
 
 <table>
   <thead>
@@ -492,7 +504,7 @@ baserat på vilken gren som är populerad i källdata.</p>
   </tbody>
 </table>
 
-<h5 id="anatomisk-lokalisation">Anatomisk lokalisation</h5>
+<h4 id="anatomisk-lokalisation">Anatomisk lokalisation</h4>
 
 <table>
   <thead>
@@ -519,7 +531,7 @@ baserat på vilken gren som är populerad i källdata.</p>
   </tbody>
 </table>
 
-<h5 id="beskrivning-och-kommentar">Beskrivning och kommentar</h5>
+<h4 id="beskrivning-och-kommentar">Beskrivning och kommentar</h4>
 
 <table>
   <thead>
@@ -540,7 +552,7 @@ baserat på vilken gren som är populerad i källdata.</p>
   </tbody>
 </table>
 
-<h5 id="effektiv-tid">Effektiv tid</h5>
+<h4 id="effektiv-tid">Effektiv tid</h4>
 
 <table>
   <thead>
@@ -573,7 +585,7 @@ baserat på vilken gren som är populerad i källdata.</p>
   </tbody>
 </table>
 
-<h5 id="patient-observationbodypatient">Patient (observationBody.patient)</h5>
+<h4 id="patient-observationbodypatient">Patient (observationBody.patient)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.patient</code> innehåller den patient som observationen avser. Denna information
 används primärt för att sätta <code class="language-plaintext highlighter-rouge">Observation.subject</code> och för skyddsbedömning.</p>
@@ -687,13 +699,13 @@ används primärt för att sätta <code class="language-plaintext highlighter-ro
   </tbody>
 </table>
 
-<h5 id="utförare-participation">Utförare (participation)</h5>
+<h4 id="utförare-participation">Utförare (participation)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.participation</code> är en polymorf lista med XOR-union av deltagartyper:
 <code class="language-plaintext highlighter-rouge">healthcareProfessional</code>, <code class="language-plaintext highlighter-rouge">patient</code>, <code class="language-plaintext highlighter-rouge">otherPerson</code>, <code class="language-plaintext highlighter-rouge">locationRole</code>, <code class="language-plaintext highlighter-rouge">resource</code>, <code class="language-plaintext highlighter-rouge">organisation</code>.
 Mappningen nedan täcker alla grenar.</p>
 
-<h6 id="participation--gemensamma-fält">participation – gemensamma fält</h6>
+<h5 id="participation--gemensamma-fält">participation – gemensamma fält</h5>
 
 <table>
   <thead>
@@ -720,7 +732,7 @@ Mappningen nedan täcker alla grenar.</p>
   </tbody>
 </table>
 
-<h6 id="participation--hälso--och-sjukvårdspersonal-healthcareprofessional">participation – hälso- och sjukvårdspersonal (healthcareProfessional)</h6>
+<h5 id="participation--hälso--och-sjukvårdspersonal-healthcareprofessional">participation – hälso- och sjukvårdspersonal (healthcareProfessional)</h5>
 
 <table>
   <thead>
@@ -783,7 +795,7 @@ Mappningen nedan täcker alla grenar.</p>
   </tbody>
 </table>
 
-<h6 id="participation--patient-som-deltagare">participation – patient som deltagare</h6>
+<h5 id="participation--patient-som-deltagare">participation – patient som deltagare</h5>
 
 <table>
   <thead>
@@ -804,7 +816,7 @@ Mappningen nedan täcker alla grenar.</p>
   </tbody>
 </table>
 
-<h6 id="participation--övrig-person-otherperson">participation – övrig person (otherPerson)</h6>
+<h5 id="participation--övrig-person-otherperson">participation – övrig person (otherPerson)</h5>
 
 <table>
   <thead>
@@ -825,7 +837,7 @@ Mappningen nedan täcker alla grenar.</p>
   </tbody>
 </table>
 
-<h6 id="participation--platsplatsroll-locationrole">participation – plats/platsroll (locationRole)</h6>
+<h5 id="participation--platsplatsroll-locationrole">participation – plats/platsroll (locationRole)</h5>
 
 <table>
   <thead>
@@ -846,7 +858,7 @@ Mappningen nedan täcker alla grenar.</p>
   </tbody>
 </table>
 
-<h6 id="participation--resurs-resource">participation – resurs (resource)</h6>
+<h5 id="participation--resurs-resource">participation – resurs (resource)</h5>
 
 <table>
   <thead>
@@ -867,7 +879,7 @@ Mappningen nedan täcker alla grenar.</p>
   </tbody>
 </table>
 
-<h6 id="participation--organisation">participation – organisation</h6>
+<h5 id="participation--organisation">participation – organisation</h5>
 
 <table>
   <thead>
@@ -888,7 +900,7 @@ Mappningen nedan täcker alla grenar.</p>
   </tbody>
 </table>
 
-<h5 id="relationer-relation">Relationer (relation)</h5>
+<h4 id="relationer-relation">Relationer (relation)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.relation</code> innehåller typade samband till andra informationsmängder.
 Val av FHIR-element beror på koden i <code class="language-plaintext highlighter-rouge">type</code> – se OBS-005.</p>
@@ -948,15 +960,15 @@ Val av FHIR-element beror på koden i <code class="language-plaintext highlighte
   </tbody>
 </table>
 
-<h5 id="tekniska-responsfält-result">Tekniska responsfält (result)</h5>
+<h4 id="tekniska-responsfält-result">Tekniska responsfält (result)</h4>
 
 <p>Svarsmeddelandet <code class="language-plaintext highlighter-rouge">GetObservationsResponse</code> har inget <code class="language-plaintext highlighter-rouge">result</code>-element enligt XSD:n (GetObservationsResponder_2.0.xsd). Det finns därför inga tekniska responsfält att mappa.</p>
 
 <hr />
 
-<h4 id="härledda-fält-och-designbeslut">Härledda fält och designbeslut</h4>
+<h3 id="härledda-fält-och-designbeslut">Härledda fält och designbeslut</h3>
 
-<h5 id="observationstatus-obs-003">Observation.status (OBS-003)</h5>
+<h4 id="observationstatus-obs-003">Observation.status (OBS-003)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.status</code> använder SNOMED CT-koder ur urvalsuppsättningen
 med id <code class="language-plaintext highlighter-rouge">56431000052106</code>. En ConceptMap krävs för att översätta dessa till FHIR
@@ -1001,12 +1013,12 @@ med id <code class="language-plaintext highlighter-rouge">56431000052106</code>.
 
 <p>Saknad mappning: status sätts till <code class="language-plaintext highlighter-rouge">unknown</code> och en <code class="language-plaintext highlighter-rouge">OperationOutcome</code>-varning genereras.</p>
 
-<h5 id="observationcategory">Observation.category</h5>
+<h4 id="observationcategory">Observation.category</h4>
 
 <p><code class="language-plaintext highlighter-rouge">Observation.category</code> sätts inte. GetObservations bär ingen kategori, och den statiska kategorin
 <code class="language-plaintext highlighter-rouge">exam</code> fanns bara för att harmonisera med IPS (GENERAL-007).</p>
 
-<h5 id="observationcode--fallback">Observation.code – fallback</h5>
+<h4 id="observationcode--fallback">Observation.code – fallback</h4>
 
 <p>Om <code class="language-plaintext highlighter-rouge">observationBody.type</code> saknas och ingen annan kod kan härledas sätts
 <code class="language-plaintext highlighter-rouge">Observation.code</code> till en lokal platshållarkod
@@ -1014,7 +1026,7 @@ med id <code class="language-plaintext highlighter-rouge">56431000052106</code>.
 med display <em>"Okänd observationstyp"</em> för att uppfylla FHIR-profilens krav på minst
 en kod.</p>
 
-<h5 id="valuenegation-obs-002--beslut">valueNegation (OBS-002) – Beslut</h5>
+<h4 id="valuenegation-obs-002--beslut">valueNegation (OBS-002) – Beslut</h4>
 
 <p>När <code class="language-plaintext highlighter-rouge">observationBody.valueNegation = true</code> innebär det att observationens värde
 explicit förnekats eller är frånvarande av klinisk orsak. Mappning:</p>
@@ -1041,7 +1053,7 @@ explicit förnekats eller är frånvarande av klinisk orsak. Mappning:</p>
 <p>Koden <code class="language-plaintext highlighter-rouge">not-detected</code> hämtas från
 <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/data-absent-reason</code>.</p>
 
-<h5 id="ts-fältet-obs-001--beslut">ts-fältet (OBS-001) – Beslut</h5>
+<h4 id="ts-fältet-obs-001--beslut">ts-fältet (OBS-001) – Beslut</h4>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.value.ts</code> och <code class="language-plaintext highlighter-rouge">observationBody.time.ts</code> är RIVTA
 <code class="language-plaintext highlighter-rouge">TimeType/ts</code>-strängar med variabel precision, t.ex. <code class="language-plaintext highlighter-rouge">202306</code>, <code class="language-plaintext highlighter-rouge">20230601</code>,
@@ -1094,7 +1106,7 @@ Vid lägre precision används <code class="language-plaintext highlighter-rouge"
 extension <code class="language-plaintext highlighter-rouge">_effectiveDateTime.extension[originalText]</code> (system <code class="language-plaintext highlighter-rouge">http://hl7.org/fhir/StructureDefinition/originalText</code>)
 för att bevara källsträngen – se GENERAL-001.</p>
 
-<h5 id="targetsite--kardinalitetskollision-obs-004--beslut">targetSite – kardinalitetskollision (OBS-004) – Beslut</h5>
+<h4 id="targetsite--kardinalitetskollision-obs-004--beslut">targetSite – kardinalitetskollision (OBS-004) – Beslut</h4>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.targetSite</code> är definierad som <code class="language-plaintext highlighter-rouge">0..*</code> i TKB men
 <code class="language-plaintext highlighter-rouge">Observation.bodySite</code> är <code class="language-plaintext highlighter-rouge">0..1</code> i FHIR R4. Beslutad strategi:</p>
@@ -1107,7 +1119,7 @@ för att bevara källsträngen – se GENERAL-001.</p>
 element mappas direkt till <code class="language-plaintext highlighter-rouge">bodySite</code>.</li>
 </ol>
 
-<h5 id="relation--relationstyper-obs-005">relation – relationstyper (OBS-005)</h5>
+<h4 id="relation--relationstyper-obs-005">relation – relationstyper (OBS-005)</h4>
 
 <p><code class="language-plaintext highlighter-rouge">observationBody.relation</code> innehåller referenser till andra observationer med en
 koden i <code class="language-plaintext highlighter-rouge">relation.type</code>. Mapping:</p>
@@ -1145,7 +1157,7 @@ och kräver extension eller Provenance-resurs om de ska bevaras.</p>
 
 <hr />
 
-<h4 id="pdl-och-sparr">PDL och Sparr</h4>
+<h3 id="pdl-och-sparr">PDL och Sparr</h3>
 
 <blockquote>
   <p>GetObservations v2.0 har en <strong>avvikande headerstruktur</strong> jämfört med
@@ -1189,7 +1201,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <hr />
 
-<h4 id="provenance">Provenance</h4>
+<h3 id="provenance">Provenance</h3>
 
 <p>En <code class="language-plaintext highlighter-rouge">Provenance</code>-resurs skapas per <code class="language-plaintext highlighter-rouge">Observation</code>-resurs.</p>
 
@@ -1220,7 +1232,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <hr />
 
-<h4 id="version-1-2">Övriga aktiva versioner – GetObservations 1.2</h4>
+<h3 id="version-1-2">Övriga aktiva versioner – GetObservations 1.2</h3>
 
 <p>Mappningstabellerna ovan utgår från GetObservations 2.0, som <a href="StructureDefinition-SEEHDSLMObservations.html">SEEHDSLMObservations</a> bygger på. <a href="index.html">Startsidan</a> anger 1.2 som aktiv version för både NPÖ och 1177 Journal, och 2.0 finns hittills bara som release candidate (<code class="language-plaintext highlighter-rouge">2.0_RC1</code>–<code class="language-plaintext highlighter-rouge">2.0_RC4</code>) i <code class="language-plaintext highlighter-rouge">riv.clinicalprocess.healthcond.basic</code>. Version 1.2 beskrivs av den logiska modellen <a href="StructureDefinition-SEEHDSLMObservationsV12.html">SEEHDSLMObservationsV12</a> (genererad från <code class="language-plaintext highlighter-rouge">GetObservationsResponder_1.2.xsd</code> i domänversion 1.2.3). Se VER-003 i <a href="mapping-issues.html">Mappningsissues</a>.</p>
 
@@ -1253,7 +1265,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
   </tbody>
 </table>
 
-<h5 id="gruppnivå-observationgroup--varje-observation-i-gruppen">Gruppnivå (observationGroup) → varje Observation i gruppen</h5>
+<h4 id="gruppnivå-observationgroup--varje-observation-i-gruppen">Gruppnivå (observationGroup) → varje Observation i gruppen</h4>
 
 <table>
   <thead>
@@ -1352,7 +1364,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
   </tbody>
 </table>
 
-<h5 id="observationsnivå-observationgroupobservation--observation">Observationsnivå (observationGroup.observation) → Observation</h5>
+<h4 id="observationsnivå-observationgroupobservation--observation">Observationsnivå (observationGroup.observation) → Observation</h4>
 
 <table>
   <thead>
@@ -1479,7 +1491,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <hr />
 
-<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
+<h3 id="oid-till-uri-tabell">OID-till-URI-tabell</h3>
 
 <table>
   <thead>
@@ -1524,11 +1536,11 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <hr />
 
-<h4 id="ioö-tillväxtkurva-för-barn-och-ungdom-v3">IoÖ Tillväxtkurva för barn och ungdom v3</h4>
+<h3 id="ioö-tillväxtkurva-för-barn-och-ungdom-v3">IoÖ Tillväxtkurva för barn och ungdom v3</h3>
 
 <p>Interaktionsöverenskommelsen (IoÖ) specificerar hur GetObservations ska användas för fyra tillväxtmätningar. Profilen <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code> implementerar dessa krav.</p>
 
-<h5 id="kodtabell--ioö-snomed-ct-koder--fhir">Kodtabell – IoÖ SNOMED CT-koder → FHIR</h5>
+<h4 id="kodtabell--ioö-snomed-ct-koder--fhir">Kodtabell – IoÖ SNOMED CT-koder → FHIR</h4>
 
 <p>Kodsystem för <code class="language-plaintext highlighter-rouge">observationBody.type.codeSystem</code>: <code class="language-plaintext highlighter-rouge">1.2.752.116.2.1.1</code> (SNOMED CT SE) → URI <code class="language-plaintext highlighter-rouge">http://snomed.info/sct</code>.</p>
 
@@ -1595,7 +1607,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
   </tbody>
 </table>
 
-<h5 id="ioö-fält--fhir-observation-mappning">IoÖ-fält → FHIR Observation mappning</h5>
+<h4 id="ioö-fält--fhir-observation-mappning">IoÖ-fält → FHIR Observation mappning</h4>
 
 <p>Nedanstående tabell visar hur IoÖ-dokumentets konkreta fältnamn (i GetObservations-kontexten) mappar till FHIR <code class="language-plaintext highlighter-rouge">SEEHDSObservationGrowth</code> (sökvägar enligt den logiska modellen):</p>
 
@@ -1636,7 +1648,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
   </tbody>
 </table>
 
-<h5 id="ioö-kommentarer">IoÖ-kommentarer</h5>
+<h4 id="ioö-kommentarer">IoÖ-kommentarer</h4>
 
 <ul>
   <li><strong>Längd:</strong> IoÖ anger <code class="language-plaintext highlighter-rouge">1153637007</code> (kroppslängd) som primärkod och <code class="language-plaintext highlighter-rouge">50373000</code> (mått på kroppslängd) som alternativ. Koden <code class="language-plaintext highlighter-rouge">248334005</code> (längd i liggande) stöds bakåtkompatibelt men ska <strong>inte</strong> användas vid nyanslutning.</li>
@@ -1647,7 +1659,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <hr />
 
-<h4 id="öppna-frågor">Öppna frågor</h4>
+<h3 id="öppna-frågor">Öppna frågor</h3>
 
 <table>
   <thead>
@@ -1693,7 +1705,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 <hr />
 
-<h4 id="föreslagna-nya-issues">Föreslagna nya issues</h4>
+<h3 id="föreslagna-nya-issues">Föreslagna nya issues</h3>
 
 <table>
   <thead>
@@ -1748,9 +1760,9 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.1 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 15:20:00 +0000">
+  <span title="2026-11-13 16:07:00 +0000">
     2026-11-13
   </span>
 

@@ -1,4 +1,4 @@
-# GetCareContacts – Vårdkontakter - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetCareContacts – Vårdkontakter - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## GetCareContacts – Vårdkontakter
 
@@ -9,15 +9,15 @@
 
 -------
 
-#### Struktur
+### Struktur
 
 GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller header-fält (documentId, sourceSystemHSAId, patientId, accountableHealthcareProfessional, approvedForPatient) och body-fält (careContactCode, careContactReason, careContactOrgUnit, careContactTimePeriod, careContactStatus, additionalPatientInformation).
 
 -------
 
-#### Mappningstabell
+### Mappningstabell
 
-##### Header – identitet och patient
+#### Header – identitet och patient
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -26,7 +26,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactHeader.patientId.id` | 1..1 | `Encounter.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `careContact.careContactHeader.patientId.type` | 1..1 | `Encounter.subject.identifier.system` | OID→URI-konvertering (se OID-tabell nedan) |
 
-##### Header – ansvarig personal (accountableHealthcareProfessional)
+#### Header – ansvarig personal (accountableHealthcareProfessional)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -35,7 +35,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Valfritt komplement till HSA-id |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod (KV Befattning OID 1.2.752.129.2.2.1.4) |
 
-##### Header – ansvarig personal – organisationsenhet
+#### Header – ansvarig personal – organisationsenhet
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -46,7 +46,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till org.enhet – ingår ej i PractitionerRole; kan lagras i Organization.address om Organization-resurs skapas |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Fritextplats för org.enhet – ingen standardiserad FHIR-plats i Encounter/PractitionerRole |
 
-##### Header – PDL/Sparr
+#### Header – PDL/Sparr
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -60,7 +60,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt för detta TK |
 | `careContact.careContactHeader.careContactId` | 0..0 | N/A | Ej tillämpligt för detta TK (careContactId är en korsreferens som inte gäller för kontakter i sin egen lista) |
 
-##### Body – kontakttyp, orsak och status
+#### Body – kontakttyp, orsak och status
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -68,7 +68,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactBody.careContactReason` | 0..1 | `Encounter.reasonCode.text` | Fri text från patient eller företrädare |
 | `careContact.careContactBody.careContactStatus` | 0..1 | `Encounter.status` | SNOMED CT SE (OID 1.2.752.116.2.1.1, SCTID 53761000052103); kräver ConceptMap – se CC-001 |
 
-##### Body – tid
+#### Body – tid
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -78,7 +78,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 
 > **Invariant:** Om `careContactTimePeriod` anges måste minst ett av `start` och `end` vara satt (`encounter-period-min-one`).
 
-##### Body – kontaktenhet (careContactOrgUnit)
+#### Body – kontaktenhet (careContactOrgUnit)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -90,7 +90,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactBody.careContactOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress till kontaktenhet – ingår ej i Encounter; kan lagras i Organization.address om Organization-resurs skapas |
 | `careContact.careContactBody.careContactOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Fritextplats för kontaktenhet – ingen standardiserad FHIR-plats i Encounter |
 
-##### Body – ytterligare patientinformation (additionalPatientInformation)
+#### Body – ytterligare patientinformation (additionalPatientInformation)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -98,7 +98,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | `careContact.careContactBody.additionalPatientInformation.dateOfBirth` | 0..1 | `Patient.birthDate`(via`Encounter.subject`) | Lagras på Patient-resursen om en skapas; YYYY / YYYYMM / YYYYMMDD → ISO 8601-datum |
 | `careContact.careContactBody.additionalPatientInformation.gender` | 0..1 | `Patient.gender`(via`Encounter.subject`) | KV Kön (OID 1.2.752.129.2.2.1.1) → FHIR AdministrativeGender; kräver ConceptMap |
 
-##### Tekniska responsfält (result)
+#### Tekniska responsfält (result)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -110,7 +110,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 
 -------
 
-#### PDL och Sparr
+### PDL och Sparr
 
 PDL-fälten finns under `careContact.careContactHeader.accountableHealthcareProfessional` (inte på toppnivå).
 
@@ -121,7 +121,7 @@ PDL-fälten finns under `careContact.careContactHeader.accountableHealthcareProf
 
 -------
 
-#### Provenance
+### Provenance
 
 | | | |
 | :--- | :--- | :--- |
@@ -130,23 +130,23 @@ PDL-fälten finns under `careContact.careContactHeader.accountableHealthcareProf
 
 -------
 
-#### careContactCode – KV Vårdkontakttyp
+### careContactCode – KV Vårdkontakttyp
 
 Kodverket KV Vårdkontakttyp (OID 1.2.752.129.2.2.2.x) innehåller koder som anger kontaktform. Vanliga värden inkluderar öppenvård, slutenvård och hemsjukvård. Exakt version specificeras av producenten.
 
 -------
 
-#### careContactStatus – SNOMED CT SE
+### careContactStatus – SNOMED CT SE
 
 Status för vårdkontakt mappas från SNOMED CT SE (OID 1.2.752.116.2.1.1, SCTID 53761000052103) till `Encounter.status`. Mappning av specifika SNOMED-koder till FHIR-statusvärden görs via ConceptMap (ej inkluderad i denna version av IG) – se CC-001.
 
 -------
 
-#### Övriga aktiva versioner – GetCareContacts 2.0
+### Övriga aktiva versioner – GetCareContacts 2.0
 
 Mappningstabellerna ovan utgår från GetCareContacts 3.0. Version 2.0 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMCareContactsV20](StructureDefinition-SEEHDSLMCareContactsV20.md) (genererad från `GetCareContactsResponder_2.0.xsd` i `riv.clinicalprocess.logistics.logistics` 2.0.7 och TKB:n för samma version). Element som är lika i båda versionerna mappas enligt tabellerna ovan; samma profil, [SEEHDSEncounter](StructureDefinition-SEEHDSEncounter.md), används.
 
-##### Skillnader mot 3.0
+#### Skillnader mot 3.0
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -169,7 +169,7 @@ Mappningstabellerna ovan utgår från GetCareContacts 3.0. Version 2.0 är ocks�
 | `careContact.careContactBody.careContactTimePeriod` | 1..1 TimePeriodType | 0..1 TimePeriodType | Ändrad kardinalitet |
 | `careContact.careContactBody.careContactStatus` | 0..1 Integer | 0..1 CVType | Ändrad datatyp |
 
-##### Mappning av det som skiljer i 2.0
+#### Mappning av det som skiljer i 2.0
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -182,7 +182,7 @@ Mappningstabellerna ovan utgår från GetCareContacts 3.0. Version 2.0 är ocks�
 | `careContact.careContactBody.careContactTimePeriod` | 1..1 | `Encounter.period` | Obligatorisk i 2.0 med obligatorisk`start` |
 | `legalAuthenticator`,`additionalPatientInformation`,`result` | – | – | Finns inte i 2.0. Svaret har inget`result`; fel signaleras med SOAP-fel |
 
-###### careContactCode 2.0 → Encounter.class
+##### careContactCode 2.0 → Encounter.class
 
 | | | |
 | :--- | :--- | :--- |
@@ -192,7 +192,7 @@ Mappningstabellerna ovan utgår från GetCareContacts 3.0. Version 2.0 är ocks�
 | 4 | Dagsjukvård | `4`"Dagsjukvård" |
 | 5 | Annan | `5`"Annan" |
 
-###### careContactStatus 2.0 → Encounter.status
+##### careContactStatus 2.0 → Encounter.status
 
 | | | |
 | :--- | :--- | :--- |
@@ -204,7 +204,7 @@ Mappningstabellerna ovan utgår från GetCareContacts 3.0. Version 2.0 är ocks�
 
 -------
 
-#### OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | | | |
 | :--- | :--- | :--- |
@@ -216,7 +216,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-#### Föreslagna nya issues
+### Föreslagna nya issues
 
 | | | |
 | :--- | :--- | :--- |

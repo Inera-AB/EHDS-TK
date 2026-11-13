@@ -1,4 +1,4 @@
-# SE Observation Status (SNOMED CT urval 56431000052106) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# SE Observation Status (SNOMED CT urval 56431000052106) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## ValueSet: SE Observation Status (SNOMED CT urval 56431000052106) 
 
@@ -25,12 +25,12 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "se-observation-status-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEObservationStatusVS",
   "title" : "SE Observation Status (SNOMED CT urval 56431000052106)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

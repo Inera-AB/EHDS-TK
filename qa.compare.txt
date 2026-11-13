@@ -1,46 +1,46 @@
 SEEHDSTK : Validation Results
 =========================================
 
-err = 19, warn = 211, info = 342, broken links = 0
+err = 0, warn = 132, info = 368, broken links = 0
 $--
 Generated $--. FHIR version $-- for inera.ehds.ehds-tk#$-- (canonical = https://fhir.inera.se/ig/ehds-tk)
- Build Errors : 19 / 0 / 0
+ Build Errors : 0 / 0 / 0
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CapabilityStatement-SEEHDSResourceAccessProvider : 0 / 1 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-assessmentcategory-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-clinicaldocumentnotecode-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-deliverycode-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-diagnosistype-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-errorcode-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-examinationstatuscode-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-fetalpositioncode-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-maternity-section : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-nonreplaceable-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-prescriptionstatus-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-referraloutcometypecode-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-resultcode-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-sexcode-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofcareplan-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofleavecode-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofprescription-cs : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofresultcode-cs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ConceptMap-observation-status-map : 0 / 1 / 4
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-assessmentcategory-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-clinicaldocumentnotecode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-deliverycode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-diagnosistype-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-errorcode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-examinationstatuscode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-fetalpositioncode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-maternity-section : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-nonreplaceable-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-prescriptionstatus-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-referraloutcometypecode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-resultcode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-sexcode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofcareplan-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofleavecode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofprescription-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofresultcode-cs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ConceptMap-observation-status-map : 0 / 1 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ImplementationGuide-inera.ehds.ehds-tk : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/Provenance-SEEHDSProvenanceExample : 0 / 2 / 1
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAllergyIntolerance : 0 / 8 / 4
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAllergyIntolerance : 0 / 7 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAuditEventPatientQuery : 0 / 1 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAuditEventPatientRead : 0 / 1 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAuditEventReadAccessLog : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSCarePlan : 0 / 1 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSCompositionCareDocumentation : 0 / 3 / 5
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis : 0 / 8 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional : 0 / 6 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSCompositionCareDocumentation : 0 / 1 / 6
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis : 0 / 3 / 8
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional : 0 / 3 / 6
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDevice : 0 / 1 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportImaging : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportLab : 0 / 3 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportReferral : 0 / 3 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportImaging : 0 / 1 / 5
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportLab : 0 / 1 / 5
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportReferral : 0 / 1 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDocumentReference : 0 / 1 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSEncounter : 0 / 2 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSFlag : 0 / 4 / 5
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSEncounter : 0 / 1 / 4
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSFlag : 0 / 1 / 8
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSImagingStudy : 0 / 4 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSImmunization : 0 / 6 / 4
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMAccessLog : 0 / 0 / 4
@@ -62,8 +62,8 @@ Generated $--. FHIR version $-- for inera.ehds.ehds-tk#$-- (canonical = https://
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMMedicationHistory : 0 / 0 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMObservations : 0 / 0 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMObservationsV12 : 0 / 0 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMReferralOutcome : 0 / 2 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMReferralOutcomeV31 : 0 / 2 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMReferralOutcome : 0 / 0 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMReferralOutcomeV31 : 0 / 0 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMRequestActivities : 0 / 0 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMRequestActivitiesV10 : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSLMVaccinationHistory : 0 / 0 / 3
@@ -71,10 +71,10 @@ Generated $--. FHIR version $-- for inera.ehds.ehds-tk#$-- (canonical = https://
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSMedicationStatement : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSObservationBase : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSObservationGrowth : 0 / 1 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSObservationLab : 0 / 3 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSObservationLab : 0 / 1 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSObservationMaternity : 0 / 1 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSOrganization : 0 / 5 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSPatient : 0 / 8 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSOrganization : 0 / 1 / 7
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSPatient : 0 / 1 / 10
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSPractitionerRole : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSProvenance : 0 / 0 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSRivAnyURI : 0 / 0 / 3
@@ -160,45 +160,26 @@ Generated $--. FHIR version $-- for inera.ehds.ehds-tk#$-- (canonical = https://
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-immunization-patient-postal-code : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-immunization-registration-device : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-related-alert-information : 0 / 2 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-assessmentcategory-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-clinicaldocumentnotecode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-deliverycode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-diagnosistype-vs : 0 / 2 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-errorcode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-examinationstatuscode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-fetalpositioncode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-growth-observation-type-vs : 0 / 3 / 8
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-prescriptionstatus-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-referraloutcometypecode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-resultcode-vs : 0 / 2 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-assessmentcategory-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-clinicaldocumentnotecode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-deliverycode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-diagnosistype-vs : 0 / 1 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-errorcode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-examinationstatuscode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-fetalpositioncode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-growth-observation-type-vs : 0 / 2 / 8
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-prescriptionstatus-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-referraloutcometypecode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-resultcode-vs : 0 / 1 / 2
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-se-observation-status-vs : 0 / 2 / 7
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-sexcode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofcareplan-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofleavecode-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofprescription-vs : 0 / 2 / 2
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofresultcode-vs : 0 / 2 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-sexcode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofcareplan-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofleavecode-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofprescription-vs : 0 / 1 / 2
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofresultcode-vs : 0 / 1 / 2
 </table>
 
 == n/a ==
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/guidance-docbook-narrative.html: The page skips a heading level: <h4> 'Bakgrund' (id=bakgrund) follows <h2> 'DocBook-mappning – clinicalDocumentNoteText och bilagor', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getaccesslogforpatient.html: The page skips a heading level: <h4> 'Patientens åtkomst till loggar via API:et' (id=patientatkomst) follows <h2> 'Åtkomstloggar – patientåtkomst och auditloggning', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getalertinformation.html: The page skips a heading level: <h4> 'Profilval – alltid Flag, ibland även AllergyIntolerance' (id=profilval--alltid-flag-ibland-även-allergyintolerance) follows <h2> 'GetAlertInformation – Uppmärksamhetsinformation', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getcarecontacts.html: The page skips a heading level: <h4> 'Struktur' (id=struktur) follows <h2> 'GetCareContacts – Vårdkontakter', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getcaredocumentation.html: The page skips a heading level: <h4> 'Resurshierarki' (id=resurshierarki) follows <h2> 'GetCareDocumentation – Anteckningar', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getcareplans.html: The page skips a heading level: <h4> 'Struktur' (id=struktur) follows <h2> 'GetCarePlans – Vårdplan', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getdiagnosis.html: The page skips a heading level: <h4> 'Mappningstabell – diagnosisHeader' (id=mappningstabell--diagnosisheader) follows <h2> 'GetDiagnosis – Diagnoser', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getfunctionalstatus.html: The page skips a heading level: <h4> 'Härledda fält / Designbeslut' (id=härledda-fält--designbeslut) follows <h2> 'GetFunctionalStatus – Funktionstillstånd och ADL', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getfunctionalstatus.html: The page skips a heading level: <h5> 'En Condition per functionalStatusAssessment' (id=en-condition-per-functionalstatusassessment) follows <h3> 'Härledda fält / Designbeslut' (id=härledda-fält--designbeslut), so it should be <h4>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getimagingoutcome.html: The page skips a heading level: <h4> 'Resurshierarki' (id=resurshierarki) follows <h2> 'GetImagingOutcome – Bilddiagnostik', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getlaboratoryorderoutcome.html: The page skips a heading level: <h4> 'Resurshierarki' (id=resurshierarki) follows <h2> 'GetLaboratoryOrderOutcome – Provsvar', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getmaternitymedicalhistory.html: The page skips a heading level: <h4> 'Datamodell – översikt' (id=datamodell--översikt) follows <h2> 'GetMaternityMedicalHistory – Mödravård', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getmedicationhistory.html: The page skips a heading level: <h4> 'Resurshierarki' (id=resurshierarki) follows <h2> 'GetMedicationHistory – Läkemedel', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getobservations.html: The page skips a heading level: <h4> 'Profilhierarki' (id=profilhierarki) follows <h2> 'GetObservations – Tillväxtkurva', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getreferraloutcome.html: The page skips a heading level: <h4> 'Resurshierarki' (id=resurshierarki) follows <h2> 'GetReferralOutcome – Remisser', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getrequestactivities.html: The page skips a heading level: <h4> 'Meddelandestruktur' (id=meddelandestruktur) follows <h2> 'GetRequestActivities – Remisstatus', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-getvaccinationhistory.html: The page skips a heading level: <h4> 'Resurshierarki' (id=resurshierarki) follows <h2> 'GetVaccinationHistory – Vaccinationer', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/mapping-issues.html: The page skips a heading level: <h4> 'Öppna frågor' (id=öppna-frågor) follows <h2> 'Mappningsissues och Designbeslut', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
-ERROR: /home/runner/work/EHDS-TK/EHDS-TK/output/sv/search-parameters.html: The page skips a heading level: <h4> 'Bakgrund' (id=bakgrund) follows <h2> 'Sökparametrar', so it should be <h3>. Heading levels must not skip a level going down (WCAG compliance test)
 
 
 == fsh-generated/resources/CapabilityStatement-SEEHDSResourceAccessProvider.json ==
@@ -209,123 +190,91 @@ INFORMATION: Resource: The resource CapabilityStatement/SEEHDSResourceAccessProv
 
 == fsh-generated/resources/CodeSystem-assessmentcategory-cs.json ==
 INFORMATION: CodeSystem/assessmentcategory-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/assessmentcategory-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/assessmentcategory-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/assessmentcategory-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/assessmentcategory-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-clinicaldocumentnotecode-cs.json ==
 INFORMATION: CodeSystem/clinicaldocumentnotecode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/clinicaldocumentnotecode-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/clinicaldocumentnotecode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/clinicaldocumentnotecode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/clinicaldocumentnotecode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-deliverycode-cs.json ==
 INFORMATION: CodeSystem/deliverycode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/deliverycode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/deliverycode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-diagnosistype-cs.json ==
 INFORMATION: CodeSystem/diagnosistype-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/diagnosistype-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/diagnosistype-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-errorcode-cs.json ==
 INFORMATION: CodeSystem/errorcode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/errorcode-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/errorcode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/errorcode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/errorcode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-examinationstatuscode-cs.json ==
 INFORMATION: CodeSystem/examinationstatuscode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/examinationstatuscode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/examinationstatuscode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-fetalpositioncode-cs.json ==
 INFORMATION: CodeSystem/fetalpositioncode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/fetalpositioncode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/fetalpositioncode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-maternity-section.json ==
 INFORMATION: CodeSystem/maternity-section: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/maternity-section: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/maternity-section should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-nonreplaceable-cs.json ==
 INFORMATION: CodeSystem/nonreplaceable-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/nonreplaceable-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/nonreplaceable-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/nonreplaceable-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/nonreplaceable-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-prescriptionstatus-cs.json ==
 INFORMATION: CodeSystem/prescriptionstatus-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/prescriptionstatus-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/prescriptionstatus-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/prescriptionstatus-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/prescriptionstatus-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-referraloutcometypecode-cs.json ==
 INFORMATION: CodeSystem/referraloutcometypecode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/referraloutcometypecode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/referraloutcometypecode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-resultcode-cs.json ==
 INFORMATION: CodeSystem/resultcode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/resultcode-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/resultcode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/resultcode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/resultcode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-sexcode-cs.json ==
 INFORMATION: CodeSystem/sexcode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/sexcode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/sexcode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-typeofcareplan-cs.json ==
 INFORMATION: CodeSystem/typeofcareplan-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/typeofcareplan-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/typeofcareplan-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/typeofcareplan-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/typeofcareplan-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-typeofleavecode-cs.json ==
 INFORMATION: CodeSystem/typeofleavecode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/typeofleavecode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/typeofleavecode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-typeofprescription-cs.json ==
 INFORMATION: CodeSystem/typeofprescription-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: CodeSystem/typeofprescription-cs: CodeSystem: CodeSystems BÖR ha ett angivet värde för caseSensitive-elementet så att användare tydligt förstår kodsystemets status och betydelse
-WARNING: CodeSystem/typeofprescription-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
-WARNING: CodeSystem/typeofprescription-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.caseSensitive är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/typeofprescription-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/CodeSystem-typeofresultcode-cs.json ==
 INFORMATION: CodeSystem/typeofresultcode-cs: CodeSystem.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: CodeSystem/typeofresultcode-cs: CodeSystem: Publicerade kodsystem BÖR följa ShareableCodeSystem-profilen, som anger att elementet CodeSystem.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource CodeSystem/typeofresultcode-cs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ConceptMap-observation-status-map.json ==
+INFORMATION: ConceptMap.group[0].target: Pinned the version of http://hl7.org/fhir/observation-status to 4.0.1 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.0.0 (hl7.fhir.uv.xver-r5.r4#0.0.1-snapshot-2)
 INFORMATION: ConceptMap/observation-status-map: ConceptMap.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: ConceptMap/observation-status-map: ConceptMap.group[0].source: Käll-kodsystem http://snomed.info/sct stöds endast på terminologiservern, så källkoderna valideras inte av prestandaskäl
 WARNING: ConceptMap/observation-status-map: ConceptMap.group[0].element[4].target[0]: The code 59776000 is mapped to cancelled as 'equivalent', and 444301002 is mapped to cancelled as 'source-is-broader-than-target', which means that 444301002 should subsume 59776000, but it does not
@@ -345,9 +294,9 @@ WARNING: Provenance/SEEHDSProvenanceExample: Provenance.agent[1].who.identifier.
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSAllergyIntolerance.json ==
+INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[12].binding.extension[0]: extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0 är föråldrad med noteringen: 'Use additionalBinding extension or element instead'
-WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[16].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement' till 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0'
 WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[29].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIAllergenNoDrug'
 WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[29].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.code
 WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[29].binding.extension[1]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.code
@@ -387,35 +336,34 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSCompositionCareDocumentation.json ==
-WARNING: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.description: Markdown innehåller innehåll som verkar vara en inbäddad HTML-tagg som börjar vid '<s'. Detta kommer (eller BÖR) escapeas av presentationslagret. Innehållet bör kontrolleras för att bekräfta att detta är det önskade beteendet
+INFORMATION: StructureDefinition.snapshot.element[69].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/note to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.snapshot.element[66].short: Strängvärdet innehåller text som ser ut som inbäddade HTML-taggar. Om detta innehåll renderas till HTML utan lämplig efterbearbetning kan det vara en säkerhetsrisk
-WARNING: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.snapshot.element[69].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/note'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/note' till 'http://hl7.org/fhir/StructureDefinition/note|5.3.0'
 INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.differential.element[8].short: Strängvärdet innehåller text som ser ut som inbäddade HTML-taggar. Om detta innehåll renderas till HTML utan lämplig efterbearbetning kan det vara en säkerhetsrisk
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSCompositionCareDocumentation could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis.json ==
+INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[21].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[23].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-related to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[68].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.differential.element[4].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-related to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[16].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate' till 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate|5.3.0'
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[21].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact' till 'http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact|5.3.0'
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[23].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/condition-related'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/condition-related' till 'http://hl7.org/fhir/StructureDefinition/condition-related|5.3.0'
 WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[52].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
 WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[52].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[68].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/bodySite'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/bodySite' till 'http://hl7.org/fhir/StructureDefinition/bodySite|5.3.0'
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[4].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/condition-related'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/condition-related' till 'http://hl7.org/fhir/StructureDefinition/condition-related|5.3.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSConditionDiagnosis could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional.json ==
+INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[21].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[32].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[16].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate' till 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate|5.3.0'
-WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[21].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact' till 'http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact|5.3.0'
 WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[28].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
 WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[28].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
-WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[32].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/bodySite'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/bodySite' till 'http://hl7.org/fhir/StructureDefinition/bodySite|5.3.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSConditionFunctional could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional'): The Implementation Guide contains no examples for this profile
 
@@ -427,25 +375,25 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportImaging.json ==
+INFORMATION: StructureDefinition.snapshot.element[28].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[32].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSDiagnosticReportImaging: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSDiagnosticReportImaging: StructureDefinition.snapshot.element[28].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/annotationType'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/annotationType' till 'http://hl7.org/fhir/StructureDefinition/annotationType|5.3.0'
-WARNING: StructureDefinition/SEEHDSDiagnosticReportImaging: StructureDefinition.snapshot.element[32].binding.valueSet: Det finns flera olika potentiella matchningar för URL:en 'http://terminology.hl7.org/ValueSet/v2-0364'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '3.0.0', hittade versioner: 2.0.0 (from hl7.terminology.r4#6.3.0), 3.0.0 (from hl7.terminology.r4#7.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://terminology.hl7.org/ValueSet/v2-0364' till 'http://terminology.hl7.org/ValueSet/v2-0364|3.0.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSDiagnosticReportImaging could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportLab.json ==
+INFORMATION: StructureDefinition.snapshot.element[28].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[32].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSDiagnosticReportLab: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSDiagnosticReportLab: StructureDefinition.snapshot.element[28].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/annotationType'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/annotationType' till 'http://hl7.org/fhir/StructureDefinition/annotationType|5.3.0'
-WARNING: StructureDefinition/SEEHDSDiagnosticReportLab: StructureDefinition.snapshot.element[32].binding.valueSet: Det finns flera olika potentiella matchningar för URL:en 'http://terminology.hl7.org/ValueSet/v2-0364'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '3.0.0', hittade versioner: 2.0.0 (from hl7.terminology.r4#6.3.0), 3.0.0 (from hl7.terminology.r4#7.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://terminology.hl7.org/ValueSet/v2-0364' till 'http://terminology.hl7.org/ValueSet/v2-0364|3.0.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSDiagnosticReportLab could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportReferral.json ==
+INFORMATION: StructureDefinition.snapshot.element[28].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[32].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSDiagnosticReportReferral: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSDiagnosticReportReferral: StructureDefinition.snapshot.element[28].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/annotationType'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/annotationType' till 'http://hl7.org/fhir/StructureDefinition/annotationType|5.3.0'
-WARNING: StructureDefinition/SEEHDSDiagnosticReportReferral: StructureDefinition.snapshot.element[32].binding.valueSet: Det finns flera olika potentiella matchningar för URL:en 'http://terminology.hl7.org/ValueSet/v2-0364'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '3.0.0', hittade versioner: 2.0.0 (from hl7.terminology.r4#6.3.0), 3.0.0 (from hl7.terminology.r4#7.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://terminology.hl7.org/ValueSet/v2-0364' till 'http://terminology.hl7.org/ValueSet/v2-0364|3.0.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSDiagnosticReportReferral could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral'): The Implementation Guide contains no examples for this profile
 
@@ -457,17 +405,17 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSEncounter.json ==
+INFORMATION: StructureDefinition.snapshot.element[69].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0092 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSEncounter: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSEncounter: StructureDefinition.snapshot.element[69].binding.valueSet: Det finns flera olika potentiella matchningar för URL:en 'http://terminology.hl7.org/ValueSet/v2-0092'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '3.0.0', hittade versioner: 2.0.0 (from hl7.terminology.r4#6.3.0), 3.0.0 (from hl7.terminology.r4#7.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://terminology.hl7.org/ValueSet/v2-0092' till 'http://terminology.hl7.org/ValueSet/v2-0092|3.0.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSEncounter could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSEncounter'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSFlag.json ==
+INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/flag-detail to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/flag-priority to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[18].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/note to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSFlag: StructureDefinition.snapshot.element[16].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/flag-detail'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/flag-detail' till 'http://hl7.org/fhir/StructureDefinition/flag-detail|5.3.0'
-WARNING: StructureDefinition/SEEHDSFlag: StructureDefinition.snapshot.element[17].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/flag-priority'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/flag-priority' till 'http://hl7.org/fhir/StructureDefinition/flag-priority|5.3.0'
-WARNING: StructureDefinition/SEEHDSFlag: StructureDefinition.snapshot.element[18].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/note'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/note' till 'http://hl7.org/fhir/StructureDefinition/note|5.3.0'
 INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.differential.element[19].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
 INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.snapshot.element[35].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSFlag could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
@@ -597,15 +545,11 @@ INFORMATION: Resource: The resource StructureDefinition/SEEHDSLMObservationsV12 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSLMReferralOutcome.json ==
 INFORMATION: StructureDefinition/SEEHDSLMReferralOutcome: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSLMReferralOutcome: StructureDefinition.snapshot.element[73].definition: Markdown innehåller innehåll som verkar vara en inbäddad HTML-tagg som börjar vid '<a'. Detta kommer (eller BÖR) escapeas av presentationslagret. Innehållet bör kontrolleras för att bekräfta att detta är det önskade beteendet
-WARNING: StructureDefinition/SEEHDSLMReferralOutcome: StructureDefinition.differential.element[43].definition: Markdown innehåller innehåll som verkar vara en inbäddad HTML-tagg som börjar vid '<a'. Detta kommer (eller BÖR) escapeas av presentationslagret. Innehållet bör kontrolleras för att bekräfta att detta är det önskade beteendet
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSLMReferralOutcome could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSLMReferralOutcomeV31.json ==
 INFORMATION: StructureDefinition/SEEHDSLMReferralOutcomeV31: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSLMReferralOutcomeV31: StructureDefinition.snapshot.element[73].definition: Markdown innehåller innehåll som verkar vara en inbäddad HTML-tagg som börjar vid '<a'. Detta kommer (eller BÖR) escapeas av presentationslagret. Innehållet bör kontrolleras för att bekräfta att detta är det önskade beteendet
-WARNING: StructureDefinition/SEEHDSLMReferralOutcomeV31: StructureDefinition.differential.element[43].definition: Markdown innehåller innehåll som verkar vara en inbäddad HTML-tagg som börjar vid '<a'. Detta kommer (eller BÖR) escapeas av presentationslagret. Innehållet bör kontrolleras för att bekräfta att detta är det önskade beteendet
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSLMReferralOutcomeV31 could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
@@ -651,9 +595,9 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSObservationLab.json ==
+INFORMATION: StructureDefinition.snapshot.element[53].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[97].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSObservationLab: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSObservationLab: StructureDefinition.snapshot.element[53].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty' till 'http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty|5.3.0'
-WARNING: StructureDefinition/SEEHDSObservationLab: StructureDefinition.snapshot.element[97].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty' till 'http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty|5.3.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSObservationLab could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab'): The Implementation Guide contains no examples for this profile
 
@@ -665,24 +609,24 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSOrganization.json ==
+INFORMATION: StructureDefinition.snapshot.element[42].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[43].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[44].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[53].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-codedString to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSOrganization: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSOrganization: StructureDefinition.snapshot.element[42].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName' till 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName|5.3.0'
-WARNING: StructureDefinition/SEEHDSOrganization: StructureDefinition.snapshot.element[43].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber' till 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber|5.3.0'
-WARNING: StructureDefinition/SEEHDSOrganization: StructureDefinition.snapshot.element[44].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox' till 'http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox|5.3.0'
-WARNING: StructureDefinition/SEEHDSOrganization: StructureDefinition.snapshot.element[53].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/iso21090-codedString'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/iso21090-codedString' till 'http://hl7.org/fhir/StructureDefinition/iso21090-codedString|5.3.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSOrganization could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSPatient.json ==
+INFORMATION: StructureDefinition.snapshot.element[8].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/patient-birthPlace to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[13].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[14].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/individual-genderIdentity to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[15].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/individual-pronouns to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/patient-citizenship to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/patient-nationality to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[18].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/patient-birthTime to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSPatient: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSPatient: StructureDefinition.snapshot.element[8].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/patient-birthPlace'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/patient-birthPlace' till 'http://hl7.org/fhir/StructureDefinition/patient-birthPlace|5.3.0'
-WARNING: StructureDefinition/SEEHDSPatient: StructureDefinition.snapshot.element[13].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse' till 'http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse|5.3.0'
-WARNING: StructureDefinition/SEEHDSPatient: StructureDefinition.snapshot.element[14].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/individual-genderIdentity'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/individual-genderIdentity' till 'http://hl7.org/fhir/StructureDefinition/individual-genderIdentity|5.3.0'
-WARNING: StructureDefinition/SEEHDSPatient: StructureDefinition.snapshot.element[15].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/individual-pronouns'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/individual-pronouns' till 'http://hl7.org/fhir/StructureDefinition/individual-pronouns|5.3.0'
-WARNING: StructureDefinition/SEEHDSPatient: StructureDefinition.snapshot.element[16].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/patient-citizenship'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/patient-citizenship' till 'http://hl7.org/fhir/StructureDefinition/patient-citizenship|5.3.0'
-WARNING: StructureDefinition/SEEHDSPatient: StructureDefinition.snapshot.element[17].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/patient-nationality'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/patient-nationality' till 'http://hl7.org/fhir/StructureDefinition/patient-nationality|5.3.0'
-WARNING: StructureDefinition/SEEHDSPatient: StructureDefinition.snapshot.element[18].type[0].profile[0]: Det finns flera olika potentiella matchningar för URL:en 'http://hl7.org/fhir/StructureDefinition/patient-birthTime'. Det kan vara en bra idé att låsa till rätt version för att minska sannolikheten att fel version väljs av en implementation/implementör, eller använda [IG-parametern `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Använder version '5.3.0', hittade versioner: 4.0.1 (from hl7.fhir.r4.core#4.0.1), 5.2.0 (from hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (from hl7.fhir.uv.extensions.r4#5.3.0). Föreslagen åtgärd: ändra den kanoniska referensen från 'http://hl7.org/fhir/StructureDefinition/patient-birthTime' till 'http://hl7.org/fhir/StructureDefinition/patient-birthTime|5.3.0'
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSPatient could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient'): The Implementation Guide contains no examples for this profile
 
@@ -1159,44 +1103,37 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 == fsh-generated/resources/ValueSet-assessmentcategory-vs.json ==
 INFORMATION: ValueSet/assessmentcategory-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/assessmentcategory-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/assessmentcategory-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-clinicaldocumentnotecode-vs.json ==
 INFORMATION: ValueSet/clinicaldocumentnotecode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/clinicaldocumentnotecode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/clinicaldocumentnotecode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-deliverycode-vs.json ==
 INFORMATION: ValueSet/deliverycode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/deliverycode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/deliverycode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-diagnosistype-vs.json ==
 INFORMATION: ValueSet/diagnosistype-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: ValueSet/diagnosistype-vs: ValueSet.compose.include[0]: Värdemängden refererar till CodeSystem 'https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp' som har status 'fragment'
-WARNING: ValueSet/diagnosistype-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/diagnosistype-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-errorcode-vs.json ==
 INFORMATION: ValueSet/errorcode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/errorcode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/errorcode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-examinationstatuscode-vs.json ==
 INFORMATION: ValueSet/examinationstatuscode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/examinationstatuscode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/examinationstatuscode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-fetalpositioncode-vs.json ==
 INFORMATION: ValueSet/fetalpositioncode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/fetalpositioncode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/fetalpositioncode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
@@ -1208,25 +1145,21 @@ INFORMATION: ValueSet/growth-observation-type-vs: ValueSet.compose.include[0].co
 INFORMATION: ValueSet/growth-observation-type-vs: ValueSet.compose.include[0].concept[3]: Wrong Display Name 'Kroppsvikt' for http://snomed.info/sct#27113001. There are no valid display names found for language(s) 'sv'. Default display is 'Body weight'. Observera att visningen i ValueSet inte behöver matcha; denna kontroll finns för att hjälpa till att kontrollera att det inte av misstag är fel kod
 INFORMATION: ValueSet/growth-observation-type-vs: ValueSet.compose.include[0].concept[4]: Wrong Display Name 'Huvudomfång' for http://snomed.info/sct#363812007. There are no valid display names found for language(s) 'sv'. Default display is 'Head circumference'. Observera att visningen i ValueSet inte behöver matcha; denna kontroll finns för att hjälpa till att kontrollera att det inte av misstag är fel kod
 INFORMATION: ValueSet/growth-observation-type-vs: ValueSet.compose.include[0].concept[5]: Wrong Display Name 'Graviditetslängd vid födelse' for http://snomed.info/sct#412726003. There are no valid display names found for language(s) 'sv'. Default display is 'Length of gestation at birth'. Observera att visningen i ValueSet inte behöver matcha; denna kontroll finns för att hjälpa till att kontrollera att det inte av misstag är fel kod
-WARNING: ValueSet/growth-observation-type-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/growth-observation-type-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-prescriptionstatus-vs.json ==
 INFORMATION: ValueSet/prescriptionstatus-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/prescriptionstatus-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/prescriptionstatus-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-referraloutcometypecode-vs.json ==
 INFORMATION: ValueSet/referraloutcometypecode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/referraloutcometypecode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/referraloutcometypecode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-resultcode-vs.json ==
 INFORMATION: ValueSet/resultcode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/resultcode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/resultcode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
@@ -1242,31 +1175,26 @@ WARNING: Resource: The resource ValueSet/se-observation-status-vs should have an
 
 == fsh-generated/resources/ValueSet-sexcode-vs.json ==
 INFORMATION: ValueSet/sexcode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/sexcode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/sexcode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-typeofcareplan-vs.json ==
 INFORMATION: ValueSet/typeofcareplan-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/typeofcareplan-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/typeofcareplan-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-typeofleavecode-vs.json ==
 INFORMATION: ValueSet/typeofleavecode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/typeofleavecode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/typeofleavecode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-typeofprescription-vs.json ==
 INFORMATION: ValueSet/typeofprescription-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/typeofprescription-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/typeofprescription-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
 == fsh-generated/resources/ValueSet-typeofresultcode-vs.json ==
 INFORMATION: ValueSet/typeofresultcode-vs: ValueSet.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: ValueSet/typeofresultcode-vs: ValueSet: Publicerade värdemängder BÖR följa ShareableValueSet-profilen, som anger att elementet ValueSet.experimental är obligatoriskt, men det är inte närvarande
 WARNING: Resource: The resource ValueSet/typeofresultcode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 

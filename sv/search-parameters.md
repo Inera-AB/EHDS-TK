@@ -1,8 +1,8 @@
-# Sökparametrar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Sökparametrar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Sökparametrar
 
-#### Bakgrund
+### Bakgrund
 
 RIVTA-tjänstekontrakt definierar en **begärantyp** (`GetXxxType`) med obligatoriska och valfria inparametrar som filtrerar vilka poster som returneras. När kontrakten exponeras via ett FHIR-API ersätts dessa inparametrar av FHIR:s standardiserade sökparametrar (`_search`).
 
@@ -12,14 +12,14 @@ Denna sida kartlägger varje RIVTA-inparameter mot lämplig FHIR-sökparameter o
 
 -------
 
-#### Gemensamma parametrar
+### Gemensamma parametrar
 
 | | | | | |
 | :--- | :--- | :--- | :--- | :--- |
 | `subjectOfCareId` | 1..1 | `patient` | reference/token | Personnummer eller samordningsnummer. I FHIR anges identifierarsystem och värde:`patient.identifier=http://electronichealth.se/identifier/personnummer\|191212121212` |
 | `sourceSystemHSAId` | 0..1 | Ej tillämplig | – | Se resonemang nedan. |
 
-##### Resonemang – subjectOfCareId
+#### Resonemang – subjectOfCareId
 
 `subjectOfCareId` är obligatorisk i alla RIVTA-kontrakt och anger patienten vars data ska returneras. I FHIR är `patient` ett standardiserat sökfält på alla patientcentrerade resurser. För exakt matchning på personnummer bör sökparametern kombineras med identifierarsystemet:
 
@@ -30,7 +30,7 @@ GET /Condition?patient.identifier=http://electronichealth.se/identifier/personnu
 
 Alternativt, om en intern Patient-resurs skapas med identifieraren länkad, räcker `patient={id}`.
 
-##### Resonemang – sourceSystemHSAId (ej tillämplig i FHIR-kontext)
+#### Resonemang – sourceSystemHSAId (ej tillämplig i FHIR-kontext)
 
 `sourceSystemHSAId` existerar i RIVTA-kontrakten för att hantera tjänsteplattformens standardbeteende: en fråga förgrenas automatiskt till alla regioners bakändessystem och svaren aggregeras ihop. Parametern gör det möjligt att begränsa denna fan-out till ett specifikt källsystem.
 
@@ -38,7 +38,7 @@ I ett FHIR-API anropas en specifik endpoint direkt — det sker ingen fan-out. K
 
 -------
 
-#### Sammanfattning per tjänstekontrakt
+### Sammanfattning per tjänstekontrakt
 
 `sourceSystemHSAId` förekommer som valfri inparameter i alla TKBs men har ingen FHIR-sökparametermotpart (se resonemang ovan) och är utesluten ur tabellen nedan.
 
@@ -62,13 +62,13 @@ I ett FHIR-API anropas en specifik endpoint direkt — det sker ingen fan-out. K
 
 -------
 
-#### Detaljerade mappningar – TK-specifika parametrar
+### Detaljerade mappningar – TK-specifika parametrar
 
-##### GetCareContacts och GetCareDocumentation – datumintervall och vårdenhet
+#### GetCareContacts och GetCareDocumentation – datumintervall och vårdenhet
 
 Dessa två kontrakt delar mönstret med `fromDateTime`/`toDateTime` och `careUnitHSAId`.
 
-###### fromDateTime / toDateTime → date
+##### fromDateTime / toDateTime → date
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -86,7 +86,7 @@ GET /Encounter?patient.identifier=...&date=ge2024-01-01&date=le2024-12-31
 
 > **OBS:** RIVTA-kontrakten använder formatet `YYYYMMDDhhmmss`; FHIR kräver ISO 8601. Bryggan måste konvertera formaten.
 
-###### careUnitHSAId
+##### careUnitHSAId
 
 | | | |
 | :--- | :--- | :--- |
@@ -138,7 +138,7 @@ Täcker inte alla resurstyper (t.ex. `Condition` saknar `performer`) och kräver
 
 -------
 
-##### GetObservations – observationskod
+#### GetObservations – observationskod
 
 | | | | | |
 | :--- | :--- | :--- | :--- | :--- |
@@ -155,7 +155,7 @@ Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se `SEEHDSObse
 
 -------
 
-##### GetRequestActivities – datumintervall
+#### GetRequestActivities – datumintervall
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -166,7 +166,7 @@ Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se `SEEHDSObse
 
 -------
 
-##### GetAccessLogForPatient – datumintervall och vårdgivare
+#### GetAccessLogForPatient – datumintervall och vårdgivare
 
 | | | | | |
 | :--- | :--- | :--- | :--- | :--- |
@@ -174,7 +174,7 @@ Detta täcker den vanligaste användningen i IoÖ Tillväxtkurva (se `SEEHDSObse
 | `toDate` | 0..1 | `date=le{datum}` | `AuditEvent` | Kombineras med`fromDate` |
 | `careGiverId` | 0..1 | Se nedan | `Provenance` | Filtrerar på ansvarig vårdgivare (Sparr-nivå yttre); lagras i Provenance, inte direkt på AuditEvent |
 
-###### careGiverId – tre möjliga strategier
+##### careGiverId – tre möjliga strategier
 
 `careGiverId` i GetAccessLogForPatient avser den juridiskt ansvariga vårdgivaren (yttre Sparr-nivå), konsekvent med hur `healthcareProfessionalCareGiverHSAId` hanteras i övriga kontrakt. I FHIR-mappningen lagras detta i `Provenance.agent[custodian].who.identifier` — inte på resursen direkt.
 
@@ -219,7 +219,7 @@ Här är `careGiverId` implicit i URL-kontexten och behöver inte vara en sökpa
 
 -------
 
-#### Parametrar utan FHIR-sökparametermotpart
+### Parametrar utan FHIR-sökparametermotpart
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -229,7 +229,7 @@ Här är `careGiverId` implicit i URL-kontexten och behöver inte vara en sökpa
 
 -------
 
-#### Paginering – GetCareDocumentation
+### Paginering – GetCareDocumentation
 
 GetCareDocumentation stöder implicit paginering via `hasMore`-flaggan i svaret. I FHIR hanteras paginering med `_count` och `Bundle.link[next]` (cursor-baserad eller offset-baserad beroende på server). Bryggimplementationen måste mappa RIVTA:s `hasMore`-logik till FHIR:s Bundle-pagineringsmekanism.
 
@@ -240,7 +240,7 @@ GetCareDocumentation stöder implicit paginering via `hasMore`-flaggan i svaret.
 
 -------
 
-#### Öppna frågor
+### Öppna frågor
 
 | | | |
 | :--- | :--- | :--- |

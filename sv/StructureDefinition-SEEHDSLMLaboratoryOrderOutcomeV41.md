@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome 4.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetLaboratoryOrderOutcome 4.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetLaboratoryOrderOutcome 4.1 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMLaborat
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMLaboratoryOrderOutcomeV41",
   "title" : "GetLaboratoryOrderOutcome 4.1",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -1298,7 +1298,7 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMLaborat
       }],
       "path" : "SEEHDSLMLaboratoryOrderOutcomeV41.laboratoryOrderOutcome.body.groupOfAnalyses.analysis.result.value",
       "short" : "Angivelse av utfall av en utförd analys angiven med en och endast en av datatyperna: Physical Quantity (PQ) I …",
-      "definition" : "Angivelse av utfall av en utförd analys angiven med en och endast en av datatyperna: Physical Quantity (PQ) I PQ.value anges ett numeriskt värde I PQ.unit anges en måttenhet enligt referens [R10]. Intervall av Physical Quantity IVL<PQ> IVL<PQ>.low Det numeriska värdet som utgör den lägre delen av intervallet IVL<PQ>.lowClosed Angivelse av om värdet är en del av intervallet eller ej. Exempel: lowClosed = true och low = 5 motsvarar intervallet ≥ 5 lowClosed = false och low = 5 motsvarar intervallet > 5 IVL<PQ>.high Det numeriska värdet som utgör den högre delen av intervallet IVL<PQ>.highClosed Exempel: highClosed = true och high = 10 motsvarar intervallet ≤ 10 highClosed = false och high = 10 motsvarar intervallet < 10 Sträng ST Textuellt resultat Kodat värde CV Kodat värde",
+      "definition" : "Angivelse av utfall av en utförd analys angiven med en och endast en av datatyperna: Physical Quantity (PQ) I PQ.value anges ett numeriskt värde I PQ.unit anges en måttenhet enligt referens [R10]. Intervall av Physical Quantity `IVL<PQ>` `IVL<PQ>`.low Det numeriska värdet som utgör den lägre delen av intervallet `IVL<PQ>`.lowClosed Angivelse av om värdet är en del av intervallet eller ej. Exempel: lowClosed = true och low = 5 motsvarar intervallet ≥ 5 lowClosed = false och low = 5 motsvarar intervallet > 5 `IVL<PQ>`.high Det numeriska värdet som utgör den högre delen av intervallet `IVL<PQ>`.highClosed Exempel: highClosed = true och high = 10 motsvarar intervallet ≤ 10 highClosed = false och high = 10 motsvarar intervallet < 10 Sträng ST Textuellt resultat Kodat värde CV Kodat värde",
       "min" : 1,
       "max" : "1",
       "type" : [{

@@ -1,4 +1,4 @@
-# GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: GetObservations 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMObserva
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:GetObservationsResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMObservations",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSLMObservations",
   "title" : "GetObservations",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

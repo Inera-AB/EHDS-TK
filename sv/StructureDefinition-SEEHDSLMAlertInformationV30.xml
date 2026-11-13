@@ -139,11 +139,11 @@ Tillåtna värden enligt XSD: OK, ERROR, INFO.">resultCode</a><a name="SEEHDSLMA
     <valueUri value="urn:riv:clinicalprocess:healthcond:description:GetAlertInformationResponder:3"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMAlertInformationV30"/>
-  <version value="0.8.1"/>
+  <version value="0.8.2"/>
   <name value="SEEHDSLMAlertInformationV30"/>
   <title value="GetAlertInformation 3.0"/>
   <status value="draft"/>
-  <date value="2026-11-13T15:20:27+00:00"/>
+  <date value="2026-11-13T16:07:48+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

@@ -1,4 +1,4 @@
-# KV Anteckningstyp - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# KV Anteckningstyp - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## CodeSystem: KV Anteckningstyp 
 
@@ -19,11 +19,12 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
   "resourceType" : "CodeSystem",
   "id" : "clinicaldocumentnotecode-cs",
   "url" : "urn:oid:1.2.752.129.2.2.2.11",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "ClinicalDocumentNoteCodeCS",
   "title" : "KV Anteckningstyp",
   "status" : "active",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "experimental" : false,
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -40,6 +41,7 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
       "display" : "Sweden"
     }]
   }],
+  "caseSensitive" : true,
   "content" : "complete",
   "count" : 9,
   "concept" : [{

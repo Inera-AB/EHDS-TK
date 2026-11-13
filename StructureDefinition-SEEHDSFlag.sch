@@ -12,7 +12,7 @@
   <sch:pattern>
     <sch:title>f:Flag</sch:title>
     <sch:rule context="f:Flag">
-      <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/flag-priority']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/flag-priority': maximum cardinality of 'extension' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/flag-priority|5.3.0']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/flag-priority|5.3.0': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:extension[@url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment']) &lt;= 1">extension with URL = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:extension[@url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-ascertained-date']) &lt;= 1">extension with URL = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-ascertained-date': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:extension[@url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-verified-time']) &lt;= 1">extension with URL = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-verified-time': maximum cardinality of 'extension' is 1</sch:assert>

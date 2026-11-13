@@ -1,6 +1,6 @@
 {
   "package": "inera.ehds.ehds-tk",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "fhirVersion": "4.0.1",
   "jurisdiction": "SE",
   "extensions": [
@@ -548,22 +548,22 @@
     "http://hl7.org/fhir/StructureDefinition/_datatype|5.2.0": [
       "Immunization.extension"
     ],
-    "http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement": [
+    "http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement|5.3.0": [
       "AllergyIntolerance"
     ],
-    "http://hl7.org/fhir/StructureDefinition/annotationType": [
+    "http://hl7.org/fhir/StructureDefinition/annotationType|5.3.0": [
       "DiagnosticReport.extension.value[x]"
     ],
-    "http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact": [
+    "http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact|5.3.0": [
       "Condition"
     ],
-    "http://hl7.org/fhir/StructureDefinition/bodySite": [
+    "http://hl7.org/fhir/StructureDefinition/bodySite|5.3.0": [
       "Condition.bodySite"
     ],
-    "http://hl7.org/fhir/StructureDefinition/condition-assertedDate": [
+    "http://hl7.org/fhir/StructureDefinition/condition-assertedDate|5.3.0": [
       "Condition"
     ],
-    "http://hl7.org/fhir/StructureDefinition/condition-related": [
+    "http://hl7.org/fhir/StructureDefinition/condition-related|5.3.0": [
       "Condition"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice": [
@@ -586,51 +586,51 @@
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
       "StructureDefinition.snapshot.element"
     ],
-    "http://hl7.org/fhir/StructureDefinition/flag-detail": [
+    "http://hl7.org/fhir/StructureDefinition/flag-detail|5.3.0": [
       "Flag"
     ],
-    "http://hl7.org/fhir/StructureDefinition/flag-priority": [
+    "http://hl7.org/fhir/StructureDefinition/flag-priority|5.3.0": [
       "Flag"
     ],
-    "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity": [
+    "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity|5.3.0": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/individual-pronouns": [
+    "http://hl7.org/fhir/StructureDefinition/individual-pronouns|5.3.0": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber": [
+    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber|5.3.0": [
       "Organization.address.line"
     ],
-    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox": [
+    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox|5.3.0": [
       "Organization.address.line"
     ],
-    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName": [
+    "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName|5.3.0": [
       "Organization.address.line"
     ],
-    "http://hl7.org/fhir/StructureDefinition/iso21090-codedString": [
+    "http://hl7.org/fhir/StructureDefinition/iso21090-codedString|5.3.0": [
       "Organization.address.country"
     ],
-    "http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty": [
+    "http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty|5.3.0": [
       "Observation.component.value[x]",
       "Observation.value[x]"
     ],
-    "http://hl7.org/fhir/StructureDefinition/note": [
+    "http://hl7.org/fhir/StructureDefinition/note|5.3.0": [
       "Composition.section",
       "Flag"
     ],
-    "http://hl7.org/fhir/StructureDefinition/patient-birthPlace": [
+    "http://hl7.org/fhir/StructureDefinition/patient-birthPlace|5.3.0": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/patient-birthTime": [
+    "http://hl7.org/fhir/StructureDefinition/patient-birthTime|5.3.0": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/patient-citizenship": [
+    "http://hl7.org/fhir/StructureDefinition/patient-citizenship|5.3.0": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/patient-nationality": [
+    "http://hl7.org/fhir/StructureDefinition/patient-nationality|5.3.0": [
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse": [
+    "http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse|5.3.0": [
       "Patient"
     ],
     "http://hl7.org/fhir/StructureDefinition/regex": [

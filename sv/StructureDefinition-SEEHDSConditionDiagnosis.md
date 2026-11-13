@@ -1,4 +1,4 @@
-# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Resursprofil: SE EHDS Condition – Diagnos (GetDiagnosis) 
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSConditionDiagnosis",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -162,7 +162,7 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
       "max" : "*",
       "type" : [{
         "code" : "Extension",
-        "profile" : ["http://hl7.org/fhir/StructureDefinition/condition-related"]
+        "profile" : ["http://hl7.org/fhir/StructureDefinition/condition-related|5.3.0"]
       }],
       "mustSupport" : true
     },

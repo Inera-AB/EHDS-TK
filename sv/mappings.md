@@ -1,4 +1,4 @@
-# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Mappings
 

@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetCarePlans – Vårdplan - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1</title>
+    <title>GetCarePlans – Vårdplan - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.1 - ci-build
+            <span style="display:inline-block;">0.8.2 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.1) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetCarePlans – Vårdplan</h2>
   
 
@@ -203,10 +203,18 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
     <p><!-- white space is critical inside of capture --></p>
-<div>
-<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
-</div>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#struktur" id="markdown-toc-struktur">Struktur</a></li>
+  <li><a href="#mappningstabell" id="markdown-toc-mappningstabell">Mappningstabell</a></li>
+  <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
+  <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
+  <li><a href="#typeofcareplan--kodverk" id="markdown-toc-typeofcareplan--kodverk">TypeOfCarePlan – kodverk</a></li>
+  <li><a href="#oid-till-uri-tabell" id="markdown-toc-oid-till-uri-tabell">OID-till-URI-tabell</a></li>
+  <li><a href="#föreslagna-nya-issues" id="markdown-toc-föreslagna-nya-issues">Föreslagna nya issues</a></li>
+</ul>
 
+</div>
 <p><strong>Tjänstekontrakt:</strong> <code class="language-plaintext highlighter-rouge">clinicalprocess:logistics:logistics</code> GetCarePlans v2.0<br />
 <strong>FHIR-profil:</strong> <a href="StructureDefinition-SEEHDSCarePlan.html">SEEHDSCarePlan</a><br />
 <strong>Logisk modell:</strong> <a href="StructureDefinition-SEEHDSLMCarePlans.html">SEEHDSLMCarePlans</a><br />
@@ -214,15 +222,15 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="struktur">Struktur</h4>
+<h3 id="struktur">Struktur</h3>
 
 <p>GetCarePlans returnerar en lista <code class="language-plaintext highlighter-rouge">carePlan</code> (0..*) med en flat struktur – alla fält finns direkt på <code class="language-plaintext highlighter-rouge">carePlan</code>, utan separata header/body-undernivåer i TKB.</p>
 
 <hr />
 
-<h4 id="mappningstabell">Mappningstabell</h4>
+<h3 id="mappningstabell">Mappningstabell</h3>
 
-<h5 id="header--identitet-och-patient">Header – identitet och patient</h5>
+<h4 id="header--identitet-och-patient">Header – identitet och patient</h4>
 
 <table>
   <thead>
@@ -261,7 +269,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--dokumenttid">Header – dokumenttid</h5>
+<h4 id="header--dokumenttid">Header – dokumenttid</h4>
 
 <table>
   <thead>
@@ -288,7 +296,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--ansvarig-personal-accountablehealthcareprofessional">Header – ansvarig personal (accountableHealthcareProfessional)</h5>
+<h4 id="header--ansvarig-personal-accountablehealthcareprofessional">Header – ansvarig personal (accountableHealthcareProfessional)</h4>
 
 <table>
   <thead>
@@ -327,7 +335,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--ansvarig-personal--organisationsenhet">Header – ansvarig personal – organisationsenhet</h5>
+<h4 id="header--ansvarig-personal--organisationsenhet">Header – ansvarig personal – organisationsenhet</h4>
 
 <table>
   <thead>
@@ -378,7 +386,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--pdlsparr">Header – PDL/Sparr</h5>
+<h4 id="header--pdlsparr">Header – PDL/Sparr</h4>
 
 <table>
   <thead>
@@ -411,7 +419,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--signerare-legalauthenticator">Header – signerare (legalAuthenticator)</h5>
+<h4 id="header--signerare-legalauthenticator">Header – signerare (legalAuthenticator)</h4>
 
 <table>
   <thead>
@@ -444,7 +452,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="header--relaterad-vårdkontakt">Header – relaterad vårdkontakt</h5>
+<h4 id="header--relaterad-vårdkontakt">Header – relaterad vårdkontakt</h4>
 
 <table>
   <thead>
@@ -477,7 +485,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="body--plantyp-och-deltagare">Body – plantyp och deltagare</h5>
+<h4 id="body--plantyp-och-deltagare">Body – plantyp och deltagare</h4>
 
 <table>
   <thead>
@@ -504,7 +512,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<h5 id="body--innehåll-multimediatype">Body – innehåll (MultimediaType)</h5>
+<h4 id="body--innehåll-multimediatype">Body – innehåll (MultimediaType)</h4>
 
 <table>
   <thead>
@@ -557,7 +565,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <p><strong>Invariant:</strong> <code class="language-plaintext highlighter-rouge">carePlan.carePlanBody.content</code> – antingen <code class="language-plaintext highlighter-rouge">value</code> eller <code class="language-plaintext highlighter-rouge">reference</code> måste anges, ej båda (<code class="language-plaintext highlighter-rouge">getcareplans-content-xor</code> i logisk modell).</p>
 </blockquote>
 
-<h5 id="tekniska-responsfält-result">Tekniska responsfält (result)</h5>
+<h4 id="tekniska-responsfält-result">Tekniska responsfält (result)</h4>
 
 <table>
   <thead>
@@ -604,7 +612,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="pdl-och-sparr">PDL och Sparr</h4>
+<h3 id="pdl-och-sparr">PDL och Sparr</h3>
 
 <p>PDL-fälten <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareUnitHSAId</code> och <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareGiverHSAId</code> är <strong>inte</strong> toppnivå-header-fält utan finns under <code class="language-plaintext highlighter-rouge">carePlan.carePlanHeader.accountableHealthcareProfessional</code>. De är valfria i kontraktet men krävs av Regel 1 för korrekt Sparr-hantering.</p>
 
@@ -632,7 +640,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="provenance">Provenance</h4>
+<h3 id="provenance">Provenance</h3>
 
 <table>
   <thead>
@@ -658,7 +666,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="typeofcareplan--kodverk">TypeOfCarePlan – kodverk</h4>
+<h3 id="typeofcareplan--kodverk">TypeOfCarePlan – kodverk</h3>
 
 <table>
   <thead>
@@ -714,7 +722,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="oid-till-uri-tabell">OID-till-URI-tabell</h4>
+<h3 id="oid-till-uri-tabell">OID-till-URI-tabell</h3>
 
 <table>
   <thead>
@@ -747,7 +755,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <hr />
 
-<h4 id="föreslagna-nya-issues">Föreslagna nya issues</h4>
+<h3 id="föreslagna-nya-issues">Föreslagna nya issues</h3>
 
 <table>
   <thead>
@@ -802,9 +810,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.1 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 15:20:00 +0000">
+  <span title="2026-11-13 16:07:00 +0000">
     2026-11-13
   </span>
 

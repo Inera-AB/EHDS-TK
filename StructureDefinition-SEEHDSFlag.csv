@@ -52,13 +52,13 @@ anonymous resourcescontained resources","",0,*,"","","","Resource {[]} {[]}
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Flag.extension:flagDetailExt","Flag.extension","flagDetailExt","","",0,*,"Y","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/flag-detail]]} {[]}
+"Flag.extension:flagDetailExt","Flag.extension","flagDetailExt","","",0,*,"Y","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/flag-detail|5.3.0]]} {[]}
 ","Referens till AllergyIntolerance när body = hypersensitivity (R4: flag-detail; R5: supportingInfo)","Points to the Observation, AllergyIntolerance or other record that provides additional supporting information about this flag.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Flag.extension:flagPriorityExt","Flag.extension","flagPriorityExt","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/flag-priority]]} {[]}
+"Flag.extension:flagPriorityExt","Flag.extension","flagPriorityExt","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/flag-priority|5.3.0]]} {[]}
 ","An alarm code","A code that identifies the priority of the alert, for example the Alert Priority flags column in IHE PCD TF 2 Table B.8-4.","","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Flag.extension:note","Flag.extension","note","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/note]]} {[]}
+"Flag.extension:note","Flag.extension","note","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/note|5.3.0]]} {[]}
 ","Additional notes that apply to this resource or element.","Additional notes that apply to this resource or element.","This extension SHALL NOT be used if the resource already has standard 'note' element (or equivalent) of type Annotation on the same element","","","","","","","","",,,,,"",,,,"DomainResource.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
 "Flag.extension:alertInformationComment","Flag.extension","alertInformationComment","","",0,1,"Y","","","Extension {[CanonicalType[https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment]]} {[]}

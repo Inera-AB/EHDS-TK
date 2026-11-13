@@ -1,4 +1,4 @@
-# RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4) 
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivCVType
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome4",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSRivCVTypeHealthcondActoutcome4",
   "title" : "RIV-TA CVType (clinicalprocess:healthcond:actoutcome:4)",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# Behandlingsbeskrivning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Behandlingsbeskrivning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Extension: Behandlingsbeskrivning 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-alert-treatment
   "resourceType" : "StructureDefinition",
   "id" : "alert-treatment-description",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-treatment-description",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "AlertTreatmentDescription",
   "title" : "Behandlingsbeskrivning",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

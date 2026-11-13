@@ -1,4 +1,4 @@
-# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## GetCareDocumentation – Anteckningar
 
@@ -16,7 +16,7 @@
 
 -------
 
-#### Resurshierarki
+### Resurshierarki
 
 ```
 SEEHDSDocumentReference (1 per careDocumentation)
@@ -32,9 +32,9 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 
 -------
 
-#### Mappningstabell – careDocumentation.header (JoL-header v2.2)
+### Mappningstabell – careDocumentation.header (JoL-header v2.2)
 
-##### accessControlHeader
+#### accessControlHeader
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -46,7 +46,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | `careDocumentation.header.accessControlHeader.blockComparisonTime` | 1..1 | `DocumentReference.extension[blockComparisonTime]` | Tidpunkt för Sparr-jämförelse; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor) |
 | `careDocumentation.header.accessControlHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security` | PDL-kontroll – se[PDL-001](#öppna-frågor) |
 
-##### sourceSystemId och record
+#### sourceSystemId och record
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -54,7 +54,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | `careDocumentation.header.record.id` | 1..1 | `DocumentReference.masterIdentifier` | Källsystemets primärnyckel; unik och beständig identifierare |
 | `careDocumentation.header.record.timestamp` | 1..1 | `DocumentReference.date`; även`Provenance.recorded`om`author.timestamp`saknas | Tidpunkt då journalposten skapades; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor). Fallback för`Provenance.recorded`, se[DOC-002](#beslutade-issues) |
 
-##### author (dokumentationsansvarig)
+#### author (dokumentationsansvarig)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -69,7 +69,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | `careDocumentation.header.author.orgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
 | `careDocumentation.header.author.orgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
 
-##### signature (signeringsinformation)
+#### signature (signeringsinformation)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -80,16 +80,16 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 
 -------
 
-#### Mappningstabell – careDocumentation.body
+### Mappningstabell – careDocumentation.body
 
-##### Klassificering och titel
+#### Klassificering och titel
 
 | | | | |
 | :--- | :--- | :--- | :--- |
 | `careDocumentation.body.clinicalDocumentNoteCode` | 1..1 | `DocumentReference.type` | Anteckningstyp; kodsystem ClinicalDocumentNoteCodeCS (OID 1.2.752.129.2.2.2.11) – se värdegrupptabell nedan |
 | `careDocumentation.body.clinicalDocumentNoteTitle` | 0..1 | `DocumentReference.description` | Anteckningens titel (fritext) |
 
-###### Värdegrupptabell – clinicalDocumentNoteCode
+##### Värdegrupptabell – clinicalDocumentNoteCode
 
 | | | |
 | :--- | :--- | :--- |
@@ -103,7 +103,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | `sva` | Specialistvårdsanteckning | Specialistanteckning |
 | `bes` | Besöksanteckning | Besöksanteckning |
 
-##### Innehåll – XOR: clinicalDocumentNoteText eller multimediaEntry
+#### Innehåll – XOR: clinicalDocumentNoteText eller multimediaEntry
 
 Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per post (se FSH Invariant `getcaredocumentation-body-xor`).
 
@@ -114,7 +114,7 @@ Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per
 | `careDocumentation.body.multimediaEntry.value` | 0..1 (XOR) | `DocumentReference.content[0].attachment.data` | Binärdata (base64-kodat). Ömsesidigt uteslutande med reference (se FSH Invariant`getcaredocumentation-multimedia-xor`) |
 | `careDocumentation.body.multimediaEntry.reference` | 0..1 (XOR) | `DocumentReference.content[0].attachment.url` | URL till externt dokument. Ömsesidigt uteslutande med value |
 
-##### dissentingOpinion (avvikande mening)
+#### dissentingOpinion (avvikande mening)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -128,7 +128,7 @@ Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per
 
 -------
 
-#### Mappningstabell – hasMore (paginering, toppnivå)
+### Mappningstabell – hasMore (paginering, toppnivå)
 
 `hasMore 0..*` är ett toppnivåelement i responsen (parallellt med `careDocumentation` och `result`) och indikerar att ytterligare data kan hämtas.
 
@@ -139,7 +139,7 @@ Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per
 
 -------
 
-#### Mappningstabell – result (tekniska svarsfält)
+### Mappningstabell – result (tekniska svarsfält)
 
 `result 1..1` innehåller teknisk statusinformation som hanteras av transportlagret och inte ingår i klinisk FHIR-data. OBS: GetCareDocumentation v3.0 använder `resultText` (ej `message` och `logId` som i PatientSummaryHeader-baserade TK:er).
 
@@ -150,13 +150,13 @@ Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per
 
 -------
 
-#### Härledda fält / Designbeslut
+### Härledda fält / Designbeslut
 
-##### DocumentReference.status
+#### DocumentReference.status
 
 `careDocumentation.body` innehåller inget statusfält. `DocumentReference.status` sätts alltid till `current` – antagandet är att tjänsten returnerar aktiva, giltiga journalanteckningar. Makulerade anteckningar förväntas inte returneras av källsystemet.
 
-##### XOR-villkor för body-innehåll
+#### XOR-villkor för body-innehåll
 
 Exakt ett av `clinicalDocumentNoteText` och `multimediaEntry` ska förekomma per post (FSH Invariant `getcaredocumentation-body-xor`). Inom `multimediaEntry` är `value` och `reference` ömsesidigt uteslutande (FSH Invariant `getcaredocumentation-multimedia-xor`):
 
@@ -171,15 +171,15 @@ expression: "value.exists() xor reference.exists()"
 
 ```
 
-##### dissentingOpinion
+#### dissentingOpinion
 
 Det finns inget standardiserat FHIR R4-element för avvikande meningar i `DocumentReference`. Custom extension `https://fhir.inera.se/StructureDefinition/dissenting-opinion` definieras med delfälten `opinionId`, `authorTime`, `opinion`, `personId`, `personName`.
 
-##### hasMore (paginering)
+#### hasMore (paginering)
 
 `hasMore 0..*` är ett toppnivåelement parallellt med `careDocumentation` och `result` i responsstrukturen (inte under body) och indikerar att svaret är paginerat. Paginering via `hasMore` **stöds inte** av denna IG och mappas inte till FHIR. Den behöver hanteras utanför IG:n. Se [DOC-001](#beslutade-issues).
 
-##### clinicalDocumentNoteText och DocBook
+#### clinicalDocumentNoteText och DocBook
 
 `clinicalDocumentNoteText` är av typen string. När DocBook används ska fältet innehålla XML. Eftersom XML:en ligger inuti ett XML-element måste XML-tecknen entity-kodas. DocBook i textfältet känns igen på den entity-kodade XML:en, medan DocBook i en bilaga känns igen på `multimediaEntry.mediaType`.
 
@@ -196,7 +196,7 @@ Avkodning, identifiering av DocBook, elementmappning, exempel och begränsningar
 
 -------
 
-#### PDL och Sparr
+### PDL och Sparr
 
 GetCareDocumentation använder JoL-header v2.2. PDL-fälten för Sparr hämtas **direkt från `accessControlHeader`** – inte från ett `accountableHealthcareProfessional`-block som i PatientSummaryHeader-baserade TK:er (DES-005):
 
@@ -208,7 +208,7 @@ GetCareDocumentation använder JoL-header v2.2. PDL-fälten för Sparr hämtas *
 
 -------
 
-#### Provenance
+### Provenance
 
 | | | |
 | :--- | :--- | :--- |
@@ -220,7 +220,7 @@ GetCareDocumentation använder JoL-header v2.2. PDL-fälten för Sparr hämtas *
 
 -------
 
-#### Övriga aktiva versioner – GetCareDocumentation 2.1
+### Övriga aktiva versioner – GetCareDocumentation 2.1
 
 Mappningstabellerna ovan utgår från GetCareDocumentation 3.0. Version 2.1 är också aktiv för både NPÖ och 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMCareDocumentationV21](StructureDefinition-SEEHDSLMCareDocumentationV21.md) (genererad från `GetCareDocumentationResponder_2.1.xsd` i `riv.clinicalprocess.healthcond.description` 2.1.19 och TKB:n för samma version). Samma profil, [SEEHDSDocumentReference](StructureDefinition-SEEHDSDocumentReference.md), används.
 
@@ -257,7 +257,7 @@ Den största skillnaden är headern: 2.1 har PatientSummaryHeader (`careDocument
 | `careDocumentation.careDocumentationHeader` | 1..1 Backbone | `careDocumentation.header` | Bytt namn |
 | `careDocumentation.careDocumentationBody` | 1..1 Backbone | `careDocumentation.body` | Bytt namn |
 
-##### Header (careDocumentationHeader) → DocumentReference
+#### Header (careDocumentationHeader) → DocumentReference
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -284,7 +284,7 @@ Den största skillnaden är headern: 2.1 har PatientSummaryHeader (`careDocument
 
 JoL-headerns `blockComparisonTime` och `careProcessId` finns inte i 2.1. Spärrkontrollen görs då mot `authorTime`.
 
-##### Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference
+#### Body (careDocumentationBody.clinicalDocumentNote) → DocumentReference
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -294,13 +294,13 @@ JoL-headerns `blockComparisonTime` och `careProcessId` finns inte i 2.1. Spärrk
 | `clinicalDocumentNote.multimediaEntry.mediaType/value/reference` | – | `DocumentReference.content[0].attachment` | Som i 3.0 |
 | `clinicalDocumentNote.dissentintOpinion` | 0..* | `DocumentReference.extension[dissentingOpinion]` | Heter`dissentintOpinion`i XSD:n för 2.1 (stavfel som måste användas i XML:en). Delfälten mappas som`dissentingOpinion`i 3.0 |
 
-##### result
+#### result
 
 I 2.1 har `result` fälten `resultCode`, `errorCode`, `logId`, `subCode` och `message`, mot `resultCode` och `resultText` i 3.0. Inga av dem mappas.
 
 -------
 
-#### OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | | |
 | :--- | :--- |
@@ -312,14 +312,14 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-#### Öppna frågor
+### Öppna frågor
 
 | | |
 | :--- | :--- |
 | PDL-001 | **Beslutat:**`approvedForPatient = false`→`meta.security``v3-ActCode#NOPAT`. Se[Mappningsissues](mapping-issues.md#stangda-fragor). |
 | GENERAL-001 | **Beslutat – tidszon.**RIVTA-tidsstämplar tolkas som lokal tid i`Europe/Stockholm`(sommartid beaktas).`dateTime`får explicit offset (`+01:00`/`+02:00`);`instant`anger samma tidpunkt, helst med samma offset-form. Se[Tidsstämplar och tidszon](mappings.md#tidszon). |
 
-#### Beslutade issues
+### Beslutade issues
 
 | | |
 | :--- | :--- |

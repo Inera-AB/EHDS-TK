@@ -1,4 +1,4 @@
-# RIV-TA IIType (clinicalprocess:healthcond:basic:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# RIV-TA IIType (clinicalprocess:healthcond:basic:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Logisk modell: RIV-TA IIType (clinicalprocess:healthcond:basic:2) 
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivIIType
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivIITypeHealthcondBasic2",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "SEEHDSRivIITypeHealthcondBasic2",
   "title" : "RIV-TA IIType (clinicalprocess:healthcond:basic:2)",
   "status" : "draft",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

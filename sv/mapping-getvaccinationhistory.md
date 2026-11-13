@@ -1,4 +1,4 @@
-# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## GetVaccinationHistory – Vaccinationer
 
@@ -14,7 +14,7 @@
 
 -------
 
-#### Resurshierarki
+### Resurshierarki
 
 ```
 SEEHDSImmunization (1 per administrationRecord)
@@ -34,7 +34,7 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 
 -------
 
-#### Mappningstabell – vaccinationMedicalRecordHeader
+### Mappningstabell – vaccinationMedicalRecordHeader
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -66,7 +66,7 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 
 -------
 
-#### Mappningstabell – registrationRecord
+### Mappningstabell – registrationRecord
 
 `registrationRecord 1..1` innehåller registreringsmetadata som gäller för alla `administrationRecord` inom samma `vaccinationMedicalRecord`.
 
@@ -100,7 +100,7 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 
 -------
 
-#### Mappningstabell – SEEHDSDevice (sourceSystem-fält)
+### Mappningstabell – SEEHDSDevice (sourceSystem-fält)
 
 `Immunization.extension[registrationDevice]` refererar en `SEEHDSDevice`-resurs som samlar alla källsystemsmetadata från `registrationRecord`. Resursen skapas alltid (sourceSystemName är 1..1).
 
@@ -114,7 +114,7 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 
 -------
 
-#### Mappningstabell – administrationRecord (per Immunization-resurs)
+### Mappningstabell – administrationRecord (per Immunization-resurs)
 
 En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan mappas per post.
 
@@ -163,7 +163,7 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 
 -------
 
-#### Mappningstabell – additionalPatientInformation (om present)
+### Mappningstabell – additionalPatientInformation (om present)
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -172,7 +172,7 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 
 -------
 
-#### Mappningstabell – result (tekniska svarsfält)
+### Mappningstabell – result (tekniska svarsfält)
 
 `result 1..1` innehåller teknisk statusinformation som hanteras av transportlagret och inte ingår i klinisk FHIR-data.
 
@@ -186,9 +186,9 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 
 -------
 
-#### Härledda fält / Designbeslut
+### Härledda fält / Designbeslut
 
-##### Immunization.status (från nullified)
+#### Immunization.status (från nullified)
 
 `vaccinationMedicalRecordHeader.nullified 1..1 boolean` styr statusen för alla `Immunization`-resurser i posten (DES-007):
 
@@ -197,18 +197,18 @@ En `Immunization`-resurs skapas för varje `administrationRecord`. Fält nedan m
 | `false` | `completed` | (sätts ej) |
 | `true` | `entered-in-error` | `nullifiedReason`(om satt) |
 
-##### En Immunization per administrationRecord (VAC-001)
+#### En Immunization per administrationRecord (VAC-001)
 
 `registrationRecord 1..1` är behållaren; `administrationRecord 0..*` är de enskilda vaccinationshändelserna. Designbeslut: en `Immunization` per `administrationRecord`.
 
 * Fält från `registrationRecord` (datum, riskCategory, careGiverOrg etc.) kopieras/delas till alla Immunization-resurser från samma `vaccinationMedicalRecord`.
 * Om `administrationRecord` är tom (0 poster) skapas en `Immunization` baserad enbart på `registrationRecord`-data med minimal information.
 
-##### Immunization.occurrenceDateTime (VAC-002)
+#### Immunization.occurrenceDateTime (VAC-002)
 
 Primär tidskälla är `vaccinationMedicalRecordHeader.documentTime` om den finns – den anger faktisk vaccinationstidpunkt. Om `documentTime` saknas används `accountableHealthcareProfessional.authorTime` som fallback (dokumentationstidpunkt). `registrationRecord.date` (date, ej dateTime) används alltid som `Immunization.recorded`.
 
-##### sourceSystem-fält → SEEHDSDevice (registrationDevice)
+#### sourceSystem-fält → SEEHDSDevice (registrationDevice)
 
 `registrationRecord` innehåller fem källsystemsfält (`sourceSystemName`, `sourceSystemProductName`, `sourceSystemProductVersion`, `sourceSystemContact.hsaid`, `sourceSystemContact.personName`) som tillsammans beskriver det system varifrån vaccinationsregistreringen härstammar.
 
@@ -219,7 +219,7 @@ I stället för att lägga dessa som enskilda extensions direkt på Immunization
  väldefinierade Device-element (`deviceName`, `version`)
 * Möjliggör enkel sökning på källsystem: `Device.deviceName.name` är ett sökbart fält
 
-##### performer-slicing (function=AP/OP)
+#### performer-slicing (function=AP/OP)
 
 `Immunization.performer` slicas på `function` med koder från `http://terminology.hl7.org/CodeSystem/v2-0443`:
 
@@ -232,24 +232,24 @@ I stället för att lägga dessa som enskilda extensions direkt på Immunization
 
 `performer[administering]` är 0..* och täcker alla AP-roller. `performer[ordering]` är 0..1 och representerar prescriber.
 
-##### careUnitSmiId → SEEHDSOrganization.identifier[smiId]
+#### careUnitSmiId → SEEHDSOrganization.identifier[smiId]
 
 `registrationRecord.careUnitSmiId` är SMI-id för den vårdenhet som administrerade vaccinet. I stället för en custom extension på Immunization läggs det som identifierarslice på `performer[administering].actor` (Organization) via `SEEHDSOrganization.identifier[smiId]`. Samma Organization bär även HSA-id via `identifier[hsaid]`.
 
 > OBS: SMI-id:ts OID (`urn:oid:1.2.752.194.10.1.1`) behöver verifieras mot Folkhälsomyndighetens
  faktiska NamingSystem – se [VAC-006](#öppna-frågor).
 
-##### riskCategory → programEligibility
+#### riskCategory → programEligibility
 
 `registrationRecord.riskCategory (0..*)`-koder mappar till `Immunization.programEligibility (0..*)`. `programEligibility` är FHIR R4:s standardelement för att ange vilken riskgrupp eller programmässig behörighet som motiverade vaccinationen.
 
-##### sourceDescription → reportOrigin
+#### sourceDescription → reportOrigin
 
 `administrationRecord.sourceDescription` (fritext) är källbeskrivningen för en efterregistrering. Den mappar till `Immunization.reportOrigin.text` – reportOrigin är ett CodeableConcept och `.text` är korrekt plats för en originaltext/fritext. Närvaro av sourceDescription innebär att `Immunization.primarySource` sätts till `false`.
 
 -------
 
-#### PDL och Sparr
+### PDL och Sparr
 
 PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern. **OBS:** Elementnamnet har versalt 'C' i 'Care' (avvikelse från andra TK:ers stavning):
 
@@ -261,7 +261,7 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 
 -------
 
-#### Provenance
+### Provenance
 
 | | | |
 | :--- | :--- | :--- |
@@ -273,11 +273,11 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 
 -------
 
-#### Övriga aktiva versioner – GetVaccinationHistory 1.0
+### Övriga aktiva versioner – GetVaccinationHistory 1.0
 
 Mappningstabellerna ovan utgår från GetVaccinationHistory 2.0. Version 1.0 är också aktiv för 1177 Journal och beskrivs av den logiska modellen [SEEHDSLMVaccinationHistoryV10](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md) (genererad från `GetVaccinationHistoryResponder_1.0.xsd` i `riv.clinicalprocess.activityprescription.actoutcome` 1.0.2 och tjänstekontraktsbeskrivningen för samma version). Strukturen är i stort sett densamma, så samma profiler används och element som är lika mappas enligt tabellerna ovan.
 
-##### Skillnader mot 2.0
+#### Skillnader mot 2.0
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -289,7 +289,7 @@ Mappningstabellerna ovan utgår från GetVaccinationHistory 2.0. Version 1.0 är
 | `result` | – | 1..1 Backbone | Finns bara i 2.0 |
 | `vaccinationMedicalRecord.vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 Boolean | 0..1 String | Ändrad datatyp |
 
-##### Mappning av det som skiljer i 1.0
+#### Mappning av det som skiljer i 1.0
 
 | | | | |
 | :--- | :--- | :--- | :--- |
@@ -302,7 +302,7 @@ Mappningstabellerna ovan utgår från GetVaccinationHistory 2.0. Version 1.0 är
 
 -------
 
-#### OID-till-URI-tabell
+### OID-till-URI-tabell
 
 | | |
 | :--- | :--- |
@@ -314,7 +314,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 -------
 
-#### Öppna frågor
+### Öppna frågor
 
 | | |
 | :--- | :--- |
@@ -327,7 +327,7 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 | :--- | :--- |
 | VAC-006 | **SMI-id OID behöver verifieras.**`SEEHDSOrganization.identifier[smiId].system`sätts preliminärt till`urn:oid:1.2.752.194.10.1.1`. Korrigera mot Folkhälsomyndighetens faktiska NamingSystem för vaccinationsregistret. |
 
-#### Föreslagna nya issues
+### Föreslagna nya issues
 
 | | |
 | :--- | :--- |

@@ -1,4 +1,4 @@
-# Introduction - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# Introduction - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## Introduction
 

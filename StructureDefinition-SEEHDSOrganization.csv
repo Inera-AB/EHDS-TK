@@ -152,13 +152,13 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Organization.address.line.extension:streetName","Organization.address.line.extension","streetName","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName]]} {[]}
+"Organization.address.line.extension:streetName","Organization.address.line.extension","streetName","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName|5.3.0]]} {[]}
 ","streetName","streetName.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","ADXP[partType=STR]"
-"Organization.address.line.extension:houseNumber","Organization.address.line.extension","houseNumber","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber]]} {[]}
+"Organization.address.line.extension:houseNumber","Organization.address.line.extension","houseNumber","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber|5.3.0]]} {[]}
 ","houseNumber","The number of a building, house or lot alongside the street. Also known as ""primary street number"". This does not number the street but rather the building.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","ADXP[partType=BNR]"
-"Organization.address.line.extension:postBox","Organization.address.line.extension","postBox","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox]]} {[]}
+"Organization.address.line.extension:postBox","Organization.address.line.extension","postBox","","",0,*,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-postBox|5.3.0]]} {[]}
 ","postBox","A numbered box located in a post station.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","ADXP[partType=POB]"
 "Organization.address.line.value","Organization.address.line.value","","","",0,1,"","","","string {[]} {[]}
@@ -188,7 +188,7 @@ Territory","",0,1,"","","Y","string {[]} {[]}
 ","Extension","An Extension","","","","","","","","","",,,,,"","value:url}
 ","",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
-"Organization.address.country.extension:countryCode","Organization.address.country.extension","countryCode","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-codedString]]} {[]}
+"Organization.address.country.extension:countryCode","Organization.address.country.extension","countryCode","","",0,1,"","","","Extension {[CanonicalType[http://hl7.org/fhir/StructureDefinition/iso21090-codedString|5.3.0]]} {[]}
 ","code for string","Provides a coded expression for the content represented in a string.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","SC.code"
 "Organization.address.country.extension:countryCode.id","Organization.address.country.extension.id","","","",0,1,"","","","id {[]} {[]}

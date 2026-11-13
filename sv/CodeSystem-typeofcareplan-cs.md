@@ -1,4 +1,4 @@
-# TypeOfCarePlan - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.1
+# TypeOfCarePlan - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
 
 ## CodeSystem: TypeOfCarePlan 
 
@@ -19,11 +19,12 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
   "resourceType" : "CodeSystem",
   "id" : "typeofcareplan-cs",
   "url" : "https://fhir.inera.se/CodeSystem/typeofcareplan-cs",
-  "version" : "0.8.1",
+  "version" : "0.8.2",
   "name" : "TypeOfCarePlanCS",
   "title" : "TypeOfCarePlan",
   "status" : "active",
-  "date" : "2026-11-13T15:20:27+00:00",
+  "experimental" : false,
+  "date" : "2026-11-13T16:07:48+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -40,6 +41,7 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
       "display" : "Sweden"
     }]
   }],
+  "caseSensitive" : true,
   "content" : "complete",
   "count" : 8,
   "concept" : [{
