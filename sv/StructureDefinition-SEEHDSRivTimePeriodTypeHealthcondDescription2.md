@@ -1,4 +1,4 @@
-# RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2) 
 
@@ -6,7 +6,7 @@
 
 * Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondDescription2)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription2.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivTimePe
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimePeriodTypeHealthcondDescription2",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSRivTimePeriodTypeHealthcondDescription2",
   "title" : "RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2)",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

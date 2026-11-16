@@ -1,4 +1,4 @@
-# Signeringstidpunkt för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# Signeringstidpunkt för uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Extension: Signeringstidpunkt för uppmärksamhetssignal 
 
@@ -10,7 +10,7 @@
 
 * Använd denna Extension: [SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)](StructureDefinition-SEEHDSFlag.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/alert-asserted-date)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-alert-asserted-date.json)
 
 ### Formella vyer av extensioninnehåll
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-alert-asserted-
   "resourceType" : "StructureDefinition",
   "id" : "alert-asserted-date",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-asserted-date",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "AlertAssertedDate",
   "title" : "Signeringstidpunkt för uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

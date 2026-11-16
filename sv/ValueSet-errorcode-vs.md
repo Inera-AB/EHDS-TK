@@ -1,4 +1,4 @@
-# ErrorCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# ErrorCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## ValueSet: ErrorCode — ValueSet 
 
@@ -26,12 +26,12 @@
   "resourceType" : "ValueSet",
   "id" : "errorcode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/errorcode-vs",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "ErrorCodeVS",
   "title" : "ErrorCode — ValueSet",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -503,4 +503,4 @@ SEEHDSTK
 /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ValueSet-typeofresultcode-vs.json: line 0, col 0, Warning - The resource ValueSet/typeofresultcode-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html) (BUSINESSRULE)
 
 err = 0, warn = 132, info = 368, broken links = 0
-IG Publisher Version: 3.0.3
+IG Publisher Version: 3.0.4

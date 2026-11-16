@@ -1,4 +1,4 @@
-# SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Resursprofil: SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3) 
 
@@ -7,7 +7,7 @@
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 * Denna Profil används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSObservationGrowth)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSObservationGrowth.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSObservati
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSObservationGrowth",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationGrowth",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSObservationGrowth",
   "title" : "SE EHDS Observation – Tillväxtkurva (GetObservations + IoÖ v3)",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

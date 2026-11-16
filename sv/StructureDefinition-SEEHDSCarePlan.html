@@ -8,7 +8,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>SE EHDS CarePlan – Vårdplan (GetCarePlans) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
+    <title>SE EHDS CarePlan – Vårdplan (GetCarePlans) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -66,7 +66,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.2 - ci-build
+            <span style="display:inline-block;">0.9.0 - ci-build
 
 
 
@@ -182,7 +182,7 @@
 
 <!-- layouts\layout-profile -->
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.9.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   
 
 
@@ -236,12 +236,6 @@
   
 
 
-  
-    <li>
-      <a href="StructureDefinition-SEEHDSCarePlan.profile.ttl.html">TTL</a>
-    </li>
-  
-
 
 </ul>
 
@@ -264,7 +258,7 @@ SE EHDS CarePlan – Vårdplan (GetCarePlans)
       <td colspan="4"><i>Officiell URL</i>: <span class="copy-text">https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan<button title="Klicka för att kopiera URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan"/></span>
       </td>
       <td><i>Version</i>:
-      <span class="copy-text">0.8.2<button title="Klicka för att kopiera versionsspecificerad URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan|0.8.2"/></span>
+      <span class="copy-text">0.9.0<button title="Klicka för att kopiera versionsspecificerad URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCarePlan|0.9.0"/></span>
       </td>
       <td style="text-align: right;border-left-style: hidden" title="Aktivera detta för att se ändringar sedan den senaste officiella versionen">
         <span id="toggle-change-display"><label style="margin:0;font-weight:normal" for="showChanges">Markera textändringar?</label>
@@ -289,7 +283,7 @@ SE EHDS CarePlan – Vårdplan (GetCarePlans)
           
 
             per 
-2026-11-13
+2026-11-16
 
           
         
@@ -321,7 +315,7 @@ SE EHDS CarePlan – Vårdplan (GetCarePlans)
  <li>CapabilityStatements som använder denna Profil: <a href="CapabilityStatement-SEEHDSResourceAccessProvider.html">SE EHDS Resource Access Provider</a></li>
  <li>Denna Profil används inte av några profiler i denna implementationsguide</li>
 </ul>
-<p>Du kan också kontrollera <a href="https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSCarePlan">användningar i FHIR IG-statistiken</a></p>
+<p>Du kan också kontrollera <a href="https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSCarePlan.json">användningar i FHIR IG-statistiken</a></p>
 
 
   <!-- no uri -->
@@ -356,10 +350,6 @@ SE EHDS CarePlan – Vårdplan (GetCarePlans)
         <a href="#tabs-json">Pseudo-JSON</a>
       </li>-->
 
-
-      <!--<li>
-        <a href="#tabs-ttl">Pseudo-TTL</a>
-      </li>-->
 
       <li>
         <a href="#tabs-summ">Statistik/referenser</a>
@@ -456,7 +446,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Innehåll i planen (content – text/plain, text/html). Stödda MIME-typer: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf. Binärt innehåll (base64/URL) kräver extension. content.id är 0..0 (N/A) per TKB. Binärdata max 100 KB per post.<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSCarePlanK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSCarePlanK'), 'constraint', document.getElementById('cbSEEHDSCarePlanK-constraint').checked, document.getElementById('ppSEEHDSCarePlanK'));
 document.getElementById('cbSEEHDSCarePlanK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -529,7 +519,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanK'), 'obligation', document.ge
       <a href="ValueSet-typeofcareplan-vs.html">TypeOfCarePlan — ValueSet</a>
       <button data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
-    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.8.2</td>
+    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.9.0</td>
     <td>Denna IG</td>
   </tr>
 </table>
@@ -644,7 +634,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanK'), 'obligation', document.ge
 <td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">*</span></td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation" class="xhtPieceDeEmphasized">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Innehåll i planen (content – text/plain, text/html). Stödda MIME-typer: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf. Binärt innehåll (base64/URL) kräver extension. content.id är 0..0 (N/A) per TKB. Binärdata max 100 KB per post.</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSCarePlanD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSCarePlanD'), 'constraint', document.getElementById('cbSEEHDSCarePlanD-constraint').checked, document.getElementById('ppSEEHDSCarePlanD'));
 document.getElementById('cbSEEHDSCarePlanD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -689,7 +679,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanD'), 'obligation', document.ge
       <a href="ValueSet-typeofcareplan-vs.html" class="unchangedStyle">TypeOfCarePlan — ValueSet</a>
       <button data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
-    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.8.2</td>
+    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.9.0</td>
     <td>Denna IG</td>
   </tr>
 </table>
@@ -1085,7 +1075,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Innehåll i planen (content – text/plain, text/html). Stödda MIME-typer: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf. Binärt innehåll (base64/URL) kräver extension. content.id är 0..0 (N/A) per TKB. Binärdata max 100 KB per post.<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSCarePlanS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSCarePlanS'), 'constraint', document.getElementById('cbSEEHDSCarePlanS-constraint').checked, document.getElementById('ppSEEHDSCarePlanS'));
 document.getElementById('cbSEEHDSCarePlanS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1204,7 +1194,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanS'), 'obligation', document.ge
       <a href="ValueSet-typeofcareplan-vs.html">TypeOfCarePlan — ValueSet</a>
       <button data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
-    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.8.2</td>
+    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.9.0</td>
     <td>Denna IG</td>
   </tr>
   <tr>
@@ -1436,16 +1426,6 @@ filterDesc(document.getElementById('SEEHDSCarePlanS'), 'obligation', document.ge
     </div>-->
 
 
-    <!--<a name="tabs-ttl"> </a>
-    <div id="tabs-ttl">
-      <div id="ttl">
-        <div id="ttl-inner">
-          <p><span style="color: maroon; font-weight: bold">yet to be done: Turtle template</span></p>
-
-        </div>
-      </div>
-    </div>-->
-
     <a name="tabs-summ"> </a>
     <div id="tabs-summ">
       <div id="tbl-summ">
@@ -1569,7 +1549,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Innehåll i planen (content – text/plain, text/html). Stödda MIME-typer: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf. Binärt innehåll (base64/URL) kräver extension. content.id är 0..0 (N/A) per TKB. Binärdata max 100 KB per post.<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSCarePlanKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSCarePlanKA'), 'constraint', document.getElementById('cbSEEHDSCarePlanKA-constraint').checked, document.getElementById('ppSEEHDSCarePlanKA'));
 document.getElementById('cbSEEHDSCarePlanKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1641,7 +1621,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanKA'), 'obligation', document.g
       <a href="ValueSet-typeofcareplan-vs.html">TypeOfCarePlan — ValueSet</a>
       <button data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
-    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.8.2</td>
+    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.9.0</td>
     <td>Denna IG</td>
   </tr>
 </table>
@@ -1756,7 +1736,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanKA'), 'obligation', document.g
 <td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">*</span></td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation" class="xhtPieceDeEmphasized">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Innehåll i planen (content – text/plain, text/html). Stödda MIME-typer: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf. Binärt innehåll (base64/URL) kräver extension. content.id är 0..0 (N/A) per TKB. Binärdata max 100 KB per post.</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSCarePlanDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSCarePlanDA'), 'constraint', document.getElementById('cbSEEHDSCarePlanDA-constraint').checked, document.getElementById('ppSEEHDSCarePlanDA'));
 document.getElementById('cbSEEHDSCarePlanDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1798,7 +1778,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanDA'), 'obligation', document.g
       <a href="ValueSet-typeofcareplan-vs.html" class="unchangedStyle">TypeOfCarePlan — ValueSet</a>
       <button data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
-    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.8.2</td>
+    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.9.0</td>
     <td>Denna IG</td>
   </tr>
 </table>
@@ -2194,7 +2174,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Innehåll i planen (content – text/plain, text/html). Stödda MIME-typer: text/plain, text/html, image/jpeg, image/png, image/tiff, application/pdf. Binärt innehåll (base64/URL) kräver extension. content.id är 0..0 (N/A) per TKB. Binärdata max 100 KB per post.<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSCarePlanSA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSCarePlanSA'), 'constraint', document.getElementById('cbSEEHDSCarePlanSA-constraint').checked, document.getElementById('ppSEEHDSCarePlanSA'));
 document.getElementById('cbSEEHDSCarePlanSA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2311,7 +2291,7 @@ filterDesc(document.getElementById('SEEHDSCarePlanSA'), 'obligation', document.g
       <a href="ValueSet-typeofcareplan-vs.html">TypeOfCarePlan — ValueSet</a>
       <button data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs" title="Klicka för att kopiera URL" class="btn-copy" aria-label="copy"></button>
     </td>
-    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.8.2</td>
+    <td title="Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation">&#x1F4E6;0.9.0</td>
     <td>Denna IG</td>
   </tr>
   <tr>
@@ -2542,16 +2522,6 @@ filterDesc(document.getElementById('SEEHDSCarePlanSA'), 'obligation', document.g
       </div>-->
 
 
-      <!--<div id="all-ttl">
-        <p>
-          <b>TTL-mall</b>
-        </p>
-        <div id="all-ttl-inner">
-          <p><span style="color: maroon; font-weight: bold">yet to be done: Turtle template</span></p>
-
-        </div>
-      </div>-->
-
       <div id="all-summ">
         <p>Denna struktur är härledd från 
   <a href="http://hl7.org/fhir/R4/careplan.html">CarePlan</a>
@@ -2620,10 +2590,10 @@ Sammanfattning
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.9.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 16:07:00 +0000">
-    2026-11-13
+  <span title="2026-11-16 14:45:00 +0000">
+    2026-11-16
   </span>
 
           <br/>

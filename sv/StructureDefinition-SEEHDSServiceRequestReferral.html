@@ -8,7 +8,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2</title>
+    <title>SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -66,7 +66,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.8.2 - ci-build
+            <span style="display:inline-block;">0.9.0 - ci-build
 
 
 
@@ -182,7 +182,7 @@
 
 <!-- layouts\layout-profile -->
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.8.2) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.9.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   
 
 
@@ -236,12 +236,6 @@
   
 
 
-  
-    <li>
-      <a href="StructureDefinition-SEEHDSServiceRequestReferral.profile.ttl.html">TTL</a>
-    </li>
-  
-
 
 </ul>
 
@@ -264,7 +258,7 @@ SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)
       <td colspan="4"><i>Officiell URL</i>: <span class="copy-text">https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral<button title="Klicka för att kopiera URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral"/></span>
       </td>
       <td><i>Version</i>:
-      <span class="copy-text">0.8.2<button title="Klicka för att kopiera versionsspecificerad URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral|0.8.2"/></span>
+      <span class="copy-text">0.9.0<button title="Klicka för att kopiera versionsspecificerad URL" class="btn-copy" data-clipboard-text="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSServiceRequestReferral|0.9.0"/></span>
       </td>
       <td style="text-align: right;border-left-style: hidden" title="Aktivera detta för att se ändringar sedan den senaste officiella versionen">
         <span id="toggle-change-display"><label style="margin:0;font-weight:normal" for="showChanges">Markera textändringar?</label>
@@ -289,7 +283,7 @@ SE EHDS ServiceRequest – Konsultationsremiss (GetReferralOutcome)
           
 
             per 
-2026-11-13
+2026-11-16
 
           
         
@@ -327,7 +321,7 @@ för remissens del.</p>
  <li>Referera till denna Profil: <a href="StructureDefinition-SEEHDSDiagnosticReportReferral.html">SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)</a> and <a href="StructureDefinition-SEEHDSTask.html">SE EHDS Task – Remisstatus (GetRequestActivities)</a></li>
  <li>CapabilityStatements som använder denna Profil: <a href="CapabilityStatement-SEEHDSResourceAccessProvider.html">SE EHDS Resource Access Provider</a></li>
 </ul>
-<p>Du kan också kontrollera <a href="https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSServiceRequestReferral">användningar i FHIR IG-statistiken</a></p>
+<p>Du kan också kontrollera <a href="https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSServiceRequestReferral.json">användningar i FHIR IG-statistiken</a></p>
 
 
   <!-- no uri -->
@@ -362,10 +356,6 @@ för remissens del.</p>
         <a href="#tabs-json">Pseudo-JSON</a>
       </li>-->
 
-
-      <!--<li>
-        <a href="#tabs-ttl">Pseudo-TTL</a>
-      </li>-->
 
       <li>
         <a href="#tabs-summ">Statistik/referenser</a>
@@ -452,7 +442,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Remissorsak (referralOutcomeBody.referral.referralReason)<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSServiceRequestReferralK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSServiceRequestReferralK'), 'constraint', document.getElementById('cbSEEHDSServiceRequestReferralK-constraint').checked, document.getElementById('ppSEEHDSServiceRequestReferralK'));
 document.getElementById('cbSEEHDSServiceRequestReferralK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -627,7 +617,7 @@ filterDesc(document.getElementById('SEEHDSServiceRequestReferralK'), 'obligation
 <td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">*</span></td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation" class="xhtPieceDeEmphasized">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Remissorsak (referralOutcomeBody.referral.referralReason)</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSServiceRequestReferralD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSServiceRequestReferralD'), 'constraint', document.getElementById('cbSEEHDSServiceRequestReferralD-constraint').checked, document.getElementById('ppSEEHDSServiceRequestReferralD'));
 document.getElementById('cbSEEHDSServiceRequestReferralD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -948,7 +938,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/provenance.html">Provenance</a>)</td>
 <td style="" class="hierarchy xhtCellBorder0">Request provenance<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSServiceRequestReferralS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSServiceRequestReferralS'), 'constraint', document.getElementById('cbSEEHDSServiceRequestReferralS-constraint').checked, document.getElementById('ppSEEHDSServiceRequestReferralS'));
 document.getElementById('cbSEEHDSServiceRequestReferralS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1312,16 +1302,6 @@ filterDesc(document.getElementById('SEEHDSServiceRequestReferralS'), 'obligation
     </div>-->
 
 
-    <!--<a name="tabs-ttl"> </a>
-    <div id="tabs-ttl">
-      <div id="ttl">
-        <div id="ttl-inner">
-          <p><span style="color: maroon; font-weight: bold">yet to be done: Turtle template</span></p>
-
-        </div>
-      </div>
-    </div>-->
-
     <a name="tabs-summ"> </a>
     <div id="tabs-summ">
       <div id="tbl-summ">
@@ -1427,7 +1407,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Remissorsak (referralOutcomeBody.referral.referralReason)<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSServiceRequestReferralKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSServiceRequestReferralKA'), 'constraint', document.getElementById('cbSEEHDSServiceRequestReferralKA-constraint').checked, document.getElementById('ppSEEHDSServiceRequestReferralKA'));
 document.getElementById('cbSEEHDSServiceRequestReferralKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1601,7 +1581,7 @@ filterDesc(document.getElementById('SEEHDSServiceRequestReferralKA'), 'obligatio
 <td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">*</span></td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Annotation" class="xhtPieceDeEmphasized">Annotation</a></td>
 <td style="" class="hierarchy xhtCellBorder0">Remissorsak (referralOutcomeBody.referral.referralReason)</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSServiceRequestReferralDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSServiceRequestReferralDA'), 'constraint', document.getElementById('cbSEEHDSServiceRequestReferralDA-constraint').checked, document.getElementById('ppSEEHDSServiceRequestReferralDA'));
 document.getElementById('cbSEEHDSServiceRequestReferralDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -1919,7 +1899,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="" class="hierarchy xhtCellBorder0">0..*</td>
 <td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/provenance.html">Provenance</a>)</td>
 <td style="" class="hierarchy xhtCellBorder0">Request provenance<br/></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 0956d537-8a3b-4cc1-bab7-70e436915368
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr><script type="text/javascript">  // 1a8219ec-183b-46fc-a7ff-7045acfacbc9
 document.getElementById('cbSEEHDSServiceRequestReferralSA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
 filterDesc(document.getElementById('SEEHDSServiceRequestReferralSA'), 'constraint', document.getElementById('cbSEEHDSServiceRequestReferralSA-constraint').checked, document.getElementById('ppSEEHDSServiceRequestReferralSA'));
 document.getElementById('cbSEEHDSServiceRequestReferralSA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
@@ -2280,16 +2260,6 @@ filterDesc(document.getElementById('SEEHDSServiceRequestReferralSA'), 'obligatio
       </div>-->
 
 
-      <!--<div id="all-ttl">
-        <p>
-          <b>TTL-mall</b>
-        </p>
-        <div id="all-ttl-inner">
-          <p><span style="color: maroon; font-weight: bold">yet to be done: Turtle template</span></p>
-
-        </div>
-      </div>-->
-
       <div id="all-summ">
         <p>Denna struktur är härledd från 
   <a href="http://hl7.org/fhir/R4/servicerequest.html">ServiceRequest</a>
@@ -2350,10 +2320,10 @@ Sammanfattning
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.8.2 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.9.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-13 16:07:00 +0000">
-    2026-11-13
+  <span title="2026-11-16 14:45:00 +0000">
+    2026-11-16
   </span>
 
           <br/>

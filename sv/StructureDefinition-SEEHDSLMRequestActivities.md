@@ -1,4 +1,4 @@
-# GetRequestActivities - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# GetRequestActivities - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: GetRequestActivities 
 
@@ -6,7 +6,7 @@
 
 * Denna Logisk modell används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSLMRequestActivities)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSLMRequestActivities.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -58,11 +58,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMRequest
     "valueUri" : "urn:riv:crm:requeststatus:GetRequestActivitiesResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMRequestActivities",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSLMRequestActivities",
   "title" : "GetRequestActivities",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

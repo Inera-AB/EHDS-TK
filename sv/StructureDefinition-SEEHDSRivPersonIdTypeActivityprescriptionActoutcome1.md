@@ -1,4 +1,4 @@
-# RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:1) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:1) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:1) 
 
@@ -6,7 +6,7 @@
 
 * Använd denna Logisk modell: [GetVaccinationHistory 1.0](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivPersonIdTypeActivityprescriptionActoutcome1)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSRivPersonIdTypeActivityprescriptionActoutcome1.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivPerson
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPersonIdTypeActivityprescriptionActoutcome1",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSRivPersonIdTypeActivityprescriptionActoutcome1",
   "title" : "RIV-TA PersonIdType (clinicalprocess:activityprescription:actoutcome:1)",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

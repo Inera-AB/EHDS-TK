@@ -1,4 +1,4 @@
-# SE EHDS Encounter – Vårdkontakter (GetCareContacts) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# SE EHDS Encounter – Vårdkontakter (GetCareContacts) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Resursprofil: SE EHDS Encounter – Vårdkontakter (GetCareContacts) 
 
@@ -7,7 +7,7 @@
 * Referera till denna Profil: [SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)](StructureDefinition-SEEHDSDocumentReference.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSEncounter)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSEncounter.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSEncounter
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSEncounter",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSEncounter",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSEncounter",
   "title" : "SE EHDS Encounter – Vårdkontakter (GetCareContacts)",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

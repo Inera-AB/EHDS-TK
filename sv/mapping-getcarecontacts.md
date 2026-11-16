@@ -1,4 +1,4 @@
-# GetCareContacts – Vårdkontakter - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# GetCareContacts – Vårdkontakter - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## GetCareContacts – Vårdkontakter
 

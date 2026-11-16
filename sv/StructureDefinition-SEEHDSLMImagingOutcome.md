@@ -1,4 +1,4 @@
-# GetImagingOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# GetImagingOutcome - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: GetImagingOutcome 
 
@@ -6,7 +6,7 @@
 
 * Denna Logisk modell används inte av några profiler i denna implementationsguide
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSLMImagingOutcome)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSLMImagingOutcome.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMImaging
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetImagingOutcomeResponder:1"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMImagingOutcome",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSLMImagingOutcome",
   "title" : "GetImagingOutcome",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

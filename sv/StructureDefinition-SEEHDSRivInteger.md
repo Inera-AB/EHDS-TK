@@ -1,4 +1,4 @@
-# RIV-TA heltal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# RIV-TA heltal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: RIV-TA heltal 
 
@@ -6,7 +6,7 @@
 
 * Använd denna Logisk modell: [GetAccessLogForPatient](StructureDefinition-SEEHDSLMAccessLog.md), [GetAccessLogsForPatient 1.1](StructureDefinition-SEEHDSLMAccessLogV11.md), [GetCareContacts 2.0](StructureDefinition-SEEHDSLMCareContactsV20.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md)... Show 7 more, [GetLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md), [GetLaboratoryOrderOutcome 4.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.md), [GetMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.md), [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md), [GetObservations](StructureDefinition-SEEHDSLMObservations.md), [GetVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md) and [GetVaccinationHistory 1.0](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivInteger)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSRivInteger.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -42,11 +42,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivIntege
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivInteger",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivInteger",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSRivInteger",
   "title" : "RIV-TA heltal",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

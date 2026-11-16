@@ -1,4 +1,4 @@
-# RIV-TA xs:anyURI - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# RIV-TA xs:anyURI - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: RIV-TA xs:anyURI 
 
@@ -6,7 +6,7 @@
 
 * Använd denna Logisk modell: [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md), [GetCareDocumentation 2.1](StructureDefinition-SEEHDSLMCareDocumentationV21.md), [GetCarePlans](StructureDefinition-SEEHDSLMCarePlans.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md)... Show 3 more, [GetObservations](StructureDefinition-SEEHDSLMObservations.md), [GetReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md) and [GetReferralOutcome 3.1](StructureDefinition-SEEHDSLMReferralOutcomeV31.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivAnyURI)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSRivAnyURI.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -42,11 +42,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivAnyURI
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivAnyURI",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivAnyURI",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSRivAnyURI",
   "title" : "RIV-TA xs:anyURI",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

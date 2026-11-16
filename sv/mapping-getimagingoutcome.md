@@ -1,4 +1,4 @@
-# GetImagingOutcome – Bilddiagnostik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# GetImagingOutcome – Bilddiagnostik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## GetImagingOutcome – Bilddiagnostik
 

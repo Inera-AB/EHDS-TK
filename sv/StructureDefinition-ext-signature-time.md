@@ -1,4 +1,4 @@
-# Signeringstidpunkt för journalanteckning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# Signeringstidpunkt för journalanteckning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Extension: Signeringstidpunkt för journalanteckning 
 
@@ -10,7 +10,7 @@
 
 * Använd denna Extension: [SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)](StructureDefinition-SEEHDSDocumentReference.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/ext-signature-time)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-ext-signature-time.json)
 
 ### Formella vyer av extensioninnehåll
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-ext-signature-t
   "resourceType" : "StructureDefinition",
   "id" : "ext-signature-time",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/ext-signature-time",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "DocumentReferenceSignatureTime",
   "title" : "Signeringstidpunkt för journalanteckning",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

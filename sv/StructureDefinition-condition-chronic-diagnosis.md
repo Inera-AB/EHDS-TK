@@ -1,4 +1,4 @@
-# Kronisk diagnos - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# Kronisk diagnos - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Extension: Kronisk diagnos 
 
@@ -10,7 +10,7 @@
 
 * Använd denna Extension: [SE EHDS Condition – Diagnos (GetDiagnosis)](StructureDefinition-SEEHDSConditionDiagnosis.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/condition-chronic-diagnosis)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-condition-chronic-diagnosis.json)
 
 ### Formella vyer av extensioninnehåll
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-condition-chron
   "resourceType" : "StructureDefinition",
   "id" : "condition-chronic-diagnosis",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "ConditionChronicDiagnosis",
   "title" : "Kronisk diagnos",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

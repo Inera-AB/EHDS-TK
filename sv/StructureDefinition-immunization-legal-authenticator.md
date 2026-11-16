@@ -1,4 +1,4 @@
-# Juridisk äkthetsintygsgivare för vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# Juridisk äkthetsintygsgivare för vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Extension: Juridisk äkthetsintygsgivare för vaccination 
 
@@ -10,7 +10,7 @@
 
 * Använd denna Extension: [SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)](StructureDefinition-SEEHDSImmunization.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/immunization-legal-authenticator)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-immunization-legal-authenticator.json)
 
 ### Formella vyer av extensioninnehåll
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-immunization-le
   "resourceType" : "StructureDefinition",
   "id" : "immunization-legal-authenticator",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-legal-authenticator",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "ImmunizationLegalAuthenticator",
   "title" : "Juridisk äkthetsintygsgivare för vaccination",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

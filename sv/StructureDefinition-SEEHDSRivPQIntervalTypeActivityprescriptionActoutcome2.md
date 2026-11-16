@@ -1,4 +1,4 @@
-# RIV-TA PQIntervalType (clinicalprocess:activityprescription:actoutcome:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# RIV-TA PQIntervalType (clinicalprocess:activityprescription:actoutcome:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: RIV-TA PQIntervalType (clinicalprocess:activityprescription:actoutcome:2) 
 
@@ -6,7 +6,7 @@
 
 * Använd denna Logisk modell: [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivPQInte
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSRivPQIntervalTypeActivityprescriptionActoutcome2",
   "title" : "RIV-TA PQIntervalType (clinicalprocess:activityprescription:actoutcome:2)",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

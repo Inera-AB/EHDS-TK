@@ -1,4 +1,4 @@
-# Fullständig dos administrerad - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# Fullständig dos administrerad - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Extension: Fullständig dos administrerad 
 
@@ -10,7 +10,7 @@
 
 * Använd denna Extension: [SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)](StructureDefinition-SEEHDSImmunization.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/immunization-is-dose-complete)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-immunization-is-dose-complete.json)
 
 ### Formella vyer av extensioninnehåll
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-immunization-is
   "resourceType" : "StructureDefinition",
   "id" : "immunization-is-dose-complete",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-is-dose-complete",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "ImmunizationIsDoseComplete",
   "title" : "Fullständig dos administrerad",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# RIV-TA TimeStampType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# RIV-TA TimeStampType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: RIV-TA TimeStampType 
 
@@ -6,7 +6,7 @@
 
 * Använd denna Logisk modell: [GetAlertInformation](StructureDefinition-SEEHDSLMAlertInformation.md), [GetAlertInformation 3.0](StructureDefinition-SEEHDSLMAlertInformationV30.md), [GetCareContacts](StructureDefinition-SEEHDSLMCareContacts.md), [GetCareContacts 2.0](StructureDefinition-SEEHDSLMCareContactsV20.md)... Show 26 more, [GetCareDocumentation](StructureDefinition-SEEHDSLMCareDocumentation.md), [GetCareDocumentation 2.1](StructureDefinition-SEEHDSLMCareDocumentationV21.md), [GetCarePlans](StructureDefinition-SEEHDSLMCarePlans.md), [GetDiagnosis](StructureDefinition-SEEHDSLMDiagnosis.md), [GetFunctionalStatus](StructureDefinition-SEEHDSLMFunctionalStatus.md), [GetImagingOutcome](StructureDefinition-SEEHDSLMImagingOutcome.md), [GetLaboratoryOrderOutcome](StructureDefinition-SEEHDSLMLaboratoryOrderOutcome.md), [GetLaboratoryOrderOutcome 3.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV31.md), [GetLaboratoryOrderOutcome 4.1](StructureDefinition-SEEHDSLMLaboratoryOrderOutcomeV41.md), [GetMaternityMedicalHistory](StructureDefinition-SEEHDSLMMaternityMedicalHistory.md), [GetMedicationHistory](StructureDefinition-SEEHDSLMMedicationHistory.md), [GetObservations](StructureDefinition-SEEHDSLMObservations.md), [GetObservations 1.2](StructureDefinition-SEEHDSLMObservationsV12.md), [GetReferralOutcome](StructureDefinition-SEEHDSLMReferralOutcome.md), [GetReferralOutcome 3.1](StructureDefinition-SEEHDSLMReferralOutcomeV31.md), [GetRequestActivities](StructureDefinition-SEEHDSLMRequestActivities.md), [GetVaccinationHistory](StructureDefinition-SEEHDSLMVaccinationHistory.md), [GetVaccinationHistory 1.0](StructureDefinition-SEEHDSLMVaccinationHistoryV10.md), [RIV-TA TimePeriodType (clinicalprocess:activityprescription:actoutcome:2)](StructureDefinition-SEEHDSRivTimePeriodTypeActivityprescriptionActoutcome2.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:3)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondActoutcome3.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:actoutcome:4)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondActoutcome4.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:basic:1)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondBasic1.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:description:2)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription2.md), [RIV-TA TimePeriodType (clinicalprocess:healthcond:description:3)](StructureDefinition-SEEHDSRivTimePeriodTypeHealthcondDescription3.md), [RIV-TA TimePeriodType (clinicalprocess:logistics:logistics:2)](StructureDefinition-SEEHDSRivTimePeriodTypeLogisticsLogistics2.md) and [RIV-TA TimePeriodType (clinicalprocess:logistics:logistics:3)](StructureDefinition-SEEHDSRivTimePeriodTypeLogisticsLogistics3.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivTimeStamp)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSRivTimeStamp.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -42,11 +42,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivTimeSt
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivTimeStamp",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivTimeStamp",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSRivTimeStamp",
   "title" : "RIV-TA TimeStampType",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

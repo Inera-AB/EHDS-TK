@@ -1,4 +1,4 @@
-# TypeOfResultCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# TypeOfResultCode — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## ValueSet: TypeOfResultCode — ValueSet 
 
@@ -25,12 +25,12 @@ Denna värdemängd används inte här; den kan användas på andra ställen (t.e
   "resourceType" : "ValueSet",
   "id" : "typeofresultcode-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "TypeOfResultCodeVS",
   "title" : "TypeOfResultCode — ValueSet",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

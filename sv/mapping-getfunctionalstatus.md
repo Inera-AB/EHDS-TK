@@ -1,4 +1,4 @@
-# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## GetFunctionalStatus – Funktionstillstånd och ADL
 

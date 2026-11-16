@@ -1,4 +1,4 @@
-# Logical Models - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# Logical Models - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logical Models
 

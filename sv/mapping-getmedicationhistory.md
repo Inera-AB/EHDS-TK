@@ -1,4 +1,4 @@
-# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## GetMedicationHistory – Läkemedel
 

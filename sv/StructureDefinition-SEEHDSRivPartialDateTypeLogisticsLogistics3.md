@@ -1,4 +1,4 @@
-# RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.8.2
+# RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
 
 ## Logisk modell: RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3) 
 
@@ -6,7 +6,7 @@
 
 * Använd denna Logisk modell: [GetCareContacts](StructureDefinition-SEEHDSLMCareContacts.md)
 
-Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/inera.ehds.ehds-tk|current/StructureDefinition/SEEHDSRivPartialDateTypeLogisticsLogistics3)
+Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSRivPartialDateTypeLogisticsLogistics3.json)
 
 ### Formella vyer av profilinnehåll
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivPartia
     "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPartialDateTypeLogisticsLogistics3",
-  "version" : "0.8.2",
+  "version" : "0.9.0",
   "name" : "SEEHDSRivPartialDateTypeLogisticsLogistics3",
   "title" : "RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3)",
   "status" : "draft",
-  "date" : "2026-11-13T16:07:48+00:00",
+  "date" : "2026-11-16T14:45:17+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
