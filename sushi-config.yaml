@@ -31,11 +31,11 @@ parameters:
   i18n-default-lang: sv
   show-inherited-invariants: false
   usage-stats-opt-out: true
-  # Ingen XML eller Turtle i utdata: varken resursfilerna (.xml, .ttl), deras
-  # sidor (.xml.html, .ttl.html) eller zipparna i dessa format. Parametrarna
-  # kommer från fhir2.base.template, som översätter dem till
-  # wantGen-xml/-ttl = false. JSON behålls, se version-history.md (0.9.0).
-  excludexml: true
+  # Ingen Turtle i utdata: varken .ttl, .ttl.html eller zipparna i Turtle.
+  # Parametern kommer från fhir2.base.template, som översätter den till
+  # wantGen-ttl = false. excludexml används inte: publishern skapar
+  # vidarebefordringarna från kanoniska url:er bara för resurser som har både
+  # .xml och .json. Se version-history.md (0.9.0).
   excludettl: true
   # Lås kanoniska referenser till den version som används när flera paket
   # (kärnspecen, extensions, terminology) har samma url i olika versioner.

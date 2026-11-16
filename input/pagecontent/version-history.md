@@ -4,7 +4,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
-| 0.9.0 | 2026-11-16 | Draft | Första releasen i IG Publishers publiceringsläge. IG:n publiceras utan XML- och Turtle-format, vilket gör varje publicerad version betydligt mindre. Version 0.3.1 är borttagen från fhir.inera.se. |
+| 0.9.0 | 2026-11-16 | Draft | Första releasen i IG Publishers publiceringsläge. IG:n publiceras utan Turtle, vilket gör varje publicerad version knappt en fjärdedel mindre. Version 0.3.1 är borttagen från fhir.inera.se. |
 | 0.8.2 | 2026-11-13 | Draft | Inera-grafiken från inera-fhir-graphic-profile, och rättade fel och varningar i IG Publishers QA: rubriknivåer, `experimental` och `caseSensitive` för kodsystem och värdemängder, låsta kanoniska referenser och HTML-liknande text i definitioner. |
 | 0.8.1 | 2026-10-26 | Draft | Rättar felen i IG Publishers QA: sidrubriker, egna url:er för kodsystem, `DiagnosticReport.performer` och bindningen av `Observation.status`. |
 | 0.8.0 | 2026-10-26 | Draft | Releaser publiceras med IG Publishers officiella publiceringsläge enligt IneraFHIRTemplate. Paket-id:t är nu `inera.ehds.ehds-tk`. |
@@ -31,8 +31,8 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 **Mindre utdata**
 
-- IG:n genereras utan XML och Turtle (`excludexml` och `excludettl` i `sushi-config.yaml`). Resurserna finns inte längre som `.xml`, `.ttl`, `.xml.html` eller `.ttl.html`, och flikarna XML och TTL är borta från resurssidorna. Det gäller även `definitions.xml.zip`, `examples.xml.zip` och motsvarande zip-filer för Turtle.
-- JSON finns kvar: varje resurs finns som `.json` och `.json.html`, och i `definitions.json.zip`, `examples.json.zip` och paketet (`package.tgz`). `excludejson` skulle ta bort även `.json`-filerna, inte bara sidorna, och därmed möjligheten att hämta en enskild resurs i JSON från IG:n.
+- IG:n genereras utan Turtle (`excludettl` i `sushi-config.yaml`). Resurserna finns inte längre som `.ttl` eller `.ttl.html`, fliken TTL är borta från resurssidorna, och `definitions.ttl.zip` och `examples.ttl.zip` skapas inte.
+- XML och JSON finns kvar. `excludexml` och `excludejson` skulle ta bort även resursfilerna (`.xml`, `.json`), inte bara sidorna. Publishern skapar dessutom vidarebefordringarna från kanoniska url:er, till exempel `https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient`, bara för resurser som finns i både XML och JSON.
 
 #### 0.8.2 — 2026-11-13 (Draft)
 
