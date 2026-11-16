@@ -259,6 +259,7 @@ IG:n följer publiceringsmetoden i [IneraFHIRTemplate](https://github.com/Inera-
 
 - **Branchbyggen** (`publish.yml`) hamnar på repots egna GitHub Pages: `https://inera-ab.github.io/EHDS-TK/` för `main` och `…/branches/<branch>/` för övriga brancher.
 - **Releaser** (`release.yml`) publiceras med IG Publishers publiceringsläge till `https://fhir.inera.se/ig/ehds-tk/<version>/`. Versionshistoriken (`history.html`, `package-list.json`) skrivs av publishern i webbroten och finns inte i repot.
+- **Format**: IG:n byggs med JSON men utan XML och Turtle (`excludexml` och `excludettl` under `parameters` i `sushi-config.yaml`), för att hålla nere storleken på varje publicerad version. Branchbygget lägger nya filer ovanpå de gamla på `gh-pages` (`keep_files`), så filer som ett bygge slutar skapa ligger kvar där tills de tas bort för hand.
 
 Inför en release, i en PR mot `main`:
 

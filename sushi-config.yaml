@@ -6,7 +6,7 @@ description: >-
   FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för
   att informationsförsörja NPÖ och 1177 Journal.
 status: draft
-version: 0.8.2
+version: 0.9.0
 fhirVersion: 4.0.1
 copyrightYear: 2024+
 releaseLabel: ci-build
@@ -31,6 +31,12 @@ parameters:
   i18n-default-lang: sv
   show-inherited-invariants: false
   usage-stats-opt-out: true
+  # Ingen XML eller Turtle i utdata: varken resursfilerna (.xml, .ttl), deras
+  # sidor (.xml.html, .ttl.html) eller zipparna i dessa format. Parametrarna
+  # kommer från fhir2.base.template, som översätter dem till
+  # wantGen-xml/-ttl = false. JSON behålls, se version-history.md (0.9.0).
+  excludexml: true
+  excludettl: true
   # Lås kanoniska referenser till den version som används när flera paket
   # (kärnspecen, extensions, terminology) har samma url i olika versioner.
   pin-canonicals: pin-multiples
