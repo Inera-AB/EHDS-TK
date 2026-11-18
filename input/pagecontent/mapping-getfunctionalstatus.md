@@ -54,7 +54,7 @@ PADL-typ krävs.
 | `functionalStatusAssessmentHeader.patientId.id` | 1..1 | `Condition.subject.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer. `patientId` är av RIVTA-typen `PersonIdType {id, type}` |
 | `functionalStatusAssessmentHeader.patientId.type` | 1..1 | `Condition.subject.identifier.system` | OID för typ av identifierare (t.ex. `1.2.752.129.2.1.3.1` för personnummer); OID→URI, se tabell nedan |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Condition.recordedDate` | Registreringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
-| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder` (Reference(PractitionerRole)) och `Provenance.agent[author].who` | Logisk referens via HSA-id |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
@@ -63,7 +63,7 @@ PADL-typ krävs.
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se `orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
-| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |
+| `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – vårdenhet |
 | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
 | `functionalStatusAssessmentHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (om legalAuthenticator finns, prioriteras framför documentTime) |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Condition.asserter` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
@@ -125,7 +125,7 @@ PDL-styrning i GetFunctionalStatus utgår från `accountableHealthcareProfession
 | PDL-begrepp | RIVTA-källa | Hantering |
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Patientgodkännande | `functionalStatusAssessmentHeader.approvedForPatient` (boolean) | `Condition.meta.security`; `false` → `NOPAT` (v3-ActCode) |
 
 ---
@@ -135,7 +135,10 @@ PDL-styrning i GetFunctionalStatus utgår från `accountableHealthcareProfession
 | Agent | Roll | Källa |
 |---|---|---|
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` (HSA-id i `identifier`), `healthcareProfessionalName` (`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `functionalStatusAssessmentHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` (HSA-id i `identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.html#provenance-agenter).
 
 `Provenance.target` refererar Condition via `urn:uuid:{Condition.id}`.  
 `Provenance.recorded` = `functionalStatusAssessmentHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).

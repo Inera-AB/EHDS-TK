@@ -44,7 +44,7 @@ eller URL) – se Härledda fält nedan.
 | `careDocumentation.header.accessControlHeader.patientId.extension` | 1..1 | `DocumentReference.subject.identifier.value` | Personnummer eller samordningsnummer; `reference` till SEEHDSPatient + `identifier`, se [GENERAL-006](mappings.html#patientreferens) |
 | `careDocumentation.header.accessControlHeader.patientId.root` | 1..1 | `DocumentReference.subject.identifier.system` | OID→URI, se tabell nedan |
 | `careDocumentation.header.accessControlHeader.accountableHealthcareProvider` | 0..1 | `Provenance.agent[custodian].who.identifier` | **Yttre Sparr** – vårdgivarens HSA-id (direkt i accessControlHeader, inte under author-blocket) |
-| `careDocumentation.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr** – vårdenhetens HSA-id (direkt i accessControlHeader) |
+| `careDocumentation.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | **Inre Sparr** – vårdenhetens HSA-id (direkt i accessControlHeader) |
 | `careDocumentation.header.accessControlHeader.careProcessId` | 0..1 | `DocumentReference.context.related[0].identifier` | Referens till individanpassad vårdprocess |
 | `careDocumentation.header.accessControlHeader.blockComparisonTime` | 1..1 | `DocumentReference.extension[blockComparisonTime]` | Tidpunkt för Sparr-jämförelse; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se [GENERAL-001](#öppna-frågor) |
 | `careDocumentation.header.accessControlHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll – se [PDL-001](#öppna-frågor) |
@@ -61,7 +61,7 @@ eller URL) – se Härledda fält nedan.
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `careDocumentation.header.author.id` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) | Författarens HSA-id; logisk referens |
+| `careDocumentation.header.author.id` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) och `Provenance.agent[author].who` | Författarens HSA-id; logisk referens |
 | `careDocumentation.header.author.name` | 0..1 | `PractitionerRole.practitioner.display` | Författarens visningsnamn |
 | `careDocumentation.header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Tidpunkt då journalinformationen skapades av författaren; YYYYMMDDHHMMSS → ISO 8601. Saknas `author` används `record.timestamp`, se [DOC-002](#beslutade-issues) |
 | `careDocumentation.header.author.byRole` | 0..1 | `PractitionerRole.code` | Yrkesroll för författaren |
@@ -225,7 +225,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):
 | PDL-begrepp | RIVTA-källa | Hantering |
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `careDocumentation.header.accessControlHeader.accountableHealthcareProvider` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `careDocumentation.header.accessControlHeader.accountableCareUnit` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `careDocumentation.header.accessControlHeader.accountableCareUnit` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Patientgodkännande | `careDocumentation.header.accessControlHeader.approvedForPatient` (boolean) | `DocumentReference.meta.security`; se [PDL-001](#öppna-frågor) |
 
 ---
@@ -235,7 +235,10 @@ PatientSummaryHeader-baserade TK:er (DES-005):
 | Agent | Roll | Källa |
 |---|---|---|
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `careDocumentation.header.accessControlHeader.accountableHealthcareProvider` |
-| `agent[author]` | Informationsägande vårdenhet | `careDocumentation.header.accessControlHeader.accountableCareUnit` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `careDocumentation.header.author.id` (HSA-id i `identifier`), `header.author.name` (`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `careDocumentation.header.accessControlHeader.accountableCareUnit` (HSA-id i `identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.html#provenance-agenter).
 
 `Provenance.target` refererar `DocumentReference` via `urn:uuid:{resurs.id}`, och även `Composition` när en sådan skapas (DOC-004, Strategi B).  
 `Provenance.recorded` = `careDocumentation.header.author.timestamp` (ISO 8601). Om `author` saknas används `careDocumentation.header.record.timestamp` som fallback (DOC-002).
@@ -261,13 +264,13 @@ Den största skillnaden är headern: 2.1 har PatientSummaryHeader (`careDocument
 | `careDocumentationHeader.patientId.id` | 1..1 | `DocumentReference.subject.identifier.value` | PersonIdType; se [GENERAL-006](mappings.html#patientreferens) |
 | `careDocumentationHeader.patientId.type` | 1..1 | `DocumentReference.subject.identifier.system` | OID→URI enligt tabellen nedan |
 | `careDocumentationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `DocumentReference.date` och `Provenance.recorded` | Motsvarar `header.record.timestamp` och `header.author.timestamp` i 3.0 |
-| `….accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `….accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `DocumentReference.author[0]` (Reference(PractitionerRole)) och `Provenance.agent[author].who` | Logisk referens via HSA-id |
 | `….accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | |
 | `….accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | |
 | `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | |
 | `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | |
 | `….healthcareProfessionalOrgUnit.orgUnitTelecom/orgUnitEmail/orgUnitAddress/orgUnitLocation` | 0..1 | Ej mappad | Se [GENERAL-008](mappings.html#organisation) |
-| `….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr; motsvarar `accessControlHeader.accountableCareUnit` |
+| `….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr; motsvarar `accessControlHeader.accountableCareUnit` |
 | `….accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr; motsvarar `accessControlHeader.accountableHealthcareProvider` |
 | `careDocumentationHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DocumentReference.extension[ext-signature-time].valueDateTime` | Motsvarar `header.signature.timestamp` |
 | `careDocumentationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DocumentReference.authenticator` (Reference(PractitionerRole)) | Motsvarar `header.signature.id` |

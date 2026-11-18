@@ -27,7 +27,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `careContact.careContactHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Encounter.meta.lastUpdated` | Registreringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
-| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` | Via `Encounter.participant.individual`-referens |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` och `Provenance.agent[author].who` | Via `Encounter.participant.individual`-referens |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Valfritt komplement till HSA-id |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod (KV Befattning OID 1.2.752.129.2.2.1.4) |
 
@@ -46,7 +46,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet (Regel 1) |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – vårdenhet (Regel 1) |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare (Regel 1) |
 | `careContact.careContactHeader.approvedForPatient` | 1..1 | `Encounter.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues |
 | `careContact.careContactHeader.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK |
@@ -113,7 +113,7 @@ PDL-fälten finns under `careContact.careContactHeader.accountableHealthcareProf
 | RIVTA PDL-element | FHIR-destination | Sparr-nivå |
 |---|---|---|
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` | Yttre Sparr |
-| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` | Inre Sparr |
+| `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr |
 
 ---
 
@@ -122,7 +122,10 @@ PDL-fälten finns under `careContact.careContactHeader.accountableHealthcareProf
 | Agent | Roll | Källa |
 |---|---|---|
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `healthcareProfessionalHSAId` (HSA-id i `identifier`), `healthcareProfessionalName` (`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `healthcareProfessionalCareUnitHSAId` (HSA-id i `identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.html#provenance-agenter).
 
 ---
 

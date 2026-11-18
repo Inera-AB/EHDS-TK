@@ -83,7 +83,7 @@ GET /Encounter?patient.identifier=...&date=ge2024-01-01&date=le2024-12-31
 
 | RIVTA-inparameter | FHIR-sökparameter | Kommentar |
 |---|---|---|
-| `careUnitHSAId` | Ingen direkt standard | `careUnitHSAId` lagras i `Provenance.agent[author].who.identifier`, inte på resursen själv |
+| `careUnitHSAId` | Ingen direkt standard | `careUnitHSAId` lagras i `Provenance.agent[author].onBehalfOf.identifier`, inte på resursen själv |
 
 `careUnitHSAId` filtrerar i RIVTA på vårdenhet via Sparr-strukturen. I FHIR-mappningen hamnar detta i `Provenance`, inte på huvud-resursen (Encounter/DocumentReference). Det finns inget standardiserat sökfält för att filtrera resurser efter vilken vårdenhet som producerade dem via Provenance.
 
@@ -91,14 +91,14 @@ Tre strategier för att hantera `careUnitHSAId`:
 
 **Strategi 1 – Anpassad serverdefinierad sökparameter via Provenance (rekommenderas)**
 
-Definiera en `SearchParameter`-resurs med kod `careUnit` som implementerar sökning via `Provenance.agent[author].who.identifier` med reverse chaining. En serverdefinierad sökparameter skapar en **gemensam lösning för alla resurstyper** (Encounter, DocumentReference, Observation, osv.) och undviker att varje resurstyp behöver en separat lösning.
+Definiera en `SearchParameter`-resurs med kod `careUnit` som implementerar sökning via `Provenance.agent[author].onBehalfOf.identifier` med reverse chaining. En serverdefinierad sökparameter skapar en **gemensam lösning för alla resurstyper** (Encounter, DocumentReference, Observation, osv.) och undviker att varje resurstyp behöver en separat lösning.
 
 ```
 GET /Encounter?patient.identifier=...&careUnit=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 GET /DocumentReference?patient.identifier=...&careUnit=urn:oid:1.2.752.29.4.19|SE2321000016-AB1C
 ```
 
-Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per vård-event med korrekt `agent[author]`.
+Kräver att servern implementerar den anpassade sökparametern och att Provenance-resurser skapas konsekvent per vård-event med korrekt `agent[author]`. FHIR R4 har ingen standardsökparameter för `Provenance.agent.onBehalfOf` (standardparametern `agent` söker på `agent.who`), så sökparametern behöver uttrycket `Provenance.agent.where(type.coding.code='author').onBehalfOf`.
 
 **Strategi 2 – Encounter som resurs-nyckel**
 
