@@ -4,6 +4,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
+| 0.10.0 | 2026-11-18 | Draft | ICD-10-SE anges med url:en i Ineras terminologitjänst i stället för `https://www.icd10.se/`, och `Condition.category` använder FHIR:s kodverk `condition-category` för diagnoser och funktionstillstånd. |
 | 0.9.0 | 2026-11-16 | Draft | Första releasen i IG Publishers publiceringsläge. IG:n publiceras utan Turtle, vilket gör varje publicerad version knappt en fjärdedel mindre. Version 0.3.1 är borttagen från fhir.inera.se. |
 | 0.8.2 | 2026-11-13 | Draft | Inera-grafiken från inera-fhir-graphic-profile, och rättade fel och varningar i IG Publishers QA: rubriknivåer, `experimental` och `caseSensitive` för kodsystem och värdemängder, låsta kanoniska referenser och HTML-liknande text i definitioner. |
 | 0.8.1 | 2026-10-26 | Draft | Rättar felen i IG Publishers QA: sidrubriker, egna url:er för kodsystem, `DiagnosticReport.performer` och bindningen av `Observation.status`. |
@@ -20,6 +21,16 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 ---
 
 ### Ändringslogg
+
+#### 0.10.0 — 2026-11-18 (Draft)
+
+**Terminologi**
+
+- ICD-10-SE har systemet `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se`, i stället för `https://www.icd10.se/`. Den gamla url:en är Socialstyrelsens webbplats och ingen kodsystem-url. Den nya är samma url som Inera core använder och följer samma mönster som kv_diagnostyp. Ändringen gäller aliaset `$ICD10SE`, slicen `code.coding[ICD10SE]` i [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.html) och OID-tabellen och exemplet i [GetDiagnosis](mapping-getdiagnosis.html).
+- `Condition.category` har i FHIR en utökningsbar (extensible) bindning till kodverket `http://terminology.hl7.org/CodeSystem/condition-category`. Profilerna kräver nu standardkoden i en egen slice, `category[condition-category]`:
+  - [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.html): alltid `encounter-diagnosis` (DIAG-003). HD/BY från kv_diagnostyp finns kvar i slicen `diagnostyp`.
+  - [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html): alltid `problem-list-item` (FUNC-002). `pad-pad`/`fun-fun` ligger nu i slicen `bedomningskategori` med obligatorisk bindning till AssessmentCategoryVS.
+- Producenter måste alltså skicka två kategorier per Condition, och ICD-10-SE-koder med det nya systemet.
 
 #### 0.9.0 — 2026-11-16 (Draft)
 

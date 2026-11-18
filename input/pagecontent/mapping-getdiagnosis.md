@@ -42,12 +42,13 @@
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
+| — | — | `Condition.category[condition-category]` | Alltid `encounter-diagnosis` från FHIR:s `condition-category`; se [DIAG-003](mapping-issues.html#designbeslut-fattade) |
 | `diagnosisBody.typeOfDiagnosis` | 1..1 | `Condition.category[diagnostyp]` | Huvuddiagnos (HD) eller Bidiagnos (BY); se tabell nedan |
 | `diagnosisBody.chronicDiagnosis` | 0..1 | `Condition.extension[chronicDiagnosis].valueBoolean` | Lokal extension [ConditionChronicDiagnosis](StructureDefinition-condition-chronic-diagnosis.html); utelämnas om fältet saknas (se [DIAG-001](mapping-issues.html#designbeslut-fattade)) |
 | `diagnosisBody.diagnosisTime` | 0..1 | `Condition.onsetDateTime` | YYYYMMDDHHMMSS → ISO 8601 |
 | `diagnosisBody.diagnosisCode` | 0..1 | `Condition.code` | Se underelement nedan |
 | `diagnosisBody.diagnosisCode.code` | — | `Condition.code.coding.code` | ICD-10-SE kod, t.ex. `J18.9` |
-| `diagnosisBody.diagnosisCode.codeSystem` | — | `Condition.code.coding.system` | OID `1.2.752.116.1.1.1.1.3` → `https://www.icd10.se/` |
+| `diagnosisBody.diagnosisCode.codeSystem` | — | `Condition.code.coding.system` | OID `1.2.752.116.1.1.1.1.3` → `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se` |
 | `diagnosisBody.diagnosisCode.displayName` | — | `Condition.code.coding.display` | Kodverkets officiella benämning |
 | `diagnosisBody.diagnosisCode.originalText` | — | `Condition.code.text` | Fritext; fallback: `displayName` om saknad |
 | `diagnosisBody.relatedDiagnosis.documentId` | 1..1 (om relatedDiagnosis) | `Condition.extension[relatedCondition].valueReference.identifier.value` | Standardextension `condition-related` (HL7). En extension per `relatedDiagnosis`. Logisk referens: `identifier` ska ha samma `system` som `Condition.identifier` på den relaterade diagnosen (se [DIAG-002](mapping-issues.html#designbeslut-fattade)) |
@@ -114,13 +115,23 @@ Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core 
 | `1.2.752.129.2.1.3.3` | `http://electronichealth.se/identifier/samordningsnummer` | Samordningsnummer |
 | `1.2.752.129.2.1.4.1` | `urn:oid:1.2.752.29.4.19` | HSA-id (Inera NTjP) |
 | `1.2.752.29.4.19` | `urn:oid:1.2.752.29.4.19` | HSA-id (HL7 Sweden) |
-| `1.2.752.116.1.1.1.1.3` | `https://www.icd10.se/` | ICD-10-SE |
+| `1.2.752.116.1.1.1.1.3` | `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se` | ICD-10-SE (Socialstyrelsen), url i Ineras terminologitjänst |
 | `2.16.840.1.113883.6.3` | `http://hl7.org/fhir/sid/icd-10` | ICD-10 (WHO) |
 | `2.16.840.1.113883.6.96` | `http://snomed.info/sct` | SNOMED CT |
 
 OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ---
+
+### Kategori – condition-category och kv_diagnostyp
+
+`Condition.category` har i FHIR en utökningsbar (extensible) bindning till kodverket
+[condition-category](http://terminology.hl7.org/CodeSystem/condition-category). Därför har varje diagnos två kategorier:
+
+| Slice | Kod | System | Kommentar |
+|---|---|---|---|
+| `category[condition-category]` | `encounter-diagnosis` | `http://terminology.hl7.org/CodeSystem/condition-category` | Fast värde. GetDiagnosis returnerar diagnoser som satts vid en vårdkontakt (huvud- och bidiagnos), se [DIAG-003](mapping-issues.html#designbeslut-fattade) |
+| `category[diagnostyp]` | `HD` eller `BY` | `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp` | Lokal kod, eftersom standardkodverket saknar huvud- och bidiagnos |
 
 ### diagnosisType – kv_diagnostyp
 
@@ -196,12 +207,17 @@ ska använda.
   "verificationStatus": { "coding": [{ "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status", "code": "confirmed" }] },
   "category": [{
     "coding": [{
+      "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+      "code": "encounter-diagnosis", "display": "Encounter Diagnosis"
+    }]
+  }, {
+    "coding": [{
       "system": "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
       "code": "HD", "display": "Huvuddiagnos"
     }]
   }],
   "code": {
-    "coding": [{ "system": "https://www.icd10.se/", "code": "J18.9", "display": "Pneumoni, ospecificerad" }]
+    "coding": [{ "system": "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se", "code": "J18.9", "display": "Pneumoni, ospecificerad" }]
   },
   "subject": {
     "reference": "Patient/pat-191212121212",
@@ -229,3 +245,4 @@ ska använda.
 |---|---|---|
 | DIAG-001 | `diagnosisBody.chronicDiagnosis` | Lokal extension `Condition.extension[chronicDiagnosis]` ([ConditionChronicDiagnosis](StructureDefinition-condition-chronic-diagnosis.html)) med `valueBoolean`. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
 | DIAG-002 | `diagnosisBody.relatedDiagnosis.documentId` | Standardextension `Condition.extension[relatedCondition]` (`condition-related`) med logisk referens via `valueReference.identifier`. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
+| DIAG-003 | `Condition.category` | Standardkoden `encounter-diagnosis` från `condition-category` anges alltid. `typeOfDiagnosis` (HD/BY) ligger kvar som en lokal kategori från kv_diagnostyp. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |

@@ -36,10 +36,19 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * verificationStatus MS
 * verificationStatus ^short = "Alltid confirmed (RIVTA-svar representerar bekräftade journaluppgifter)"
 
+// Condition.category har en extensible bindning till FHIR:s condition-category.
+// Standardkoden används i första hand (DIAG-003). HD/BY från kv_diagnostyp har ingen
+// motsvarighet i standardkodverket och ligger kvar som en egen, lokal slice.
+* category 2..* MS
 * category ^slicing.discriminator.type = #value
 * category ^slicing.discriminator.path = "coding.system"
 * category ^slicing.rules = #open
-* category contains diagnostyp 1..1 MS
+* category ^slicing.description = "En kategori från FHIR:s condition-category (encounter-diagnosis) och en från kv_diagnostyp (HD/BY)"
+* category contains
+    condition-category 1..1 MS and
+    diagnostyp 1..1 MS
+* category[condition-category] = $condition-category#encounter-diagnosis
+* category[condition-category] ^short = "Alltid encounter-diagnosis (FHIR condition-category) – diagnosen är satt vid en vårdkontakt, se DIAG-003"
 * category[diagnostyp].coding 1..1 MS
 * category[diagnostyp].coding.system 1..1 MS
 * category[diagnostyp].coding.system = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
