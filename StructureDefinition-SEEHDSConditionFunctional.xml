@@ -11,21 +11,16 @@
   &quot;system&quot; : &quot;http://terminology.hl7.org/CodeSystem/v3-ActCode&quot;,
   &quot;code&quot; : <span title="no disclosure to patient, family or caregivers without attending provider's authorization">&quot;NOPAT&quot;</span>
 }</code></pre></div></td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.clinicalStatus">clinicalStatus</a><a name="Condition.clinicalStatus"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0">Alltid 'active' – härledd (inget statusfält i TKBn)</td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.clinicalStatus">clinicalStatus</a><a name="Condition.clinicalStatus"> </a></td><td style="" class="hierarchy xhtCellBorder0"/><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0">Utelämnas: klinisk status är okänd (TKB:n saknar status och slutdatum) – se CLINSTAT-001</td></tr>
 <tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.verificationStatus">verificationStatus</a><a name="Condition.verificationStatus"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0">Alltid 'confirmed' – härledd (journaluppgifter anses bekräftade)</td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck13.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice.png" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Skivdefinition" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category" class="xhtPieceItalic">Skivor för category</a><a name="Condition.category"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas" class="xhtPieceItalic">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceItalic"/><span class="xhtPieceItalic">2</span><span class="xhtPieceItalic">..</span><span class="xhtPieceItalic xhtPieceDeEmphasized">*</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceItalic xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceItalic xhtPieceDeEmphasized">Category</span><br class="xhtPieceItalic"/><span class="xhtPieceBold xhtPieceItalic">Skiva: </span><span class="xhtPieceItalic">Oordnad, Öppen av value:coding.system</span><br class="xhtPieceItalic"/><span class="xhtPieceBold xhtPieceItalic">Slicing Note: </span><span class="xhtPieceItalic">The rules on this element (including its children) apply to all the slices, but are not repeated in them</span></td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck134.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice_item.png" alt="" style="background-color: white; background-color: inherit" title="Skivobjekt" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.Skivor för category.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category:condition-category" title="Skiva condition-category">category:condition-category</a><a name="Condition.category:condition-category"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0">Alltid problem-list-item (FHIR condition-category) – funktionstillståndet beskriver patientens tillstånd över tid, se FUNC-002<br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><div><pre class="json"><code>{
-  &quot;coding&quot; : [
-    {
-      &quot;system&quot; : &quot;http://terminology.hl7.org/CodeSystem/condition-category&quot;,
-      &quot;code&quot; : <span title="Problem List Item">&quot;problem-list-item&quot;</span>
-    }
-  ]
-}</code></pre></div></td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck125.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice_item.png" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Skivobjekt" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.Skivor för category.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category:bedomningskategori" title="Skiva bedomningskategori">category:bedomningskategori</a><a name="Condition.category:bedomningskategori"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0">Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun<br class="binding"/><span class="xhtPieceBold binding">Bindning: </span><a href="ValueSet-assessmentcategory-vs.html" title="https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs" class="binding">AssessmentCategory — ValueSet</a><span class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#required" title="To be conformant, the concept in this element SHALL be from the specified value set." class="binding">required</a><span class="binding">)</span></td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck1241.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.Skivor för category.category:bedomningskategori.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category:bedomningskategori.coding">coding</a><a name="Condition.category:bedomningskategori.coding"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Coding" class="xhtPieceDeEmphasized">Coding</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">Code defined by a terminology system</span></td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck12410.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.Skivor för category.category:bedomningskategori.coding.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category:bedomningskategori.coding.system">system</a><a name="Condition.category:bedomningskategori.coding.system"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#uri" class="xhtPieceDeEmphasized">uri</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">Identity of the terminology system</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs</span> (extensions allowed)</td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck12400.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.Skivor för category.category:bedomningskategori.coding.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category:bedomningskategori.coding.code">code</a><a name="Condition.category:bedomningskategori.coding.code"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#code" class="xhtPieceDeEmphasized">code</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">Symbol in syntax defined by the system</span></td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck11.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category">category</a><a name="Condition.category"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0">problem-list-item (FHIR condition-category) och pad-pad/fun-fun (AssessmentCategoryCS) i samma CodeableConcept, se FUNC-002</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck103.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice.png" alt="" style="background-color: white; background-color: inherit" title="Skivdefinition" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.category.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category.coding" class="xhtPieceItalic">Skivor för coding</a><a name="Condition.category.coding"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas" class="xhtPieceItalic">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceItalic"/><span class="xhtPieceItalic">2</span><span class="xhtPieceItalic">..</span><span class="xhtPieceItalic xhtPieceDeEmphasized">*</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Coding" class="xhtPieceItalic xhtPieceDeEmphasized">Coding</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceItalic xhtPieceDeEmphasized">Code defined by a terminology system</span><br class="xhtPieceItalic"/><span class="xhtPieceBold xhtPieceItalic">Skiva: </span><span class="xhtPieceItalic">Oordnad, Öppen av value:system</span><br class="xhtPieceItalic"/><span class="xhtPieceBold xhtPieceItalic">Slicing Note: </span><span class="xhtPieceItalic">The rules on this element (including its children) apply to all the slices, but are not repeated in them</span></td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck1035.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice_item.png" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Skivobjekt" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.category.Skivor för coding.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category.coding:condition-category" title="Skiva condition-category">coding:condition-category</a><a name="Condition.category.coding:condition-category"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Coding" class="xhtPieceDeEmphasized">Coding</a></td><td style="" class="hierarchy xhtCellBorder0">Alltid problem-list-item (FHIR condition-category)</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck10350.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.category.Skivor för coding.coding:condition-category.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category.coding:condition-category.system">system</a><a name="Condition.category.coding:condition-category.system"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#uri" class="xhtPieceDeEmphasized">uri</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">Identity of the terminology system</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">http://terminology.hl7.org/CodeSystem/condition-category</span> (extensions allowed)</td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck10340.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.category.Skivor för coding.coding:condition-category.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category.coding:condition-category.code">code</a><a name="Condition.category.coding:condition-category.code"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#code" class="xhtPieceDeEmphasized">code</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">Symbol in syntax defined by the system</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">problem-list-item</span> (extensions allowed)</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck1025.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice_item.png" alt="" style="background-color: white; background-color: inherit" title="Skivobjekt" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.category.Skivor för coding.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category.coding:bedomningskategori" title="Skiva bedomningskategori">coding:bedomningskategori</a><a name="Condition.category.coding:bedomningskategori"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Coding" class="xhtPieceDeEmphasized">Coding</a></td><td style="" class="hierarchy xhtCellBorder0">Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun<br class="binding"/><span class="xhtPieceBold binding">Bindning: </span><a href="ValueSet-assessmentcategory-vs.html" title="https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs" class="binding">AssessmentCategory — ValueSet</a><span class="binding"> (</span><a href="http://hl7.org/fhir/R4/terminologies.html#required" title="To be conformant, the concept in this element SHALL be from the specified value set." class="binding">required</a><span class="binding">)</span></td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck10250.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.category.Skivor för coding.coding:bedomningskategori.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category.coding:bedomningskategori.system">system</a><a name="Condition.category.coding:bedomningskategori.system"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#uri" class="xhtPieceDeEmphasized">uri</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">Identity of the terminology system</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs</span> (extensions allowed)</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck10240.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.category.Skivor för coding.coding:bedomningskategori.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.category.coding:bedomningskategori.code">code</a><a name="Condition.category.coding:bedomningskategori.code"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#code" class="xhtPieceDeEmphasized">code</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">Symbol in syntax defined by the system</span></td></tr>
 <tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.code">code</a><a name="Condition.code"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">1</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0">Bedömningskod: assessmentCategory (pad-pad/fun-fun) eller disability.disabilityAssessment (ICF) – se FUNC-001</td></tr>
 <tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="" style="background-color: white; background-color: inherit" title="Referens till en annan resurs" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.subject">subject</a><a name="Condition.subject"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">1</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-SEEHDSPatient.html">SE EHDS Patient</a>)</td><td style="" class="hierarchy xhtCellBorder0">Patient (functionalStatusAssessmentHeader.patientId)</td></tr>
 <tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck10.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Condition.</span><a href="StructureDefinition-SEEHDSConditionFunctional-definitions.html#Condition.recordedDate">recordedDate</a><a name="Condition.recordedDate"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#dateTime" class="xhtPieceDeEmphasized">dateTime</a></td><td style="" class="hierarchy xhtCellBorder0">Bedömningstidpunkt (functionalStatusAssessmentHeader.documentTime)</td></tr>
@@ -39,11 +34,11 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
 <tr><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr></table></div>
   </text>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional"/>
-  <version value="0.11.0"/>
+  <version value="0.12.0"/>
   <name value="SEEHDSConditionFunctional"/>
   <title value="SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"/>
   <status value="draft"/>
-  <date value="2026-11-18T13:38:06+00:00"/>
+  <date value="2026-11-18T20:53:46+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -987,7 +982,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
     </element>
     <element id="Condition.clinicalStatus">
       <path value="Condition.clinicalStatus"/>
-      <short value="Alltid 'active' – härledd (inget statusfält i TKBn)"/>
+      <short value="Utelämnas: klinisk status är okänd (TKB:n saknar status och slutdatum) – se CLINSTAT-001"/>
       <definition value="The problem status describes the condition of the problem:&#xA;&#xD;&#xD;&#xA;1.&#x9;Active problems are problems of which the patient experiences symptoms or for which evidence exists.&#xA;&#xD;&#xD;&#xA;2.&#x9;If condition is abated, then clinicalStatus must be either inactive, resolved, or remission. &#xA;&#xD;&#xD;&#xA;3.&#x9;Problems with the status 'Inactive' refer to problems that don't affect the patient anymore or that of which there is no evidence of existence anymore."/>
       <comment value="The data type is CodeableConcept because clinicalStatus has some clinical judgment involved, such that there might need to be more specificity than the required FHIR value set allows. For example, a SNOMED coding might allow for additional specificity."/>
       <min value="0"/>
@@ -1011,7 +1006,6 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <xpath value="@value|f:*|h:div"/>
         <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
       </constraint>
-      <mustSupport value="true"/>
       <isModifier value="true"/>
       <isModifierReason value="This element is labeled as a modifier because the status contains codes that mark the condition as no longer active."/>
       <isSummary value="true"/>
@@ -1100,19 +1094,11 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
     </element>
     <element id="Condition.category">
       <path value="Condition.category"/>
-      <slicing>
-        <discriminator>
-          <type value="value"/>
-          <path value="coding.system"/>
-        </discriminator>
-        <description value="En kategori från FHIR:s condition-category (problem-list-item) och en från AssessmentCategoryCS (pad-pad/fun-fun)"/>
-        <rules value="open"/>
-      </slicing>
-      <short value="Category"/>
+      <short value="problem-list-item (FHIR condition-category) och pad-pad/fun-fun (AssessmentCategoryCS) i samma CodeableConcept, se FUNC-002"/>
       <definition value="A category assigned to the condition."/>
       <comment value="The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts."/>
-      <min value="2"/>
-      <max value="*"/>
+      <min value="1"/>
+      <max value="1"/>
       <base>
         <path value="Condition.category"/>
         <min value="0"/>
@@ -1157,113 +1143,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value=".code"/>
       </mapping>
     </element>
-    <element id="Condition.category:condition-category">
-      <path value="Condition.category"/>
-      <sliceName value="condition-category"/>
-      <short value="Alltid problem-list-item (FHIR condition-category) – funktionstillståndet beskriver patientens tillstånd över tid, se FUNC-002"/>
-      <definition value="A category assigned to the condition."/>
-      <comment value="The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts."/>
-      <min value="1"/>
-      <max value="1"/>
-      <base>
-        <path value="Condition.category"/>
-        <min value="0"/>
-        <max value="*"/>
-      </base>
-      <type>
-        <code value="CodeableConcept"/>
-      </type>
-      <patternCodeableConcept>
-        <coding>
-          <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
-          <code value="problem-list-item"/>
-        </coding>
-      </patternCodeableConcept>
-      <constraint>
-        <key value="ele-1"/>
-        <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
-        <expression value="hasValue() or (children().count() &gt; id.count())"/>
-        <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
-      </constraint>
-      <mustSupport value="true"/>
-      <isModifier value="false"/>
-      <isSummary value="false"/>
-      <binding>
-        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
-          <valueString value="ConditionCategory"/>
-        </extension>
-        <strength value="extensible"/>
-        <description value="A category assigned to the condition."/>
-        <valueSet value="http://hl7.org/fhir/ValueSet/condition-category|4.0.1"/>
-      </binding>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.class"/>
-      </mapping>
-      <mapping>
-        <identity value="sct-concept"/>
-        <map value="&lt; 404684003 |Clinical finding|"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="'problem' if from PRB-3. 'diagnosis' if from DG1 segment in PV1 message"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value=".code"/>
-      </mapping>
-    </element>
-    <element id="Condition.category:bedomningskategori">
-      <path value="Condition.category"/>
-      <sliceName value="bedomningskategori"/>
-      <short value="Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun"/>
-      <definition value="A category assigned to the condition."/>
-      <comment value="The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts."/>
-      <min value="1"/>
-      <max value="1"/>
-      <base>
-        <path value="Condition.category"/>
-        <min value="0"/>
-        <max value="*"/>
-      </base>
-      <type>
-        <code value="CodeableConcept"/>
-      </type>
-      <constraint>
-        <key value="ele-1"/>
-        <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
-        <expression value="hasValue() or (children().count() &gt; id.count())"/>
-        <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
-      </constraint>
-      <mustSupport value="true"/>
-      <isModifier value="false"/>
-      <isSummary value="false"/>
-      <binding>
-        <strength value="required"/>
-        <valueSet value="https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs"/>
-      </binding>
-      <mapping>
-        <identity value="w5"/>
-        <map value="FiveWs.class"/>
-      </mapping>
-      <mapping>
-        <identity value="sct-concept"/>
-        <map value="&lt; 404684003 |Clinical finding|"/>
-      </mapping>
-      <mapping>
-        <identity value="v2"/>
-        <map value="'problem' if from PRB-3. 'diagnosis' if from DG1 segment in PV1 message"/>
-      </mapping>
-      <mapping>
-        <identity value="rim"/>
-        <map value=".code"/>
-      </mapping>
-    </element>
-    <element id="Condition.category:bedomningskategori.id">
+    <element id="Condition.category.id">
       <path value="Condition.category.id"/>
       <representation value="xmlAttr"/>
       <short value="Unique id for inter-element referencing"/>
@@ -1288,7 +1168,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="n/a"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.extension">
+    <element id="Condition.category.extension">
       <path value="Condition.category.extension"/>
       <slicing>
         <discriminator>
@@ -1336,9 +1216,57 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="n/a"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding">
+    <element id="Condition.category.coding">
       <path value="Condition.category.coding"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="system"/>
+        </discriminator>
+        <rules value="open"/>
+      </slicing>
       <short value="Code defined by a terminology system"/>
+      <definition value="A reference to a code defined by a terminology system."/>
+      <comment value="Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true."/>
+      <requirements value="Allows for alternative encodings within a code system, and translations to other code systems."/>
+      <min value="2"/>
+      <max value="*"/>
+      <base>
+        <path value="CodeableConcept.coding"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Coding"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <mustSupport value="true"/>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.1-8, C*E.10-22"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="union(., ./translation)"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:CodeableConcept.coding rdfs:subPropertyOf dt:CD.coding"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:condition-category">
+      <path value="Condition.category.coding"/>
+      <sliceName value="condition-category"/>
+      <short value="Alltid problem-list-item (FHIR condition-category)"/>
       <definition value="A reference to a code defined by a terminology system."/>
       <comment value="Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true."/>
       <requirements value="Allows for alternative encodings within a code system, and translations to other code systems."/>
@@ -1376,7 +1304,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="fhir:CodeableConcept.coding rdfs:subPropertyOf dt:CD.coding"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.id">
+    <element id="Condition.category.coding:condition-category.id">
       <path value="Condition.category.coding.id"/>
       <representation value="xmlAttr"/>
       <short value="Unique id for inter-element referencing"/>
@@ -1401,7 +1329,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="n/a"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.extension">
+    <element id="Condition.category.coding:condition-category.extension">
       <path value="Condition.category.coding.extension"/>
       <slicing>
         <discriminator>
@@ -1449,7 +1377,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="n/a"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.system">
+    <element id="Condition.category.coding:condition-category.system">
       <path value="Condition.category.coding.system"/>
       <short value="Identity of the terminology system"/>
       <definition value="The identification of the code system that defines the meaning of the symbol in the code."/>
@@ -1465,7 +1393,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
       <type>
         <code value="uri"/>
       </type>
-      <patternUri value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"/>
+      <patternUri value="http://terminology.hl7.org/CodeSystem/condition-category"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1490,7 +1418,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="fhir:Coding.system rdfs:subPropertyOf dt:CDCoding.codeSystem"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.version">
+    <element id="Condition.category.coding:condition-category.version">
       <path value="Condition.category.coding.version"/>
       <short value="Version of the system - if relevant"/>
       <definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged."/>
@@ -1528,7 +1456,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.code">
+    <element id="Condition.category.coding:condition-category.code">
       <path value="Condition.category.coding.code"/>
       <short value="Symbol in syntax defined by the system"/>
       <definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)."/>
@@ -1543,6 +1471,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
       <type>
         <code value="code"/>
       </type>
+      <patternCode value="problem-list-item"/>
       <constraint>
         <key value="ele-1"/>
         <severity value="error"/>
@@ -1567,7 +1496,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.display">
+    <element id="Condition.category.coding:condition-category.display">
       <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
         <valueBoolean value="true"/>
       </extension>
@@ -1608,7 +1537,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="fhir:Coding.display rdfs:subPropertyOf dt:CDCoding.displayName"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.userSelected">
+    <element id="Condition.category.coding:condition-category.userSelected">
       <path value="Condition.category.coding.userSelected"/>
       <short value="If this coding was chosen directly by the user"/>
       <definition value="Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)."/>
@@ -1647,7 +1576,323 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]"/>
       </mapping>
     </element>
-    <element id="Condition.category:bedomningskategori.text">
+    <element id="Condition.category.coding:bedomningskategori">
+      <path value="Condition.category.coding"/>
+      <sliceName value="bedomningskategori"/>
+      <short value="Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun"/>
+      <definition value="A reference to a code defined by a terminology system."/>
+      <comment value="Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true."/>
+      <requirements value="Allows for alternative encodings within a code system, and translations to other code systems."/>
+      <min value="1"/>
+      <max value="1"/>
+      <base>
+        <path value="CodeableConcept.coding"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Coding"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <mustSupport value="true"/>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <binding>
+        <strength value="required"/>
+        <valueSet value="https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs"/>
+      </binding>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.1-8, C*E.10-22"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="union(., ./translation)"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:CodeableConcept.coding rdfs:subPropertyOf dt:CD.coding"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori.id">
+      <path value="Condition.category.coding.id"/>
+      <representation value="xmlAttr"/>
+      <short value="Unique id for inter-element referencing"/>
+      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.id"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori.extension">
+      <path value="Condition.category.coding.extension"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="url"/>
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url"/>
+        <rules value="open"/>
+      </slicing>
+      <short value="Additional content defined by implementations"/>
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <alias value="extensions"/>
+      <alias value="user content"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori.system">
+      <path value="Condition.category.coding.system"/>
+      <short value="Identity of the terminology system"/>
+      <definition value="The identification of the code system that defines the meaning of the symbol in the code."/>
+      <comment value="The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously."/>
+      <requirements value="Need to be unambiguous about the source of the definition of the symbol."/>
+      <min value="1"/>
+      <max value="1"/>
+      <base>
+        <path value="Coding.system"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="uri"/>
+      </type>
+      <patternUri value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"/>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <mustSupport value="true"/>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.3"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./codeSystem"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:Coding.system rdfs:subPropertyOf dt:CDCoding.codeSystem"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori.version">
+      <path value="Condition.category.coding.version"/>
+      <short value="Version of the system - if relevant"/>
+      <definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged."/>
+      <comment value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Coding.version"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.7"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./codeSystemVersion"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori.code">
+      <path value="Condition.category.coding.code"/>
+      <short value="Symbol in syntax defined by the system"/>
+      <definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)."/>
+      <requirements value="Need to refer to a particular code in the system."/>
+      <min value="1"/>
+      <max value="1"/>
+      <base>
+        <path value="Coding.code"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="code"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <mustSupport value="true"/>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.1"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="./code"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori.display">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true"/>
+      </extension>
+      <path value="Condition.category.coding.display"/>
+      <short value="Representation defined by the system"/>
+      <definition value="A representation of the meaning of the code in the system, following the rules of the system."/>
+      <requirements value="Need to be able to carry a human-readable meaning of the code for readers that do not know  the system."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Coding.display"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="C*E.2 - but note this is not well followed"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="CV.displayName"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:Coding.display rdfs:subPropertyOf dt:CDCoding.displayName"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori.userSelected">
+      <path value="Condition.category.coding.userSelected"/>
+      <short value="If this coding was chosen directly by the user"/>
+      <definition value="Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)."/>
+      <comment value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely."/>
+      <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Coding.userSelected"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="boolean"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="v2"/>
+        <map value="Sometimes implied by being first"/>
+      </mapping>
+      <mapping>
+        <identity value="rim"/>
+        <map value="CD.codingRationale"/>
+      </mapping>
+      <mapping>
+        <identity value="orim"/>
+        <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]"/>
+      </mapping>
+    </element>
+    <element id="Condition.category.text">
       <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
         <valueBoolean value="true"/>
       </extension>
@@ -3334,8 +3579,7 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
     </element>
     <element id="Condition.clinicalStatus">
       <path value="Condition.clinicalStatus"/>
-      <short value="Alltid 'active' – härledd (inget statusfält i TKBn)"/>
-      <mustSupport value="true"/>
+      <short value="Utelämnas: klinisk status är okänd (TKB:n saknar status och slutdatum) – se CLINSTAT-001"/>
     </element>
     <element id="Condition.verificationStatus">
       <path value="Condition.verificationStatus"/>
@@ -3344,33 +3588,45 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
     </element>
     <element id="Condition.category">
       <path value="Condition.category"/>
+      <short value="problem-list-item (FHIR condition-category) och pad-pad/fun-fun (AssessmentCategoryCS) i samma CodeableConcept, se FUNC-002"/>
+      <min value="1"/>
+      <max value="1"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Condition.category.coding">
+      <path value="Condition.category.coding"/>
       <slicing>
         <discriminator>
           <type value="value"/>
-          <path value="coding.system"/>
+          <path value="system"/>
         </discriminator>
-        <description value="En kategori från FHIR:s condition-category (problem-list-item) och en från AssessmentCategoryCS (pad-pad/fun-fun)"/>
         <rules value="open"/>
       </slicing>
       <min value="2"/>
       <mustSupport value="true"/>
     </element>
-    <element id="Condition.category:condition-category">
-      <path value="Condition.category"/>
+    <element id="Condition.category.coding:condition-category">
+      <path value="Condition.category.coding"/>
       <sliceName value="condition-category"/>
-      <short value="Alltid problem-list-item (FHIR condition-category) – funktionstillståndet beskriver patientens tillstånd över tid, se FUNC-002"/>
+      <short value="Alltid problem-list-item (FHIR condition-category)"/>
       <min value="1"/>
       <max value="1"/>
-      <patternCodeableConcept>
-        <coding>
-          <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
-          <code value="problem-list-item"/>
-        </coding>
-      </patternCodeableConcept>
       <mustSupport value="true"/>
     </element>
-    <element id="Condition.category:bedomningskategori">
-      <path value="Condition.category"/>
+    <element id="Condition.category.coding:condition-category.system">
+      <path value="Condition.category.coding.system"/>
+      <min value="1"/>
+      <patternUri value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Condition.category.coding:condition-category.code">
+      <path value="Condition.category.coding.code"/>
+      <min value="1"/>
+      <patternCode value="problem-list-item"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Condition.category.coding:bedomningskategori">
+      <path value="Condition.category.coding"/>
       <sliceName value="bedomningskategori"/>
       <short value="Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun"/>
       <min value="1"/>
@@ -3381,19 +3637,13 @@ Observation.code = typeOfAssessment och Observation.valueString = assessment.</t
         <valueSet value="https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs"/>
       </binding>
     </element>
-    <element id="Condition.category:bedomningskategori.coding">
-      <path value="Condition.category.coding"/>
-      <min value="1"/>
-      <max value="1"/>
-      <mustSupport value="true"/>
-    </element>
-    <element id="Condition.category:bedomningskategori.coding.system">
+    <element id="Condition.category.coding:bedomningskategori.system">
       <path value="Condition.category.coding.system"/>
       <min value="1"/>
       <patternUri value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"/>
       <mustSupport value="true"/>
     </element>
-    <element id="Condition.category:bedomningskategori.coding.code">
+    <element id="Condition.category.coding:bedomningskategori.code">
       <path value="Condition.category.coding.code"/>
       <min value="1"/>
       <mustSupport value="true"/>

@@ -15,7 +15,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/assessmentcategory-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "AssessmentCategoryVS",
     "title" : "AssessmentCategory — ValueSet",
@@ -23,12 +23,12 @@
     "systems" : ["https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
-    "StructureDefinition-SEEHDSLMFunctionalStatus.html" : "GetFunctionalStatus"
+    "StructureDefinition-SEEHDSLMFunctionalStatus.html" : "GetFunctionalStatus",
+    "StructureDefinition-SEEHDSConditionFunctional.html" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/clinicaldocumentnotecode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "ClinicalDocumentNoteCodeVS",
     "title" : "KV Anteckningstyp — ValueSet",
@@ -37,7 +37,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/deliverycode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "DeliveryCodeVS",
     "title" : "DeliveryCode — ValueSet",
@@ -46,7 +46,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/diagnosistype-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "DiagnosisTypeVS",
     "title" : "DiagnosisType — ValueSet",
@@ -54,12 +54,12 @@
     "systems" : ["https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSLMDiagnosis.html" : "GetDiagnosis",
-    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)"
+    "StructureDefinition-SEEHDSConditionDiagnosis.html" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
+    "StructureDefinition-SEEHDSLMDiagnosis.html" : "GetDiagnosis"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/errorcode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "ErrorCodeVS",
     "title" : "ErrorCode — ValueSet",
@@ -67,12 +67,12 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/errorcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSLMVaccinationHistory.html" : "GetVaccinationHistory",
-    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory"
+    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory",
+    "StructureDefinition-SEEHDSLMVaccinationHistory.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/examinationstatuscode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "ExaminationStatusCodeVS",
     "title" : "ExaminationStatusCode — ValueSet",
@@ -81,7 +81,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/fetalpositioncode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "FetalPositionCodeVS",
     "title" : "FetalPositionCode — ValueSet",
@@ -90,7 +90,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/growth-observation-type-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "draft",
     "name" : "GrowthObservationTypeVS",
     "title" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
@@ -102,7 +102,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/prescriptionstatus-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "PrescriptionStatusVS",
     "title" : "PrescriptionStatus — ValueSet",
@@ -114,7 +114,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/referraloutcometypecode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "ReferralOutcomeTypeCodeVS",
     "title" : "ReferralOutcomeTypeCode — ValueSet",
@@ -123,7 +123,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/resultcode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "ResultCodeVS",
     "title" : "ResultCode — ValueSet",
@@ -131,12 +131,12 @@
     "systems" : ["https://fhir.inera.se/CodeSystem/resultcode-actoutcome"],
     "uses" : {
     },
-    "StructureDefinition-SEEHDSLMVaccinationHistory.html" : "GetVaccinationHistory",
-    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory"
+    "StructureDefinition-SEEHDSLMMedicationHistory.html" : "GetMedicationHistory",
+    "StructureDefinition-SEEHDSLMVaccinationHistory.html" : "GetVaccinationHistory"
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/se-observation-status-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "SEObservationStatusVS",
     "title" : "SE Observation Status (SNOMED CT urval 56431000052106)",
@@ -148,7 +148,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/sexcode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "SexCodeVS",
     "title" : "SexCode — ValueSet",
@@ -157,7 +157,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "TypeOfCarePlanVS",
     "title" : "TypeOfCarePlan — ValueSet",
@@ -170,7 +170,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofleavecode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "TypeOfLeaveCodeVS",
     "title" : "TypeOfLeaveCode — ValueSet",
@@ -179,7 +179,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofprescription-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "TypeOfPrescriptionVS",
     "title" : "TypeOfPrescription — ValueSet",
@@ -191,7 +191,7 @@
   },
   {
     "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofresultcode-vs",
-    "version" : "0.11.0",
+    "version" : "0.12.0",
     "status" : "active",
     "name" : "TypeOfResultCodeVS",
     "title" : "TypeOfResultCode — ValueSet",

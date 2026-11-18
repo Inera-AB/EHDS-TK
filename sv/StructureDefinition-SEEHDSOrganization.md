@@ -1,4 +1,4 @@
-# SE EHDS Organization – Organisationsenhet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS Organization – Organisationsenhet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS Organization – Organisationsenhet 
 
@@ -65,11 +65,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSOrganizat
     "valueCanonical" : "http://hl7.org/fhir/uv/ips/StructureDefinition/Organization-uv-ips"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSOrganization",
   "title" : "SE EHDS Organization – Organisationsenhet",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

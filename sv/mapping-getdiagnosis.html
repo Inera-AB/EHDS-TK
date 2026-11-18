@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0</title>
+    <title>GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.11.0 - ci-build
+            <span style="display:inline-block;">0.12.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.11.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.12.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetDiagnosis – Diagnoser</h2>
   
 
@@ -404,13 +404,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td>—</td>
       <td>—</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.category[condition-category]</code></td>
-      <td>Alltid <code class="language-plaintext highlighter-rouge">encounter-diagnosis</code> från FHIR:s <code class="language-plaintext highlighter-rouge">condition-category</code>; se <a href="mapping-issues.html#designbeslut-fattade">DIAG-003</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category.coding[condition-category]</code></td>
+      <td>Alltid <code class="language-plaintext highlighter-rouge">encounter-diagnosis</code> från FHIR:s <code class="language-plaintext highlighter-rouge">condition-category</code>, med <code class="language-plaintext highlighter-rouge">typeOfDiagnosis</code> som extra coding i samma element; se <a href="mapping-issues.html#designbeslut-fattade">DIAG-003</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.typeOfDiagnosis</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.category[diagnostyp]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category.coding[diagnostyp]</code></td>
       <td>Huvuddiagnos (HD) eller Bidiagnos (BY); se tabell nedan</td>
     </tr>
     <tr>
@@ -517,7 +517,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="clinicalstatus">clinicalStatus</h4>
 
-<p>Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. <code class="language-plaintext highlighter-rouge">Condition.clinicalStatus</code> sätts därför <strong>inte</strong>. Tidigare sattes det alltid till <code class="language-plaintext highlighter-rouge">active</code> för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver <code class="language-plaintext highlighter-rouge">clinicalStatus</code> för diagnoser som inte är problemlisteposter.</p>
+<p>Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. <code class="language-plaintext highlighter-rouge">Condition.clinicalStatus</code> sätts därför <strong>inte</strong>. Tidigare sattes det alltid till <code class="language-plaintext highlighter-rouge">active</code> för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver <code class="language-plaintext highlighter-rouge">clinicalStatus</code> för diagnoser som inte är problemlisteposter. Ett utelämnat <code class="language-plaintext highlighter-rouge">clinicalStatus</code> betyder att statusen är okänd, vilket är det ärliga svaret när slutdatum saknas (se <a href="mapping-issues.html#designbeslut-fattade">CLINSTAT-001</a>). <code class="language-plaintext highlighter-rouge">active</code> antas alltså inte bara för att diagnosen saknar slutdatum.</p>
 
 <h4 id="abatementdatetime">abatementDateTime</h4>
 
@@ -632,12 +632,14 @@ Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core 
 <h3 id="kategori--condition-category-och-kv_diagnostyp">Kategori – condition-category och kv_diagnostyp</h3>
 
 <p><code class="language-plaintext highlighter-rouge">Condition.category</code> har i FHIR en utökningsbar (extensible) bindning till kodverket
-<a href="http://terminology.hl7.org/CodeSystem/condition-category">condition-category</a>. Därför har varje diagnos två kategorier:</p>
+<a href="http://terminology.hl7.org/CodeSystem/condition-category">condition-category</a>. Valideraren prövar varje
+category-element för sig, så ett element som bara har en lokal kod ger en varning. Därför har diagnosen <strong>ett</strong>
+category-element med två codings:</p>
 
 <table>
   <thead>
     <tr>
-      <th>Slice</th>
+      <th>Coding</th>
       <th>Kod</th>
       <th>System</th>
       <th>Kommentar</th>
@@ -645,25 +647,25 @@ Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core 
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">category[condition-category]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">coding[condition-category]</code></td>
       <td><code class="language-plaintext highlighter-rouge">encounter-diagnosis</code></td>
       <td><code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code></td>
-      <td>Fast värde. GetDiagnosis returnerar diagnoser som satts vid en vårdkontakt (huvud- och bidiagnos), se <a href="mapping-issues.html#designbeslut-fattade">DIAG-003</a></td>
+      <td>Fast värde. GetDiagnosis returnerar diagnoser som satts vid en vårdkontakt, se <a href="mapping-issues.html#designbeslut-fattade">DIAG-003</a></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">category[diagnostyp]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">coding[diagnostyp]</code></td>
       <td><code class="language-plaintext highlighter-rouge">HD</code> eller <code class="language-plaintext highlighter-rouge">BY</code></td>
       <td><code class="language-plaintext highlighter-rouge">https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp</code></td>
-      <td>Lokal kod, eftersom standardkodverket saknar huvud- och bidiagnos</td>
+      <td>Lokal kod som preciserar kontaktdiagnosen: huvud- eller bidiagnos</td>
     </tr>
   </tbody>
 </table>
 
 <h3 id="diagnosistype--kv_diagnostyp">diagnosisType – kv_diagnostyp</h3>
 
-<p>Slicen <code class="language-plaintext highlighter-rouge">category[diagnostyp]</code> låser <code class="language-plaintext highlighter-rouge">coding.system</code> till kv_diagnostyp och har en obligatorisk (required) bindning till <a href="ValueSet-diagnosistype-vs.html">DiagnosisTypeVS</a>. Kodsystemet finns i IG-paketet som fragmentet <a href="CodeSystem-diagnosistype-cs.html">DiagnosisTypeCS</a> med koderna <code class="language-plaintext highlighter-rouge">HD</code> och <code class="language-plaintext highlighter-rouge">BY</code>.</p>
+<p>Slicen <code class="language-plaintext highlighter-rouge">category.coding[diagnostyp]</code> låser <code class="language-plaintext highlighter-rouge">system</code> till kv_diagnostyp och har en obligatorisk (required) bindning till <a href="ValueSet-diagnosistype-vs.html">DiagnosisTypeVS</a>. Kodsystemet finns i IG-paketet som fragmentet <a href="CodeSystem-diagnosistype-cs.html">DiagnosisTypeCS</a> med koderna <code class="language-plaintext highlighter-rouge">HD</code> och <code class="language-plaintext highlighter-rouge">BY</code>.</p>
 
-<p><code class="language-plaintext highlighter-rouge">Condition.category[diagnostyp]</code> innehåller en kod från Ineras kodverk <code class="language-plaintext highlighter-rouge">kv_diagnostyp</code>:</p>
+<p><code class="language-plaintext highlighter-rouge">Condition.category.coding[diagnostyp]</code> innehåller en kod från Ineras kodverk <code class="language-plaintext highlighter-rouge">kv_diagnostyp</code>:</p>
 
 <table>
   <thead>
@@ -800,9 +802,7 @@ ska använda.</p>
     </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/condition-category"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encounter-diagnosis"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter Diagnosis"</span><span class="w">
-    </span><span class="p">}]</span><span class="w">
-  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HD"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Huvuddiagnos"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
@@ -903,9 +903,9 @@ ska använda.</p>
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.11.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.12.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-18 13:38:00 +0000">
+  <span title="2026-11-18 20:53:00 +0000">
     2026-11-18
   </span>
 

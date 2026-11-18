@@ -13,6 +13,7 @@
     <sch:title>f:AllergyIntolerance</sch:title>
     <sch:rule context="f:AllergyIntolerance">
       <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement': maximum cardinality of 'extension' is 1</sch:assert>
+      <sch:assert test="count(f:clinicalStatus) &gt;= 1">clinicalStatus: minimum cardinality of 'clinicalStatus' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

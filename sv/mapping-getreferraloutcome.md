@@ -1,4 +1,4 @@
-# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetReferralOutcome – Remisser
 

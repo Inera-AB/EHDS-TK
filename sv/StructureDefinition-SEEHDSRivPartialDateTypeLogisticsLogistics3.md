@@ -1,4 +1,4 @@
-# RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Logisk modell: RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3) 
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivPartia
     "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPartialDateTypeLogisticsLogistics3",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSRivPartialDateTypeLogisticsLogistics3",
   "title" : "RIV-TA PartialDateType (clinicalprocess:logistics:logistics:3)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

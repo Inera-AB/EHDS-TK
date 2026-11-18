@@ -1,4 +1,4 @@
-# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetCareDocumentation – Anteckningar
 

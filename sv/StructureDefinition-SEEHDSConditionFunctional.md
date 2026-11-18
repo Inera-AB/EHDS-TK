@@ -1,11 +1,11 @@
-# SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus) 
 
 **Användningar:**
 
+* Exempel för denna Profil: [Condition/SEEHDSConditionFunctionalExample](Condition-SEEHDSConditionFunctionalExample.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
-* Denna Profil används inte av några profiler i denna implementationsguide
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSConditionFunctional.json)
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSConditionFunctional",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSConditionFunctional",
   "title" : "SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -163,8 +163,7 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
     {
       "id" : "Condition.clinicalStatus",
       "path" : "Condition.clinicalStatus",
-      "short" : "Alltid 'active' – härledd (inget statusfält i TKBn)",
-      "mustSupport" : true
+      "short" : "Utelämnas: klinisk status är okänd (TKB:n saknar status och slutdatum) – se CLINSTAT-001"
     },
     {
       "id" : "Condition.verificationStatus",
@@ -175,35 +174,50 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
     {
       "id" : "Condition.category",
       "path" : "Condition.category",
+      "short" : "problem-list-item (FHIR condition-category) och pad-pad/fun-fun (AssessmentCategoryCS) i samma CodeableConcept, se FUNC-002",
+      "min" : 1,
+      "max" : "1",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category.coding",
+      "path" : "Condition.category.coding",
       "slicing" : {
         "discriminator" : [{
           "type" : "value",
-          "path" : "coding.system"
+          "path" : "system"
         }],
-        "description" : "En kategori från FHIR:s condition-category (problem-list-item) och en från AssessmentCategoryCS (pad-pad/fun-fun)",
         "rules" : "open"
       },
       "min" : 2,
       "mustSupport" : true
     },
     {
-      "id" : "Condition.category:condition-category",
-      "path" : "Condition.category",
+      "id" : "Condition.category.coding:condition-category",
+      "path" : "Condition.category.coding",
       "sliceName" : "condition-category",
-      "short" : "Alltid problem-list-item (FHIR condition-category) – funktionstillståndet beskriver patientens tillstånd över tid, se FUNC-002",
+      "short" : "Alltid problem-list-item (FHIR condition-category)",
       "min" : 1,
       "max" : "1",
-      "patternCodeableConcept" : {
-        "coding" : [{
-          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
-          "code" : "problem-list-item"
-        }]
-      },
       "mustSupport" : true
     },
     {
-      "id" : "Condition.category:bedomningskategori",
-      "path" : "Condition.category",
+      "id" : "Condition.category.coding:condition-category.system",
+      "path" : "Condition.category.coding.system",
+      "min" : 1,
+      "patternUri" : "http://terminology.hl7.org/CodeSystem/condition-category",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category.coding:condition-category.code",
+      "path" : "Condition.category.coding.code",
+      "min" : 1,
+      "patternCode" : "problem-list-item",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category.coding:bedomningskategori",
+      "path" : "Condition.category.coding",
       "sliceName" : "bedomningskategori",
       "short" : "Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun",
       "min" : 1,
@@ -215,21 +229,14 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
       }
     },
     {
-      "id" : "Condition.category:bedomningskategori.coding",
-      "path" : "Condition.category.coding",
-      "min" : 1,
-      "max" : "1",
-      "mustSupport" : true
-    },
-    {
-      "id" : "Condition.category:bedomningskategori.coding.system",
+      "id" : "Condition.category.coding:bedomningskategori.system",
       "path" : "Condition.category.coding.system",
       "min" : 1,
       "patternUri" : "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs",
       "mustSupport" : true
     },
     {
-      "id" : "Condition.category:bedomningskategori.coding.code",
+      "id" : "Condition.category.coding:bedomningskategori.code",
       "path" : "Condition.category.coding.code",
       "min" : 1,
       "mustSupport" : true

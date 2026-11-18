@@ -10,11 +10,11 @@
   "id" : "inera.ehds.ehds-tk",
   "language" : "sv",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -803,6 +803,54 @@
       "name" : "ExaminationStatusCode — ValueSet",
       "description" : "Tillåtna värden för examinationStatus i GetImagingOutcome.",
       "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Condition"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "Condition-SEEHDSConditionDiagnosisExample.html"
+      }],
+      "reference" : {
+        "reference" : "Condition/SEEHDSConditionDiagnosisExample"
+      },
+      "name" : "Exempel: kronisk huvuddiagnos från GetDiagnosis",
+      "description" : "Kontaktdiagnos med HD som extra coding i samma category som encounter-diagnosis (DIAG-003), kronisk diagnos i stage (DIAG-001) och utan clinicalStatus, eftersom statusen är okänd (CLINSTAT-001).",
+      "exampleCanonical" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Condition"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "Condition-SEEHDSConditionFunctionalExample.html"
+      }],
+      "reference" : {
+        "reference" : "Condition/SEEHDSConditionFunctionalExample"
+      },
+      "name" : "Exempel: PADL-bedömning från GetFunctionalStatus",
+      "description" : "Funktionstillstånd med pad-pad som extra coding i samma category som problem-list-item (FUNC-002), utan clinicalStatus, eftersom statusen är okänd (CLINSTAT-001).",
+      "exampleCanonical" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
+        "valueUri" : "Patient-SEEHDSPatientExample.html"
+      }],
+      "reference" : {
+        "reference" : "Patient/SEEHDSPatientExample"
+      },
+      "name" : "Exempel: patient med personnummer",
+      "description" : "Patient som exemplen på Condition refererar till. Personnumret är Skatteverkets testpersonnummer.",
+      "exampleCanonical" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient"
     },
     {
       "extension" : [{

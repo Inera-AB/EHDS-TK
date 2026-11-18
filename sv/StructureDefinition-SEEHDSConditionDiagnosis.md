@@ -1,11 +1,11 @@
-# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS Condition – Diagnos (GetDiagnosis) 
 
 **Användningar:**
 
+* Exempel för denna Profil: [Condition/SEEHDSConditionDiagnosisExample](Condition-SEEHDSConditionDiagnosisExample.md)
 * CapabilityStatements som använder denna Profil: [SE EHDS Resource Access Provider](CapabilityStatement-SEEHDSResourceAccessProvider.md)
-* Denna Profil används inte av några profiler i denna implementationsguide
 
 Du kan också kontrollera [användningar i FHIR IG-statistiken](https://packages2.fhir.org/xig/resource/inera.ehds.ehds-tk|current/StructureDefinition/StructureDefinition-SEEHDSConditionDiagnosis.json)
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSConditionDiagnosis",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -195,37 +195,52 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
     {
       "id" : "Condition.category",
       "path" : "Condition.category",
+      "short" : "Kontaktdiagnos: encounter-diagnosis (FHIR condition-category) och HD/BY (kv_diagnostyp) i samma CodeableConcept, se DIAG-003",
+      "min" : 1,
+      "max" : "1",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category.coding",
+      "path" : "Condition.category.coding",
       "slicing" : {
         "discriminator" : [{
           "type" : "value",
-          "path" : "coding.system"
+          "path" : "system"
         }],
-        "description" : "En kategori från FHIR:s condition-category (encounter-diagnosis) och en från kv_diagnostyp (HD/BY)",
         "rules" : "open"
       },
       "min" : 2,
       "mustSupport" : true
     },
     {
-      "id" : "Condition.category:condition-category",
-      "path" : "Condition.category",
+      "id" : "Condition.category.coding:condition-category",
+      "path" : "Condition.category.coding",
       "sliceName" : "condition-category",
-      "short" : "Alltid encounter-diagnosis (FHIR condition-category) – diagnosen är satt vid en vårdkontakt, se DIAG-003",
+      "short" : "Alltid encounter-diagnosis (FHIR condition-category)",
       "min" : 1,
       "max" : "1",
-      "patternCodeableConcept" : {
-        "coding" : [{
-          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
-          "code" : "encounter-diagnosis"
-        }]
-      },
       "mustSupport" : true
     },
     {
-      "id" : "Condition.category:diagnostyp",
-      "path" : "Condition.category",
+      "id" : "Condition.category.coding:condition-category.system",
+      "path" : "Condition.category.coding.system",
+      "min" : 1,
+      "patternUri" : "http://terminology.hl7.org/CodeSystem/condition-category",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category.coding:condition-category.code",
+      "path" : "Condition.category.coding.code",
+      "min" : 1,
+      "patternCode" : "encounter-diagnosis",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category.coding:diagnostyp",
+      "path" : "Condition.category.coding",
       "sliceName" : "diagnostyp",
-      "short" : "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos) från kv_diagnostyp",
+      "short" : "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos) från kv_diagnostyp, en preciserad kontaktdiagnos",
       "min" : 1,
       "max" : "1",
       "mustSupport" : true,
@@ -235,21 +250,14 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
       }
     },
     {
-      "id" : "Condition.category:diagnostyp.coding",
-      "path" : "Condition.category.coding",
-      "min" : 1,
-      "max" : "1",
-      "mustSupport" : true
-    },
-    {
-      "id" : "Condition.category:diagnostyp.coding.system",
+      "id" : "Condition.category.coding:diagnostyp.system",
       "path" : "Condition.category.coding.system",
       "min" : 1,
       "patternUri" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
       "mustSupport" : true
     },
     {
-      "id" : "Condition.category:diagnostyp.coding.code",
+      "id" : "Condition.category.coding:diagnostyp.code",
       "path" : "Condition.category.coding.code",
       "min" : 1,
       "mustSupport" : true

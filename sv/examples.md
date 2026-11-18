@@ -1,4 +1,4 @@
-# Examples - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# Examples - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Examples
 

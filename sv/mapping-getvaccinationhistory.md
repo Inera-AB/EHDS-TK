@@ -1,4 +1,4 @@
-# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetVaccinationHistory – Vaccinationer
 

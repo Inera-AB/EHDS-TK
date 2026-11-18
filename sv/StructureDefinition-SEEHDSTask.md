@@ -1,4 +1,4 @@
-# SE EHDS Task – Remisstatus (GetRequestActivities) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS Task – Remisstatus (GetRequestActivities) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS Task – Remisstatus (GetRequestActivities) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSTask.csv)
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSTask",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSTask",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSTask",
   "title" : "SE EHDS Task – Remisstatus (GetRequestActivities)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

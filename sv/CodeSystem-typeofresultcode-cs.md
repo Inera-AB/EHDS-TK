@@ -1,4 +1,4 @@
-# TypeOfResultCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# TypeOfResultCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## CodeSystem: TypeOfResultCode 
 
@@ -19,12 +19,12 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
   "resourceType" : "CodeSystem",
   "id" : "typeofresultcode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/typeofresultcode",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "TypeOfResultCodeCS",
   "title" : "TypeOfResultCode",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

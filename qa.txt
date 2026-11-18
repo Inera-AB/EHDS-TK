@@ -1,9 +1,9 @@
 SEEHDSTK : Validation Results
 =========================================
 
-err = 0, warn = 132, info = 372, broken links = 0
-IG Publisher Version: 3.0.4
-Generated Wed Nov 18 13:40:42 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-tk#0.11.0 (canonical = https://fhir.inera.se/ig/ehds-tk)
+err = 0, warn = 133, info = 378, broken links = 0
+IG Publisher Version: 3.0.4 Out of date - current version is null
+Generated Wed Nov 18 20:56:21 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-tk#0.12.0 (canonical = https://fhir.inera.se/ig/ehds-tk)
  Build Errors : 0 / 0 / 0
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CapabilityStatement-SEEHDSResourceAccessProvider : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-assessmentcategory-cs : 0 / 1 / 2
@@ -24,7 +24,10 @@ Generated Wed Nov 18 13:40:42 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-t
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofprescription-cs : 0 / 1 / 2
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-typeofresultcode-cs : 0 / 1 / 2
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ConceptMap-observation-status-map : 0 / 1 / 5
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/Condition-SEEHDSConditionDiagnosisExample : 0 / 2 / 5
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/Condition-SEEHDSConditionFunctionalExample : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/ImplementationGuide-inera.ehds.ehds-tk : 0 / 2 / 3
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/Patient-SEEHDSPatientExample : 0 / 1 / 1
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/Provenance-SEEHDSProvenanceExample : 0 / 3 / 1
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAllergyIntolerance : 0 / 7 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAuditEventPatientQuery : 0 / 1 / 5
@@ -32,8 +35,8 @@ Generated Wed Nov 18 13:40:42 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-t
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAuditEventReadAccessLog : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSCarePlan : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSCompositionCareDocumentation : 0 / 1 / 6
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis : 0 / 3 / 14
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional : 0 / 3 / 6
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis : 0 / 2 / 14
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional : 0 / 2 / 6
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDevice : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportImaging : 0 / 1 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportLab : 0 / 1 / 5
@@ -74,7 +77,7 @@ Generated Wed Nov 18 13:40:42 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-t
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSObservationLab : 0 / 1 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSObservationMaternity : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSOrganization : 0 / 1 / 7
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSPatient : 0 / 1 / 10
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSPatient : 0 / 0 / 10
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSPractitionerRole : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSProvenance : 0 / 0 / 5
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSRivAnyURI : 0 / 0 / 3
@@ -280,11 +283,30 @@ WARNING: ConceptMap/observation-status-map: ConceptMap.group[0].element[4].targe
 INFORMATION: Resource: The resource ConceptMap/observation-status-map could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 
 
+== fsh-generated/resources/Condition-SEEHDSConditionDiagnosisExample.json ==
+INFORMATION: Condition/SEEHDSConditionDiagnosisExample: Condition.meta.source: Ingen definition kunde hittas för URL-värdet 'https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5'
+WARNING: Condition/SEEHDSConditionDiagnosisExample: Condition.code.coding[0].system: A definition for CodeSystem 'https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se' could not be found, so the code cannot be validated
+INFORMATION: Condition/SEEHDSConditionDiagnosisExample: Condition.code: Ingen av de angivna codings finns i värdemängden 'Problems - IPS' (http://hl7.org/fhir/uv/ips/ValueSet/problems-uv-ips|2.0.0), och en coding rekommenderas komma från denna värdemängd (koder = https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se#E11.9)
+WARNING: Condition/SEEHDSConditionDiagnosisExample: Condition.subject.identifier.system: Ingen definition kunde hittas för URL-värdet 'http://electronichealth.se/identifier/personnummer'
+INFORMATION: Condition/SEEHDSConditionDiagnosisExample: Condition.stage[0].summary.coding[0].display: There are no valid display names found for the code http://snomed.info/sct#90734009 for language(s) 'sv'. The display is 'Chronic (qualifier value)' which is a valid display for the default language
+INFORMATION: Condition/SEEHDSConditionDiagnosisExample: Condition.stage[0].type.coding[0].display: There are no valid display names found for the code http://snomed.info/sct#263502005 for language(s) 'sv'. The display is 'Clinical course (attribute)' which is a valid display for the default language
+
+
+== fsh-generated/resources/Condition-SEEHDSConditionFunctionalExample.json ==
+INFORMATION: Condition/SEEHDSConditionFunctionalExample: Condition.meta.source: Ingen definition kunde hittas för URL-värdet 'https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5'
+INFORMATION: Condition/SEEHDSConditionFunctionalExample: Condition.code: Ingen av de angivna codings finns i värdemängden 'Problems - IPS' (http://hl7.org/fhir/uv/ips/ValueSet/problems-uv-ips|2.0.0), och en coding rekommenderas komma från denna värdemängd (koder = https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs#pad-pad)
+WARNING: Condition/SEEHDSConditionFunctionalExample: Condition.subject.identifier.system: Ingen definition kunde hittas för URL-värdet 'http://electronichealth.se/identifier/personnummer'
+
+
 == fsh-generated/resources/ImplementationGuide-inera.ehds.ehds-tk.json ==
 INFORMATION: ImplementationGuide/inera.ehds.ehds-tk: ImplementationGuide.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 WARNING: ImplementationGuide/inera.ehds.ehds-tk: ImplementationGuide.dependsOn[2]: ImplementationGuide använder paketet hl7.fhir.eu.base#2.0.0-ballot släppt 2025-12-19, men den senaste lämpliga versionen är 2.0.1. Denna referens börjar bli gammal och den nyare versionen bör övervägas
 WARNING: ImplementationGuide/inera.ehds.ehds-tk: ImplementationGuide.dependsOn[3]: ImplementationGuide använder paketet hl7.fhir.uv.extensions.r4#5.3.0 släppt 2026-05-16, men den senaste lämpliga versionen är 5.4.0. Denna referens börjar bli gammal och den nyare versionen bör övervägas
 INFORMATION: Resource: The resource ImplementationGuide/inera.ehds.ehds-tk could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
+
+
+== fsh-generated/resources/Patient-SEEHDSPatientExample.json ==
+WARNING: Patient/SEEHDSPatientExample: Patient.identifier[0].system: Ingen definition kunde hittas för URL-värdet 'http://electronichealth.se/identifier/personnummer'
 
 
 == fsh-generated/resources/Provenance-SEEHDSProvenanceExample.json ==
@@ -348,30 +370,28 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition.snapshot.element[22].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition.snapshot.element[23].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-related to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[69].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[76].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition.differential.element[5].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-related to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[53].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[53].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
-INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[106].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#90734009 for language(s) 'sv'. The display is 'Chronic (qualifier value)' which is a valid display for the default language
-INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[108].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#263502005 for language(s) 'sv'. The display is 'Clinical course (attribute)' which is a valid display for the default language
-INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[28].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#90734009 for language(s) 'sv'. The display is 'Chronic (qualifier value)' which is a valid display for the default language
-INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[29].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#263502005 for language(s) 'sv'. The display is 'Clinical course (attribute)' which is a valid display for the default language
-INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[26].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
-INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[95].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
+WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[60].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
+WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[60].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[113].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#90734009 for language(s) 'sv'. The display is 'Chronic (qualifier value)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[115].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#263502005 for language(s) 'sv'. The display is 'Clinical course (attribute)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[30].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#90734009 for language(s) 'sv'. The display is 'Chronic (qualifier value)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[31].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#263502005 for language(s) 'sv'. The display is 'Clinical course (attribute)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[28].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[102].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSConditionDiagnosis could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
-WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional.json ==
 INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition.snapshot.element[22].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[46].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[53].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[42].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
-WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[42].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
+WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[49].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
+WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[49].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSConditionFunctional could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
-WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSDevice.json ==
@@ -634,7 +654,6 @@ INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned
 INFORMATION: StructureDefinition.snapshot.element[18].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/patient-birthTime to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSPatient: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSPatient could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
-WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSPractitionerRole.json ==

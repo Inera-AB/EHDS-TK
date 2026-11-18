@@ -1,4 +1,4 @@
-# RIV-TA PQIntervalType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# RIV-TA PQIntervalType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Logisk modell: RIV-TA PQIntervalType (clinicalprocess:healthcond:actoutcome:4) 
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivPQInte
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondActoutcome4",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSRivPQIntervalTypeHealthcondActoutcome4",
   "title" : "RIV-TA PQIntervalType (clinicalprocess:healthcond:actoutcome:4)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

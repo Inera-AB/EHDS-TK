@@ -1,4 +1,4 @@
-# GetMaternityMedicalHistory – Mödravård - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetMaternityMedicalHistory – Mödravård - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetMaternityMedicalHistory – Mödravård
 

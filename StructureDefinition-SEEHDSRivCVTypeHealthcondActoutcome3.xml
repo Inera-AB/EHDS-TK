@@ -16,11 +16,11 @@
     <valueUri value="urn:riv:clinicalprocess:healthcond:actoutcome:3"/>
   </extension>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeHealthcondActoutcome3"/>
-  <version value="0.11.0"/>
+  <version value="0.12.0"/>
   <name value="SEEHDSRivCVTypeHealthcondActoutcome3"/>
   <title value="RIV-TA CVType (clinicalprocess:healthcond:actoutcome:3)"/>
   <status value="draft"/>
-  <date value="2026-11-18T13:38:06+00:00"/>
+  <date value="2026-11-18T20:53:46+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>

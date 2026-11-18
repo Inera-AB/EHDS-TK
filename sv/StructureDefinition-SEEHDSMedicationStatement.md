@@ -1,4 +1,4 @@
-# SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSMedicatio
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSMedicationStatement",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSMedicationStatement",
   "title" : "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

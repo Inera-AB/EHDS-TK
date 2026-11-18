@@ -1,4 +1,4 @@
-# SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord) 
 
@@ -61,11 +61,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSDevice.cs
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDevice",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDevice",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSDevice",
   "title" : "SE EHDS Device – Källsystem (GetVaccinationHistory registrationRecord)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

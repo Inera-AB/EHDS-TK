@@ -1,4 +1,4 @@
-# SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCompositi
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSCompositionCareDocumentation",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSCompositionCareDocumentation",
   "title" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

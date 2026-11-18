@@ -1,4 +1,4 @@
-# Kommentar till uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# Kommentar till uppmärksamhetssignal - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Extension: Kommentar till uppmärksamhetssignal 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-alert-informati
   "resourceType" : "StructureDefinition",
   "id" : "alert-information-comment",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-information-comment",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "AlertInformationComment",
   "title" : "Kommentar till uppmärksamhetssignal",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

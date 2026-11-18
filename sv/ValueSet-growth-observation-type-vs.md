@@ -1,4 +1,4 @@
-# Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## ValueSet: Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3) 
 
@@ -25,12 +25,12 @@
   "resourceType" : "ValueSet",
   "id" : "growth-observation-type-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/growth-observation-type-vs",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "GrowthObservationTypeVS",
   "title" : "Tillväxtkurva – observationstyper (IoÖ Tillväxtkurva v3)",
   "status" : "draft",
   "experimental" : false,
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

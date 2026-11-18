@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="SEEHDSPatientExample"/>
+  <meta>
+    <profile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient"/>
+  </meta>
+  <language value="sv"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: Patient SEEHDSPatientExample</b></p><a name="SEEHDSPatientExample"> </a><a name="hcSEEHDSPatientExample"> </a><div style="display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-SEEHDSPatient.html">SE EHDS Patient</a></p></div><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Tolvan Tolvansson  (inget angivet kön), Födelsedatum: 1912-12-12 ( http://electronichealth.se/identifier/personnummer#191212121212)</p><hr/></div>
+  </text>
+  <identifier>
+    <system value="http://electronichealth.se/identifier/personnummer"/>
+    <value value="191212121212"/>
+  </identifier>
+  <name>
+    <family value="Tolvansson"/>
+    <given value="Tolvan"/>
+  </name>
+  <birthDate value="1912-12-12"/>
+</Patient>

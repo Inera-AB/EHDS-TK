@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Condition xmlns="http://hl7.org/fhir">
+  <id value="SEEHDSConditionDiagnosisExample"/>
+  <meta>
+    <source value="https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5"/>
+    <profile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: Condition SEEHDSConditionDiagnosisExample</b></p><a name="SEEHDSConditionDiagnosisExample"> </a><a name="hcSEEHDSConditionDiagnosisExample"> </a><div style="display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Informationskälla: <a href="https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5">https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5</a></p><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-SEEHDSConditionDiagnosis.html">SE EHDS Condition – Diagnos (GetDiagnosis)</a></p></div><p><b>identifier</b>: doc-12345</p><p><b>verificationStatus</b>: <span title="Koder:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}">Confirmed</span></p><p><b>category</b>: <span title="Koder:{http://terminology.hl7.org/CodeSystem/condition-category encounter-diagnosis}, {https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp HD}">Encounter Diagnosis</span></p><p><b>code</b>: <span title="Koder:{https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se E11.9}">Diabetes mellitus typ 2 utan komplikationer</span></p><p><b>subject</b>: <a href="Patient-SEEHDSPatientExample.html">Tolvan Tolvansson  (inget angivet kön), Födelsedatum: 1912-12-12 ( http://electronichealth.se/identifier/personnummer#191212121212)</a></p><p><b>onset</b>: 2023-06-01 12:00:00+0200</p><p><b>recordedDate</b>: 2023-06-01 12:00:00+0200</p><h3>Stages</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Summary</b></td><td><b>Type</b></td></tr><tr><td style="display: none">*</td><td><span title="Koder:{http://snomed.info/sct 90734009}">Chronic (qualifier value)</span></td><td><span title="Koder:{http://snomed.info/sct 263502005}">Clinical course (attribute)</span></td></tr></table></div>
+  </text>
+  <identifier>
+    <value value="doc-12345"/>
+  </identifier>
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="confirmed"/>
+    </coding>
+  </verificationStatus>
+  <category>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+      <code value="encounter-diagnosis"/>
+      <display value="Encounter Diagnosis"/>
+    </coding>
+    <coding>
+      <system value="https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"/>
+      <code value="HD"/>
+      <display value="Huvuddiagnos"/>
+    </coding>
+  </category>
+  <code>
+    <coding>
+      <system value="https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se"/>
+      <code value="E11.9"/>
+      <display value="Diabetes mellitus typ 2 utan komplikationer"/>
+    </coding>
+  </code>
+  <subject>
+    <reference value="Patient/SEEHDSPatientExample"/>
+    <identifier>
+      <system value="http://electronichealth.se/identifier/personnummer"/>
+      <value value="191212121212"/>
+    </identifier>
+  </subject>
+  <onsetDateTime value="2023-06-01T12:00:00+02:00"/>
+  <recordedDate value="2023-06-01T12:00:00+02:00"/>
+  <stage>
+    <summary>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="90734009"/>
+        <display value="Chronic (qualifier value)"/>
+      </coding>
+    </summary>
+    <type>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="263502005"/>
+        <display value="Clinical course (attribute)"/>
+      </coding>
+    </type>
+  </stage>
+</Condition>

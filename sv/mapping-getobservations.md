@@ -1,4 +1,4 @@
-# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetObservations – Tillväxtkurva
 

@@ -1,4 +1,4 @@
-# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetRequestActivities – Remisstatus
 

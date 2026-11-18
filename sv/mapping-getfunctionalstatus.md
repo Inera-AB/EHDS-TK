@@ -1,4 +1,4 @@
-# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetFunctionalStatus – Funktionstillstånd och ADL
 
@@ -25,7 +25,7 @@ Varje `functionalStatusAssessment`-post mappas till en `Condition`-resurs med pr
 | `pad-pad`(PADL) | `padl 0..*` | `Condition.note`(se[FUNC-001](#öppna-frågor)) |
 | `fun-fun`(Funktionsnedsättning) | `disability 0..1` | `Condition.code`(ICF-kod) |
 
-Kategorin i sig mappas alltid till `Condition.category[bedomningskategori]` från kodverket `AssessmentCategoryCS`. Dessutom anges alltid standardkoden `problem-list-item` från FHIR:s [condition-category](http://terminology.hl7.org/CodeSystem/condition-category) i `Condition.category[condition-category]`, eftersom `Condition.category` har en utökningsbar (extensible) bindning till det kodverket. Se [FUNC-002](mapping-issues.md#designbeslut-fattade).
+Kategorin mappas till `Condition.category.coding[condition-category]`. Elementet har två codings: standardkoden `problem-list-item` från FHIR:s [condition-category](http://terminology.hl7.org/CodeSystem/condition-category) och `pad-pad` eller `fun-fun` från `AssessmentCategoryCS` (`coding[bedomningskategori]`). `Condition.category` har en utökningsbar (extensible) bindning till condition-category, och varje category-element valideras för sig, så den lokala koden ligger i samma element som standardkoden. Se [FUNC-002](mapping-issues.md#designbeslut-fattade).
 
 #### clinicalStatus och verificationStatus
 
@@ -33,7 +33,7 @@ Inget explicit statusfält finns i TKB:n. Fälten härleds:
 
 | | | |
 | :--- | :--- | :--- |
-| `Condition.clinicalStatus` | `active` | Posterna är aktiva bedömningar vid svarstillfället |
+| `Condition.clinicalStatus` | Utelämnas (okänd) | TKB:n har varken status eller slutdatum, så det går inte att säga om tillståndet är aktivt.`condition-clinical`saknar koden`unknown`, och bindningen är obligatorisk, så`data-absent-reason`utan kod är inte giltigt. Utelämnat ger högst best practice-varningen con-3. Se[CLINSTAT-001](mapping-issues.md#designbeslut-fattade). |
 | `Condition.verificationStatus` | `confirmed` | RIVTA-svar representerar bekräftade journaluppgifter |
 
 #### PADL-poster (FUNC-001 – Beslutat)
@@ -80,8 +80,8 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| — | — | `Condition.category[condition-category]` | Alltid`problem-list-item`från FHIR:s`condition-category`; se[FUNC-002](mapping-issues.md#designbeslut-fattade) |
-| `functionalStatusAssessmentBody.assessmentCategory` | 1..1 | `Condition.category[bedomningskategori]` | Kodverk`AssessmentCategoryCS`;`pad-pad`eller`fun-fun` |
+| — | — | `Condition.category.coding[condition-category]` | Alltid`problem-list-item`från FHIR:s`condition-category`, med`assessmentCategory`som extra coding i samma element; se[FUNC-002](mapping-issues.md#designbeslut-fattade) |
+| `functionalStatusAssessmentBody.assessmentCategory` | 1..1 | `Condition.category.coding[bedomningskategori]` | Kodverk`AssessmentCategoryCS`;`pad-pad`eller`fun-fun` |
 | `functionalStatusAssessmentBody.comment` | 0..1 | `Condition.note[0].text` | Fritext-kommentar för hela bedömningen. Villkor: Gäller enbart vid assessmentCategory = 'pad-pad'. |
 
 #### Underelement – padl (vid assessmentCategory = pad-pad)

@@ -1,4 +1,4 @@
-# GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## GetDiagnosis – Diagnoser
 
@@ -46,8 +46,8 @@
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| — | — | `Condition.category[condition-category]` | Alltid`encounter-diagnosis`från FHIR:s`condition-category`; se[DIAG-003](mapping-issues.md#designbeslut-fattade) |
-| `diagnosisBody.typeOfDiagnosis` | 1..1 | `Condition.category[diagnostyp]` | Huvuddiagnos (HD) eller Bidiagnos (BY); se tabell nedan |
+| — | — | `Condition.category.coding[condition-category]` | Alltid`encounter-diagnosis`från FHIR:s`condition-category`, med`typeOfDiagnosis`som extra coding i samma element; se[DIAG-003](mapping-issues.md#designbeslut-fattade) |
+| `diagnosisBody.typeOfDiagnosis` | 1..1 | `Condition.category.coding[diagnostyp]` | Huvuddiagnos (HD) eller Bidiagnos (BY); se tabell nedan |
 | `diagnosisBody.chronicDiagnosis` | 0..1 | `Condition.stage[klinisktForlopp]` | `true`→`stage.type`= SNOMED CT`263502005`|Clinical course (attribute)| och`stage.summary`= SNOMED CT`90734009`|Chronic (qualifier value)|.`false`eller saknat värde → ingen`stage`(se[DIAG-001](mapping-issues.md#designbeslut-fattade)) |
 | `diagnosisBody.diagnosisTime` | 0..1 | `Condition.onsetDateTime` | YYYYMMDDHHMMSS → ISO 8601 |
 | `diagnosisBody.diagnosisCode` | 0..1 | `Condition.code` | Se underelement nedan |
@@ -75,7 +75,7 @@
 
 #### clinicalStatus
 
-Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `Condition.clinicalStatus` sätts därför **inte**. Tidigare sattes det alltid till `active` för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver `clinicalStatus` för diagnoser som inte är problemlisteposter.
+Inget explicit statusfält och inget slutdatumfält finns i GetDiagnosis v2.0. `Condition.clinicalStatus` sätts därför **inte**. Tidigare sattes det alltid till `active` för att harmonisera med IPS, men det värdet saknade stöd i TKB:n och har tagits bort (GENERAL-007). Varken EU Core eller FHIR kräver `clinicalStatus` för diagnoser som inte är problemlisteposter. Ett utelämnat `clinicalStatus` betyder att statusen är okänd, vilket är det ärliga svaret när slutdatum saknas (se [CLINSTAT-001](mapping-issues.md#designbeslut-fattade)). `active` antas alltså inte bara för att diagnosen saknar slutdatum.
 
 #### abatementDateTime
 
@@ -127,18 +127,18 @@ OID:er utan känd URI-mappning bevaras som `urn:oid:{oid}`.
 
 ### Kategori – condition-category och kv_diagnostyp
 
-`Condition.category` har i FHIR en utökningsbar (extensible) bindning till kodverket [condition-category](http://terminology.hl7.org/CodeSystem/condition-category). Därför har varje diagnos två kategorier:
+`Condition.category` har i FHIR en utökningsbar (extensible) bindning till kodverket [condition-category](http://terminology.hl7.org/CodeSystem/condition-category). Valideraren prövar varje category-element för sig, så ett element som bara har en lokal kod ger en varning. Därför har diagnosen **ett** category-element med två codings:
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `category[condition-category]` | `encounter-diagnosis` | `http://terminology.hl7.org/CodeSystem/condition-category` | Fast värde. GetDiagnosis returnerar diagnoser som satts vid en vårdkontakt (huvud- och bidiagnos), se[DIAG-003](mapping-issues.md#designbeslut-fattade) |
-| `category[diagnostyp]` | `HD`eller`BY` | `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp` | Lokal kod, eftersom standardkodverket saknar huvud- och bidiagnos |
+| `coding[condition-category]` | `encounter-diagnosis` | `http://terminology.hl7.org/CodeSystem/condition-category` | Fast värde. GetDiagnosis returnerar diagnoser som satts vid en vårdkontakt, se[DIAG-003](mapping-issues.md#designbeslut-fattade) |
+| `coding[diagnostyp]` | `HD`eller`BY` | `https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp` | Lokal kod som preciserar kontaktdiagnosen: huvud- eller bidiagnos |
 
 ### diagnosisType – kv_diagnostyp
 
-Slicen `category[diagnostyp]` låser `coding.system` till kv_diagnostyp och har en obligatorisk (required) bindning till [DiagnosisTypeVS](ValueSet-diagnosistype-vs.md). Kodsystemet finns i IG-paketet som fragmentet [DiagnosisTypeCS](CodeSystem-diagnosistype-cs.md) med koderna `HD` och `BY`.
+Slicen `category.coding[diagnostyp]` låser `system` till kv_diagnostyp och har en obligatorisk (required) bindning till [DiagnosisTypeVS](ValueSet-diagnosistype-vs.md). Kodsystemet finns i IG-paketet som fragmentet [DiagnosisTypeCS](CodeSystem-diagnosistype-cs.md) med koderna `HD` och `BY`.
 
-`Condition.category[diagnostyp]` innehåller en kod från Ineras kodverk `kv_diagnostyp`:
+`Condition.category.coding[diagnostyp]` innehåller en kod från Ineras kodverk `kv_diagnostyp`:
 
 | | | |
 | :--- | :--- | :--- |
@@ -212,9 +212,7 @@ Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både
     "coding": [{
       "system": "http://terminology.hl7.org/CodeSystem/condition-category",
       "code": "encounter-diagnosis", "display": "Encounter Diagnosis"
-    }]
-  }, {
-    "coding": [{
+    }, {
       "system": "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
       "code": "HD", "display": "Huvuddiagnos"
     }]

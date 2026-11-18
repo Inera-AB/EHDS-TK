@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0</title>
+    <title>Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.11.0 - ci-build
+            <span style="display:inline-block;">0.12.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.11.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.12.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Mappningsissues och Designbeslut</h2>
   
 
@@ -791,8 +791,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td>DIAG-003</td>
       <td>GetDiagnosis</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> innehåller alltid standardkoden <code class="language-plaintext highlighter-rouge">encounter-diagnosis</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code> (slicen <code class="language-plaintext highlighter-rouge">condition-category</code>). <code class="language-plaintext highlighter-rouge">typeOfDiagnosis</code> (HD/BY) ligger kvar som lokal kod från kv_diagnostyp (slicen <code class="language-plaintext highlighter-rouge">diagnostyp</code>). ICD-10-SE anges med systemet <code class="language-plaintext highlighter-rouge">https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se</code> i stället för <code class="language-plaintext highlighter-rouge">https://www.icd10.se/</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> innehåller alltid standardkoden <code class="language-plaintext highlighter-rouge">encounter-diagnosis</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code> (slicen <code class="language-plaintext highlighter-rouge">condition-category</code>). <code class="language-plaintext highlighter-rouge">typeOfDiagnosis</code> (HD/BY) är en extra coding från kv_diagnostyp i samma element (<code class="language-plaintext highlighter-rouge">category.coding[diagnostyp]</code>), eftersom ett eget element med bara den lokala koden ger en valideringsvarning mot den utökningsbara bindningen (ändrat i 0.12.0). ICD-10-SE anges med systemet <code class="language-plaintext highlighter-rouge">https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se</code> i stället för <code class="language-plaintext highlighter-rouge">https://www.icd10.se/</code>.</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.category</code> har en utökningsbar (extensible) bindning till condition-category, så standardkoden ska användas när den passar. Diagnoserna i GetDiagnosis sätts vid en vårdkontakt. Huvud- och bidiagnos saknas i standardkodverket. <code class="language-plaintext highlighter-rouge">https://www.icd10.se/</code> är en webbplats och ingen kodsystem-url; Ineras terminologitjänst är samma url som Inera core använder och samma mönster som kv_diagnostyp.</td>
+    </tr>
+    <tr>
+      <td>CLINSTAT-001</td>
+      <td>GetDiagnosis, GetFunctionalStatus, GetAlertInformation (2.0 och 3.0)</td>
+      <td>Klinisk status antas inte vara <code class="language-plaintext highlighter-rouge">active</code> bara för att slutdatum saknas. GetDiagnosis och GetFunctionalStatus har varken status eller slutdatum, så <code class="language-plaintext highlighter-rouge">Condition.clinicalStatus</code> utelämnas (okänd). GetAlertInformation: ett slutdatum som har passerat vid svarstillfället ger <code class="language-plaintext highlighter-rouge">AllergyIntolerance.clinicalStatus = resolved</code> och <code class="language-plaintext highlighter-rouge">Flag.status = inactive</code>; annars <code class="language-plaintext highlighter-rouge">active</code> för båda.</td>
+      <td>En öppen period säger inte att ett tillstånd pågår. <code class="language-plaintext highlighter-rouge">condition-clinical</code> saknar koden <code class="language-plaintext highlighter-rouge">unknown</code> och bindningen är obligatorisk, så <code class="language-plaintext highlighter-rouge">data-absent-reason</code> utan kod ger valideringsfel; att utelämna elementet är det giltiga sättet att säga okänt. För varningar (Flag, AllergyIntolerance) är elementen obligatoriska utan kod för okänt, och en varning gäller tills den har ett passerat slutdatum (Oskar 2026-11-18).</td>
     </tr>
     <tr>
       <td>DOC-001</td>
@@ -833,7 +839,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td>FUNC-002</td>
       <td>GetFunctionalStatus</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> innehåller alltid standardkoden <code class="language-plaintext highlighter-rouge">problem-list-item</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code> (slicen <code class="language-plaintext highlighter-rouge">condition-category</code>). <code class="language-plaintext highlighter-rouge">assessmentCategory</code> (pad-pad/fun-fun) ligger kvar som lokal kod från AssessmentCategoryCS (slicen <code class="language-plaintext highlighter-rouge">bedomningskategori</code>).</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> innehåller alltid standardkoden <code class="language-plaintext highlighter-rouge">problem-list-item</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code> (slicen <code class="language-plaintext highlighter-rouge">condition-category</code>). <code class="language-plaintext highlighter-rouge">assessmentCategory</code> (pad-pad/fun-fun) är en extra coding från AssessmentCategoryCS i samma element (<code class="language-plaintext highlighter-rouge">category.coding[bedomningskategori]</code>), av samma skäl som DIAG-003 (ändrat i 0.12.0).</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.category</code> har en utökningsbar (extensible) bindning till condition-category. Funktionstillstånd beskriver patientens tillstånd över tid och är inte en kontaktdiagnos. PADL- och funktionsnedsättningsbedömning saknas i standardkodverket.</td>
     </tr>
   </tbody>
@@ -884,9 +890,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.11.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.12.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-18 13:38:00 +0000">
+  <span title="2026-11-18 20:53:00 +0000">
     2026-11-18
   </span>
 

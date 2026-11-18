@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0</title>
+    <title>GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.11.0 - ci-build
+            <span style="display:inline-block;">0.12.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.11.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.12.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetAlertInformation – Uppmärksamhetsinformation</h2>
   
 
@@ -353,7 +353,31 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="flagstatus">Flag.status</h3>
 
-<p>Inget explicit statusfält finns i TKB:n. <code class="language-plaintext highlighter-rouge">Flag.status</code> sätts alltid till <code class="language-plaintext highlighter-rouge">active</code> (poster som returneras av tjänsten är per definition aktiva uppmärksamhetssignaler vid svarstillfället).</p>
+<p>Inget explicit statusfält finns i TKB:n. <code class="language-plaintext highlighter-rouge">Flag.status</code> härleds från giltighetstiden (se <a href="mapping-issues.html#designbeslut-fattade">CLINSTAT-001</a>):</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Giltighetstid</th>
+      <th><code class="language-plaintext highlighter-rouge">Flag.status</code></th>
+      <th><code class="language-plaintext highlighter-rouge">AllergyIntolerance.clinicalStatus</code> (vid överkänslighet)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Slutdatum som har passerat vid svarstillfället. 2.0: det minsta av <code class="language-plaintext highlighter-rouge">validityTimePeriod.end</code> och <code class="language-plaintext highlighter-rouge">obsoleteTime</code>. 3.0: <code class="language-plaintext highlighter-rouge">time.timePeriod.end</code></td>
+      <td><code class="language-plaintext highlighter-rouge">inactive</code></td>
+      <td><code class="language-plaintext highlighter-rouge">resolved</code></td>
+    </tr>
+    <tr>
+      <td>Inget slutdatum, eller ett slutdatum som ännu inte har passerat</td>
+      <td><code class="language-plaintext highlighter-rouge">active</code></td>
+      <td><code class="language-plaintext highlighter-rouge">active</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">Flag.status</code> och <code class="language-plaintext highlighter-rouge">AllergyIntolerance.clinicalStatus</code> är båda obligatoriska (ait-1) med obligatoriska bindningar till kodverk som saknar <code class="language-plaintext highlighter-rouge">unknown</code>. En öppen giltighetstid ger därför <code class="language-plaintext highlighter-rouge">active</code>: varningen gäller tills ett slutdatum har passerat. Reglerna för <code class="language-plaintext highlighter-rouge">negation</code> (3.0) och <code class="language-plaintext highlighter-rouge">approval</code> (3.0) som ger <code class="language-plaintext highlighter-rouge">inactive</code> gäller före giltighetstiden.</p>
 
 <hr />
 
@@ -765,10 +789,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Agens i fritext (fallback om agenskod saknas)</td>
     </tr>
     <tr>
-      <td>(härledd – alltid active)</td>
+      <td>(härledd från giltighetstiden)</td>
       <td>—</td>
       <td><code class="language-plaintext highlighter-rouge">AllergyIntolerance.clinicalStatus</code></td>
-      <td><code class="language-plaintext highlighter-rouge">active</code>; inget statusfält i TKBn</td>
+      <td><code class="language-plaintext highlighter-rouge">resolved</code> om slutdatum har passerat, annars <code class="language-plaintext highlighter-rouge">active</code>; se <a href="#flagstatus">Flag.status</a> och <a href="mapping-issues.html#designbeslut-fattade">CLINSTAT-001</a></td>
     </tr>
     <tr>
       <td>(härledd – alltid allergy)</td>
@@ -1855,9 +1879,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.11.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.12.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-18 13:38:00 +0000">
+  <span title="2026-11-18 20:53:00 +0000">
     2026-11-18
   </span>
 

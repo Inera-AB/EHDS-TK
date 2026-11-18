@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Condition xmlns="http://hl7.org/fhir">
+  <id value="SEEHDSConditionFunctionalExample"/>
+  <meta>
+    <source value="https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5"/>
+    <profile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: Condition SEEHDSConditionFunctionalExample</b></p><a name="SEEHDSConditionFunctionalExample"> </a><a name="hcSEEHDSConditionFunctionalExample"> </a><div style="display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Informationskälla: <a href="https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5">https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5</a></p><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-SEEHDSConditionFunctional.html">SE EHDS Condition – Funktionstillstånd och ADL (GetFunctionalStatus)</a></p></div><p><b>identifier</b>: func-6789</p><p><b>verificationStatus</b>: <span title="Koder:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}">Confirmed</span></p><p><b>category</b>: <span title="Koder:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}, {https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs pad-pad}">Problem List Item</span></p><p><b>code</b>: <span title="Koder:{https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs pad-pad}">PADL-bedömning</span></p><p><b>subject</b>: <a href="Patient-SEEHDSPatientExample.html">Tolvan Tolvansson  (inget angivet kön), Födelsedatum: 1912-12-12 ( http://electronichealth.se/identifier/personnummer#191212121212)</a></p><p><b>recordedDate</b>: 2023-06-01 12:00:00+0200</p><p><b>note</b>: </p><blockquote><div><p>[personlig hygien]: Klarar sig själv</p>
+</div></blockquote></div>
+  </text>
+  <identifier>
+    <value value="func-6789"/>
+  </identifier>
+  <verificationStatus>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status"/>
+      <code value="confirmed"/>
+    </coding>
+  </verificationStatus>
+  <category>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/condition-category"/>
+      <code value="problem-list-item"/>
+      <display value="Problem List Item"/>
+    </coding>
+    <coding>
+      <system value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"/>
+      <code value="pad-pad"/>
+      <display value="pad-pad"/>
+    </coding>
+  </category>
+  <code>
+    <coding>
+      <system value="https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"/>
+      <code value="pad-pad"/>
+      <display value="pad-pad"/>
+    </coding>
+    <text value="PADL-bedömning"/>
+  </code>
+  <subject>
+    <reference value="Patient/SEEHDSPatientExample"/>
+    <identifier>
+      <system value="http://electronichealth.se/identifier/personnummer"/>
+      <value value="191212121212"/>
+    </identifier>
+  </subject>
+  <recordedDate value="2023-06-01T12:00:00+02:00"/>
+  <note>
+    <text value="[personlig hygien]: Klarar sig själv"/>
+  </note>
+</Condition>

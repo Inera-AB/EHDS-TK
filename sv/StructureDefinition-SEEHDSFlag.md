@@ -1,4 +1,4 @@
-# SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSFlag.csv)
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSFlag",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSFlag",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSFlag",
   "title" : "SE EHDS Flag – Uppmärksamhetsinformation (GetAlertInformation)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -309,7 +309,7 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSFlag.csv)
     {
       "id" : "Flag.status",
       "path" : "Flag.status",
-      "short" : "Alltid 'active' – inget statusfält i TKBn; returnerade poster är per definition aktiva",
+      "short" : "inactive om period.end har passerat (eller negation/approval ger inactive), annars active – se CLINSTAT-001",
       "mustSupport" : true
     },
     {

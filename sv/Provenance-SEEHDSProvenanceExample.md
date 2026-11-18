@@ -1,4 +1,4 @@
-# Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Exempel Provenance: Exempel: Provenance med custodian och author
 

@@ -1,4 +1,4 @@
-# SE EHDS DocumentReference – Anteckningar (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# SE EHDS DocumentReference – Anteckningar (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Resursprofil: SE EHDS DocumentReference – Anteckningar (GetCareDocumentation) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSDocumentR
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDocumentReference",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDocumentReference",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSDocumentReference",
   "title" : "SE EHDS DocumentReference – Anteckningar (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# GetDiagnosis - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetDiagnosis - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Logisk modell: GetDiagnosis 
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMDiagnos
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetDiagnosisResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMDiagnosis",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSLMDiagnosis",
   "title" : "GetDiagnosis",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

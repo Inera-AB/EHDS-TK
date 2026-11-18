@@ -1,4 +1,4 @@
-# GetReferralOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# GetReferralOutcome 3.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## Logisk modell: GetReferralOutcome 3.1 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMReferra
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetReferralOutcomeResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMReferralOutcomeV31",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "SEEHDSLMReferralOutcomeV31",
   "title" : "GetReferralOutcome 3.1",
   "status" : "draft",
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

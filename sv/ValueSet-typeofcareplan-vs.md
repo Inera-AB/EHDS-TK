@@ -1,4 +1,4 @@
-# TypeOfCarePlan — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
+# TypeOfCarePlan — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.12.0
 
 ## ValueSet: TypeOfCarePlan — ValueSet 
 
@@ -26,12 +26,12 @@
   "resourceType" : "ValueSet",
   "id" : "typeofcareplan-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/typeofcareplan-vs",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "name" : "TypeOfCarePlanVS",
   "title" : "TypeOfCarePlan — ValueSet",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-18T13:38:06+00:00",
+  "date" : "2026-11-18T20:53:46+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

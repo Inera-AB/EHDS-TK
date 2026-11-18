@@ -8,11 +8,11 @@
 </div></div>
   </text>
   <url value="https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk"/>
-  <version value="0.11.0"/>
+  <version value="0.12.0"/>
   <name value="SEEHDSTK"/>
   <title value="Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-11-18T13:38:06+00:00"/>
+  <date value="2026-11-18T20:53:46+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -587,6 +587,39 @@
       <name value="ExaminationStatusCode — ValueSet"/>
       <description value="Tillåtna värden för examinationStatus i GetImagingOutcome."/>
       <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Condition"/>
+      </extension>
+      <reference>
+        <reference value="Condition/SEEHDSConditionDiagnosisExample"/>
+      </reference>
+      <name value="Exempel: kronisk huvuddiagnos från GetDiagnosis"/>
+      <description value="Kontaktdiagnos med HD som extra coding i samma category som encounter-diagnosis (DIAG-003), kronisk diagnos i stage (DIAG-001) och utan clinicalStatus, eftersom statusen är okänd (CLINSTAT-001)."/>
+      <exampleCanonical value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Condition"/>
+      </extension>
+      <reference>
+        <reference value="Condition/SEEHDSConditionFunctionalExample"/>
+      </reference>
+      <name value="Exempel: PADL-bedömning från GetFunctionalStatus"/>
+      <description value="Funktionstillstånd med pad-pad som extra coding i samma category som problem-list-item (FUNC-002), utan clinicalStatus, eftersom statusen är okänd (CLINSTAT-001)."/>
+      <exampleCanonical value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/SEEHDSPatientExample"/>
+      </reference>
+      <name value="Exempel: patient med personnummer"/>
+      <description value="Patient som exemplen på Condition refererar till. Personnumret är Skatteverkets testpersonnummer."/>
+      <exampleCanonical value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
