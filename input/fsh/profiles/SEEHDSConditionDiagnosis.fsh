@@ -7,9 +7,7 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 // assertedDate ärvs från EU Core (condition-eu-core)
 * extension[assertedDate] MS
 * extension contains
-    ConditionChronicDiagnosis named chronicDiagnosis 0..1 MS and
     http://hl7.org/fhir/StructureDefinition/condition-related named relatedCondition 0..* MS
-* extension[chronicDiagnosis] ^short = "Kronisk diagnos (diagnosisBody.chronicDiagnosis) – se DIAG-001"
 * extension[relatedCondition] ^short = "Relaterad diagnos (diagnosisBody.relatedDiagnosis.documentId) – logisk referens via identifier, se DIAG-002"
 * extension[relatedCondition].valueReference.identifier 1..1 MS
 * extension[relatedCondition].valueReference.identifier ^short = "Den relaterade diagnosens dokumentid (relatedDiagnosis.documentId) – motsvarar Condition.identifier på den relaterade diagnosen"
@@ -71,13 +69,18 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * code.text MS
 * code.text ^short = "Fritext (diagnosisBody.diagnosisCode.originalText) – fallback: displayName"
 
+// DIAG-001: kronisk diagnos uttrycks med SNOMED CT i Condition.stage i stället för en lokal extension.
+* stage ^slicing.discriminator.type = #pattern
+* stage ^slicing.discriminator.path = "type"
+* stage ^slicing.rules = #open
+* stage ^slicing.description = "Kliniskt förlopp (SNOMED CT 263502005)"
+* stage contains klinisktForlopp 0..1 MS
+* stage[klinisktForlopp] ^short = "Kronisk diagnos (diagnosisBody.chronicDiagnosis = true) – se DIAG-001"
+* stage[klinisktForlopp].type 1..1 MS
+* stage[klinisktForlopp].type = $SCT#263502005 "Clinical course (attribute)"
+* stage[klinisktForlopp].summary 1..1 MS
+* stage[klinisktForlopp].summary = $SCT#90734009 "Chronic (qualifier value)"
+* stage[klinisktForlopp].summary ^short = "Alltid 90734009 |Chronic (qualifier value)|; slicen utelämnas när chronicDiagnosis är false eller saknas"
+
 * onsetDateTime MS
 * onsetDateTime ^short = "Bedömningstidpunkt (diagnosisBody.diagnosisTime) – YYYYMMDDHHMMSS → ISO 8601"
-
-Extension: ConditionChronicDiagnosis
-Id: condition-chronic-diagnosis
-Title: "Kronisk diagnos"
-Description: "Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001."
-* ^context[0].type = #element
-* ^context[0].expression = "Condition"
-* value[x] only boolean

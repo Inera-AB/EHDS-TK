@@ -44,7 +44,7 @@
 |---|---|---|---|
 | — | — | `Condition.category[condition-category]` | Alltid `encounter-diagnosis` från FHIR:s `condition-category`; se [DIAG-003](mapping-issues.html#designbeslut-fattade) |
 | `diagnosisBody.typeOfDiagnosis` | 1..1 | `Condition.category[diagnostyp]` | Huvuddiagnos (HD) eller Bidiagnos (BY); se tabell nedan |
-| `diagnosisBody.chronicDiagnosis` | 0..1 | `Condition.extension[chronicDiagnosis].valueBoolean` | Lokal extension [ConditionChronicDiagnosis](StructureDefinition-condition-chronic-diagnosis.html); utelämnas om fältet saknas (se [DIAG-001](mapping-issues.html#designbeslut-fattade)) |
+| `diagnosisBody.chronicDiagnosis` | 0..1 | `Condition.stage[klinisktForlopp]` | `true` → `stage.type` = SNOMED CT `263502005` \|Clinical course (attribute)\| och `stage.summary` = SNOMED CT `90734009` \|Chronic (qualifier value)\|. `false` eller saknat värde → ingen `stage` (se [DIAG-001](mapping-issues.html#designbeslut-fattade)) |
 | `diagnosisBody.diagnosisTime` | 0..1 | `Condition.onsetDateTime` | YYYYMMDDHHMMSS → ISO 8601 |
 | `diagnosisBody.diagnosisCode` | 0..1 | `Condition.code` | Se underelement nedan |
 | `diagnosisBody.diagnosisCode.code` | — | `Condition.code.coding.code` | ICD-10-SE kod, t.ex. `J18.9` |
@@ -183,11 +183,12 @@ ska använda.
 ```xml
 <ns1:diagnosisBody>
   <ns1:diagnosisCode>
-    <ns1:code>J18.9</ns1:code>
+    <ns1:code>E11.9</ns1:code>
     <ns1:codeSystem>1.2.752.116.1.1.1.1.3</ns1:codeSystem>
-    <ns1:displayName>Pneumoni, ospecificerad</ns1:displayName>
+    <ns1:displayName>Diabetes mellitus typ 2 utan komplikationer</ns1:displayName>
   </ns1:diagnosisCode>
   <ns1:typeOfDiagnosis>HD</ns1:typeOfDiagnosis>
+  <ns1:chronicDiagnosis>true</ns1:chronicDiagnosis>
   <ns1:diagnosisTime>20230601120000</ns1:diagnosisTime>
 </ns1:diagnosisBody>
 ```
@@ -217,8 +218,12 @@ ska använda.
     }]
   }],
   "code": {
-    "coding": [{ "system": "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se", "code": "J18.9", "display": "Pneumoni, ospecificerad" }]
+    "coding": [{ "system": "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se", "code": "E11.9", "display": "Diabetes mellitus typ 2 utan komplikationer" }]
   },
+  "stage": [{
+    "type": { "coding": [{ "system": "http://snomed.info/sct", "code": "263502005", "display": "Clinical course (attribute)" }] },
+    "summary": { "coding": [{ "system": "http://snomed.info/sct", "code": "90734009", "display": "Chronic (qualifier value)" }] }
+  }],
   "subject": {
     "reference": "Patient/pat-191212121212",
     "identifier": { "system": "http://electronichealth.se/identifier/personnummer", "value": "191212121212" }
@@ -243,6 +248,6 @@ ska använda.
 
 | ID | Fält | Beslut |
 |---|---|---|
-| DIAG-001 | `diagnosisBody.chronicDiagnosis` | Lokal extension `Condition.extension[chronicDiagnosis]` ([ConditionChronicDiagnosis](StructureDefinition-condition-chronic-diagnosis.html)) med `valueBoolean`. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
+| DIAG-001 | `diagnosisBody.chronicDiagnosis` | `Condition.stage[klinisktForlopp]` med `type` = SNOMED CT `263502005` \|Clinical course (attribute)\| och `summary` = SNOMED CT `90734009` \|Chronic (qualifier value)\| när värdet är `true`. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
 | DIAG-002 | `diagnosisBody.relatedDiagnosis.documentId` | Standardextension `Condition.extension[relatedCondition]` (`condition-related`) med logisk referens via `valueReference.identifier`. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
 | DIAG-003 | `Condition.category` | Standardkoden `encounter-diagnosis` från `condition-category` anges alltid. `typeOfDiagnosis` (HD/BY) ligger kvar som en lokal kategori från kv_diagnostyp. Se [Mappningsissues](mapping-issues.html#designbeslut-fattade). |
