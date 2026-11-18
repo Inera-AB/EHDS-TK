@@ -13,6 +13,9 @@ Description: """
   fält (MAT-001).
 """
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (maternityMedicalRecordHeader.patientId)"

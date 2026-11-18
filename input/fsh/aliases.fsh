@@ -1,10 +1,12 @@
 // External code systems
 Alias: $SCT           = http://snomed.info/sct
 Alias: $LOINC         = http://loinc.org
-Alias: $ICD10SE       = https://www.icd10.se/
+// ICD-10-SE: kanonisk url i Ineras terminologitjänst, samma som i Inera core (ConditionDiagnosisInera)
+Alias: $ICD10SE       = https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se
 Alias: $v3-NullFlavor = http://terminology.hl7.org/CodeSystem/v3-NullFlavor
 Alias: $v3-ActCode    = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $obs-category  = http://terminology.hl7.org/CodeSystem/observation-category
+Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
 
 // Swedish identifiers
 Alias: $personnummer           = http://electronichealth.se/identifier/personnummer

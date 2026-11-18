@@ -13,6 +13,9 @@ Description: """
   Provenance.target.
 """
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * identifier ^short = "Journaluppgiftens id (careDocumentation.header.record.id) – samma som DocumentReference.masterIdentifier"
 
 * status = #final

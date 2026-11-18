@@ -23,6 +23,9 @@ Description: """
 
 // ─── Identitet och proveniensmetadata ──────────────────────────────────────
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * identifier MS
 * identifier ^short = "Observations-id (observationBody.observationId)"
 * identifier.value MS

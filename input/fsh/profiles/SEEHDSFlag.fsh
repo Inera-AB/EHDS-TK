@@ -23,6 +23,9 @@ Description: """
 
 // ─── AllergyIntolerance-länk (standard R4-extension; R5: supportingInfo) ─────
 // flag-detail ärvs från EU Core (flag-eu-core) som flagDetailExt
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * extension[flagDetailExt] MS
 * extension[flagDetailExt] ^short = "Referens till AllergyIntolerance när body = hypersensitivity (R4: flag-detail; R5: supportingInfo)"
 

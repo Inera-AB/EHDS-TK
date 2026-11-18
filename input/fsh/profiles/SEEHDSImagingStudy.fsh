@@ -4,6 +4,9 @@ Id: SEEHDSImagingStudy
 Title: "SE EHDS ImagingStudy – Bilddiagnostik (GetImagingOutcome)"
 Description: "Profil för bilddiagnostiska undersökningar mappat från RIVTA-tjänstekontraktet GetImagingOutcome (clinicalprocess:healthcond:actoutcome v1.0). Täcker NPÖ 1.0 och 1177 Journal 1.0."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (imagingOutcomeHeader.patientId)"

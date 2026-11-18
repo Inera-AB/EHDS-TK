@@ -48,7 +48,7 @@ GetCareContacts returnerar en lista `careContact` (0..*). Varje post innehåller
 |---|---|---|---|
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet (Regel 1) |
 | `careContact.careContactHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare (Regel 1) |
-| `careContact.careContactHeader.approvedForPatient` | 1..1 | `Encounter.meta.security` | PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues |
+| `careContact.careContactHeader.approvedForPatient` | 1..1 | `Encounter.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues |
 | `careContact.careContactHeader.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK |
 | `careContact.careContactHeader.documentTime` | 0..0 | N/A | Ej tillämpligt för detta TK |
 | `careContact.careContactHeader.legalAuthenticator` | 0..0 | N/A | Ej tillämpligt för detta TK |

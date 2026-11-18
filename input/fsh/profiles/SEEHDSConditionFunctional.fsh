@@ -20,6 +20,9 @@ Description: """
 * meta.source MS
 * meta.source ^short = "Källsystem HSA-id (functionalStatusAssessmentHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * recorder only Reference(SEEHDSPractitionerRole)
 * recorder MS
 * recorder ^short = "Ansvarig hälso- och sjukvårdspersonal (functionalStatusAssessmentHeader.accountableHealthcareProfessional)"
@@ -34,8 +37,25 @@ Description: """
 * code 1..1 MS
 * code ^short = "Bedömningskod: assessmentCategory (pad-pad/fun-fun) eller disability.disabilityAssessment (ICF) – se FUNC-001"
 
-* category MS
-* category ^short = "Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory – pad-pad eller fun-fun)"
+// Condition.category har en extensible bindning till FHIR:s condition-category.
+// Standardkoden problem-list-item används i första hand (FUNC-002). pad-pad/fun-fun har
+// ingen motsvarighet i standardkodverket och ligger kvar som en egen, lokal slice.
+* category 2..* MS
+* category ^slicing.discriminator.type = #value
+* category ^slicing.discriminator.path = "coding.system"
+* category ^slicing.rules = #open
+* category ^slicing.description = "En kategori från FHIR:s condition-category (problem-list-item) och en från AssessmentCategoryCS (pad-pad/fun-fun)"
+* category contains
+    condition-category 1..1 MS and
+    bedomningskategori 1..1 MS
+* category[condition-category] = $condition-category#problem-list-item
+* category[condition-category] ^short = "Alltid problem-list-item (FHIR condition-category) – funktionstillståndet beskriver patientens tillstånd över tid, se FUNC-002"
+* category[bedomningskategori].coding 1..1 MS
+* category[bedomningskategori].coding.system 1..1 MS
+* category[bedomningskategori].coding.system = "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"
+* category[bedomningskategori].coding.code 1..1 MS
+* category[bedomningskategori] from AssessmentCategoryVS (required)
+* category[bedomningskategori] ^short = "Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun"
 
 * clinicalStatus MS
 * clinicalStatus ^short = "Alltid 'active' – härledd (inget statusfält i TKBn)"

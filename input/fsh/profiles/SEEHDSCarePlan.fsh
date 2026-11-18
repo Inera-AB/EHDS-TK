@@ -4,6 +4,9 @@ Id: SEEHDSCarePlan
 Title: "SE EHDS CarePlan – Vårdplan (GetCarePlans)"
 Description: "Profil för vård- och omsorgsplaner mappat från RIVTA-tjänstekontraktet GetCarePlans (clinicalprocess:logistics:logistics v2.0). Täcker NPÖ 2.0 och 1177 Journal 2.0."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * identifier MS
 * identifier ^short = "Planens identitet inom källsystemet (documentId)"
 

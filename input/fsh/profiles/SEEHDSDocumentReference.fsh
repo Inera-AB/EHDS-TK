@@ -11,6 +11,9 @@ Description: """
   signature för signeringsinformation.
 """
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * extension contains
     DocumentReferenceSignatureTime named ext-signature-time 0..1 MS
 * extension[ext-signature-time] ^short = "Signeringstidpunkt (careDocumentation.header.signature.timestamp) – utelämnas om signature.timestamp saknas (DOC-003)"

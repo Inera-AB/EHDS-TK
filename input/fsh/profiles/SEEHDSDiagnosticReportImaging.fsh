@@ -4,6 +4,9 @@ Id: SEEHDSDiagnosticReportImaging
 Title: "SE EHDS DiagnosticReport – Bilddiagnostiskt utlåtande (GetImagingOutcome)"
 Description: "Profil för bilddiagnostiska utlåtanden/fynd från GetImagingOutcome. Används tillsammans med SEEHDSImagingStudy för att representera både undersökning och svar."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (imagingOutcomeHeader.patientId)"

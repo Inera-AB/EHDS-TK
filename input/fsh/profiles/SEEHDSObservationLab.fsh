@@ -4,6 +4,9 @@ Id: SEEHDSObservationLab
 Title: "SE EHDS Observation – Laboratoriesvar (GetLaboratoryOrderOutcome)"
 Description: "Profil för enskilda laboratorieresultat/analyser mappat från GetLaboratoryOrderOutcome. Används i kombination med SEEHDSDiagnosticReportLab."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (header.accessControlHeader.patientId)"

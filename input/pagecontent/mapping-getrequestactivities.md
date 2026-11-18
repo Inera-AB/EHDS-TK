@@ -23,7 +23,7 @@ Svaret `GetRequestActivitiesResponse` innehåller noll eller flera `requestActiv
 | `requestActivity.header.accessControlHeader.careProcessId` | 0..1 | Ej mappad | Id för individanpassad vårdprocess |
 | `requestActivity.header.accessControlHeader.lockTime` | 0..0 | N/A | Ska inte användas enligt TKB |
 | `requestActivity.header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används för spärrkontroll i bryggan |
-| `requestActivity.header.accessControlHeader.approvedForPatient` | 1..1 | `Task.meta.security` | PDL-kontroll – se PDL-001 |
+| `requestActivity.header.accessControlHeader.approvedForPatient` | 1..1 | `Task.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll – se PDL-001 |
 | `requestActivity.header.sourceSystemId` | 1..1 | `Task.meta.source` | IIType; `extension` = källsystemets HSA-id → `https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` (GENERAL-005) |
 | `requestActivity.header.record.id` | 1..1 | `Task.identifier[0]` | Remisstatusens id. `root` → `system` (OID→URI), `extension` → `value` |
 | `requestActivity.header.record.timestamp` | 1..1 | `Task.authoredOn` | När remisstatusen skapades i källsystemet; ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001) |

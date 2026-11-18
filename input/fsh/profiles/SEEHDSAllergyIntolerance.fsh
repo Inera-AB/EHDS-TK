@@ -20,6 +20,9 @@ Description: """
   Täcker NPÖ 2.0 och 1177 Journal 2.0.
 """
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * patient only Reference(SEEHDSPatient)
 * patient MS
 * patient ^short = "Patient (alertInformationHeader.patientId)"

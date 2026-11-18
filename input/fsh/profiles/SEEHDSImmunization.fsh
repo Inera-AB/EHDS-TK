@@ -5,6 +5,9 @@ Title: "SE EHDS Immunization – Vaccinationer (GetVaccinationHistory)"
 Description: "Profil för vaccinationer mappat från RIVTA-tjänstekontraktet GetVaccinationHistory (clinicalprocess:activityprescription:actoutcome v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0."
 
 // ─── Header-extensions ───────────────────────────────────────────────────────
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * extension contains ImmunizationLegalAuthenticator named legalAuthenticator 0..1 MS
 * extension contains ImmunizationPatientPostalCode named patientPostalCode 0..1 MS
 
