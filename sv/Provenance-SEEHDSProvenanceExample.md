@@ -1,10 +1,10 @@
-# Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Exempel Provenance: Exempel: Provenance med custodian och author
 
 Profil: [SE EHDS Provenance](StructureDefinition-SEEHDSProvenance.md)
 
-Härkomst för Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/6.2.0/NamingSystem-uri.html)/urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b
+Härkomst för Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/7.0.1/NamingSystem-uri.html)/urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b
 
 Sammanfattning
 

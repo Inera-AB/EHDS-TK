@@ -1,4 +1,4 @@
-# SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Resursprofil: SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSAuditEven
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSAuditEventPatientRead",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientRead",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSAuditEventPatientRead",
   "title" : "SE EHDS AuditEvent – Innehållshämtning med patient (BALP PatientRead)",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome – Provsvar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetLaboratoryOrderOutcome – Provsvar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetLaboratoryOrderOutcome – Provsvar
 
@@ -44,7 +44,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `header.accessControlHeader.accountableCareGiver` | 1..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – juridiskt ansvarig vårdgivare |
 | `header.accessControlHeader.accountableCareUnit` | 1..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – informationsägande vårdenhet |
 | `header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används av Sparr-tjänsten vid filtrering; transportlagerdata, ingår ej i FHIR-resursen |
-| `header.accessControlHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se[PDL-001](#öppna-frågor) |
+| `header.accessControlHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se[PDL-001](#öppna-frågor) |
 
 #### Header – sourceSystemId och record
 
@@ -381,7 +381,7 @@ Resurshierarkin är densamma som för 4.2: en `SEEHDSDiagnosticReportLab` per `l
 | `laboratoryOrderOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DiagnosticReport.extension[signatureTime]` | Motsvarar`header.signature.timestamp` |
 | `laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.extension[signatureId]` | Motsvarar`header.signature.id` |
 | `laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Som`header.signature.name` |
-| `laboratoryOrderOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se PDL-001 |
+| `laboratoryOrderOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se PDL-001 |
 | `laboratoryOrderOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Logisk referens till vårdkontakten |
 
 ##### Body (laboratoryOrderOutcomeBody) → DiagnosticReport

@@ -1,4 +1,4 @@
-# inera.ehds.ehds-tk#0.9.0: Inera EHDS Tjänstekontrakt – FHIR Implementation Guide(sv)
+# inera.ehds.ehds-tk#0.10.0: Inera EHDS Tjänstekontrakt – FHIR Implementation Guide(sv)
 
 ## Pages
 
@@ -208,7 +208,6 @@
 * [Behandlingsbeskrivning](sv/StructureDefinition-alert-treatment-description.md)
 * [Tidpunkt för verifiering](sv/StructureDefinition-alert-verified-time.md)
 * [Godkänd för patient](sv/StructureDefinition-approved-for-patient.md)
-* [Kronisk diagnos](sv/StructureDefinition-condition-chronic-diagnosis.md)
 * [Källsystemskontakt](sv/StructureDefinition-device-source-system-contact.md)
 * [Signeringstidpunkt för journalanteckning](sv/StructureDefinition-ext-signature-time.md)
 * [Fullständig dos administrerad](sv/StructureDefinition-immunization-is-dose-complete.md)

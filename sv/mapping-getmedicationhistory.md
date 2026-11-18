@@ -1,4 +1,4 @@
-# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetMedicationHistory – Läkemedel - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetMedicationHistory – Läkemedel
 
@@ -55,7 +55,7 @@ Varje `medicationMedicalRecord`-post ger upphov till en `MedicationStatement`. R
 | `medicationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
 | `medicationMedicalRecordHeader.nullified` | 0..0 | N/A | Ej tillämpligt för detta TK |
 | `medicationMedicalRecordHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt för detta TK |
-| `medicationMedicalRecordHeader.approvedForPatient` | 1..1 | `MedicationStatement.meta.security` | PDL-kontroll – se[PDL-001](#öppna-frågor) |
+| `medicationMedicalRecordHeader.approvedForPatient` | 1..1 | `MedicationStatement.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se[PDL-001](#öppna-frågor) |
 | `medicationMedicalRecordHeader.careContactId` | 0..1 | `MedicationStatement.context.identifier.value` | Logisk referens till vårdkontakt |
 
 -------

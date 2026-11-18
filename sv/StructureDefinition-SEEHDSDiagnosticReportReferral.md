@@ -1,4 +1,4 @@
-# SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Resursprofil: SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSDiagnosti
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSDiagnosticReportReferral",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSDiagnosticReportReferral",
   "title" : "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -118,6 +118,32 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSDiagnosti
       "id" : "DiagnosticReport.meta.source",
       "path" : "DiagnosticReport.meta.source",
       "short" : "Källsystem HSA-id (referralOutcomeHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)",
+      "mustSupport" : true
+    },
+    {
+      "id" : "DiagnosticReport.meta.security",
+      "path" : "DiagnosticReport.meta.security",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "code"
+        }],
+        "rules" : "open"
+      },
+      "mustSupport" : true
+    },
+    {
+      "id" : "DiagnosticReport.meta.security:nopat",
+      "path" : "DiagnosticReport.meta.security",
+      "sliceName" : "nopat",
+      "short" : "Ej för patient (approvedForPatient = false i TK-headern) – se PDL-001",
+      "definition" : "Anges när approvedForPatient i tjänstekontraktets header är false. Utelämnas när värdet är true. Koden är NOPAT från v3-ActCode (inte NOPATIENT, som inte finns i kodverket).",
+      "min" : 0,
+      "max" : "1",
+      "patternCoding" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code" : "NOPAT"
+      },
       "mustSupport" : true
     },
     {

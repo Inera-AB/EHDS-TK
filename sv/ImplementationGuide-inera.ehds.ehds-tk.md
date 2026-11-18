@@ -10,11 +10,11 @@
   "id" : "inera.ehds.ehds-tk",
   "language" : "sv",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSTK",
   "title" : "Inera EHDS Tjänstekontrakt – FHIR Implementation Guide",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -1362,22 +1362,6 @@
       },
       "name" : "Kommentar till uppmärksamhetssignal",
       "description" : "Kommentar angående uppmärksamhetssignalen (alertInformationBody.alertInformationComment).\nOm obsoleteComment är angivet konkateneras det med prefix 'Inaktiveringskommentar: {obsoleteComment}'.\nFör body = unstructuredAlertInformation: unstructuredAlertInformationContent läggs här.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
-      },
-      {
-        "url" : "http://hl7.org/fhir/StructureDefinition/implementationguide-page",
-        "valueUri" : "StructureDefinition-condition-chronic-diagnosis.html"
-      }],
-      "reference" : {
-        "reference" : "StructureDefinition/condition-chronic-diagnosis"
-      },
-      "name" : "Kronisk diagnos",
-      "description" : "Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001.",
       "exampleBoolean" : false
     },
     {

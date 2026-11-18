@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0</title>
+    <title>Mappningsissues och Designbeslut - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.9.0 - ci-build
+            <span style="display:inline-block;">0.10.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.9.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.10.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Mappningsissues och Designbeslut</h2>
   
 
@@ -779,14 +779,20 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td>DIAG-001</td>
       <td>GetDiagnosis</td>
-      <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis</code> → lokal extension <code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis]</code> (<a href="StructureDefinition-condition-chronic-diagnosis.html">ConditionChronicDiagnosis</a>) med <code class="language-plaintext highlighter-rouge">valueBoolean</code>. Extensionen utelämnas om fältet saknas i källan.</td>
-      <td>Bevarar källans boolean oförändrad, inklusive explicit <code class="language-plaintext highlighter-rouge">false</code>. Alternativet <code class="language-plaintext highlighter-rouge">Condition.category</code> valdes bort eftersom kodsystem för "kronisk" saknas och <code class="language-plaintext highlighter-rouge">false</code> inte kan uttryckas meningsfullt som kategori.</td>
+      <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis = true</code> → <code class="language-plaintext highlighter-rouge">Condition.stage[klinisktForlopp]</code> med <code class="language-plaintext highlighter-rouge">stage.type</code> = SNOMED CT <code class="language-plaintext highlighter-rouge">263502005</code> |Clinical course (attribute)| och <code class="language-plaintext highlighter-rouge">stage.summary</code> = SNOMED CT <code class="language-plaintext highlighter-rouge">90734009</code> |Chronic (qualifier value)|. När värdet är <code class="language-plaintext highlighter-rouge">false</code> eller saknas anges ingen <code class="language-plaintext highlighter-rouge">stage</code>. Den lokala extensionen <code class="language-plaintext highlighter-rouge">condition-chronic-diagnosis</code> är borttagen (0.10.0).</td>
+      <td>Standardelement och SNOMED CT i stället för en lokal extension, enligt Oskars beslut 2026-11-18. Ett explicit <code class="language-plaintext highlighter-rouge">false</code> går inte att skilja från ett saknat värde, eftersom "inte kronisk" inte är samma sak som akut.</td>
     </tr>
     <tr>
       <td>DIAG-002</td>
       <td>GetDiagnosis</td>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.relatedDiagnosis.documentId</code> → standardextension <code class="language-plaintext highlighter-rouge">Condition.extension[relatedCondition]</code> (<code class="language-plaintext highlighter-rouge">http://hl7.org/fhir/StructureDefinition/condition-related</code>) med logisk referens <code class="language-plaintext highlighter-rouge">valueReference.identifier.value = documentId</code>. En extension per <code class="language-plaintext highlighter-rouge">relatedDiagnosis</code>; <code class="language-plaintext highlighter-rouge">identifier.system</code> sätts lika som <code class="language-plaintext highlighter-rouge">Condition.identifier.system</code> på den relaterade diagnosen.</td>
       <td>HL7-standardextension för samband mellan diagnoser (t.ex. bidiagnos → huvuddiagnos). Logisk referens kräver inte att den relaterade Condition-resursen finns i samma svar. Alternativet <code class="language-plaintext highlighter-rouge">Condition.note</code> valdes bort då det inte är maskinläsbart.</td>
+    </tr>
+    <tr>
+      <td>DIAG-003</td>
+      <td>GetDiagnosis</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> innehåller alltid standardkoden <code class="language-plaintext highlighter-rouge">encounter-diagnosis</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code> (slicen <code class="language-plaintext highlighter-rouge">condition-category</code>). <code class="language-plaintext highlighter-rouge">typeOfDiagnosis</code> (HD/BY) ligger kvar som lokal kod från kv_diagnostyp (slicen <code class="language-plaintext highlighter-rouge">diagnostyp</code>). ICD-10-SE anges med systemet <code class="language-plaintext highlighter-rouge">https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se</code> i stället för <code class="language-plaintext highlighter-rouge">https://www.icd10.se/</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> har en utökningsbar (extensible) bindning till condition-category, så standardkoden ska användas när den passar. Diagnoserna i GetDiagnosis sätts vid en vårdkontakt. Huvud- och bidiagnos saknas i standardkodverket. <code class="language-plaintext highlighter-rouge">https://www.icd10.se/</code> är en webbplats och ingen kodsystem-url; Ineras terminologitjänst är samma url som Inera core använder och samma mönster som kv_diagnostyp.</td>
     </tr>
     <tr>
       <td>DOC-001</td>
@@ -823,6 +829,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>GetFunctionalStatus</td>
       <td>PADL-poster kodas som <code class="language-plaintext highlighter-rouge">Condition.note</code> med format <code class="language-plaintext highlighter-rouge">[typeOfAssessment]: assessment</code>.</td>
       <td>Enklast möjliga lösning som bevarar PADL-data utan extra resurser. Alternativet Observation nämns i profilen.</td>
+    </tr>
+    <tr>
+      <td>FUNC-002</td>
+      <td>GetFunctionalStatus</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> innehåller alltid standardkoden <code class="language-plaintext highlighter-rouge">problem-list-item</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code> (slicen <code class="language-plaintext highlighter-rouge">condition-category</code>). <code class="language-plaintext highlighter-rouge">assessmentCategory</code> (pad-pad/fun-fun) ligger kvar som lokal kod från AssessmentCategoryCS (slicen <code class="language-plaintext highlighter-rouge">bedomningskategori</code>).</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category</code> har en utökningsbar (extensible) bindning till condition-category. Funktionstillstånd beskriver patientens tillstånd över tid och är inte en kontaktdiagnos. PADL- och funktionsnedsättningsbedömning saknas i standardkodverket.</td>
     </tr>
   </tbody>
 </table>
@@ -872,10 +884,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.9.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.10.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-16 16:06:00 +0000">
-    2026-11-16
+  <span title="2026-11-18 13:32:00 +0000">
+    2026-11-18
   </span>
 
           <br/>

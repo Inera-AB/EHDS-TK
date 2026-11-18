@@ -13,7 +13,6 @@
     <sch:title>f:Condition</sch:title>
     <sch:rule context="f:Condition">
       <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate': maximum cardinality of 'extension' is 1</sch:assert>
-      <sch:assert test="count(f:extension[@url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis']) &lt;= 1">extension with URL = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis': maximum cardinality of 'extension' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>
@@ -70,6 +69,13 @@
     <sch:title>f:Condition/f:bodySite</sch:title>
     <sch:rule context="f:Condition/f:bodySite">
       <sch:assert test="count(f:extension[@url = 'http://hl7.org/fhir/StructureDefinition/bodySite']) &lt;= 1">extension with URL = 'http://hl7.org/fhir/StructureDefinition/bodySite': maximum cardinality of 'extension' is 1</sch:assert>
+    </sch:rule>
+  </sch:pattern>
+  <sch:pattern>
+    <sch:title>f:Condition/f:stage</sch:title>
+    <sch:rule context="f:Condition/f:stage">
+      <sch:assert test="count(f:summary) &gt;= 1">summary: minimum cardinality of 'summary' is 1</sch:assert>
+      <sch:assert test="count(f:type) &gt;= 1">type: minimum cardinality of 'type' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
 </sch:schema>

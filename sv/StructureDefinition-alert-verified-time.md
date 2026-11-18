@@ -1,4 +1,4 @@
-# Tidpunkt för verifiering - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# Tidpunkt för verifiering - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Extension: Tidpunkt för verifiering 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-alert-verified-
   "resourceType" : "StructureDefinition",
   "id" : "alert-verified-time",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-verified-time",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "AlertVerifiedTime",
   "title" : "Tidpunkt för verifiering",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

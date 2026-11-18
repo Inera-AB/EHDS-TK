@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0</title>
+    <title>GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.9.0 - ci-build
+            <span style="display:inline-block;">0.10.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.9.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.10.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetDiagnosis – Diagnoser</h2>
   
 
@@ -212,6 +212,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#healthcareprofessionaltype--practitionerrole" id="markdown-toc-healthcareprofessionaltype--practitionerrole">healthcareProfessionalType → PractitionerRole</a></li>
   <li><a href="#profil-i-metaprofile" id="markdown-toc-profil-i-metaprofile">Profil i meta.profile</a></li>
   <li><a href="#oid-till-uri-mappningar" id="markdown-toc-oid-till-uri-mappningar">OID till URI-mappningar</a></li>
+  <li><a href="#kategori--condition-category-och-kv_diagnostyp" id="markdown-toc-kategori--condition-category-och-kv_diagnostyp">Kategori – condition-category och kv_diagnostyp</a></li>
   <li><a href="#diagnosistype--kv_diagnostyp" id="markdown-toc-diagnosistype--kv_diagnostyp">diagnosisType – kv_diagnostyp</a></li>
   <li><a href="#pdl-och-sparr" id="markdown-toc-pdl-och-sparr">PDL och Sparr</a></li>
   <li><a href="#provenance" id="markdown-toc-provenance">Provenance</a></li>
@@ -358,8 +359,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.approvedForPatient</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.meta.security</code></td>
-      <td>PDL-kontroll – se <a href="#öppna-frågor">PDL-001</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.meta.security[nopat]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code> → kod <code class="language-plaintext highlighter-rouge">NOPAT</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/v3-ActCode</code>; <code class="language-plaintext highlighter-rouge">true</code> → ingen säkerhetsmärkning. Se <a href="#öppna-frågor">PDL-001</a></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.careContactId</code></td>
@@ -401,6 +402,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </thead>
   <tbody>
     <tr>
+      <td>—</td>
+      <td>—</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category[condition-category]</code></td>
+      <td>Alltid <code class="language-plaintext highlighter-rouge">encounter-diagnosis</code> från FHIR:s <code class="language-plaintext highlighter-rouge">condition-category</code>; se <a href="mapping-issues.html#designbeslut-fattade">DIAG-003</a></td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.typeOfDiagnosis</code></td>
       <td>1..1</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.category[diagnostyp]</code></td>
@@ -409,8 +416,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis].valueBoolean</code></td>
-      <td>Lokal extension <a href="StructureDefinition-condition-chronic-diagnosis.html">ConditionChronicDiagnosis</a>; utelämnas om fältet saknas (se <a href="mapping-issues.html#designbeslut-fattade">DIAG-001</a>)</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.stage[klinisktForlopp]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> → <code class="language-plaintext highlighter-rouge">stage.type</code> = SNOMED CT <code class="language-plaintext highlighter-rouge">263502005</code> |Clinical course (attribute)| och <code class="language-plaintext highlighter-rouge">stage.summary</code> = SNOMED CT <code class="language-plaintext highlighter-rouge">90734009</code> |Chronic (qualifier value)|. <code class="language-plaintext highlighter-rouge">false</code> eller saknat värde → ingen <code class="language-plaintext highlighter-rouge">stage</code> (se <a href="mapping-issues.html#designbeslut-fattade">DIAG-001</a>)</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.diagnosisTime</code></td>
@@ -434,7 +441,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.diagnosisCode.codeSystem</code></td>
       <td>—</td>
       <td><code class="language-plaintext highlighter-rouge">Condition.code.coding.system</code></td>
-      <td>OID <code class="language-plaintext highlighter-rouge">1.2.752.116.1.1.1.1.3</code> → <code class="language-plaintext highlighter-rouge">https://www.icd10.se/</code></td>
+      <td>OID <code class="language-plaintext highlighter-rouge">1.2.752.116.1.1.1.1.3</code> → <code class="language-plaintext highlighter-rouge">https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se</code></td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.diagnosisCode.displayName</code></td>
@@ -602,8 +609,8 @@ Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core 
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">1.2.752.116.1.1.1.1.3</code></td>
-      <td><code class="language-plaintext highlighter-rouge">https://www.icd10.se/</code></td>
-      <td>ICD-10-SE</td>
+      <td><code class="language-plaintext highlighter-rouge">https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se</code></td>
+      <td>ICD-10-SE (Socialstyrelsen), url i Ineras terminologitjänst</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">2.16.840.1.113883.6.3</code></td>
@@ -621,6 +628,36 @@ Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core 
 <p>OID:er utan känd URI-mappning bevaras som <code class="language-plaintext highlighter-rouge">urn:oid:{oid}</code>.</p>
 
 <hr />
+
+<h3 id="kategori--condition-category-och-kv_diagnostyp">Kategori – condition-category och kv_diagnostyp</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Condition.category</code> har i FHIR en utökningsbar (extensible) bindning till kodverket
+<a href="http://terminology.hl7.org/CodeSystem/condition-category">condition-category</a>. Därför har varje diagnos två kategorier:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slice</th>
+      <th>Kod</th>
+      <th>System</th>
+      <th>Kommentar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">category[condition-category]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">encounter-diagnosis</code></td>
+      <td><code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/condition-category</code></td>
+      <td>Fast värde. GetDiagnosis returnerar diagnoser som satts vid en vårdkontakt (huvud- och bidiagnos), se <a href="mapping-issues.html#designbeslut-fattade">DIAG-003</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">category[diagnostyp]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">HD</code> eller <code class="language-plaintext highlighter-rouge">BY</code></td>
+      <td><code class="language-plaintext highlighter-rouge">https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp</code></td>
+      <td>Lokal kod, eftersom standardkodverket saknar huvud- och bidiagnos</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="diagnosistype--kv_diagnostyp">diagnosisType – kv_diagnostyp</h3>
 
@@ -683,7 +720,7 @@ Profilen ärver HL7 Europe Core Condition, så resursen uppfyller även EU Core 
     <tr>
       <td>Patientgodkännande</td>
       <td><code class="language-plaintext highlighter-rouge">diagnosisHeader.approvedForPatient</code> (boolean)</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.meta.security</code>; se <a href="#öppna-frågor">PDL-001</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.meta.security[nopat]</code>; <code class="language-plaintext highlighter-rouge">false</code> → <code class="language-plaintext highlighter-rouge">NOPAT</code> (v3-ActCode), se <a href="#öppna-frågor">PDL-001</a></td>
     </tr>
   </tbody>
 </table>
@@ -730,11 +767,12 @@ ska använda.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ns1:diagnosisBody&gt;</span>
   <span class="nt">&lt;ns1:diagnosisCode&gt;</span>
-    <span class="nt">&lt;ns1:code&gt;</span>J18.9<span class="nt">&lt;/ns1:code&gt;</span>
+    <span class="nt">&lt;ns1:code&gt;</span>E11.9<span class="nt">&lt;/ns1:code&gt;</span>
     <span class="nt">&lt;ns1:codeSystem&gt;</span>1.2.752.116.1.1.1.1.3<span class="nt">&lt;/ns1:codeSystem&gt;</span>
-    <span class="nt">&lt;ns1:displayName&gt;</span>Pneumoni, ospecificerad<span class="nt">&lt;/ns1:displayName&gt;</span>
+    <span class="nt">&lt;ns1:displayName&gt;</span>Diabetes mellitus typ 2 utan komplikationer<span class="nt">&lt;/ns1:displayName&gt;</span>
   <span class="nt">&lt;/ns1:diagnosisCode&gt;</span>
   <span class="nt">&lt;ns1:typeOfDiagnosis&gt;</span>HD<span class="nt">&lt;/ns1:typeOfDiagnosis&gt;</span>
+  <span class="nt">&lt;ns1:chronicDiagnosis&gt;</span>true<span class="nt">&lt;/ns1:chronicDiagnosis&gt;</span>
   <span class="nt">&lt;ns1:diagnosisTime&gt;</span>20230601120000<span class="nt">&lt;/ns1:diagnosisTime&gt;</span>
 <span class="nt">&lt;/ns1:diagnosisBody&gt;</span>
 </code></pre></div></div>
@@ -753,13 +791,22 @@ ska använda.</p>
   </span><span class="nl">"verificationStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/condition-ver-status"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmed"</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w">
   </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
     </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+      </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://terminology.hl7.org/CodeSystem/condition-category"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encounter-diagnosis"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter Diagnosis"</span><span class="w">
+    </span><span class="p">}]</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
       </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HD"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Huvuddiagnos"</span><span class="w">
     </span><span class="p">}]</span><span class="w">
   </span><span class="p">}],</span><span class="w">
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.icd10.se/"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"J18.9"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pneumoni, ospecificerad"</span><span class="w"> </span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E11.9"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Diabetes mellitus typ 2 utan komplikationer"</span><span class="w"> </span><span class="p">}]</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"stage"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://snomed.info/sct"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"263502005"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clinical course (attribute)"</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://snomed.info/sct"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"90734009"</span><span class="p">,</span><span class="w"> </span><span class="nl">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chronic (qualifier value)"</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}],</span><span class="w">
   </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/pat-191212121212"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://electronichealth.se/identifier/personnummer"</span><span class="p">,</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"191212121212"</span><span class="w"> </span><span class="p">}</span><span class="w">
@@ -808,12 +855,17 @@ ska använda.</p>
     <tr>
       <td>DIAG-001</td>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.chronicDiagnosis</code></td>
-      <td>Lokal extension <code class="language-plaintext highlighter-rouge">Condition.extension[chronicDiagnosis]</code> (<a href="StructureDefinition-condition-chronic-diagnosis.html">ConditionChronicDiagnosis</a>) med <code class="language-plaintext highlighter-rouge">valueBoolean</code>. Se <a href="mapping-issues.html#designbeslut-fattade">Mappningsissues</a>.</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.stage[klinisktForlopp]</code> med <code class="language-plaintext highlighter-rouge">type</code> = SNOMED CT <code class="language-plaintext highlighter-rouge">263502005</code> |Clinical course (attribute)| och <code class="language-plaintext highlighter-rouge">summary</code> = SNOMED CT <code class="language-plaintext highlighter-rouge">90734009</code> |Chronic (qualifier value)| när värdet är <code class="language-plaintext highlighter-rouge">true</code>. Se <a href="mapping-issues.html#designbeslut-fattade">Mappningsissues</a>.</td>
     </tr>
     <tr>
       <td>DIAG-002</td>
       <td><code class="language-plaintext highlighter-rouge">diagnosisBody.relatedDiagnosis.documentId</code></td>
       <td>Standardextension <code class="language-plaintext highlighter-rouge">Condition.extension[relatedCondition]</code> (<code class="language-plaintext highlighter-rouge">condition-related</code>) med logisk referens via <code class="language-plaintext highlighter-rouge">valueReference.identifier</code>. Se <a href="mapping-issues.html#designbeslut-fattade">Mappningsissues</a>.</td>
+    </tr>
+    <tr>
+      <td>DIAG-003</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category</code></td>
+      <td>Standardkoden <code class="language-plaintext highlighter-rouge">encounter-diagnosis</code> från <code class="language-plaintext highlighter-rouge">condition-category</code> anges alltid. <code class="language-plaintext highlighter-rouge">typeOfDiagnosis</code> (HD/BY) ligger kvar som en lokal kategori från kv_diagnostyp. Se <a href="mapping-issues.html#designbeslut-fattade">Mappningsissues</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -844,10 +896,10 @@ ska använda.</p>
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.9.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.10.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-16 16:06:00 +0000">
-    2026-11-16
+  <span title="2026-11-18 13:32:00 +0000">
+    2026-11-18
   </span>
 
           <br/>

@@ -1,4 +1,4 @@
-# ErrorCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# ErrorCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## CodeSystem: ErrorCode 
 
@@ -19,12 +19,12 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
   "resourceType" : "CodeSystem",
   "id" : "errorcode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/errorcode-actoutcome",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "ErrorCodeCS",
   "title" : "ErrorCode",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

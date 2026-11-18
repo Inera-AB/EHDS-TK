@@ -1,4 +1,4 @@
-# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetVaccinationHistory – Vaccinationer
 
@@ -59,7 +59,7 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 | `vaccinationMedicalRecordHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Immunization.extension[legalAuthenticator].signatureTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `vaccinationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Immunization.extension[legalAuthenticator].hsaId` | HSA-id för signerare |
 | `vaccinationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `vaccinationMedicalRecordHeader.approvedForPatient` | 1..1 | `Immunization.meta.security` | PDL-kontroll – se[PDL-001](#öppna-frågor) |
+| `vaccinationMedicalRecordHeader.approvedForPatient` | 1..1 | `Immunization.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se[PDL-001](#öppna-frågor) |
 | `vaccinationMedicalRecordHeader.careContactId` | 0..1 | `Immunization.encounter.identifier` | Logisk referens till Encounter |
 | `vaccinationMedicalRecordHeader.nullified` | 1..1 | `Immunization.status` | true→`entered-in-error`, false→`completed`; se DES-007 |
 | `vaccinationMedicalRecordHeader.nullifiedReason` | 0..1 | `Immunization.statusReason.text` | Makuleringsorsak (fritext). Villkor: Får ENBART anges om nullified = true. |

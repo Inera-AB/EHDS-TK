@@ -1,4 +1,4 @@
-# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetFunctionalStatus – Funktionstillstånd och ADL
 
@@ -25,7 +25,7 @@ Varje `functionalStatusAssessment`-post mappas till en `Condition`-resurs med pr
 | `pad-pad`(PADL) | `padl 0..*` | `Condition.note`(se[FUNC-001](#öppna-frågor)) |
 | `fun-fun`(Funktionsnedsättning) | `disability 0..1` | `Condition.code`(ICF-kod) |
 
-Kategorin i sig mappas alltid till `Condition.category` från kodverket `AssessmentCategoryCS`.
+Kategorin i sig mappas alltid till `Condition.category[bedomningskategori]` från kodverket `AssessmentCategoryCS`. Dessutom anges alltid standardkoden `problem-list-item` från FHIR:s [condition-category](http://terminology.hl7.org/CodeSystem/condition-category) i `Condition.category[condition-category]`, eftersom `Condition.category` har en utökningsbar (extensible) bindning till det kodverket. Se [FUNC-002](mapping-issues.md#designbeslut-fattade).
 
 #### clinicalStatus och verificationStatus
 
@@ -68,7 +68,7 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 | `functionalStatusAssessmentHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (om legalAuthenticator finns, prioriteras framför documentTime) |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Condition.asserter`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | `false`→ kod`NOPAT`från`http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
+| `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security[nopat]` | `false`→ kod`NOPAT`från`http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
 | `functionalStatusAssessmentHeader.careContactId` | 0..1 | `Condition.encounter.identifier.value` | Logisk referens till vårdkontakt |
 | `functionalStatusAssessmentHeader.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
 | `functionalStatusAssessmentHeader.nullified` | 0..0 | N/A | Ej tillämpligt för detta TK |
@@ -80,7 +80,8 @@ Alternativet med separata `Observation`-resurser per PADL-post ger bättre struk
 
 | | | | |
 | :--- | :--- | :--- | :--- |
-| `functionalStatusAssessmentBody.assessmentCategory` | 1..1 | `Condition.category` | Kodverk`AssessmentCategoryCS`;`pad-pad`eller`fun-fun` |
+| — | — | `Condition.category[condition-category]` | Alltid`problem-list-item`från FHIR:s`condition-category`; se[FUNC-002](mapping-issues.md#designbeslut-fattade) |
+| `functionalStatusAssessmentBody.assessmentCategory` | 1..1 | `Condition.category[bedomningskategori]` | Kodverk`AssessmentCategoryCS`;`pad-pad`eller`fun-fun` |
 | `functionalStatusAssessmentBody.comment` | 0..1 | `Condition.note[0].text` | Fritext-kommentar för hela bedömningen. Villkor: Gäller enbart vid assessmentCategory = 'pad-pad'. |
 
 #### Underelement – padl (vid assessmentCategory = pad-pad)

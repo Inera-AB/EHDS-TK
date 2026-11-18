@@ -5,16 +5,16 @@
   "description" : "FHIR IG som beskriver hur Ineras RIVTA-tjänstekontrakt mappas till FHIR för att informationsförsörja NPÖ och 1177 Journal.",
   "status" : "draft",
   "package-id" : "inera.ehds.ehds-tk",
-  "ig-ver" : "0.9.0",
-  "date" : "Mon, 16 Nov, 2026 16:06:12 +0000",
-  "dateISO8601" : "2026-11-16T16:06:12+00:00",
+  "ig-ver" : "0.10.0",
+  "date" : "Wed, 18 Nov, 2026 13:32:07 +0000",
+  "dateISO8601" : "2026-11-18T13:32:07+00:00",
   "errs" : 0,
-  "warnings" : 132,
-  "hints" : 368,
+  "warnings" : 131,
+  "hints" : 372,
   "broken-links" : 0,
   "suppressed-hints" : 1,
   "suppressed-warnings" : 5,
   "version" : "4.0.1",
   "tool" : "6.0.0-snapshot1 (3)",
-  "maxMemory" : 3669470792
+  "maxMemory" : 3852988240
 }

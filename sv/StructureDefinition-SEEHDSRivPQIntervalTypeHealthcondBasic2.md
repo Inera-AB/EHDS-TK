@@ -1,4 +1,4 @@
-# RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Logisk modell: RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:2) 
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivPQInte
     "valueUri" : "urn:riv:clinicalprocess:healthcond:basic:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQIntervalTypeHealthcondBasic2",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSRivPQIntervalTypeHealthcondBasic2",
   "title" : "RIV-TA PQIntervalType (clinicalprocess:healthcond:basic:2)",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

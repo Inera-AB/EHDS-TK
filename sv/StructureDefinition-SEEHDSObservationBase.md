@@ -1,4 +1,4 @@
-# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# SE EHDS Observation Base – GetObservations - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Resursprofil: SE EHDS Observation Base – GetObservations 
 
@@ -61,11 +61,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSObservati
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSObservationBase",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationBase",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSObservationBase",
   "title" : "SE EHDS Observation Base – GetObservations",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -132,7 +132,28 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSObservati
     {
       "id" : "Observation.meta.security",
       "path" : "Observation.meta.security",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "code"
+        }],
+        "rules" : "open"
+      },
       "short" : "Säkerhetsmärkning:\nconfidentialityIndicator=true → v3-Confidentiality#R (skyddad identitet)\napprovedForPatient=false      → ActCode#NOPAT (ej visas för patient, se PDL-001)",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Observation.meta.security:nopat",
+      "path" : "Observation.meta.security",
+      "sliceName" : "nopat",
+      "short" : "Ej för patient (approvedForPatient = false i TK-headern) – se PDL-001",
+      "definition" : "Anges när approvedForPatient i tjänstekontraktets header är false. Utelämnas när värdet är true. Koden är NOPAT från v3-ActCode (inte NOPATIENT, som inte finns i kodverket).",
+      "min" : 0,
+      "max" : "1",
+      "patternCoding" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code" : "NOPAT"
+      },
       "mustSupport" : true
     },
     {

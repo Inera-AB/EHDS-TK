@@ -1,4 +1,4 @@
-# RIV-TA xs:base64Binary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# RIV-TA xs:base64Binary - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Logisk modell: RIV-TA xs:base64Binary 
 
@@ -42,11 +42,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivBase64
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivBase64Binary",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivBase64Binary",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSRivBase64Binary",
   "title" : "RIV-TA xs:base64Binary",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

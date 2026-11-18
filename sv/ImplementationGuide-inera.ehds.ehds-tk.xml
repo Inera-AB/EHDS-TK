@@ -8,11 +8,11 @@
 </div></div>
   </text>
   <url value="https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk"/>
-  <version value="0.9.0"/>
+  <version value="0.10.0"/>
   <name value="SEEHDSTK"/>
   <title value="Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-11-16T16:06:12+00:00"/>
+  <date value="2026-11-18T13:32:07+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -971,17 +971,6 @@
       </reference>
       <name value="Kommentar till uppmärksamhetssignal"/>
       <description value="Kommentar angående uppmärksamhetssignalen (alertInformationBody.alertInformationComment).&#xA;Om obsoleteComment är angivet konkateneras det med prefix 'Inaktiveringskommentar: {obsoleteComment}'.&#xA;För body = unstructuredAlertInformation: unstructuredAlertInformationContent läggs här."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
-      </extension>
-      <reference>
-        <reference value="StructureDefinition/condition-chronic-diagnosis"/>
-      </reference>
-      <name value="Kronisk diagnos"/>
-      <description value="Anger om diagnosen är kronisk (true) eller inte kronisk (false) (diagnosisBody.chronicDiagnosis). Se DIAG-001."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

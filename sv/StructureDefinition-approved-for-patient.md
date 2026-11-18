@@ -1,4 +1,4 @@
-# Godkänd för patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# Godkänd för patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Extension: Godkänd för patient 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-approved-for-pa
   "resourceType" : "StructureDefinition",
   "id" : "approved-for-patient",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "ApprovedForPatient",
   "title" : "Godkänd för patient",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,9 +1,9 @@
 SEEHDSTK : Validation Results
 =========================================
 
-err = 0, warn = 132, info = 368, broken links = 0
+err = 0, warn = 131, info = 372, broken links = 0
 IG Publisher Version: 3.0.4
-Generated Mon Nov 16 16:09:01 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-tk#0.9.0 (canonical = https://fhir.inera.se/ig/ehds-tk)
+Generated Wed Nov 18 13:36:12 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-tk#0.10.0 (canonical = https://fhir.inera.se/ig/ehds-tk)
  Build Errors : 0 / 0 / 0
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CapabilityStatement-SEEHDSResourceAccessProvider : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/CodeSystem-assessmentcategory-cs : 0 / 1 / 2
@@ -32,7 +32,7 @@ Generated Mon Nov 16 16:09:01 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-t
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSAuditEventReadAccessLog : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSCarePlan : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSCompositionCareDocumentation : 0 / 1 / 6
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis : 0 / 3 / 8
+ /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis : 0 / 3 / 14
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional : 0 / 3 / 6
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDevice : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportImaging : 0 / 1 / 5
@@ -152,7 +152,6 @@ Generated Mon Nov 16 16:09:01 UTC 2026. FHIR version 4.0.1 for inera.ehds.ehds-t
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-alert-treatment-description : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-alert-verified-time : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-approved-for-patient : 0 / 2 / 3
- /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-condition-chronic-diagnosis : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-device-source-system-contact : 0 / 2 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-ext-signature-time : 0 / 1 / 3
  /home/runner/work/EHDS-TK/EHDS-TK/fsh-generated/resources/StructureDefinition-immunization-is-dose-complete : 0 / 2 / 3
@@ -294,15 +293,15 @@ WARNING: Provenance/SEEHDSProvenanceExample: Provenance.agent[1].who.identifier.
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSAllergyIntolerance.json ==
-INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[12].binding.extension[0]: extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0 är föråldrad med noteringen: 'Use additionalBinding extension or element instead'
-WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[29].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIAllergenNoDrug'
-WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[29].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.code
-WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[29].binding.extension[1]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.code
-WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[53].binding.valueSet: En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIAllergenNoDrug'
-WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[54].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIReactionAllergy'
-WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[54].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.reaction.manifestation
+INFORMATION: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[13].binding.extension[0]: extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0 är föråldrad med noteringen: 'Use additionalBinding extension or element instead'
+WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[30].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIAllergenNoDrug'
+WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[30].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.code
+WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[30].binding.extension[1]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.code
+WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[54].binding.valueSet: En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIAllergenNoDrug'
+WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[55].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIReactionAllergy'
+WARNING: StructureDefinition/SEEHDSAllergyIntolerance: StructureDefinition.snapshot.element[55].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at AllergyIntolerance.reaction.manifestation
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSAllergyIntolerance could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAllergyIntolerance'): The Implementation Guide contains no examples for this profile
 
@@ -336,34 +335,40 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSCompositionCareDocumentation.json ==
-INFORMATION: StructureDefinition.snapshot.element[69].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/note to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[78].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/note to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.snapshot.element[66].short: Strängvärdet innehåller text som ser ut som inbäddade HTML-taggar. Om detta innehåll renderas till HTML utan lämplig efterbearbetning kan det vara en säkerhetsrisk
-INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.differential.element[8].short: Strängvärdet innehåller text som ser ut som inbäddade HTML-taggar. Om detta innehåll renderas till HTML utan lämplig efterbearbetning kan det vara en säkerhetsrisk
+INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.snapshot.element[75].short: Strängvärdet innehåller text som ser ut som inbäddade HTML-taggar. Om detta innehåll renderas till HTML utan lämplig efterbearbetning kan det vara en säkerhetsrisk
+INFORMATION: StructureDefinition/SEEHDSCompositionCareDocumentation: StructureDefinition.differential.element[10].short: Strängvärdet innehåller text som ser ut som inbäddade HTML-taggar. Om detta innehåll renderas till HTML utan lämplig efterbearbetning kan det vara en säkerhetsrisk
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSCompositionCareDocumentation could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSConditionDiagnosis.json ==
-INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[21].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[22].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition.snapshot.element[23].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-related to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[68].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.differential.element[4].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-related to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[69].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.differential.element[5].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-related to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[52].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
-WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[52].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
+WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[53].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
+WARNING: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[53].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[106].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#90734009 for language(s) 'sv'. The display is 'Chronic (qualifier value)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[108].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#263502005 for language(s) 'sv'. The display is 'Clinical course (attribute)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[28].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#90734009 for language(s) 'sv'. The display is 'Chronic (qualifier value)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[29].pattern.ofType(CodeableConcept).coding[0].display: There are no valid display names found for the code http://snomed.info/sct#263502005 for language(s) 'sv'. The display is 'Clinical course (attribute)' which is a valid display for the default language
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.differential.element[26].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
+INFORMATION: StructureDefinition/SEEHDSConditionDiagnosis: StructureDefinition.snapshot.element[95].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSConditionDiagnosis could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSConditionFunctional.json ==
-INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[21].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[32].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/condition-assertedDate to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[22].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[46].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/bodySite to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[28].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
-WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[28].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
+WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[42].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
+WARNING: StructureDefinition/SEEHDSConditionFunctional: StructureDefinition.snapshot.element[42].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Condition.code
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSConditionFunctional could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionFunctional'): The Implementation Guide contains no examples for this profile
 
@@ -375,24 +380,24 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportImaging.json ==
-INFORMATION: StructureDefinition.snapshot.element[28].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[32].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
+INFORMATION: StructureDefinition.snapshot.element[29].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[33].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSDiagnosticReportImaging: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSDiagnosticReportImaging could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportImaging'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportLab.json ==
-INFORMATION: StructureDefinition.snapshot.element[28].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[32].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
+INFORMATION: StructureDefinition.snapshot.element[29].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[33].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSDiagnosticReportLab: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSDiagnosticReportLab could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportLab'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSDiagnosticReportReferral.json ==
-INFORMATION: StructureDefinition.snapshot.element[28].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[32].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
+INFORMATION: StructureDefinition.snapshot.element[29].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/annotationType to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[33].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0364 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSDiagnosticReportReferral: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSDiagnosticReportReferral could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSDiagnosticReportReferral'): The Implementation Guide contains no examples for this profile
@@ -405,40 +410,40 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSEncounter.json ==
-INFORMATION: StructureDefinition.snapshot.element[69].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0092 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
+INFORMATION: StructureDefinition.snapshot.element[70].binding.valueSet: Pinned the version of http://terminology.hl7.org/ValueSet/v2-0092 to 3.0.0 from choices of 2.0.0 (hl7.terminology.r4#7.0.1), 3.0.0 (hl7.terminology.r4#7.5.0)
 INFORMATION: StructureDefinition/SEEHDSEncounter: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSEncounter could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSEncounter'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSFlag.json ==
-INFORMATION: StructureDefinition.snapshot.element[16].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/flag-detail to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/flag-priority to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[18].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/note to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[17].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/flag-detail to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[18].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/flag-priority to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[19].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/note to 5.3.0 from choices of 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.differential.element[19].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
-INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.snapshot.element[35].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
+INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.differential.element[20].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
+INFORMATION: StructureDefinition/SEEHDSFlag: StructureDefinition.snapshot.element[36].slicing.discriminator[0]: Diskriminatortypen 'pattern' är föråldrad i R5+. För framtida kompatibilitet kan du överväga att använda type=value med ett pattern[x] istället (om detta inte är en ärvd uppdelning)
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSFlag could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSFlag'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSImagingStudy.json ==
 INFORMATION: StructureDefinition/SEEHDSImagingStudy: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSImagingStudy: StructureDefinition.snapshot.element[30].binding.valueSet: En definition kunde inte hittas för kanonisk URL 'http://www.rsna.org/RadLex_Playbook.aspx'
-WARNING: StructureDefinition/SEEHDSImagingStudy: StructureDefinition.snapshot.element[61].binding.valueSet: En definition kunde inte hittas för kanonisk URL 'http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1'
-WARNING: StructureDefinition/SEEHDSImagingStudy: StructureDefinition.snapshot.element[54].binding: Definitionen för elementet 'ImagingStudy.series.performer.function' binder till värdemängden 'http://hl7.org/fhir/ValueSet/series-performer-function|4.0.1' som är experimentell, men denna struktur är inte märkt som experimentell
+WARNING: StructureDefinition/SEEHDSImagingStudy: StructureDefinition.snapshot.element[31].binding.valueSet: En definition kunde inte hittas för kanonisk URL 'http://www.rsna.org/RadLex_Playbook.aspx'
+WARNING: StructureDefinition/SEEHDSImagingStudy: StructureDefinition.snapshot.element[62].binding.valueSet: En definition kunde inte hittas för kanonisk URL 'http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1'
+WARNING: StructureDefinition/SEEHDSImagingStudy: StructureDefinition.snapshot.element[55].binding: Definitionen för elementet 'ImagingStudy.series.performer.function' binder till värdemängden 'http://hl7.org/fhir/ValueSet/series-performer-function|4.0.1' som är experimentell, men denna struktur är inte märkt som experimentell
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSImagingStudy could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImagingStudy'): The Implementation Guide contains no examples for this profile
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSImmunization.json ==
 INFORMATION: StructureDefinition/SEEHDSImmunization: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[44].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Immunization.vaccineCode
-WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[44].binding.extension[1].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIVaccine'
-WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[44].binding.extension[1]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Immunization.vaccineCode
-INFORMATION: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[56].type[0].extension[1]: extension http://hl7.org/fhir/StructureDefinition/regex|5.3.0 är föråldrad med noteringen: 'This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex'
-WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[114].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
-WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[114].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Immunization.protocolApplied.targetDisease
+WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[45].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Immunization.vaccineCode
+WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[45].binding.extension[1].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIVaccine'
+WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[45].binding.extension[1]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Immunization.vaccineCode
+INFORMATION: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[57].type[0].extension[1]: extension http://hl7.org/fhir/StructureDefinition/regex|5.3.0 är föråldrad med noteringen: 'This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex'
+WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[115].binding.extension[0].extension[1].value.ofType(canonical): En definition kunde inte hittas för kanonisk URL 'http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder'
+WARNING: StructureDefinition/SEEHDSImmunization: StructureDefinition.snapshot.element[115].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at Immunization.protocolApplied.targetDisease
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSImmunization could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSImmunization'): The Implementation Guide contains no examples for this profile
 
@@ -577,7 +582,7 @@ INFORMATION: Resource: The resource StructureDefinition/SEEHDSLMVaccinationHisto
 
 == fsh-generated/resources/StructureDefinition-SEEHDSMedicationStatement.json ==
 INFORMATION: StructureDefinition/SEEHDSMedicationStatement: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-WARNING: StructureDefinition/SEEHDSMedicationStatement: StructureDefinition.snapshot.element[37].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at MedicationStatement.category
+WARNING: StructureDefinition/SEEHDSMedicationStatement: StructureDefinition.snapshot.element[38].binding.extension[0]: Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())' at MedicationStatement.category
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSMedicationStatement could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSMedicationStatement'): The Implementation Guide contains no examples for this profile
 
@@ -595,8 +600,8 @@ WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/Struc
 
 
 == fsh-generated/resources/StructureDefinition-SEEHDSObservationLab.json ==
-INFORMATION: StructureDefinition.snapshot.element[53].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
-INFORMATION: StructureDefinition.snapshot.element[97].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[62].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
+INFORMATION: StructureDefinition.snapshot.element[106].type[0].profile[0]: Pinned the version of http://hl7.org/fhir/StructureDefinition/iso21090-uncertainty to 5.3.0 from choices of 4.0.1 (hl7.fhir.r4.core#4.0.1), 5.2.0 (hl7.fhir.uv.extensions.r4#5.2.0), 5.3.0 (hl7.fhir.uv.extensions.r4#5.3.0)
 INFORMATION: StructureDefinition/SEEHDSObservationLab: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
 INFORMATION: Resource: The resource StructureDefinition/SEEHDSObservationLab could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSObservationLab'): The Implementation Guide contains no examples for this profile
@@ -1045,12 +1050,6 @@ INFORMATION: StructureDefinition/approved-for-patient: StructureDefinition.juris
 WARNING: StructureDefinition/approved-for-patient: StructureDefinition.context[0]: Granska extensionstypen för approved-for-patient: extensions bör inte ha en kontext av Element om det inte verkligen är avsett att de kan användas var som helst
 INFORMATION: Resource: The resource StructureDefinition/approved-for-patient could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
 WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient'): The Implementation Guide contains no examples for this extension
-
-
-== fsh-generated/resources/StructureDefinition-condition-chronic-diagnosis.json ==
-INFORMATION: StructureDefinition/condition-chronic-diagnosis: StructureDefinition.jurisdiction[0].coding[0].display: There are no valid display names found for the code urn:iso:std:iso:3166#SE for language(s) 'sv'. The display is 'Sweden' which is a valid display for the default language
-INFORMATION: Resource: The resource StructureDefinition/condition-chronic-diagnosis could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/ig-guidance/oids.html)
-WARNING: StructureDefinition.where(url = 'https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis'): The Implementation Guide contains no examples for this extension
 
 
 == fsh-generated/resources/StructureDefinition-device-source-system-contact.json ==

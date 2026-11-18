@@ -1,4 +1,4 @@
-# TypeOfLeaveCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# TypeOfLeaveCode - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## CodeSystem: TypeOfLeaveCode 
 
@@ -19,12 +19,12 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
   "resourceType" : "CodeSystem",
   "id" : "typeofleavecode-cs",
   "url" : "https://fhir.inera.se/CodeSystem/typeofleavecode",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "TypeOfLeaveCodeCS",
   "title" : "TypeOfLeaveCode",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# GetCarePlans – Vårdplan - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetCarePlans – Vårdplan - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetCarePlans – Vårdplan
 
@@ -59,7 +59,7 @@ GetCarePlans returnerar en lista `carePlan` (0..*) med en flat struktur – alla
 | :--- | :--- | :--- | :--- |
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet (Regel 1) |
 | `carePlan.carePlanHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare (Regel 1) |
-| `carePlan.carePlanHeader.approvedForPatient` | 1..1 | `CarePlan.meta.security` | PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues |
+| `carePlan.carePlanHeader.approvedForPatient` | 1..1 | `CarePlan.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll (Regel 3) – se PDL-001 i mapping-issues |
 
 #### Header – signerare (legalAuthenticator)
 

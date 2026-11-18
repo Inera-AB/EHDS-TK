@@ -1,4 +1,4 @@
-# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetObservations – Tillväxtkurva
 
@@ -395,7 +395,7 @@ Version 1.2 har en annan meddelandemodell: observationerna ligger i grupper (`ob
 | `observation.targetSite` | 0..1 | `Observation.bodySite` | Bara en plats i 1.2, så OBS-004 uppstår inte |
 | `observation.valueNegation` | 1..1 | `Observation.dataAbsentReason` | Som i 2.0 (OBS-002) |
 | `observation.description` | 0..1 | `Observation.note.text` |   |
-| `observation.approvedForPatient` | 1..1 | `Observation.meta.security` | Per observation i 1.2; PDL-kontroll – se PDL-001 |
+| `observation.approvedForPatient` | 1..1 | `Observation.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. Per observation i 1.2; PDL-kontroll – se PDL-001 |
 | `observation.registrationTime` | 0..1 | `Observation.issued` | Valfri i 1.2 (obligatorisk i 2.0) |
 | `observation.relation.code` | 1..1 (om relation) | Som`relation.type`i 2.0 | Se OBS-005 |
 | `observation.relation.referredInformation.rivId` | 1..1 | `Observation.hasMember`/`derivedFrom`(identifier) | Beroende på relationstyp, OBS-005 |

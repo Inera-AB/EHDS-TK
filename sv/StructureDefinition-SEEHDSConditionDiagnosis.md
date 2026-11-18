@@ -1,4 +1,4 @@
-# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# SE EHDS Condition – Diagnos (GetDiagnosis) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Resursprofil: SE EHDS Condition – Diagnos (GetDiagnosis) 
 
@@ -66,11 +66,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSConditionDiagnosis",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSConditionDiagnosis",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSConditionDiagnosis",
   "title" : "SE EHDS Condition – Diagnos (GetDiagnosis)",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -135,22 +135,35 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
       "mustSupport" : true
     },
     {
-      "id" : "Condition.extension:assertedDate",
-      "path" : "Condition.extension",
-      "sliceName" : "assertedDate",
+      "id" : "Condition.meta.security",
+      "path" : "Condition.meta.security",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "code"
+        }],
+        "rules" : "open"
+      },
       "mustSupport" : true
     },
     {
-      "id" : "Condition.extension:chronicDiagnosis",
-      "path" : "Condition.extension",
-      "sliceName" : "chronicDiagnosis",
-      "short" : "Kronisk diagnos (diagnosisBody.chronicDiagnosis) – se DIAG-001",
+      "id" : "Condition.meta.security:nopat",
+      "path" : "Condition.meta.security",
+      "sliceName" : "nopat",
+      "short" : "Ej för patient (approvedForPatient = false i TK-headern) – se PDL-001",
+      "definition" : "Anges när approvedForPatient i tjänstekontraktets header är false. Utelämnas när värdet är true. Koden är NOPAT från v3-ActCode (inte NOPATIENT, som inte finns i kodverket).",
       "min" : 0,
       "max" : "1",
-      "type" : [{
-        "code" : "Extension",
-        "profile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis"]
-      }],
+      "patternCoding" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code" : "NOPAT"
+      },
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.extension:assertedDate",
+      "path" : "Condition.extension",
+      "sliceName" : "assertedDate",
       "mustSupport" : true
     },
     {
@@ -187,9 +200,26 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
           "type" : "value",
           "path" : "coding.system"
         }],
+        "description" : "En kategori från FHIR:s condition-category (encounter-diagnosis) och en från kv_diagnostyp (HD/BY)",
         "rules" : "open"
       },
-      "min" : 1
+      "min" : 2,
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.category:condition-category",
+      "path" : "Condition.category",
+      "sliceName" : "condition-category",
+      "short" : "Alltid encounter-diagnosis (FHIR condition-category) – diagnosen är satt vid en vårdkontakt, se DIAG-003",
+      "min" : 1,
+      "max" : "1",
+      "patternCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code" : "encounter-diagnosis"
+        }]
+      },
+      "mustSupport" : true
     },
     {
       "id" : "Condition.category:diagnostyp",
@@ -254,7 +284,7 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
       "id" : "Condition.code.coding:ICD10SE.system",
       "path" : "Condition.code.coding.system",
       "min" : 1,
-      "patternUri" : "https://www.icd10.se/"
+      "patternUri" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/icd-10-se"
     },
     {
       "id" : "Condition.code.coding:ICD10SE.code",
@@ -318,6 +348,54 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCondition
         "code" : "Reference",
         "targetProfile" : ["https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole"]
       }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.stage",
+      "path" : "Condition.stage",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "pattern",
+          "path" : "type"
+        }],
+        "description" : "Kliniskt förlopp (SNOMED CT 263502005)",
+        "rules" : "open"
+      }
+    },
+    {
+      "id" : "Condition.stage:klinisktForlopp",
+      "path" : "Condition.stage",
+      "sliceName" : "klinisktForlopp",
+      "short" : "Kronisk diagnos (diagnosisBody.chronicDiagnosis = true) – se DIAG-001",
+      "min" : 0,
+      "max" : "1",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.stage:klinisktForlopp.summary",
+      "path" : "Condition.stage.summary",
+      "short" : "Alltid 90734009 |Chronic (qualifier value)|; slicen utelämnas när chronicDiagnosis är false eller saknas",
+      "min" : 1,
+      "patternCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "90734009",
+          "display" : "Chronic (qualifier value)"
+        }]
+      },
+      "mustSupport" : true
+    },
+    {
+      "id" : "Condition.stage:klinisktForlopp.type",
+      "path" : "Condition.stage.type",
+      "min" : 1,
+      "patternCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "263502005",
+          "display" : "Clinical course (attribute)"
+        }]
+      },
       "mustSupport" : true
     }]
   }

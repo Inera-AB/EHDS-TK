@@ -1,4 +1,4 @@
-# SE EHDS Resource Access Provider - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# SE EHDS Resource Access Provider - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## CapabilityStatement: SE EHDS Resource Access Provider 
 
@@ -13,7 +13,7 @@
   "resourceType" : "CapabilityStatement",
   "id" : "SEEHDSResourceAccessProvider",
   "url" : "https://fhir.inera.se/ig/ehds-tk/CapabilityStatement/SEEHDSResourceAccessProvider",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSResourceAccessProvider",
   "title" : "SE EHDS Resource Access Provider",
   "status" : "draft",

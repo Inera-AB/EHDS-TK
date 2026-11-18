@@ -1,4 +1,4 @@
-# DiagnosisType — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# DiagnosisType — ValueSet - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## ValueSet: DiagnosisType — ValueSet 
 
@@ -26,12 +26,12 @@
   "resourceType" : "ValueSet",
   "id" : "diagnosistype-vs",
   "url" : "https://fhir.inera.se/ig/ehds-tk/ValueSet/diagnosistype-vs",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "DiagnosisTypeVS",
   "title" : "DiagnosisType — ValueSet",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

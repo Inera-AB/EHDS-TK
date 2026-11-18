@@ -1,4 +1,4 @@
-# Patientens postnummer vid vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# Patientens postnummer vid vaccination - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Extension: Patientens postnummer vid vaccination 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-immunization-pa
   "resourceType" : "StructureDefinition",
   "id" : "immunization-patient-postal-code",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-patient-postal-code",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "ImmunizationPatientPostalCode",
   "title" : "Patientens postnummer vid vaccination",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

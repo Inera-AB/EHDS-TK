@@ -1,6 +1,6 @@
 {
   "package": "inera.ehds.ehds-tk",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "fhirVersion": "4.0.1",
   "jurisdiction": "SE",
   "extensions": [
@@ -142,13 +142,6 @@
     {
       "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient",
       "title": "Godkänd för patient",
-      "types": [
-        "boolean"
-      ]
-    },
-    {
-      "url": "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis",
-      "title": "Kronisk diagnos",
       "types": [
         "boolean"
       ]
@@ -722,9 +715,6 @@
     ],
     "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/approved-for-patient": [
       "CarePlan"
-    ],
-    "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/condition-chronic-diagnosis": [
-      "Condition"
     ],
     "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/device-source-system-contact": [
       "Device"

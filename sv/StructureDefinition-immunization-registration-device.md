@@ -1,4 +1,4 @@
-# Källsystem för vaccinationsregistrering - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# Källsystem för vaccinationsregistrering - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Extension: Källsystem för vaccinationsregistrering 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-immunization-re
   "resourceType" : "StructureDefinition",
   "id" : "immunization-registration-device",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-registration-device",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "ImmunizationRegistrationDevice",
   "title" : "Källsystem för vaccinationsregistrering",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

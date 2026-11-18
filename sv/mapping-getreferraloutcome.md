@@ -1,4 +1,4 @@
-# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetReferralOutcome – Remisser
 
@@ -49,7 +49,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.extension[attested].attestorHSAId` | HSA-id för signerare |
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
-| `referralOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se[PDL-001](#öppna-frågor) |
+| `referralOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se[PDL-001](#öppna-frågor) |
 | `referralOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier.value` | Logisk referens till vårdkontakt |
 | `referralOutcomeHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `referralOutcomeHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |

@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0</title>
+    <title>GetFunctionalStatus – Funktionstillstånd och ADL - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.9.0 - ci-build
+            <span style="display:inline-block;">0.10.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.9.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.10.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetFunctionalStatus – Funktionstillstånd och ADL</h2>
   
 
@@ -257,7 +257,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   </tbody>
 </table>
 
-<p>Kategorin i sig mappas alltid till <code class="language-plaintext highlighter-rouge">Condition.category</code> från kodverket <code class="language-plaintext highlighter-rouge">AssessmentCategoryCS</code>.</p>
+<p>Kategorin i sig mappas alltid till <code class="language-plaintext highlighter-rouge">Condition.category[bedomningskategori]</code> från kodverket <code class="language-plaintext highlighter-rouge">AssessmentCategoryCS</code>. Dessutom anges alltid standardkoden <code class="language-plaintext highlighter-rouge">problem-list-item</code> från FHIR:s <a href="http://terminology.hl7.org/CodeSystem/condition-category">condition-category</a> i <code class="language-plaintext highlighter-rouge">Condition.category[condition-category]</code>, eftersom <code class="language-plaintext highlighter-rouge">Condition.category</code> har en utökningsbar (extensible) bindning till det kodverket. Se <a href="mapping-issues.html#designbeslut-fattade">FUNC-002</a>.</p>
 
 <h4 id="clinicalstatus-och-verificationstatus">clinicalStatus och verificationStatus</h4>
 
@@ -432,7 +432,7 @@ PADL-typ krävs.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentHeader.approvedForPatient</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.meta.security</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.meta.security[nopat]</code></td>
       <td><code class="language-plaintext highlighter-rouge">false</code> → kod <code class="language-plaintext highlighter-rouge">NOPAT</code> från <code class="language-plaintext highlighter-rouge">http://terminology.hl7.org/CodeSystem/v3-ActCode</code>; se PDL-001</td>
     </tr>
     <tr>
@@ -477,9 +477,15 @@ PADL-typ krävs.</p>
   </thead>
   <tbody>
     <tr>
+      <td>—</td>
+      <td>—</td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category[condition-category]</code></td>
+      <td>Alltid <code class="language-plaintext highlighter-rouge">problem-list-item</code> från FHIR:s <code class="language-plaintext highlighter-rouge">condition-category</code>; se <a href="mapping-issues.html#designbeslut-fattade">FUNC-002</a></td>
+    </tr>
+    <tr>
       <td><code class="language-plaintext highlighter-rouge">functionalStatusAssessmentBody.assessmentCategory</code></td>
       <td>1..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Condition.category</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Condition.category[bedomningskategori]</code></td>
       <td>Kodverk <code class="language-plaintext highlighter-rouge">AssessmentCategoryCS</code>; <code class="language-plaintext highlighter-rouge">pad-pad</code> eller <code class="language-plaintext highlighter-rouge">fun-fun</code></td>
     </tr>
     <tr>
@@ -789,10 +795,10 @@ PADL-typ krävs.</p>
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.9.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.10.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-16 16:06:00 +0000">
-    2026-11-16
+  <span title="2026-11-18 13:32:00 +0000">
+    2026-11-18
   </span>
 
           <br/>

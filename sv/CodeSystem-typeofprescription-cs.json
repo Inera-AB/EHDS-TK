@@ -7,12 +7,12 @@
     "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem typeofprescription-cs</b></p><a name=\"typeofprescription-cs\"> </a><a name=\"hctypeofprescription-cs\"> </a><p>Detta case-sensitive kodsystem <code>https://fhir.inera.se/CodeSystem/typeofprescription</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">I<a name=\"typeofprescription-cs-I\"> </a></td><td>Insättningsordination</td><td>Ordination som innebär att läkemedelsbehandling påbörjas</td></tr><tr><td style=\"white-space:nowrap\">U<a name=\"typeofprescription-cs-U\"> </a></td><td>Utsättningsordination</td><td>Ordination som innebär att läkemedelsbehandling avslutas</td></tr></table></div>"
   },
   "url" : "https://fhir.inera.se/CodeSystem/typeofprescription",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "TypeOfPrescriptionCS",
   "title" : "TypeOfPrescription",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# Tjänstekontraktsversioner - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# Tjänstekontraktsversioner - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Tjänstekontraktsversioner
 

@@ -1,4 +1,4 @@
-# SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## Resursprofil: SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCompositi
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSCompositionCareDocumentation",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSCompositionCareDocumentation",
-  "version" : "0.9.0",
+  "version" : "0.10.0",
   "name" : "SEEHDSCompositionCareDocumentation",
   "title" : "SE EHDS Composition – Strukturerad journalanteckning från DocBook (GetCareDocumentation)",
   "status" : "draft",
-  "date" : "2026-11-16T16:06:12+00:00",
+  "date" : "2026-11-18T13:32:07+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",
@@ -118,6 +118,32 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSCompositi
     "element" : [{
       "id" : "Composition",
       "path" : "Composition"
+    },
+    {
+      "id" : "Composition.meta.security",
+      "path" : "Composition.meta.security",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "code"
+        }],
+        "rules" : "open"
+      },
+      "mustSupport" : true
+    },
+    {
+      "id" : "Composition.meta.security:nopat",
+      "path" : "Composition.meta.security",
+      "sliceName" : "nopat",
+      "short" : "Ej för patient (approvedForPatient = false i TK-headern) – se PDL-001",
+      "definition" : "Anges när approvedForPatient i tjänstekontraktets header är false. Utelämnas när värdet är true. Koden är NOPAT från v3-ActCode (inte NOPATIENT, som inte finns i kodverket).",
+      "min" : 0,
+      "max" : "1",
+      "patternCoding" : {
+        "system" : "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code" : "NOPAT"
+      },
+      "mustSupport" : true
     },
     {
       "id" : "Composition.identifier",

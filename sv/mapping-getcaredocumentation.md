@@ -1,4 +1,4 @@
-# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.9.0
+# GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
 
 ## GetCareDocumentation – Anteckningar
 
@@ -44,7 +44,7 @@ Varje `careDocumentation`-post ger upphov till en `DocumentReference`. Kroppen �
 | `careDocumentation.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr**– vårdenhetens HSA-id (direkt i accessControlHeader) |
 | `careDocumentation.header.accessControlHeader.careProcessId` | 0..1 | `DocumentReference.context.related[0].identifier` | Referens till individanpassad vårdprocess |
 | `careDocumentation.header.accessControlHeader.blockComparisonTime` | 1..1 | `DocumentReference.extension[blockComparisonTime]` | Tidpunkt för Sparr-jämförelse; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor) |
-| `careDocumentation.header.accessControlHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security` | PDL-kontroll – se[PDL-001](#öppna-frågor) |
+| `careDocumentation.header.accessControlHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se[PDL-001](#öppna-frågor) |
 
 #### sourceSystemId och record
 
@@ -279,7 +279,7 @@ Den största skillnaden är headern: 2.1 har PatientSummaryHeader (`careDocument
 | `careDocumentationHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DocumentReference.extension[ext-signature-time].valueDateTime` | Motsvarar`header.signature.timestamp` |
 | `careDocumentationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DocumentReference.authenticator`(Reference(PractitionerRole)) | Motsvarar`header.signature.id` |
 | `careDocumentationHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | `PractitionerRole.practitioner.display` |   |
-| `careDocumentationHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security` | PDL-kontroll – se PDL-001 |
+| `careDocumentationHeader.approvedForPatient` | 1..1 | `DocumentReference.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se PDL-001 |
 | `careDocumentationHeader.careContactId` | 0..1 | `DocumentReference.context.encounter.identifier.value` | Logisk referens till vårdkontakten |
 
 JoL-headerns `blockComparisonTime` och `careProcessId` finns inte i 2.1. Spärrkontrollen görs då mot `authorTime`.
