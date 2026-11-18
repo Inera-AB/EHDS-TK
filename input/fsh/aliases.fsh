@@ -7,6 +7,7 @@ Alias: $v3-NullFlavor = http://terminology.hl7.org/CodeSystem/v3-NullFlavor
 Alias: $v3-ActCode    = http://terminology.hl7.org/CodeSystem/v3-ActCode
 Alias: $obs-category  = http://terminology.hl7.org/CodeSystem/observation-category
 Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
+Alias: $DAR = http://hl7.org/fhir/StructureDefinition/data-absent-reason
 
 // Swedish identifiers
 Alias: $personnummer           = http://electronichealth.se/identifier/personnummer

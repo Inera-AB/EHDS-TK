@@ -38,24 +38,28 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * verificationStatus ^short = "Alltid confirmed (RIVTA-svar representerar bekräftade journaluppgifter)"
 
 // Condition.category har en extensible bindning till FHIR:s condition-category.
-// Standardkoden används i första hand (DIAG-003). HD/BY från kv_diagnostyp har ingen
-// motsvarighet i standardkodverket och ligger kvar som en egen, lokal slice.
-* category 2..* MS
-* category ^slicing.discriminator.type = #value
-* category ^slicing.discriminator.path = "coding.system"
-* category ^slicing.rules = #open
-* category ^slicing.description = "En kategori från FHIR:s condition-category (encounter-diagnosis) och en från kv_diagnostyp (HD/BY)"
-* category contains
+// Varje category-element valideras för sig mot bindningen. Därför ligger den lokala koden
+// som en extra coding i samma CodeableConcept som standardkoden, inte i ett eget element
+// (DIAG-003). Då innehåller varje category en kod från condition-category.
+* category 1..1 MS
+* category ^short = "Kontaktdiagnos: encounter-diagnosis (FHIR condition-category) och HD/BY (kv_diagnostyp) i samma CodeableConcept, se DIAG-003"
+* category.coding 2..* MS
+* category.coding ^slicing.discriminator.type = #value
+* category.coding ^slicing.discriminator.path = "system"
+* category.coding ^slicing.rules = #open
+* category.coding contains
     condition-category 1..1 MS and
     diagnostyp 1..1 MS
-* category[condition-category] = $condition-category#encounter-diagnosis
-* category[condition-category] ^short = "Alltid encounter-diagnosis (FHIR condition-category) – diagnosen är satt vid en vårdkontakt, se DIAG-003"
-* category[diagnostyp].coding 1..1 MS
-* category[diagnostyp].coding.system 1..1 MS
-* category[diagnostyp].coding.system = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
-* category[diagnostyp].coding.code 1..1 MS
-* category[diagnostyp] from DiagnosisTypeVS (required)
-* category[diagnostyp] ^short = "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos) från kv_diagnostyp"
+* category.coding[condition-category].system 1..1 MS
+* category.coding[condition-category].system = $condition-category
+* category.coding[condition-category].code 1..1 MS
+* category.coding[condition-category].code = #encounter-diagnosis
+* category.coding[condition-category] ^short = "Alltid encounter-diagnosis (FHIR condition-category)"
+* category.coding[diagnostyp].system 1..1 MS
+* category.coding[diagnostyp].system = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"
+* category.coding[diagnostyp].code 1..1 MS
+* category.coding[diagnostyp] from DiagnosisTypeVS (required)
+* category.coding[diagnostyp] ^short = "Diagnostyp (diagnosisBody.typeOfDiagnosis) – HD (Huvuddiagnos) eller BY (Bidiagnos) från kv_diagnostyp, en preciserad kontaktdiagnos"
 
 * code 1..1 MS
 * code ^short = "Diagnoskod (diagnosisBody.diagnosisCode)"
@@ -87,3 +91,22 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 
 * onsetDateTime MS
 * onsetDateTime ^short = "Bedömningstidpunkt (diagnosisBody.diagnosisTime) – YYYYMMDDHHMMSS → ISO 8601"
+
+Instance: SEEHDSConditionDiagnosisExample
+InstanceOf: SEEHDSConditionDiagnosis
+Usage: #example
+Title: "Exempel: kronisk huvuddiagnos från GetDiagnosis"
+Description: "Kontaktdiagnos med HD som extra coding i samma category som encounter-diagnosis (DIAG-003), kronisk diagnos i stage (DIAG-001) och utan clinicalStatus, eftersom statusen är okänd (CLINSTAT-001)."
+* identifier.value = "doc-12345"
+* meta.source = "https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5"
+* verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed
+* category.coding[condition-category] = $condition-category#encounter-diagnosis "Encounter Diagnosis"
+* category.coding[diagnostyp] = https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp#HD "Huvuddiagnos"
+* code.coding[ICD10SE] = $ICD10SE#E11.9 "Diabetes mellitus typ 2 utan komplikationer"
+* stage[klinisktForlopp].type = $SCT#263502005 "Clinical course (attribute)"
+* stage[klinisktForlopp].summary = $SCT#90734009 "Chronic (qualifier value)"
+* subject.reference = "Patient/SEEHDSPatientExample"
+* subject.identifier.system = $personnummer
+* subject.identifier.value = "191212121212"
+* onsetDateTime = "2023-06-01T12:00:00+02:00"
+* recordedDate = "2023-06-01T12:00:00+02:00"

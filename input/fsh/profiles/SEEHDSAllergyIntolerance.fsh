@@ -41,8 +41,10 @@ Description: """
 * recordedDate MS
 * recordedDate ^short = "Registreringstidpunkt (alertInformationHeader.accountableHealthcareProfessional.authorTime)"
 
-* clinicalStatus MS
-* clinicalStatus ^short = "Alltid 'active' – härledd; inget statusfält i TKBn"
+// CLINSTAT-001: slutdatum som har passerat ger resolved. Annars active, som för Flag.status:
+// ait-1 kräver clinicalStatus, bindningen är required och allergyintolerance-clinical saknar "unknown".
+* clinicalStatus 1..1 MS
+* clinicalStatus ^short = "resolved om giltighetstiden har ett slutdatum som passerat, annars active (samma regel som Flag.status) – se CLINSTAT-001"
 
 * verificationStatus MS
 * verificationStatus ^short = "Visshet (alertInformationBody.hypersensitivity.degreeOfCertainty → ConceptMap till verificationStatus); se ALERT-004"

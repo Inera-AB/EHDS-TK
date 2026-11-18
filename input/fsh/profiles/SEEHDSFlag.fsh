@@ -68,7 +68,7 @@ Description: """
 * meta.security ^short = "PDL-kontroll (alertInformationHeader.approvedForPatient) – se PDL-001"
 
 * status 1..1 MS
-* status ^short = "Alltid 'active' – inget statusfält i TKBn; returnerade poster är per definition aktiva"
+* status ^short = "inactive om period.end har passerat (eller negation/approval ger inactive), annars active – se CLINSTAT-001"
 
 // ─── Body-fält ────────────────────────────────────────────────────────────────
 
