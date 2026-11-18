@@ -4,6 +4,9 @@ Id: SEEHDSTask
 Title: "SE EHDS Task – Remisstatus (GetRequestActivities)"
 Description: "Profil för remisstatus och processaktiviteter mappat från RIVTA-tjänstekontraktet GetRequestActivities (crm:requeststatus v2.0). Täcker NPÖ 2.0 och 1177 Journal 1.0, 2.0."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * for only Reference(SEEHDSPatient)
 * for MS
 * for ^short = "Patient – den efterfrågade patienten (begärans patientId); svaret saknar patientidentitet"

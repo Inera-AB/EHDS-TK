@@ -4,6 +4,9 @@ Id: SEEHDSDiagnosticReportReferral
 Title: "SE EHDS DiagnosticReport – Konsultationssvar (GetReferralOutcome)"
 Description: "Profil för konsultationssvar (outcome) från GetReferralOutcome. Används tillsammans med SEEHDSServiceRequestReferral."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (referralOutcomeHeader.patientId)"

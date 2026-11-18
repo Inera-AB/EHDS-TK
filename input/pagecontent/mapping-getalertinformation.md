@@ -76,7 +76,7 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `acti
 | `alertInformationHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Flag.extension[alertAssertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `alertInformationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Flag.extension[alertAsserter].identifier` | Ingår även i `AllergyIntolerance.asserter` om allergi |
 | `alertInformationHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `alertInformationHeader.approvedForPatient` | 1..1 | `Flag.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
+| `alertInformationHeader.approvedForPatient` | 1..1 | `Flag.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `alertInformationHeader.careContactId` | 0..1 | `Flag.encounter.identifier.value` | Logisk referens till vårdkontakt |
 
 ---
@@ -282,7 +282,7 @@ Version 3.0 är en ny meddelandemodell. Den har JoL-header (som GetCareDocumenta
 | `header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr |
 | `header.accessControlHeader.careProcessId` | 0..1 | Ej mappad | Som i GetCareDocumentation 3.0 |
 | `header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används för spärrkontroll |
-| `header.accessControlHeader.approvedForPatient` | 1..1 | `Flag.meta.security` | PDL-kontroll – se PDL-001 |
+| `header.accessControlHeader.approvedForPatient` | 1..1 | `Flag.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll – se PDL-001 |
 | `header.sourceSystemId` | 1..1 | `Flag.meta.source` | IIType; `extension` = källsystemets HSA-id (GENERAL-005) |
 | `header.record.rivId` | 1..1 | `Flag.identifier` | Motsvarar `documentId` i 2.0 |
 | `header.record.timestamp` | 1..1 | `Provenance.recorded` om `author` saknas | |

@@ -49,7 +49,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.resultsInterpreter.identifier` | Medicinskt ansvarig för utlåtandet |
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorRoleCode` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
-| `imagingOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
+| `imagingOutcomeHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll – se [PDL-001](#öppna-frågor) |
 | `imagingOutcomeHeader.careContactId` | 0..1 | `DiagnosticReport.encounter.identifier` | Logisk referens till Encounter/vårdkontakt |
 | `imagingOutcomeHeader.nullified` | 0..1 | (härledd till `DiagnosticReport.status`) | `true` → `status = entered-in-error`; se [IMG-001](#öppna-frågor) |
 | `imagingOutcomeHeader.nullifiedReason` | 0..1 | `DiagnosticReport.extension[nullifiedReason]` | Orsak till makulering; fritext |

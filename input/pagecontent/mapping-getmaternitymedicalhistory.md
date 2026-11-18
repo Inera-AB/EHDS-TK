@@ -119,7 +119,7 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `maternityMedicalRecordHeader.approvedForPatient` | 1..1 | `Observation.meta.security` | Boolean; styr 1177-synlighet (se PDL-001); mappas till säkerhetsmärkning i `meta.security` |
+| `maternityMedicalRecordHeader.approvedForPatient` | 1..1 | `Observation.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. Boolean; styr 1177-synlighet (se PDL-001); mappas till säkerhetsmärkning i `meta.security` |
 | `maternityMedicalRecordHeader.careContactId` | 0..1 | `Observation.encounter.identifier` | Logisk referens till Encounter via identifierare |
 | `maternityMedicalRecordHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `maternityMedicalRecordHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
@@ -355,7 +355,7 @@ och `healthcareProfessionalCareGiverHSAId`. Dessa är **OBLIGATORISKA** i detta 
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
 | Inre Sparr (vårdenhet) | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
-| Patientgodkännande (1177) | `maternityMedicalRecordHeader.approvedForPatient` | `Observation.meta.security` (se PDL-001) |
+| Patientgodkännande (1177) | `maternityMedicalRecordHeader.approvedForPatient` | `Observation.meta.security[nopat]`; `false` → `NOPAT` (v3-ActCode), se PDL-001 |
 | Skyddad identitet | *(ej explicit i detta TK – ärvs från patient)* | `Observation.meta.security` |
 
 ---

@@ -4,6 +4,9 @@ Id: SEEHDSMedicationStatement
 Title: "SE EHDS MedicationStatement – Läkemedel (GetMedicationHistory)"
 Description: "Profil för läkemedelsordinationer, förskrivningar och administrerade läkemedel mappat från RIVTA-tjänstekontraktet GetMedicationHistory (clinicalprocess:activityprescription:actoutcome v2.2). Täcker NPÖ 2.2 och 1177 Journal 2.2."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (medicationMedicalRecordHeader.patientId)"

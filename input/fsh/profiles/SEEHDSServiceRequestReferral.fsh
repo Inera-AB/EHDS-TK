@@ -12,6 +12,9 @@ Description: """
   för remissens del.
 """
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (referralOutcomeHeader.patientId)"

@@ -4,6 +4,9 @@ Id: SEEHDSDiagnosticReportLab
 Title: "SE EHDS DiagnosticReport – Provsvar (GetLaboratoryOrderOutcome)"
 Description: "Profil för laboratorieresultat mappat från RIVTA-tjänstekontraktet GetLaboratoryOrderOutcome (clinicalprocess:healthcond:actoutcome v4.2). Täcker NPÖ v4.2 och 1177 Journal v4.2."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * subject only Reference(SEEHDSPatient)
 * subject MS
 * subject ^short = "Patient (header.accessControlHeader.patientId – JoL-header)"

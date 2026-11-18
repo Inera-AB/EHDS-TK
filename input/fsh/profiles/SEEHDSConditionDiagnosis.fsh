@@ -20,14 +20,7 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * meta.source ^short = "Källsystem HSA-id (diagnosisHeader.sourceSystemHSAId) – https://tjanstekatalogen.inera.se/Endpoint/{hsaId} (GENERAL-005)"
 
 // PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
-* meta.security MS
-* meta.security ^slicing.discriminator.type = #value
-* meta.security ^slicing.discriminator.path = "code"
-* meta.security ^slicing.rules = #open
-* meta.security contains nopat 0..1 MS
-* meta.security[nopat] = $v3-ActCode#NOPAT
-* meta.security[nopat] ^short = "Ej för patient (diagnosisHeader.approvedForPatient = false) – se PDL-001"
-* meta.security[nopat] ^definition = "Anges när diagnosisHeader.approvedForPatient är false. Utelämnas när värdet är true. Koden är NOPAT från v3-ActCode (inte NOPATIENT, som inte finns i kodverket)."
+* insert PdlNoPat
 
 * recorder only Reference(SEEHDSPractitionerRole)
 * recorder MS

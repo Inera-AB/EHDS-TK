@@ -68,7 +68,7 @@ PADL-typ krävs.
 | `functionalStatusAssessmentHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (om legalAuthenticator finns, prioriteras framför documentTime) |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Condition.asserter` (Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `functionalStatusAssessmentHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | `false` → kod `NOPAT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
+| `functionalStatusAssessmentHeader.approvedForPatient` | 1..1 | `Condition.meta.security[nopat]` | `false` → kod `NOPAT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`; se PDL-001 |
 | `functionalStatusAssessmentHeader.careContactId` | 0..1 | `Condition.encounter.identifier.value` | Logisk referens till vårdkontakt |
 | `functionalStatusAssessmentHeader.documentTitle` | 0..0 | N/A | Ej tillämpligt för detta TK (markerat 0..0 i logisk modell) |
 | `functionalStatusAssessmentHeader.nullified` | 0..0 | N/A | Ej tillämpligt för detta TK |

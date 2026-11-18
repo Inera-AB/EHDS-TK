@@ -9,6 +9,9 @@ Id: SEEHDSEncounter
 Title: "SE EHDS Encounter – Vårdkontakter (GetCareContacts)"
 Description: "Profil för vårdkontakter mappat från RIVTA-tjänstekontraktet GetCareContacts (clinicalprocess:logistics:logistics v3.0). Täcker NPÖ 2.0, 3.0 och 1177 Journal 2.0, 3.0."
 
+// PDL-001: approvedForPatient = false → meta.security v3-ActCode#NOPAT
+* insert PdlNoPat
+
 * obeys encounter-period-min-one
 
 * identifier MS

@@ -4,7 +4,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
-| 0.10.0 | 2026-11-18 | Draft | ICD-10-SE anges med url:en i Ineras terminologitjänst i stället för `https://www.icd10.se/`, `Condition.category` använder FHIR:s kodverk `condition-category` för diagnoser och funktionstillstånd, och kronisk diagnos anges med SNOMED CT i `Condition.stage`. |
+| 0.10.0 | 2026-11-18 | Draft | ICD-10-SE anges med url:en i Ineras terminologitjänst i stället för `https://www.icd10.se/`, `Condition.category` använder FHIR:s kodverk `condition-category` för diagnoser och funktionstillstånd, kronisk diagnos anges med SNOMED CT i `Condition.stage`, och alla kliniska profiler visar `NOPAT` i `meta.security`. |
 | 0.9.0 | 2026-11-16 | Draft | Första releasen i IG Publishers publiceringsläge. IG:n publiceras utan Turtle, vilket gör varje publicerad version knappt en fjärdedel mindre. Version 0.3.1 är borttagen från fhir.inera.se. |
 | 0.8.2 | 2026-11-13 | Draft | Inera-grafiken från inera-fhir-graphic-profile, och rättade fel och varningar i IG Publishers QA: rubriknivåer, `experimental` och `caseSensitive` för kodsystem och värdemängder, låsta kanoniska referenser och HTML-liknande text i definitioner. |
 | 0.8.1 | 2026-10-26 | Draft | Rättar felen i IG Publishers QA: sidrubriker, egna url:er för kodsystem, `DiagnosticReport.performer` och bindningen av `Observation.status`. |
@@ -34,7 +34,8 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 **PDL**
 
-- `meta.security[nopat]` (`v3-ActCode#NOPAT` när `approvedForPatient = false`, PDL-001) finns nu i [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.html) och [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html). Mappningstabellen för GetDiagnosis anger koden direkt.
+- Alla kliniska profiler har nu slicen `meta.security[nopat]` = `v3-ActCode#NOPAT`, som anges när `approvedForPatient = false` i TK-headern (PDL-001). Regeln ligger i den gemensamma RuleSet:en `PdlNoPat`. Tidigare fanns `meta.security` bara som beskrivning i Observation, Flag och Immunization. Profilerna för Patient, PractitionerRole, Organization, Device, Provenance och AuditEvent får ingen sådan slice, eftersom de inte bär journalinnehåll.
+- Mappningstabellerna anger koden direkt: `false` → `NOPAT`, `true` → ingen märkning.
 
 **Kronisk diagnos**
 
