@@ -34,7 +34,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `imagingOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | Ansvarig persons åtgärdstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
-| `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` | Tolkande radiolog / ansvarig läkares HSA-id |
+| `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` och `Provenance.agent[author].who` | Tolkande radiolog / ansvarig läkares HSA-id |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Utförande enhets HSA-id |
@@ -43,7 +43,7 @@ Rotelementet `imagingOutcomeHeader` och `imagingOutcomeBody` mappas gemensamt ti
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org-enhet; ingen standardiserad plats; kan läggas på Organization.telecom om Organization-instans skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress till org-enhet; kan läggas på Organization.address om Organization-instans skapas |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/lokation för org-enhet; kan läggas på Organization.address.city om Organization-instans skapas |
-| `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – informationsägande vårdenhet |
+| `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – informationsägande vårdenhet |
 | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – juridiskt ansvarig vårdgivare |
 | `imagingOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `DiagnosticReport.extension[signatureTime]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `imagingOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.resultsInterpreter.identifier` | Medicinskt ansvarig för utlåtandet |
@@ -267,7 +267,7 @@ GetImagingOutcome v1.0 använder standardmönstret **PatientSummaryHeader** via 
 | PDL-begrepp | RIVTA-källa | Hantering |
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Patientgodkännande | `imagingOutcomeHeader.approvedForPatient` (boolean) | `DiagnosticReport.meta.security`; se [PDL-001](#öppna-frågor) |
 
 ---
@@ -277,11 +277,13 @@ GetImagingOutcome v1.0 använder standardmönstret **PatientSummaryHeader** via 
 | Agent | Roll | Källa |
 |---|---|---|
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` (HSA-id i `identifier`), `healthcareProfessionalName` (`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` (HSA-id i `identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.html#provenance-agenter).
 
 `Provenance.target` refererar `DiagnosticReport` (och transitivt `ImagingStudy`-instanserna) via `urn:uuid:{DiagnosticReport.id}`.  
 `Provenance.recorded` = `imagingOutcomeHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).  
-`Provenance.agent[author].onBehalfOf` = `imagingOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId`.
 
 ---
 

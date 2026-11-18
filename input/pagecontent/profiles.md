@@ -13,7 +13,7 @@ Kraven på API:et anges i [SEEHDSResourceAccessProvider](CapabilityStatement-SEE
 | [SEEHDSPatient](StructureDefinition-SEEHDSPatient.html) | EU Core Patient (patient-eu-core) | Patient med identifierarslicar enligt SEBasePatient (personnummer, samordningsnummer, nationelltReservnummer). Skapas utifrån patientId, se GENERAL-006. |
 | [SEEHDSPractitionerRole](StructureDefinition-SEEHDSPractitionerRole.html) | EU Core PractitionerRole (practitionerRole-eu-core) | Personal i uppdrag; identifier-slice `hsaid` enligt SEBasePractitionerRole. Används som logisk referens. |
 | [SEEHDSOrganization](StructureDefinition-SEEHDSOrganization.html) | EU Core Organization (organization-eu-core) | Organisationsenhet; identifier-slice `hsaid` enligt SEBaseOrganization samt SMI-id. |
-| [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.html) | Provenance | Provenance med två agenter, custodian (vårdgivare, yttre Sparr) och author (vårdenhet, inre Sparr), som skiljs åt på `agent.type` och anges med HSA-id. Se GENERAL-003. |
+| [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.html) | Provenance | Provenance med två agenter som skiljs åt på `agent.type`: custodian (vårdgivare, yttre Sparr) och author, där `who` är den ansvariga personen och `onBehalfOf` den informationsägande vårdenheten (inre Sparr). Vårdgivare och vårdenhet anges med HSA-id. Se GENERAL-003. |
 
 ---
 

@@ -5,10 +5,10 @@
 **EHDS-koppling:** Kliniska mätresultat och tillväxtdata  
 **IoÖ:** Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)
 
-> **OBS – Avvikande headerstruktur:** GetObservations använder en specifik headertyp som
-> **inte** är `PatientSummaryHeader`. Det finns inget `careProviderHSAId`/`careUnitHSAId`
-> på toppnivå i headern. PDL- och Sparr-fält hanteras separat – se avsnitt
-> [PDL och Sparr](#pdl-och-sparr) nedan.
+> **OBS – Headerstruktur:** GetObservations 2.0 använder JoL-headern (`header.accessControlHeader`),
+> inte `PatientSummaryHeader`. Spärrfälten finns direkt i `accessControlHeader`
+> (`accountableCareGiver` och `accountableCareUnit`), som i GetLaboratoryOrderOutcome 4.2 och
+> GetCareDocumentation – se avsnitt [PDL och Sparr](#pdl-och-sparr) nedan.
 
 ---
 
@@ -344,22 +344,18 @@ och kräver extension eller Provenance-resurs om de ska bevaras.
 
 ### PDL och Sparr
 
-> GetObservations v2.0 har en **avvikande headerstruktur** jämfört med
-> `PatientSummaryHeader`. Det finns inga dedikerade fält `careProviderHSAId` och
-> `careUnitHSAId` på standardplats i headern.
+GetObservations 2.0 använder JoL-headern. Spärrfälten finns direkt i `header.accessControlHeader`:
 
-PDL- och Sparr-information hämtas istället ur följande källor när de är
-tillgängliga:
-
-| PDL/Sparr-begrepp | Alternativ källa i GetObservations | FHIR-destination |
+| PDL/Sparr-begrepp | RIVTA-källa (2.0) | FHIR-destination |
 |---|---|---|
-| Vårdgivare (yttre Sparr) | `observationBody.participation[*]` där `participation.type` avser ansvarig vårdgivare | `Provenance.agent[custodian].who.identifier` |
-| Vårdenhet (inre Sparr) | `observationBody.participation[*]` där `participation.type` avser vårdenhet | `Provenance.agent[author].who.identifier` |
+| Vårdgivare (yttre Sparr) | `header.accessControlHeader.accountableCareGiver` | `Provenance.agent[custodian].who.identifier` |
+| Vårdenhet (inre Sparr) | `header.accessControlHeader.accountableCareUnit` | `Provenance.agent[author].onBehalfOf.identifier` |
+| Ansvarig person | `header.originalAuthor.by` när `by.type` = `HCPROFESSIONAL` (`id`, `name`) | `Provenance.agent[author].who` |
 | Skyddad identitet | `observationBody.patient.person.confidentialityIndicator` | `Observation.meta.security` |
 
-Implementationer **måste** hantera avsaknaden av standard-Sparr-fält och antingen
-vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
-`meta.security` och dokumentera beslutet i implementationsguiden.
+Tidigare angav sidan att spärrfälten saknades i headern och skulle härledas ur `observationBody.participation`. Det stämmer inte med XSD:n och den logiska modellen [SEEHDSLMObservations](StructureDefinition-SEEHDSLMObservations.html), där `accessControlHeader.accountableCareGiver` och `accountableCareUnit` är obligatoriska (1..1).
+
+Att `header.originalAuthor.by` används som ansvarig person är en tolkning: headern har ingen `author` som de andra JoL-headrarna, och `originalAuthor` är den som ursprungligen dokumenterade uppgiften. Saknas `originalAuthor`, eller är `by.type` inte `HCPROFESSIONAL`, anges `agent[author].who` med `data-absent-reason`.
 
 ---
 
@@ -369,8 +365,11 @@ En `Provenance`-resurs skapas per `Observation`-resurs.
 
 | Agent | Roll | Källa |
 |---|---|---|
-| `agent[custodian]` | Juridiskt ansvarig vårdgivare | `observationBody.participation` (se PDL-avsnitt) |
-| `agent[author]` | Informationsägande vårdenhet | `observationBody.participation` (se PDL-avsnitt) |
+| `agent[custodian]` | Juridiskt ansvarig vårdgivare | `header.accessControlHeader.accountableCareGiver` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `header.originalAuthor.by.id` (HSA-id i `identifier`), `header.originalAuthor.by.name` (`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `header.accessControlHeader.accountableCareUnit` (HSA-id i `identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.html#provenance-agenter).
 
 `Provenance.target` refererar `Observation` via `urn:uuid:{Observation.id}`.  
 `Provenance.recorded` = `observationBody.registrationTime` (konverterat till ISO 8601).
@@ -393,10 +392,10 @@ Version 1.2 har en annan meddelandemodell: observationerna ligger i grupper (`ob
 | `observationGroup.patient.name` | 0..1 | `Observation.subject.display` | |
 | `observationGroup.patient.dateOfBirth` | 1..1 | `Patient.birthDate` (via `Observation.subject`) | Om en Patient-resurs skapas |
 | `observationGroup.patient.gender` | 0..1 | `Patient.gender` (via `Observation.subject`) | KV Kön → AdministrativeGender, samma ConceptMap som CC-003 |
-| `observationGroup.performerRole.rivId` | 0..1 | `Observation.performer` (Reference(PractitionerRole)).identifier | Utförarens befattnings-id |
+| `observationGroup.performerRole.rivId` | 0..1 | `Observation.performer` (Reference(PractitionerRole)).identifier och `Provenance.agent[author].who` | Utförarens befattnings-id; utföraren är ansvarig person i Provenance |
 | `observationGroup.performerRole.code` | 1..1 | `PractitionerRole.code` | Befattning |
 | `observationGroup.performerRole.person.rivId` / `name` | 0..1 | `PractitionerRole.practitioner.identifier` / `.display` | |
-| `observationGroup.performerRole.careUnit.rivId` | 1..1 (om careUnit) | `Provenance.agent[author].who.identifier` och `PractitionerRole.organization.identifier` | Inre Sparr – vårdenhet |
+| `observationGroup.performerRole.careUnit.rivId` | 1..1 (om careUnit) | `Provenance.agent[author].onBehalfOf.identifier` och `PractitionerRole.organization.identifier` | Inre Sparr – vårdenhet |
 | `observationGroup.performerRole.careUnit.name` | 0..1 | `PractitionerRole.organization.display` | |
 | `observationGroup.performerRole.careUnit.careGiver.rivId` | 1..1 (om careUnit) | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
 | `observationGroup.legalAuthenticator.time` | 1..1 (om legalAuthenticator) | Ej mappad | Signeringstid; samma hantering som `header.signature` i 2.0 |

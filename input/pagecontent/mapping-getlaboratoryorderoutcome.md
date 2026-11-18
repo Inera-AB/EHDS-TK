@@ -39,7 +39,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 | `header.accessControlHeader.originalPatientId` | 0..1 | Ej mappad | Administrativt reservfält för ursprunglig patientidentitet; ingen FHIR-motpart i DiagnosticReport |
 | `header.accessControlHeader.careProcessId` | 0..1 | Ej mappad | Vårdprocessidentifierare; inget standardiserat FHIR-fält i DiagnosticReport; kan hanteras via Encounter.identifier om vårdprocess är känd |
 | `header.accessControlHeader.accountableCareGiver` | 1..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – juridiskt ansvarig vårdgivare |
-| `header.accessControlHeader.accountableCareUnit` | 1..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – informationsägande vårdenhet |
+| `header.accessControlHeader.accountableCareUnit` | 1..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – informationsägande vårdenhet |
 | `header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används av Sparr-tjänsten vid filtrering; transportlagerdata, ingår ej i FHIR-resursen |
 | `header.accessControlHeader.approvedForPatient` | 1..1 | `DiagnosticReport.meta.security[nopat]` | `false` → kod `NOPAT` (v3-ActCode), `true` → ingen märkning. PDL-kontroll – se [PDL-001](#öppna-frågor) |
 
@@ -55,7 +55,7 @@ Rotelementet `laboratoryOrderOutcome` (ett per svar) mappas till en DiagnosticRe
 
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
-| `header.author.id` | 0..1 | `PractitionerRole.identifier.value` | HSA-id för ansvarig person; via performer-referens |
+| `header.author.id` | 0..1 | `PractitionerRole.identifier.value` och `Provenance.agent[author].who` | HSA-id för ansvarig person; via performer-referens |
 | `header.author.name` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
 | `header.author.timestamp` | 1..1 | `Provenance.recorded` | Tidpunkt för författarens åtgärd; YYYYMMDDHHMMSS → ISO 8601 |
 | `header.author.byRole` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
@@ -269,7 +269,7 @@ GetLaboratoryOrderOutcome v4.2 använder **JoL-header** (inte PatientSummaryHead
 | PDL-begrepp | RIVTA-källa | Hantering |
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `header.accessControlHeader.accountableCareGiver` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `header.accessControlHeader.accountableCareUnit` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `header.accessControlHeader.accountableCareUnit` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Jämförelsetid (Sparr) | `header.accessControlHeader.blockComparisonTime` | Används av Sparr-tjänsten vid filtrering; ingår ej i FHIR-resursen |
 | Patientgodkännande | `header.accessControlHeader.approvedForPatient` (boolean) | `DiagnosticReport.meta.security`; se [PDL-001](#öppna-frågor) |
 
@@ -282,11 +282,13 @@ Observera att `accountableCareGiver` och `accountableCareUnit` är direkt under 
 | Agent | Roll | Källa |
 |---|---|---|
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `header.accessControlHeader.accountableCareGiver` |
-| `agent[author]` | Informationsägande vårdenhet | `header.accessControlHeader.accountableCareUnit` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `header.author.id` (HSA-id i `identifier`), `header.author.name` (`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `header.accessControlHeader.accountableCareUnit` (HSA-id i `identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.html#provenance-agenter).
 
 `Provenance.target` refererar `DiagnosticReport` (och transitivt alla `Observation`-instanser) via `urn:uuid:{DiagnosticReport.id}`.  
 `Provenance.recorded` = `header.record.timestamp` (ISO 8601).  
-`Provenance.agent[author].onBehalfOf` = `header.accessControlHeader.accountableCareGiver` (vårdgivare).
 
 ---
 
@@ -326,13 +328,13 @@ Resurshierarkin är densamma som för 4.2: en `SEEHDSDiagnosticReportLab` per `l
 | `laboratoryOrderOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | PersonIdType; se [GENERAL-006](mappings.html#patientreferens) |
 | `laboratoryOrderOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI enligt tabellen nedan |
 | `laboratoryOrderOutcomeHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | Motsvarar `header.author.timestamp` i 4.2 |
-| `….accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` | Den som framställt vårdbegäran; via `DiagnosticReport.performer` som i 4.2 |
+| `….accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` och `Provenance.agent[author].who` | Den som framställt vårdbegäran; via `DiagnosticReport.performer` som i 4.2 |
 | `….accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | |
 | `….accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | |
 | `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | |
 | `….accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitName` | 1..1 | `PractitionerRole.organization.display` | |
 | `….healthcareProfessionalOrgUnit.orgUnitTelecom/orgUnitEmail/orgUnitAddress/orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgifter på enhetsnivå, se [GENERAL-008](mappings.html#organisation) |
-| `….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr; motsvarar `accessControlHeader.accountableCareUnit` |
+| `….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr; motsvarar `accessControlHeader.accountableCareUnit` |
 | `….accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr; motsvarar `accessControlHeader.accountableCareGiver` |
 | `laboratoryOrderOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuthenticator) | `DiagnosticReport.extension[signatureTime]` | Motsvarar `header.signature.timestamp` |
 | `laboratoryOrderOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.extension[signatureId]` | Motsvarar `header.signature.id` |

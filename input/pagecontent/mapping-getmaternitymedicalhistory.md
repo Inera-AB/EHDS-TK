@@ -96,7 +96,7 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 | RIVTA-element | Kard. | FHIR-element | Kommentar |
 |---|---|---|---|
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Observation.effectiveDateTime` | Dokumentationstidpunkt; YYYYMMDDHHMMSS → ISO 8601 (se GENERAL-001) |
-| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 1..1 | `Observation.performer[0].identifier.value` | HSA-id för ansvarig yrkesperson (OBLIGATORISK i detta TK) |
+| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 1..1 | `Observation.performer[0].identifier.value` och `Provenance.agent[author].who` | HSA-id för ansvarig yrkesperson (OBLIGATORISK i detta TK) |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `Observation.performer[0].display` | Namn i klartext; komplement till HSA-id |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod; via PractitionerRole-resurs refererad från `Observation.performer` |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | HSA-id för organisationsenhet |
@@ -105,7 +105,7 @@ Header-fälten gäller samtliga Observation-resurser som härleds ur ett
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Enhetens e-post – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se GENERAL-008. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se [GENERAL-008](mappings.html#organisation). |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Enhetens adress – kontaktuppgifter för enheten representeras via Organization-resursen men ingen mappning fastlagd; se GENERAL-008 |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Enhetens plats/lokalbeteckning – ej strukturerat fält i FHIR Observation; se GENERAL-008 |
-| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 1..1 | `Provenance.agent[author].who.identifier.value` | HSA-id för vårdenhet; Inre Sparr (OBLIGATORISK i detta TK) |
+| `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 1..1 | `Provenance.agent[author].onBehalfOf.identifier.value` | HSA-id för vårdenhet; Inre Sparr (OBLIGATORISK i detta TK) |
 | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 1..1 | `Provenance.agent[custodian].who.identifier.value` | HSA-id för vårdgivare; Yttre Sparr (OBLIGATORISK i detta TK) |
 
 #### Juridisk autentisering
@@ -354,7 +354,7 @@ och `healthcareProfessionalCareGiverHSAId`. Dessa är **OBLIGATORISKA** i detta 
 | PDL/Sparr-begrepp | RIVTA-element | FHIR-destination |
 |---|---|---|
 | Yttre Sparr (vårdgivare) | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Patientgodkännande (1177) | `maternityMedicalRecordHeader.approvedForPatient` | `Observation.meta.security[nopat]`; `false` → `NOPAT` (v3-ActCode), se PDL-001 |
 | Skyddad identitet | *(ej explicit i detta TK – ärvs från patient)* | `Observation.meta.security` |
 
@@ -368,7 +368,10 @@ samtliga Observation-resurser producerade från det objektet.
 | Agent | Roll | Källa |
 |---|---|---|
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` (HSA-id i `identifier`), `healthcareProfessionalName` (`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `maternityMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` (HSA-id i `identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.html#provenance-agenter).
 
 `Provenance.target` refererar alla Observation-resurser från samma post via
 `urn:uuid:{Observation.id}`.  
