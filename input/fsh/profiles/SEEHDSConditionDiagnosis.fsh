@@ -50,7 +50,10 @@ Description: "Profil för diagnos/problem mappat från RIVTA-tjänstekontraktet 
 * category.coding contains
     condition-category 1..1 MS and
     diagnostyp 1..1 MS
-* category.coding[condition-category] = $condition-category#encounter-diagnosis
+* category.coding[condition-category].system 1..1 MS
+* category.coding[condition-category].system = $condition-category
+* category.coding[condition-category].code 1..1 MS
+* category.coding[condition-category].code = #encounter-diagnosis
 * category.coding[condition-category] ^short = "Alltid encounter-diagnosis (FHIR condition-category)"
 * category.coding[diagnostyp].system 1..1 MS
 * category.coding[diagnostyp].system = "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp"

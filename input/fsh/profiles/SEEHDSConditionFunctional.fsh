@@ -50,7 +50,10 @@ Description: """
 * category.coding contains
     condition-category 1..1 MS and
     bedomningskategori 1..1 MS
-* category.coding[condition-category] = $condition-category#problem-list-item
+* category.coding[condition-category].system 1..1 MS
+* category.coding[condition-category].system = $condition-category
+* category.coding[condition-category].code 1..1 MS
+* category.coding[condition-category].code = #problem-list-item
 * category.coding[condition-category] ^short = "Alltid problem-list-item (FHIR condition-category)"
 * category.coding[bedomningskategori].system 1..1 MS
 * category.coding[bedomningskategori].system = "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"
@@ -58,13 +61,10 @@ Description: """
 * category.coding[bedomningskategori] from AssessmentCategoryVS (required)
 * category.coding[bedomningskategori] ^short = "Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun"
 
-// CLINSTAT-001: inget status- eller slutdatumfält i TKB:n, så klinisk status är okänd.
-// condition-clinical saknar koden "unknown". con-3 vill ha clinicalStatus på problemlisteposter,
-// så elementet anges med extensionen data-absent-reason = unknown i stället för en kod.
-* clinicalStatus 1..1 MS
-* clinicalStatus ^short = "Okänd: extension data-absent-reason = unknown, ingen coding (TKB:n saknar status och slutdatum) – se CLINSTAT-001"
-* clinicalStatus.extension contains $DAR named dataAbsentReason 0..1 MS
-* clinicalStatus.extension[dataAbsentReason].valueCode = #unknown
+// CLINSTAT-001: inget status- eller slutdatumfält i TKB:n, så klinisk status är okänd och
+// clinicalStatus utelämnas. condition-clinical saknar koden "unknown", och bindningen är required,
+// så data-absent-reason utan kod är inte giltigt. Utelämnat ger bara best practice-varningen con-3.
+* clinicalStatus ^short = "Utelämnas: klinisk status är okänd (TKB:n saknar status och slutdatum) – se CLINSTAT-001"
 
 * verificationStatus MS
 * verificationStatus ^short = "Alltid 'confirmed' – härledd (journaluppgifter anses bekräftade)"
@@ -86,10 +86,9 @@ Instance: SEEHDSConditionFunctionalExample
 InstanceOf: SEEHDSConditionFunctional
 Usage: #example
 Title: "Exempel: PADL-bedömning från GetFunctionalStatus"
-Description: "Funktionstillstånd med pad-pad som extra coding i samma category som problem-list-item (FUNC-002), och clinicalStatus som okänd via data-absent-reason (CLINSTAT-001)."
+Description: "Funktionstillstånd med pad-pad som extra coding i samma category som problem-list-item (FUNC-002), utan clinicalStatus, eftersom statusen är okänd (CLINSTAT-001)."
 * identifier.value = "func-6789"
 * meta.source = "https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5"
-* clinicalStatus.extension[dataAbsentReason].valueCode = #unknown
 * verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed
 * category.coding[condition-category] = $condition-category#problem-list-item "Problem List Item"
 * category.coding[bedomningskategori] = https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs#pad-pad "pad-pad"

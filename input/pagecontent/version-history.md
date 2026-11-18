@@ -4,7 +4,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | Version | Datum | Status | Beskrivning |
 |---------|-------|--------|-------------|
-| 0.12.0 | 2026-11-18 | Draft | HD/BY och pad-pad/fun-fun ligger i samma `category` som FHIR:s standardkod, så att valideringen inte varnar, och klinisk status antas inte längre vara `active` när slutdatum saknas. |
+| 0.12.0 | 2026-11-18 | Draft | HD/BY och pad-pad/fun-fun ligger i samma `category` som FHIR:s standardkod, så att valideringen inte varnar, och klinisk status antas inte längre vara `active` för diagnoser och funktionstillstånd när slutdatum saknas. |
 | 0.11.0 | 2026-11-18 | Draft | Provenance följer FHIR:s referensmodell: `agent[author].who` är den ansvariga personen och vårdenheten (accountableCareUnit) ligger i `agent[author].onBehalfOf`, i alla tjänstekontrakt och versioner. |
 | 0.10.0 | 2026-11-18 | Draft | ICD-10-SE anges med url:en i Ineras terminologitjänst i stället för `https://www.icd10.se/`, `Condition.category` använder FHIR:s kodverk `condition-category` för diagnoser och funktionstillstånd, kronisk diagnos anges med SNOMED CT i `Condition.stage`, och alla kliniska profiler visar `NOPAT` i `meta.security`. |
 | 0.9.0 | 2026-11-16 | Draft | Första releasen i IG Publishers publiceringsläge. IG:n publiceras utan Turtle, vilket gör varje publicerad version knappt en fjärdedel mindre. Version 0.3.1 är borttagen från fhir.inera.se. |
@@ -35,9 +35,13 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 **Klinisk status (CLINSTAT-001)**
 
 - `active` antas inte längre bara för att slutdatum saknas.
-- GetFunctionalStatus: `Condition.clinicalStatus` anges med bara extensionen `data-absent-reason` = `unknown`, eftersom TKB:n saknar både status och slutdatum.
-- GetAlertInformation 2.0 och 3.0: ett slutdatum som har passerat ger `AllergyIntolerance.clinicalStatus = resolved` och `Flag.status = inactive`. Utan slutdatum blir `AllergyIntolerance.clinicalStatus` okänd (`data-absent-reason` = `unknown`). `Flag.status` har ingen kod för okänd status och förblir `active`.
+- GetFunctionalStatus: `Condition.clinicalStatus` utelämnas, eftersom TKB:n saknar både status och slutdatum. Tidigare sattes alltid `active`.
+- GetAlertInformation 2.0 och 3.0: ett slutdatum som har passerat ger `AllergyIntolerance.clinicalStatus = resolved` och `Flag.status = inactive`. Utan passerat slutdatum blir båda `active`, eftersom elementen är obligatoriska och kodverken saknar `unknown`.
 - GetDiagnosis: `Condition.clinicalStatus` utelämnas som förut, vilket betyder okänd status.
+
+**Exempel**
+
+- Nya exempel för [SEEHDSConditionDiagnosis](Condition-SEEHDSConditionDiagnosisExample.html), [SEEHDSConditionFunctional](Condition-SEEHDSConditionFunctionalExample.html) och [SEEHDSPatient](Patient-SEEHDSPatientExample.html). De validerar utan fel och utan varningen om Condition Category Codes.
 
 #### 0.11.0 — 2026-11-18 (Draft)
 

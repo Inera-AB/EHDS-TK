@@ -29,7 +29,7 @@ Inget explicit statusfält finns i TKB:n. Fälten härleds:
 
 | Fält | Värde | Motivering |
 |---|---|---|
-| `Condition.clinicalStatus` | okänd: extensionen `data-absent-reason` = `unknown`, ingen `coding` | TKB:n har varken status eller slutdatum, så det går inte att säga om tillståndet är aktivt. `condition-clinical` saknar koden `unknown`, och eftersom kategorin är `problem-list-item` ska `clinicalStatus` finnas (con-3). Se [CLINSTAT-001](mapping-issues.html#designbeslut-fattade). |
+| `Condition.clinicalStatus` | Utelämnas (okänd) | TKB:n har varken status eller slutdatum, så det går inte att säga om tillståndet är aktivt. `condition-clinical` saknar koden `unknown`, och bindningen är obligatorisk, så `data-absent-reason` utan kod är inte giltigt. Utelämnat ger högst best practice-varningen con-3. Se [CLINSTAT-001](mapping-issues.html#designbeslut-fattade). |
 | `Condition.verificationStatus` | `confirmed` | RIVTA-svar representerar bekräftade journaluppgifter |
 
 #### PADL-poster (FUNC-001 – Beslutat)

@@ -54,9 +54,9 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` härleds från giltighet
 | Giltighetstid | `Flag.status` | `AllergyIntolerance.clinicalStatus` (vid överkänslighet) |
 |---|---|---|
 | Slutdatum som har passerat vid svarstillfället. 2.0: det minsta av `validityTimePeriod.end` och `obsoleteTime`. 3.0: `time.timePeriod.end` | `inactive` | `resolved` |
-| Inget slutdatum, eller ett slutdatum som ännu inte har passerat | `active` | Okänd: extensionen `data-absent-reason` = `unknown`, ingen `coding` |
+| Inget slutdatum, eller ett slutdatum som ännu inte har passerat | `active` | `active` |
 
-`Flag.status` är obligatoriskt och har ingen kod för okänd status, så en öppen giltighetstid ger `active`. För `AllergyIntolerance.clinicalStatus` antas däremot inte `active`. Kodverket `allergyintolerance-clinical` saknar `unknown`, och ait-1 kräver att `clinicalStatus` finns, så okänd status anges med `data-absent-reason`. Reglerna för `negation` (3.0) och `approval` (3.0) som ger `inactive` gäller före giltighetstiden.
+`Flag.status` och `AllergyIntolerance.clinicalStatus` är båda obligatoriska (ait-1) med obligatoriska bindningar till kodverk som saknar `unknown`. En öppen giltighetstid ger därför `active`: varningen gäller tills ett slutdatum har passerat. Reglerna för `negation` (3.0) och `approval` (3.0) som ger `inactive` gäller före giltighetstiden.
 
 ---
 
@@ -150,7 +150,7 @@ AllergyIntolerance skapas enbart när body = hypersensitivity. Fält från heade
 | `alertInformationBody.hypersensitivity.pharmaceuticalHypersensitivity.pharmaceuticalProductId` | 0..* | `AllergyIntolerance.reaction.substance.coding` | NPL-id (1.2.752.129.2.1.5.1) |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgentCode` | 0..1 | `AllergyIntolerance.code.coding` | Agenskod (LMK, CAS m.fl.) |
 | `alertInformationBody.hypersensitivity.otherHypersensitivity.hypersensitivityAgent` | 0..1 | `AllergyIntolerance.code.text` | Agens i fritext (fallback om agenskod saknas) |
-| (härledd från giltighetstiden) | — | `AllergyIntolerance.clinicalStatus` | `resolved` om slutdatum har passerat, annars `data-absent-reason` = `unknown`; se [Flag.status](#flagstatus) och [CLINSTAT-001](mapping-issues.html#designbeslut-fattade) |
+| (härledd från giltighetstiden) | — | `AllergyIntolerance.clinicalStatus` | `resolved` om slutdatum har passerat, annars `active`; se [Flag.status](#flagstatus) och [CLINSTAT-001](mapping-issues.html#designbeslut-fattade) |
 | (härledd – alltid allergy) | — | `AllergyIntolerance.type` | `allergy`; härledd av att body = hypersensitivity |
 
 ---
