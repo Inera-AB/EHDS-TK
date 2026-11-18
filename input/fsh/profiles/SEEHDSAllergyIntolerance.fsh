@@ -41,8 +41,12 @@ Description: """
 * recordedDate MS
 * recordedDate ^short = "Registreringstidpunkt (alertInformationHeader.accountableHealthcareProfessional.authorTime)"
 
-* clinicalStatus MS
-* clinicalStatus ^short = "Alltid 'active' – härledd; inget statusfält i TKBn"
+// CLINSTAT-001: klinisk status antas inte vara active. Slutdatum som har passerat ger resolved,
+// annars är statusen okänd. allergyintolerance-clinical saknar koden "unknown", och ait-1 kräver
+// clinicalStatus, så okänd status anges med extensionen data-absent-reason = unknown.
+* clinicalStatus 1..1 MS
+* clinicalStatus ^short = "resolved om giltighetstiden har ett slutdatum som passerat, annars data-absent-reason = unknown – se CLINSTAT-001"
+* clinicalStatus.extension contains $DAR named dataAbsentReason 0..1 MS
 
 * verificationStatus MS
 * verificationStatus ^short = "Visshet (alertInformationBody.hypersensitivity.degreeOfCertainty → ConceptMap till verificationStatus); se ALERT-004"

@@ -39,3 +39,13 @@ Description: """
 * gender MS
 * birthDate MS
 * birthDate ^short = "Härleds ur personnummer/samordningsnummer (samordningsnummer: dag − 60); annars data-absent-reason"
+
+Instance: SEEHDSPatientExample
+InstanceOf: SEEHDSPatient
+Usage: #example
+Title: "Exempel: patient med personnummer"
+Description: "Patient som exemplen på Condition refererar till. Personnumret är Skatteverkets testpersonnummer."
+* identifier[personnummer].value = "191212121212"
+* name.family = "Tolvansson"
+* name.given = "Tolvan"
+* birthDate = "1912-12-12"

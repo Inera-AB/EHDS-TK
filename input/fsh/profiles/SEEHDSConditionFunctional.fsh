@@ -38,27 +38,33 @@ Description: """
 * code ^short = "Bedömningskod: assessmentCategory (pad-pad/fun-fun) eller disability.disabilityAssessment (ICF) – se FUNC-001"
 
 // Condition.category har en extensible bindning till FHIR:s condition-category.
-// Standardkoden problem-list-item används i första hand (FUNC-002). pad-pad/fun-fun har
-// ingen motsvarighet i standardkodverket och ligger kvar som en egen, lokal slice.
-* category 2..* MS
-* category ^slicing.discriminator.type = #value
-* category ^slicing.discriminator.path = "coding.system"
-* category ^slicing.rules = #open
-* category ^slicing.description = "En kategori från FHIR:s condition-category (problem-list-item) och en från AssessmentCategoryCS (pad-pad/fun-fun)"
-* category contains
+// Varje category-element valideras för sig mot bindningen. Därför ligger den lokala koden
+// som en extra coding i samma CodeableConcept som standardkoden, inte i ett eget element
+// (FUNC-002). Då innehåller varje category en kod från condition-category.
+* category 1..1 MS
+* category ^short = "problem-list-item (FHIR condition-category) och pad-pad/fun-fun (AssessmentCategoryCS) i samma CodeableConcept, se FUNC-002"
+* category.coding 2..* MS
+* category.coding ^slicing.discriminator.type = #value
+* category.coding ^slicing.discriminator.path = "system"
+* category.coding ^slicing.rules = #open
+* category.coding contains
     condition-category 1..1 MS and
     bedomningskategori 1..1 MS
-* category[condition-category] = $condition-category#problem-list-item
-* category[condition-category] ^short = "Alltid problem-list-item (FHIR condition-category) – funktionstillståndet beskriver patientens tillstånd över tid, se FUNC-002"
-* category[bedomningskategori].coding 1..1 MS
-* category[bedomningskategori].coding.system 1..1 MS
-* category[bedomningskategori].coding.system = "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"
-* category[bedomningskategori].coding.code 1..1 MS
-* category[bedomningskategori] from AssessmentCategoryVS (required)
-* category[bedomningskategori] ^short = "Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun"
+* category.coding[condition-category] = $condition-category#problem-list-item
+* category.coding[condition-category] ^short = "Alltid problem-list-item (FHIR condition-category)"
+* category.coding[bedomningskategori].system 1..1 MS
+* category.coding[bedomningskategori].system = "https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs"
+* category.coding[bedomningskategori].code 1..1 MS
+* category.coding[bedomningskategori] from AssessmentCategoryVS (required)
+* category.coding[bedomningskategori] ^short = "Bedömningskategori (functionalStatusAssessmentBody.assessmentCategory) – pad-pad eller fun-fun"
 
-* clinicalStatus MS
-* clinicalStatus ^short = "Alltid 'active' – härledd (inget statusfält i TKBn)"
+// CLINSTAT-001: inget status- eller slutdatumfält i TKB:n, så klinisk status är okänd.
+// condition-clinical saknar koden "unknown". con-3 vill ha clinicalStatus på problemlisteposter,
+// så elementet anges med extensionen data-absent-reason = unknown i stället för en kod.
+* clinicalStatus 1..1 MS
+* clinicalStatus ^short = "Okänd: extension data-absent-reason = unknown, ingen coding (TKB:n saknar status och slutdatum) – se CLINSTAT-001"
+* clinicalStatus.extension contains $DAR named dataAbsentReason 0..1 MS
+* clinicalStatus.extension[dataAbsentReason].valueCode = #unknown
 
 * verificationStatus MS
 * verificationStatus ^short = "Alltid 'confirmed' – härledd (journaluppgifter anses bekräftade)"
@@ -75,3 +81,22 @@ Description: """
 // FUNC-001: PADL-poster kodas som Condition.note med prefixformat '[typeOfAssessment]: assessment'.
 // Alternativet med separata Observation-resurser per PADL-post ger bättre strukturerbarhet men
 // ökar resurskomplexiteten. Beslutet kan omprövas vid behov av strukturerad sökning på PADL.
+
+Instance: SEEHDSConditionFunctionalExample
+InstanceOf: SEEHDSConditionFunctional
+Usage: #example
+Title: "Exempel: PADL-bedömning från GetFunctionalStatus"
+Description: "Funktionstillstånd med pad-pad som extra coding i samma category som problem-list-item (FUNC-002), och clinicalStatus som okänd via data-absent-reason (CLINSTAT-001)."
+* identifier.value = "func-6789"
+* meta.source = "https://tjanstekatalogen.inera.se/Endpoint/SE2321000016-4HK5"
+* clinicalStatus.extension[dataAbsentReason].valueCode = #unknown
+* verificationStatus = http://terminology.hl7.org/CodeSystem/condition-ver-status#confirmed
+* category.coding[condition-category] = $condition-category#problem-list-item "Problem List Item"
+* category.coding[bedomningskategori] = https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs#pad-pad "pad-pad"
+* code = https://fhir.inera.se/clinicalprocess-healthcond-description/CodeSystem/assessmentcategory-cs#pad-pad "pad-pad"
+* code.text = "PADL-bedömning"
+* subject.reference = "Patient/SEEHDSPatientExample"
+* subject.identifier.system = $personnummer
+* subject.identifier.value = "191212121212"
+* recordedDate = "2023-06-01T12:00:00+02:00"
+* note[0].text = "[personlig hygien]: Klarar sig själv"
