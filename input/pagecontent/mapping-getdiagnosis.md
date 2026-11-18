@@ -29,7 +29,7 @@
 | `diagnosisHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `diagnosisHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Condition.asserter.identifier` | Via asserter-referens (PractitionerRole) |
 | `diagnosisHeader.legalAuthenticator.legalAuthenticatorName` | 0..1 | Ej mappad | Namn i klartext – HSA-id räcker för logisk referens |
-| `diagnosisHeader.approvedForPatient` | 1..1 | `Condition.meta.security` | PDL-kontroll – se [PDL-001](#öppna-frågor) |
+| `diagnosisHeader.approvedForPatient` | 1..1 | `Condition.meta.security[nopat]` | `false` → kod `NOPAT` från `http://terminology.hl7.org/CodeSystem/v3-ActCode`; `true` → ingen säkerhetsmärkning. Se [PDL-001](#öppna-frågor) |
 | `diagnosisHeader.careContactId` | 0..1 | `Condition.encounter.identifier` | Logisk referens till Encounter |
 | `diagnosisHeader.nullified` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
 | `diagnosisHeader.nullifiedReason` | 0..0 | N/A | Ej tillämpligt enligt TKB (0..0) |
@@ -155,7 +155,7 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 | Yttre Sparr (vårdgivare) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
 | Inre Sparr (vårdenhet) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
 | Jämförelsetid (Sparr/CheckBlocks) | `diagnosisHeader.accountableHealthcareProfessional.authorTime` | Skickas som jämförelsetidpunkt vid anrop till spärrtjänsten (motsvarande `blockComparisonTime` i TK:er med `accessControlHeader`) |
-| Patientgodkännande | `diagnosisHeader.approvedForPatient` (boolean) | `Condition.meta.security`; se [PDL-001](#öppna-frågor) |
+| Patientgodkännande | `diagnosisHeader.approvedForPatient` (boolean) | `Condition.meta.security[nopat]`; `false` → `NOPAT` (v3-ActCode), se [PDL-001](#öppna-frågor) |
 
 **OBS – jämförelsetid:** GetDiagnosis:2 har inget `accessControlHeader.blockComparisonTime` (till skillnad från t.ex.
 GetCareDocumentation och GetLaboratoryOrderOutcome). `authorTime` är det enda tidsfältet i headern som skickas

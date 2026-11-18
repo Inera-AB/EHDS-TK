@@ -32,6 +32,10 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
   - [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html): alltid `problem-list-item` (FUNC-002). `pad-pad`/`fun-fun` ligger nu i slicen `bedomningskategori` med obligatorisk bindning till AssessmentCategoryVS.
 - Producenter måste alltså skicka två kategorier per Condition, och ICD-10-SE-koder med det nya systemet.
 
+**PDL**
+
+- `meta.security[nopat]` (`v3-ActCode#NOPAT` när `approvedForPatient = false`, PDL-001) finns nu i [SEEHDSConditionDiagnosis](StructureDefinition-SEEHDSConditionDiagnosis.html) och [SEEHDSConditionFunctional](StructureDefinition-SEEHDSConditionFunctional.html). Mappningstabellen för GetDiagnosis anger koden direkt.
+
 **Kronisk diagnos**
 
 - `diagnosisBody.chronicDiagnosis = true` anges nu i `Condition.stage[klinisktForlopp]`, med `stage.type` = SNOMED CT `263502005` \|Clinical course (attribute)\| och `stage.summary` = SNOMED CT `90734009` \|Chronic (qualifier value)\| (DIAG-001). Den lokala extensionen `condition-chronic-diagnosis` är borttagen. Värdet `false` ger ingen `stage`.
