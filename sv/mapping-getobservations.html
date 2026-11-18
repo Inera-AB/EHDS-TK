@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0</title>
+    <title>GetObservations – Tillväxtkurva - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.10.0 - ci-build
+            <span style="display:inline-block;">0.11.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.10.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.11.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetObservations – Tillväxtkurva</h2>
   
 
@@ -227,10 +227,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <strong>IoÖ:</strong> Interaktionsöverenskommelse Tillväxtkurva för barn och ungdom v3 (Inera, 2023-05-15)</p>
 
 <blockquote>
-  <p><strong>OBS – Avvikande headerstruktur:</strong> GetObservations använder en specifik headertyp som
-<strong>inte</strong> är <code class="language-plaintext highlighter-rouge">PatientSummaryHeader</code>. Det finns inget <code class="language-plaintext highlighter-rouge">careProviderHSAId</code>/<code class="language-plaintext highlighter-rouge">careUnitHSAId</code>
-på toppnivå i headern. PDL- och Sparr-fält hanteras separat – se avsnitt
-<a href="#pdl-och-sparr">PDL och Sparr</a> nedan.</p>
+  <p><strong>OBS – Headerstruktur:</strong> GetObservations 2.0 använder JoL-headern (<code class="language-plaintext highlighter-rouge">header.accessControlHeader</code>),
+inte <code class="language-plaintext highlighter-rouge">PatientSummaryHeader</code>. Spärrfälten finns direkt i <code class="language-plaintext highlighter-rouge">accessControlHeader</code>
+(<code class="language-plaintext highlighter-rouge">accountableCareGiver</code> och <code class="language-plaintext highlighter-rouge">accountableCareUnit</code>), som i GetLaboratoryOrderOutcome 4.2 och
+GetCareDocumentation – se avsnitt <a href="#pdl-och-sparr">PDL och Sparr</a> nedan.</p>
 </blockquote>
 
 <hr />
@@ -1159,33 +1159,31 @@ och kräver extension eller Provenance-resurs om de ska bevaras.</p>
 
 <h3 id="pdl-och-sparr">PDL och Sparr</h3>
 
-<blockquote>
-  <p>GetObservations v2.0 har en <strong>avvikande headerstruktur</strong> jämfört med
-<code class="language-plaintext highlighter-rouge">PatientSummaryHeader</code>. Det finns inga dedikerade fält <code class="language-plaintext highlighter-rouge">careProviderHSAId</code> och
-<code class="language-plaintext highlighter-rouge">careUnitHSAId</code> på standardplats i headern.</p>
-</blockquote>
-
-<p>PDL- och Sparr-information hämtas istället ur följande källor när de är
-tillgängliga:</p>
+<p>GetObservations 2.0 använder JoL-headern. Spärrfälten finns direkt i <code class="language-plaintext highlighter-rouge">header.accessControlHeader</code>:</p>
 
 <table>
   <thead>
     <tr>
       <th>PDL/Sparr-begrepp</th>
-      <th>Alternativ källa i GetObservations</th>
+      <th>RIVTA-källa (2.0)</th>
       <th>FHIR-destination</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Vårdgivare (yttre Sparr)</td>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*]</code> där <code class="language-plaintext highlighter-rouge">participation.type</code> avser ansvarig vårdgivare</td>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.accountableCareGiver</code></td>
       <td><code class="language-plaintext highlighter-rouge">Provenance.agent[custodian].who.identifier</code></td>
     </tr>
     <tr>
       <td>Vårdenhet (inre Sparr)</td>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation[*]</code> där <code class="language-plaintext highlighter-rouge">participation.type</code> avser vårdenhet</td>
-      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.accountableCareUnit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].onBehalfOf.identifier</code></td>
+    </tr>
+    <tr>
+      <td>Ansvarig person</td>
+      <td><code class="language-plaintext highlighter-rouge">header.originalAuthor.by</code> när <code class="language-plaintext highlighter-rouge">by.type</code> = <code class="language-plaintext highlighter-rouge">HCPROFESSIONAL</code> (<code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">name</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who</code></td>
     </tr>
     <tr>
       <td>Skyddad identitet</td>
@@ -1195,9 +1193,9 @@ tillgängliga:</p>
   </tbody>
 </table>
 
-<p>Implementationer <strong>måste</strong> hantera avsaknaden av standard-Sparr-fält och antingen
-vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
-<code class="language-plaintext highlighter-rouge">meta.security</code> och dokumentera beslutet i implementationsguiden.</p>
+<p>Tidigare angav sidan att spärrfälten saknades i headern och skulle härledas ur <code class="language-plaintext highlighter-rouge">observationBody.participation</code>. Det stämmer inte med XSD:n och den logiska modellen <a href="StructureDefinition-SEEHDSLMObservations.html">SEEHDSLMObservations</a>, där <code class="language-plaintext highlighter-rouge">accessControlHeader.accountableCareGiver</code> och <code class="language-plaintext highlighter-rouge">accountableCareUnit</code> är obligatoriska (1..1).</p>
+
+<p>Att <code class="language-plaintext highlighter-rouge">header.originalAuthor.by</code> används som ansvarig person är en tolkning: headern har ingen <code class="language-plaintext highlighter-rouge">author</code> som de andra JoL-headrarna, och <code class="language-plaintext highlighter-rouge">originalAuthor</code> är den som ursprungligen dokumenterade uppgiften. Saknas <code class="language-plaintext highlighter-rouge">originalAuthor</code>, eller är <code class="language-plaintext highlighter-rouge">by.type</code> inte <code class="language-plaintext highlighter-rouge">HCPROFESSIONAL</code>, anges <code class="language-plaintext highlighter-rouge">agent[author].who</code> med <code class="language-plaintext highlighter-rouge">data-absent-reason</code>.</p>
 
 <hr />
 
@@ -1217,15 +1215,22 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
     <tr>
       <td><code class="language-plaintext highlighter-rouge">agent[custodian]</code></td>
       <td>Juridiskt ansvarig vårdgivare</td>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation</code> (se PDL-avsnitt)</td>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.accountableCareGiver</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">agent[author]</code></td>
-      <td>Informationsägande vårdenhet</td>
-      <td><code class="language-plaintext highlighter-rouge">observationBody.participation</code> (se PDL-avsnitt)</td>
+      <td><code class="language-plaintext highlighter-rouge">agent[author].who</code></td>
+      <td>Ansvarig person (PractitionerRole), samma person som resursens eget författarelement</td>
+      <td><code class="language-plaintext highlighter-rouge">header.originalAuthor.by.id</code> (HSA-id i <code class="language-plaintext highlighter-rouge">identifier</code>), <code class="language-plaintext highlighter-rouge">header.originalAuthor.by.name</code> (<code class="language-plaintext highlighter-rouge">display</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">agent[author].onBehalfOf</code></td>
+      <td>Informationsägande vårdenhet (inre Sparr)</td>
+      <td><code class="language-plaintext highlighter-rouge">header.accessControlHeader.accountableCareUnit</code> (HSA-id i <code class="language-plaintext highlighter-rouge">identifier</code>)</td>
     </tr>
   </tbody>
 </table>
+
+<p>Saknas personens HSA-id anges namnet i <code class="language-plaintext highlighter-rouge">agent[author].who.display</code>. Saknas både HSA-id och namn anges <code class="language-plaintext highlighter-rouge">agent[author].who</code> med extensionen <code class="language-plaintext highlighter-rouge">data-absent-reason</code> (<code class="language-plaintext highlighter-rouge">unknown</code>). Vårdenheten anges alltid i <code class="language-plaintext highlighter-rouge">agent[author].onBehalfOf</code>, se <a href="mappings.html#provenance-agenter">Provenance-agenter (GENERAL-003)</a>.</p>
 
 <p><code class="language-plaintext highlighter-rouge">Provenance.target</code> refererar <code class="language-plaintext highlighter-rouge">Observation</code> via <code class="language-plaintext highlighter-rouge">urn:uuid:{Observation.id}</code>.<br />
 <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">observationBody.registrationTime</code> (konverterat till ISO 8601).</p>
@@ -1304,8 +1309,8 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
     <tr>
       <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.rivId</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Observation.performer</code> (Reference(PractitionerRole)).identifier</td>
-      <td>Utförarens befattnings-id</td>
+      <td><code class="language-plaintext highlighter-rouge">Observation.performer</code> (Reference(PractitionerRole)).identifier och <code class="language-plaintext highlighter-rouge">Provenance.agent[author].who</code></td>
+      <td>Utförarens befattnings-id; utföraren är ansvarig person i Provenance</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.code</code></td>
@@ -1322,7 +1327,7 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
     <tr>
       <td><code class="language-plaintext highlighter-rouge">observationGroup.performerRole.careUnit.rivId</code></td>
       <td>1..1 (om careUnit)</td>
-      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code> och <code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].onBehalfOf.identifier</code> och <code class="language-plaintext highlighter-rouge">PractitionerRole.organization.identifier</code></td>
       <td>Inre Sparr – vårdenhet</td>
     </tr>
     <tr>
@@ -1760,9 +1765,9 @@ vägra returnera posten utan tydlig Sparr-attributering, eller flagga posten med
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.10.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.11.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-18 13:32:00 +0000">
+  <span title="2026-11-18 13:38:00 +0000">
     2026-11-18
   </span>
 

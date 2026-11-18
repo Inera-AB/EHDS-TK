@@ -8,11 +8,11 @@
 </div></div>
   </text>
   <url value="https://fhir.inera.se/ig/ehds-tk/ImplementationGuide/inera.ehds.ehds-tk"/>
-  <version value="0.10.0"/>
+  <version value="0.11.0"/>
   <name value="SEEHDSTK"/>
   <title value="Inera EHDS Tjänstekontrakt – FHIR Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-11-18T13:32:07+00:00"/>
+  <date value="2026-11-18T13:38:06+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -596,7 +596,7 @@
         <reference value="Provenance/SEEHDSProvenanceExample"/>
       </reference>
       <name value="Exempel: Provenance med custodian och author"/>
-      <description value="Visar hur de två agenterna anges så att validering kan avgöra vilken agent som är vilken."/>
+      <description value="Visar hur de två agenterna anges så att validering kan avgöra vilken agent som är vilken: vårdgivaren som custodian, och personen som author för vårdenhetens räkning (onBehalfOf)."/>
       <exampleCanonical value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance"/>
     </resource>
     <resource>
@@ -2103,7 +2103,7 @@
         <reference value="StructureDefinition/SEEHDSProvenance"/>
       </reference>
       <name value="SE EHDS Provenance"/>
-      <description value="Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance&#xA;med två agenter som speglar spärr-hierarkin enligt PDL:&#xA;- custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren&#xA;- author (inre Sparr) — den informationsägande vårdenheten&#xA;&#xA;Agenterna skiljs åt på `agent.type` (diskriminator av typen pattern på `type`),&#xA;som ska innehålla kodningen `provenance-participant-type#custodian` respektive&#xA;`provenance-participant-type#author`. En validator kan därmed avgöra vilken agent&#xA;som är vilken. Båda agenterna anges som logisk referens med HSA-id i&#xA;`who.identifier`. Se GENERAL-003.&#xA;&#xA;OBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering&#xA;baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver&#xA;Provenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte&#xA;inkluderas i svaret — filtreringen sker då redan på servernivå."/>
+      <description value="Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance&#xA;med två agenter som speglar spärr-hierarkin enligt PDL:&#xA;- custodian (yttre Sparr): `who` = den juridiskt ansvariga vårdgivaren&#xA;- author (inre Sparr): `who` = personen som ansvarar för uppgiften (PractitionerRole&#xA;  eller Practitioner) och `onBehalfOf` = den informationsägande vårdenheten&#xA;&#xA;Mönstret följer FHIR:s referensmodell för Provenance, där `agent.who` är den som&#xA;deltog och `agent.onBehalfOf` är den organisation som personen agerade för.&#xA;Vårdenheten anges alltid i `agent[author].onBehalfOf`, också när personen är okänd.&#xA;&#xA;Agenterna skiljs åt på `agent.type` (diskriminator av typen pattern på `type`),&#xA;som ska innehålla kodningen `provenance-participant-type#custodian` respektive&#xA;`provenance-participant-type#author`. En validator kan därmed avgöra vilken agent&#xA;som är vilken. Vårdgivare och vårdenhet anges som logisk referens med HSA-id. Se GENERAL-003.&#xA;&#xA;OBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering&#xA;baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver&#xA;Provenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte&#xA;inkluderas i svaret — filtreringen sker då redan på servernivå."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

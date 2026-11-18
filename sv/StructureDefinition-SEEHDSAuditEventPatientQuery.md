@@ -1,4 +1,4 @@
-# SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Resursprofil: SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery) 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSAuditEven
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSAuditEventPatientQuery",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSAuditEventPatientQuery",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSAuditEventPatientQuery",
   "title" : "SE EHDS AuditEvent – Sökning och träfflista med patient (BALP PatientQuery)",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

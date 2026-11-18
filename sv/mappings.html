@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0</title>
+    <title>Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.10.0 - ci-build
+            <span style="display:inline-block;">0.11.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.10.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.11.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>Mappings</h2>
   
 
@@ -208,6 +208,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li><a href="#syfte" id="markdown-toc-syfte">Syfte</a></li>
   <li><a href="#översikt-per-tjänstekontrakt" id="markdown-toc-översikt-per-tjänstekontrakt">Översikt per tjänstekontrakt</a></li>
   <li><a href="#gemensamt-headermönster" id="markdown-toc-gemensamt-headermönster">Gemensamt headermönster</a></li>
+  <li><a href="#provenance-agenter" id="markdown-toc-provenance-agenter">Provenance-agenter (GENERAL-003)</a></li>
   <li><a href="#tidszon" id="markdown-toc-tidszon">Tidsstämplar och tidszon (GENERAL-001)</a></li>
   <li><a href="#meta-source" id="markdown-toc-meta-source">meta.source – källsystem (GENERAL-005)</a></li>
   <li><a href="#patientreferens" id="markdown-toc-patientreferens">Patientreferens (GENERAL-006)</a></li>
@@ -364,7 +365,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code></td>
-      <td><code class="language-plaintext highlighter-rouge">{Resurs}.recorder</code> / <code class="language-plaintext highlighter-rouge">author</code> / <code class="language-plaintext highlighter-rouge">performer</code></td>
+      <td><code class="language-plaintext highlighter-rouge">{Resurs}.recorder</code> / <code class="language-plaintext highlighter-rouge">author</code> / <code class="language-plaintext highlighter-rouge">performer</code> och <code class="language-plaintext highlighter-rouge">Provenance.agent[author].who</code></td>
       <td>Logisk referens via HSA-id</td>
     </tr>
     <tr>
@@ -379,8 +380,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careUnitHSAId</code></td>
-      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
-      <td>Inre Sparr</td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].onBehalfOf.identifier</code></td>
+      <td>Inre Sparr, se <a href="#provenance-agenter">Provenance-agenter</a></td>
     </tr>
   </tbody>
 </table>
@@ -388,6 +389,48 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <blockquote>
   <p><strong>OBS om server-side filtrering:</strong> Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver Provenance-spärr-agenterna och <code class="language-plaintext highlighter-rouge">approvedForPatient</code>-säkerhetsmärkning (se PDL-001) inte inkluderas i svaret — filtreringen sker då redan på servernivå.</p>
 </blockquote>
+
+<hr />
+
+<h3 id="provenance-agenter">Provenance-agenter (GENERAL-003)</h3>
+
+<p>Varje klinisk resurs åtföljs av en <a href="StructureDefinition-SEEHDSProvenance.html">SEEHDSProvenance</a> med två agenter, som skiljs åt på <code class="language-plaintext highlighter-rouge">agent.type</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Agent</th>
+      <th><code class="language-plaintext highlighter-rouge">who</code></th>
+      <th><code class="language-plaintext highlighter-rouge">onBehalfOf</code></th>
+      <th>Spärrnivå</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">agent[custodian]</code></td>
+      <td>Vårdgivaren (<code class="language-plaintext highlighter-rouge">Organization</code>, HSA-id)</td>
+      <td>–</td>
+      <td>Yttre Sparr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">agent[author]</code></td>
+      <td>Ansvarig person (<code class="language-plaintext highlighter-rouge">PractitionerRole</code>, eller <code class="language-plaintext highlighter-rouge">Practitioner</code>)</td>
+      <td>Informationsägande vårdenhet (<code class="language-plaintext highlighter-rouge">Organization</code>, HSA-id)</td>
+      <td>Inre Sparr</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Mönstret följer FHIR:s referensmodell för Provenance: <code class="language-plaintext highlighter-rouge">agent.who</code> är den som deltog, och <code class="language-plaintext highlighter-rouge">agent.onBehalfOf</code> är den organisation som personen agerade för. RIVTA-headerns <code class="language-plaintext highlighter-rouge">accountableHealthcareProfessional</code> (eller JoL-headerns <code class="language-plaintext highlighter-rouge">author</code>) blir alltså <code class="language-plaintext highlighter-rouge">agent[author].who</code>, och <code class="language-plaintext highlighter-rouge">healthcareProfessionalCareUnitHSAId</code> (eller <code class="language-plaintext highlighter-rouge">accessControlHeader.accountableCareUnit</code>) blir <code class="language-plaintext highlighter-rouge">agent[author].onBehalfOf</code>. Samma mönster används i Inera core.</p>
+
+<p>Regler:</p>
+
+<ol>
+  <li><strong>Vårdenheten finns alltid i <code class="language-plaintext highlighter-rouge">agent[author].onBehalfOf.identifier</code>.</strong> Spärrkontroll och sökning på vårdenhet utgår därför alltid från samma element.</li>
+  <li><strong>Personen i <code class="language-plaintext highlighter-rouge">agent[author].who</code> är samma person som resursens eget författarelement</strong> (<code class="language-plaintext highlighter-rouge">recorder</code>, <code class="language-plaintext highlighter-rouge">asserter</code>, <code class="language-plaintext highlighter-rouge">author</code>, <code class="language-plaintext highlighter-rouge">performer</code> eller <code class="language-plaintext highlighter-rouge">informationSource</code>), och referensen pekar på samma PractitionerRole. Resursens eget element är den primära platsen för författarskap. Provenance upprepar personen bara för att agenten ska vara fullständig enligt referensmodellen.</li>
+  <li><strong>Saknas personens HSA-id</strong> anges namnet i <code class="language-plaintext highlighter-rouge">agent[author].who.display</code>. Saknas både HSA-id och namn anges <code class="language-plaintext highlighter-rouge">agent[author].who</code> med extensionen <code class="language-plaintext highlighter-rouge">data-absent-reason</code> (<code class="language-plaintext highlighter-rouge">unknown</code>), eftersom <code class="language-plaintext highlighter-rouge">who</code> är obligatoriskt i FHIR.</li>
+  <li><strong>Vårdgivaren anges bara i <code class="language-plaintext highlighter-rouge">agent[custodian].who</code></strong>, inte i <code class="language-plaintext highlighter-rouge">agent[author].onBehalfOf</code>.</li>
+</ol>
 
 <hr />
 
@@ -553,9 +596,9 @@ utifrån <code class="language-plaintext highlighter-rouge">patientId</code> i R
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.10.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.11.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-18 13:32:00 +0000">
+  <span title="2026-11-18 13:38:00 +0000">
     2026-11-18
   </span>
 

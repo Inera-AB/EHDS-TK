@@ -1,4 +1,4 @@
-# Versionshistorik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# Versionshistorik - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Versionshistorik
 
@@ -8,6 +8,7 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 
 | | | | |
 | :--- | :--- | :--- | :--- |
+| 0.11.0 | 2026-11-18 | Draft | Provenance följer FHIR:s referensmodell:`agent[author].who`är den ansvariga personen och vårdenheten (accountableCareUnit) ligger i`agent[author].onBehalfOf`, i alla tjänstekontrakt och versioner. |
 | 0.10.0 | 2026-11-18 | Draft | ICD-10-SE anges med url:en i Ineras terminologitjänst i stället för`https://www.icd10.se/`,`Condition.category`använder FHIR:s kodverk`condition-category`för diagnoser och funktionstillstånd, kronisk diagnos anges med SNOMED CT i`Condition.stage`, och alla kliniska profiler visar`NOPAT`i`meta.security`. |
 | 0.9.0 | 2026-11-16 | Draft | Första releasen i IG Publishers publiceringsläge. IG:n publiceras utan Turtle, vilket gör varje publicerad version knappt en fjärdedel mindre. Version 0.3.1 är borttagen från fhir.inera.se. |
 | 0.8.2 | 2026-11-13 | Draft | Inera-grafiken från inera-fhir-graphic-profile, och rättade fel och varningar i IG Publishers QA: rubriknivåer,`experimental`och`caseSensitive`för kodsystem och värdemängder, låsta kanoniska referenser och HTML-liknande text i definitioner. |
@@ -25,6 +26,18 @@ Sidan beskriver ändringarna mellan publicerade versioner av denna Implementatio
 -------
 
 ### Ändringslogg
+
+#### 0.11.0 — 2026-11-18 (Draft)
+
+**Provenance (GENERAL-003)**
+
+* [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.md): `agent[author].who` är nu den ansvariga personen (Reference till SEEHDSPractitionerRole eller Practitioner), och den informationsägande vårdenheten ligger i `agent[author].onBehalfOf` (Reference till SEEHDSOrganization, HSA-id obligatoriskt). Tidigare låg vårdenheten i `agent[author].who`. Mönstret följer FHIR:s referensmodell för Provenance och Inera core. Vårdgivaren ligger kvar i `agent[custodian].who`, och `agent[custodian].onBehalfOf` är inte tillåtet.
+* Personen i `agent[author].who` är samma person som resursens eget författarelement (`recorder`, `asserter`, `author`, `performer`, `informationSource`). Saknas personens HSA-id anges namnet i `display`, och saknas båda anges `data-absent-reason`. Se det nya avsnittet [Provenance-agenter](mappings.md#provenance-agenter).
+* Alla mappningssidor, för både senaste och äldre aktiva versioner, mappar `healthcareProfessionalCareUnitHSAId`, `accessControlHeader.accountableCareUnit` och `careUnit` till `Provenance.agent[author].onBehalfOf.identifier`, och personens HSA-id (`healthcareProfessionalHSAId`, `header.author.id` med flera) även till `Provenance.agent[author].who`.
+* GetImagingOutcome, GetLaboratoryOrderOutcome och GetReferralOutcome angav vårdgivaren i `agent[author].onBehalfOf`. Det är borttaget, eftersom vårdgivaren redan finns i `agent[custodian]`.
+* GetRequestActivities 2.0: `header.author.id` och `name` var inte mappade. De mappas nu till `agent[author].who`.
+* GetObservations 2.0: sidan angav att headern saknade spärrfält och att vårdgivare och vårdenhet skulle härledas ur `observationBody.participation`. Headern är en JoL-header med `accessControlHeader.accountableCareGiver` och `accountableCareUnit` (båda 1..1), och de används nu. Ansvarig person tas från `header.originalAuthor.by`.
+* [Sökparametrar](search-parameters.md): sökning på vårdenhet (SP-001) går via `Provenance.agent[author].onBehalfOf`.
 
 #### 0.10.0 — 2026-11-18 (Draft)
 

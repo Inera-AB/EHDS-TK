@@ -1,4 +1,4 @@
-# RIV-TA DateType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# RIV-TA DateType - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Logisk modell: RIV-TA DateType 
 
@@ -42,11 +42,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivDate.c
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSRivDate",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivDate",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSRivDate",
   "title" : "RIV-TA DateType",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

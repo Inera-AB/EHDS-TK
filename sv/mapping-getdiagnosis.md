@@ -1,4 +1,4 @@
-# GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetDiagnosis – Diagnoser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## GetDiagnosis – Diagnoser
 
@@ -19,7 +19,7 @@
 | `diagnosisHeader.patientId.id` | 1..1 | `Condition.subject.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer.`patientId`är av RIVTA-typen`PersonIdType {id, type}`;`reference`till SEEHDSPatient +`identifier`, se[GENERAL-006](mappings.md#patientreferens) |
 | `diagnosisHeader.patientId.type` | 1..1 | `Condition.subject.identifier.system` | OID för typ av identifierare (t.ex.`1.2.752.129.2.1.3.1`för personnummer); OID→URI, se tabell nedan |
 | `diagnosisHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Condition.recordedDate` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[GENERAL-001](#öppna-frågor) |
-| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Condition.recorder`(Reference(PractitionerRole)) och`Provenance.agent[author].who` | Logisk referens via HSA-id |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Valfritt komplement till HSA-id |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Befattningskod |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier` | HSA-id för organisationsenhet |
@@ -28,7 +28,7 @@
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Se`orgUnitTelecom`. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktuppgift på enhetsnivå, se[GENERAL-008](mappings.md#organisation) |
-| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |
+| `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – vårdenhet |
 | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
 | `diagnosisHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Condition.extension[assertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `diagnosisHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Condition.asserter.identifier` | Via asserter-referens (PractitionerRole) |
@@ -154,7 +154,7 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 | | | |
 | :--- | :--- | :--- |
 | Yttre Sparr (vårdgivare) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Jämförelsetid (Sparr/CheckBlocks) | `diagnosisHeader.accountableHealthcareProfessional.authorTime` | Skickas som jämförelsetidpunkt vid anrop till spärrtjänsten (motsvarande`blockComparisonTime`i TK:er med`accessControlHeader`) |
 | Patientgodkännande | `diagnosisHeader.approvedForPatient`(boolean) | `Condition.meta.security[nopat]`;`false`→`NOPAT`(v3-ActCode), se[PDL-001](#öppna-frågor) |
 
@@ -167,7 +167,10 @@ PDL-styrning i GetDiagnosis utgår från `accountableHealthcareProfessional`-blo
 | | | |
 | :--- | :--- | :--- |
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId`(HSA-id i`identifier`),`healthcareProfessionalName`(`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `diagnosisHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId`(HSA-id i`identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.md#provenance-agenter).
 
 `Provenance.target` refererar Condition via `urn:uuid:{Condition.id}`.
  `Provenance.recorded` = `diagnosisHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).

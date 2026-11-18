@@ -1,4 +1,4 @@
-# Läkemedel vid behandling - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# Läkemedel vid behandling - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Extension: Läkemedel vid behandling 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-alert-pharmaceu
   "resourceType" : "StructureDefinition",
   "id" : "alert-pharmaceutical-treatment",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/alert-pharmaceutical-treatment",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "AlertPharmaceuticalTreatment",
   "title" : "Läkemedel vid behandling",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

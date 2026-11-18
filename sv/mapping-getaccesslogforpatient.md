@@ -1,4 +1,4 @@
-# Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# Åtkomstloggar – patientåtkomst och auditloggning - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Åtkomstloggar – patientåtkomst och auditloggning
 

@@ -1,4 +1,4 @@
-# SE EHDS Patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# SE EHDS Patient - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Resursprofil: SE EHDS Patient 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSPatient.c
   "resourceType" : "StructureDefinition",
   "id" : "SEEHDSPatient",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPatient",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSPatient",
   "title" : "SE EHDS Patient",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

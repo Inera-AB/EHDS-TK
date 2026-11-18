@@ -6,7 +6,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0</title>
+    <title>GetCareDocumentation – Anteckningar - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -64,7 +64,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.10.0 - ci-build
+            <span style="display:inline-block;">0.11.0 - ci-build
 
 
 
@@ -186,7 +186,7 @@ h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) ".
 h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 </style>
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.10.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.11.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
   <h2>GetCareDocumentation – Anteckningar</h2>
   
 
@@ -295,7 +295,7 @@ eller URL) – se Härledda fält nedan.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader.accountableCareUnit</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].onBehalfOf.identifier</code></td>
       <td><strong>Inre Sparr</strong> – vårdenhetens HSA-id (direkt i accessControlHeader)</td>
     </tr>
     <tr>
@@ -367,7 +367,7 @@ eller URL) – se Härledda fält nedan.</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.author.id</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">DocumentReference.author[0]</code> (Reference(PractitionerRole))</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.author[0]</code> (Reference(PractitionerRole)) och <code class="language-plaintext highlighter-rouge">Provenance.agent[author].who</code></td>
       <td>Författarens HSA-id; logisk referens</td>
     </tr>
     <tr>
@@ -815,7 +815,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
     <tr>
       <td>Inre Sparr (vårdenhet)</td>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader.accountableCareUnit</code></td>
-      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].onBehalfOf.identifier</code></td>
     </tr>
     <tr>
       <td>Patientgodkännande</td>
@@ -844,12 +844,19 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
       <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader.accountableHealthcareProvider</code></td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">agent[author]</code></td>
-      <td>Informationsägande vårdenhet</td>
-      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader.accountableCareUnit</code></td>
+      <td><code class="language-plaintext highlighter-rouge">agent[author].who</code></td>
+      <td>Ansvarig person (PractitionerRole), samma person som resursens eget författarelement</td>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.author.id</code> (HSA-id i <code class="language-plaintext highlighter-rouge">identifier</code>), <code class="language-plaintext highlighter-rouge">header.author.name</code> (<code class="language-plaintext highlighter-rouge">display</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">agent[author].onBehalfOf</code></td>
+      <td>Informationsägande vårdenhet (inre Sparr)</td>
+      <td><code class="language-plaintext highlighter-rouge">careDocumentation.header.accessControlHeader.accountableCareUnit</code> (HSA-id i <code class="language-plaintext highlighter-rouge">identifier</code>)</td>
     </tr>
   </tbody>
 </table>
+
+<p>Saknas personens HSA-id anges namnet i <code class="language-plaintext highlighter-rouge">agent[author].who.display</code>. Saknas både HSA-id och namn anges <code class="language-plaintext highlighter-rouge">agent[author].who</code> med extensionen <code class="language-plaintext highlighter-rouge">data-absent-reason</code> (<code class="language-plaintext highlighter-rouge">unknown</code>). Vårdenheten anges alltid i <code class="language-plaintext highlighter-rouge">agent[author].onBehalfOf</code>, se <a href="mappings.html#provenance-agenter">Provenance-agenter (GENERAL-003)</a>.</p>
 
 <p><code class="language-plaintext highlighter-rouge">Provenance.target</code> refererar <code class="language-plaintext highlighter-rouge">DocumentReference</code> via <code class="language-plaintext highlighter-rouge">urn:uuid:{resurs.id}</code>, och även <code class="language-plaintext highlighter-rouge">Composition</code> när en sådan skapas (DOC-004, Strategi B).<br />
 <code class="language-plaintext highlighter-rouge">Provenance.recorded</code> = <code class="language-plaintext highlighter-rouge">careDocumentation.header.author.timestamp</code> (ISO 8601). Om <code class="language-plaintext highlighter-rouge">author</code> saknas används <code class="language-plaintext highlighter-rouge">careDocumentation.header.record.timestamp</code> som fallback (DOC-002).</p>
@@ -1102,7 +1109,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalHSAId</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">DocumentReference.author[0]</code> (Reference(PractitionerRole))</td>
+      <td><code class="language-plaintext highlighter-rouge">DocumentReference.author[0]</code> (Reference(PractitionerRole)) och <code class="language-plaintext highlighter-rouge">Provenance.agent[author].who</code></td>
       <td>Logisk referens via HSA-id</td>
     </tr>
     <tr>
@@ -1138,7 +1145,7 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">….accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId</code></td>
       <td>0..1</td>
-      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].who.identifier</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Provenance.agent[author].onBehalfOf.identifier</code></td>
       <td>Inre Sparr; motsvarar <code class="language-plaintext highlighter-rouge">accessControlHeader.accountableCareUnit</code></td>
     </tr>
     <tr>
@@ -1338,9 +1345,9 @@ PatientSummaryHeader-baserade TK:er (DES-005):</p>
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.10.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.11.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-18 13:32:00 +0000">
+  <span title="2026-11-18 13:38:00 +0000">
     2026-11-18
   </span>
 

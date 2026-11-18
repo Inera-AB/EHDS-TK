@@ -1,4 +1,4 @@
-# Fullständig dos administrerad - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# Fullständig dos administrerad - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Extension: Fullständig dos administrerad 
 
@@ -50,11 +50,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-immunization-is
   "resourceType" : "StructureDefinition",
   "id" : "immunization-is-dose-complete",
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/immunization-is-dose-complete",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "ImmunizationIsDoseComplete",
   "title" : "Fullständig dos administrerad",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

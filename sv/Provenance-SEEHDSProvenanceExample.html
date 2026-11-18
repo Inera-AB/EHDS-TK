@@ -7,7 +7,7 @@
 <html xml:lang="sv" xmlns="http://www.w3.org/1999/xhtml" lang="sv" dir="ltr">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0</title>
+    <title>Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -65,7 +65,7 @@
         <div id="ig-status" data-fhir="generated">
           <p><span style="font-size:12pt;font-weight:bold">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide</span>
             <br/>
-            <span style="display:inline-block;">0.10.0 - ci-build
+            <span style="display:inline-block;">0.11.0 - ci-build
 
 
 
@@ -181,7 +181,7 @@
 
 <!-- layouts\layout-instance-base -->
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.10.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <!--ReleaseHeader--><p id="publish-box">Inera EHDS Tjänstekontrakt – FHIR Implementation Guide - Lokal utvecklingsbygge (v0.11.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://fhir.inera.se/ig/ehds-tk/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
 
 
   
@@ -241,13 +241,13 @@
 
 
 
-  <div xmlns="http://www.w3.org/1999/xhtml"><a name="SEEHDSProvenanceExample"> </a><a name="hcSEEHDSProvenanceExample"> </a><div style="display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-SEEHDSProvenance.html">SE EHDS Provenance</a></p></div><p>Härkomst för Identifier: <a href="http://terminology.hl7.org/7.0.1/NamingSystem-uri.html" title="As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt 
+  <div xmlns="http://www.w3.org/1999/xhtml"><a name="SEEHDSProvenanceExample"> </a><a name="hcSEEHDSProvenanceExample"> </a><div style="display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-SEEHDSProvenance.html">SE EHDS Provenance</a></p></div><p>Härkomst för Identifier: <a href="http://terminology.hl7.org/7.3.0/NamingSystem-uri.html" title="As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt 
 
 This oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: 
 
 Note that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.
 
-This OID may also be used in CD.codeSystem.">Uniform Resource Identifier (URI)</a>/urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b</p><p>Sammanfattning</p><table class="grid"><tr><td>Registrerad</td><td>2023-06-01 12:00:00+0200</td></tr></table><p><b>Agenter</b></p><table class="grid"><tr><td><b>Typ</b></td><td><b>vem</b></td></tr><tr><td><span title="Koder:{http://terminology.hl7.org/CodeSystem/provenance-participant-type custodian}">Custodian</span></td><td>Exempelregionen (Identifier: <code>urn:oid:1.2.752.29.4.19</code>/SE2321000016-15CQ)</td></tr><tr><td><span title="Koder:{http://terminology.hl7.org/CodeSystem/provenance-participant-type author}">Author</span></td><td>Exempelvårdcentralen (Identifier: <code>urn:oid:1.2.752.29.4.19</code>/SE2321000016-15D1)</td></tr></table></div>
+This OID may also be used in CD.codeSystem.">Uniform Resource Identifier (URI)</a>/urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b</p><p>Sammanfattning</p><table class="grid"><tr><td>Registrerad</td><td>2023-06-01 12:00:00+0200</td></tr></table><p><b>Agenter</b></p><table class="grid"><tr><td><b>Typ</b></td><td><b>vem</b></td><td><b>På uppdrag av</b></td></tr><tr><td><span title="Koder:{http://terminology.hl7.org/CodeSystem/provenance-participant-type custodian}">Custodian</span></td><td>Exempelregionen (Identifier: <code>urn:oid:1.2.752.29.4.19</code>/SE2321000016-15CQ)</td><td/></tr><tr><td><span title="Koder:{http://terminology.hl7.org/CodeSystem/provenance-participant-type author}">Author</span></td><td>Anna Andersson (Identifier: <code>urn:oid:1.2.752.29.4.19</code>/SE2321000016-1234)</td><td>Exempelvårdcentralen (Identifier: <code>urn:oid:1.2.752.29.4.19</code>/SE2321000016-15D1)</td></tr></table></div>
 
   
 
@@ -279,9 +279,9 @@ This OID may also be used in CD.codeSystem.">Uniform Resource Identifier (URI)</
 
 
           IG © 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se">Inera AB</a>.  
-          Paket inera.ehds.ehds-tk#0.10.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Paket inera.ehds.ehds-tk#0.11.0 baserat på <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Genererad 
-  <span title="2026-11-18 13:32:00 +0000">
+  <span title="2026-11-18 13:38:00 +0000">
     2026-11-18
   </span>
 

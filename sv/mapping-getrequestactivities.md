@@ -1,4 +1,4 @@
-# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetRequestActivities – Remisstatus - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## GetRequestActivities – Remisstatus
 
@@ -22,7 +22,7 @@ Svaret `GetRequestActivitiesResponse` innehåller noll eller flera `requestActiv
 | :--- | :--- | :--- | :--- |
 | (begärans`patientId`) | 1..1 | `Task.for` | Svaret saknar patientidentitet;`Task.for`sätts till SEEHDSPatient för den efterfrågade patienten (GENERAL-006) |
 | `requestActivity.header.accessControlHeader.accountableHealthcareProvider` | 1..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – uppgiftsägande vårdgivare. IIType:`extension`= HSA-id |
-| `requestActivity.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet. IIType:`extension`= HSA-id |
+| `requestActivity.header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – vårdenhet. IIType:`extension`= HSA-id |
 | `requestActivity.header.accessControlHeader.originalPatientId` | 0..1 | Ej mappad | Personidentitet vid lagringstillfället, om den skiljer sig från den efterfrågade |
 | `requestActivity.header.accessControlHeader.careProcessId` | 0..1 | Ej mappad | Id för individanpassad vårdprocess |
 | `requestActivity.header.accessControlHeader.lockTime` | 0..0 | N/A | Ska inte användas enligt TKB |
@@ -31,8 +31,8 @@ Svaret `GetRequestActivitiesResponse` innehåller noll eller flera `requestActiv
 | `requestActivity.header.sourceSystemId` | 1..1 | `Task.meta.source` | IIType;`extension`= källsystemets HSA-id →`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}`(GENERAL-005) |
 | `requestActivity.header.record.id` | 1..1 | `Task.identifier[0]` | Remisstatusens id.`root`→`system`(OID→URI),`extension`→`value` |
 | `requestActivity.header.record.timestamp` | 1..1 | `Task.authoredOn` | När remisstatusen skapades i källsystemet; ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001) |
-| `requestActivity.header.author.id` | 0..1 | Ej mappad | HSA-id för den som dokumenterat statusen |
-| `requestActivity.header.author.name` | 0..1 | Ej mappad | Namn på den som dokumenterat statusen |
+| `requestActivity.header.author.id` | 0..1 | `Provenance.agent[author].who.identifier` | HSA-id för den som dokumenterat statusen; Task har inget eget författarelement för den som dokumenterat |
+| `requestActivity.header.author.name` | 0..1 | `Provenance.agent[author].who.display` | Namn på den som dokumenterat statusen |
 | `requestActivity.header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Används om`author`finns, annars`record.timestamp` |
 | `requestActivity.header.author.byRole` | 0..1 | Ej mappad | Befattning (CVType) |
 
@@ -76,7 +76,10 @@ En `Provenance`-resurs skapas per Task och bär PDL/Sparr-information från `hea
 | | | |
 | :--- | :--- | :--- |
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare (Yttre Sparr) | `requestActivity.header.accessControlHeader.accountableHealthcareProvider` |
-| `agent[author]` | Informationsägande vårdenhet (Inre Sparr) | `requestActivity.header.accessControlHeader.accountableCareUnit` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `requestActivity.header.author.id`(HSA-id i`identifier`),`requestActivity.header.author.name`(`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `requestActivity.header.accessControlHeader.accountableCareUnit`(HSA-id i`identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.md#provenance-agenter).
 
 `Provenance.target` refererar Task-resursen.
  `Provenance.recorded` = `header.author.timestamp` om den finns, annars `header.record.timestamp` (konverterat till ISO 8601).
@@ -124,7 +127,7 @@ Version 1.0 har en platt struktur utan header och body. Den saknar åtkomstkontr
 | `requestActivity.receivingPersonName` | 0..1 | Ej mappad | Mottagande person; finns inte i 2.0 och Task.owner är enheten |
 | `requestActivity.receivingOrganizationalUnitId` | 0..1 | `Task.owner.identifier` | Mottagande enhets HSA-id |
 | `requestActivity.receivingOrganizationalUnitDescription` | 0..1 | `Task.owner.display` |   |
-| `requestActivity.careUnit` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – informationsägande vårdenhet. Ingen vårdgivare (Yttre Sparr) finns i 1.0 |
+| `requestActivity.careUnit` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – informationsägande vårdenhet. Ingen vårdgivare (Yttre Sparr) finns i 1.0 |
 | `requestActivity.logicalSystemId` | 1..1 | `Task.meta.source` | Källsystemets HSA-id (GENERAL-005) |
 | `requestActivity.statusCode` | 1..1 | `Task.businessStatus`och`Task.status` | Lokalt kodverk utan nationell förankring, se tabellen nedan |
 | `requestActivity.eventTime` | 1..1 | `Task.lastModified` | ÅÅÅÅMMDDttmmss → ISO 8601 (GENERAL-001). Används även som`Task.authoredOn`och`Provenance.recorded`, eftersom 1.0 saknar`record.timestamp` |

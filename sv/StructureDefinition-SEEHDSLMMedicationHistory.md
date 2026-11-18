@@ -1,4 +1,4 @@
-# GetMedicationHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetMedicationHistory - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Logisk modell: GetMedicationHistory 
 
@@ -70,11 +70,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMMedicat
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:GetMedicationHistoryResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMMedicationHistory",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSLMMedicationHistory",
   "title" : "GetMedicationHistory",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

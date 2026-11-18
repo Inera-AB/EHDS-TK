@@ -1,4 +1,4 @@
-# KV Diagnostyp (fragment) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# KV Diagnostyp (fragment) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## CodeSystem: KV Diagnostyp (fragment) 
 
@@ -19,12 +19,12 @@ Detta kodsystem refereras i definitionen av följande värdemängder:
   "resourceType" : "CodeSystem",
   "id" : "diagnosistype-cs",
   "url" : "https://terminologitjansten.inera.se/inera-kodverksforvaltning/kodverk/kv_diagnostyp",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "DiagnosisTypeCS",
   "title" : "KV Diagnostyp (fragment)",
   "status" : "active",
   "experimental" : false,
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

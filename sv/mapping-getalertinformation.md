@@ -1,4 +1,4 @@
-# GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetAlertInformation – Uppmärksamhetsinformation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## GetAlertInformation – Uppmärksamhetsinformation
 
@@ -66,7 +66,7 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `acti
 | `alertInformationHeader.patientId.id` | 1..1 | `Flag.subject.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer.`patientId`är av RIVTA-typen`PersonIdType {id, type}` |
 | `alertInformationHeader.patientId.type` | 1..1 | `Flag.subject.identifier.system` | OID för typ av identifierare (t.ex.`1.2.752.129.2.1.3.1`för personnummer); OID→URI, se tabell nedan |
 | `alertInformationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm); se[GENERAL-001](#öppna-frågor) |
-| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Flag.author`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Flag.author`(Reference(PractitionerRole)) och`Provenance.agent[author].who` | Logisk referens via HSA-id |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 1..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
@@ -75,7 +75,7 @@ Inget explicit statusfält finns i TKB:n. `Flag.status` sätts alltid till `acti
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Kontaktinfo på enhetsnivå – hanteras ej i FHIR-resursen |
-| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – vårdenhet |
+| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – vårdenhet |
 | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – vårdgivare |
 | `alertInformationHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Flag.extension[alertAssertedDate]` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `alertInformationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Flag.extension[alertAsserter].identifier` | Ingår även i`AllergyIntolerance.asserter`om allergi |
@@ -135,7 +135,7 @@ AllergyIntolerance skapas enbart när body = hypersensitivity. Fält från heade
 | `alertInformationHeader.patientId.type` | 1..1 | `AllergyIntolerance.patient.identifier.system` | OID för typ av identifierare (t.ex.`1.2.752.129.2.1.3.1`för personnummer); OID→URI, se tabell nedan |
 | `alertInformationHeader.sourceSystemHSAId` | 1..1 | `AllergyIntolerance.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}` |
 | `alertInformationHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `AllergyIntolerance.recordedDate` | YYYYMMDDHHMMSS → ISO 8601 |
-| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `AllergyIntolerance.recorder`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `AllergyIntolerance.recorder`(Reference(PractitionerRole)) och`Provenance.agent[author].who` | Logisk referens via HSA-id |
 | `alertInformationHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `AllergyIntolerance.asserter`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
 | `alertInformationBody.ascertainedDate` | 0..1 | `AllergyIntolerance.onsetDateTime` | Datum för konstaterande av överkänslighet |
 | `alertInformationBody.alertInformationComment` | 0..1 | `AllergyIntolerance.note.text` | Klinisk kommentar |
@@ -238,7 +238,7 @@ PDL-styrning i GetAlertInformation utgår från `accountableHealthcareProfession
 | | | |
 | :--- | :--- | :--- |
 | Yttre Sparr (vårdgivare) | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Patientgodkännande | `alertInformationHeader.approvedForPatient`(boolean) | `Flag.meta.security`; se[PDL-001](#öppna-frågor) |
 
 -------
@@ -248,7 +248,10 @@ PDL-styrning i GetAlertInformation utgår från `accountableHealthcareProfession
 | | | |
 | :--- | :--- | :--- |
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId`(HSA-id i`identifier`),`healthcareProfessionalName`(`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `alertInformationHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId`(HSA-id i`identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.md#provenance-agenter).
 
 `Provenance.target` refererar Flag (och eventuell AllergyIntolerance) via `urn:uuid:{resurs.id}`.
  `Provenance.recorded` = `alertInformationHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).
@@ -335,14 +338,14 @@ Version 3.0 är en ny meddelandemodell. Den har JoL-header (som GetCareDocumenta
 | :--- | :--- | :--- | :--- |
 | `header.accessControlHeader.patientId` | 1..1 | `Flag.subject.identifier` | IIType:`root`→`system`(OID→URI),`extension`→`value` |
 | `header.accessControlHeader.accountableHealthcareProvider` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr |
-| `header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr |
+| `header.accessControlHeader.accountableCareUnit` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr |
 | `header.accessControlHeader.careProcessId` | 0..1 | Ej mappad | Som i GetCareDocumentation 3.0 |
 | `header.accessControlHeader.blockComparisonTime` | 1..1 | Ej mappad | Används för spärrkontroll |
 | `header.accessControlHeader.approvedForPatient` | 1..1 | `Flag.meta.security[nopat]` | `false`→ kod`NOPAT`(v3-ActCode),`true`→ ingen märkning. PDL-kontroll – se PDL-001 |
 | `header.sourceSystemId` | 1..1 | `Flag.meta.source` | IIType;`extension`= källsystemets HSA-id (GENERAL-005) |
 | `header.record.rivId` | 1..1 | `Flag.identifier` | Motsvarar`documentId`i 2.0 |
 | `header.record.timestamp` | 1..1 | `Provenance.recorded`om`author`saknas |   |
-| `header.author.rivId` | 0..1 | `Flag.author`(Reference(PractitionerRole)) | Logisk referens via HSA-id |
+| `header.author.rivId` | 0..1 | `Flag.author`(Reference(PractitionerRole)) och`Provenance.agent[author].who` | Logisk referens via HSA-id |
 | `header.author.name` | 0..1 | `PractitionerRole.practitioner.display` |   |
 | `header.author.timestamp` | 1..1 (om author) | `Provenance.recorded` | Motsvarar`authorTime`i 2.0 |
 | `header.author.byRole` | 0..1 | `PractitionerRole.code` |   |

@@ -1,4 +1,4 @@
-# GetCareDocumentation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetCareDocumentation - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Logisk modell: GetCareDocumentation 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMCareDoc
     "valueUri" : "urn:riv:clinicalprocess:healthcond:description:GetCareDocumentationResponder:3"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareDocumentation",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSLMCareDocumentation",
   "title" : "GetCareDocumentation",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

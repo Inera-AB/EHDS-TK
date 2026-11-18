@@ -1,4 +1,4 @@
-# RIV-TA PQType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# RIV-TA PQType (clinicalprocess:healthcond:actoutcome:4) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Logisk modell: RIV-TA PQType (clinicalprocess:healthcond:actoutcome:4) 
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivPQType
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivPQTypeHealthcondActoutcome4",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSRivPQTypeHealthcondActoutcome4",
   "title" : "RIV-TA PQType (clinicalprocess:healthcond:actoutcome:4)",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

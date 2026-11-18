@@ -1,4 +1,4 @@
-# GetLaboratoryOrderOutcome 4.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetLaboratoryOrderOutcome 4.1 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Logisk modell: GetLaboratoryOrderOutcome 4.1 
 
@@ -62,11 +62,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMLaborat
     "valueUri" : "urn:riv:clinicalprocess:healthcond:actoutcome:GetLaboratoryOrderOutcomeResponder:4"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMLaboratoryOrderOutcomeV41",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSLMLaboratoryOrderOutcomeV41",
   "title" : "GetLaboratoryOrderOutcome 4.1",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

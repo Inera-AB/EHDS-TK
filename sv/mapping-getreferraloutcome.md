@@ -1,4 +1,4 @@
-# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetReferralOutcome – Remisser - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## GetReferralOutcome – Remisser
 
@@ -34,7 +34,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeHeader.patientId.id` | 1..1 | `DiagnosticReport.subject.identifier.value` | Personnummer eller samordningsnummer |
 | `referralOutcomeHeader.patientId.type` | 1..1 | `DiagnosticReport.subject.identifier.system` | OID→URI, se tabell nedan |
 | `referralOutcomeHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Provenance.recorded` | Tidpunkt för ansvarig yrkesutövare; YYYYMMDDHHMMSS → ISO 8601 |
-| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value` | Logisk referens via HSA-id; DiagnosticReport.performer → Reference(PractitionerRole) |
+| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `PractitionerRole.identifier.value`och`Provenance.agent[author].who` | Logisk referens via HSA-id; DiagnosticReport.performer → Reference(PractitionerRole) |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Visningsnamn för ansvarig yrkesutövare |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Yrkesrollskod |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
@@ -43,7 +43,7 @@ Varje `referralOutcome`-post i svaret ger upphov till en `DiagnosticReport`. Om 
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till org-enhet; kan läggas på Organization.telecom om Organization-instans skapas. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Adress till org-enhet; kan läggas på Organization.address om Organization-instans skapas |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/lokation för org-enhet; kan läggas på Organization.address.city om Organization-instans skapas |
-| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | Inre Sparr – informationsägande vårdenhet |
+| `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr – informationsägande vårdenhet |
 | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | Yttre Sparr – juridiskt ansvarig vårdgivare |
 | `referralOutcomeHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `DiagnosticReport.extension[attested].attestedTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `referralOutcomeHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `DiagnosticReport.extension[attested].attestorHSAId` | HSA-id för signerare |
@@ -179,7 +179,7 @@ PDL-styrning i GetReferralOutcome utgår från `accountableHealthcareProfessiona
 | | | |
 | :--- | :--- | :--- |
 | Yttre Sparr (vårdgivare) | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Patientgodkännande | `referralOutcomeHeader.approvedForPatient`(boolean) | `DiagnosticReport.meta.security`; se[PDL-001](#öppna-frågor) |
 
 -------
@@ -189,11 +189,13 @@ PDL-styrning i GetReferralOutcome utgår från `accountableHealthcareProfessiona
 | | | |
 | :--- | :--- | :--- |
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId`(HSA-id i`identifier`),`healthcareProfessionalName`(`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId`(HSA-id i`identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.md#provenance-agenter).
 
 `Provenance.target` refererar `DiagnosticReport` via `urn:uuid:{resurs.id}`.
  `Provenance.recorded` = `referralOutcomeHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).
- `Provenance.agent[author].onBehalfOf` = `referralOutcomeHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId`.
 
 -------
 

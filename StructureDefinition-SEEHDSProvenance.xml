@@ -16,12 +16,13 @@
     }
   ]
 }</code></pre></div></td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck0341.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="" style="background-color: white; background-color: inherit" title="Referens till en annan resurs" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who">who</a><a name="Provenance.agent:custodian.who"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">1</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-SEEHDSOrganization.html">SE EHDS Organization – Organisationsenhet</a>)</td><td style="" class="hierarchy xhtCellBorder0">Vårdgivare (careProviderHSAId / accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId) – yttre Sparr</td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck03401.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.who.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who.identifier">identifier</a><a name="Provenance.agent:custodian.who.identifier"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier" class="xhtPieceDeEmphasized">Identifier</a></td><td style="" class="hierarchy xhtCellBorder0">Vårdgivarens HSA-id</td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck034010.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.who.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who.identifier.system">system</a><a name="Provenance.agent:custodian.who.identifier.system"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#uri" class="xhtPieceDeEmphasized">uri</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The namespace for the identifier value</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">urn:oid:1.2.752.29.4.19</span> (extensions allowed)</td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck034000.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.who.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who.identifier.value">value</a><a name="Provenance.agent:custodian.who.identifier.value"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string" class="xhtPieceDeEmphasized">string</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The value that is unique</span></td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck025.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice_item.png" alt="" style="background-color: white; background-color: inherit" title="Skivobjekt" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author" title="Skiva author">agent:author</a><a name="Provenance.agent:author"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#BackboneElement" class="xhtPieceDeEmphasized">BackboneElement</a></td><td style="" class="hierarchy xhtCellBorder0">Informationsägande vårdenhet – inre Sparr</td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck0250.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.type">type</a><a name="Provenance.agent:author.type"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">How the agent participated</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><div><pre class="json"><code>{
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck0351.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="" style="background-color: white; background-color: inherit" title="Referens till en annan resurs" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who">who</a><a name="Provenance.agent:custodian.who"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">1</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-SEEHDSOrganization.html">SE EHDS Organization – Organisationsenhet</a>)</td><td style="" class="hierarchy xhtCellBorder0">Vårdgivare (careProviderHSAId / accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId / accessControlHeader.accountableCareGiver) – yttre Sparr</td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck03501.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.who.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who.identifier">identifier</a><a name="Provenance.agent:custodian.who.identifier"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier" class="xhtPieceDeEmphasized">Identifier</a></td><td style="" class="hierarchy xhtCellBorder0">Vårdgivarens HSA-id</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck035010.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.who.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who.identifier.system">system</a><a name="Provenance.agent:custodian.who.identifier.system"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#uri" class="xhtPieceDeEmphasized">uri</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The namespace for the identifier value</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">urn:oid:1.2.752.29.4.19</span> (extensions allowed)</td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck035000.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.who.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.who.identifier.value">value</a><a name="Provenance.agent:custodian.who.identifier.value"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string" class="xhtPieceDeEmphasized">string</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The value that is unique</span></td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck0340.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:custodian.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:custodian.onBehalfOf" class="xhtPieceStrikeout">onBehalfOf</a><a name="Provenance.agent:custodian.onBehalfOf"> </a></td><td style="" class="hierarchy xhtCellBorder0"/><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceStrikeout"/><span class="xhtPieceStrikeout xhtPieceDeEmphasized">0</span><span class="xhtPieceStrikeout">..</span><span class="xhtPieceStrikeout">0</span></td><td style="" class="hierarchy xhtCellBorder0"/><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceItalic xhtPieceDeEmphasized">Who the agent is representing</span></td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck025.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slicer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_slice_item.png" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Skivobjekt" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author" title="Skiva author">agent:author</a><a name="Provenance.agent:author"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..1</td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#BackboneElement" class="xhtPieceDeEmphasized">BackboneElement</a></td><td style="" class="hierarchy xhtCellBorder0">Ansvarig person för vårdenhetens räkning – inre Sparr</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck0250.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.type">type</a><a name="Provenance.agent:author.type"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept" class="xhtPieceDeEmphasized">CodeableConcept</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">How the agent participated</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><div><pre class="json"><code>{
   &quot;coding&quot; : [
     {
       &quot;system&quot; : &quot;http://terminology.hl7.org/CodeSystem/provenance-participant-type&quot;,
@@ -29,18 +30,21 @@
     }
   ]
 }</code></pre></div></td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck0241.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="" style="background-color: white; background-color: inherit" title="Referens till en annan resurs" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.who">who</a><a name="Provenance.agent:author.who"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">1</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-SEEHDSOrganization.html">SE EHDS Organization – Organisationsenhet</a>)</td><td style="" class="hierarchy xhtCellBorder0">Vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId) – inre Sparr</td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck02401.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.who.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.who.identifier">identifier</a><a name="Provenance.agent:author.who.identifier"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier" class="xhtPieceDeEmphasized">Identifier</a></td><td style="" class="hierarchy xhtCellBorder0">Vårdenhetens HSA-id</td></tr>
-<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck024010.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.who.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.who.identifier.system">system</a><a name="Provenance.agent:author.who.identifier.system"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#uri" class="xhtPieceDeEmphasized">uri</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The namespace for the identifier value</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">urn:oid:1.2.752.29.4.19</span> (extensions allowed)</td></tr>
-<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck024000.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.who.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.who.identifier.value">value</a><a name="Provenance.agent:author.who.identifier.value"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string" class="xhtPieceDeEmphasized">string</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The value that is unique</span></td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck0251.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Referens till en annan resurs" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.who">who</a><a name="Provenance.agent:author.who"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">1</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-SEEHDSPractitionerRole.html">SE EHDS PractitionerRole – Hälso- och sjukvårdspersonal i uppdrag</a> | <a href="http://hl7.org/fhir/R4/practitioner.html">Practitioner</a>)</td><td style="" class="hierarchy xhtCellBorder0">Ansvarig person (accountableHealthcareProfessional / header.author); helst samma PractitionerRole som resursens eget författarelement</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck02510.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.who.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.who.identifier">identifier</a><a name="Provenance.agent:author.who.identifier"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier" class="xhtPieceDeEmphasized">Identifier</a></td><td style="" class="hierarchy xhtCellBorder0">Personens HSA-id (healthcareProfessionalHSAId / header.author.id)</td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck02500.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vline_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.who.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.who.display">display</a><a name="Provenance.agent:author.who.display"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">0</span><span class="xhtPieceDeEmphasized">..</span><span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string" class="xhtPieceDeEmphasized">string</a></td><td style="" class="hierarchy xhtCellBorder0">Personens namn (healthcareProfessionalName / header.author.name)</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck0241.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end_slice.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_reference.png" alt="" style="background-color: white; background-color: inherit" title="Referens till en annan resurs" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.onBehalfOf">onBehalfOf</a><a name="Provenance.agent:author.onBehalfOf"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-SEEHDSOrganization.html">SE EHDS Organization – Organisationsenhet</a>)</td><td style="" class="hierarchy xhtCellBorder0">Informationsägande vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId / accessControlHeader.accountableCareUnit) – inre Sparr</td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck02401.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.onBehalfOf.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.onBehalfOf.identifier">identifier</a><a name="Provenance.agent:author.onBehalfOf.identifier"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#Identifier" class="xhtPieceDeEmphasized">Identifier</a></td><td style="" class="hierarchy xhtCellBorder0">Vårdenhetens HSA-id</td></tr>
+<tr class="xhtRowBorder0 xhtRowEven"><td style="background-image: url(tbl_bck024010.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: white; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.onBehalfOf.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.onBehalfOf.identifier.system">system</a><a name="Provenance.agent:author.onBehalfOf.identifier.system"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#uri" class="xhtPieceDeEmphasized">uri</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The namespace for the identifier value</span><br/><span class="xhtPieceBold">Obligatoriskt mönster: </span><span class="xhtPieceDarkGreen">urn:oid:1.2.752.29.4.19</span> (extensions allowed)</td></tr>
+<tr class="xhtRowBorder0 xhtRowOdd"><td style="background-image: url(tbl_bck024000.png)" class="hierarchy xhtCellBorder0 xhtCellNoWrap"><img src="tbl_spacer.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_blank.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="tbl_vjoin_end.png" alt="" style="background-color: inherit" class="hierarchy"/><img src="icon_element.gif" alt="" style="background-color: #F7F7F7; background-color: inherit" title="Element" class="hierarchy"/> <span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only">Provenance.Skivor för agent.agent:author.onBehalfOf.identifier.</span><a href="StructureDefinition-SEEHDSProvenance-definitions.html#Provenance.agent:author.onBehalfOf.identifier.value">value</a><a name="Provenance.agent:author.onBehalfOf.identifier.value"> </a></td><td style="" class="hierarchy xhtCellBorder0"><span style="padding-left: 3px; padding-right: 3px; color: white; background-color: #B60000" title="Detta element måste stödjas">S</span><span style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0" class="sr-only"> Detta element måste stödjas. </span></td><td style="" class="hierarchy xhtCellBorder0">1..<span class="xhtPieceDeEmphasized">1</span></td><td style="" class="hierarchy xhtCellBorder0"><a href="http://hl7.org/fhir/R4/datatypes.html#string" class="xhtPieceDeEmphasized">string</a></td><td style="" class="hierarchy xhtCellBorder0"><span class="xhtPieceDeEmphasized">The value that is unique</span></td></tr>
 <tr><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Förklaring för detta format"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC" alt="doco" style="background-color: inherit"/> Dokumentation för detta format</a></td></tr></table></div>
   </text>
   <url value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSProvenance"/>
-  <version value="0.10.0"/>
+  <version value="0.11.0"/>
   <name value="SEEHDSProvenance"/>
   <title value="SE EHDS Provenance"/>
   <status value="draft"/>
-  <date value="2026-11-18T13:32:07+00:00"/>
+  <date value="2026-11-18T13:38:06+00:00"/>
   <publisher value="Inera AB"/>
   <contact>
     <name value="Inera AB"/>
@@ -49,7 +53,7 @@
       <value value="https://www.inera.se"/>
     </telecom>
   </contact>
-  <description value="Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance&#xA;med två agenter som speglar spärr-hierarkin enligt PDL:&#xA;- custodian (yttre Sparr) — den juridiskt ansvariga vårdgivaren&#xA;- author (inre Sparr) — den informationsägande vårdenheten&#xA;&#xA;Agenterna skiljs åt på `agent.type` (diskriminator av typen pattern på `type`),&#xA;som ska innehålla kodningen `provenance-participant-type#custodian` respektive&#xA;`provenance-participant-type#author`. En validator kan därmed avgöra vilken agent&#xA;som är vilken. Båda agenterna anges som logisk referens med HSA-id i&#xA;`who.identifier`. Se GENERAL-003.&#xA;&#xA;OBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering&#xA;baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver&#xA;Provenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte&#xA;inkluderas i svaret — filtreringen sker då redan på servernivå."/>
+  <description value="Provenance-profil för EHDS-TK. Varje klinisk resurs åtföljs av en Provenance&#xA;med två agenter som speglar spärr-hierarkin enligt PDL:&#xA;- custodian (yttre Sparr): `who` = den juridiskt ansvariga vårdgivaren&#xA;- author (inre Sparr): `who` = personen som ansvarar för uppgiften (PractitionerRole&#xA;  eller Practitioner) och `onBehalfOf` = den informationsägande vårdenheten&#xA;&#xA;Mönstret följer FHIR:s referensmodell för Provenance, där `agent.who` är den som&#xA;deltog och `agent.onBehalfOf` är den organisation som personen agerade för.&#xA;Vårdenheten anges alltid i `agent[author].onBehalfOf`, också när personen är okänd.&#xA;&#xA;Agenterna skiljs åt på `agent.type` (diskriminator av typen pattern på `type`),&#xA;som ska innehålla kodningen `provenance-participant-type#custodian` respektive&#xA;`provenance-participant-type#author`. En validator kan därmed avgöra vilken agent&#xA;som är vilken. Vårdgivare och vårdenhet anges som logisk referens med HSA-id. Se GENERAL-003.&#xA;&#xA;OBS: Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering&#xA;baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver&#xA;Provenance-agenterna för spärr och `meta.security` för `approvedForPatient` inte&#xA;inkluderas i svaret — filtreringen sker då redan på servernivå."/>
   <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>
@@ -744,7 +748,7 @@
           <type value="pattern"/>
           <path value="type"/>
         </discriminator>
-        <description value="Agenterna skiljs åt på agent.type: custodian (vårdgivare, yttre Sparr) och author (vårdenhet, inre Sparr)."/>
+        <description value="Agenterna skiljs åt på agent.type: custodian (vårdgivare, yttre Sparr) och author (person i who, vårdenhet i onBehalfOf, inre Sparr)."/>
         <ordered value="false"/>
         <rules value="open"/>
       </slicing>
@@ -1332,7 +1336,7 @@
     </element>
     <element id="Provenance.agent:custodian.who">
       <path value="Provenance.agent.who"/>
-      <short value="Vårdgivare (careProviderHSAId / accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId) – yttre Sparr"/>
+      <short value="Vårdgivare (careProviderHSAId / accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId / accessControlHeader.accountableCareGiver) – yttre Sparr"/>
       <definition value="The individual, device or organization that participated in the event."/>
       <comment value="whoIdentity should be used when the agent is not a Resource type."/>
       <min value="1"/>
@@ -1906,7 +1910,7 @@
       <definition value="The individual, device, or organization for whom the change was made."/>
       <comment value="onBehalfOfIdentity should be used when the agent is not a Resource type."/>
       <min value="0"/>
-      <max value="1"/>
+      <max value="0"/>
       <base>
         <path value="Provenance.agent.onBehalfOf"/>
         <min value="0"/>
@@ -1939,7 +1943,7 @@
     <element id="Provenance.agent:author">
       <path value="Provenance.agent"/>
       <sliceName value="author"/>
-      <short value="Informationsägande vårdenhet – inre Sparr"/>
+      <short value="Ansvarig person för vårdenhetens räkning – inre Sparr"/>
       <definition value="An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place."/>
       <comment value="Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa."/>
       <requirements value="An agent can be a person, an organization, software, device, or other entities that may be ascribed responsibility."/>
@@ -2194,9 +2198,9 @@
     </element>
     <element id="Provenance.agent:author.who">
       <path value="Provenance.agent.who"/>
-      <short value="Vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId) – inre Sparr"/>
+      <short value="Ansvarig person (accountableHealthcareProfessional / header.author); helst samma PractitionerRole som resursens eget författarelement"/>
       <definition value="The individual, device or organization that participated in the event."/>
-      <comment value="whoIdentity should be used when the agent is not a Resource type."/>
+      <comment value="Samma person som resursens eget författarelement (recorder, asserter, author, performer, informationSource) när sådant finns. Saknas personens HSA-id anges namnet i who.display. Saknas både HSA-id och namn anges who med extensionen data-absent-reason (unknown)."/>
       <min value="1"/>
       <max value="1"/>
       <base>
@@ -2206,7 +2210,8 @@
       </base>
       <type>
         <code value="Reference"/>
-        <targetProfile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"/>
+        <targetProfile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner"/>
       </type>
       <constraint>
         <key value="ele-1"/>
@@ -2376,10 +2381,10 @@
     </element>
     <element id="Provenance.agent:author.who.identifier">
       <path value="Provenance.agent.who.identifier"/>
-      <short value="Vårdenhetens HSA-id"/>
+      <short value="Personens HSA-id (healthcareProfessionalHSAId / header.author.id)"/>
       <definition value="An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference."/>
       <comment value="When an identifier is provided in place of a reference, any system processing the reference will only be able to resolve the identifier to a reference if it understands the business context in which the identifier is used. Sometimes this is global (e.g. a national identifier) but often it is not. For this reason, none of the useful mechanisms described for working with references (e.g. chaining, includes) are possible, nor should servers be expected to be able resolve the reference. Servers may accept an identifier based reference untouched, resolve it, and/or reject it - see CapabilityStatement.rest.resource.referencePolicy. &#xA;&#xA;When both an identifier and a literal reference are provided, the literal reference is preferred. Applications processing the resource are allowed - but not required - to check that the identifier matches the literal reference&#xA;&#xA;Applications converting a logical reference to a literal reference may choose to leave the logical reference present, or remove it.&#xA;&#xA;Reference is intended to point to a structure that can potentially be expressed as a FHIR resource, though there is no need for it to exist as an actual FHIR resource instance - except in as much as an application wishes to actual find the target of the reference. The content referred to be the identifier must meet the logical constraints implied by any limitations on what resource types are permitted for the reference.  For example, it would not be legitimate to send the identifier for a drug prescription if the type were Reference(Observation|DiagnosticReport).  One of the use-cases for Reference.identifier is the situation where no FHIR representation exists (where the type is Reference (Any)."/>
-      <min value="1"/>
+      <min value="0"/>
       <max value="1"/>
       <base>
         <path value="Reference.identifier"/>
@@ -2405,8 +2410,74 @@
         <map value=".identifier"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.id">
-      <path value="Provenance.agent.who.identifier.id"/>
+    <element id="Provenance.agent:author.who.display">
+      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
+        <valueBoolean value="true"/>
+      </extension>
+      <path value="Provenance.agent.who.display"/>
+      <short value="Personens namn (healthcareProfessionalName / header.author.name)"/>
+      <definition value="Plain text narrative that identifies the resource in addition to the resource reference."/>
+      <comment value="This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Reference.display"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <mustSupport value="true"/>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf">
+      <path value="Provenance.agent.onBehalfOf"/>
+      <short value="Informationsägande vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId / accessControlHeader.accountableCareUnit) – inre Sparr"/>
+      <definition value="The individual, device, or organization for whom the change was made."/>
+      <comment value="onBehalfOfIdentity should be used when the agent is not a Resource type."/>
+      <min value="1"/>
+      <max value="1"/>
+      <base>
+        <path value="Provenance.agent.onBehalfOf"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Reference"/>
+        <targetProfile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <mustSupport value="true"/>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="Person, Practitioner, Organization, Device :* .role [classCode = RoleClassMutualRelationship; role.code and * .scopes[Role](classCode=IDENT) and *.plays [Role.Code]"/>
+      </mapping>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf.id">
+      <path value="Provenance.agent.onBehalfOf.id"/>
       <representation value="xmlAttr"/>
       <short value="Unique id for inter-element referencing"/>
       <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
@@ -2430,8 +2501,8 @@
         <map value="n/a"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.extension">
-      <path value="Provenance.agent.who.identifier.extension"/>
+    <element id="Provenance.agent:author.onBehalfOf.extension">
+      <path value="Provenance.agent.onBehalfOf.extension"/>
       <slicing>
         <discriminator>
           <type value="value"/>
@@ -2478,8 +2549,181 @@
         <map value="n/a"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.use">
-      <path value="Provenance.agent.who.identifier.use"/>
+    <element id="Provenance.agent:author.onBehalfOf.reference">
+      <path value="Provenance.agent.onBehalfOf.reference"/>
+      <short value="Literal reference, Relative, internal or absolute URL"/>
+      <definition value="A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources."/>
+      <comment value="Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure &quot;/[type]/[id]&quot; then it should be assumed that the reference is to a FHIR RESTful server."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Reference.reference"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="string"/>
+      </type>
+      <condition value="ref-1"/>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf.type">
+      <path value="Provenance.agent.onBehalfOf.type"/>
+      <short value="Type the reference refers to (e.g. &quot;Patient&quot;)"/>
+      <definition value="The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.&#xA;&#xA;The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. &quot;Patient&quot; is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources)."/>
+      <comment value="This element is used to indicate the type of  the target of the reference. This may be used which ever of the other elements are populated (or not). In some cases, the type of the target may be determined by inspection of the reference (e.g. a RESTful URL) or by resolving the target of the reference; if both the type and a reference is provided, the reference SHALL resolve to a resource of the same type as that specified."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Reference.type"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="uri"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <binding>
+        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+          <valueString value="FHIRResourceTypeExt"/>
+        </extension>
+        <strength value="extensible"/>
+        <description value="Aa resource (or, for logical models, the URI of the logical model)."/>
+        <valueSet value="http://hl7.org/fhir/ValueSet/resource-types|4.0.1"/>
+      </binding>
+      <mapping>
+        <identity value="rim"/>
+        <map value="N/A"/>
+      </mapping>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf.identifier">
+      <path value="Provenance.agent.onBehalfOf.identifier"/>
+      <short value="Vårdenhetens HSA-id"/>
+      <definition value="An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference."/>
+      <comment value="When an identifier is provided in place of a reference, any system processing the reference will only be able to resolve the identifier to a reference if it understands the business context in which the identifier is used. Sometimes this is global (e.g. a national identifier) but often it is not. For this reason, none of the useful mechanisms described for working with references (e.g. chaining, includes) are possible, nor should servers be expected to be able resolve the reference. Servers may accept an identifier based reference untouched, resolve it, and/or reject it - see CapabilityStatement.rest.resource.referencePolicy. &#xA;&#xA;When both an identifier and a literal reference are provided, the literal reference is preferred. Applications processing the resource are allowed - but not required - to check that the identifier matches the literal reference&#xA;&#xA;Applications converting a logical reference to a literal reference may choose to leave the logical reference present, or remove it.&#xA;&#xA;Reference is intended to point to a structure that can potentially be expressed as a FHIR resource, though there is no need for it to exist as an actual FHIR resource instance - except in as much as an application wishes to actual find the target of the reference. The content referred to be the identifier must meet the logical constraints implied by any limitations on what resource types are permitted for the reference.  For example, it would not be legitimate to send the identifier for a drug prescription if the type were Reference(Observation|DiagnosticReport).  One of the use-cases for Reference.identifier is the situation where no FHIR representation exists (where the type is Reference (Any)."/>
+      <min value="1"/>
+      <max value="1"/>
+      <base>
+        <path value="Reference.identifier"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <code value="Identifier"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <mustSupport value="true"/>
+      <isModifier value="false"/>
+      <isSummary value="true"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value=".identifier"/>
+      </mapping>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.id">
+      <path value="Provenance.agent.onBehalfOf.identifier.id"/>
+      <representation value="xmlAttr"/>
+      <short value="Unique id for inter-element referencing"/>
+      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."/>
+      <min value="0"/>
+      <max value="1"/>
+      <base>
+        <path value="Element.id"/>
+        <min value="0"/>
+        <max value="1"/>
+      </base>
+      <type>
+        <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type">
+          <valueUrl value="string"/>
+        </extension>
+        <code value="http://hl7.org/fhirpath/System.String"/>
+      </type>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.extension">
+      <path value="Provenance.agent.onBehalfOf.identifier.extension"/>
+      <slicing>
+        <discriminator>
+          <type value="value"/>
+          <path value="url"/>
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url"/>
+        <rules value="open"/>
+      </slicing>
+      <short value="Additional content defined by implementations"/>
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."/>
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone."/>
+      <alias value="extensions"/>
+      <alias value="user content"/>
+      <min value="0"/>
+      <max value="*"/>
+      <base>
+        <path value="Element.extension"/>
+        <min value="0"/>
+        <max value="*"/>
+      </base>
+      <type>
+        <code value="Extension"/>
+      </type>
+      <constraint>
+        <key value="ele-1"/>
+        <severity value="error"/>
+        <human value="All FHIR elements must have a @value or children"/>
+        <expression value="hasValue() or (children().count() &gt; id.count())"/>
+        <xpath value="@value|f:*|h:div"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+      </constraint>
+      <constraint>
+        <key value="ext-1"/>
+        <severity value="error"/>
+        <human value="Must have either extensions or value[x], not both"/>
+        <expression value="extension.exists() != value.exists()"/>
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+        <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+      </constraint>
+      <isModifier value="false"/>
+      <isSummary value="false"/>
+      <mapping>
+        <identity value="rim"/>
+        <map value="n/a"/>
+      </mapping>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.use">
+      <path value="Provenance.agent.onBehalfOf.identifier.use"/>
       <short value="usual | official | temp | secondary | old (If known)"/>
       <definition value="The purpose of this identifier."/>
       <comment value="Applications can assume that an identifier is permanent unless it explicitly says that it is temporary."/>
@@ -2522,8 +2766,8 @@
         <map value="Role.code or implied by context"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.type">
-      <path value="Provenance.agent.who.identifier.type"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.type">
+      <path value="Provenance.agent.onBehalfOf.identifier.type"/>
       <short value="Description of identifier"/>
       <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose."/>
       <comment value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type."/>
@@ -2565,8 +2809,8 @@
         <map value="Role.code or implied by context"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.system">
-      <path value="Provenance.agent.who.identifier.system"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.system">
+      <path value="Provenance.agent.onBehalfOf.identifier.system"/>
       <short value="The namespace for the identifier value"/>
       <definition value="Establishes the namespace for the value - that is, a URL that describes a set values that are unique."/>
       <comment value="Identifier.system is always case sensitive."/>
@@ -2610,8 +2854,8 @@
         <map value="./IdentifierType"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.value">
-      <path value="Provenance.agent.who.identifier.value"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.value">
+      <path value="Provenance.agent.onBehalfOf.identifier.value"/>
       <short value="The value that is unique"/>
       <definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system."/>
       <comment value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](http://hl7.org/fhir/R4/extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe."/>
@@ -2653,8 +2897,8 @@
         <map value="./Value"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.period">
-      <path value="Provenance.agent.who.identifier.period"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.period">
+      <path value="Provenance.agent.onBehalfOf.identifier.period"/>
       <short value="Time period when id is/was valid for use"/>
       <definition value="Time period during which identifier is/was valid for use."/>
       <min value="0"/>
@@ -2690,8 +2934,8 @@
         <map value="./StartDate and ./EndDate"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.identifier.assigner">
-      <path value="Provenance.agent.who.identifier.assigner"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.assigner">
+      <path value="Provenance.agent.onBehalfOf.identifier.assigner"/>
       <short value="Organization that issued id (may be just text)"/>
       <definition value="Organization that issued/manages the identifier."/>
       <comment value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization."/>
@@ -2729,11 +2973,11 @@
         <map value="./IdentifierIssuingAuthority"/>
       </mapping>
     </element>
-    <element id="Provenance.agent:author.who.display">
+    <element id="Provenance.agent:author.onBehalfOf.display">
       <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
         <valueBoolean value="true"/>
       </extension>
-      <path value="Provenance.agent.who.display"/>
+      <path value="Provenance.agent.onBehalfOf.display"/>
       <short value="Text alternative for the resource"/>
       <definition value="Plain text narrative that identifies the resource in addition to the resource reference."/>
       <comment value="This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it."/>
@@ -2760,42 +3004,6 @@
       <mapping>
         <identity value="rim"/>
         <map value="N/A"/>
-      </mapping>
-    </element>
-    <element id="Provenance.agent:author.onBehalfOf">
-      <path value="Provenance.agent.onBehalfOf"/>
-      <short value="Who the agent is representing"/>
-      <definition value="The individual, device, or organization for whom the change was made."/>
-      <comment value="onBehalfOfIdentity should be used when the agent is not a Resource type."/>
-      <min value="0"/>
-      <max value="1"/>
-      <base>
-        <path value="Provenance.agent.onBehalfOf"/>
-        <min value="0"/>
-        <max value="1"/>
-      </base>
-      <type>
-        <code value="Reference"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/PractitionerRole|4.0.1"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson|4.0.1"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Patient|4.0.1"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Device|4.0.1"/>
-        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Organization|4.0.1"/>
-      </type>
-      <constraint>
-        <key value="ele-1"/>
-        <severity value="error"/>
-        <human value="All FHIR elements must have a @value or children"/>
-        <expression value="hasValue() or (children().count() &gt; id.count())"/>
-        <xpath value="@value|f:*|h:div"/>
-        <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
-      </constraint>
-      <isModifier value="false"/>
-      <isSummary value="false"/>
-      <mapping>
-        <identity value="rim"/>
-        <map value="Person, Practitioner, Organization, Device :* .role [classCode = RoleClassMutualRelationship; role.code and * .scopes[Role](classCode=IDENT) and *.plays [Role.Code]"/>
       </mapping>
     </element>
     <element id="Provenance.entity">
@@ -3106,7 +3314,7 @@
           <type value="pattern"/>
           <path value="type"/>
         </discriminator>
-        <description value="Agenterna skiljs åt på agent.type: custodian (vårdgivare, yttre Sparr) och author (vårdenhet, inre Sparr)."/>
+        <description value="Agenterna skiljs åt på agent.type: custodian (vårdgivare, yttre Sparr) och author (person i who, vårdenhet i onBehalfOf, inre Sparr)."/>
         <ordered value="false"/>
         <rules value="open"/>
       </slicing>
@@ -3134,7 +3342,7 @@
     </element>
     <element id="Provenance.agent:custodian.who">
       <path value="Provenance.agent.who"/>
-      <short value="Vårdgivare (careProviderHSAId / accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId) – yttre Sparr"/>
+      <short value="Vårdgivare (careProviderHSAId / accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId / accessControlHeader.accountableCareGiver) – yttre Sparr"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"/>
@@ -3158,10 +3366,14 @@
       <min value="1"/>
       <mustSupport value="true"/>
     </element>
+    <element id="Provenance.agent:custodian.onBehalfOf">
+      <path value="Provenance.agent.onBehalfOf"/>
+      <max value="0"/>
+    </element>
     <element id="Provenance.agent:author">
       <path value="Provenance.agent"/>
       <sliceName value="author"/>
-      <short value="Informationsägande vårdenhet – inre Sparr"/>
+      <short value="Ansvarig person för vårdenhetens räkning – inre Sparr"/>
       <min value="1"/>
       <max value="1"/>
       <mustSupport value="true"/>
@@ -3179,27 +3391,49 @@
     </element>
     <element id="Provenance.agent:author.who">
       <path value="Provenance.agent.who"/>
-      <short value="Vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId) – inre Sparr"/>
+      <short value="Ansvarig person (accountableHealthcareProfessional / header.author); helst samma PractitionerRole som resursens eget författarelement"/>
+      <comment value="Samma person som resursens eget författarelement (recorder, asserter, author, performer, informationSource) när sådant finns. Saknas personens HSA-id anges namnet i who.display. Saknas både HSA-id och namn anges who med extensionen data-absent-reason (unknown)."/>
+      <type>
+        <code value="Reference"/>
+        <targetProfile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSPractitionerRole"/>
+        <targetProfile value="http://hl7.org/fhir/StructureDefinition/Practitioner"/>
+      </type>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Provenance.agent:author.who.identifier">
+      <path value="Provenance.agent.who.identifier"/>
+      <short value="Personens HSA-id (healthcareProfessionalHSAId / header.author.id)"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Provenance.agent:author.who.display">
+      <path value="Provenance.agent.who.display"/>
+      <short value="Personens namn (healthcareProfessionalName / header.author.name)"/>
+      <mustSupport value="true"/>
+    </element>
+    <element id="Provenance.agent:author.onBehalfOf">
+      <path value="Provenance.agent.onBehalfOf"/>
+      <short value="Informationsägande vårdenhet (careUnitHSAId / accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId / accessControlHeader.accountableCareUnit) – inre Sparr"/>
+      <min value="1"/>
       <type>
         <code value="Reference"/>
         <targetProfile value="https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSOrganization"/>
       </type>
       <mustSupport value="true"/>
     </element>
-    <element id="Provenance.agent:author.who.identifier">
-      <path value="Provenance.agent.who.identifier"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier">
+      <path value="Provenance.agent.onBehalfOf.identifier"/>
       <short value="Vårdenhetens HSA-id"/>
       <min value="1"/>
       <mustSupport value="true"/>
     </element>
-    <element id="Provenance.agent:author.who.identifier.system">
-      <path value="Provenance.agent.who.identifier.system"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.system">
+      <path value="Provenance.agent.onBehalfOf.identifier.system"/>
       <min value="1"/>
       <patternUri value="urn:oid:1.2.752.29.4.19"/>
       <mustSupport value="true"/>
     </element>
-    <element id="Provenance.agent:author.who.identifier.value">
-      <path value="Provenance.agent.who.identifier.value"/>
+    <element id="Provenance.agent:author.onBehalfOf.identifier.value">
+      <path value="Provenance.agent.onBehalfOf.identifier.value"/>
       <min value="1"/>
       <mustSupport value="true"/>
     </element>

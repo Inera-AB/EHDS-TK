@@ -1,4 +1,4 @@
-# inera.ehds.ehds-tk#0.10.0: Inera EHDS Tjänstekontrakt – FHIR Implementation Guide(sv)
+# inera.ehds.ehds-tk#0.11.0: Inera EHDS Tjänstekontrakt – FHIR Implementation Guide(sv)
 
 ## Pages
 

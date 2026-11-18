@@ -1,4 +1,4 @@
-# RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:2) - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Logisk modell: RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:2) 
 
@@ -46,11 +46,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSRivCVType
     "valueUri" : "urn:riv:clinicalprocess:activityprescription:actoutcome:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSRivCVTypeActivityprescriptionActoutcome2",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSRivCVTypeActivityprescriptionActoutcome2",
   "title" : "RIV-TA CVType (clinicalprocess:activityprescription:actoutcome:2)",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

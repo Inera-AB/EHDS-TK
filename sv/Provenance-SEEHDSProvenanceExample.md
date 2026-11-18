@@ -1,10 +1,10 @@
-# Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# Exempel: Provenance med custodian och author - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Exempel Provenance: Exempel: Provenance med custodian och author
 
 Profil: [SE EHDS Provenance](StructureDefinition-SEEHDSProvenance.md)
 
-Härkomst för Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/7.0.1/NamingSystem-uri.html)/urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b
+Härkomst för Identifier: [Uniform Resource Identifier (URI)](http://terminology.hl7.org/7.3.0/NamingSystem-uri.html)/urn:uuid:6f1e4c2a-3b7d-4e8f-9a01-2c3d4e5f6a7b
 
 Sammanfattning
 
@@ -16,8 +16,10 @@ Sammanfattning
 
 * **Typ**: Custodian
   * **vem**: Exempelregionen (Identifier:`urn:oid:1.2.752.29.4.19`/SE2321000016-15CQ)
+  * **På uppdrag av**: 
 * **Typ**: Author
-  * **vem**: Exempelvårdcentralen (Identifier:`urn:oid:1.2.752.29.4.19`/SE2321000016-15D1)
+  * **vem**: Anna Andersson (Identifier:`urn:oid:1.2.752.29.4.19`/SE2321000016-1234)
+  * **På uppdrag av**: Exempelvårdcentralen (Identifier:`urn:oid:1.2.752.29.4.19`/SE2321000016-15D1)
 
 
 
@@ -62,6 +64,13 @@ Sammanfattning
       }]
     },
     "who" : {
+      "identifier" : {
+        "system" : "urn:oid:1.2.752.29.4.19",
+        "value" : "SE2321000016-1234"
+      },
+      "display" : "Anna Andersson"
+    },
+    "onBehalfOf" : {
       "identifier" : {
         "system" : "urn:oid:1.2.752.29.4.19",
         "value" : "SE2321000016-15D1"

@@ -1,4 +1,4 @@
-# Downloads - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# Downloads - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Downloads
 

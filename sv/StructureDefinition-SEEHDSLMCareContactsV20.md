@@ -1,4 +1,4 @@
-# GetCareContacts 2.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetCareContacts 2.0 - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Logisk modell: GetCareContacts 2.0 
 
@@ -58,11 +58,11 @@ Andra representationer av profilen: [CSV](../StructureDefinition-SEEHDSLMCareCon
     "valueUri" : "urn:riv:clinicalprocess:logistics:logistics:GetCareContactsResponder:2"
   }],
   "url" : "https://fhir.inera.se/ig/ehds-tk/StructureDefinition/SEEHDSLMCareContactsV20",
-  "version" : "0.10.0",
+  "version" : "0.11.0",
   "name" : "SEEHDSLMCareContactsV20",
   "title" : "GetCareContacts 2.0",
   "status" : "draft",
-  "date" : "2026-11-18T13:32:07+00:00",
+  "date" : "2026-11-18T13:38:06+00:00",
   "publisher" : "Inera AB",
   "contact" : [{
     "name" : "Inera AB",

@@ -1,4 +1,4 @@
-# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# Mappings - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## Mappings
 
@@ -45,12 +45,32 @@ Alla tjänstekontrakt (utom GetAccessLogForPatient) delar ett headermönster som
 | `patientId` | `{Resurs}.subject`(`reference`+`identifier`) | Referens till SEEHDSPatient; OID→URI-konvertering krävs, se[GENERAL-006](#patientreferens) |
 | `sourceSystemHSAId` | `{Resurs}.meta.source` | Format:`https://tjanstekatalogen.inera.se/Endpoint/{hsaId}`, se[GENERAL-005](#meta-source) |
 | `documentTime` | `{Resurs}.recordedDate`(eller primär tidsstämpel) | YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm).**Gäller endast de TK:er där `documentTime` faktiskt skickas.**GetDiagnosis har`documentTime`0..0 per TKB och använder istället`accountableHealthcareProfessional.authorTime`för`recordedDate`– se den tjänstekontraktsspecifika mappningssidan för auktoritativ källa per TK. |
-| `accountableHealthcareProfessional` | `{Resurs}.recorder`/`author`/`performer` | Logisk referens via HSA-id |
+| `accountableHealthcareProfessional` | `{Resurs}.recorder`/`author`/`performer`och`Provenance.agent[author].who` | Logisk referens via HSA-id |
 | `legalAuthenticator` | `{Resurs}.asserter`/`authenticator` | Logisk referens via HSA-id |
 | `careProviderHSAId` | `Provenance.agent[custodian].who.identifier` | Yttre Sparr |
-| `careUnitHSAId` | `Provenance.agent[author].who.identifier` | Inre Sparr |
+| `careUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` | Inre Sparr, se[Provenance-agenter](#provenance-agenter) |
 
 > **OBS om server-side filtrering:** Om den FHIR-server som tillhandahåller data själv hanterar åtkomstfiltrering baserat på anropande vårdpersonals kontext eller patientens e-hälsotjänst, behöver Provenance-spärr-agenterna och `approvedForPatient`-säkerhetsmärkning (se PDL-001) inte inkluderas i svaret — filtreringen sker då redan på servernivå.
+
+-------
+
+### Provenance-agenter (GENERAL-003)
+
+Varje klinisk resurs åtföljs av en [SEEHDSProvenance](StructureDefinition-SEEHDSProvenance.md) med två agenter, som skiljs åt på `agent.type`:
+
+| | | | |
+| :--- | :--- | :--- | :--- |
+| `agent[custodian]` | Vårdgivaren (`Organization`, HSA-id) | – | Yttre Sparr |
+| `agent[author]` | Ansvarig person (`PractitionerRole`, eller`Practitioner`) | Informationsägande vårdenhet (`Organization`, HSA-id) | Inre Sparr |
+
+Mönstret följer FHIR:s referensmodell för Provenance: `agent.who` är den som deltog, och `agent.onBehalfOf` är den organisation som personen agerade för. RIVTA-headerns `accountableHealthcareProfessional` (eller JoL-headerns `author`) blir alltså `agent[author].who`, och `healthcareProfessionalCareUnitHSAId` (eller `accessControlHeader.accountableCareUnit`) blir `agent[author].onBehalfOf`. Samma mönster används i Inera core.
+
+Regler:
+
+1. **Vårdenheten finns alltid i `agent[author].onBehalfOf.identifier`.**Spärrkontroll och sökning på vårdenhet utgår därför alltid från samma element.
+1. **Personen i `agent[author].who` är samma person som resursens eget författarelement**(`recorder`,`asserter`,`author`,`performer`eller`informationSource`), och referensen pekar på samma PractitionerRole. Resursens eget element är den primära platsen för författarskap. Provenance upprepar personen bara för att agenten ska vara fullständig enligt referensmodellen.
+1. **Saknas personens HSA-id**anges namnet i`agent[author].who.display`. Saknas både HSA-id och namn anges`agent[author].who`med extensionen`data-absent-reason`(`unknown`), eftersom`who`är obligatoriskt i FHIR.
+1. **Vårdgivaren anges bara i `agent[custodian].who`**, inte i`agent[author].onBehalfOf`.
 
 -------
 

@@ -1,4 +1,4 @@
-# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.10.0
+# GetVaccinationHistory – Vaccinationer - Inera EHDS Tjänstekontrakt – FHIR Implementation Guide v0.11.0
 
 ## GetVaccinationHistory – Vaccinationer
 
@@ -45,7 +45,7 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 | `vaccinationMedicalRecordHeader.patientId.id` | 1..1 | `Immunization.patient.identifier.value` | Patientens identifierare (12 tecken), t.ex. personnummer eller samordningsnummer.`patientId`är av RIVTA-typen`PersonIdType {id, type}` |
 | `vaccinationMedicalRecordHeader.patientId.type` | 1..1 | `Immunization.patient.identifier.system` | OID för typ av identifierare (t.ex.`1.2.752.129.2.1.3.1`för personnummer); OID→URI, se tabell nedan |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` | 1..1 | `Immunization.occurrenceDateTime` | Dokumentationstidpunkt – används som fallback om documentTime saknas; YYYYMMDDHHMMSS → ISO 8601 (Europe/Stockholm), se[VAC-002](#öppna-frågor) |
-| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Immunization.performer[0].actor`(Reference(PractitionerRole)) | Ansvarig yrkesutövares HSA-id |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId` | 0..1 | `Immunization.performer[0].actor`(Reference(PractitionerRole)) och`Provenance.agent[author].who` | Ansvarig yrkesutövares HSA-id |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalName` | 0..1 | `PractitionerRole.practitioner.display` | Ansvarig yrkesutövares visningsnamn |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalRoleCode` | 0..1 | `PractitionerRole.code` | Ansvarig yrkesutövares befattningskod |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitHSAId` | 0..1 | `PractitionerRole.organization.identifier.value` | Organisationsenhetens HSA-id |
@@ -54,7 +54,7 @@ Källsystemsmetadata (`sourceSystemName/productName/productVersion/sourceSystemC
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitEmail` | 0..1 | Ej mappad | E-post till organisationsenhet – se orgUnitTelecom ovan. Utelämnas normalt vid patientens egen åtkomst (kan ändras av EHDS-krav), se[GENERAL-008](mappings.md#organisation). |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitAddress` | 0..1 | Ej mappad | Postadress till organisationsenhet – se orgUnitTelecom ovan |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalOrgUnit.orgUnitLocation` | 0..1 | Ej mappad | Plats/ort för organisationsenhet – se orgUnitTelecom ovan |
-| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].who.identifier` | **Inre Sparr**– versalt 'C' i 'Care' |
+| `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | 0..1 | `Provenance.agent[author].onBehalfOf.identifier` | **Inre Sparr**– versalt 'C' i 'Care' |
 | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | 0..1 | `Provenance.agent[custodian].who.identifier` | **Yttre Sparr**– versalt 'C' i 'Care' |
 | `vaccinationMedicalRecordHeader.legalAuthenticator.signatureTime` | 1..1 (om legalAuth) | `Immunization.extension[legalAuthenticator].signatureTime` | Signeringstidpunkt; YYYYMMDDHHMMSS → ISO 8601 |
 | `vaccinationMedicalRecordHeader.legalAuthenticator.legalAuthenticatorHSAId` | 0..1 | `Immunization.extension[legalAuthenticator].hsaId` | HSA-id för signerare |
@@ -256,7 +256,7 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 | | | |
 | :--- | :--- | :--- |
 | Yttre Sparr (vårdgivare) | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` | `Provenance.agent[custodian].who.identifier` |
-| Inre Sparr (vårdenhet) | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].who.identifier` |
+| Inre Sparr (vårdenhet) | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` | `Provenance.agent[author].onBehalfOf.identifier` |
 | Patientgodkännande | `vaccinationMedicalRecordHeader.approvedForPatient`(boolean) | `Immunization.meta.security`; se[PDL-001](#öppna-frågor) |
 
 -------
@@ -266,7 +266,10 @@ PDL-styrning utgår från `accountableHealthcareProfessional`-blocket i headern.
 | | | |
 | :--- | :--- | :--- |
 | `agent[custodian]` | Juridiskt ansvarig vårdgivare | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareGiverHSAId` |
-| `agent[author]` | Informationsägande vårdenhet | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId` |
+| `agent[author].who` | Ansvarig person (PractitionerRole), samma person som resursens eget författarelement | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalHSAId`(HSA-id i`identifier`),`healthcareProfessionalName`(`display`) |
+| `agent[author].onBehalfOf` | Informationsägande vårdenhet (inre Sparr) | `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.healthcareProfessionalCareUnitHSAId`(HSA-id i`identifier`) |
+
+Saknas personens HSA-id anges namnet i `agent[author].who.display`. Saknas både HSA-id och namn anges `agent[author].who` med extensionen `data-absent-reason` (`unknown`). Vårdenheten anges alltid i `agent[author].onBehalfOf`, se [Provenance-agenter (GENERAL-003)](mappings.md#provenance-agenter).
 
 `Provenance.target` refererar `Immunization` via `urn:uuid:{resurs.id}`.
  `Provenance.recorded` = `vaccinationMedicalRecordHeader.accountableHealthcareProfessional.authorTime` (ISO 8601).
